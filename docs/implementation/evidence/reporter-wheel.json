@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "wheel": "quant_reporter-1.0.0-py3-none-any.whl",
+  "required_modules": [
+    "quant_reporter/__init__.py",
+    "quant_reporter/metrics.py",
+    "quant_reporter/analysis.py",
+    "quant_reporter/optimization.py"
+  ],
+  "package_files": 12
+}
