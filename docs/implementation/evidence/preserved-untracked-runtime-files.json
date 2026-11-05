@@ -1,0 +1,2482 @@
+[
+  {
+    "path": "backend/celerybeat-schedule",
+    "sha256": "9C7709B4BD1C4D5C51C19128A21A9F442B2ADD10C11C28B783F9FC8E5FC337F2",
+    "bytes": 12288
+  },
+  {
+    "path": "backend/celerybeat-schedule-shm",
+    "sha256": "D14EA3160E1D383A1372100F6B301F88DA8192A66752BA3641CD28CDCA404691",
+    "bytes": 32768
+  },
+  {
+    "path": "backend/celerybeat-schedule-wal",
+    "sha256": "71D85635ED4811A46C0E3EC86DFED47B0FAB938DA5D5B3C4DBD95B275869DFB1",
+    "bytes": 403792
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip-24.2.dist-info/AUTHORS.txt",
+    "sha256": "F39A4F50B2EFA163128C1654DCB8DC90A289935C6D0F53BC23455517261F4BEC",
+    "bytes": 11664
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip-24.2.dist-info/INSTALLER",
+    "sha256": "0B77BDB04E0461147A7C783C200BC11A6591886E59E2509F5D7F6CB7179D01AB",
+    "bytes": 5
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip-24.2.dist-info/LICENSE.txt",
+    "sha256": "AFBB3C587AD82D668258516CFB0364D964670097A226FCC980E3217A76E16E8D",
+    "bytes": 1113
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip-24.2.dist-info/METADATA",
+    "sha256": "1BBBDB62372BA7B837CC830AFB65076A0E58144D79EB3A394B864599FAFE0811",
+    "bytes": 3713
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip-24.2.dist-info/RECORD",
+    "sha256": "EBF74AC5004AE018B4659E4AE81C11DBD13E2C658793E2E9BF8BFFDD98138766",
+    "bytes": 65603
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip-24.2.dist-info/REQUESTED",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip-24.2.dist-info/WHEEL",
+    "sha256": "87F36F2AFD00A8E60EA34E9D13F9296B7D8CAC5E1ADCCC34F755A0452516F390",
+    "bytes": 96
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip-24.2.dist-info/entry_points.txt",
+    "sha256": "D2EE431ED464F805CE8A4E639E43B4AF0D93434D63A1B16E3A4F596C625981C8",
+    "bytes": 90
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip-24.2.dist-info/top_level.txt",
+    "sha256": "0B77BDB04E0461147A7C783C200BC11A6591886E59E2509F5D7F6CB7179D01AB",
+    "bytes": 5
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/__init__.py",
+    "sha256": "9CBC916DEDFF3C1B5441B7E9CC617D99CEDA7E45C95C3208C858714462ABD9D3",
+    "bytes": 368
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/__main__.py",
+    "sha256": "AA33D73215F9882BDCAC4BF5DD59E87E36443C844E932F3461D4B77F471A107B",
+    "bytes": 878
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/__pip-runner__.py",
+    "sha256": "E5C5F273D01C0FF4386F6962657D459B8369ED4CEECE8B3FBB21E68E1812F108",
+    "bytes": 1500
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/__init__.py",
+    "sha256": "11B74772B4BB5EFB19EB5B3A39E7CEE8599560D7F55EEE569AD3B8643848C5E1",
+    "bytes": 531
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/build_env.py",
+    "sha256": "2862973C70C098F2C2810EB1AC34C564588A3A9AB6942943FF34B3A8F8C1C504",
+    "bytes": 10735
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cache.py",
+    "sha256": "1BF4B796F6A9484694A9DBE5B145AB62BDC3FC9F7627792C83F3A18FD5CA960F",
+    "bytes": 10659
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/__init__.py",
+    "sha256": "F60330FC0FD2B495F30E1D918718A5E9B77CB453FE651EF5F50D6920D1C0C392",
+    "bytes": 136
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/autocompletion.py",
+    "sha256": "08486C1F61483A4BDDCCFD589C059D7D531B4AE93514B880A2B6DC4B26F97A54",
+    "bytes": 7041
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/base_command.py",
+    "sha256": "40EFBA51F1877C5DBCFDEE865432560598D8E49830AD6C1B6BDC92D22D3E7C78",
+    "bytes": 8520
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/cmdoptions.py",
+    "sha256": "972A2885136F95AF46C73611AC940D1BE27B89A96366E8878B7A41D8617C696D",
+    "bytes": 31185
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/command_context.py",
+    "sha256": "85C8DC73BA13C60F08CC852697E7B00365EC383B7DA7897AB729FEAA7B07D9F0",
+    "bytes": 801
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/index_command.py",
+    "sha256": "21B91C158F8EFB9041EE207A60257342E8C5DBEB7E73615D66F65519B731F797",
+    "bytes": 5803
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/main.py",
+    "sha256": "E54F91AEA51959350FA5DD70B7F214F873FFA1ACCDAF3D43E2773055C154C18E",
+    "bytes": 2897
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/main_parser.py",
+    "sha256": "292AF4F63A19F880BEE6A8FFE552FCF96F60FC68DB1FA53B77E3EF85E4F13D98",
+    "bytes": 4472
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/parser.py",
+    "sha256": "6F61A48453A2F9F93EA0894764C16A5F6D51C0F627EDB7B82905690EBAAF62C6",
+    "bytes": 11105
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/progress_bars.py",
+    "sha256": "F15DD0C6A1BFAE095D1C427AB34AD4217758F3D7D18497F5EF5E31433A4838C6",
+    "bytes": 2807
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/req_command.py",
+    "sha256": "1B2B9F9D7AF606D3CD3EEE5B9845552209254AF92046D3D4700CA247A6E0A6E6",
+    "bytes": 12579
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/spinners.py",
+    "sha256": "6ED40B189D091F4CE99DAB5B68BBBE3467F497336087E76EB5D8CA14F68EF645",
+    "bytes": 5277
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/cli/status_codes.py",
+    "sha256": "D71681DF6946F0D7F59CC97FE9ED32CB9CF6232BEFF35393529B87C17806B1F5",
+    "bytes": 122
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/__init__.py",
+    "sha256": "616288E1E91BB4034410D33480A4366CF529BA46787F268C73C4E7539F3A241D",
+    "bytes": 4014
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/cache.py",
+    "sha256": "FE97B4A6ED18B7861A47941BBA3BE36E9C53AAA7BABBDD2DFBB26467F8C313EA",
+    "bytes": 8169
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/check.py",
+    "sha256": "72F5B0D25EAD4CE12282A7A1D44F6C6FE1D60E7D9BEC4D79B631C083398DF7B9",
+    "bytes": 2335
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/completion.py",
+    "sha256": "1E8C039D82E8C1C05021F03E10B8413C78EC869B34BD526E6621B7DEE0E4F2B2",
+    "bytes": 4417
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/configuration.py",
+    "sha256": "FEF238F4FBEC8FA2CF233E1D06DDA74653E89EF70FD6825DD42D3D0AB7B7E207",
+    "bytes": 10046
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/debug.py",
+    "sha256": "88C0B852AC6F4697E4FEE180ABC566809F0516CE6DDDCB25756FB70A8B97EF42",
+    "bytes": 6998
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/download.py",
+    "sha256": "37339D844FAF8FA6B174017E6ADC6EE52D2F2B704ABAC8A8DB470D73D51DD9EC",
+    "bytes": 5419
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/freeze.py",
+    "sha256": "83CFFF4247BCE1A21C85C90B34D66C29EBA4C57DCBB840CD94A2E4F5EAAFECBF",
+    "bytes": 3312
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/hash.py",
+    "sha256": "4CC81DD389F14BBACCE579E14D2E4DA067FD56A12937DDC94639FE80540D49F0",
+    "bytes": 1762
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/help.py",
+    "sha256": "4D7757D60225E49564AA0024F84A92B2511ABB032285EC92AC5BE7DA43BF9F09",
+    "bytes": 1173
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/index.py",
+    "sha256": "EFCA81DB43C2C20BFBA67F1E5DF55F618A35151570CD7D8BF23251F4B6C2290B",
+    "bytes": 4870
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/inspect.py",
+    "sha256": "134EAC0FFF3F8F58DF3CCFF240D45C0A8AF061D36A44DB66C659573AE056BB10",
+    "bytes": 3281
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/install.py",
+    "sha256": "972AC1A4128ADC98C889FF2AB73E7E635EB854BF05E86455E42056AC1DA328BC",
+    "bytes": 30211
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/list.py",
+    "sha256": "F0048BC73AD71D509B41D3EC8C0322B7E3390E3905BD2F35A198AD9D68C1BB46",
+    "bytes": 13146
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/search.py",
+    "sha256": "FCA78146E0C766276D195FEA986FCC71BDDFF598D0461A63DE9664FAC7E50D59",
+    "bytes": 5800
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/show.py",
+    "sha256": "D31FE323789F348D4F1C35C216DC43A2872635F448A2FD57C0AE7EE26A8B2CD5",
+    "bytes": 7724
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/uninstall.py",
+    "sha256": "DC771E516F69A6205A859D7B72099DD3848D40885386E49034EA291B8CA71EB5",
+    "bytes": 4006
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/commands/wheel.py",
+    "sha256": "F5296A1CFC603015A9AAA9112A93566099FDF99A6649B7ED8C073BB5E4ECC778",
+    "bytes": 6596
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/configuration.py",
+    "sha256": "740E9C7EB5F0B51B69F5CB0310A40737FAA217761692F67D13AB89F8A8017C56",
+    "bytes": 14389
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/distributions/__init__.py",
+    "sha256": "F7D473934EFBC12E701A2ADEFE67217008ED246F6F6F04CB3D764A2D6AE1FC3E",
+    "bytes": 879
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/distributions/base.py",
+    "sha256": "8F48ECF6D71922F0B30A5EC9BA5ADB6645A5BCB9A85C5E7D312437FA9537212F",
+    "bytes": 1836
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/distributions/installed.py",
+    "sha256": "9FA45824F4C00033C2D2A79EBD80AC2DE5274A6342D72DC9F8CD0EE0D4E18008",
+    "bytes": 871
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/distributions/sdist.py",
+    "sha256": "3950662B40C46741F54E8F901B01474048A4C4E877F2604652A868DB6B765A34",
+    "bytes": 6909
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/distributions/wheel.py",
+    "sha256": "5F5782E1120D73D43CCD04BA8FCEEDC2E0B976156558CF1453827FCF8E133E77",
+    "bytes": 1359
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/exceptions.py",
+    "sha256": "0F5A15DB507CA707B3284DB85130D3A71189D92D4FAC5BDB5FCEA0AA4168CC89",
+    "bytes": 26148
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/index/__init__.py",
+    "sha256": "C7489F0F2142870C100B857F7870451757EFCCBC1B5D1606DE7AB5E7E031CB6E",
+    "bytes": 32
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/index/collector.py",
+    "sha256": "6514B5457E984472750546188DB25B3CB06FB82355C752AAE4EF80827DC93FFD",
+    "bytes": 16759
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/index/package_finder.py",
+    "sha256": "37D30450FA335766C5E793D7C5A8D9DD13C1353A6FA29A1C54F04DA56FDCA629",
+    "bytes": 38686
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/index/sources.py",
+    "sha256": "DA10687B6273A0F9D9621E12A926684F36330AD0DD8077A4BC25ADEDE7A9FBF9",
+    "bytes": 8973
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/locations/__init__.py",
+    "sha256": "80977DEAA5546EE0936D5638D73694DB0E0EFBF6B3D2B1FFA29F11FE53458DF6",
+    "bytes": 15381
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/locations/_distutils.py",
+    "sha256": "531995331ACE4B7AC2AA54436A2EF57FA1660D96AD33C787A7F7F9AB38457567",
+    "bytes": 6181
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/locations/_sysconfig.py",
+    "sha256": "AA70D15B5DC4BD42D2ED4D00BDCA8E9660077CEEF58B70C2EC6BE6670D25F78F",
+    "bytes": 7938
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/locations/base.py",
+    "sha256": "4F1FE3F18683121E26901BBD1B3B8936C939357ABC028497349FA3FC08366B11",
+    "bytes": 2637
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/main.py",
+    "sha256": "E86673D6555E039E8B5D1E5A03E624DBDC07BE8F0828253E3DF68CEF1895A1B2",
+    "bytes": 352
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/metadata/__init__.py",
+    "sha256": "B242A4D53570EB843CAE3C210905CE335C7E6C4E2D94646709F93E180E65A2E1",
+    "bytes": 4467
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/metadata/_json.py",
+    "sha256": "387FEFE16B2DEAAE57FFF7C1DD00063E396A4D425513AEB294A8BAD75B85C416",
+    "bytes": 2728
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/metadata/base.py",
+    "sha256": "DFC4FD648F869D11F8CDD851B3A005191B431CE02D221C70F7E3694C29F6D193",
+    "bytes": 25986
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/metadata/importlib/__init__.py",
+    "sha256": "2D37B7217D7FDE2BFA0205897551760ED6FBEF669A171AF6C440240A6A91B588",
+    "bytes": 141
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/metadata/importlib/_compat.py",
+    "sha256": "2F1499447DBBEBF6428B209CFE00624B7FD6E452ACD866AE0A07B61CE4A4B6ED",
+    "bytes": 2881
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/metadata/importlib/_dists.py",
+    "sha256": "906C95894A72BE64070087B3665001768FD101D8493B37963E0E3F5E7003A4E8",
+    "bytes": 8238
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/metadata/importlib/_envs.py",
+    "sha256": "48D3B87FB51B263525C95C23386AE1E2ADE577545977F6EFA8FB04306AB2D75F",
+    "bytes": 7620
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/metadata/pkg_resources.py",
+    "sha256": "A6C30B2BDD96D0C2050CAB92E12AF89462F9ACB32B104042FA0511EA65478AF2",
+    "bytes": 10843
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/__init__.py",
+    "sha256": "8F692245F3531FA8792553F9C8EFCDD989F40EA88DCC952D68F8C77B6C4C7208",
+    "bytes": 65
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/candidate.py",
+    "sha256": "2B93F9971E31342E44D1561B4E6477D2D68B7D8506BD9E9E831FC9AB9CEC20D7",
+    "bytes": 778
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/direct_url.py",
+    "sha256": "36FD5FAE097DE368A37F56605358713366A41281F5AB22DF080E8BAFFB423ACC",
+    "bytes": 6802
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/format_control.py",
+    "sha256": "B7BFEFE786C9BBE0B0A018146ED02762894C26AB4C87CF7E20B49B5BBCA26718",
+    "bytes": 2564
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/index.py",
+    "sha256": "2D00EB5451E2B78B8DD0DB282A57212080C154B00570FD385A58C6763B3D16F3",
+    "bytes": 1058
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/installation_report.py",
+    "sha256": "96E5C7CDFC179C04B386844CF39C0538B0CFE8E1B4176992B22282E4DAF3C5A8",
+    "bytes": 2874
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/link.py",
+    "sha256": "517F29A0202BD620062816D7B95471CD56042A2561C8CC3A3830D0AEE5FE7548",
+    "bytes": 21624
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/scheme.py",
+    "sha256": "67E7999D3EB1920555F02CB43886B91815DF09C704482B9E3EF9AF0806BB8706",
+    "bytes": 600
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/search_scope.py",
+    "sha256": "92C82725773751598BE6B3A793685E85F4ABB4E6D7D4D91AFA5BACF568BBE0E3",
+    "bytes": 4658
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/selection_prefs.py",
+    "sha256": "4D7EF6B824829CCAD8AE284388D56345E72D449099244F3F8A7FDB4F53C4276C",
+    "bytes": 2068
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/target_python.py",
+    "sha256": "AB52F1A8253E038133C21057B02BBCA5AA5491482DDB019CD730F33068A995FE",
+    "bytes": 4392
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/models/wheel.py",
+    "sha256": "6A987596A5B0691664A48A883C025C1ED2DFDAAFCEF30A96D6D4F1085A318235",
+    "bytes": 3694
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/network/__init__.py",
+    "sha256": "204B6E00F546A814D2D02ECCD0A27DE71A86700EFA72839CD80B037202013FEF",
+    "bytes": 52
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/network/auth.py",
+    "sha256": "BDB99364C85B60AF63391B125A3365BA1AA9550C2EE16635843310C8020451AD",
+    "bytes": 21375
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/network/cache.py",
+    "sha256": "75DAFE618CBFC35B83079C685D0B01A555E788C9190814A8FF2E6FEB18F11166",
+    "bytes": 4041
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/network/download.py",
+    "sha256": "276A0010BA400A5E79A95D199326A60190BE04940200776671C2D33E0B3FDE81",
+    "bytes": 6235
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/network/lazy_wheel.py",
+    "sha256": "65F7AF95C9AAE8DBDBDBC44D8DDBFDC118B73A404943A5F57E6759D9F7A324BF",
+    "bytes": 7848
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/network/session.py",
+    "sha256": "1710FC607B797E6CE64577B650FECB76A3B964734DD1EF552A2B44FD0787D859",
+    "bytes": 19263
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/network/utils.py",
+    "sha256": "A2C66CA58C3139AF25D374E787412D5BAD7FE8444783BBB740B85B677C000040",
+    "bytes": 4186
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/network/xmlrpc.py",
+    "sha256": "9A479AD3CE345C1A1CA0D81DA30EC8A60D834EC5EEA3E896B43702141C10B332",
+    "bytes": 1900
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/build/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/build/build_tracker.py",
+    "sha256": "979625B361AE15AC14D62F2A2B487AA9E526A177FE5D6E5BA274E95CC7D805A5",
+    "bytes": 4912
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/build/metadata.py",
+    "sha256": "1DE64BCFB53E2841B54EFDEB295CDD3F8B69E01DEE9B8039D110CD38D148E6AC",
+    "bytes": 1461
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/build/metadata_editable.py",
+    "sha256": "E3432B97DB1233016C169258F86AE74E90C4A0E7D2BC49A632B161A66D092A2E",
+    "bytes": 1515
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/build/metadata_legacy.py",
+    "sha256": "AF239BE82DF7992D629C8EC1E0983E751582A5DA8A9146AEE814CBC2022C716C",
+    "bytes": 2264
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/build/wheel.py",
+    "sha256": "4DA1B50B3A8DFB13AECE388A82FF8A52A40BAA22C68198B94DC669CD1D5BD7A0",
+    "bytes": 1112
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/build/wheel_editable.py",
+    "sha256": "A1506EEDC2E304B41A7A3B45F3414A4C4F70733A16DEE2B2A8000D91AB9C5DDA",
+    "bytes": 1463
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/build/wheel_legacy.py",
+    "sha256": "2F69D49492A8201BD3449C6DDC4A482970670306FF1170B56F50EAC774FE8B29",
+    "bytes": 3147
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/check.py",
+    "sha256": "F74A41F17F53C69946C0C2CC0003A5781A591F3AB2CD4E6B7B3F0B65D7B9B24B",
+    "bytes": 6093
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/freeze.py",
+    "sha256": "1792292EB37920945E0E7C080D908D50EF9F2401833CD41B19723302B0B19106",
+    "bytes": 10122
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/install/__init__.py",
+    "sha256": "66E836C714498DE2362DD55DE398B099E6AF50161703896D6E1145C1CE0110E8",
+    "bytes": 53
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/install/editable_legacy.py",
+    "sha256": "05DEDE0B3162E5FFC333656EF13B647A4649325C015F485AB3CF654048EE57DC",
+    "bytes": 1330
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/install/wheel.py",
+    "sha256": "733E7CAB0CA8ACE5B91515800CE8791E15E5288932A544CC8729508DC25C3B10",
+    "bytes": 28356
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/operations/prepare.py",
+    "sha256": "E7A8412672F8286AF2EED389A87816930794FF62CF7E47954D98579687F55981",
+    "bytes": 28850
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/pyproject.py",
+    "sha256": "D734BC1040A1801E903499A1E15C23D3B13012A2D9F4A7658EA6D0F3990467DA",
+    "bytes": 7472
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/req/__init__.py",
+    "sha256": "C564E9FA6DD3E3544BA5410C10724281F7D7277E87A35617BE907749CC212BDD",
+    "bytes": 2743
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/req/constructors.py",
+    "sha256": "7C8FF0A8862EF8443444CA9C52FFC9F25C0F4D9D606DD412ADFF717338D918EE",
+    "bytes": 18984
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/req/req_file.py",
+    "sha256": "7400BFD9F4215C72BCD3E3D28C485374C6CE0D6B07E0DD19B7DF169DF46831F0",
+    "bytes": 18238
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/req/req_install.py",
+    "sha256": "04A9231EF99E12EF9B41DD8F2B84CCA3D777A3AC2EFDDD67DEC25CB913430A32",
+    "bytes": 36722
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/req/req_set.py",
+    "sha256": "2E204F50CACFADFCB65B61F7CD4B701AA27D12E5EBE3CB4B2AF305F8B9E925B9",
+    "bytes": 2940
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/req/req_uninstall.py",
+    "sha256": "E569C6846855A73C8E5F18B8DC4AD18399FCEB040F6314E087DFEEC69C4D1BBD",
+    "bytes": 24486
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/base.py",
+    "sha256": "76A0C0EE941018AB31555547DB9EEB4B4753EB0EE6ECD3BCF3DC2A29652AFADB",
+    "bytes": 603
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/legacy/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/legacy/resolver.py",
+    "sha256": "9684CF23A64F38E925A7334ED57CA16F0F40C291031C8B9792E6BABE40018302",
+    "bytes": 24665
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/base.py",
+    "sha256": "0B7CF6F1DAE4DEC59B3DB3770514579B1D6F6946C57976AAA5C3314A535A682C",
+    "bytes": 5162
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/candidates.py",
+    "sha256": "95FF3DE7CAA7E13FB10E67EE97584407D8AF5BF20C8D9A0E27109ADC1B69E4E4",
+    "bytes": 20392
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/factory.py",
+    "sha256": "26426C35F8BBB038723F6E933BCB0EFC9CDF91F070C14336ED82CC298352159F",
+    "bytes": 33276
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/found_candidates.py",
+    "sha256": "E6AFFBBAEFF2E712EB239481D63E2F1E700AC515D90F683C603F73656A9A6A2A",
+    "bytes": 6557
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/provider.py",
+    "sha256": "E2FCC8323541515BEB26CA236E5414A38E7DDD5B87A460021666523B75382BB8",
+    "bytes": 10193
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/reporter.py",
+    "sha256": "3897BFC34939B4B4B49E8F3C0B20ECE638C720B11534BED1E0B4A4DD3C8E0A13",
+    "bytes": 3249
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/requirements.py",
+    "sha256": "83447FC7A78D7BBE85EF15328C455B9C15FA32F13A683C4115674C82C3B5993E",
+    "bytes": 8310
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/resolution/resolvelib/resolver.py",
+    "sha256": "3B0FAFBA1AFFF68AC25FEECAC3C1B83246B405AC5929885D44A70897A563C415",
+    "bytes": 12909
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/self_outdated_check.py",
+    "sha256": "B8D5CE820A6C70286FB555A80578D3E2F9EA2CC6FF5063916721E9F9AB34E3B1",
+    "bytes": 8389
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/_jaraco_text.py",
+    "sha256": "42BA4C5B555F0E149DEC21A6C697FD8BF733E11D58953E00FFA38F7581ED5042",
+    "bytes": 3459
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/_log.py",
+    "sha256": "B74CE350D8CC2CF6276B865B2F430907CC2BC46745BC2F09B0FB3B7F7514773D",
+    "bytes": 1053
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/appdirs.py",
+    "sha256": "EB738C6D7744FA9057253DF6F74FB88808BFBFDB430C15AB79AA464B68F58069",
+    "bytes": 1717
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/compat.py",
+    "sha256": "628EEBE10B3683EC41E75081DF86A0BF3AD99686ABDA6719434E5ADA0BDDC178",
+    "bytes": 2478
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/compatibility_tags.py",
+    "sha256": "C0BD36E08E7CBEF9B339FB68620FD3BDF8471D8E383E98F701B57A627F60CE24",
+    "bytes": 5542
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/datetime.py",
+    "sha256": "361CC6070A4375CE56D615FBFB29C61D2147E53F2CAD450FA45C3ACCE39188C3",
+    "bytes": 253
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/deprecation.py",
+    "sha256": "E504961B0296FD30CA9162008252BCE528E375C279BE5A7B992427D450F04F6C",
+    "bytes": 3831
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/direct_url_helpers.py",
+    "sha256": "FF6436465681F23ADB047570D0DB3C26365FD6DCEBDFC2FCF0D80302C9AC2438",
+    "bytes": 3283
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/egg_link.py",
+    "sha256": "4AFCF479D00953246E68F1D1B96077685D114DEA2B22CD41309D46ECB738F33A",
+    "bytes": 2543
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/encoding.py",
+    "sha256": "1F85C652F9F4388D7CB2180B1F3A41F3FFB960548899553E976912AD8D19A052",
+    "bytes": 1205
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/entrypoints.py",
+    "sha256": "BA60A94CF2235D2AFC1EE161B146298ED06EBBCF0C6F5436ACEDFEC3B67C50C4",
+    "bytes": 3148
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/filesystem.py",
+    "sha256": "346A734AAC880FDC4B9E47FFFF7EB7D90C2B5AB1B6E1C62881A7F98B50180C26",
+    "bytes": 5099
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/filetypes.py",
+    "sha256": "725B8E0B09890393DBB210246B6A60BF64DD86255E2DBB34126F06F17D3EDAD4",
+    "bytes": 743
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/glibc.py",
+    "sha256": "D7D1C3426174E45E56F527B386072FDDE942A1AEBAB16AB44E5D777F10AEE120",
+    "bytes": 3835
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/hashes.py",
+    "sha256": "DDC2C22CFDEF83116DA24D864FDD45DCD794B507FE9E0A0DCA7BAC1C8CB34D75",
+    "bytes": 5119
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/logging.py",
+    "sha256": "9099AD7E17CAB753BC8766CF8AB6002C196F5CE6C5E42C15A3EDC9A35FC7281C",
+    "bytes": 11953
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/misc.py",
+    "sha256": "F6DA1C74806637D70BD481FE79105A7C7060E111888F6A90795E6C58DEC7E077",
+    "bytes": 24522
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/packaging.py",
+    "sha256": "DC7F90A99F8A5AF4DB308024384AFB617E1CABEDEAA897F2DE740A1F2C8C300C",
+    "bytes": 2166
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/retry.py",
+    "sha256": "4A96F7061FFA17C21BD74135EC63E43678DA228E39E3543CE21D1927BEE929EA",
+    "bytes": 1434
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/setuptools_build.py",
+    "sha256": "FED534F9E3BD8AED101F2F5253763D646B69DD7D53AFC49C9155D798C5CDC3A2",
+    "bytes": 4581
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/subprocess.py",
+    "sha256": "1C540E151388DB43AD0382997068074C89A655AC71DC238C136AE97DECC68071",
+    "bytes": 9233
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/temp_dir.py",
+    "sha256": "046B608943D8944784C4D4BEE360E29598F841A74F0498DC02EF32D0F64931BD",
+    "bytes": 9606
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/unpacking.py",
+    "sha256": "92F0913A5F3903D5A90B8E27118BED8ACDD58829BF28203E9264E12C8BE59DCB",
+    "bytes": 12288
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/urls.py",
+    "sha256": "2052BBB8F6EA9DD929205540D0A42342E676FA199E9A98B68C4E97688DD2A2C1",
+    "bytes": 1654
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/virtualenv.py",
+    "sha256": "7CE473A23F322048121A065C23A655D5B08E10C80636E87494C7C2C73556795F",
+    "bytes": 3560
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/utils/wheel.py",
+    "sha256": "EAA5392EFAED8E13663080502D460FD3CADF83953A16AAC04B1031C7B63EF61C",
+    "bytes": 4628
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/vcs/__init__.py",
+    "sha256": "E9901BBBA368A835898D83D60AD9FC3DA663BA500482CF91D179E0AB6675EF84",
+    "bytes": 611
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/vcs/bazaar.py",
+    "sha256": "B8D7BD97661862C004E5E252F456E68F25865A962A9009D7FD0AB788A6904A8D",
+    "bytes": 3640
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/vcs/git.py",
+    "sha256": "DF12E83876AF74C7061B938739A331ED919BE6C45959E85302037EFA4550E31F",
+    "bytes": 18704
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/vcs/mercurial.py",
+    "sha256": "54CCB54037972A6FD42A5DB5624DCFF570FCDCC6F2B5F058A67CC513E38FFD86",
+    "bytes": 5412
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/vcs/subversion.py",
+    "sha256": "FBCF7E18A8EBB123743B2C254C39ECD4BBD014AD2C98E790406CCA7D23DD33C6",
+    "bytes": 12059
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/vcs/versioncontrol.py",
+    "sha256": "D8510072B8CC0833C6D5390538886690EE214B2EA655A7B686B5A706ADD5643E",
+    "bytes": 23128
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_internal/wheel_builder.py",
+    "sha256": "15AEB691D837CC1F2112240BAE83AE68760C4153981880EA74242E27628F9147",
+    "bytes": 12153
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/__init__.py",
+    "sha256": "D407F074DE35EA3563E198AA112DB44CABBA1E49C4CDAAE6CD0F26F28F10F166",
+    "bytes": 4989
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/__init__.py",
+    "sha256": "1A41AB7A063C2F433357DD066AF2C387FD660788D95C16B3EDDE926D96520909",
+    "bytes": 704
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/_cmd.py",
+    "sha256": "DEDE8CF031AE75462E9878DA10064F736DB63866CD2F31CEA7EC545CB6E21E8E",
+    "bytes": 1807
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/adapter.py",
+    "sha256": "06960BFE2125DE21B53F79BE80E64CDA35334F50DD2B091039E879EB85F71BC3",
+    "bytes": 6516
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/cache.py",
+    "sha256": "3AAE63D9E0C89FFA503FB82CD4B6535783CDCE4944730B202DC5D629CE0FC0B6",
+    "bytes": 2026
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/caches/__init__.py",
+    "sha256": "083086D2C556220DC470F54456E15BB34B4669FE2B2D776314EC3B9B49F09362",
+    "bytes": 311
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/caches/file_cache.py",
+    "sha256": "B0831A4B3C8E6CFF3CCAB7931B6C4A23F44587497159DBBB439250BF0BCEF2DA",
+    "bytes": 5588
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/caches/redis_cache.py",
+    "sha256": "4E9A3B197D71DF79487D6B1A92FA8C05F211A4D0785443814478CC458CD7A6C2",
+    "bytes": 1434
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/controller.py",
+    "sha256": "428DD42AE958AFE86DD8F0527E24AE9D97DABE59C6A8F554A3A72B103EA763B5",
+    "bytes": 19074
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/filewrapper.py",
+    "sha256": "1ACCC5AC751BED73B515A83D2EDA41D71869B9CAA3A9F5630BAD0099C22A6543",
+    "bytes": 4411
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/heuristics.py",
+    "sha256": "AAB73EDC60641595826B3C6296473DC53F2A0663EDD78C9545EF2E6B86DB73F5",
+    "bytes": 4988
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/py.typed",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/serialize.py",
+    "sha256": "BF5E3F4E5BF3EBE7B1C6260A0831CC31EFB74D26F7D466259BA7C698A64B9C30",
+    "bytes": 5309
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/cachecontrol/wrapper.py",
+    "sha256": "75841FE833D8AAF153DE4A85206F17CCD25B3AA389C75189E4951A001A5049CD",
+    "bytes": 1460
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/certifi/__init__.py",
+    "sha256": "6F24477E40B5D8223CED3407D56712E577A2E422D4F7D70A7F4C4A9BC1507127",
+    "bytes": 98
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/certifi/__main__.py",
+    "sha256": "E0924DA4E8339EC5F380848645E501AC9181E90E3324E94857DF56144D7CE5F3",
+    "bytes": 267
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/certifi/cacert.pem",
+    "sha256": "0DE3229C888451D5C5A3996CC7D24A134DAACA2D1E828FCD70802A7E98150EAD",
+    "bytes": 296326
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/certifi/core.py",
+    "sha256": "4B28349E855E31048FFE3891D00C7B48CF58163DB52E9AAFCE908766D36D58C1",
+    "bytes": 4600
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/certifi/py.typed",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/__init__.py",
+    "sha256": "5CB37487BADE2A644500A8795040CE01CBE95E4373000ED8A6604F0539E95F28",
+    "bytes": 658
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/compat.py",
+    "sha256": "D295487D8B6AD87D5AB8FB62AE4F3DBEA0770D2AC3433C4F3AA5F6BDDC030478",
+    "bytes": 42625
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/database.py",
+    "sha256": "DA3EE41CE094AD8C841A9BA5F030DFBF84523D8F518D1FD88DAA098BCA7E89B7",
+    "bytes": 53324
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/index.py",
+    "sha256": "6B48D6DDC7989C7E43FF0D00804D38D2F2C7E3BDA46B4D89313835F33BC2CFE5",
+    "bytes": 21305
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/locators.py",
+    "sha256": "0EA0DE8FAF952792F26D85F440D5E20EA99BA7BFD9F58FE8EC3EC8712B08CFE5",
+    "bytes": 53070
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/manifest.py",
+    "sha256": "24990ADA1CEF487597269B2A5DE5823E9B41325453F44B80A919B9995532021A",
+    "bytes": 14552
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/markers.py",
+    "sha256": "9D0F13157E80AA243ED09CB2ECDED8F5157087BB83842423F5E68CC68902A9B1",
+    "bytes": 5435
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/metadata.py",
+    "sha256": "326D31CDC0BEF4CCE21A799E258C5314E15B11D5AFEF7F3ABC61735ADA319B6A",
+    "bytes": 40761
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/resources.py",
+    "sha256": "0CCAE215FF23FB921776E3C75B460F9F1E748D021B68E96F4D090F71D379AFCF",
+    "bytes": 11178
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/scripts.py",
+    "sha256": "C5D5B835DCD72447A1FB9E3A7FDC9DDD9A205CEE7D5981D1BDA3AB44AC54DCDB",
+    "bytes": 19246
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/t32.exe",
+    "sha256": "6B4195E640A85AC32EB6F9628822A622057DF1E459DF7C17A12F97AEABC9415B",
+    "bytes": 97792
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/t64-arm.exe",
+    "sha256": "EBC4C06B7D95E74E315419EE7E88E1D0F71E9E9477538C00A93A9FF8C66A6CFC",
+    "bytes": 182784
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/t64.exe",
+    "sha256": "81A618F21CB87DB9076134E70388B6E9CB7C2106739011B6A51772D22CAE06B7",
+    "bytes": 108032
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/util.py",
+    "sha256": "2812308C0E4623F24E34BDCFA829E2156F15A22CD531C0023D8D0DB86CB458AC",
+    "bytes": 69555
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/version.py",
+    "sha256": "E2D894F10662D5ECD0E43F917812B76CE552D8FBF947A7C561A7E22CD2E4E1C8",
+    "bytes": 24498
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/w32.exe",
+    "sha256": "47872CC77F8E18CF642F868F23340A468E537E64521D9A3A416C8B84384D064B",
+    "bytes": 91648
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/w64-arm.exe",
+    "sha256": "C5DC9884A8F458371550E09BD396E5418BF375820A31B9899F6499BF391C7B2E",
+    "bytes": 168448
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/w64.exe",
+    "sha256": "7A319FFABA23A017D7B1E18BA726BA6C54C53D6446DB55F92AF53C279894F8AD",
+    "bytes": 101888
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distlib/wheel.py",
+    "sha256": "9F8FE55749E49D258663BB5B6AC009B387F1B64457F0BDCD81BCD0FDFD65A5A3",
+    "bytes": 45057
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distro/__init__.py",
+    "sha256": "1C1D02A92CF0D3AC868DB31BAC2ABB2EC88753847B7CB67D89687C5A039F308C",
+    "bytes": 1035
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distro/__main__.py",
+    "sha256": "EB933EB07C53F673533ED30E64A5E459FE5C6BB2C00C2AF275BD38FB1A3CE4C3",
+    "bytes": 68
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distro/distro.py",
+    "sha256": "A426719AD1E420F5F400A1CDFF568B743C0F3A4FF8734F6AB0C3B317AEB219C0",
+    "bytes": 50833
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/distro/py.typed",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/idna/__init__.py",
+    "sha256": "6874C11D75EE9FA9F479C76EB3C4E806F86CFB86628A7DB81EE35B27D657137A",
+    "bytes": 893
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/idna/codec.py",
+    "sha256": "9F131674EE28D177E21216C048FAAC490EBB48EA4AA24FC7C8B35D64A000423B",
+    "bytes": 3544
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/idna/compat.py",
+    "sha256": "218DCF9CD7B84BF1315E2D20FD0437A2BE503D9EA4833B1243175BA529031DF4",
+    "bytes": 334
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/idna/core.py",
+    "sha256": "F8361291E591B841B04548B92C3A7266DB21A43F7DAF8C9E3F071DD7139DBE52",
+    "bytes": 13058
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/idna/idnadata.py",
+    "sha256": "520AEA9BC0EC9FB571B22DDAE6F4DB86C5E6C2A833C09B9D180E2309F24286AB",
+    "bytes": 82565
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/idna/intranges.py",
+    "sha256": "EF79C64C0ED82E2CAF6F5E38988F95AC2D5E777A2152DDFDA9A75C7D7E83CFF2",
+    "bytes": 1935
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/idna/package_data.py",
+    "sha256": "658C6AA8B15EDDF810F2C236BA6BCF22BEC8F50AB5570FAB745FD522F0EB5571",
+    "bytes": 23
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/idna/py.typed",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/idna/uts46data.py",
+    "sha256": "00CE2A6B89247C1C1BF3927BE4471340252DDF5AECDAF630B5E6FB0FFEC376C6",
+    "bytes": 215101
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/msgpack/__init__.py",
+    "sha256": "2392D6B48CC6376B809C779F9EC3EDCF11B7C40EA8CBF58C390BBD6EA2509435",
+    "bytes": 1132
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/msgpack/exceptions.py",
+    "sha256": "D9F0AD733AE272A420753DCDB56E9C4EA9999F7580EC642D9A53EE4FE3612F23",
+    "bytes": 1129
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/msgpack/ext.py",
+    "sha256": "618843FE411EB60AD4D17B1A6444D7690006079D574D538DA68B0D479EF634AA",
+    "bytes": 5797
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/msgpack/fallback.py",
+    "sha256": "0F8B6B9801FEBE0A4D3444F675F495EC23CE0ED8A6D7714E05602DA7C66976EA",
+    "bytes": 34126
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/__init__.py",
+    "sha256": "FED9DD0EB244230D21D8E0D4675B482E20C91E3B53335A4EDC9CA499D09D61D9",
+    "bytes": 511
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/_elffile.py",
+    "sha256": "D5B54BBCC13258ADBCDC8522E9432D7E80A3875E884B4998E7DF811C185D89C3",
+    "bytes": 3392
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/_manylinux.py",
+    "sha256": "CE5AC760B13F9D5A3BE2EF58F2F6F78DF9B2B3CD204907CE8EEAE1AF6E3ACF00",
+    "bytes": 9848
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/_musllinux.py",
+    "sha256": "BE3E0CC9BAE45C512CE779D046534D86F7D3A6A0A7B290F5689BCCFD3664022B",
+    "bytes": 2779
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/_parser.py",
+    "sha256": "348411D7050BF74D26253B1DF3ACCC444DF0BF908AB7ED07D698B07C808B4BE0",
+    "bytes": 10590
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/_structures.py",
+    "sha256": "AABA2B13631F75F01D17826A74A0FE68B808A37B111026A586996313C01C731B",
+    "bytes": 1492
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/_tokenizer.py",
+    "sha256": "445DCD589758E83DB0E9A7429E49AB2BD55F0F7F20B866D88D591A7243B021A6",
+    "bytes": 5467
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/markers.py",
+    "sha256": "ECC0C7EB27092CC194DE173390DE41097D0EE8E59A55F26DAA4E0C81A022C652",
+    "bytes": 10996
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/metadata.py",
+    "sha256": "B5E8EDD686202409633F2561E8B444FA794E3C1147786EBE2C15C3041311FE89",
+    "bytes": 33153
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/py.typed",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/requirements.py",
+    "sha256": "2AA11835FACCCD6B780C121AF878E1E4EE7E985EF8D480B2DEEDFB397054EFB9",
+    "bytes": 3038
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/specifiers.py",
+    "sha256": "B6B097F40F2E621E8F391E9569B1E381CB8A9C2B3847CB6629EA37F5F82152F1",
+    "bytes": 40747
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/tags.py",
+    "sha256": "1F9A78C744DC8D0DC186401B209FEE94C61F3CC31490CDCA67B8D6D395EBFD49",
+    "bytes": 19451
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/utils.py",
+    "sha256": "13133B6D551026E4916CD4FDD21F09712EA4EC2B1B57C32AAEDEF319079520E8",
+    "bytes": 5461
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/packaging/version.py",
+    "sha256": "A1A3F73898475798022C96A47CB5CF094AEEC7A18A4D117ACB8CB2252000F9DD",
+    "bytes": 16773
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pkg_resources/__init__.py",
+    "sha256": "380E175FEF6150234EBD0FDABC557036F4DAB93917E68F405F89B76C57D1C2EC",
+    "bytes": 128139
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/platformdirs/__init__.py",
+    "sha256": "0635115AD2ED7E0583D0429996327B3BE6DD42B4F3F66B59BC42B21C0EA83A9A",
+    "bytes": 22912
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/platformdirs/__main__.py",
+    "sha256": "EA45978E30565447439799EEDEDA4C01E8E748BF1233651EA5615978F30E4EAE",
+    "bytes": 1560
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/platformdirs/android.py",
+    "sha256": "26B1E7BE01F6071E65608230D5430CB32916F480852DBE84CBCE5AB28467F2DB",
+    "bytes": 9265
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/platformdirs/api.py",
+    "sha256": "A3071F80263BA3E98FF8F235893825F304C0494216AD94F961A764EDD68CD3A6",
+    "bytes": 9288
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/platformdirs/macos.py",
+    "sha256": "CBC251E4E2C27204F715387DC1BAE2697161834E2C9E31D0DA299B5CBE494BAA",
+    "bytes": 5710
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/platformdirs/py.typed",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/platformdirs/unix.py",
+    "sha256": "67767534CBE27E60C9B3FF7D598CB3BC734D7C3CBC6B38B7DAEF56D07D9A3444",
+    "bytes": 10918
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/platformdirs/version.py",
+    "sha256": "BE15EE01509DC0DDA0C178504512340DEA1B4DF17D2B18BED26A94FCB281FDD2",
+    "bytes": 427
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/platformdirs/windows.py",
+    "sha256": "8D16D5449442894767AF22619AED95B5165A5126A6F8C676B8DD16B92F753877",
+    "bytes": 10397
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/__init__.py",
+    "sha256": "F37F0F57419291C534E6933D2B096E5993E85242D0E64D856B05D738E1FF316A",
+    "bytes": 3065
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/__main__.py",
+    "sha256": "20ADFA189F8C7BCCF157A1E6000C5EF55C3FDA982DA7E784814423B165BF41C7",
+    "bytes": 370
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/cmdline.py",
+    "sha256": "13F05FCAE8A9437335D39F7EEA16D27056D37C0FEC3A138B530C52D4854CEE4F",
+    "bytes": 24324
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/console.py",
+    "sha256": "93B7CB380DCA54FE6842147E8E7A3840D36C3246B17D5FF1363315CEBD329925",
+    "bytes": 1788
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/filter.py",
+    "sha256": "77ECBD12ACABDA8EFDB70A3BE7FE6D1A70A0ACDB7C326CD870BD48198DAD98C5",
+    "bytes": 1980
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/filters/__init__.py",
+    "sha256": "DEBE667FDA12DD140018D8EFD34C6F17B91564195B3C4A5929363A5C4BBD9D04",
+    "bytes": 41332
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatter.py",
+    "sha256": "0DFD1C70746A341E01244843BC1DEFEC836764E46F57438564AD8A137B43BAE7",
+    "bytes": 4519
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/__init__.py",
+    "sha256": "F8219A7B4842D0245DFFFB7A60888235F6E541178385FE99492DB6F9C529B3D5",
+    "bytes": 5542
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/_mapping.py",
+    "sha256": "D17B3D6ADCDB4F31BCBA70B4D354456B75CF895F576DC83D3F8178783148BAE7",
+    "bytes": 4199
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/bbcode.py",
+    "sha256": "791FAE35DB4260F2710109A0B1CAA90517DC726A99A1A6CAFF7C4C11D6A3AC0E",
+    "bytes": 3428
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/groff.py",
+    "sha256": "10671DF588AF658094C460B2F8F28ED604FB4C3FC81C7156E4A53D918A450EE3",
+    "bytes": 5276
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/html.py",
+    "sha256": "6CB3ED41905A664C3A5F9D27151646CA682B3F2F6314454E17098BFBA9D69B09",
+    "bytes": 36656
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/img.py",
+    "sha256": "B95EC038371E3DE1FFD870878447CE988BABEA71CAB1E884CAC1B0D3353F3BDB",
+    "bytes": 23972
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/irc.py",
+    "sha256": "B8E682225C95E14999D63BD46DC4206CFEC23A419494A802133E25F2E4ECFFB6",
+    "bytes": 5135
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/latex.py",
+    "sha256": "58156970F35B4328E7B2687408AF4D45D7AA19275025B9DC396F4F4D20867AAC",
+    "bytes": 19824
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/other.py",
+    "sha256": "5CA7614562CC5F40C7759EA3CC6E928143DF00C2C7017D1C6580656F1AF88DB8",
+    "bytes": 5194
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/pangomarkup.py",
+    "sha256": "08C33F8703C142F1F0184B66C46C72231C32C16C5DFDA80D7487261B973D1F2C",
+    "bytes": 2301
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/rtf.py",
+    "sha256": "C7D0611AB5CFF7C6A50838C4AB2E347389759DA8846BCA157CAA71632F4E1CE7",
+    "bytes": 12306
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/svg.py",
+    "sha256": "F7175C19165E5BF7D5739B01CB4F4EAF94B1775D2613DE4E16613B7D53952981",
+    "bytes": 7359
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/terminal.py",
+    "sha256": "EB7F6D62D872A08E20258A4352FE5136B3096DE1807E8432966BB477A2042FC3",
+    "bytes": 4801
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/formatters/terminal256.py",
+    "sha256": "51E38439A9475B33E03BE445EA92E3C43119ED91551BD896B3F71B3EBC552A5C",
+    "bytes": 12091
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/lexer.py",
+    "sha256": "758B4572D50C81F389EBCA461196113AA60FD52D54A949960AB966907B066C72",
+    "bytes": 36312
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/lexers/__init__.py",
+    "sha256": "9A88C5F4D2BFE4A89E77E1AC3F18891513375FE204C6C5FAD6E17D0410840545",
+    "bytes": 12477
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/lexers/_mapping.py",
+    "sha256": "717F2F4FE06F034ADC1C1CF4BBE1EB53F04AEBB70F825507072450D28513D220",
+    "bytes": 76686
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/lexers/python.py",
+    "sha256": "76A7B841AC7DBD12AA9F3E0A722F944659B1BF9559040B885AF30D475F738EF0",
+    "bytes": 54885
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/modeline.py",
+    "sha256": "AC8FD2A1A0DB6DD063FEB40192186A7B2E7204109B9E3C9E68E8F54A924F95F2",
+    "bytes": 1048
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/plugin.py",
+    "sha256": "B8341572E8162AA0176765C130D4B17E581B1BE65F43CA13F34FBD207C370F8A",
+    "bytes": 1963
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/regexopt.py",
+    "sha256": "BC094FB1308A9B2E5D75ACE57F78AC7D414B4A3AD1F57C7A168894325B0995C5",
+    "bytes": 3163
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/scanner.py",
+    "sha256": "E06158542EC50BA5CC5CE2495C554668350A6761880F63EBC9AB3E900EEE818E",
+    "bytes": 3196
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/sphinxext.py",
+    "sha256": "13AFBBB4DDA4FD143826D08C6E4E91FC1C24410F08D8429C70D857FB04710E0C",
+    "bytes": 8228
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/style.py",
+    "sha256": "A0CB1825877874DD2F09831FA4CF3C5F55FF3C7B4A1E217581CBBA637171C32B",
+    "bytes": 6623
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/styles/__init__.py",
+    "sha256": "A24ECA1C77AD3AD26B694997CE71009E6F299A235F8D61B6D004E7DB9B711EDE",
+    "bytes": 2103
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/styles/_mapping.py",
+    "sha256": "7842897954F20A1CEF54F7D9038FF28566AD29D1EAA698E2114FE0314202C83F",
+    "bytes": 3366
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/token.py",
+    "sha256": "70BAAD599710D90FF66C34A79453126958B5744E212CAD6AF1AD922448EE321F",
+    "bytes": 6440
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/unistring.py",
+    "sha256": "F047945B48C1E1BE1570EC69C1753DBBD11B58482089CB7F34C58CDDCC8B68A9",
+    "bytes": 63361
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pygments/util.py",
+    "sha256": "5103C872D13B64A3C92FB70DB05161009AC42AFA8B29DAE3B72F8C497405D7E9",
+    "bytes": 10355
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pyproject_hooks/__init__.py",
+    "sha256": "BF6E778462EAB669AA02B40D7816FA7D62DED61D41BA93B0F382FFA32C9A0B82",
+    "bytes": 514
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pyproject_hooks/_compat.py",
+    "sha256": "58E7D7ED3B74E38DF934AF35FCB3DD114F0D2DEAD211F23D7D03FB231A669D50",
+    "bytes": 146
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pyproject_hooks/_impl.py",
+    "sha256": "662570D64E1711B29BBFB85DDC1D7DAD22F41781121675B71D1E3EE1D2DDD3DE",
+    "bytes": 12250
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pyproject_hooks/_in_process/__init__.py",
+    "sha256": "DCA2B75FB6C3313C9D4B98FF68B400C124918C1BD1FDD2C040EAD32897E84973",
+    "bytes": 564
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/pyproject_hooks/_in_process/_in_process.py",
+    "sha256": "E4BF5C6111F94E0AAD586DCFC7B2193074C13BAAA335C07D6BF94D75509ABF58",
+    "bytes": 11280
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/__init__.py",
+    "sha256": "A14027E162FA08F87F91EBBFF1013BAEA8352FD7AC236908BF0C763BC9ACA2C7",
+    "bytes": 5236
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/__version__.py",
+    "sha256": "A9068BC29C05DE0CE7A2CE5A8B1636B457773BB577824B59FF1A2F946BEB8D1B",
+    "bytes": 449
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/_internal_utils.py",
+    "sha256": "534EDA8A19EDD8B2634BA9006E071C4F91F4FEE8C7DDC4FA2C134B13F4213B8D",
+    "bytes": 1545
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/adapters.py",
+    "sha256": "517C4DDD7A492B0616548111FD7BFCA627FF7C436E2D2E1706669117C79A62B0",
+    "bytes": 28326
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/api.py",
+    "sha256": "C20586062A530B464394AAC38C14EB0851D3B4EE5D5B7FCA484759D27B27F8A2",
+    "bytes": 6606
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/auth.py",
+    "sha256": "F9321B1855873D1518FC2A5705A2B99EA0784D017067CCDBE8E036F530F01B34",
+    "bytes": 10500
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/certs.py",
+    "sha256": "F7A6184E48DA6941BBE2ECEAA8335A6C18A89533AEEB983B8AA5BEAE5F9B947A",
+    "bytes": 599
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/compat.py",
+    "sha256": "F53F6DB34BD4A0DC88FC82C149A6607AFA01F6D38110F9AEAF6889BE85342DA4",
+    "bytes": 1563
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/cookies.py",
+    "sha256": "8D10A3772AD0A04C87C710EA8889EACE0A56D8A367D5D6F4CB1B6E45CC7B91EE",
+    "bytes": 19151
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/exceptions.py",
+    "sha256": "31E88FEF021FF1860B8BC9F59F8168984211CBF358A767584C5BF8974411F9A0",
+    "bytes": 4423
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/help.py",
+    "sha256": "522C3F47411DE875294415A95A16090189A3B86429FEEB8BB4A6AE47861500E8",
+    "bytes": 3940
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/hooks.py",
+    "sha256": "1D1ABDFDDD3E4EF471790A942F37FD27FA9FADFA0309D2756B7B7196CB2F0BE0",
+    "bytes": 766
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/models.py",
+    "sha256": "9B2912E191C772D9AC03EC8D14F10948C7E916C803EF3C1B4B8D9AD52E9721C4",
+    "bytes": 36520
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/packages.py",
+    "sha256": "890EBAECC1D3BC6465D582082129DA065069887EFA6D049B7960F7B4F4B92ED0",
+    "bytes": 1082
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/sessions.py",
+    "sha256": "6BF0AF8477A7A4A780A86CEC5CB4BC4D7ED49B9D6AD85EF620B8D2C81AA67A2D",
+    "bytes": 31326
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/status_codes.py",
+    "sha256": "0E62D9B97DA1D8E4615E6463E1282E7A316702928E0FF696016F074AE9BEB419",
+    "bytes": 4450
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/structures.py",
+    "sha256": "1E2FF1575CCC89A50ADD1D743152C4AD05E8702A9AC8109BC13462C92538B8B7",
+    "bytes": 3011
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/requests/utils.py",
+    "sha256": "207B1B19B834C43221E4478E50B976C78A67E072F2EDF0CD7DD087C52A050BE6",
+    "bytes": 34727
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/resolvelib/__init__.py",
+    "sha256": "45D8963358BFEB9079286494C46DC76423940A06F5FD1F571C5F3E50BD4DD94C",
+    "bytes": 563
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/resolvelib/compat/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/resolvelib/compat/collections_abc.py",
+    "sha256": "442A7F8176056548360C5DA250F4D30FE5D2A414E26B8C44B898636D73734323",
+    "bytes": 162
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/resolvelib/providers.py",
+    "sha256": "8B19B34A4A4989973EFA7B15AA632E3F069C18519BFA0C4A80ABE6201E822C19",
+    "bytes": 6004
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/resolvelib/py.typed",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/resolvelib/reporters.py",
+    "sha256": "DCE9EA6D325B8FA124CC873BF07C88C24E9B6DEA79E56274F31CE43854AF5519",
+    "bytes": 1644
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/resolvelib/resolvers.py",
+    "sha256": "149029E2598A2FBB249EC8CF23D6103ACF1D14673EDC69AB0F507F470183C7CB",
+    "bytes": 21058
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/resolvelib/structs.py",
+    "sha256": "E20269F364DCBA60D47287E119149B3C33CF187921149A5BC5391DDA76E3785D",
+    "bytes": 5133
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/__init__.py",
+    "sha256": "E01DF19773462BC74AEB01848F0AE9D69E47945EFA7604C9000704E579BFD5E2",
+    "bytes": 6267
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/__main__.py",
+    "sha256": "296D91640E22DDB54C55C1FAF58F75466B834CD4588FC51563CFD28C3B944CA0",
+    "bytes": 8750
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_cell_widths.py",
+    "sha256": "548F94B1EF8F29D445BFE28B3D9359D0603613D37B67D7795CF1EB10D0A95489",
+    "bytes": 10663
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_emoji_codes.py",
+    "sha256": "C55CE5EA5FCE66FCC4B49512CFB09979ED8E83EE2B50A07A5F7F4C664154EE62",
+    "bytes": 143845
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_emoji_replace.py",
+    "sha256": "52176FC65D4CECADD256552E498FDB66ACBD0E6492009B51844309D1EE4C3FC9",
+    "bytes": 1096
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_export_format.py",
+    "sha256": "BAEC8D4CC537A72B96CD59E26936B443CB477FB2929C291FF808A91E26E120B5",
+    "bytes": 2204
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_extension.py",
+    "sha256": "A16D3F68E3B5FA4F509804781ECE630D280F6352AA715333289437FD791D6284",
+    "bytes": 275
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_fileno.py",
+    "sha256": "DCE32E8AFF16F133195531CED2C0CA1DA182DDD02B45DEC375B5010A5CD1A9D3",
+    "bytes": 823
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_inspect.py",
+    "sha256": "E5CFCDC941171FCCAC5D4EA6BA151864987701DCC93A2B4B26DDD81F29945A22",
+    "bytes": 9965
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_log_render.py",
+    "sha256": "2AEE0B2430F8EA046B4ABCAD589EA3D3C47641993B16AF83B8A366E3A1788A05",
+    "bytes": 3319
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_loop.py",
+    "sha256": "61752561F4F949B9AAFE91ACC156FE702FCB3437792BB725FB824B2F57F26F57",
+    "bytes": 1279
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_null_file.py",
+    "sha256": "93BBB5DF24174177577AAE9318A59A02EA9F155CB2C019CE75F04D10644497FF",
+    "bytes": 1456
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_palettes.py",
+    "sha256": "11376BED3AA54671E64376F20A3A57D48DD8EF9A5A7974A33F813B5874D65A52",
+    "bytes": 7372
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_pick.py",
+    "sha256": "A697B1B9D9FAA09480C55C7CB4B0E9167096C094B7215D464ECD4812A4CC0A8C",
+    "bytes": 440
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_ratio.py",
+    "sha256": "FA05DDE4F3D6C632BF92812FD7185DB1AEFB32F17255D7642D903AFE9759AFD5",
+    "bytes": 5630
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_spinners.py",
+    "sha256": "CBDF44E61DEF381DA1E91C52A879405CF681C51C82815231060E1141F9A4F55E",
+    "bytes": 20401
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_stack.py",
+    "sha256": "6D3FBD5C9668D85F6444A89C04730117B57F6B9A65259496D2BE995A64B4B3F6",
+    "bytes": 367
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_timer.py",
+    "sha256": "91062C95B521060BC07F81AB62EF91FC0BB0EDC20B17C01735CFA75D07B71E81",
+    "bytes": 436
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_win32_console.py",
+    "sha256": "A8C6FE91C314CE987E17926FFED6F07794842472CB4A3DB5352F389401CE3ED8",
+    "bytes": 23482
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_windows.py",
+    "sha256": "DBC5DA8441FA2F15E714C7DA44929F41869CE80939AEB36F03FB4B645E2FCDFF",
+    "bytes": 1996
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_windows_renderer.py",
+    "sha256": "EC1E6710DC569109D20997A95711A8CB31C149B66F6FA5AC2A5B16C70F2BA564",
+    "bytes": 2839
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/_wrap.py",
+    "sha256": "1B46AC69210B799F7B679463D5788F09819B9EFB677A3812D2F508E58654E804",
+    "bytes": 3497
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/abc.py",
+    "sha256": "3DBE4F2846655DDA036B4E6E13B8AB8205700D0672F045A066B434D288F85886",
+    "bytes": 923
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/align.py",
+    "sha256": "E723510E87EAE016DCCE7CA0718B91DCB878C6263BC240952BBBF10D812A5C05",
+    "bytes": 10679
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/ansi.py",
+    "sha256": "B4D02296012CAE0AB0D4B14537B883D0D9D0D5DE02D2FB96C8B5BD6DE7DFB5F1",
+    "bytes": 7146
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/bar.py",
+    "sha256": "5605FD2B772FA6F5E765D72F892DDAEEC58DB26C3BFE4168E6FAB0751EE1685C",
+    "bytes": 3356
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/box.py",
+    "sha256": "573625D5F6DB4F89387C22D9ACF08FDCD997765C0AD8B1F96AF5D4B28B63A94E",
+    "bytes": 11311
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/cells.py",
+    "sha256": "D513F74C9142BF868515FC96790E406C21A7BDE994884BDDCA28D947472CE6AD",
+    "bytes": 4947
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/color.py",
+    "sha256": "781C69D831131D0E34429C9F886B6F13E6B658D1F1A219AB7F35244E1D251918",
+    "bytes": 18844
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/color_triplet.py",
+    "sha256": "46B8167F2D0BA621215138BE5E3BA411501D78B74FDB87222910BEB14F0EE79E",
+    "bytes": 1092
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/columns.py",
+    "sha256": "5574D6F3C7F5475480C2AAA08E9C449F973BBA2B19E5E058991B125F7802F8A2",
+    "bytes": 7318
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/console.py",
+    "sha256": "94673103F3E8F135EB5FFB321065D9C6338BDC24944F6BF4022E653789237A9D",
+    "bytes": 101806
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/constrain.py",
+    "sha256": "0DB955EDC008E4A23AFF2757A1322967B6203FF3059ADEF0C6C0CB0F1DF798A5",
+    "bytes": 1325
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/containers.py",
+    "sha256": "4C3B9635E475AACE459CE999B29E7E7C88793CC42190DA2EEE517740A6074AC3",
+    "bytes": 5669
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/control.py",
+    "sha256": "C449607778D15FFBDAFACB2BEEF568BC93D471EC0FB1248D8B200845C27744F4",
+    "bytes": 6855
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/default_styles.py",
+    "sha256": "4A30ECB5DEBFE53B943358AB174958BE6DE7C1A410738D8FCC328E05C4971F83",
+    "bytes": 8272
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/diagnose.py",
+    "sha256": "71A29512E36635660F3C9852E7E93513C5AA29131401D95BD7CA1AFF9BA04455",
+    "bytes": 1009
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/emoji.py",
+    "sha256": "2551829AE5A7E7576540CCF2AA08F06B5830565FDD2DBBC46B04F657C06470DE",
+    "bytes": 2597
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/errors.py",
+    "sha256": "45AD78BF81C1FB611A45FB1995825CC11733194F0E9AC519214DC477A0E1A41C",
+    "bytes": 676
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/file_proxy.py",
+    "sha256": "DCB1F23BA88BE8151E967FE27D2CD8644B16BFD83CB2CFFAB4A8ED16E2524A34",
+    "bytes": 1740
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/filesize.py",
+    "sha256": "052E4DFCFA0C6892AAE6DBB1A5A437DCB289ECDC3CB183F4DF3BDB0C7B94794D",
+    "bytes": 2597
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/highlighter.py",
+    "sha256": "6E671A58B1FAA3BE23F48345569253C08199455AA1B9E97B2EF5ABDCE7B6700B",
+    "bytes": 9817
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/json.py",
+    "sha256": "8553571425A0B93BB9B1C6E2518F57B70956E612309DDA2DBF0CC62DAC3CA97B",
+    "bytes": 5170
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/jupyter.py",
+    "sha256": "E585240D31FA9C8D9DC756F041CCD9EEEE526E11D4FF00C7CF1EF6317A42BF72",
+    "bytes": 3353
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/layout.py",
+    "sha256": "8554B978AF210F9562F3267968B9D42A32BB3C48E2CF2D23A6ACB1BD83F9D495",
+    "bytes": 14446
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/live.py",
+    "sha256": "BB4693BBE55EB7C58CC9D775BD75A6A641A57298373D8A77DA49473B596BB46E",
+    "bytes": 14646
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/live_render.py",
+    "sha256": "F121FC760292F23B14C6C6E0702F834BA09C7AA22E21721FB1ED82C8F3E1E867",
+    "bytes": 3778
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/logging.py",
+    "sha256": "ED0A21861034367E2EE1DA7DC181E5F608D4C1C598FC9B2E74D73C9BD752FC9E",
+    "bytes": 12192
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/markup.py",
+    "sha256": "E64B44EE742EB594EE28294460104F656FD74A6053B7632B8FE1A83DB48617FE",
+    "bytes": 8702
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/measure.py",
+    "sha256": "870DBA9F4E163378A94EA0C364C7FA2D4D37E247BB1D2433AF7197E6015C7847",
+    "bytes": 5456
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/padding.py",
+    "sha256": "39015CC426BBDEF58BC9A6CC81A1702FDDE4584062573810E639B4BB4E50167C",
+    "bytes": 5111
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/pager.py",
+    "sha256": "F7CAFF938D3E5CF4426DBD0A5FD5222AF8529EAF312983C7FAA18BE95B2C62A8",
+    "bytes": 862
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/palette.py",
+    "sha256": "15BC6A94BCA0EBC4DE5421080B7CE3657DAE2C870EE2B206F1746D3FFD561984",
+    "bytes": 3496
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/panel.py",
+    "sha256": "6935DDDAFE157E49CB2CAC944CE4432BE8E21F4E33D7664077F4C9005075F908",
+    "bytes": 11017
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/pretty.py",
+    "sha256": "330AEBAB68DAF460857975A6E2DB6D0CE7D648B8A9CC42ACFA38F1F1F8E73817",
+    "bytes": 36843
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/progress.py",
+    "sha256": "1BB634AC325630F9D74A16D93CBF637EB640A9A0192BDE57D62B0C723F620B34",
+    "bytes": 61414
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/progress_bar.py",
+    "sha256": "3A366665DA6EC0844818D16E2E78D8D844195A95A7868F920A965608C2382865",
+    "bytes": 8387
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/prompt.py",
+    "sha256": "5E00DB0AF4FB5E42174E06FE046EFC4DEE64BADCE3D34FED0843FAD497B91681",
+    "bytes": 11679
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/protocol.py",
+    "sha256": "7DDC439E58FAB5EC928D50C499C4262FD62B616F2F2DC522E735720E1A322ED4",
+    "bytes": 1433
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/py.typed",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/region.py",
+    "sha256": "8EE0F2911004375EB9109227CC3C5CF89726905262C4DAF5CD235642B19A6216",
+    "bytes": 176
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/repr.py",
+    "sha256": "AF568CD5F92295B73087678FEF984376A38D57D6A6F6F9F2E6A49FC986E1B9AD",
+    "bytes": 4580
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/rule.py",
+    "sha256": "4F470D540215C8DCE5ADF1FE884905BBF95BBAA2110994915496E108D7C649DA",
+    "bytes": 4732
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/scope.py",
+    "sha256": "AF1B71EC18339E3E724E5D9EE4444884C95F54D7A2D4A90DCFC6C61225FA399D",
+    "bytes": 2929
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/screen.py",
+    "sha256": "0AB5826EFD7665BB126FFAC730007D8E7DF61701B1AAF55C38BA3A3338BA28CB",
+    "bytes": 1645
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/segment.py",
+    "sha256": "2B09C863488344F9BC3688B4ADACD8CB8ACBF253D5239AD7E6EEDEB94540BA9C",
+    "bytes": 24984
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/spinner.py",
+    "sha256": "B3A49C780199E42A0C19800C7AC9F5E985AABD6E2F5439DBB793DAD32369A2CE",
+    "bytes": 4476
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/status.py",
+    "sha256": "B1B5F750D4A0248A25B1FFEAFD443FAD27CE976A61BCA558129B32E5CF60E12F",
+    "bytes": 4555
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/style.py",
+    "sha256": "6D8522A8FEFDAAF4CC5A5E6AE6EBE7036DDAFE77747BF00D375743A9DCE1F316",
+    "bytes": 27869
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/styled.py",
+    "sha256": "CDABA8C793834428D421FF56F12EAED001E274EADF0F4B0CF3ED01BCA23FDC39",
+    "bytes": 1300
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/syntax.py",
+    "sha256": "931C35630C2F9A70643CCB86881EA48CE1CC11A07EF0AA88522C0D16EB6A14EE",
+    "bytes": 36433
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/table.py",
+    "sha256": "EFD96B34F2CE79D5AC06022DEF8513C2E151F5CD154D5A23BE3AB12E1A4FDC05",
+    "bytes": 40680
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/terminal_theme.py",
+    "sha256": "40EB4F989D63F6903A4E11EA716F936806A132C22495B58EB819975638C85811",
+    "bytes": 3523
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/text.py",
+    "sha256": "2A50463BFC1F053BA983FE15B6C199AAEB9A05CAE26BEB2B18CBE3A69C87B160",
+    "bytes": 48669
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/theme.py",
+    "sha256": "E01AAEA8D70781455C8F0778C5A57890449C89881AAC9F6AA4DE952BA10692DE",
+    "bytes": 3892
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/themes.py",
+    "sha256": "17C37BDA5BD3D4653614BB3A0FA1BF3199EFA85C8F7FB3CD21BCF06416E234B5",
+    "bytes": 107
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/traceback.py",
+    "sha256": "C5EAAC021C5CA51177DFEC188B99ADEEB65B74322A61A07C61689BEEA97612AB",
+    "bytes": 30354
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/rich/tree.py",
+    "sha256": "FCC7A972187FDEB5D44C44E41DD284A59C937171F6F296DA55A3EDDCCA88A127",
+    "bytes": 9416
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/tomli/__init__.py",
+    "sha256": "16D7DCCF1B36956C7E00424D9FD1EE8117649F75B5BE4439FDF907F3A8906685",
+    "bytes": 407
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/tomli/_parser.py",
+    "sha256": "092D6A58C12E1B4E1D798015B84DF75AF8EEE2643E290BF4F9FA365B2C7F8CA0",
+    "bytes": 23324
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/tomli/_re.py",
+    "sha256": "4842E6E992D2D9FFB07B47BE52C62A016582305E7071C2748877ED60A51D13A6",
+    "bytes": 3050
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/tomli/_types.py",
+    "sha256": "FF8F42662B5B3275150639B2C20F72C08D1DD27E9F3C646B968C5A67B86BE9FE",
+    "bytes": 264
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/tomli/py.typed",
+    "sha256": "4C10D5F66F6F8DF9E9F6FB204DE266A6836C7A82447C7C2F65A04BBCB31FCF3F",
+    "bytes": 27
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/truststore/__init__.py",
+    "sha256": "2C8BD36AA31451242776AB5EDA806505560D482C7D2C93A06B72A22B303F92DC",
+    "bytes": 416
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/truststore/_api.py",
+    "sha256": "7A9636266C4CDBB4962B9B8E93C049C044741B63884D107B467E5CECBCAEA587",
+    "bytes": 10774
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/truststore/_macos.py",
+    "sha256": "7BFAD3B10914DB2F01A30C40ED61B13AC0D6DC12D90482C5DD215B6B0886F696",
+    "bytes": 18107
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/truststore/_openssl.py",
+    "sha256": "3024AB4C8BC5433AA7AD3A01C5D39AFC028E49DCD7F31AFBAC74DD72B8D79F73",
+    "bytes": 2390
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/truststore/_ssl_constants.py",
+    "sha256": "1FC017E8CE77C672B9C135FA1D80125E8C0CD50D0162EC8D76B4A35F354BE627",
+    "bytes": 1161
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/truststore/_windows.py",
+    "sha256": "3EA12346ADAB01D62ABC0C351E2905C90265C5217A02E8CC95104BB1FC940C62",
+    "bytes": 18455
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/truststore/py.typed",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/typing_extensions.py",
+    "sha256": "11EC56A6839DE3E277BDF2BC6B7413982CFE6CAB89ED9E8B8D396AAB22548080",
+    "bytes": 138140
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/__init__.py",
+    "sha256": "264EB6FD07A7DD4291CEE467F43402D5210AF2844E879458537D95779465E7B1",
+    "bytes": 3435
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/_collections.py",
+    "sha256": "E2EDEAE5506CB978AD2AD6EF56DA138C522126E9B2AFF52571DEEA9891017C13",
+    "bytes": 11727
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/_version.py",
+    "sha256": "818508C2D90E96511711C716C082F14140C76AFA606F917CB474B7DC305710A3",
+    "bytes": 66
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/connection.py",
+    "sha256": "80D4E528A9527A948F2D1A34AC792887D788227479B096DB4BCDBD0B3109D606",
+    "bytes": 20872
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/connectionpool.py",
+    "sha256": "92D0BB709D976270F2DAD3FF286B591258A6294C1A65DFDE8863B4D3C3FB4081",
+    "bytes": 41422
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_appengine_environ.py",
+    "sha256": "3CE60949E35669C258C1741DBF421FDEFE7A95CA221EE2FA31013CA701B56287",
+    "bytes": 993
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/bindings.py",
+    "sha256": "0095A0A527031A61569F2769E5D175186875EE1736FDA33EB43DA000669EC7D6",
+    "bytes": 18151
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/_securetransport/low_level.py",
+    "sha256": "D1F36934975D4084601AECBEF6FB1730C9EE02F880B007A02F2437369D167F2F",
+    "bytes": 14319
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/appengine.py",
+    "sha256": "AE3B5C687D388BF27D439C964FBD8F0585EE9A451C05A50F23F544D037E1D916",
+    "bytes": 11350
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/ntlmpool.py",
+    "sha256": "851E7A1EEA7871EF4F1C15918EC58781BF9CDA66CB7325E3A92C3FBC6880C095",
+    "bytes": 4658
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/pyopenssl.py",
+    "sha256": "D334232F90E9BE221C45DFC8A6D9E8ACAEF96A31BD3BE4D4616571FE17DBDF5A",
+    "bytes": 17599
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/securetransport.py",
+    "sha256": "FE5599693DFD15EB19BFE58D9CB5AB7E1B14A519FDFBB8E4CCD429E61CB84AC8",
+    "bytes": 35366
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/contrib/socks.py",
+    "sha256": "46A6228781C67880A72B39989C6DCC328DB132509DC1BD5B01D12EA3ACC203F6",
+    "bytes": 7313
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/exceptions.py",
+    "sha256": "4034FDC72D5F371BA2E5A4BB74C69B79BD60A2440E43ECCE4FB5E20E9F8EE50A",
+    "bytes": 8540
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/fields.py",
+    "sha256": "D0A49FA6E5F1CD750C2E42369E933DB2258EA8224ED47E300A224DEA77959A50",
+    "bytes": 8853
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/filepost.py",
+    "sha256": "055904112D1800EF6D1705C6063D660FDC8EF76A51C24E295F943A70EE4845BF",
+    "bytes": 2538
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/packages/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/__init__.py",
+    "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "bytes": 0
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/makefile.py",
+    "sha256": "0D112642319CB362E8547FD0DE1AE08029614CD75C239637189825B2E8A18C03",
+    "bytes": 1468
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/packages/backports/weakref_finalize.py",
+    "sha256": "79A43B7891A82D85AB4E8FEFE298F7531D065E59D0234B9CD779C45FC6C205B5",
+    "bytes": 5498
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/packages/six.py",
+    "sha256": "439A9527659A48C3AE4EFC72998CAA0A8E636BCD0C936D0F57D1C5D39F636E72",
+    "bytes": 35741
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/poolmanager.py",
+    "sha256": "85504F8812E9B00AEB577CD7E55C133F7B16133108A2D3D912676DA9F690852D",
+    "bytes": 20530
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/request.py",
+    "sha256": "DCA1E104E5F217509595C2C1BE2C3184422A48F9BCD6B6FB618E0C8303035C9F",
+    "bytes": 6882
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/response.py",
+    "sha256": "6D2FEE4C1C963EEF5FBB4656158503A81F98FD1D42B2297C49168920F4DE0430",
+    "bytes": 31520
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/__init__.py",
+    "sha256": "515FC9EE9F5BDBD7095D743AC13BC1669A490CB51E290EA672FD2FD69B65D777",
+    "bytes": 1204
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/connection.py",
+    "sha256": "E61E0AEB79CD417DCB075C37B6FFB7ACE8F6835F4C2D2EA7FDACE5914C7F98C5",
+    "bytes": 5050
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/proxy.py",
+    "sha256": "07D95A9542CC8AC452F11E40A4CD013217F6157EBF6E94117A11DBCD732D1B95",
+    "bytes": 1662
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/queue.py",
+    "sha256": "998D9DD1C7E8246E75504299C24FEC24CC18ADAA1F35F416ABB2DAAE3F7187FA",
+    "bytes": 520
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/request.py",
+    "sha256": "87D5CA10D5E719AE77D3DCEB88CA1ACE92831C9572EBA7C8487A4FF52CE3BE3B",
+    "bytes": 4134
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/response.py",
+    "sha256": "EBCE6F052B60C53A3CBB72A83A2951E8ABA1EC818F66BED39B3ACFF5AC04B6A5",
+    "bytes": 3617
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/retry.py",
+    "sha256": "50EF2D090F6B6555CCCC3595D1C1EF445E15B1EB3133572CC5F560E9AA79B92A",
+    "bytes": 22633
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/ssl_.py",
+    "sha256": "5882EF967365DC5C6B3B5F80B92273181B854CB08D21F93345B84DBC8BB1B1E5",
+    "bytes": 17672
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/ssl_match_hostname.py",
+    "sha256": "D29B9D8DF0B11E2FCCA49B543CC434F6C57EBBCD013AC6A89F9B9993D481744F",
+    "bytes": 5917
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/ssltransport.py",
+    "sha256": "AD3B0BFC90BA63FF7E57BAF29EF425F3B0C7CF9963F1F26F6CEAED1FC3905B73",
+    "bytes": 7116
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/timeout.py",
+    "sha256": "6EA3FEB00E541370D3FC2DA7574C4A05633495A016B8135760AFD0CD2653AB72",
+    "bytes": 10439
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/url.py",
+    "sha256": "DF35CE2DC824E7537040098C40DDB0085C06D35A630806925EA60D1339415400",
+    "bytes": 14731
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/urllib3/util/wait.py",
+    "sha256": "2F9F32C9098755CBDF856C896B31522A18F84B1A5E975D8ADF766A84893F44FF",
+    "bytes": 5555
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/_vendor/vendor.txt",
+    "sha256": "0A638D573E4E5FBEC06475E19E7ABA69D4E60B1CD0E23D2D841710C5795B9562",
+    "bytes": 348
+  },
+  {
+    "path": "frontend/venv/Lib/site-packages/pip/py.typed",
+    "sha256": "F7F684800C789727E124A4FFF27BFB9A4F85A57DCC76D9FC715E45C35D7189C8",
+    "bytes": 290
+  },
+  {
+    "path": "frontend/venv/Scripts/Activate.ps1",
+    "sha256": "A4DEF2C5E090609E50B96995ED362DBCA5E62BB0A1A8016F67C81CDE9C11AB5E",
+    "bytes": 26199
+  },
+  {
+    "path": "frontend/venv/Scripts/activate",
+    "sha256": "1369ABF15FD9A0D8069DB8FB2B9C589A9589CFA33DF05484D4600D615B02C5E4",
+    "bytes": 2112
+  },
+  {
+    "path": "frontend/venv/Scripts/activate.bat",
+    "sha256": "477EC78B86C147624FFA22C246F6B22430F6F3DE3583917EA7A88DF3DB0D50D1",
+    "bytes": 994
+  },
+  {
+    "path": "frontend/venv/Scripts/deactivate.bat",
+    "sha256": "FB53ED45866FEE40F01C907C1F67555A399F98361722D89120D05A2580E9E563",
+    "bytes": 393
+  },
+  {
+    "path": "frontend/venv/Scripts/pip.exe",
+    "sha256": "5EB47E88B9BD2507DD4365009BC717ADD029DEEC7A031BAD43092394C41DBBDF",
+    "bytes": 108403
+  },
+  {
+    "path": "frontend/venv/Scripts/pip3.12.exe",
+    "sha256": "5EB47E88B9BD2507DD4365009BC717ADD029DEEC7A031BAD43092394C41DBBDF",
+    "bytes": 108403
+  },
+  {
+    "path": "frontend/venv/Scripts/pip3.exe",
+    "sha256": "5EB47E88B9BD2507DD4365009BC717ADD029DEEC7A031BAD43092394C41DBBDF",
+    "bytes": 108403
+  },
+  {
+    "path": "frontend/venv/Scripts/python.exe",
+    "sha256": "18E806E2BFB8FFEDF61274D6517694E2A52E130B22E870D38671A9C37391DD52",
+    "bytes": 270104
+  },
+  {
+    "path": "frontend/venv/Scripts/pythonw.exe",
+    "sha256": "FD6B2D057D0E549C51A6E848B7F5ADDC0A213AC2EF07657F6DD9D64BD020E68C",
+    "bytes": 258840
+  },
+  {
+    "path": "frontend/venv/pyvenv.cfg",
+    "sha256": "8D6A60D2EBF7C739A1EB613A6F62E2E93B858E8AF4B9BF3C15A486C8ADDFC639",
+    "bytes": 310
+  },
+  {
+    "path": "logs/error.html",
+    "sha256": "E383C3B6A8FF965924B4573EB951B5669FCBBD93CFBB7D0978A100260D3C7F01",
+    "bytes": 103094
+  },
+  {
+    "path": "logs/error2.html",
+    "sha256": "CCEDC2F61F947D3CE17E7DA5E55BB2D33414C88FBB94AB466A46E5A5B80F6C3A",
+    "bytes": 103094
+  },
+  {
+    "path": "logs/out.txt",
+    "sha256": "70171777B59C8DA2B94BF221EA4D31E8B9B35C2E9B71D04B95A3D3BE114F8AB4",
+    "bytes": 27246
+  },
+  {
+    "path": "logs/out_bt.txt",
+    "sha256": "6EB2A855D1A90210F92887ABF502E6DD1887D9B60F76E538E4037897837C7D92",
+    "bytes": 61
+  },
+  {
+    "path": "logs/out_opt.txt",
+    "sha256": "0AE3A6523F486FF2C4DA50ABFD83FBA631880480FFBE1CE98B4DAC0EB47BC9A9",
+    "bytes": 102998
+  },
+  {
+    "path": "backend/._api",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._check_bsedata.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._check_nsepython.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._db.sqlite3",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._debug_options.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._debug_reporter.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._debug_tickers.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._manage.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._manual_nse.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._quantvision",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/._requirements.txt",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/._.DS_Store",
+    "sha256": "7D08A9FCFF3175F341E4FF3E2D36FAEFE08BAC19F65ED9B49B975BB5D13FF2AA",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/.___init__.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/.___pycache__",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/._admin.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/._ai_services.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/._apps.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/._migrations",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/._models.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/._tests.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/._urls.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/._views.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/migrations/._.DS_Store",
+    "sha256": "7D08A9FCFF3175F341E4FF3E2D36FAEFE08BAC19F65ED9B49B975BB5D13FF2AA",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/migrations/.___init__.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/api/migrations/.___pycache__",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/quantvision/._.DS_Store",
+    "sha256": "7D08A9FCFF3175F341E4FF3E2D36FAEFE08BAC19F65ED9B49B975BB5D13FF2AA",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/quantvision/.___init__.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/quantvision/.___pycache__",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/quantvision/._asgi.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/quantvision/._settings.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/quantvision/._urls.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "backend/quantvision/._wsgi.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "frontend/._.DS_Store",
+    "sha256": "7D08A9FCFF3175F341E4FF3E2D36FAEFE08BAC19F65ED9B49B975BB5D13FF2AA",
+    "bytes": 4096
+  },
+  {
+    "path": "frontend/._app.py",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "frontend/._pages",
+    "sha256": "51157B9880E4F388B3D0EA357AB4AD459BB8E8929723A3E6F201543ECD6885A8",
+    "bytes": 4096
+  },
+  {
+    "path": "quant_testing/._example.py",
+    "sha256": "0EA520616AA72A0BC9C9E2E8E941A0DA3647C0B83818F3228A2FDAF0C09D67D6",
+    "bytes": 4096
+  },
+  {
+    "path": "quant_testing/._example_combined.py",
+    "sha256": "0EA520616AA72A0BC9C9E2E8E941A0DA3647C0B83818F3228A2FDAF0C09D67D6",
+    "bytes": 4096
+  },
+  {
+    "path": "quant_testing/._example_optimization.py",
+    "sha256": "0EA520616AA72A0BC9C9E2E8E941A0DA3647C0B83818F3228A2FDAF0C09D67D6",
+    "bytes": 4096
+  },
+  {
+    "path": "quant_testing/._example_validation.py",
+    "sha256": "0EA520616AA72A0BC9C9E2E8E941A0DA3647C0B83818F3228A2FDAF0C09D67D6",
+    "bytes": 4096
+  }
+]

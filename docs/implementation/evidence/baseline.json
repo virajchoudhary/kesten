@@ -1,0 +1,10 @@
+{
+  "captured_at": "2026-11-05T04:36:18.8279457+00:00",
+  "branch": "codex/cadrisyn-foundation",
+  "commit": "44edf7d5a7d5c099509e33ae4790993a53889b72",
+  "status": [
+    " M backend/db.sqlite3"
+  ],
+  "database_sha256": "93745BFC1A3149A0F77BBCDD1A50F712195750879F3FB313728AB9811F99715B",
+  "database_bytes": 204800
+}

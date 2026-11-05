@@ -1,0 +1,3 @@
+ts	phase	decision	why	evidence	result
+2026-11-05T04:48:35.8286954+00:00	baseline	Run the existing Django suite offline before source edits	Establish actual failures instead of trusting the discovery snapshot	docs/implementation/evidence/baseline-django-tests.txt	23 tests; 2 failures; 2 errors
+2026-11-05T04:48:36.1130519+00:00	preservation	Remove generated runtime files from the Git index only	Improve hygiene without deleting environments logs or data	docs/implementation/evidence/preserved-untracked-runtime-files.json	496 files preserved locally; database hash unchanged
