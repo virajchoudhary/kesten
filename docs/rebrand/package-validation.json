@@ -1,0 +1,59 @@
+{
+  "result": "PASS",
+  "scope": "Package integrity and working-tree preservation only, not application correctness or production acceptance.",
+  "relative_links_checked": 59,
+  "source_references_checked_for_file_and_line_bounds": 42,
+  "markdown_files": 13,
+  "json_files_read": 10,
+  "database_sha256": "93745BFC1A3149A0F77BBCDD1A50F712195750879F3FB313728AB9811F99715B",
+  "database_preserved": true,
+  "tracked_changes": [
+    "backend/db.sqlite3"
+  ],
+  "all_new_files_under_docs_rebrand": true,
+  "requirements_coverage_map": {
+    "1 repository discovery": [
+      "01-repository-audit.md",
+      "audit-probe-results.json"
+    ],
+    "2 five screened brands": [
+      "02-brand-research.md",
+      "public-name-checks.json",
+      "domain-checks-followup.json",
+      "search-engine-checks.json",
+      "connected-github-check.json"
+    ],
+    "3 three brand concepts": [
+      "03-brand-concepts.md"
+    ],
+    "4 design system": [
+      "04-design-system.md"
+    ],
+    "5 site and user behavior": [
+      "05-product-specification.md"
+    ],
+    "6 target architecture": [
+      "06-architecture.md",
+      "11-sources-and-verification.md"
+    ],
+    "7 security data operations quant gates": [
+      "07-security-data-operations.md",
+      "08-quantitative-verification.md"
+    ],
+    "8 phased migration": [
+      "09-migration-roadmap.md"
+    ],
+    "9 reviewable Markdown and approval stop": [
+      "README.md",
+      "10-approval-gate.md",
+      "review-notes.md"
+    ]
+  },
+  "limitations": [
+    "Links to the web are cited research sources, not fetched again by this check.",
+    "Source line bounds do not prove semantic accuracy; parent source inspection and independent review supply that evidence.",
+    "Existing syntax and quantitative defects remain recorded in the audit receipt.",
+    "Django suite, browser flows, exact dependency resolution, deployment and scientific validation remain unverified."
+  ],
+  "failures": []
+}

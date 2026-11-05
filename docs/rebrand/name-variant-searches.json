@@ -1,0 +1,28 @@
+{
+  "research_date": "2026-11-05",
+  "tool": "web.run search_query",
+  "queries": [
+    "(\"Apertaine\" OR \"Apertain\" OR \"Apertana\") finance software trading",
+    "(\"Cadri Syn\" OR \"Cadresyn\" OR \"Cadrisin\") finance software",
+    "\"Basis Fold\" finance software company",
+    "(\"Lattivor\" OR \"Cadrisyn\" OR \"Apertane\" OR \"Basisfold\" OR \"Tessivane\") (trademark OR registered mark)"
+  ],
+  "leads": [
+    {
+      "query_group": "Apertane variants",
+      "source": "https://www.indiafilings.com/search/apertain-tm-2966343",
+      "observation": "Third-party listing for A(P)ERTAIN, application 2966343, describes class 9 software. Current official status and legal similarity unverified."
+    },
+    {
+      "query_group": "Basis Fold",
+      "source": "https://www.getbasis.ai/",
+      "observation": "Existing Basis accounting software uses one component word; not an exact Basisfold match."
+    },
+    {
+      "query_group": "Basis Fold",
+      "source": "https://fold.money/faq",
+      "observation": "Existing Fold personal-finance software uses one component word; not an exact Basisfold match."
+    }
+  ],
+  "limits": "Partial variants and indexed records only. No trademark clearance. Other variants and registries remain unverified. No returned matching company for queried Cadrisyn variants is inconclusive, not proof of absence."
+}

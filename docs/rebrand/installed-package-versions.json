@@ -1,0 +1,17 @@
+{
+  "Django": "5.0.14",
+  "djangorestframework": "3.16.1",
+  "celery": "5.3.6",
+  "django-celery-beat": "2.6.0",
+  "redis": "5.0.1",
+  "yfinance": "1.2.0",
+  "polygon-api-client": "1.16.3",
+  "torch": "2.10.0",
+  "Riskfolio-Lib": "7.2.1",
+  "PyPortfolioOpt": "1.5.5",
+  "quant-reporter": "1.0.0",
+  "fastembed": "0.7.4",
+  "pmdarima": "2.1.1",
+  "arch": "8.0.0",
+  "streamlit": "1.55.0"
+}

@@ -1,0 +1,8 @@
+{
+  "research_date": "2026-11-05",
+  "tool": "mcp__codex_apps__github_search_repositories",
+  "query": "Apertane OR Cadrisyn OR Basisfold OR Lattivor OR Tessivane",
+  "per_page": 10,
+  "result": { "archive_filter_applied": null, "repositories": [] },
+  "scope": "Repository name/description search only. This is not handle availability or trademark clearance."
+}

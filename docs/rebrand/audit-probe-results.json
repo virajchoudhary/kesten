@@ -1,0 +1,166 @@
+{
+  "scope": "Offline source parse, three BSM properties, current defect reproductions, and proposed token contrast. This is not the Django suite or model validation.",
+  "python": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+  "packages": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "torch": "2.10.0"
+  },
+  "python_files_attempted": 88,
+  "python_files_parsed": 87,
+  "syntax_errors": [
+    {
+      "path": "quant_testing/example_combined.py",
+      "line": 1,
+      "error": "invalid syntax"
+    }
+  ],
+  "bsm": {
+    "parity_absolute_error": 7.105427357601002e-15,
+    "iv_recovered": 0.24,
+    "analytic_delta": 0.48733,
+    "finite_difference_delta": 0.4873296936231952,
+    "result": "PASS for these fixtures only"
+  },
+  "defect_reproductions": {
+    "initial_capital_drawdown": {
+      "reported_pct": 0.0,
+      "expected_pct": -10,
+      "result": "DEFECT REPRODUCED"
+    },
+    "short_period_cagr": {
+      "calendar_days": 86,
+      "reported_pct": 10.0,
+      "annualized_formula_pct": 49.89894779139752,
+      "result": "CAGR LABEL/CONVENTION DEFECT REPRODUCED"
+    },
+    "directional_loss": {
+      "mse_gradient": 0.6000000238418579,
+      "penalized_gradient": 0.6000000238418579,
+      "result": "ZERO DIRECTIONAL GRADIENT CONTRIBUTION REPRODUCED"
+    }
+  },
+  "token_contrast": [
+    {
+      "theme": "light",
+      "token": "text",
+      "minimum_ratio": 14.003,
+      "threshold": 4.5
+    },
+    {
+      "theme": "light",
+      "token": "secondary",
+      "minimum_ratio": 5.515,
+      "threshold": 4.5
+    },
+    {
+      "theme": "light",
+      "token": "accent",
+      "minimum_ratio": 6.219,
+      "threshold": 4.5
+    },
+    {
+      "theme": "light",
+      "token": "positive",
+      "minimum_ratio": 5.241,
+      "threshold": 4.5
+    },
+    {
+      "theme": "light",
+      "token": "negative",
+      "minimum_ratio": 5.511,
+      "threshold": 4.5
+    },
+    {
+      "theme": "light",
+      "token": "warning",
+      "minimum_ratio": 5.878,
+      "threshold": 4.5
+    },
+    {
+      "theme": "light",
+      "token": "control",
+      "minimum_ratio": 4.023,
+      "threshold": 3
+    },
+    {
+      "theme": "light",
+      "token": "observed",
+      "minimum_ratio": 7.772,
+      "threshold": 3
+    },
+    {
+      "theme": "light",
+      "token": "forecast",
+      "minimum_ratio": 5.116,
+      "threshold": 3
+    },
+    {
+      "theme": "light",
+      "token": "on-action against action-fill",
+      "minimum_ratio": 6.992,
+      "threshold": 4.5
+    },
+    {
+      "theme": "dark",
+      "token": "text",
+      "minimum_ratio": 12.229,
+      "threshold": 4.5
+    },
+    {
+      "theme": "dark",
+      "token": "secondary",
+      "minimum_ratio": 6.619,
+      "threshold": 4.5
+    },
+    {
+      "theme": "dark",
+      "token": "accent",
+      "minimum_ratio": 7.413,
+      "threshold": 4.5
+    },
+    {
+      "theme": "dark",
+      "token": "positive",
+      "minimum_ratio": 6.602,
+      "threshold": 4.5
+    },
+    {
+      "theme": "dark",
+      "token": "negative",
+      "minimum_ratio": 6.241,
+      "threshold": 4.5
+    },
+    {
+      "theme": "dark",
+      "token": "warning",
+      "minimum_ratio": 8.565,
+      "threshold": 4.5
+    },
+    {
+      "theme": "dark",
+      "token": "control",
+      "minimum_ratio": 4.298,
+      "threshold": 3
+    },
+    {
+      "theme": "dark",
+      "token": "observed",
+      "minimum_ratio": 7.803,
+      "threshold": 3
+    },
+    {
+      "theme": "dark",
+      "token": "forecast",
+      "minimum_ratio": 7.084,
+      "threshold": 3
+    },
+    {
+      "theme": "dark",
+      "token": "on-action against action-fill",
+      "minimum_ratio": 9.606,
+      "threshold": 4.5
+    }
+  ]
+}

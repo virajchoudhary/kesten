@@ -1,0 +1,12 @@
+{
+  "research_date": "2026-11-05",
+  "commit": "af511b082814a19964bfeb60dbcdc7a0a93c1b00",
+  "status": [
+    " M backend/db.sqlite3",
+    "?? docs/rebrand/"
+  ],
+  "database_sha256": "93745BFC1A3149A0F77BBCDD1A50F712195750879F3FB313728AB9811F99715B",
+  "tracked_files": 628,
+  "tracked_venv_files": 449,
+  "readme_bytes": 2
+}

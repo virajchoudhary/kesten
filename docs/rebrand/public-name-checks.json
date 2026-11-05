@@ -1,0 +1,137 @@
+[
+  {
+    "kind": "domain",
+    "name": "apertane.com",
+    "uri": "https://rdap.verisign.com/com/v1/domain/apertane.com",
+    "status": 404,
+    "ldhName": null,
+    "errorCode": null,
+    "title": null,
+    "checked_at": "2026-11-05T03:23:37.9938245+00:00"
+  },
+  {
+    "kind": "domain",
+    "name": "apertane.app",
+    "uri": "https://rdap.nic.google/domain/apertane.app",
+    "status": "network_error",
+    "error": "No such host is known. (rdap.nic.google:443)",
+    "checked_at": "2026-11-05T03:23:38.1625009+00:00"
+  },
+  {
+    "kind": "github",
+    "name": "apertane",
+    "uri": "https://api.github.com/search/repositories?q=apertane+in:name,description&per_page=5",
+    "status": 200,
+    "total_count": 0,
+    "items": [],
+    "checked_at": "2026-11-05T03:23:38.5721668+00:00"
+  },
+  {
+    "kind": "domain",
+    "name": "cadrisyn.com",
+    "uri": "https://rdap.verisign.com/com/v1/domain/cadrisyn.com",
+    "status": 404,
+    "ldhName": null,
+    "errorCode": null,
+    "title": null,
+    "checked_at": "2026-11-05T03:23:39.2140135+00:00"
+  },
+  {
+    "kind": "domain",
+    "name": "cadrisyn.app",
+    "uri": "https://rdap.nic.google/domain/cadrisyn.app",
+    "status": "network_error",
+    "error": "No such host is known. (rdap.nic.google:443)",
+    "checked_at": "2026-11-05T03:23:39.2352203+00:00"
+  },
+  {
+    "kind": "github",
+    "name": "cadrisyn",
+    "uri": "https://api.github.com/search/repositories?q=cadrisyn+in:name,description&per_page=5",
+    "status": 200,
+    "total_count": 0,
+    "items": [],
+    "checked_at": "2026-11-05T03:23:39.5925590+00:00"
+  },
+  {
+    "kind": "domain",
+    "name": "basisfold.com",
+    "uri": "https://rdap.verisign.com/com/v1/domain/basisfold.com",
+    "status": 404,
+    "ldhName": null,
+    "errorCode": null,
+    "title": null,
+    "checked_at": "2026-11-05T03:23:39.8038435+00:00"
+  },
+  {
+    "kind": "domain",
+    "name": "basisfold.app",
+    "uri": "https://rdap.nic.google/domain/basisfold.app",
+    "status": "network_error",
+    "error": "No such host is known. (rdap.nic.google:443)",
+    "checked_at": "2026-11-05T03:23:39.8096720+00:00"
+  },
+  {
+    "kind": "github",
+    "name": "basisfold",
+    "uri": "https://api.github.com/search/repositories?q=basisfold+in:name,description&per_page=5",
+    "status": 200,
+    "total_count": 0,
+    "items": [],
+    "checked_at": "2026-11-05T03:23:40.1533547+00:00"
+  },
+  {
+    "kind": "domain",
+    "name": "tessivane.com",
+    "uri": "https://rdap.verisign.com/com/v1/domain/tessivane.com",
+    "status": 404,
+    "ldhName": null,
+    "errorCode": null,
+    "title": null,
+    "checked_at": "2026-11-05T03:23:40.7895490+00:00"
+  },
+  {
+    "kind": "domain",
+    "name": "tessivane.app",
+    "uri": "https://rdap.nic.google/domain/tessivane.app",
+    "status": "network_error",
+    "error": "No such host is known. (rdap.nic.google:443)",
+    "checked_at": "2026-11-05T03:23:40.7943802+00:00"
+  },
+  {
+    "kind": "github",
+    "name": "tessivane",
+    "uri": "https://api.github.com/search/repositories?q=tessivane+in:name,description&per_page=5",
+    "status": 200,
+    "total_count": 0,
+    "items": [],
+    "checked_at": "2026-11-05T03:23:41.1475460+00:00"
+  },
+  {
+    "kind": "domain",
+    "name": "lattivor.com",
+    "uri": "https://rdap.verisign.com/com/v1/domain/lattivor.com",
+    "status": 404,
+    "ldhName": null,
+    "errorCode": null,
+    "title": null,
+    "checked_at": "2026-11-05T03:23:41.7827906+00:00"
+  },
+  {
+    "kind": "domain",
+    "name": "lattivor.app",
+    "uri": "https://rdap.nic.google/domain/lattivor.app",
+    "status": "network_error",
+    "error": "No such host is known. (rdap.nic.google:443)",
+    "checked_at": "2026-11-05T03:23:41.7872034+00:00"
+  },
+  {
+    "kind": "github",
+    "name": "lattivor",
+    "uri": "https://api.github.com/search/repositories?q=lattivor+in:name,description&per_page=5",
+    "status": 200,
+    "total_count": 0,
+    "items": [],
+    "checked_at": "2026-11-05T03:23:42.1409800+00:00"
+  }
+]

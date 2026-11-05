@@ -1,0 +1,97 @@
+[
+  {
+    "name": "apertane",
+    "engine": "google",
+    "uri": "https://www.google.com/search?q=%22apertane%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:15.0412793+05:30",
+    "visible_text": "Google Search Please click here if you are not redirected within a few seconds. If you're having trouble accessing Google Search, please click here , or send feedback .",
+    "result": "INCONCLUSIVE. Script/redirect shell contained no usable result listing."
+  },
+  {
+    "name": "apertane",
+    "engine": "bing",
+    "uri": "https://www.bing.com/search?format=rss&q=%22apertane%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:15.2543614+05:30",
+    "returned_items": 10,
+    "items_containing_candidate": 0,
+    "result": "INCONCLUSIVE. Returned RSS items were unrelated fallback results. No negative collision conclusion."
+  },
+  {
+    "name": "cadrisyn",
+    "engine": "google",
+    "uri": "https://www.google.com/search?q=%22cadrisyn%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:15.6774778+05:30",
+    "visible_text": "Google Search Please click here if you are not redirected within a few seconds. If you're having trouble accessing Google Search, please click here , or send feedback .",
+    "result": "INCONCLUSIVE. Script/redirect shell contained no usable result listing."
+  },
+  {
+    "name": "cadrisyn",
+    "engine": "bing",
+    "uri": "https://www.bing.com/search?format=rss&q=%22cadrisyn%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:15.879498+05:30",
+    "returned_items": 10,
+    "items_containing_candidate": 0,
+    "result": "INCONCLUSIVE. Returned RSS items were unrelated fallback results. No negative collision conclusion."
+  },
+  {
+    "name": "basisfold",
+    "engine": "google",
+    "uri": "https://www.google.com/search?q=%22basisfold%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:16.0338384+05:30",
+    "visible_text": "Google Search Please click here if you are not redirected within a few seconds. If you're having trouble accessing Google Search, please click here , or send feedback .",
+    "result": "INCONCLUSIVE. Script/redirect shell contained no usable result listing."
+  },
+  {
+    "name": "basisfold",
+    "engine": "bing",
+    "uri": "https://www.bing.com/search?format=rss&q=%22basisfold%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:16.2666322+05:30",
+    "returned_items": 10,
+    "items_containing_candidate": 0,
+    "result": "INCONCLUSIVE. Returned RSS items were unrelated fallback results. No negative collision conclusion."
+  },
+  {
+    "name": "tessivane",
+    "engine": "google",
+    "uri": "https://www.google.com/search?q=%22tessivane%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:16.7036787+05:30",
+    "visible_text": "Google Search Please click here if you are not redirected within a few seconds. If you're having trouble accessing Google Search, please click here , or send feedback .",
+    "result": "INCONCLUSIVE. Script/redirect shell contained no usable result listing."
+  },
+  {
+    "name": "tessivane",
+    "engine": "bing",
+    "uri": "https://www.bing.com/search?format=rss&q=%22tessivane%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:16.916361+05:30",
+    "returned_items": 10,
+    "items_containing_candidate": 0,
+    "result": "INCONCLUSIVE. Returned RSS items were unrelated fallback results. No negative collision conclusion."
+  },
+  {
+    "name": "lattivor",
+    "engine": "google",
+    "uri": "https://www.google.com/search?q=%22lattivor%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:17.0615849+05:30",
+    "visible_text": "Google Search Please click here if you are not redirected within a few seconds. If you're having trouble accessing Google Search, please click here , or send feedback .",
+    "result": "INCONCLUSIVE. Script/redirect shell contained no usable result listing."
+  },
+  {
+    "name": "lattivor",
+    "engine": "bing",
+    "uri": "https://www.bing.com/search?format=rss&q=%22lattivor%22%20finance%20software",
+    "status": 200,
+    "checked_at": "2026-11-05T08:55:17.2573532+05:30",
+    "returned_items": 10,
+    "items_containing_candidate": 0,
+    "result": "INCONCLUSIVE. Returned RSS items were unrelated fallback results. No negative collision conclusion."
+  }
+]
