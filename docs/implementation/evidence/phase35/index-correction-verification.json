@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-11-06T20:38:24.216032+00:00",
+  "result": "PASS",
+  "scope": "Closes the earlier staged-snapshot finding after restaging; two documentation corrections only",
+  "files": [
+    {
+      "path": "docs/implementation/PHASE35-OPERATIONS.md",
+      "staged_equals_corrected_working_tree": true,
+      "sha256": "6c3038e1944088a93974d73bc5279e7d274d250ed84693161939b83505497a37"
+    },
+    {
+      "path": "docs/implementation/PHASE35.md",
+      "staged_equals_corrected_working_tree": true,
+      "sha256": "dea959e1423a2bcca2178a39b1000390eeb531708122010a18298507feac5b18"
+    },
+    {
+      "path": "docs/implementation/STATUS.md",
+      "staged_equals_corrected_working_tree": true,
+      "sha256": "1f7b21850f00a7511682bf3cf5afad4e7135133b432913243b21d2202d5ce1fe"
+    }
+  ],
+  "staged_documented_stdin_matches_executed_body": true,
+  "documented_command_exit_code": 0
+}

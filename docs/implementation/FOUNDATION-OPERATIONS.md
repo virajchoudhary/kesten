@@ -1,5 +1,7 @@
 # Operate the hardened foundation
 
+For current Phase 3.5 container/PostgreSQL qualification and the isolated 8085 preview, use [qualification operations](PHASE35-OPERATIONS.md) and [results](PHASE35.md). The earlier Docker startup blocker is resolved; historical-data qualification remains blocked.
+
 This is a local, private preview. Cadrisyn remains a working name. It does not authorize public deployment or provider purchases.
 
 ## Start an isolated container preview

@@ -1,0 +1,7 @@
+ Container cadrisyn-phase35-api-run-e25ff9a96cf6 Creating
+ Container cadrisyn-phase35-api-run-e25ff9a96cf6 Created
+.................
+----------------------------------------------------------------------
+Ran 17 tests in 7.305s
+
+OK

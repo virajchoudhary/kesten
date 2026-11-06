@@ -1,0 +1,39 @@
+{
+  "result": "PASS",
+  "origin": "http://127.0.0.1:8085",
+  "checks": [
+    "health",
+    "readiness",
+    "anonymous denial",
+    "login CSRF",
+    "sign in",
+    "instrument search",
+    "daily demo provenance",
+    "private cache",
+    "watchlist persistence and restoration",
+    "hostile origin denial",
+    "legacy route exclusion",
+    "market mode gate",
+    "sign out",
+    "research synthetic provenance",
+    "research creation",
+    "research persisted replay",
+    "research metric consistency",
+    "research anonymous denial",
+    "concurrent sign-in and logout"
+  ],
+  "visible_bars": 253,
+  "research": {
+    "run_id": "c7e6db63-9013-4502-8160-1591cb052ca3",
+    "dataset_version": "9203cba1c9d58f65505fc7c05120669be1829719c7d033d58ab8155387a47a94",
+    "source_kind": "synthetic_fixture",
+    "empirical_performance_established": false,
+    "horizon_sessions": 5,
+    "evaluation_rows": 144,
+    "idempotent_replay": true
+  },
+  "concurrent_sign_ins": [
+    200,
+    200
+  ]
+}

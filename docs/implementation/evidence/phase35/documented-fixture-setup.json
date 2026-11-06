@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "command": [
+    ".venv/Scripts/python.exe",
+    "-"
+  ],
+  "stdin_source": "docs/implementation/PHASE35-OPERATIONS.md#repeat-browser-and-http-gates",
+  "stdin_sha256": "17289b7850353ed94d84ac6572cd22a6b036be059f4cbd2d8d8693e914fad59c",
+  "exit_code": 0,
+  "stdout": "Prepared disposable local browser accounts. One-use secrets remain in ignored .local files.",
+  "stderr": "",
+  "secrets_passed_as_command_arguments": false,
+  "parent_environment_modified": false
+}

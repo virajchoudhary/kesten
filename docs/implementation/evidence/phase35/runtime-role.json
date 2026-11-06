@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "server_version": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "runtime_role": "cadrisyn",
+  "superuser": false,
+  "createdb": false,
+  "createrole": false,
+  "replication": false,
+  "bypassrls": false,
+  "temporary_table_privilege": false,
+  "public_create_privilege": false,
+  "actual_temp_table_creation_denied": true
+}

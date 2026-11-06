@@ -1,0 +1,5 @@
+{
+  "result": "PASS",
+  "tested_private_profile_matches_committed_profile": true,
+  "compose_file": "deploy/compose.qualification.yaml"
+}

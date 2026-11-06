@@ -1,0 +1,1 @@
+Prepared disposable local browser accounts. One-use secrets remain in ignored .local files.

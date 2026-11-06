@@ -1,0 +1,118 @@
+
+> cadrisyn-web@0.1.0 test:e2e
+> playwright test
+
+
+Running 6 tests using 3 workers
+
+(node:27356) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:14716) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:13308) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API (7ms)
+  x  3 [chromium] › e2e\accounts.spec.ts:95:5 › invitation UI consumes the fragment token and completes the form (9ms)
+  x  2 [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path (8ms)
+(node:13524) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  4 [chromium] › e2e\accounts.spec.ts:123:5 › account page changes a password and revokes only other sessions (7ms)
+(node:2156) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  5 [chromium] › e2e\accounts.spec.ts:166:5 › activates a disposable account through the real API lifecycle (5ms)
+(node:21804) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  6 [chromium] › e2e\accounts.spec.ts:236:5 › resetting a disposable account revokes its open workspace session (7ms)
+
+
+  1) [chromium] › e2e\accounts.spec.ts:95:5 › invitation UI consumes the fragment token and completes the form
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\viraj\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\accounts-invitation-UI-con-490f6-oken-and-completes-the-form-chromium\error-context.md
+
+  2) [chromium] › e2e\accounts.spec.ts:123:5 › account page changes a password and revokes only other sessions
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\viraj\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\accounts-account-page-chan-55d1e-revokes-only-other-sessions-chromium\error-context.md
+
+  3) [chromium] › e2e\accounts.spec.ts:166:5 › activates a disposable account through the real API lifecycle
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\viraj\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\accounts-activates-a-dispo-58a03-ough-the-real-API-lifecycle-chromium\error-context.md
+
+  4) [chromium] › e2e\accounts.spec.ts:236:5 › resetting a disposable account revokes its open workspace session
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\viraj\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\accounts-resetting-a-dispo-a3d48--its-open-workspace-session-chromium\error-context.md
+
+  5) [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\viraj\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\markets-signs-in-and-compl-fc702--daily-market-research-path-chromium\error-context.md
+
+  6) [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API
+
+    Error: browserType.launch: Executable doesn't exist at C:\Users\viraj\AppData\Local\ms-playwright\chromium_headless_shell-1248\chrome-headless-shell-win64\chrome-headless-shell.exe
+    ╔════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright was just installed or updated.       ║
+    ║ Please run the following command to download new browsers: ║
+    ║                                                            ║
+    ║     npx playwright install                                 ║
+    ║                                                            ║
+    ║ <3 Playwright Team                                         ║
+    ╚════════════════════════════════════════════════════════════╝
+
+    Error Context: test-results\research-runs-and-reloads--455a5-uation-against-the-real-API-chromium\error-context.md
+
+  6 failed
+    [chromium] › e2e\accounts.spec.ts:95:5 › invitation UI consumes the fragment token and completes the form
+    [chromium] › e2e\accounts.spec.ts:123:5 › account page changes a password and revokes only other sessions
+    [chromium] › e2e\accounts.spec.ts:166:5 › activates a disposable account through the real API lifecycle
+    [chromium] › e2e\accounts.spec.ts:236:5 › resetting a disposable account revokes its open workspace session
+    [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path
+    [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API

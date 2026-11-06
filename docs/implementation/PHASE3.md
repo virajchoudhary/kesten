@@ -1,5 +1,7 @@
 # Phase three implementation record
 
+This is the historical Phase-three record. [Phase 3.5](PHASE35.md) supersedes its Docker/PostgreSQL execution blocker; the historical-data gate remains open.
+
 Started from `codex/cadrisyn-foundation` at `58ed0bc` on 2026-11-06. Cadrisyn remains a private working name. The original database, 496 runtime files and 17 original research artifact/progress files are preserved. There is no deployment, merge, trading execution or paid provider.
 
 ## Scope and evidence boundary

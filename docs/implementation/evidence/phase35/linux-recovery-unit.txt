@@ -1,0 +1,22 @@
+ Container cadrisyn-phase35-api-run-e2dbfe223bb8 Creating
+ Container cadrisyn-phase35-api-run-e2dbfe223bb8 Created
+E
+======================================================================
+ERROR: test_recovery (unittest.loader._FailedTest.test_recovery)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_recovery
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/app/tests/test_recovery.py", line 13, in <module>
+    from scripts.ops import recovery
+ModuleNotFoundError: No module named 'scripts'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)

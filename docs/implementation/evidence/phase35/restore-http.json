@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "source_origin": "http://127.0.0.1:8085",
+  "restored_origin": "http://127.0.0.1:18005",
+  "restored_readiness": true,
+  "fresh_sign_in_and_logout": true,
+  "private_result_response_matches_source": true,
+  "horizons": [
+    1,
+    5
+  ],
+  "outsider_result_statuses": [
+    404,
+    404
+  ],
+  "outsider_datasets": [],
+  "data_kind": "synthetic_fixture",
+  "empirical_performance_established": false
+}

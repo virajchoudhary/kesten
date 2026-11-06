@@ -1,0 +1,2 @@
+Backup created: /tmp/phase35.dump
+Manifest created: /tmp/phase35.dump.manifest.json

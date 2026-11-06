@@ -1,5 +1,7 @@
 # Run private forecast research
 
+For current Phase 3.5 container/PostgreSQL qualification and the isolated 8085 preview, use [qualification operations](PHASE35-OPERATIONS.md) and [results](PHASE35.md). The earlier Docker startup blocker is resolved; historical-data qualification remains blocked.
+
 This phase supports fixed reference methods over frozen datasets. The supplied 180-session fixture is synthetic and establishes no empirical forecasting performance. No advanced ML model, interval, strategy or paid provider is enabled.
 
 ## Start and seed the local workspace
@@ -22,7 +24,7 @@ To reproduce the production-built source preview, start `scripts/dev.py --api-on
 
 ## Import historical data
 
-The developer wrapper always targets the isolated local workspace. A separately configured database/container uses the same Django management commands directly with its actual environment. It cannot currently be exercised here because Docker's host startup is blocked.
+The developer wrapper always targets the isolated local workspace. A separately configured database/container uses the same Django management commands directly with its actual environment. The Phase 3.5 qualification exercises the same commands with isolated PostgreSQL targets; it does not authorize importing unqualified market data.
 
 ```powershell
 .venv/Scripts/python.exe scripts/research.py import --file .local/approved-history.json --owner analyst --approved-by OPERATOR --acknowledge-terms
@@ -65,6 +67,6 @@ Research creation accepts JSON numeric horizons 1 or 5, not arbitrary models or 
 
 ## Recovery and remaining gates
 
-Use [foundation recovery](FOUNDATION-OPERATIONS.md) and [the backup CLI](../../scripts/ops/README.md). Never target the original `backend/db.sqlite3`. New research datasets and completed results are included in workspace transfer; the source must be schema-migrated and the PostgreSQL destination empty. Imported rights acknowledgement includes transfer; review the destination purpose before any cutover. No active account links or sessions cross that transfer. Actual Phase-three PostgreSQL transfer/concurrency/container checks remain blocked on this host and must run before release.
+Use [foundation recovery](FOUNDATION-OPERATIONS.md) and [the backup CLI](../../scripts/ops/README.md). Never target the original `backend/db.sqlite3`. New research datasets and completed results are included in workspace transfer; the source must be schema-migrated and the PostgreSQL destination empty. Imported rights acknowledgement includes transfer; review the destination purpose before any cutover. No active account links or sessions cross that transfer. Phase 3.5 exercised actual PostgreSQL transfer, concurrency and containers; see its current receipts before making a release decision.
 
-The phase restored the current SQLite research store into a new database, reproduced a current-code result, and verified fresh sign-in and private access. This does not establish PostgreSQL behavior, off-host backup protection, security-state cutover, RPO/RTO, or cross-platform numerical tolerance. Retain original databases, manifests and artifacts. Docker recovery must preserve its existing volumes; do not reset or delete storage to force this gate green.
+Phase three restored the SQLite research store and verified replay and private access. Phase 3.5 additionally verifies PostgreSQL restoration and replay within Linux. Neither proves off-host backup protection, security-state cutover, RPO/RTO or cross-platform numerical tolerance. Retain original databases, manifests and artifacts. Docker recovery must preserve its existing volumes; do not reset or delete storage to force this gate green.

@@ -1,6 +1,8 @@
 # Run and verify Cadrisyn
 
-For the new private baseline engine, immutable imports and exact replay, see [research operations](RESEARCH-OPERATIONS.md). The current host can run the source preview; Phase-three container/PostgreSQL execution is blocked by Docker startup failure, as recorded in [status](STATUS.md).
+For current Phase 3.5 container/PostgreSQL qualification and the isolated 8085 preview, use [qualification operations](PHASE35-OPERATIONS.md) and [results](PHASE35.md). The earlier Docker startup blocker is resolved; historical-data qualification remains blocked.
+
+For the new private baseline engine, immutable imports and exact replay, see [research operations](RESEARCH-OPERATIONS.md). The host now runs the source preview and the separately qualified container stack, as recorded in [status](STATUS.md).
 
 The local-development and research commands below remain supported. For current container startup, four-secret configuration, separated database roles, retained-volume upgrades, account management and recovery, use [foundation operations](FOUNDATION-OPERATIONS.md). Docker/PostgreSQL and recovery were executed locally; see [phase-two evidence](PHASE2.md).
 

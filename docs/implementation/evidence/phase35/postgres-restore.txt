@@ -1,0 +1,1 @@
+PostgreSQL restore completed from: /recovery/phase35.dump

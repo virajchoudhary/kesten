@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-11-06T20:05:14.568529+00:00",
+  "result": "PASS",
+  "original_database_sha256": "93745BFC1A3149A0F77BBCDD1A50F712195750879F3FB313728AB9811F99715B",
+  "manifests": [
+    {
+      "manifest": "preserved-untracked-runtime-files.json",
+      "checked": 496,
+      "changed": []
+    },
+    {
+      "manifest": "phase3-research-artifacts-before.json",
+      "checked": 17,
+      "changed": []
+    }
+  ]
+}

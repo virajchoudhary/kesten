@@ -1,0 +1,68 @@
+{
+  "checked_at": "2026-11-06T20:30:06.910147+00:00",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:8085/app/research",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8085/app/markets",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8085/app/account",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8085/health/ready/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3000/app/research",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/health/ready/",
+      "status": 200
+    }
+  ],
+  "services": [
+    {
+      "Names": "cadrisyn-phase35-gateway-1",
+      "State": "running",
+      "Status": "Up 45 minutes",
+      "Image": "nginx:1.28.3-alpine"
+    },
+    {
+      "Names": "cadrisyn-phase35-web-1",
+      "State": "running",
+      "Status": "Up 46 minutes (healthy)",
+      "Image": "cadrisyn-phase35-web:local"
+    },
+    {
+      "Names": "cadrisyn-phase35-api-1",
+      "State": "running",
+      "Status": "Up 50 minutes (healthy)",
+      "Image": "cadrisyn-phase35-api:local"
+    },
+    {
+      "Names": "cadrisyn-phase35-migrate-1",
+      "State": "exited",
+      "Status": "Exited (0) 46 minutes ago",
+      "Image": "cadrisyn-phase35-api:local"
+    },
+    {
+      "Names": "cadrisyn-phase35-database-1",
+      "State": "running",
+      "Status": "Up 54 minutes (healthy)",
+      "Image": "postgres:17.11"
+    },
+    {
+      "Names": "cadrisyn-phase35-cache-1",
+      "State": "running",
+      "Status": "Up 54 minutes (healthy)",
+      "Image": "redis:8.0.6"
+    }
+  ],
+  "scope": "Parent fresh approved read-only check after reviewer sandbox denied Docker/loopback. Four healthchecks pass; gateway HTTP passes; migrate exits 0. Does not relabel reviewer access denial as a successful independent runtime rerun."
+}

@@ -1,0 +1,1 @@
+{"result": "PASS", "schema_before": "all enabled migrations except research", "existing_fixture_objects": 2, "existing_fields_unchanged": true, "research_migration_applied": true, "repeat_migration_preserves_fields": true, "new_research_storage": "synthetic_fixture"}

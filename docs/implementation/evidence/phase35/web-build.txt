@@ -1,0 +1,133 @@
+ Image cadrisyn-phase35-web:local Building
+#1 [internal] load local bake definitions
+#1 reading from stdin 942B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 1.06kB 0.0s done
+#2 DONE 0.6s
+
+#3 [internal] load metadata for docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#3 ...
+
+#4 [auth] library/node:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#3 DONE 2.7s
+
+#5 [internal] load .dockerignore
+#5 transferring context:
+#5 transferring context: 355B 0.0s done
+#5 DONE 0.5s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [base 1/2] FROM docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#7 resolve docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#7 resolve docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202 0.6s done
+#7 DONE 0.7s
+
+#6 [internal] load build context
+#6 transferring context: 1.00MB 0.6s done
+#6 DONE 1.0s
+
+#8 [dependencies 1/2] COPY web/package.json web/package-lock.json ./
+#8 CACHED
+
+#9 [dependencies 2/2] RUN --mount=type=cache,target=/root/.npm npm ci --no-audit --no-fund
+#9 CACHED
+
+#10 [base 2/2] WORKDIR /app/web
+#10 CACHED
+
+#11 [builder 1/3] COPY web/ ./
+#11 DONE 5.8s
+
+#12 [builder 2/3] COPY contracts/openapi.json ../contracts/openapi.json
+#12 DONE 2.8s
+
+#13 [builder 3/3] RUN --mount=type=bind,from=dependencies,source=/app/web/node_modules,target=/app/web/node_modules npm run typegen && npm run build
+#13 23.25
+#13 23.25 > cadrisyn-web@0.1.0 typegen
+#13 23.25 > openapi-typescript ../contracts/openapi.json -o src/lib/api/generated.ts
+#13 23.25
+#13 41.51 ✨ openapi-typescript 7.13.0
+#13 41.69 🚀 ../contracts/openapi.json → src/lib/api/generated.ts [177.4ms]
+#13 41.76 npm notice
+#13 41.76 npm notice New major version of npm available! 10.9.9 -> 12.2.2
+#13 41.76 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#13 41.76 npm notice To update run: npm install -g npm@12.2.2
+#13 41.76 npm notice
+#13 42.76
+#13 42.76 > cadrisyn-web@0.1.0 build
+#13 42.76 > next build --webpack
+#13 42.76
+#13 66.67 ▲ Next.js 16.4.5 (webpack)
+#13 75.20 ✓ Running next.config.ts took 8.5s
+#13 75.62
+#13 75.73   Creating an optimized production build ...
+#13 128.1 ✓ Compiled successfully in 38.7s
+#13 128.1   Running TypeScript ...
+#13 155.5   Finished TypeScript in 27.4s ...
+#13 155.5   Collecting page data using 11 workers ...
+#13 162.7   Generating static pages using 11 workers (0/11) ...
+#13 163.6   Generating static pages using 11 workers (2/11)
+#13 163.6   Generating static pages using 11 workers (5/11)
+#13 163.6   Generating static pages using 11 workers (8/11)
+#13 163.7 ✓ Generating static pages using 11 workers (11/11) in 1024ms
+#13 164.0   Finalizing page optimization ...
+#13 164.0   Collecting build traces ...
+#13 204.8
+#13 204.8 Route (app)
+#13 204.8 ┌ ○ /
+#13 204.8 ├ ○ /_not-found
+#13 204.8 ├ ○ /account/accept
+#13 204.8 ├ ○ /account/reset
+#13 204.8 ├ ○ /app/account
+#13 204.8 ├ ○ /app/markets
+#13 204.8 ├ ƒ /app/research
+#13 204.8 ├ ○ /data
+#13 204.8 ├ ○ /methodology
+#13 204.8 └ ○ /sign-in
+#13 204.8
+#13 204.8
+#13 204.8 ○  (Static)   prerendered as static content
+#13 204.8 ƒ  (Dynamic)  server-rendered on demand
+#13 204.8
+#13 DONE 209.5s
+
+#14 [runner 1/4] RUN addgroup --system --gid 1001 nodejs     && adduser --system --uid 1001 nextjs
+#14 CACHED
+
+#15 [runner 2/4] COPY --from=builder --chown=nextjs:nodejs /app/web/.next/standalone ./
+#15 DONE 30.1s
+
+#16 [runner 3/4] COPY --from=builder --chown=nextjs:nodejs /app/web/.next/static ./.next/static
+#16 DONE 5.3s
+
+#17 [runner 4/4] COPY --from=builder --chown=nextjs:nodejs /app/web/public ./public
+#17 DONE 4.1s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 11.7s done
+#18 exporting manifest sha256:43f0e3f305e705bf8c004bbccc21795762f252276050b9a942c6e4db2d43f6d2
+#18 exporting manifest sha256:43f0e3f305e705bf8c004bbccc21795762f252276050b9a942c6e4db2d43f6d2 0.9s done
+#18 exporting config sha256:d959d285b73c0d5817163335dcaa565d7a3fce78e2bd2297010a24f1d6872efb
+#18 exporting config sha256:d959d285b73c0d5817163335dcaa565d7a3fce78e2bd2297010a24f1d6872efb 0.9s done
+#18 exporting attestation manifest sha256:4bbd420eddb98914637d1ab67cf330908457d6b60293bb41f222a085ec394591
+#18 exporting attestation manifest sha256:4bbd420eddb98914637d1ab67cf330908457d6b60293bb41f222a085ec394591 1.1s done
+#18 exporting manifest list sha256:8c25d1057ad65f8b7de9617c613e7b9e60ba96742b073bc902d721f34b4423df
+#18 exporting manifest list sha256:8c25d1057ad65f8b7de9617c613e7b9e60ba96742b073bc902d721f34b4423df 0.8s done
+#18 naming to docker.io/library/cadrisyn-phase35-web:local
+#18 naming to docker.io/library/cadrisyn-phase35-web:local 0.1s done
+#18 unpacking to docker.io/library/cadrisyn-phase35-web:local
+#18 unpacking to docker.io/library/cadrisyn-phase35-web:local 4.2s done
+#18 DONE 20.8s
+
+#19 resolving provenance for metadata file
+#19 DONE 0.2s
+ Image cadrisyn-phase35-web:local Built

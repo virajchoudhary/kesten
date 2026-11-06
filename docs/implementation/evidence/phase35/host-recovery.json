@@ -1,0 +1,23 @@
+{
+  "result": "PASS",
+  "docker_desktop": "Docker Desktop 4.98.0 (245422)",
+  "engine": "29.9.2",
+  "original_failure": "Missing docker-desktop registration and EEXIST while creating bootstrap main under the configured WSL storage junction",
+  "existing_storage_junction_target": "D:\\Docker\\wsl",
+  "targeted_change": "With Desktop stopped, create only its missing empty main directory at the real target; normal Desktop startup provisions bootstrap",
+  "no_manual_reset_prune_volume_deletion_distro_relocation_or_unregister": true,
+  "previous_volumes_retained": 15,
+  "previous_cadrisyn_volume_names": [
+    "cadrisyn-cold_database",
+    "cadrisyn-cold_static",
+    "cadrisyn-legacy-role-upgrade-data",
+    "cadrisyn-legacy-role-upgrade-v2-data",
+    "cadrisyn-phase2_database",
+    "cadrisyn-validation_database",
+    "cadrisyn-validation_static"
+  ],
+  "volume_names_all_retained": true,
+  "existing_data_vhd_bytes": 96323239936,
+  "vhd_bytes_unchanged_not_claimed": true,
+  "helper_service_start_denied_but_wsl_engine_running": true
+}
