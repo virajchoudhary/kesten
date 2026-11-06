@@ -21,13 +21,18 @@ from django.conf import settings
 from drf_spectacular.views import SpectacularAPIView
 from rest_framework.permissions import IsAdminUser
 from workspace.views import health
+from operations.health import readiness
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path("health/", health),
+    path("health/ready/", readiness),
     path("api/v1/", include("workspace.urls")),
+    path("api/v1/account/", include("accounts.urls")),
     path("api/schema/", SpectacularAPIView.as_view(permission_classes=[IsAdminUser])),
 ]
+
+if settings.CADRISYN_ADMIN_ENABLED:
+    urlpatterns.append(path("admin/", admin.site.urls))
 
 if getattr(settings, "CADRISYN_LEGACY_ENABLED", False):
     urlpatterns.append(path("api/", include("api.urls")))

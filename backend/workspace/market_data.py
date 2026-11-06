@@ -10,10 +10,7 @@ from django.core.cache import cache
 from .indicators import calculate_indicators
 from .instruments import INSTRUMENTS
 from .models import MarketSnapshot
-
-
-class MarketDataUnavailable(Exception):
-    pass
+from .providers import MarketDataUnavailable, PROVIDERS
 
 
 @lru_cache(maxsize=1)
@@ -49,13 +46,20 @@ def demo_bars(instrument):
 
 
 def validate_bars(bars):
+    if not isinstance(bars, list) or not 1 <= len(bars) <= 1000:
+        raise MarketDataUnavailable("The provider returned an invalid daily history size.")
     previous = ""
     for bar in bars:
-        session = date.fromisoformat(bar["time"])
+        if not isinstance(bar, dict) or not isinstance(bar.get("time"), str):
+            raise MarketDataUnavailable("The provider returned an invalid daily bar.")
+        try:
+            session = date.fromisoformat(bar["time"])
+            values = [bar[key] for key in ("open", "high", "low", "close", "volume")]
+        except (KeyError, TypeError, ValueError) as error:
+            raise MarketDataUnavailable("The provider returned an invalid daily bar.") from error
         if not exchange_calendar().is_session(session.isoformat()) or bar["time"] <= previous:
             raise MarketDataUnavailable("The provider returned invalid or duplicate market sessions.")
-        values = [bar[key] for key in ("open", "high", "low", "close", "volume")]
-        if not all(math.isfinite(value) for value in values):
+        if not all(isinstance(value, (float, int)) and not isinstance(value, bool) and math.isfinite(value) for value in values):
             raise MarketDataUnavailable("The provider returned non-finite prices.")
         if min(values[:4]) <= 0 or bar["volume"] < 0:
             raise MarketDataUnavailable("The provider returned invalid prices or volume.")
@@ -104,29 +108,45 @@ def market_state_and_freshness(as_of, now):
     return market_state, "current" if as_of >= expected else "stale"
 
 
+def snapshot_identity(instrument, policy, bars):
+    identity = json.dumps({"instrument": instrument.id, "source": policy.source_id, "price_basis": policy.price_basis, "bars": bars}, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(identity.encode()).hexdigest()
+
+
 def get_market_response(instrument, span, mode):
-    if mode == "market" and not getattr(settings, "CADRISYN_MARKET_DATA_ENABLED", False):
-        raise MarketDataUnavailable("Market data is not enabled. Choose the explicitly labelled demo dataset.")
-    key = f"workspace:v1:{mode}:{instrument.id}"
+    policy = PROVIDERS[mode]
+    policy.authorize()
+    key = f"workspace:v2:{policy.source_id}:{policy.price_basis}:{instrument.id}"
     snapshot = cache.get(key)
     if snapshot is None:
         try:
             bars = demo_bars(instrument) if mode == "demo" else fetch_market_bars(instrument)
             validate_bars(bars)
+            if mode == "market" and exchange_calendar().session_close(bars[-1]["time"]).to_pydatetime() > datetime.now(timezone.utc):
+                raise MarketDataUnavailable("The provider returned an incomplete or future daily session.")
         except MarketDataUnavailable:
             raise
         except Exception as error:
             raise MarketDataUnavailable("The daily-data provider is unavailable. No demo data was substituted.") from error
         fetched_at = datetime.now(timezone.utc).isoformat()
-        identity = json.dumps({"instrument": instrument.id, "mode": mode, "bars": bars}, sort_keys=True, separators=(",", ":"))
-        snapshot_id = hashlib.sha256(identity.encode()).hexdigest()
-        payload = {"bars": bars, "fetched_at": fetched_at}
+        snapshot_id = snapshot_identity(instrument, policy, bars)
+        payload = {"bars": bars, "fetched_at": fetched_at, "source_id": policy.source_id, "price_basis": policy.price_basis}
         record, _ = MarketSnapshot.objects.get_or_create(
             id=snapshot_id,
             defaults={"instrument_id": instrument.id, "data_mode": mode, "payload": payload},
         )
         snapshot = {**record.payload, "fetched_at": fetched_at, "snapshot_id": record.id}
-        cache.set(key, snapshot, timeout=300 if mode == "market" else 3600)
+        cache.set(key, snapshot, timeout=policy.ttl_seconds)
+
+    try:
+        if snapshot["source_id"] != policy.source_id or snapshot["price_basis"] != policy.price_basis:
+            raise ValueError("Source policy mismatch")
+        validate_bars(snapshot["bars"])
+        if snapshot["snapshot_id"] != snapshot_identity(instrument, policy, snapshot["bars"]):
+            raise ValueError("Content identity mismatch")
+        datetime.fromisoformat(snapshot["fetched_at"])
+    except (KeyError, TypeError, ValueError, MarketDataUnavailable) as error:
+        raise MarketDataUnavailable("The cached dataset failed validation. No substitute data was returned.") from error
 
     bars = snapshot["bars"]
     as_of = bars[-1]["time"]
@@ -137,20 +157,16 @@ def get_market_response(instrument, span, mode):
     indicators = {name: [point for point in points if point["time"] >= cutoff] for name, points in indicators.items()}
     state, freshness = ("unknown", "stale") if mode == "demo" else market_state_and_freshness(as_of, datetime.now(timezone.utc))
     provenance = {
-        "data_mode": "demo" if mode == "demo" else "delayed",
-        "source_id": "cadrisyn-synthetic-v1" if mode == "demo" else "yahoo-personal-research",
-        "source_label": "Synthetic demonstration dataset" if mode == "demo" else "Yahoo Finance via yfinance",
+        "data_mode": policy.data_mode,
+        "source_id": policy.source_id,
+        "source_label": policy.label,
         "as_of": as_of,
         "fetched_at": snapshot["fetched_at"],
-        "price_basis": "synthetic" if mode == "demo" else "split_and_dividend_adjusted",
+        "price_basis": policy.price_basis,
         "freshness_state": freshness,
         "market_state": state,
         "delay_seconds": None,
         "snapshot_id": snapshot["snapshot_id"],
-        "disclaimer": (
-            "Synthetic prices for interface demonstration. These are not observed market prices or investment results."
-            if mode == "demo" else
-            "Daily historical observations for explicitly enabled personal research. Delay is not guaranteed. Not a real-time feed or redistribution entitlement."
-        ),
+        "disclaimer": policy.disclaimer,
     }
     return {"instrument": instrument.to_dict(), "bars": visible, "indicators": indicators, "provenance": provenance}

@@ -193,6 +193,10 @@ class SettingsConfigurationTests(SimpleTestCase):
             ("wildcard subdomains", {"DJANGO_ALLOWED_HOSTS": ".example.com"}, "must contain explicit values"),
             ("wildcard origins", {"DJANGO_CSRF_TRUSTED_ORIGINS": "https://*.example.com"}, "must contain explicit values"),
             ("invalid freshness window", {"CADRISYN_EOD_GRACE_HOURS": "49"}, "must be an integer from 0 to 48"),
+            ("weak production secret", {"DJANGO_DEBUG": "false"}, "at least 50 characters"),
+            ("missing production database", {"DJANGO_DEBUG": "false", "DJANGO_SECRET_KEY": "configuration-test-key-" * 4}, "explicit PostgreSQL"),
+            ("missing shared cache", {"DJANGO_DEBUG": "false", "DJANGO_SECRET_KEY": "configuration-test-key-" * 4, "DATABASE_URL": "postgresql://probe@database.invalid/cadrisyn"}, "explicit shared Redis"),
+            ("invalid cache URL", {"DJANGO_CACHE_URL": "file:///tmp/cache"}, "Redis URL with a host"),
         )
 
         for label, overrides, expected_error in cases:

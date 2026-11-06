@@ -1,7 +1,8 @@
-import uuid
+from operations.logging import current_request_id
 
 from django.conf import settings
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
+from accounts.services import LoginInvalidated, authenticate_login, bind_session
 from django.http import JsonResponse
 from django.middleware.csrf import get_token
 from django.utils.decorators import method_decorator
@@ -16,6 +17,7 @@ from rest_framework.views import APIView
 from .instruments import BY_ID, find_instruments
 from .market_data import MarketDataUnavailable, get_market_response
 from .models import WatchlistEntry
+from .providers import market_data_available
 from .serializers import (
     BarQuerySerializer,
     ErrorSerializer,
@@ -34,13 +36,13 @@ def session_payload(request):
         "authenticated": user.is_authenticated,
         "user": {"username": user.get_username(), "is_staff": user.is_staff} if user.is_authenticated else None,
         "csrf_token": get_token(request),
-        "market_data_enabled": getattr(settings, "CADRISYN_MARKET_DATA_ENABLED", False),
+        "market_data_enabled": market_data_available(),
         "legacy_enabled": getattr(settings, "CADRISYN_LEGACY_ENABLED", False),
     }
 
 
 def api_error(code, message, http_status, fields=None):
-    return Response({"code": code, "message": message, "field_errors": fields or {}, "request_id": uuid.uuid4().hex}, status=http_status)
+    return Response({"code": code, "message": message, "field_errors": fields or {}, "request_id": current_request_id()}, status=http_status)
 
 
 class PrivateAPIView(APIView):
@@ -67,10 +69,13 @@ class SessionView(PrivateAPIView):
         serializer = LoginSerializer(data=request.data)
         if not serializer.is_valid():
             return api_error("invalid_input", "Enter a username and password.", 400, serializer.errors)
-        user = authenticate(request, **serializer.validated_data)
+        user = authenticate_login(request, **serializer.validated_data)
         if user is None:
             return api_error("invalid_credentials", "The username or password is incorrect.", 403)
-        login(request, user)
+        try:
+            bind_session(request, user)
+        except LoginInvalidated:
+            return api_error("invalid_credentials", "The username or password is incorrect.", 403)
         return Response(session_payload(request))
 
     @extend_schema(responses=SessionSerializer, operation_id="session_logout")

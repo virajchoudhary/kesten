@@ -47,10 +47,12 @@ def _database_from_url(database_url):
         raise ImproperlyConfigured("DATABASE_URL must include a database name and host.")
 
     query = parse_qs(parsed.query)
-    options = {}
+    options = {"connect_timeout": 5}
     for name in ("sslmode", "connect_timeout", "application_name"):
         if name in query:
             options[name] = query[name][-1]
+    if not DEBUG:
+        options.setdefault("sslmode", "require")
 
     return {
         "ENGINE": "django.db.backends.postgresql",
@@ -60,6 +62,7 @@ def _database_from_url(database_url):
         "HOST": parsed.hostname,
         "PORT": str(parsed.port or ""),
         "CONN_MAX_AGE": 60,
+        "CONN_HEALTH_CHECKS": True,
         "OPTIONS": options,
     }
 
@@ -68,6 +71,8 @@ DEBUG = _env_bool("DJANGO_DEBUG", False)
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "").strip()
 if not SECRET_KEY:
     raise ImproperlyConfigured("DJANGO_SECRET_KEY must be configured.")
+if not DEBUG and len(SECRET_KEY) < 50:
+    raise ImproperlyConfigured("DJANGO_SECRET_KEY must contain at least 50 characters outside development.")
 
 _local_hosts = ("localhost", "127.0.0.1", "[::1]") if DEBUG else ()
 ALLOWED_HOSTS = _env_list("DJANGO_ALLOWED_HOSTS", _local_hosts)
@@ -80,10 +85,14 @@ CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = False
 
 CADRISYN_LEGACY_ENABLED = _env_bool("CADRISYN_LEGACY_ENABLED", False)
+CADRISYN_ADMIN_ENABLED = _env_bool("CADRISYN_ADMIN_ENABLED", DEBUG)
+CADRISYN_TRUST_REQUEST_ID = _env_bool("CADRISYN_TRUST_REQUEST_ID", False)
+CADRISYN_TRUST_CLIENT_IP = _env_bool("CADRISYN_TRUST_CLIENT_IP", False)
 CADRISYN_LEGACY_SCHEDULER_ENABLED = _env_bool(
     "CADRISYN_LEGACY_SCHEDULER_ENABLED", False
 )
 CADRISYN_MARKET_DATA_ENABLED = _env_bool("CADRISYN_MARKET_DATA_ENABLED", False)
+CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED = _env_bool("CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED", False)
 try:
     CADRISYN_EOD_GRACE_HOURS = int(os.environ.get("CADRISYN_EOD_GRACE_HOURS", "4"))
 except ValueError as error:
@@ -102,17 +111,21 @@ INSTALLED_APPS = [
     "drf_spectacular",
     "api",
     "workspace",
+    "accounts",
     "django_celery_beat",
     "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "operations.logging.RequestLoggingMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "operations.client.ClientAddressMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "accounts.middleware.SessionEpochMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -138,6 +151,8 @@ WSGI_APPLICATION = "quantvision.wsgi.application"
 ASGI_APPLICATION = "quantvision.asgi.application"
 
 database_url = os.environ.get("DATABASE_URL", "").strip()
+if not DEBUG and not database_url:
+    raise ImproperlyConfigured("Production requires an explicit PostgreSQL DATABASE_URL.")
 if database_url:
     DATABASES = {"default": _database_from_url(database_url)}
 else:
@@ -166,11 +181,16 @@ else:
     }
 
 cache_url = os.environ.get("DJANGO_CACHE_URL", "").strip()
+if not DEBUG and not cache_url:
+    raise ImproperlyConfigured("Production requires an explicit shared Redis DJANGO_CACHE_URL.")
 if cache_url:
+    if urlparse(cache_url).scheme not in {"redis", "rediss"} or not urlparse(cache_url).hostname:
+        raise ImproperlyConfigured("DJANGO_CACHE_URL must be a Redis URL with a host.")
     CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.redis.RedisCache",
             "LOCATION": cache_url,
+            "OPTIONS": {"socket_connect_timeout": 3, "socket_timeout": 3},
         }
     }
 else:
@@ -187,6 +207,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "OPTIONS": {"min_length": 12},
     },
     {
         "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
@@ -202,13 +223,17 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+STATIC_ROOT = Path(os.environ.get("DJANGO_STATIC_ROOT", str(REPO_ROOT / ".local" / "static")))
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_NAME = "cadrisyn_session"
 SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SECURE = not DEBUG
-SESSION_COOKIE_AGE = 60 * 60 * 24 * 14
+SESSION_COOKIE_AGE = 60 * 60 * 12
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 CSRF_COOKIE_HTTPONLY = True
+CSRF_COOKIE_NAME = "cadrisyn_csrf"
 CSRF_COOKIE_SAMESITE = "Lax"
 CSRF_COOKIE_SECURE = not DEBUG
 CSRF_FAILURE_VIEW = "workspace.exceptions.csrf_failure"
@@ -234,6 +259,7 @@ _throttle_classes = [
     "rest_framework.throttling.UserRateThrottle",
 ]
 REST_FRAMEWORK = {
+    "NUM_PROXIES": 0,
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.SessionAuthentication",
     ],
@@ -272,6 +298,18 @@ CELERY_ACCEPT_CONTENT = ["json"]
 CELERY_TASK_SERIALIZER = "json"
 CELERY_RESULT_SERIALIZER = "json"
 CELERY_TIMEZONE = "UTC"
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {"json": {"()": "operations.logging.JsonFormatter"}},
+    "handlers": {"console": {"class": "logging.StreamHandler", "formatter": "json"}},
+    "root": {"handlers": ["console"], "level": "INFO"},
+    "loggers": {
+        "django": {"handlers": ["console"], "level": "WARNING", "propagate": False},
+        "django.server": {"handlers": [], "propagate": False},
+    },
+}
 
 CELERY_BEAT_SCHEDULE = {}
 if CADRISYN_LEGACY_ENABLED and CADRISYN_LEGACY_SCHEDULER_ENABLED:

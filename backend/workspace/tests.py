@@ -142,7 +142,7 @@ class WorkspaceTests(TestCase):
         self.assertEqual(result.status_code, 503)
         provider.assert_not_called()
 
-    @override_settings(CADRISYN_MARKET_DATA_ENABLED=True)
+    @override_settings(CADRISYN_MARKET_DATA_ENABLED=True, CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED=True, DEBUG=True)
     @patch("workspace.market_data.fetch_market_bars", side_effect=RuntimeError("sensitive provider detail"))
     def test_provider_failure_is_unavailable_without_synthetic_fallback(self, provider):
         result = self.client.get("/api/v1/instruments/xnas-aapl/bars/?mode=market")
@@ -151,7 +151,7 @@ class WorkspaceTests(TestCase):
         self.assertNotIn("bars", result.json())
         self.assertEqual(MarketSnapshot.objects.count(), 0)
 
-    @override_settings(CADRISYN_MARKET_DATA_ENABLED=True)
+    @override_settings(CADRISYN_MARKET_DATA_ENABLED=True, CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED=True, DEBUG=True)
     @patch("workspace.market_data.fetch_market_bars")
     def test_market_payload_retains_provider_identity(self, provider):
         provider.return_value = [{"time": "2025-01-02", "open": 100, "high": 102, "low": 99, "close": 101, "volume": 10}]
@@ -160,7 +160,7 @@ class WorkspaceTests(TestCase):
         self.assertEqual(result["provenance"]["source_id"], "yahoo-personal-research")
         self.assertIsNone(result["provenance"]["delay_seconds"])
 
-    @override_settings(CADRISYN_MARKET_DATA_ENABLED=True)
+    @override_settings(CADRISYN_MARKET_DATA_ENABLED=True, CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED=True, DEBUG=True)
     @patch("workspace.market_data.datetime")
     @patch("workspace.market_data.fetch_market_bars")
     def test_unchanged_snapshot_records_latest_retrieval_time(self, provider, clock):
