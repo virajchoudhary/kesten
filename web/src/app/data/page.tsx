@@ -29,9 +29,9 @@ export default function DataPage(): React.JSX.Element {
             Optional mode
           </dt>
           <dd className="m-0 border-b border-border-subtle py-3 text-sm sm:border-0">
-            An operator may enable delayed daily history for personal research. The current
+            An operator may acknowledge and enable delayed daily history for local personal research. The current
             adapter uses Yahoo Finance through yfinance; provider responses carry their own
-            source and adjustment details.
+            source and adjustment details. This adapter is disabled in production; no licensed live feed is configured.
           </dd>
           <dt className="border-b border-border-subtle py-3 text-sm text-secondary sm:border-0">
             Freshness

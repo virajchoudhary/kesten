@@ -1,4 +1,4 @@
-FROM node:22.23.2-alpine3.22 AS base
+FROM node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202 AS base
 
 WORKDIR /app/web
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -6,18 +6,17 @@ ENV NEXT_TELEMETRY_DISABLED=1
 FROM base AS dependencies
 
 COPY web/package.json web/package-lock.json ./
-RUN npm ci
+RUN --mount=type=cache,target=/root/.npm npm ci --no-audit --no-fund
 
 FROM base AS builder
 
 ARG DJANGO_API_URL=http://api:8000
 ENV DJANGO_API_URL=${DJANGO_API_URL}
 
-COPY --from=dependencies /app/web/node_modules ./node_modules
 COPY web/ ./
 COPY contracts/openapi.json ../contracts/openapi.json
 
-RUN npm run typegen && npm run build
+RUN --mount=type=bind,from=dependencies,source=/app/web/node_modules,target=/app/web/node_modules npm run typegen && npm run build
 
 FROM base AS runner
 

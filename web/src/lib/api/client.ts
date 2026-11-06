@@ -16,6 +16,7 @@ import { InstrumentSchema } from "@/lib/api/schemas";
 import { z } from "zod";
 
 export type { DataMode, MarketRange } from "@/lib/api/schemas";
+export const SESSION_RECHECK_EVENT = "cadrisyn:session-recheck";
 
 export class ApiError extends Error {
   readonly status: number;
@@ -51,6 +52,13 @@ async function readJson(response: Response): Promise<unknown> {
 function apiErrorFrom(response: Response, payload: unknown): ApiError {
   const parsedError = ApiErrorResponseSchema.safeParse(payload);
   if (parsedError.success) {
+    if (
+      typeof window !== "undefined" &&
+      (response.status === 401 || response.status === 403) &&
+      ["permission_denied", "authentication_required"].includes(parsedError.data.code)
+    ) {
+      window.dispatchEvent(new Event(SESSION_RECHECK_EVENT));
+    }
     return new ApiError({
       status: response.status,
       code: parsedError.data.code,
@@ -67,7 +75,7 @@ function apiErrorFrom(response: Response, payload: unknown): ApiError {
   });
 }
 
-async function requestJson<T>(options: {
+export async function requestJson<T>(options: {
   path: string;
   schema: z.ZodType<T>;
   init?: RequestInit;

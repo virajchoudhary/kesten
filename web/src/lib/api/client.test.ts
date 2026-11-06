@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { ApiError, getMarketBars, login } from "@/lib/api/client";
+import { ApiError, getMarketBars, getWatchlist, login, SESSION_RECHECK_EVENT } from "@/lib/api/client";
 
 const demoPayload = {
   instrument: {
@@ -46,6 +46,33 @@ afterEach(() => {
 });
 
 describe("market API client", () => {
+  it("requests a session recheck after authorization expires, preserving the safe error", async () => {
+    const recheck = vi.fn();
+    window.addEventListener(SESSION_RECHECK_EVENT, recheck);
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      code: "permission_denied", message: "Sign in again.", field_errors: {}, request_id: "expired-session",
+    }), { status: 403 })));
+    try {
+      await expect(getWatchlist()).rejects.toMatchObject({ status: 403, requestId: "expired-session" });
+      expect(recheck).toHaveBeenCalledOnce();
+    } finally {
+      window.removeEventListener(SESSION_RECHECK_EVENT, recheck);
+    }
+  });
+
+  it("does not request a session recheck for an incorrect password", async () => {
+    const recheck = vi.fn();
+    window.addEventListener(SESSION_RECHECK_EVENT, recheck);
+    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
+      code: "invalid_credentials", message: "Incorrect credentials.", field_errors: {}, request_id: "invalid-login",
+    }), { status: 403 })));
+    try {
+      await expect(login({ username: "analyst", password: "incorrect" }, "csrf")).rejects.toMatchObject({ code: "invalid_credentials" });
+      expect(recheck).not.toHaveBeenCalled();
+    } finally {
+      window.removeEventListener(SESSION_RECHECK_EVENT, recheck);
+    }
+  });
   it("sends login on the same origin with the current CSRF token", async () => {
     const authenticatedPayload = {
       authenticated: true,

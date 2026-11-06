@@ -25,7 +25,10 @@ async function waitForApi(page: import("@playwright/test").Page): Promise<void> 
     .poll(
       async () => {
         try {
-          const response = await page.request.get("http://127.0.0.1:8000/health/", {
+          const health = process.env.PLAYWRIGHT_EXTERNAL_SERVER === "1"
+            ? new URL("/health/", process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:8080").href
+            : "http://127.0.0.1:8000/health/";
+          const response = await page.request.get(health, {
             timeout: 3000,
           });
           return response.status() === 200;

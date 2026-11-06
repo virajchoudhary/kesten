@@ -15,6 +15,7 @@ import {
   getSession,
   login as loginRequest,
   logout as logoutRequest,
+  SESSION_RECHECK_EVENT,
 } from "@/lib/api/client";
 import type { AuthenticatedSession, Credentials, Session } from "@/lib/api/schemas";
 
@@ -69,6 +70,11 @@ export function SessionProvider({ children }: { children: ReactNode }): React.JS
   const refresh = useCallback((): void => {
     setAttempt((current) => current + 1);
   }, []);
+
+  useEffect(() => {
+    window.addEventListener(SESSION_RECHECK_EVENT, refresh);
+    return () => window.removeEventListener(SESSION_RECHECK_EVENT, refresh);
+  }, [refresh]);
 
   useEffect(() => {
     const requestAttempt = attempt;

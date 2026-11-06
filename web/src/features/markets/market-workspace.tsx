@@ -165,6 +165,9 @@ function WorkspaceHeader({
           <span className="hidden max-w-40 truncate px-2 text-xs text-secondary md:block">
             {session.user.username}
           </span>
+          <Link className="px-2 py-3 text-xs text-secondary hover:text-foreground" href="/app/account">
+            Account
+          </Link>
           <Button
             aria-label="Sign out"
             className="min-h-11 min-w-11 min-[768px]:min-h-8 min-[768px]:min-w-0"

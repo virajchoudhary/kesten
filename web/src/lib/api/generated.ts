@@ -4,6 +4,70 @@
  */
 
 export interface paths {
+    "/api/v1/account/invitations/accept/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["account_invitation_accept"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/account/password-reset/confirm/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["account_password_reset_confirm"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/account/password/change/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["account_password_change"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/account/sessions/revoke/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["account_sessions_revoke"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/instruments/": {
         parameters: {
             query?: never;
@@ -88,6 +152,12 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
     schemas: {
+        AccountError: {
+            code: string;
+            message: string;
+            field_errors: unknown;
+            request_id: string;
+        };
         Bar: {
             /** Format: date */
             time: string;
@@ -101,6 +171,11 @@ export interface components {
             close: number;
             /** Format: double */
             volume: number;
+        };
+        ChangePassword: {
+            new_password: string;
+            confirm_password: string;
+            current_password: string;
         };
         /**
          * @description * `demo` - demo
@@ -168,6 +243,14 @@ export interface components {
         InstrumentList: {
             items: components["schemas"]["Instrument"][];
         };
+        InvitationAccept: {
+            new_password: string;
+            confirm_password: string;
+            token: string;
+        };
+        InvitationAccepted: {
+            created: boolean;
+        };
         Login: {
             username: string;
             password: string;
@@ -185,6 +268,14 @@ export interface components {
          * @enum {string}
          */
         MarketStateEnum: "open" | "closed" | "unknown";
+        PasswordChanged: {
+            password_changed: boolean;
+        };
+        PasswordResetConfirm: {
+            new_password: string;
+            confirm_password: string;
+            token: string;
+        };
         Provenance: {
             data_mode: components["schemas"]["DataModeEnum"];
             source_id: string;
@@ -200,12 +291,26 @@ export interface components {
             snapshot_id: string;
             disclaimer: string;
         };
+        RevokeSessions: {
+            scope: components["schemas"]["ScopeEnum"];
+        };
+        /**
+         * @description * `others` - others
+         *     * `all` - all
+         * @enum {string}
+         */
+        ScopeEnum: "others" | "all";
         Session: {
             authenticated: boolean;
             user: components["schemas"]["User"] | null;
             csrf_token: string;
             market_data_enabled: boolean;
             legacy_enabled: boolean;
+        };
+        SessionRevocation: {
+            revoked: string;
+            authenticated: boolean;
+            csrf_token: string | null;
         };
         User: {
             username: string;
@@ -223,6 +328,218 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    account_invitation_accept: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["InvitationAccept"];
+                "application/x-www-form-urlencoded": components["schemas"]["InvitationAccept"];
+                "multipart/form-data": components["schemas"]["InvitationAccept"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InvitationAccepted"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+        };
+    };
+    account_password_reset_confirm: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["PasswordResetConfirm"];
+                "application/x-www-form-urlencoded": components["schemas"]["PasswordResetConfirm"];
+                "multipart/form-data": components["schemas"]["PasswordResetConfirm"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PasswordChanged"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+        };
+    };
+    account_password_change: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ChangePassword"];
+                "application/x-www-form-urlencoded": components["schemas"]["ChangePassword"];
+                "multipart/form-data": components["schemas"]["ChangePassword"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PasswordChanged"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+        };
+    };
+    account_sessions_revoke: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["RevokeSessions"];
+                "application/x-www-form-urlencoded": components["schemas"]["RevokeSessions"];
+                "multipart/form-data": components["schemas"]["RevokeSessions"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SessionRevocation"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AccountError"];
+                };
+            };
+        };
+    };
     instruments_search: {
         parameters: {
             query?: {
