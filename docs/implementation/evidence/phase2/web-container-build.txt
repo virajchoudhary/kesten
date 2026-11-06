@@ -1,4 +1,4 @@
- Image cadrisyn-validation-web:local Building 
+ Image cadrisyn-validation-web:local Building
 #1 [internal] load local bake definitions
 #1 reading from stdin 954B done
 #1 DONE 0.0s
@@ -46,10 +46,10 @@
 #12 DONE 3.1s
 
 #13 [builder 3/3] RUN --mount=type=bind,from=dependencies,source=/app/web/node_modules,target=/app/web/node_modules npm run typegen && npm run build
-#13 38.98 
+#13 38.98
 #13 38.98 > cadrisyn-web@0.1.0 typegen
 #13 38.98 > openapi-typescript ../contracts/openapi.json -o src/lib/api/generated.ts
-#13 38.98 
+#13 38.98
 #13 42.63 ✨ openapi-typescript 7.13.0
 #13 43.13 🚀 ../contracts/openapi.json → src/lib/api/generated.ts [503.2ms]
 #13 43.27 npm notice
@@ -57,26 +57,26 @@
 #13 43.27 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
 #13 43.27 npm notice To update run: npm install -g npm@12.2.2
 #13 43.27 npm notice
-#13 44.65 
+#13 44.65
 #13 44.65 > cadrisyn-web@0.1.0 build
 #13 44.65 > next build --webpack
-#13 44.65 
+#13 44.65
 #13 48.29 ▲ Next.js 16.4.5 (webpack)
 #13 49.94 ✓ Running next.config.ts took 1642ms
-#13 49.98 
+#13 49.98
 #13 50.03   Creating an optimized production build ...
 #13 112.2 ✓ Compiled successfully in 53s
 #13 112.3   Running TypeScript ...
 #13 128.8   Finished TypeScript in 16.5s ...
 #13 129.0   Collecting page data using 11 workers ...
 #13 161.0   Generating static pages using 11 workers (0/10) ...
-#13 166.1   Generating static pages using 11 workers (2/10) 
-#13 166.1   Generating static pages using 11 workers (4/10) 
-#13 166.1   Generating static pages using 11 workers (7/10) 
+#13 166.1   Generating static pages using 11 workers (2/10)
+#13 166.1   Generating static pages using 11 workers (4/10)
+#13 166.1   Generating static pages using 11 workers (7/10)
 #13 166.2 ✓ Generating static pages using 11 workers (10/10) in 5.2s
 #13 166.9   Finalizing page optimization ...
 #13 166.9   Collecting build traces ...
-#13 203.2 
+#13 203.2
 #13 203.2 Route (app)
 #13 203.2 ┌ ○ /
 #13 203.2 ├ ○ /_not-found
@@ -87,10 +87,10 @@
 #13 203.2 ├ ○ /data
 #13 203.2 ├ ○ /methodology
 #13 203.2 └ ○ /sign-in
-#13 203.2 
-#13 203.2 
+#13 203.2
+#13 203.2
 #13 203.2 ○  (Static)  prerendered as static content
-#13 203.2 
+#13 203.2
 #13 DONE 209.4s
 
 #14 [runner 2/4] COPY --from=builder --chown=nextjs:nodejs /app/web/.next/standalone ./
@@ -121,4 +121,4 @@
 
 #18 resolving provenance for metadata file
 #18 DONE 0.1s
- Image cadrisyn-validation-web:local Built 
+ Image cadrisyn-validation-web:local Built

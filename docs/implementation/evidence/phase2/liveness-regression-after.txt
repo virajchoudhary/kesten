@@ -9,4 +9,3 @@ Ran 1 test in 0.023s
 
 OK
 Destroying test database for alias 'default'...
-

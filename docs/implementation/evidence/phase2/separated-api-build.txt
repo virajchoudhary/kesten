@@ -1,4 +1,4 @@
- Image cadrisyn-validation-api:local Building 
+ Image cadrisyn-validation-api:local Building
 #1 [internal] load local bake definitions
 #1 reading from stdin 530B done
 #1 DONE 0.0s
@@ -63,7 +63,7 @@
 #16 DONE 3.8s
 
 #17 [11/11] RUN DJANGO_SECRET_KEY=build-only-non-runtime-secret-000000000000000000000000000 DJANGO_DEBUG=true DJANGO_STATIC_ROOT=/app/static python manage.py collectstatic --noinput
-#17 14.24 
+#17 14.24
 #17 14.24 154 static files copied to '/app/static'.
 #17 DONE 16.8s
 
@@ -86,4 +86,4 @@
 
 #19 resolving provenance for metadata file
 #19 DONE 0.0s
- Image cadrisyn-validation-api:local Built 
+ Image cadrisyn-validation-api:local Built

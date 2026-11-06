@@ -18,4 +18,3 @@ Ran 1 test in 0.015s
 
 FAILED (failures=1)
 Destroying test database for alias 'default'...
-

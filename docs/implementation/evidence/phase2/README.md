@@ -1,6 +1,6 @@
 # Phase-two verification receipts
 
-Recorded 2026-11-06 for the local private foundation. The parent ran these checks; independent source-review verdicts are recorded separately in [REVIEW.md](../../REVIEW.md). [PHASE2.md](../../PHASE2.md) maps each result to its gate. Secrets, tokens, credentials, database contents and backup archives are excluded.
+Recorded 2026-11-06 for the local private foundation. The parent ran these checks; independent source-review verdicts are recorded separately in [REVIEW.md](../../REVIEW.md). [PHASE2.md](../../PHASE2.md) maps each result to its gate. Secrets, tokens, credentials, database contents and backup archives are excluded. Console receipt trailing whitespace is normalized; original captures remain ignored under `.local/`.
 
 ## Reproduce supported checks
 
