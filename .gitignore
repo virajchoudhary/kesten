@@ -13,6 +13,7 @@ node_modules/
 dist/
 build/
 *.egg-info/
+.vitest-secret-token
 venv/
 .venv/
 .local/
