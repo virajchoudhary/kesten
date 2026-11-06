@@ -288,7 +288,7 @@ test("signs in and completes the authenticated daily market research path", asyn
     await expect(page.getByText("not observed market prices", { exact: false })).toBeVisible();
     await page.goto("/methodology");
     await expect(page.getByRole("heading", { name: "Methodology" })).toBeVisible();
-    await expect(page.getByText("does not publish an ML forecast", { exact: false })).toBeVisible();
+    await expect(page.getByText("No advanced ML model, probability interval or trading strategy is approved.", { exact: false })).toBeVisible();
     expect(pageErrors).toEqual([]);
   } finally {
     if (shouldRemoveAapl) {

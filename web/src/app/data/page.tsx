@@ -48,6 +48,17 @@ export default function DataPage(): React.JSX.Element {
         </dl>
 
         <section className="max-w-3xl space-y-3 border-t border-border-subtle pt-5">
+          <h2 className="text-base font-semibold">Research datasets</h2>
+          <p className="text-sm leading-6 text-secondary">
+            Forecast research uses separate, frozen private imports with declared raw prices,
+            corporate actions and per-record availability. Chart snapshots are not automatically
+            eligible for historical evaluation. Operators must review data rights and source
+            evidence before import; a settings flag or dataset label is not license clearance.
+            Synthetic fixtures remain labelled and establish no empirical forecasting performance.
+          </p>
+        </section>
+
+        <section className="max-w-3xl space-y-3 border-t border-border-subtle pt-5">
           <h2 className="text-base font-semibold">Unavailable data</h2>
           <p className="text-sm leading-6 text-secondary">
             When a delayed-data request fails, the workspace reports the failure. It does not

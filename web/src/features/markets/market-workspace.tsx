@@ -11,6 +11,7 @@ import {
   BookOpenText,
   ChartNoAxesCombined,
   Database,
+  FlaskConical,
   LoaderCircle,
   LogOut,
   Menu,
@@ -196,6 +197,9 @@ function WorkspaceHeader({
         <Link className="py-3 text-secondary hover:text-foreground" href="/methodology">
           Methodology
         </Link>
+        <Link className="py-3 text-secondary hover:text-foreground" href="/app/research">
+          Research
+        </Link>
         <Link className="py-3 text-secondary hover:text-foreground" href="/data">
           Data
         </Link>
@@ -219,6 +223,18 @@ function WorkspaceRail(): React.JSX.Element {
           </Link>
         </TooltipTrigger>
         <TooltipContent side="right">Markets</TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Link
+            aria-label="Research"
+            className="flex size-10 items-center justify-center rounded-control text-secondary hover:bg-raised hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+            href="/app/research"
+          >
+            <FlaskConical aria-hidden="true" size={18} />
+          </Link>
+        </TooltipTrigger>
+        <TooltipContent side="right">Research</TooltipContent>
       </Tooltip>
       <Tooltip>
         <TooltipTrigger asChild>

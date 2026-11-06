@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 import { PublicPageFrame } from "@/components/public-page-frame";
 
@@ -49,13 +50,20 @@ export default function MethodologyPage(): React.JSX.Element {
         </section>
 
         <section className="max-w-3xl space-y-3 border-y border-border-subtle py-5">
-          <h2 className="text-base font-semibold">Forecast status</h2>
+          <h2 className="text-base font-semibold">Reference forecasts</h2>
           <p className="text-sm leading-6 text-secondary">
-            This workspace does not publish an ML forecast, predictive-accuracy statistic, or
-            buy/sell recommendation. Existing forecasting and quantitative research modules
-            remain outside this chart release until their data, horizon, and evaluation gates
-            pass review.
+            Private research compares last-close and expanding historical-log-mean references
+            over one or five exchange sessions. Frozen daily datasets retain source, availability,
+            corporate-action and version information. Prices use initial-share units with causal
+            split adjustment; dividends are excluded.
           </p>
+          <p className="text-sm leading-6 text-secondary">
+            Chronological validation and test results use only inputs available at each origin.
+            Synthetic fixture results verify the pipeline and establish no empirical forecasting
+            performance. No advanced ML model, probability interval or trading strategy is approved.
+            Original forecasting and RL implementations remain isolated research code.
+          </p>
+          <Link className="inline-flex min-h-11 items-center text-sm text-accent underline" href="/app/research">Open forecast research</Link>
         </section>
         <footer className="max-w-3xl space-y-2 text-xs leading-5 text-secondary">
           <p>TradingView Lightweight Charts™<br />Copyright (с) 2025 TradingView, Inc. <a className="underline" href="https://www.tradingview.com/">TradingView</a></p>
