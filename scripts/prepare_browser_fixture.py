@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--configured-preview', action='store_true')
+    parser.add_argument('--research-owner')
     args = parser.parse_args()
     if args.configured_preview:
         if os.environ.get('CADRISYN_PREVIEW_PROFILE') != 'true':
@@ -38,6 +39,14 @@ def main():
         parser.error('Configured fixtures require the isolated cadrisyn PostgreSQL preview database.')
     (ROOT / '.local').mkdir(exist_ok=True)
     call_command("migrate", interactive=False, verbosity=0)
+    if not args.configured_preview:
+        call_command("create_local_user", stdout=io.StringIO())
+    credentials = ROOT / ".local/credentials.json"
+    owner_name = args.research_owner
+    if owner_name is None and credentials.is_file():
+        owner_name = json.loads(credentials.read_text(encoding="utf-8"))["username"]
+    if owner_name:
+        call_command("seed_research_fixture", owner=owner_name, stdout=io.StringIO())
     suffix = uuid.uuid4().hex[:12]
     users = get_user_model().objects
     operator = users.create_user("e2e_operator_" + suffix, is_staff=True)

@@ -112,6 +112,7 @@ INSTALLED_APPS = [
     "api",
     "workspace",
     "accounts",
+    "research",
     "django_celery_beat",
     "corsheaders",
 ]
@@ -176,7 +177,10 @@ else:
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
             "NAME": configured_db_path,
-            "OPTIONS": {"timeout": 30},
+            "OPTIONS": {
+                "timeout": 30,
+                **({"transaction_mode": "IMMEDIATE"} if not CADRISYN_LEGACY_ENABLED else {}),
+            },
         }
     }
 
@@ -272,6 +276,7 @@ REST_FRAMEWORK = {
         "user": "300/hour",
         "login": "30/minute",
         "market": "60/minute",
+        "research": "6/minute",
         "legacy": "5/hour",
         "legacy_read": "60/minute",
     },
@@ -280,6 +285,7 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
+    "ENUM_NAME_OVERRIDES": {"ResearchModelEnum": ["last_close", "historical_log_mean"]},
     "TITLE": "Cadrisyn API",
     "DESCRIPTION": "Private daily-market research workspace API.",
     "VERSION": "1.0.0",

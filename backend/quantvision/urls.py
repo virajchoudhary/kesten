@@ -28,6 +28,7 @@ urlpatterns = [
     path("health/ready/", readiness),
     path("api/v1/", include("workspace.urls")),
     path("api/v1/account/", include("accounts.urls")),
+    path("api/v1/research/", include("research.urls")),
     path("api/schema/", SpectacularAPIView.as_view(permission_classes=[IsAdminUser])),
 ]
 

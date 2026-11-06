@@ -11,7 +11,7 @@ from contextlib import closing
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MODELS = ["auth.user", "auth.group", "workspace", "accounts", "admin.logentry"]
+MODELS = ["auth.user", "auth.group", "workspace", "accounts", "research", "admin.logentry"]
 
 
 def source_path(value):
@@ -74,7 +74,7 @@ def transfer(source):
     executor = MigrationExecutor(destination)
     if executor.migration_plan(executor.loader.graph.leaf_nodes()):
         raise ValueError("Run schema migrations on the empty destination first.")
-    copied_models = [model for model in apps.get_models() if model._meta.app_label in {"workspace", "accounts"}]
+    copied_models = [model for model in apps.get_models() if model._meta.app_label in {"workspace", "accounts", "research"}]
     copied_models.extend(apps.get_model(name) for name in ("auth.User", "auth.Group", "admin.LogEntry"))
     require_empty_destination(copied_models)
     local = ROOT / ".local"

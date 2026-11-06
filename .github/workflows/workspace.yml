@@ -106,7 +106,7 @@ jobs:
               db.execute('GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO cadrisyn')
           PY
           .venv/bin/python backend/manage.py makemigrations --check --dry-run
-          .venv/bin/python backend/manage.py test accounts workspace api.test_security --keepdb --noinput
+          .venv/bin/python backend/manage.py test accounts workspace research api.test_security --keepdb --noinput
   containers:
     runs-on: ubuntu-latest
     timeout-minutes: 30

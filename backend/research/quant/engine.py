@@ -149,7 +149,7 @@ def evaluate(dataset: Dataset, *, horizon: int) -> dict[str, Any]:
         "test_start": observations[validation_boundary]["session"],
         "test_end": observations[-1]["session"],
         "training_policy": (
-            "No fitted parameters; historical log mean expands over split-neutral one-session "
+            "No tuned hyperparameters; historical log mean estimates expanding split-neutral one-session "
             "log returns through each origin and projects a geometric drift reference path."
         ),
         "configuration_trials": 1,

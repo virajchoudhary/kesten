@@ -12,7 +12,7 @@ def main():
     commands = [
         ['check'],
         ['makemigrations', '--check', '--dry-run'],
-        ['test', 'workspace', 'accounts', 'api.test_security', '--noinput'],
+        ['test', 'workspace', 'accounts', 'research', 'api.test_security', '--noinput'],
     ]
     for arguments in commands:
         subprocess.run([sys.executable, 'manage.py', *arguments], cwd=ROOT / 'backend', env=environment, check=True)

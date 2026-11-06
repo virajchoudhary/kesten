@@ -13,6 +13,15 @@ spec.loader.exec_module(migration)
 
 
 class WorkspaceMigrationTests(unittest.TestCase):
+    def test_private_research_datasets_and_completed_results_are_preserved(self):
+        rows = [
+            {"model": "research.researchdataset", "pk": "dataset-1", "fields": {"version": "immutable", "payload": {"data_kind": "synthetic_fixture"}}},
+            {"model": "research.researchrun", "pk": "run-1", "fields": {"result": {"empirical_performance_established": False}, "dataset": "dataset-1"}},
+        ]
+        transferred, _ = migration.transferable_fixture(json.dumps(rows))
+        self.assertEqual(json.loads(transferred), rows)
+        self.assertIn("research", migration.MODELS)
+
     def test_source_snapshot_is_consistent_and_handles_are_closed(self):
         with tempfile.TemporaryDirectory(dir=ROOT / ".local") as directory:
             source = Path(directory) / "source.sqlite3"

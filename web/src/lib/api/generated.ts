@@ -100,6 +100,54 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/research/datasets/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["research_datasets"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/research/runs/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["research_runs"];
+        put?: never;
+        post: operations["research_evaluate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/research/runs/{run_id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["research_run_read"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/session/": {
         parameters: {
             query?: never;
@@ -178,16 +226,100 @@ export interface components {
             current_password: string;
         };
         /**
+         * @description * `synthetic_fixture` - synthetic_fixture
+         *     * `historical` - historical
+         * @enum {string}
+         */
+        DataKindEnum: "synthetic_fixture" | "historical";
+        /**
          * @description * `demo` - demo
          *     * `delayed` - delayed
          * @enum {string}
          */
         DataModeEnum: "demo" | "delayed";
+        Dataset: {
+            /** Format: uuid */
+            id: string;
+            name: string;
+            instrument_id: string;
+            data_kind: components["schemas"]["DataKindEnum"];
+            version: string;
+            source_id: string;
+            license_reference: string;
+            availability_evidence: string;
+            adjustment_basis: string;
+            calendar: string;
+            observation_count: number;
+            /** Format: date */
+            first_session: string;
+            /** Format: date */
+            last_session: string;
+            /** Format: date-time */
+            created_at: string;
+        };
+        DatasetList: {
+            items: components["schemas"]["Dataset"][];
+        };
         Error: {
             code: string;
             message: string;
             field_errors: unknown;
             request_id: string;
+        };
+        Evaluation: {
+            model_id: components["schemas"]["ResearchModelEnum"];
+            partition: components["schemas"]["PartitionEnum"];
+            n: number;
+            /** Format: double */
+            mae: number;
+            /** Format: double */
+            rmse: number;
+            /** Format: double */
+            return_mae: number;
+            /** Format: double */
+            return_rmse: number;
+            /** Format: double */
+            directional_accuracy: number;
+            direction_confusion: number[][];
+            /** Format: double */
+            mae_difference_vs_last_close: number;
+        };
+        EvaluationRow: {
+            model_id: components["schemas"]["ResearchModelEnum"];
+            partition: components["schemas"]["PartitionEnum"];
+            /** Format: date */
+            origin: string;
+            /** Format: date */
+            target: string;
+            /** Format: date-time */
+            information_cutoff: string;
+            /** Format: double */
+            origin_value: number;
+            /** Format: double */
+            predicted: number;
+            /** Format: double */
+            actual: number;
+            input_sha256: string;
+        };
+        /**
+         * @description * `synthetic_pipeline_check` - synthetic_pipeline_check
+         *     * `historical_walk_forward` - historical_walk_forward
+         * @enum {string}
+         */
+        EvidenceKindEnum: "synthetic_pipeline_check" | "historical_walk_forward";
+        Forecast: {
+            /** Format: date */
+            origin: string;
+            /** Format: date-time */
+            information_cutoff: string;
+            history: components["schemas"]["ForecastPoint"][];
+            models: components["schemas"]["MethodForecast"][];
+        };
+        ForecastPoint: {
+            /** Format: date */
+            time: string;
+            /** Format: double */
+            value: number;
         };
         /**
          * @description * `current` - current
@@ -197,6 +329,12 @@ export interface components {
          * @enum {string}
          */
         FreshnessStateEnum: "current" | "stale" | "partial" | "unavailable";
+        /**
+         * @description * `1` - 1
+         *     * `5` - 5
+         * @enum {integer}
+         */
+        HorizonSessionsEnum: 1 | 5;
         IndicatorPoint: {
             /** Format: date */
             time: string;
@@ -268,6 +406,26 @@ export interface components {
          * @enum {string}
          */
         MarketStateEnum: "open" | "closed" | "unknown";
+        Method: {
+            id: components["schemas"]["ResearchModelEnum"];
+            label: string;
+            version: string;
+        };
+        MethodForecast: {
+            model_id: components["schemas"]["ResearchModelEnum"];
+            points: components["schemas"]["ForecastPoint"][];
+        };
+        /**
+         * @description * `split_neutral_close` - split_neutral_close
+         * @enum {string}
+         */
+        NameEnum: "split_neutral_close";
+        /**
+         * @description * `validation` - validation
+         *     * `test` - test
+         * @enum {string}
+         */
+        PartitionEnum: "validation" | "test";
         PasswordChanged: {
             password_changed: boolean;
         };
@@ -275,6 +433,26 @@ export interface components {
             new_password: string;
             confirm_password: string;
             token: string;
+        };
+        Protocol: {
+            id: string;
+            /** Format: date */
+            train_start: string;
+            /** Format: date */
+            train_end: string;
+            /** Format: date */
+            validation_start: string;
+            /** Format: date */
+            validation_end: string;
+            /** Format: date */
+            test_start: string;
+            /** Format: date */
+            test_end: string;
+            training_policy: string;
+            configuration_trials: number;
+            directional_policy: string;
+            issue_lag_minutes: number;
+            protocol_sha256: string;
         };
         Provenance: {
             data_mode: components["schemas"]["DataModeEnum"];
@@ -291,8 +469,76 @@ export interface components {
             snapshot_id: string;
             disclaimer: string;
         };
+        ResearchInput: {
+            /** Format: uuid */
+            dataset_id: string;
+            horizon_sessions: components["schemas"]["HorizonSessionsEnum"];
+            /** Format: uuid */
+            idempotency_key: string;
+        };
+        /**
+         * @description * `last_close` - last_close
+         *     * `historical_log_mean` - historical_log_mean
+         * @enum {string}
+         */
+        ResearchModelEnum: "last_close" | "historical_log_mean";
+        ResearchResult: {
+            schema_version: number;
+            engine_version: string;
+            dataset_version: string;
+            data_kind: components["schemas"]["DataKindEnum"];
+            empirical_performance_established: boolean;
+            evidence_kind: components["schemas"]["EvidenceKindEnum"];
+            target: components["schemas"]["Target"];
+            protocol: components["schemas"]["Protocol"];
+            models: components["schemas"]["Method"][];
+            evaluation: components["schemas"]["Evaluation"][];
+            evaluation_rows: components["schemas"]["EvaluationRow"][];
+            forecast: components["schemas"]["Forecast"];
+            limitations: string[];
+        };
+        ResearchRun: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            dataset_id: string;
+            dataset_version: string;
+            name: string;
+            data_kind: components["schemas"]["DataKindEnum"];
+            instrument_id: string;
+            horizon_sessions: components["schemas"]["HorizonSessionsEnum"];
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            started_at: string;
+            /** Format: date-time */
+            completed_at: string;
+            attempts: number;
+            status: components["schemas"]["StatusEnum"];
+            result: components["schemas"]["ResearchResult"];
+            runtime: components["schemas"]["Runtime"];
+            error_code: string | null;
+        };
+        ResearchRunList: {
+            items: components["schemas"]["ResearchRun"][];
+        };
+        /**
+         * @description * `simple price return` - simple price return
+         * @enum {string}
+         */
+        ReturnConventionEnum: "simple price return";
         RevokeSessions: {
             scope: components["schemas"]["ScopeEnum"];
+        };
+        Runtime: {
+            python: string;
+            engine_source_sha256: string;
+            dependency_lock_sha256: string;
+            dependencies: {
+                [key: string]: string;
+            };
+            random_seed: number | null;
+            deterministic: boolean;
         };
         /**
          * @description * `others` - others
@@ -311,6 +557,17 @@ export interface components {
             revoked: string;
             authenticated: boolean;
             csrf_token: string | null;
+        };
+        /**
+         * @description * `succeeded` - succeeded
+         * @enum {string}
+         */
+        StatusEnum: "succeeded";
+        Target: {
+            name: components["schemas"]["NameEnum"];
+            horizon_sessions: components["schemas"]["HorizonSessionsEnum"];
+            units: string;
+            return_convention: components["schemas"]["ReturnConventionEnum"];
         };
         User: {
             username: string;
@@ -611,6 +868,184 @@ export interface operations {
                 };
             };
             503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    research_datasets: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DatasetList"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    research_runs: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResearchRunList"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    research_evaluate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ResearchInput"];
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResearchRun"];
+                };
+            };
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResearchRun"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            409: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    research_run_read: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResearchRun"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            404: {
                 headers: {
                     [name: string]: unknown;
                 };

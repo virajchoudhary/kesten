@@ -460,6 +460,245 @@
                 }
             }
         },
+        "/api/v1/research/datasets/": {
+            "get": {
+                "operationId": "research_datasets",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DatasetList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/": {
+            "get": {
+                "operationId": "research_runs",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchRunList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "research_evaluate",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResearchInput"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchRun"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchRun"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "409": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "415": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "429": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/{run_id}/": {
+            "get": {
+                "operationId": "research_run_read",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "run_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchRun"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/api/v1/session/": {
             "get": {
                 "operationId": "session_read",
@@ -769,6 +1008,14 @@
                     "new_password"
                 ]
             },
+            "DataKindEnum": {
+                "enum": [
+                    "synthetic_fixture",
+                    "historical"
+                ],
+                "type": "string",
+                "description": "* `synthetic_fixture` - synthetic_fixture\n* `historical` - historical"
+            },
             "DataModeEnum": {
                 "enum": [
                     "demo",
@@ -776,6 +1023,87 @@
                 ],
                 "type": "string",
                 "description": "* `demo` - demo\n* `delayed` - delayed"
+            },
+            "Dataset": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "instrument_id": {
+                        "type": "string"
+                    },
+                    "data_kind": {
+                        "$ref": "#/components/schemas/DataKindEnum"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "source_id": {
+                        "type": "string"
+                    },
+                    "license_reference": {
+                        "type": "string"
+                    },
+                    "availability_evidence": {
+                        "type": "string"
+                    },
+                    "adjustment_basis": {
+                        "type": "string"
+                    },
+                    "calendar": {
+                        "type": "string"
+                    },
+                    "observation_count": {
+                        "type": "integer"
+                    },
+                    "first_session": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "last_session": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "required": [
+                    "adjustment_basis",
+                    "availability_evidence",
+                    "calendar",
+                    "created_at",
+                    "data_kind",
+                    "first_session",
+                    "id",
+                    "instrument_id",
+                    "last_session",
+                    "license_reference",
+                    "name",
+                    "observation_count",
+                    "source_id",
+                    "version"
+                ]
+            },
+            "DatasetList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Dataset"
+                        }
+                    }
+                },
+                "required": [
+                    "items"
+                ]
             },
             "Error": {
                 "type": "object",
@@ -798,6 +1126,182 @@
                     "request_id"
                 ]
             },
+            "Evaluation": {
+                "type": "object",
+                "properties": {
+                    "model_id": {
+                        "$ref": "#/components/schemas/ResearchModelEnum"
+                    },
+                    "partition": {
+                        "$ref": "#/components/schemas/PartitionEnum"
+                    },
+                    "n": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "mae": {
+                        "type": "number",
+                        "format": "double",
+                        "minimum": 0
+                    },
+                    "rmse": {
+                        "type": "number",
+                        "format": "double",
+                        "minimum": 0
+                    },
+                    "return_mae": {
+                        "type": "number",
+                        "format": "double",
+                        "minimum": 0
+                    },
+                    "return_rmse": {
+                        "type": "number",
+                        "format": "double",
+                        "minimum": 0
+                    },
+                    "directional_accuracy": {
+                        "type": "number",
+                        "format": "double",
+                        "maximum": 1,
+                        "minimum": 0
+                    },
+                    "direction_confusion": {
+                        "type": "array",
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "maxItems": 3,
+                            "minItems": 3
+                        },
+                        "maxItems": 3,
+                        "minItems": 3
+                    },
+                    "mae_difference_vs_last_close": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "direction_confusion",
+                    "directional_accuracy",
+                    "mae",
+                    "mae_difference_vs_last_close",
+                    "model_id",
+                    "n",
+                    "partition",
+                    "return_mae",
+                    "return_rmse",
+                    "rmse"
+                ]
+            },
+            "EvaluationRow": {
+                "type": "object",
+                "properties": {
+                    "model_id": {
+                        "$ref": "#/components/schemas/ResearchModelEnum"
+                    },
+                    "partition": {
+                        "$ref": "#/components/schemas/PartitionEnum"
+                    },
+                    "origin": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "target": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "information_cutoff": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "origin_value": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "predicted": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "actual": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "input_sha256": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "actual",
+                    "information_cutoff",
+                    "input_sha256",
+                    "model_id",
+                    "origin",
+                    "origin_value",
+                    "partition",
+                    "predicted",
+                    "target"
+                ]
+            },
+            "EvidenceKindEnum": {
+                "enum": [
+                    "synthetic_pipeline_check",
+                    "historical_walk_forward"
+                ],
+                "type": "string",
+                "description": "* `synthetic_pipeline_check` - synthetic_pipeline_check\n* `historical_walk_forward` - historical_walk_forward"
+            },
+            "Forecast": {
+                "type": "object",
+                "properties": {
+                    "origin": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "information_cutoff": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ForecastPoint"
+                        }
+                    },
+                    "models": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MethodForecast"
+                        }
+                    }
+                },
+                "required": [
+                    "history",
+                    "information_cutoff",
+                    "models",
+                    "origin"
+                ]
+            },
+            "ForecastPoint": {
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "value": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "time",
+                    "value"
+                ]
+            },
             "FreshnessStateEnum": {
                 "enum": [
                     "current",
@@ -807,6 +1311,14 @@
                 ],
                 "type": "string",
                 "description": "* `current` - current\n* `stale` - stale\n* `partial` - partial\n* `unavailable` - unavailable"
+            },
+            "HorizonSessionsEnum": {
+                "enum": [
+                    1,
+                    5
+                ],
+                "type": "integer",
+                "description": "* `1` - 1\n* `5` - 5"
             },
             "IndicatorPoint": {
                 "type": "object",
@@ -1013,6 +1525,58 @@
                 "type": "string",
                 "description": "* `open` - open\n* `closed` - closed\n* `unknown` - unknown"
             },
+            "Method": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/ResearchModelEnum"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "label",
+                    "version"
+                ]
+            },
+            "MethodForecast": {
+                "type": "object",
+                "properties": {
+                    "model_id": {
+                        "$ref": "#/components/schemas/ResearchModelEnum"
+                    },
+                    "points": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ForecastPoint"
+                        }
+                    }
+                },
+                "required": [
+                    "model_id",
+                    "points"
+                ]
+            },
+            "NameEnum": {
+                "enum": [
+                    "split_neutral_close"
+                ],
+                "type": "string",
+                "description": "* `split_neutral_close` - split_neutral_close"
+            },
+            "PartitionEnum": {
+                "enum": [
+                    "validation",
+                    "test"
+                ],
+                "type": "string",
+                "description": "* `validation` - validation\n* `test` - test"
+            },
             "PasswordChanged": {
                 "type": "object",
                 "properties": {
@@ -1047,6 +1611,67 @@
                     "confirm_password",
                     "new_password",
                     "token"
+                ]
+            },
+            "Protocol": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "train_start": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "train_end": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "validation_start": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "validation_end": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "test_start": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "test_end": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "training_policy": {
+                        "type": "string"
+                    },
+                    "configuration_trials": {
+                        "type": "integer"
+                    },
+                    "directional_policy": {
+                        "type": "string"
+                    },
+                    "issue_lag_minutes": {
+                        "type": "integer"
+                    },
+                    "protocol_sha256": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "configuration_trials",
+                    "directional_policy",
+                    "id",
+                    "issue_lag_minutes",
+                    "protocol_sha256",
+                    "test_end",
+                    "test_start",
+                    "train_end",
+                    "train_start",
+                    "training_policy",
+                    "validation_end",
+                    "validation_start"
                 ]
             },
             "Provenance": {
@@ -1103,6 +1728,200 @@
                     "source_label"
                 ]
             },
+            "ResearchInput": {
+                "type": "object",
+                "properties": {
+                    "dataset_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "horizon_sessions": {
+                        "$ref": "#/components/schemas/HorizonSessionsEnum"
+                    },
+                    "idempotency_key": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "required": [
+                    "dataset_id",
+                    "horizon_sessions",
+                    "idempotency_key"
+                ]
+            },
+            "ResearchModelEnum": {
+                "enum": [
+                    "last_close",
+                    "historical_log_mean"
+                ],
+                "type": "string",
+                "description": "* `last_close` - last_close\n* `historical_log_mean` - historical_log_mean"
+            },
+            "ResearchResult": {
+                "type": "object",
+                "properties": {
+                    "schema_version": {
+                        "type": "integer"
+                    },
+                    "engine_version": {
+                        "type": "string"
+                    },
+                    "dataset_version": {
+                        "type": "string"
+                    },
+                    "data_kind": {
+                        "$ref": "#/components/schemas/DataKindEnum"
+                    },
+                    "empirical_performance_established": {
+                        "type": "boolean"
+                    },
+                    "evidence_kind": {
+                        "$ref": "#/components/schemas/EvidenceKindEnum"
+                    },
+                    "target": {
+                        "$ref": "#/components/schemas/Target"
+                    },
+                    "protocol": {
+                        "$ref": "#/components/schemas/Protocol"
+                    },
+                    "models": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Method"
+                        }
+                    },
+                    "evaluation": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Evaluation"
+                        }
+                    },
+                    "evaluation_rows": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EvaluationRow"
+                        }
+                    },
+                    "forecast": {
+                        "$ref": "#/components/schemas/Forecast"
+                    },
+                    "limitations": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "data_kind",
+                    "dataset_version",
+                    "empirical_performance_established",
+                    "engine_version",
+                    "evaluation",
+                    "evaluation_rows",
+                    "evidence_kind",
+                    "forecast",
+                    "limitations",
+                    "models",
+                    "protocol",
+                    "schema_version",
+                    "target"
+                ]
+            },
+            "ResearchRun": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "dataset_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "dataset_version": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "data_kind": {
+                        "$ref": "#/components/schemas/DataKindEnum"
+                    },
+                    "instrument_id": {
+                        "type": "string"
+                    },
+                    "horizon_sessions": {
+                        "$ref": "#/components/schemas/HorizonSessionsEnum"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "started_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "completed_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "attempts": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/StatusEnum"
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/ResearchResult"
+                    },
+                    "runtime": {
+                        "$ref": "#/components/schemas/Runtime"
+                    },
+                    "error_code": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "required": [
+                    "attempts",
+                    "completed_at",
+                    "created_at",
+                    "data_kind",
+                    "dataset_id",
+                    "dataset_version",
+                    "error_code",
+                    "horizon_sessions",
+                    "id",
+                    "instrument_id",
+                    "name",
+                    "result",
+                    "runtime",
+                    "started_at",
+                    "status"
+                ]
+            },
+            "ResearchRunList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ResearchRun"
+                        }
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            },
+            "ReturnConventionEnum": {
+                "enum": [
+                    "simple price return"
+                ],
+                "type": "string",
+                "description": "* `simple price return` - simple price return"
+            },
             "RevokeSessions": {
                 "type": "object",
                 "properties": {
@@ -1112,6 +1931,41 @@
                 },
                 "required": [
                     "scope"
+                ]
+            },
+            "Runtime": {
+                "type": "object",
+                "properties": {
+                    "python": {
+                        "type": "string"
+                    },
+                    "engine_source_sha256": {
+                        "type": "string"
+                    },
+                    "dependency_lock_sha256": {
+                        "type": "string"
+                    },
+                    "dependencies": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "random_seed": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "deterministic": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "dependencies",
+                    "dependency_lock_sha256",
+                    "deterministic",
+                    "engine_source_sha256",
+                    "python",
+                    "random_seed"
                 ]
             },
             "ScopeEnum": {
@@ -1172,6 +2026,36 @@
                     "authenticated",
                     "csrf_token",
                     "revoked"
+                ]
+            },
+            "StatusEnum": {
+                "enum": [
+                    "succeeded"
+                ],
+                "type": "string",
+                "description": "* `succeeded` - succeeded"
+            },
+            "Target": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/NameEnum"
+                    },
+                    "horizon_sessions": {
+                        "$ref": "#/components/schemas/HorizonSessionsEnum"
+                    },
+                    "units": {
+                        "type": "string"
+                    },
+                    "return_convention": {
+                        "$ref": "#/components/schemas/ReturnConventionEnum"
+                    }
+                },
+                "required": [
+                    "horizon_sessions",
+                    "name",
+                    "return_convention",
+                    "units"
                 ]
             },
             "User": {
