@@ -10,6 +10,11 @@
 **/.env
 **/.env.*
 **/*.sqlite3
+**/*.sqlite3-*
+**/.vitest-secret-token
+**/*.egg-info
+.codex
+.agents
 **/._*
 logs
 artifacts

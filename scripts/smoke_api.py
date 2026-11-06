@@ -1,5 +1,6 @@
 """Exercise the local HTTP API without changing an existing watchlist."""
 
+import argparse
 import json
 from pathlib import Path
 from urllib.parse import urlparse
@@ -10,11 +11,17 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
-    origin = 'http://127.0.0.1:8000'
-    assert urlparse(origin).hostname == '127.0.0.1'
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--origin', default='http://127.0.0.1:8000')
+    args = parser.parse_args()
+    origin = args.origin
+    parsed = urlparse(origin)
+    if parsed.scheme not in {'http', 'https'} or parsed.hostname not in {'127.0.0.1', 'localhost', '::1'} or parsed.username or parsed.password or parsed.path not in {'', '/'} or parsed.query or parsed.fragment:
+        parser.error('Smoke tests require an explicit loopback HTTP(S) origin without credentials or a path.')
     credentials = json.loads((ROOT / '.local/credentials.json').read_text())
     with httpx.Client(base_url=origin, timeout=20, trust_env=False) as client:
         assert client.get('/health/').json()['status'] == 'ok'
+        assert client.get('/health/ready/').status_code == 200
         assert client.get('/api/v1/watchlist/').status_code == 403
         initial = client.get('/api/v1/session/').json()
         assert client.post('/api/v1/session/', json=credentials).status_code == 403
@@ -46,7 +53,7 @@ def main():
         if not session['market_data_enabled']:
             assert client.get('/api/v1/instruments/xnas-aapl/bars/?mode=market').status_code == 503
         assert client.delete('/api/v1/session/', headers=headers).json()['authenticated'] is False
-    print(json.dumps({'result': 'PASS', 'checks': ['health', 'anonymous denial', 'login CSRF', 'sign in', 'instrument search', 'daily demo provenance', 'private cache', 'watchlist persistence and restoration', 'hostile origin denial', 'legacy route exclusion', 'market mode gate', 'sign out'], 'visible_bars': len(payload['bars'])}, indent=2))
+    print(json.dumps({'result': 'PASS', 'origin': origin, 'checks': ['health', 'readiness', 'anonymous denial', 'login CSRF', 'sign in', 'instrument search', 'daily demo provenance', 'private cache', 'watchlist persistence and restoration', 'hostile origin denial', 'legacy route exclusion', 'market mode gate', 'sign out'], 'visible_bars': len(payload['bars'])}, indent=2))
 
 
 if __name__ == '__main__':
