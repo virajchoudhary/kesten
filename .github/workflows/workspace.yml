@@ -1,0 +1,49 @@
+name: Cadrisyn workspace
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  workspace:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: backend/requirements-workspace.lock.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install -r backend/requirements-workspace.lock.txt
+      - run: .venv/bin/python scripts/check_backend.py
+      - run: |
+          .venv/bin/python -m unittest discover -s tests -p test_research_client.py
+          .venv/bin/python -m unittest discover -s tests -p test_dev_environment.py
+      - run: npm ci --no-audit --no-fund
+        working-directory: web
+      - run: npm run typegen && git diff --exit-code -- src/lib/api/generated.ts
+        working-directory: web
+      - run: npm run build && npm run typecheck && npm run lint && npm test
+        working-directory: web
+      - run: npx playwright install --with-deps chromium
+        working-directory: web
+      - name: Browser acceptance
+        env:
+          PLAYWRIGHT_PRODUCTION: '1'
+        run: |
+          .venv/bin/python scripts/dev.py --api-only > /tmp/cadrisyn-api.log 2>&1 &
+          cd web
+          npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-failure
+          path: web/test-results
