@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "origin": "http://127.0.0.1:8080",
+  "responses": {
+    "/health/": 200,
+    "/health/ready/": 200,
+    "/sign-in/": 200
+  },
+  "scope": "Final liveness/readiness/sign-in availability after stopping auxiliary test environments"
+}

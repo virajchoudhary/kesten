@@ -1,0 +1,100 @@
+[
+  {
+    "agent": "/root/accounts_phase2",
+    "session": "01a1afc5-9325-7311-b104-e077de812de2",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest child turn_context plus world_state model; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/operations_phase2",
+    "session": "01a1afc5-d846-7c92-ba4d-c6773e184355",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest child turn_context plus world_state model; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/account_ui_phase2",
+    "session": "01a1afd5-633b-7883-9a80-f8171ed106b9",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest child turn_context plus world_state model; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/web_acceptance",
+    "session": "01a1aefd-c2ca-7b93-939b-96ff624e8c56",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/watchlist_acceptance",
+    "session": "01a1af7a-70e3-7ec3-94eb-d9f10220d75c",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/review_operations_phase2",
+    "session": "01a1affa-5919-7b73-8d91-a4d06ddce9ec",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/review_operations_phase2_retry",
+    "session": "01a1b014-d617-7d91-8aad-faf295ca2108",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/review_accounts_ui_phase2",
+    "session": "01a1b015-214a-77b1-a07d-11cb32da1996",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/fix_account_review_phase2",
+    "session": "01a1b02e-8b88-7320-9331-b984a63195c5",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/accept_accounts_phase2",
+    "session": "01a1b049-debf-7bb2-8a88-03c1e235e25c",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/accept_operations_phase2",
+    "session": "01a1b04a-2d6a-71a3-9ff1-1d6306488756",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/split_database_roles",
+    "session": "01a1b062-1355-75c3-85cc-e4fee55822a5",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/final_foundation_review",
+    "session": "01a1b08a-0fb4-7d62-bb73-64cb3c69a4bb",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/accept_legacy_upgrade",
+    "session": "01a1b09c-efae-7781-a44c-74fdaa383724",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "latest own turn_context; inherited parent contexts excluded"
+  }
+]

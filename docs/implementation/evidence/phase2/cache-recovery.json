@@ -1,0 +1,10 @@
+{
+  "before_ready": 200,
+  "during_ready": 503,
+  "during_liveness": 200,
+  "during_bars": 503,
+  "safe_error": true,
+  "after_ready": 200,
+  "session_preserved": true,
+  "result": "PASS"
+}

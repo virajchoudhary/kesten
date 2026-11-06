@@ -1,0 +1,89 @@
+ Image cadrisyn-validation-api:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 530B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 1.23kB 0.0s done
+#2 DONE 1.3s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54
+#3 ...
+
+#4 [auth] library/python:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12-slim@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54
+#3 DONE 3.8s
+
+#5 [internal] load .dockerignore
+#5 transferring context:
+#5 transferring context: 355B 0.5s done
+#5 DONE 2.4s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [ 1/11] FROM docker.io/library/python:3.12-slim@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54
+#7 resolve docker.io/library/python:3.12-slim@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54
+#7 resolve docker.io/library/python:3.12-slim@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54 1.2s done
+#7 DONE 1.6s
+
+#6 [internal] load build context
+#6 transferring context:
+#6 transferring context: 25.71kB 1.5s done
+#6 DONE 2.9s
+
+#8 [ 2/11] WORKDIR /app
+#8 CACHED
+
+#9 [ 3/11] RUN apt-get update && apt-get install -y --no-install-recommends postgresql-client && rm -rf /var/lib/apt/lists/*
+#9 CACHED
+
+#10 [ 4/11] COPY backend/requirements-workspace.lock.txt backend/requirements-runtime.txt /app/
+#10 CACHED
+
+#11 [ 5/11] RUN pip install --no-cache-dir -r requirements-runtime.txt
+#11 CACHED
+
+#12 [ 6/11] COPY backend /app/backend
+#12 DONE 3.4s
+
+#13 [ 7/11] COPY scripts/ops /app/scripts/ops
+#13 DONE 3.1s
+
+#14 [ 8/11] COPY scripts/migrate_workspace.py /app/scripts/migrate_workspace.py
+#14 DONE 3.2s
+
+#15 [ 9/11] RUN groupadd --system cadrisyn && useradd --system --gid cadrisyn --home-dir /app cadrisyn && mkdir -p /app/static && chown -R cadrisyn:cadrisyn /app
+#15 DONE 26.1s
+
+#16 [10/11] WORKDIR /app/backend
+#16 DONE 3.8s
+
+#17 [11/11] RUN DJANGO_SECRET_KEY=build-only-non-runtime-secret-000000000000000000000000000 DJANGO_DEBUG=true DJANGO_STATIC_ROOT=/app/static python manage.py collectstatic --noinput
+#17 14.24 
+#17 14.24 154 static files copied to '/app/static'.
+#17 DONE 16.8s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 19.5s done
+#18 exporting manifest sha256:1217ac357fe430722914048cb8879379e7ca48fec3210c37c8abb2689f063216
+#18 exporting manifest sha256:1217ac357fe430722914048cb8879379e7ca48fec3210c37c8abb2689f063216 1.2s done
+#18 exporting config sha256:ecfe7cf17c2a02eb8d170d01ba841b1a0aa7200f0c50cd3e89a2e6a76c360954
+#18 exporting config sha256:ecfe7cf17c2a02eb8d170d01ba841b1a0aa7200f0c50cd3e89a2e6a76c360954 0.8s done
+#18 exporting attestation manifest sha256:7808dc66d8addc3888a137a0e472ff3667bd4aa157ced763ba7cd7dfedc10f0f
+#18 exporting attestation manifest sha256:7808dc66d8addc3888a137a0e472ff3667bd4aa157ced763ba7cd7dfedc10f0f 1.0s done
+#18 exporting manifest list sha256:309ea5c6255f3f3c69b21229c7fd338448429013b54fd14bd5f55a290372d657
+#18 exporting manifest list sha256:309ea5c6255f3f3c69b21229c7fd338448429013b54fd14bd5f55a290372d657 1.1s done
+#18 naming to docker.io/library/cadrisyn-validation-api:local
+#18 naming to docker.io/library/cadrisyn-validation-api:local 0.1s done
+#18 unpacking to docker.io/library/cadrisyn-validation-api:local
+#18 unpacking to docker.io/library/cadrisyn-validation-api:local 5.1s done
+#18 DONE 29.4s
+
+#19 resolving provenance for metadata file
+#19 DONE 0.0s
+ Image cadrisyn-validation-api:local Built 

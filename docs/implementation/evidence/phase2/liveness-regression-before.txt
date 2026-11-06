@@ -1,0 +1,21 @@
+Found 1 test(s).
+Creating test database for alias 'default'...
+
+System check identified no issues (0 silenced).
+{"timestamp":"2026-11-06T10:29:11.568802+00:00","level":"INFO","event":"http_request","request_id":"9ae704bc55604b21ba019c1dae657a71","method":"GET","route":"unmatched","status":503,"duration_ms":0.0}
+{"timestamp":"2026-11-06T10:29:11.571774+00:00","level":"ERROR","event":"django.request","request_id":null}
+F
+======================================================================
+FAIL: test_liveness_does_not_load_a_cookie_session_during_database_failure (accounts.tests.test_health.HealthSessionIsolationTests.test_liveness_does_not_load_a_cookie_session_during_database_failure)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\stock price predictor\backend\accounts\tests\test_health.py", line 14, in test_liveness_does_not_load_a_cookie_session_during_database_failure
+    self.assertEqual(response.status_code, 200)
+AssertionError: 503 != 200
+
+----------------------------------------------------------------------
+Ran 1 test in 0.015s
+
+FAILED (failures=1)
+Destroying test database for alias 'default'...
+

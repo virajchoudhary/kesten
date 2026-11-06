@@ -1,0 +1,8 @@
+{
+  "runtime_role": "cadrisyn",
+  "database_owner": "cadrisyn_migrator",
+  "permanent_ddl_denied": true,
+  "temporary_ddl_denied": true,
+  "migration_and_bootstrap_secrets_absent_from_api": true,
+  "result": "PASS"
+}

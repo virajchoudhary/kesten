@@ -1,0 +1,20 @@
+System check identified no issues (0 silenced).
+No changes detected
+Found 29 test(s).
+Creating test database for alias 'default'...
+
+System check identified no issues (0 silenced).
+.............................
+----------------------------------------------------------------------
+Ran 29 tests in 59.889s
+
+OK
+Destroying test database for alias 'default'...
+
+API schema matches contracts/openapi.json.
+System check identified some issues:
+
+WARNINGS:
+?: (security.W021) You have not set the SECURE_HSTS_PRELOAD setting to True. Without this, your site cannot be submitted to the browser preload list.
+
+System check identified 1 issue (0 silenced).

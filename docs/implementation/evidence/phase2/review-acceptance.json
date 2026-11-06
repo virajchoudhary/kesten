@@ -1,0 +1,35 @@
+{
+  "accounts": {
+    "verdict": "PASS",
+    "agent": "/root/accept_accounts_phase2",
+    "session": "01a1b049-debf-7bb2-8a88-03c1e235e25c",
+    "scope": "Account/session correction source review",
+    "runtime_tests_by_reviewer": false,
+    "nonblocking_followup": "Persist revoking operator attribution if required by release audit policy"
+  },
+  "retained_volume": {
+    "verdict": "PASS",
+    "agent": "/root/accept_legacy_upgrade",
+    "session": "01a1b09c-efae-7781-a44c-74fdaa383724",
+    "scope": "Legacy PostgreSQL role-upgrade correction",
+    "independent_checks": [
+      "Baseline Compose bootstrap identity",
+      "Current SQL and verifier source",
+      "SELECT-only role/ownership/grants and row queries on disposable upgrade database",
+      "Compose parsing with example environment",
+      "Compose diff whitespace"
+    ],
+    "limits": [
+      "Did not rerun writing verifier",
+      "Did not independently recheck TCP password before test container stopped",
+      "Parent separately ran full TCP verifier and actual private-environment Compose parsing"
+    ]
+  },
+  "routing": {
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "Latest own child turn contexts; see worker-routes.json",
+    "billing_attribution": "not verified"
+  },
+  "overall_scope": "Independent bounded reviews plus parent integration acceptance; no production certification or provider-diverse panel"
+}

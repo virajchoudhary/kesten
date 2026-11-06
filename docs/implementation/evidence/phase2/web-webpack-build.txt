@@ -1,0 +1,34 @@
+
+> cadrisyn-web@0.1.0 build
+> next build --webpack
+
+▲ Next.js 16.4.5 (webpack)
+✓ Running next.config.ts took 380ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 27.1s
+  Running TypeScript ...
+  Finished TypeScript in 12.3s ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/10) ...
+  Generating static pages using 11 workers (2/10) 
+  Generating static pages using 11 workers (4/10) 
+  Generating static pages using 11 workers (7/10) 
+✓ Generating static pages using 11 workers (10/10) in 3.2s
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /account/accept
+├ ○ /account/reset
+├ ○ /app/account
+├ ○ /app/markets
+├ ○ /data
+├ ○ /methodology
+└ ○ /sign-in
+
+
+○  (Static)  prerendered as static content
+

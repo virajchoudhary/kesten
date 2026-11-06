@@ -3,6 +3,8 @@
 
 Cadrisyn is the temporary working name for a private daily-market research workspace. The new Next.js interface uses a Django session API. Existing Streamlit, forecasting, portfolio, derivatives, RL, and reporting code remains in the repository as research functionality.
 
+The foundation includes closed-registration account lifecycle, revocable sessions, restricted PostgreSQL roles, verified local containers, source-policy safeguards, and backup/restore tooling. See [foundation operations](docs/implementation/FOUNDATION-OPERATIONS.md) and [phase-two verification](docs/implementation/PHASE2.md) for current evidence and remaining release gates.
+
 ## Start the local workspace
 
 Use Python 3.12 and Node 22.12 or later in the Node 22 LTS family. The setup creates a separate `.venv`. It does not replace `backend/venv` or the original `backend/db.sqlite3`.
@@ -29,7 +31,7 @@ Development data lives in `.local/cadrisyn.sqlite3`. Development startup explici
 
 The default chart is an explicitly synthetic demonstration dataset. It contains no observed stock prices or performance results. Search covers 20 curated US stocks. Daily candles, SMA20, SMA50, Wilder RSI14, an accessible price table, and private watchlists use the versioned API.
 
-Set `CADRISYN_MARKET_DATA_ENABLED=true` in the launching shell only for permitted personal research with Yahoo daily history through yfinance. This optional mode has no guaranteed delay or redistribution entitlement. Provider failures remain unavailable. They never substitute demonstration data. No paid service or external deployment is configured.
+Set both `CADRISYN_MARKET_DATA_ENABLED=true` and `CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED=true` only for permitted local personal research with Yahoo daily history through yfinance. The adapter is disabled outside development. No licensed live feed, guaranteed delay or redistribution entitlement is configured. Provider failures remain unavailable and never substitute demonstration data.
 
 ## Run checks
 

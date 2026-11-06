@@ -1,0 +1,20 @@
+{
+  "result": "PASS",
+  "origin": "http://127.0.0.1:8080",
+  "checks": [
+    "health",
+    "readiness",
+    "anonymous denial",
+    "login CSRF",
+    "sign in",
+    "instrument search",
+    "daily demo provenance",
+    "private cache",
+    "watchlist persistence and restoration",
+    "hostile origin denial",
+    "legacy route exclusion",
+    "market mode gate",
+    "sign out"
+  ],
+  "visible_bars": 253
+}

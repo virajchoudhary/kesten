@@ -1,0 +1,18 @@
+
+> cadrisyn-web@0.1.0 test:e2e
+> playwright test
+
+
+Running 5 tests using 2 workers
+
+(node:18412) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:30068) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\accounts.spec.ts:95:5 › invitation UI consumes the fragment token and completes the form (2.3s)
+  ok 3 [chromium] › e2e\accounts.spec.ts:123:5 › account page changes a password and revokes only other sessions (591ms)
+  ok 4 [chromium] › e2e\accounts.spec.ts:166:5 › activates a disposable account through the real API lifecycle (3.2s)
+  ok 5 [chromium] › e2e\accounts.spec.ts:236:5 › resetting a disposable account revokes its open workspace session (3.4s)
+  ok 2 [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path (11.7s)
+
+  5 passed (24.3s)

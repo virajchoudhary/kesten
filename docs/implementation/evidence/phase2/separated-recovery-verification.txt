@@ -1,0 +1,8 @@
+{"timestamp":"2026-11-06T11:12:49.014782+00:00","level":"INFO","event":"http_request","request_id":"92b59795b36649c7ba12a1ad7f64f38b","method":"GET","route":"health/ready/","status":200,"duration_ms":2963.21}
+{"timestamp":"2026-11-06T11:12:49.032066+00:00","level":"INFO","event":"http_request","request_id":"c3a0405197864615b8d038d31bf68fce","method":"GET","route":"api/v1/watchlist/","status":403,"duration_ms":6.83}
+{"timestamp":"2026-11-06T11:12:49.036307+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-06T11:12:49.052696+00:00","level":"INFO","event":"http_request","request_id":"97d71ff3a6dc41c3a8d782325ffe36fa","method":"GET","route":"api/v1/session/","status":200,"duration_ms":14.97}
+{"timestamp":"2026-11-06T11:12:50.047167+00:00","level":"INFO","event":"http_request","request_id":"779143f90b40456083b7acc6a1cf169c","method":"POST","route":"api/v1/session/","status":200,"duration_ms":992.39}
+{"timestamp":"2026-11-06T11:12:50.096584+00:00","level":"INFO","event":"http_request","request_id":"1d8e7a5be2b141389a70896b27d9397b","method":"GET","route":"api/v1/watchlist/","status":200,"duration_ms":39.04}
+{"timestamp":"2026-11-06T11:12:50.193587+00:00","level":"INFO","event":"http_request","request_id":"5c7680293d154ba789d6a4b8706fd1a7","method":"DELETE","route":"api/v1/session/","status":200,"duration_ms":95.78}
+{"result": "PASS", "copied_objects_compared": 20, "all_fixture_fields_match": true, "readiness": 200, "restored_sign_in": true, "private_watchlist_matches": true, "logout": true}

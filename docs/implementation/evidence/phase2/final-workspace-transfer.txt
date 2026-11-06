@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "objects_copied": 20,
+  "restricted_snapshots_left_at_source": 0,
+  "unused_account_tokens_left_at_source": 0,
+  "verification": "all copied fixture fields match",
+  "sessions": "not copied; empty destination required; sign in again"
+}

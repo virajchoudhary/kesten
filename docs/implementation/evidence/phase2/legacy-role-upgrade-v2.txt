@@ -1,0 +1,13 @@
+{
+  "result": "PASS",
+  "legacy_runtime_superuser_before": true,
+  "runtime_privileged_after": false,
+  "rows_preserved": true,
+  "runtime_dml": true,
+  "runtime_permanent_and_temp_ddl_denied": true,
+  "migration_default_grants": true,
+  "idempotent_upgrade": true,
+  "restart_preserved_data": true,
+  "container": "cadrisyn-legacy-role-upgrade-v2",
+  "retained_volume": "cadrisyn-legacy-role-upgrade-v2-data"
+}
