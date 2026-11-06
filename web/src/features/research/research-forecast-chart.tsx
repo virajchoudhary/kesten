@@ -12,7 +12,7 @@ import type {
 const WIDTH = 960;
 const HEIGHT = 360;
 const PLOT: Readonly<{ left: number; right: number; top: number; bottom: number }> = {
-  left: 78,
+  left: 112,
   right: 20,
   top: 18,
   bottom: 62,
@@ -87,7 +87,6 @@ export function ResearchForecastChart({
   const targetDate = forecast.models[0]?.points.at(-1)?.time ?? forecast.origin;
   const xLabels = [
     { time: forecast.history[0]?.time ?? forecast.origin, label: formatChartXLabel(forecast.history[0]?.time ?? forecast.origin) },
-    { time: forecast.origin, label: formatChartXLabel(forecast.origin) },
     { time: targetDate, label: formatChartXLabel(targetDate) },
   ];
   const yLabels = [0, 1, 2, 3].map((step) => {

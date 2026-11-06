@@ -259,7 +259,7 @@ export function RunHistory({
   }
 
   return (
-    <ol className="divide-y divide-border-subtle">
+    <ol className="max-h-80 overflow-y-auto divide-y divide-border-subtle">
       {state.data.items.map((run) => {
         const dataset = datasets.find(
           (item) => item.id === run.dataset_id && item.version === run.dataset_version,

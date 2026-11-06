@@ -36,7 +36,7 @@ async function waitForApi(page: import("@playwright/test").Page): Promise<void> 
       async () => {
         try {
           const health = process.env.PLAYWRIGHT_EXTERNAL_SERVER === "1"
-            ? new URL("/health/", process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:8080").href
+            ? new URL("/api/v1/session/", process.env.PLAYWRIGHT_BASE_URL ?? "http://127.0.0.1:8080").href
             : "http://127.0.0.1:8000/health/";
           const response = await page.request.get(health, { timeout: 3000 });
           return response.status() === 200;
@@ -135,6 +135,22 @@ test("runs and reloads a private synthetic research evaluation against the real 
     .toBeVisible();
   await expect(page.getByRole("img", { name: "Dataset history and forecast paths" }))
     .toBeVisible();
+  const axisLabels = await page.getByRole("region", { name: "Dataset history and forecast", exact: true })
+    .locator("svg text").evaluateAll((nodes) => nodes.map((node) => {
+      const bounds = node.getBoundingClientRect();
+      return { text: node.textContent?.trim() ?? "", left: bounds.left, right: bounds.right, top: bounds.top, bottom: bounds.bottom };
+    }));
+  type LabelBounds = Omit<(typeof axisLabels)[number], "text">;
+  const overlap = (a: LabelBounds, b: LabelBounds): boolean =>
+    a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
+  const unitsLabel = axisLabels.find((label) => label.text === "USD per initial share");
+  if (!unitsLabel) throw new Error("The chart must show its price-axis units.");
+  const prices = axisLabels.filter((label) => label.text.startsWith("$"));
+  const dates = axisLabels.filter((label) => /^[A-Za-z]{3} \d{1,2}$/u.test(label.text));
+  expect(prices).toHaveLength(4);
+  expect(dates).toHaveLength(2);
+  expect(prices.some((label) => overlap(label, unitsLabel))).toBe(false);
+  expect(dates.some((label, index) => dates.slice(index + 1).some((other) => overlap(label, other)))).toBe(false);
   await expect(page.getByText("Dataset history", { exact: true }).first()).toBeVisible();
   await expect(
     page.getByText("Historical log mean · geometric drift path", { exact: true }).first(),
