@@ -8,6 +8,12 @@ for name in dir(base):
         globals()[name] = getattr(base, name)
 
 ROOT_URLCONF = "quantvision.legacy_urls"
+DATABASES = {
+    "default": {
+        **base.DATABASES["default"],
+        "OPTIONS": {key: value for key, value in base.DATABASES["default"].get("OPTIONS", {}).items() if key != "transaction_mode"},
+    }
+}
 INSTALLED_APPS = [app for app in base.INSTALLED_APPS if app not in {"workspace", "accounts", "research", "drf_spectacular"}]
 MIDDLEWARE = [item for item in base.MIDDLEWARE if item != "accounts.middleware.SessionEpochMiddleware"]
 CADRISYN_LEGACY_ENABLED = True
