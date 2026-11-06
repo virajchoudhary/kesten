@@ -7,9 +7,9 @@ Authorization: the owner provisionally approved the architecture and requested a
 - [x] Read the poteto-mode principles and all blueprint, approval, and independent-review documents.
 - [x] Phase A: Frame. Preserve the existing database and local work, then produce a working authenticated market workspace rather than a visual mockup.
 - [x] Phase B: Design the workflow. Reuse the settled architecture instead of repeating a design arena. The approved smaller API/worker boundary is the implementation sketch.
-- [ ] Phase C: Run the loop. Establish baseline, stabilize the API/import/configuration boundary, build market data and ownership contracts, integrate the frontend, and test real user paths.
-- [ ] Phase D: Keep the audit trail. Record verifiable units and commit only explicit paths.
-- [ ] Phase E: Verify and hand back. Run checks, independent review, startup/browser proof, and document actual entry points and remaining release gates.
+- [x] Phase C: Run the loop. Establish baseline, stabilize the API/import/configuration boundary, build market data and ownership contracts, integrate the frontend, and test real user paths.
+- [x] Phase D: Keep the audit trail. Record verifiable units and commit only explicit paths.
+- [x] Phase E: Verify and hand back. Run checks, independent review, startup/browser proof, and document actual entry points and remaining release gates.
 
 Architect phases are Ground, Sketch, Agree, Implement, and Scrap. Ground/Sketch reuse the blueprint and contracts below. Agree is the owner's provisional approval. Implement proceeds now. Scrap applies only if actual integration disproves the chosen boundary.
 

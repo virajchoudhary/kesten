@@ -1,0 +1,32 @@
+[
+  {
+    "agent": "/root/stabilize",
+    "session": "01a1aa01-2fda-7b72-83a9-baa92be24b49",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max"
+  },
+  {
+    "agent": "/root/frontend",
+    "session": "01a1aa00-c54d-7622-94fa-28b8262b3cf6",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max"
+  },
+  {
+    "agent": "/root/finish_web",
+    "session": "01a1aba8-06d8-7cf3-83d4-6ae39f057f68",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max"
+  },
+  {
+    "agent": "/root/finish_backend",
+    "session": "01a1aba8-385f-7650-ae2a-e686cbab6b76",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max"
+  },
+  {
+    "agent": "/root/verify_backend",
+    "session": "01a1abbb-3052-7990-bdc2-27cbc56d7f47",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max"
+  }
+]

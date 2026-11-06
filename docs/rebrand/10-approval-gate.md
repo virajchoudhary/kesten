@@ -1,6 +1,6 @@
 # Brand and architecture approval
 
-Status: awaiting owner decision. Discovery is the authorized deliverable. Implementation has not begun.
+Historical discovery gate. On 2026-11-05 the owner provisionally approved the architecture and authorized stabilization and the initial frontend milestone. Cadrisyn is the temporary working name. The implementation record is in [the milestone report](../implementation/STATUS.md). Trademark, domain, repository naming, deployment, and spending approvals remain outstanding.
 
 ## Recommended decision package
 
@@ -33,4 +33,4 @@ No major existing module has been deleted, renamed, or rewritten. The retired pr
 
 Read [the package overview](README.md), then [name screening](02-brand-research.md) and [brand concepts](03-brand-concepts.md). Review [product scope](05-product-specification.md), [architecture](06-architecture.md), and [roadmap](09-migration-roadmap.md). The [audit](01-repository-audit.md), [operating requirements](07-security-data-operations.md), and [quantitative gates](08-quantitative-verification.md) explain why the scope is restrained.
 
-The approval gate is the stopping point for this task. No implementation is implied by the completion of discovery.
+The approval gate was the stopping point for discovery. The later owner authorization permits the bounded implementation recorded above; it does not waive the remaining external-action gates.

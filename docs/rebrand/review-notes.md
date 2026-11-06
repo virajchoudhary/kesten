@@ -1,5 +1,7 @@
 # Independent review and disposition
 
+This document records the discovery review. The owner subsequently authorized stabilization and the initial frontend milestone. See [implementation status](../implementation/STATUS.md) for current test and runtime evidence. The historical discovery verdict below remains intact.
+
 Reviewed by `azure-kmamc/gpt-6-luna` at Max effort through the read-only verifier role. The parent correlated the child metadata with this chat and its final runtime context. This is an independent model review using the same configured provider family, not a diverse-provider panel or an external professional certification.
 
 The reviewer checked the package, decision trail, receipts, representative owning source, working-tree status, and database hash. The review did not run the full application, call a provider, or validate model performance. Sol retains final integration and acceptance.
@@ -29,4 +31,4 @@ Trademark/similarity clearance and a usable independent Google/Bing result revie
 
 Market-data rights, launch jurisdiction/entity, retention policy, and actual spend require owner decisions. The proposed supported dependency combination still needs a clean resolver/install and migration check. The full Django suite, browser paths, penetration testing, deployment, restore rehearsal, and out-of-sample evaluation remain unverified.
 
-The next permitted milestone is the [brand and architecture approval gate](10-approval-gate.md). Existing research modules and the dirty database are preserved.
+These are historical discovery findings. The owner's later provisional architecture approval authorized stabilization and the initial workspace. Current dependency, test, browser, and preservation evidence is in [implementation status](../implementation/STATUS.md); the [approval record](10-approval-gate.md) retains the outstanding external-action boundaries. Existing research modules and the dirty database are preserved.

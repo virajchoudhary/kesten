@@ -1,0 +1,19 @@
+{
+  "verified_at": "2026-11-06T07:06:17.283762+00:00",
+  "command": ".venv/Scripts/python.exe scripts/dev.py",
+  "result": "PASS",
+  "frontend": {
+    "url": "http://127.0.0.1:3000/sign-in",
+    "http_status": 200,
+    "brand_present": true
+  },
+  "api": {
+    "url": "http://127.0.0.1:8000",
+    "smoke_checks_passed": 12,
+    "demo_bars": 253
+  },
+  "launcher_isolation_tests": {
+    "passed": 1
+  },
+  "limits": "Windows local development services only. Production-built frontend was tested separately. No container, licensed provider, Linux startup, or external deployment acceptance."
+}

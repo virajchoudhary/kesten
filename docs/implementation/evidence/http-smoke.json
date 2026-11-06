@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-06",
+  "command": ".venv/Scripts/python.exe scripts/smoke_api.py",
+  "origin": "http://127.0.0.1:8000",
+  "result": "PASS",
+  "visible_bars": 253,
+  "checks": [
+    "health",
+    "anonymous denial",
+    "login CSRF",
+    "sign in",
+    "instrument search",
+    "daily demo provenance",
+    "private cache",
+    "watchlist persistence and restoration",
+    "hostile origin denial",
+    "legacy route exclusion",
+    "market mode gate",
+    "sign out"
+  ],
+  "limits": "Local HTTP development profile, synthetic data. No provider, production, or container validation."
+}

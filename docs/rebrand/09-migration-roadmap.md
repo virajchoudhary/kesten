@@ -1,6 +1,6 @@
 # Implementation roadmap and acceptance gates
 
-Status: plan only. No ticket authorizes work until the [approval gate](10-approval-gate.md) is accepted. Deployment and spending remain separate approvals.
+The owner authorized stabilization and the initial frontend milestone on 2026-11-05. This roadmap still defines the broader release gates. See [implementation status](../implementation/STATUS.md) for actual scope and evidence. Deployment and spending remain separate approvals.
 
 ## Release strategy
 
