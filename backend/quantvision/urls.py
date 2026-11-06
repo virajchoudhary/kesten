@@ -17,8 +17,17 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from drf_spectacular.views import SpectacularAPIView
+from rest_framework.permissions import IsAdminUser
+from workspace.views import health
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("api/", include("api.urls")),
+    path("health/", health),
+    path("api/v1/", include("workspace.urls")),
+    path("api/schema/", SpectacularAPIView.as_view(permission_classes=[IsAdminUser])),
 ]
+
+if getattr(settings, "CADRISYN_LEGACY_ENABLED", False):
+    urlpatterns.append(path("api/", include("api.urls")))

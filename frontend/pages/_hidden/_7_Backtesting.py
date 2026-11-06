@@ -1,17 +1,17 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
-import requests
+from api_client import client as requests
 from datetime import datetime, timedelta
 
 # API Base URL
-API_URL = "http://127.0.0.1:8000/api"
+API_URL = requests.api_url
 
 # ---------------------------------------------------------------------------
 # Page Config
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Point-in-Time Backtesting - Stock Price Predictor",
+    page_title="Point-in-Time Backtesting - Cadrisyn Research",
     layout="wide",
 )
 

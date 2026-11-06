@@ -1,14 +1,14 @@
 import streamlit as st
 import os, sys
-import requests
+from api_client import client as requests
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from components.style import inject_css
 
-API_URL = "http://127.0.0.1:8000/api"
+API_URL = requests.api_url
 
 st.set_page_config(
-    page_title="QuantVision",
+    page_title="Cadrisyn Research",
     page_icon="📈",
     layout="wide"
 )

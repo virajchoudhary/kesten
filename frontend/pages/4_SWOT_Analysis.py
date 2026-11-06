@@ -2,7 +2,7 @@ import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", message=".*keyword arguments.*deprecated.*")
 """
-SWOT Analysis - Stock Price Predictor
+SWOT Analysis - Cadrisyn Research
 =====================================
 Real-time, data-driven SWOT analysis for Indian and US stocks.
 Fetches live fundamentals, news, and peer data → Groq LLM synthesis.
@@ -12,7 +12,7 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import requests as http_requests
+from api_client import client as requests as http_requests
 import sys
 import os
 import math
@@ -23,11 +23,11 @@ _backend = os.path.join(os.path.dirname(__file__), "..", "..", "backend")
 if os.path.isdir(_backend) and _backend not in sys.path:
     sys.path.insert(0, _backend)
 
-API_URL = "http://127.0.0.1:8000/api"
+API_URL = requests.api_url
 
 # ── page config ────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title="SWOT Analysis - Stock Price Predictor",
+    page_title="SWOT Analysis - Cadrisyn Research",
     layout="wide",
     initial_sidebar_state="expanded",
 )

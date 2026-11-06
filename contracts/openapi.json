@@ -1,0 +1,733 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Cadrisyn API",
+        "version": "1.0.0",
+        "description": "Private daily-market research workspace API."
+    },
+    "paths": {
+        "/api/v1/instruments/": {
+            "get": {
+                "operationId": "instruments_search",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "schema": {
+                            "type": "string",
+                            "default": "",
+                            "maxLength": 80
+                        }
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InstrumentList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/instruments/{instrument_id}/bars/": {
+            "get": {
+                "operationId": "instrument_bars",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "instrument_id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "mode",
+                        "schema": {
+                            "enum": [
+                                "demo",
+                                "market"
+                            ],
+                            "type": "string",
+                            "default": "demo",
+                            "minLength": 1
+                        },
+                        "description": "* `demo` - demo\n* `market` - market"
+                    },
+                    {
+                        "in": "query",
+                        "name": "range",
+                        "schema": {
+                            "enum": [
+                                "1m",
+                                "3m",
+                                "6m",
+                                "1y",
+                                "2y"
+                            ],
+                            "type": "string",
+                            "default": "1y",
+                            "minLength": 1
+                        },
+                        "description": "* `1m` - 1m\n* `3m` - 3m\n* `6m` - 6m\n* `1y` - 1y\n* `2y` - 2y"
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarketResponse"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/session/": {
+            "get": {
+                "operationId": "session_read",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    },
+                    {}
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Session"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "session_login",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    },
+                    {}
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Session"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "session_logout",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    },
+                    {}
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No response body"
+                    }
+                }
+            }
+        },
+        "/api/v1/watchlist/": {
+            "get": {
+                "operationId": "watchlist_read",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InstrumentList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "watchlist_add",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WatchlistInput"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WatchlistInput"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WatchlistInput"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InstrumentList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InstrumentList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/watchlist/{instrument_id}/": {
+            "delete": {
+                "operationId": "watchlist_remove",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "instrument_id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No response body"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Bar": {
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "open": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "high": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "low": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "close": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "volume": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "close",
+                    "high",
+                    "low",
+                    "open",
+                    "time",
+                    "volume"
+                ]
+            },
+            "DataModeEnum": {
+                "enum": [
+                    "demo",
+                    "delayed"
+                ],
+                "type": "string",
+                "description": "* `demo` - demo\n* `delayed` - delayed"
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "field_errors": {},
+                    "request_id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "field_errors",
+                    "message",
+                    "request_id"
+                ]
+            },
+            "FreshnessStateEnum": {
+                "enum": [
+                    "current",
+                    "stale",
+                    "partial",
+                    "unavailable"
+                ],
+                "type": "string",
+                "description": "* `current` - current\n* `stale` - stale\n* `partial` - partial\n* `unavailable` - unavailable"
+            },
+            "IndicatorPoint": {
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "value": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "time",
+                    "value"
+                ]
+            },
+            "Indicators": {
+                "type": "object",
+                "properties": {
+                    "sma20": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/IndicatorPoint"
+                        }
+                    },
+                    "sma50": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/IndicatorPoint"
+                        }
+                    },
+                    "rsi14": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/IndicatorPoint"
+                        }
+                    }
+                },
+                "required": [
+                    "rsi14",
+                    "sma20",
+                    "sma50"
+                ]
+            },
+            "Instrument": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "symbol": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "exchange": {
+                        "type": "string"
+                    },
+                    "currency": {
+                        "type": "string"
+                    },
+                    "timezone": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "currency",
+                    "exchange",
+                    "id",
+                    "name",
+                    "symbol",
+                    "timezone"
+                ]
+            },
+            "InstrumentIdEnum": {
+                "enum": [
+                    "xnas-aapl",
+                    "xnas-msft",
+                    "xnas-nvda",
+                    "xnas-amzn",
+                    "xnas-googl",
+                    "xnas-meta",
+                    "xnas-tsla",
+                    "xnas-avgo",
+                    "xnys-jpm",
+                    "xnys-v",
+                    "xnys-ma",
+                    "xnas-wmt",
+                    "xnys-xom",
+                    "xnys-jnj",
+                    "xnys-pg",
+                    "xnys-hd",
+                    "xnys-ko",
+                    "xnys-dis",
+                    "xnas-nflx",
+                    "xnas-cost"
+                ],
+                "type": "string",
+                "description": "* `xnas-aapl` - xnas-aapl\n* `xnas-msft` - xnas-msft\n* `xnas-nvda` - xnas-nvda\n* `xnas-amzn` - xnas-amzn\n* `xnas-googl` - xnas-googl\n* `xnas-meta` - xnas-meta\n* `xnas-tsla` - xnas-tsla\n* `xnas-avgo` - xnas-avgo\n* `xnys-jpm` - xnys-jpm\n* `xnys-v` - xnys-v\n* `xnys-ma` - xnys-ma\n* `xnas-wmt` - xnas-wmt\n* `xnys-xom` - xnys-xom\n* `xnys-jnj` - xnys-jnj\n* `xnys-pg` - xnys-pg\n* `xnys-hd` - xnys-hd\n* `xnys-ko` - xnys-ko\n* `xnys-dis` - xnys-dis\n* `xnas-nflx` - xnas-nflx\n* `xnas-cost` - xnas-cost"
+            },
+            "InstrumentList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Instrument"
+                        }
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            },
+            "Login": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "maxLength": 150
+                    },
+                    "password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 256
+                    }
+                },
+                "required": [
+                    "password",
+                    "username"
+                ]
+            },
+            "MarketResponse": {
+                "type": "object",
+                "properties": {
+                    "instrument": {
+                        "$ref": "#/components/schemas/Instrument"
+                    },
+                    "bars": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Bar"
+                        }
+                    },
+                    "indicators": {
+                        "$ref": "#/components/schemas/Indicators"
+                    },
+                    "provenance": {
+                        "$ref": "#/components/schemas/Provenance"
+                    }
+                },
+                "required": [
+                    "bars",
+                    "indicators",
+                    "instrument",
+                    "provenance"
+                ]
+            },
+            "MarketStateEnum": {
+                "enum": [
+                    "open",
+                    "closed",
+                    "unknown"
+                ],
+                "type": "string",
+                "description": "* `open` - open\n* `closed` - closed\n* `unknown` - unknown"
+            },
+            "Provenance": {
+                "type": "object",
+                "properties": {
+                    "data_mode": {
+                        "$ref": "#/components/schemas/DataModeEnum"
+                    },
+                    "source_id": {
+                        "type": "string"
+                    },
+                    "source_label": {
+                        "type": "string"
+                    },
+                    "as_of": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "fetched_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "price_basis": {
+                        "type": "string"
+                    },
+                    "freshness_state": {
+                        "$ref": "#/components/schemas/FreshnessStateEnum"
+                    },
+                    "market_state": {
+                        "$ref": "#/components/schemas/MarketStateEnum"
+                    },
+                    "delay_seconds": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "snapshot_id": {
+                        "type": "string"
+                    },
+                    "disclaimer": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "as_of",
+                    "data_mode",
+                    "delay_seconds",
+                    "disclaimer",
+                    "fetched_at",
+                    "freshness_state",
+                    "market_state",
+                    "price_basis",
+                    "snapshot_id",
+                    "source_id",
+                    "source_label"
+                ]
+            },
+            "Session": {
+                "type": "object",
+                "properties": {
+                    "authenticated": {
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        ],
+                        "nullable": true
+                    },
+                    "csrf_token": {
+                        "type": "string"
+                    },
+                    "market_data_enabled": {
+                        "type": "boolean"
+                    },
+                    "legacy_enabled": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "authenticated",
+                    "csrf_token",
+                    "legacy_enabled",
+                    "market_data_enabled",
+                    "user"
+                ]
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "is_staff": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "is_staff",
+                    "username"
+                ]
+            },
+            "WatchlistInput": {
+                "type": "object",
+                "properties": {
+                    "instrument_id": {
+                        "$ref": "#/components/schemas/InstrumentIdEnum"
+                    }
+                },
+                "required": [
+                    "instrument_id"
+                ]
+            }
+        },
+        "securitySchemes": {
+            "cookieAuth": {
+                "type": "apiKey",
+                "in": "cookie",
+                "name": "sessionid"
+            }
+        }
+    }
+}

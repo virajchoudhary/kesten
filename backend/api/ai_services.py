@@ -1,40 +1,55 @@
 import os
 import json
+import re
 import numpy as np
 import pandas as pd
 from pathlib import Path
-from groq import Groq
+from functools import lru_cache
 import yfinance as yf
 
-try:
+
+@lru_cache(maxsize=1)
+def _configure_yfinance_cache():
     _YF_CACHE_DIR = Path(__file__).resolve().parents[2] / ".cache" / "yfinance"
     _YF_CACHE_DIR.mkdir(parents=True, exist_ok=True)
     yf.set_tz_cache_location(str(_YF_CACHE_DIR))
-except Exception:
-    pass
+
+
+@lru_cache(maxsize=1)
+def _get_groq_client():
+    api_key = os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        return None
+    try:
+        from groq import Groq
+
+        return Groq(api_key=api_key)
+    except Exception:
+        return None
+
+
+@lru_cache(maxsize=1)
+def _get_polygon_client():
+    api_key = os.environ.get("POLYGON_API_KEY")
+    if not api_key:
+        return None
+    try:
+        from polygon import RESTClient
+
+        return RESTClient(api_key=api_key)
+    except Exception:
+        return None
 
 # --- PyTorch (replaces tensorflow) ---
 import torch
 import torch.nn as nn
 from sklearn.preprocessing import MinMaxScaler
 
-# --- fastembed (replaces sentence-transformers) ---
-try:
-    from fastembed import TextEmbedding
-    embedding_model = TextEmbedding(model_name="BAAI/bge-small-en-v1.5")
-except Exception:
-    embedding_model = None
-
 # --- Riskfolio-Lib (replaces PyPortfolioOpt — HRP, CVaR, Mean-Variance) ---
 import riskfolio as rp
 
 # --- ta (replaces manual RSI/MACD — 130+ indicators, one line each) ---
 import ta
-
-# --- Polygon.io (official market data API — replaces yfinance for price data) ---
-from polygon import RESTClient
-polygon_api_key = os.environ.get("POLYGON_API_KEY")
-polygon_client  = RESTClient(api_key=polygon_api_key) if polygon_api_key else None
 
 # ---------------------------------------------------------------------------
 # LSTM Model Definition (PyTorch)
@@ -72,17 +87,11 @@ def _directional_penalty_loss(pred: torch.Tensor, target: torch.Tensor,
     return mse + penalty_weight * penalty
 
 
-# ---------------------------------------------------------------------------
-# Groq LLM Service
-# ---------------------------------------------------------------------------
-api_key     = os.environ.get("GROQ_API_KEY")
-groq_client = Groq(api_key=api_key) if api_key else None
-
-
 class GroqService:
     @staticmethod
     def chat(message):
-        if not groq_client:
+        client = _get_groq_client()
+        if not client:
             return "Groq API Key not found. This is a mock response."
         try:
             if isinstance(message, list):
@@ -98,18 +107,19 @@ class GroqService:
                     },
                     {"role": "user", "content": message},
                 ]
-            chat_completion = groq_client.chat.completions.create(
+            chat_completion = client.chat.completions.create(
                 messages=messages,
                 model="llama-3.3-70b-versatile",
             )
             return chat_completion.choices[0].message.content
-        except Exception as e:
-            return f"Error interacting with AI: {str(e)}"
+        except Exception:
+            return "The AI service is temporarily unavailable."
 
     @staticmethod
     def analyze_allocation(tickers, allocation, risk_tolerance):
         """Generates AI commentary on the optimized portfolio allocation."""
-        if not groq_client:
+        client = _get_groq_client()
+        if not client:
             return "Groq API Key not found. This is a mock response."
         try:
             prompt = f"""
@@ -123,7 +133,7 @@ class GroqService:
             Highlight the role of key assets (e.g. why is there so much in Tech? or Gold?).
             Keep it concise (3-4 sentences).
             """
-            chat_completion = groq_client.chat.completions.create(
+            chat_completion = client.chat.completions.create(
                 messages=[
                     {"role": "system", "content": "You are a financial expert."},
                     {"role": "user",   "content": prompt},
@@ -131,8 +141,8 @@ class GroqService:
                 model="llama-3.3-70b-versatile",
             )
             return chat_completion.choices[0].message.content
-        except Exception as e:
-            return f"Could not generate analysis: {str(e)}"
+        except Exception:
+            return "Allocation commentary is temporarily unavailable."
 
 
 # ---------------------------------------------------------------------------
@@ -145,6 +155,7 @@ def get_price_history(symbol, period="6mo", target_date=None):
     Primary:  Polygon.io (official API, reliable, no scraping)
     Fallback: yfinance
     """
+    polygon_client = _get_polygon_client()
     if polygon_client:
         try:
             from datetime import datetime, timedelta
@@ -184,6 +195,7 @@ def get_price_history(symbol, period="6mo", target_date=None):
 
     # yfinance fallback.
     try:
+        _configure_yfinance_cache()
         if target_date:
             from datetime import timedelta
             period_days = {"1mo": 30, "3mo": 90, "6mo": 180, "1y": 365, "2y": 730}
@@ -207,6 +219,7 @@ def get_price_history(symbol, period="6mo", target_date=None):
 
 def get_price_window(symbol, start_date, end_date):
     """Fetch price history between two specific dates."""
+    polygon_client = _get_polygon_client()
     if polygon_client:
         try:
             aggs = polygon_client.get_aggs(
@@ -225,6 +238,7 @@ def get_price_window(symbol, start_date, end_date):
         except Exception: pass
     
     try:
+        _configure_yfinance_cache()
         # Backtesting uses auto_adjust=True to match historical charts
         hist = yf.download(symbol, start=start_date.strftime("%Y-%m-%d"), end=end_date.strftime("%Y-%m-%d"), progress=False, threads=False, auto_adjust=True)
         if isinstance(hist, pd.DataFrame) and isinstance(hist.columns, pd.MultiIndex):
@@ -241,6 +255,7 @@ def get_ticker_info(symbol, target_date=None):
     If target_date is provided, we fetch historical price to avoid "future" currentPrice leak.
     """
     info = {}
+    polygon_client = _get_polygon_client()
     if polygon_client:
         try:
             detail = polygon_client.get_ticker_details(symbol.upper())
@@ -261,6 +276,7 @@ def get_ticker_info(symbol, target_date=None):
 
     if not info:
         try:
+            _configure_yfinance_cache()
             info = yf.Ticker(symbol).info
         except Exception:
             info = {}
@@ -1508,6 +1524,7 @@ def compute_fundamental_score(info):
 
 
 def fetch_ticker_features(tickers):
+    _configure_yfinance_cache()
     features = {}
     for ticker in tickers:
         try:
@@ -1524,7 +1541,8 @@ def fetch_ticker_features(tickers):
             except Exception:
                 pass
             sentiment = 0.0
-            if groq_client and headlines:
+            groq_client = _get_groq_client() if headlines else None
+            if groq_client:
                 try:
                     joined = "\n".join(f"- {h}" for h in headlines[:5])
                     resp = groq_client.chat.completions.create(
@@ -1808,6 +1826,7 @@ class RLPortfolioAgent:
         return _ticker_hash(tickers)
 
     def _fetch_data(self, tickers, period="2y", target_date=None):
+        _configure_yfinance_cache()
         frames = {}
         for t in tickers:
             try:
@@ -1845,6 +1864,7 @@ class RLPortfolioAgent:
     def train(self, tickers, timesteps=10000, session_id="default", use_hpo=True, target_date=None):
         if not GYM_AVAILABLE or not SB3_AVAILABLE:
             raise ImportError("Install: pip install stable-baselines3 gymnasium")
+        session_id = _validate_rl_session_id(session_id)
         progress_file = os.path.join(self.PROGRESS_DIR, f"{session_id}.json")
         self._write_progress(progress_file, 0, "fetching_data", total_timesteps=timesteps)
         price_data = self._fetch_data(tickers, target_date=target_date)
@@ -1968,11 +1988,17 @@ class RLPortfolioAgent:
         return float(((peak - arr) / (peak + 1e-8)).max())
 
     def get_progress(self, session_id):
+        session_id = _validate_rl_session_id(session_id)
         pf = os.path.join(self.PROGRESS_DIR, f"{session_id}.json")
         if not os.path.exists(pf):
             return {"progress": 0, "status": "not_started"}
         with open(pf) as fh: return json.load(fh)
 
 
-_rl_agent = RLPortfolioAgent()
-# trigger reload
+_RL_SESSION_ID_RE = re.compile(r"[A-Za-z0-9_-]{1,64}\Z", re.ASCII)
+
+
+def _validate_rl_session_id(session_id):
+    if not isinstance(session_id, str) or not _RL_SESSION_ID_RE.fullmatch(session_id):
+        raise ValueError("Invalid training session identifier.")
+    return session_id

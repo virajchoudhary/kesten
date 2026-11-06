@@ -1,10 +1,10 @@
 import streamlit as st
-import requests
+from api_client import client as requests
 
 # Configuration
-API_URL = "http://127.0.0.1:8000/api"
+API_URL = requests.api_url
 
-st.set_page_config(page_title="AI Chat - QuantVision")
+st.set_page_config(page_title="AI Chat - Cadrisyn Research")
 
 st.title("AI Investment Advisor")
 

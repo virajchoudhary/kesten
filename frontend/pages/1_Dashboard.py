@@ -1,5 +1,5 @@
 import streamlit as st
-import requests
+from api_client import client as requests
 import pandas as pd
 import plotly.graph_objects as go
 import os, sys
@@ -7,9 +7,9 @@ import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from components.style import inject_css, page_header, section_label
 
-API_URL = "http://127.0.0.1:8000/api"
+API_URL = requests.api_url
 
-st.set_page_config(page_title="Dashboard - Stock Price Predictor", page_icon="▲", layout="wide")
+st.set_page_config(page_title="Dashboard - Cadrisyn Research", page_icon="▲", layout="wide")
 
 inject_css()
 target_date = None

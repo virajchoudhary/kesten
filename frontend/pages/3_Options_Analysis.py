@@ -8,7 +8,7 @@ import plotly.graph_objects as go
 import yfinance as yf
 from scipy.optimize import minimize
 from datetime import datetime, timedelta
-import requests
+from api_client import client as requests
 import time
 import uuid
 import os
@@ -22,7 +22,7 @@ if _FRONTEND_ROOT not in sys.path:
 
 from components.black_scholes_ui import render_black_scholes_analyzer
 
-API_URL = "http://127.0.0.1:8000/api"
+API_URL = requests.api_url
 
 # ---------------------------------------------------------------------------
 # Option-chain sourcing
@@ -44,7 +44,7 @@ def _uses_simulated_nse_chain(symbol):
 # Page Config
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Options Analysis - Stock Price Predictor",
+    page_title="Options Analysis - Cadrisyn Research",
     layout="wide",
 )
 target_date = None
@@ -422,6 +422,7 @@ with tab_rl_blend:
                         "target_date": target_date,
                     }, timeout=10)
                     if kick.status_code == 200:
+                        st.session_state.rl_session = kick.json()["session_id"]
                         for _ in range(600):
                             try:
                                 prog = requests.get(

@@ -3,10 +3,11 @@ import pandas as pd
 import re
 import sys
 from pathlib import Path
-from django.test import SimpleTestCase
+from django.contrib.auth.models import User
+from django.test import SimpleTestCase, override_settings
 from unittest.mock import patch
 from django.db.utils import OperationalError, ProgrammingError
-from rest_framework.test import APIRequestFactory
+from rest_framework.test import APIRequestFactory, force_authenticate
 
 from .ai_services import PortfolioOptimizer, TrendPredictor
 from .bl_numpy import (
@@ -60,7 +61,7 @@ class PredictionFallbackTests(SimpleTestCase):
         asset_close = pd.Series(100 * (1.0010 ** np.arange(len(dates))), index=dates)
         benchmark_close = pd.Series(100 * (1.0005 ** np.arange(len(dates))), index=dates)
 
-        def fake_history(symbol, period="2y"):
+        def fake_history(symbol, period="2y", target_date=None):
             if symbol == "AAPL":
                 return pd.DataFrame({"Close": asset_close})
             if symbol == "SPY":
@@ -281,7 +282,7 @@ class PortfolioOptimizerBlendTests(SimpleTestCase):
             "TSLA": 80 * np.cumprod(1 + 0.00190 + 0.00450 * np.sin(steps / 5)),
         }
 
-        def fake_history(symbol, period="2y"):
+        def fake_history(symbol, period="2y", target_date=None):
             close = histories.get(symbol)
             if close is None:
                 return pd.DataFrame()
@@ -321,7 +322,7 @@ class BlackLittermanAllocatorTests(SimpleTestCase):
             "TSLA": 80 * np.cumprod(1 + 0.00220 + 0.00500 * np.sin(steps / 4.5)),
         }
 
-        def fake_history(symbol, period="2y"):
+        def fake_history(symbol, period="2y", target_date=None):
             close = histories.get(symbol)
             if close is None:
                 return pd.DataFrame()
@@ -362,6 +363,7 @@ class BlackLittermanAllocatorTests(SimpleTestCase):
 class BLOptimizationViewTests(SimpleTestCase):
     @patch("api.views._timed_call", return_value="")
     @patch("api.bl_optimizer.run_black_litterman")
+    @override_settings(CADRISYN_LEGACY_ENABLED=True)
     def test_bl_endpoint_passes_risk_tolerance(self, mock_run_black_litterman, _mock_timed_call):
         from .views import BLOptimizationView
 
@@ -386,8 +388,11 @@ class BLOptimizationViewTests(SimpleTestCase):
             {"tickers": ["AAPL", "MSFT"], "risk_tolerance": 0.75},
             format="json",
         )
+        force_authenticate(request, user=User(username="operator", is_staff=True))
         response = BLOptimizationView.as_view()(request)
 
         self.assertEqual(response.status_code, 200)
-        mock_run_black_litterman.assert_called_once_with(["AAPL", "MSFT"], 0.75)
+        mock_run_black_litterman.assert_called_once_with(
+            ["AAPL", "MSFT"], 0.75, target_date=None
+        )
 
