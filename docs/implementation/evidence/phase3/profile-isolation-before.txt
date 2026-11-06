@@ -1,0 +1,16 @@
+.F
+======================================================================
+FAIL: test_workspace_and_legacy_keep_separate_sqlite_transaction_modes (test_dev_environment.DevelopmentIsolationTests.test_workspace_and_legacy_keep_separate_sqlite_transaction_modes) (module='quantvision.legacy_settings')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\stock price predictor\tests\test_dev_environment.py", line 23, in test_workspace_and_legacy_keep_separate_sqlite_transaction_modes
+    self.assertEqual(json.loads(result.stdout), expected)
+AssertionError: 'IMMEDIATE' != 'DEFERRED'
+- IMMEDIATE
++ DEFERRED
+
+
+----------------------------------------------------------------------
+Ran 2 tests in 2.515s
+
+FAILED (failures=1)

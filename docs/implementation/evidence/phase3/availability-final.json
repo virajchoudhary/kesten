@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-11-06T16:24:04.305788+00:00",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:3000/app/research",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3000/app/markets",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:3000/app/account",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/health/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:8000/health/ready/",
+      "status": 200
+    }
+  ],
+  "scope": "Availability only; authenticated workflows covered by separate browser and API receipts."
+}

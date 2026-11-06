@@ -33,6 +33,12 @@ The default chart is an explicitly synthetic demonstration dataset. It contains 
 
 Set both `CADRISYN_MARKET_DATA_ENABLED=true` and `CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED=true` only for permitted local personal research with Yahoo daily history through yfinance. The adapter is disabled outside development. No licensed live feed, guaranteed delay or redistribution entitlement is configured. Provider failures remain unavailable and never substitute demonstration data.
 
+## Private forecast research
+
+Open [forecast research](http://127.0.0.1:3000/app/research) after starting the workspace. Explicitly install the reproducible development fixture with `.venv/Scripts/python.exe scripts/research.py seed --owner analyst`. The private workflow compares last-close and expanding historical-log-mean references at one or five exchange sessions, saves provenance and chronological evaluations, and supports exact replay.
+
+The fixture is synthetic. No empirical forecasting performance, advanced ML model, prediction interval or trading strategy is approved. Historical imports require a staff operator, reviewed data rights and per-record availability/action evidence. See [research operations](docs/implementation/RESEARCH-OPERATIONS.md), [Phase 3 evidence](docs/implementation/PHASE3.md), and the model disposition table there. Phase 3 PostgreSQL/container execution is blocked on this host by Docker startup failure; the source workflow is verified.
+
 ## Run checks
 
 ```powershell

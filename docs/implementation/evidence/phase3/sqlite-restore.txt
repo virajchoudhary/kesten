@@ -1,0 +1,1 @@
+SQLite restore completed at: C:\stock price predictor\.local\phase3-recovery-verified.sqlite3

@@ -1,0 +1,10 @@
+{
+  "phase": "Phase3",
+  "result": "UNVERIFIED",
+  "observed_error": "Docker reports WSL_E_DISTRO_NOT_FOUND and an existing main storage path conflict",
+  "helper_service": "Windows denied normal service-control access",
+  "alternative_check": "No postgres/psql on Windows PATH or in the checked Ubuntu standard installation path",
+  "no_manual_factory_reset_or_volume_deletion": true,
+  "new_postgresql_tests_skipped": 4,
+  "phase2_receipts_are_not_phase3_validation": true
+}

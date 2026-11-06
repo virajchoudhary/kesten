@@ -1,0 +1,58 @@
+[
+  {
+    "agent": "/root/phase3_science_audit",
+    "session": "01a1b12c-ccd7-7941-a48c-ba385101fb74",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "Latest own child turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/phase3_integration_audit",
+    "session": "01a1b12d-218d-70d1-8c60-de645cf88ab5",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "Latest own child turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/phase3_quant_engine",
+    "session": "01a1b138-5cd9-7e60-b4d5-db9b40cd12e5",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "Latest own child turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/phase3_research_ui",
+    "session": "01a1b13a-0ef8-7603-b1d2-af4288399e6b",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "Latest own child turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/phase3_scientific_review",
+    "session": "01a1b14e-4c6a-7d21-8212-c122eace9a4e",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "Latest own child turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/phase3_engineering_review",
+    "session": "01a1b153-eca2-7e20-869b-0d2e18587b12",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "Latest own child turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/phase3_accept_integration",
+    "session": "01a1b163-1be2-7370-8b7e-bb94c17686e1",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "Latest own child turn_context; inherited parent contexts excluded"
+  },
+  {
+    "agent": "/root/phase3_final_acceptance",
+    "session": "01a1b17f-1f22-7f33-a7e1-3dfacc72c59a",
+    "model": "azure-kmamc/gpt-6-luna",
+    "effort": "max",
+    "evidence": "Latest own child turn_context; inherited parent contexts excluded"
+  }
+]

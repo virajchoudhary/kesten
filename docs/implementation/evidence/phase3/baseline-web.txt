@@ -1,0 +1,12 @@
+
+> cadrisyn-web@0.1.0 test
+> vitest run
+
+
+ RUN  v5.1.0 C:/stock price predictor/web
+
+
+ Test Files  11 passed (11)
+      Tests  29 passed (29)
+   Start at  19:35:59
+   Duration  43.74s (environment 75%, setup 14%, import 8%, tests 2%, transform 1%)

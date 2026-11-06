@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "source": "actual authenticated production-built workspace",
+  "light_chart": true,
+  "dark_chart": true,
+  "mobile_width": 390,
+  "mobile_horizontal_overflow": false,
+  "synthetic_fixture": true,
+  "axis_label_collisions": 0,
+  "bounded_mobile_history": true
+}

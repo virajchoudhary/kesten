@@ -1,0 +1,2 @@
+Backup created: C:\stock price predictor\.local\backups\phase3-complete.sqlite3
+Manifest created: C:\stock price predictor\.local\backups\phase3-complete.sqlite3.manifest.json

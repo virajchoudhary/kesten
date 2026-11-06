@@ -1,0 +1,11 @@
+{
+  "result": "PASS",
+  "restoration_target": "separate SQLite workspace",
+  "run_id": "2fd3c59b-73d2-4d5b-a759-3f4bc44f6e1b",
+  "dataset_version": "9203cba1c9d58f65505fc7c05120669be1829719c7d033d58ab8155387a47a94",
+  "current_code_replay_matches": true,
+  "sign_in": true,
+  "private_result_read": true,
+  "source_database_written": false,
+  "empirical_performance_established": false
+}

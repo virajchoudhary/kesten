@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "preserved_runtime_files_checked": 496,
+  "missing_or_changed_runtime_files": [],
+  "original_research_artifacts_checked": 17,
+  "model_archives_checked": 10,
+  "missing_or_changed_research_artifacts": [],
+  "original_database_sha256": "93745BFC1A3149A0F77BBCDD1A50F712195750879F3FB313728AB9811F99715B",
+  "original_database_bytes": 204800
+}

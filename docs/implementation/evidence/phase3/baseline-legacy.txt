@@ -1,0 +1,31 @@
+test_bl_endpoint_passes_risk_tolerance (api.tests.BLOptimizationViewTests.test_bl_endpoint_passes_risk_tolerance) ... ok
+test_run_black_litterman_changes_meaningfully_across_risk_levels (api.tests.BlackLittermanAllocatorTests.test_run_black_litterman_changes_meaningfully_across_risk_levels) ... ok
+test_compute_asset_betas_uses_shared_return_history (api.tests.BlackLittermanAnalyticsTests.test_compute_asset_betas_uses_shared_return_history) ... ok
+test_run_bl_analysis_returns_explicit_expected_and_realized_fields (api.tests.BlackLittermanAnalyticsTests.test_run_bl_analysis_returns_explicit_expected_and_realized_fields) ... ok
+test_select_market_benchmark_uses_nifty_for_indian_tickers (api.tests.BlackLittermanAnalyticsTests.test_select_market_benchmark_uses_nifty_for_indian_tickers) ... ok
+test_select_market_benchmark_uses_sp500_for_us_tickers (api.tests.BlackLittermanAnalyticsTests.test_select_market_benchmark_uses_sp500_for_us_tickers) ... ok
+test_confidence_calibration_moves_posterior_toward_view (api.tests.BlackLittermanOmegaTests.test_confidence_calibration_moves_posterior_toward_view) ... ok
+test_backend_requirements_no_longer_include_jugaad (api.tests.BlackScholesEngineTests.test_backend_requirements_no_longer_include_jugaad) ... ok
+test_dividend_yield_reduces_call_delta (api.tests.BlackScholesEngineTests.test_dividend_yield_reduces_call_delta) ... ok
+test_implied_volatility_recovers_theoretical_sigma (api.tests.BlackScholesEngineTests.test_implied_volatility_recovers_theoretical_sigma) ... ok
+test_options_page_uses_shared_black_scholes_renderer (api.tests.BlackScholesEngineTests.test_options_page_uses_shared_black_scholes_renderer) ... ok
+test_put_call_parity_holds_with_dividend_yield (api.tests.BlackScholesEngineTests.test_put_call_parity_holds_with_dividend_yield) ... ok
+test_standalone_black_scholes_sidebar_page_is_removed (api.tests.BlackScholesEngineTests.test_standalone_black_scholes_sidebar_page_is_removed) ... ok
+test_queue_ga_for_ticker_dispatches_when_broker_available (api.tests.CeleryQueueHelperTests.test_queue_ga_for_ticker_dispatches_when_broker_available) ... ok
+test_queue_ga_for_ticker_skips_when_broker_unavailable (api.tests.CeleryQueueHelperTests.test_queue_ga_for_ticker_skips_when_broker_unavailable) ... ok
+test_macos_launchers_exist_and_reference_unix_start_scripts (api.tests.LauncherScriptTests.test_macos_launchers_exist_and_reference_unix_start_scripts) ... ok
+test_blend_profiles_interpolates_smoothly (api.tests.PortfolioOptimizerBlendTests.test_blend_profiles_interpolates_smoothly) ... ok
+test_optimize_changes_meaningfully_across_risk_levels (api.tests.PortfolioOptimizerBlendTests.test_optimize_changes_meaningfully_across_risk_levels) ... ok
+test_forecast_price_uses_historical_mean_fallback_when_lstm_disabled (api.tests.PredictionFallbackTests.test_forecast_price_uses_historical_mean_fallback_when_lstm_disabled) ... ok
+test_resolve_report_universe_keeps_zero_weight_requested_assets (api.tests.ReportUniverseTests.test_resolve_report_universe_keeps_zero_weight_requested_assets) ... ok
+test_get_watchlist_returns_empty_list_on_schema_errors (api.tests.SearchedTickerResilienceTests.test_get_watchlist_returns_empty_list_on_schema_errors) ... ok
+test_log_ignores_database_schema_errors (api.tests.SearchedTickerResilienceTests.test_log_ignores_database_schema_errors) ... ok
+test_streamlit_page_filenames_are_unique_after_numeric_prefix (api.tests.StreamlitPageConfigTests.test_streamlit_page_filenames_are_unique_after_numeric_prefix) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 2.505s
+
+OK
+Found 23 test(s).
+Skipping setup of unused database(s): default.
+System check identified no issues (0 silenced).

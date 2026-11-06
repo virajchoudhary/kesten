@@ -1,0 +1,14 @@
+{
+  "result": "FAIL",
+  "concurrent_sign_ins": [
+    {
+      "status": 503,
+      "code": "database_unavailable"
+    },
+    {
+      "status": 200,
+      "code": "authenticated"
+    }
+  ],
+  "database": "isolated SQLite workspace"
+}
