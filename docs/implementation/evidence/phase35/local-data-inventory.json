@@ -1,0 +1,15 @@
+{
+  "local_research_dataset_categories": [
+    [
+      "synthetic_fixture",
+      1
+    ]
+  ],
+  "local_chart_snapshot_categories": [
+    [
+      "demo",
+      2
+    ]
+  ],
+  "qualification": "No local historical research dataset; snapshots are not PIT manifests."
+}
