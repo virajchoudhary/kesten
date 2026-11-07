@@ -1,0 +1,4430 @@
+{
+  "scope": "Final application images only; not discarded build stages or database/cache/gateway images. No suppressions.",
+  "threshold": "medium",
+  "result": "FAIL",
+  "images": [
+    {
+      "image": "cadrisyn-phase4-api:qualified",
+      "image_id": "sha256:971b1dea54b33b2dfc4e95eaf2471d647e32ca923b25d9a50016b77e3118e5dd",
+      "grype_version": "0.121.2",
+      "database": {
+        "built": "2026-11-06T06:21:59Z",
+        "valid": true,
+        "schemaVersion": "v6.1.10"
+      },
+      "distro": {
+        "name": "debian",
+        "version": "13.7",
+        "idLike": []
+      },
+      "counts": {
+        "High": 96,
+        "Critical": 2,
+        "Medium": 90,
+        "Negligible": 77,
+        "Low": 18
+      },
+      "matches": [
+        {
+          "package": "krb5",
+          "version": "1.21.3",
+          "type": "binary",
+          "id": "CVE-2007-5894",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-18798",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.5.8",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-63076",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.0.22",
+              "3.4.7",
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.0.22",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.7",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.8",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-63073",
+          "severity": "Critical",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.4.7",
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.4.7",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.8",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-14457",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.4.7",
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.4.7",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.8",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-63072",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "1.1.1zi",
+              "3.0.22",
+              "3.4.7",
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "1.1.1zi",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.0.22",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.7",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.8",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-84782",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "1.0.2zs",
+              "1.1.1zj",
+              "3.0.23",
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "1.0.2zs",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "1.1.1zj",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.0.23",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-75806",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "1.1.1zj",
+              "3.0.23",
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "1.1.1zj",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.0.23",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-14456",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.5.8",
+                "date": "2026-08-19",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-19",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-19",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-54873",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libperl5.40",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-82560",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "perl",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-82560",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "perl-base",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-82560",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "perl-modules-5.40",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-82560",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-54874",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "1.0.2zr",
+              "1.1.1zi",
+              "3.0.22",
+              "3.4.7",
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "1.0.2zr",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "1.1.1zi",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.0.22",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.7",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.8",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "python",
+          "version": "3.12.16",
+          "type": "binary",
+          "id": "CVE-2025-12781",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.13.10",
+              "3.14.1",
+              "3.15.0a2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.13.10",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.1",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0a2",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.13.10",
+                "date": "2026-06-18",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.1",
+                "date": "2026-06-18",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0a2",
+                "date": "2026-06-18",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "krb5",
+          "version": "1.21.3",
+          "type": "binary",
+          "id": "CVE-2026-40355",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "gzip",
+          "version": "1.13",
+          "type": "binary",
+          "id": "CVE-2026-41992",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-84784",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "zlib1g",
+          "version": "1:1.3.dfsg+really1.3.1-1+b1",
+          "type": "deb",
+          "id": "CVE-2026-76844",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "krb5",
+          "version": "1.21.3",
+          "type": "binary",
+          "id": "CVE-2026-40356",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-63075",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.4.7",
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.4.7",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.8",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libperl5.40",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-9538",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "perl",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-9538",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "perl-base",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-9538",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "perl-modules-5.40",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-9538",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "zlib1g",
+          "version": "1:1.3.dfsg+really1.3.1-1+b1",
+          "type": "deb",
+          "id": "CVE-2026-85091",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libncursesw6",
+          "version": "6.5+20250216-2",
+          "type": "deb",
+          "id": "CVE-2025-69720",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libtinfo6",
+          "version": "6.5+20250216-2",
+          "type": "deb",
+          "id": "CVE-2025-69720",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "ncurses-base",
+          "version": "6.5+20250216-2",
+          "type": "deb",
+          "id": "CVE-2025-69720",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "ncurses-bin",
+          "version": "6.5+20250216-2",
+          "type": "deb",
+          "id": "CVE-2025-69720",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libldap2",
+          "version": "2.6.10+dfsg-1",
+          "type": "deb",
+          "id": "CVE-2017-17740",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "gcc-14",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-95619",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "gcc-14-base",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-95619",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libgcc-s1",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-95619",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libstdc++6",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-95619",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-63074",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.0.22",
+              "3.4.7",
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.0.22",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.7",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.8",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libgssapi-krb5-2",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-107708",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libk5crypto3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-107708",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libkrb5-3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-107708",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libkrb5support0",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-107708",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libgssapi-krb5-2",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-107778",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libk5crypto3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-107778",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libkrb5-3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-107778",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libkrb5support0",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-107778",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "krb5",
+          "version": "1.21.3",
+          "type": "binary",
+          "id": "CVE-2026-107778",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-72897",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2018-20796",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2018-20796",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "krb5",
+          "version": "1.21.3",
+          "type": "binary",
+          "id": "CVE-2026-107708",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "libsasl2-2",
+          "version": "2.1.28+dfsg1-9",
+          "type": "deb",
+          "id": "CVE-2026-107161",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsasl2-modules-db",
+          "version": "2.1.28+dfsg1-9",
+          "type": "deb",
+          "id": "CVE-2026-107161",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-75804",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "krb5",
+          "version": "1.21.3",
+          "type": "binary",
+          "id": "CVE-2007-3149",
+          "severity": "High",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "libldap2",
+          "version": "2.6.10+dfsg-1",
+          "type": "deb",
+          "id": "CVE-2015-3276",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-42772",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "gcc-14",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-102010",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "gcc-14-base",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-102010",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libgcc-s1",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-102010",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libstdc++6",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-102010",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-35191",
+          "severity": "Low",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "python",
+          "version": "3.12.16",
+          "type": "binary",
+          "id": "CVE-2025-15366",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.13.15",
+              "3.14.7",
+              "3.15.0a6"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.13.15",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.7",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0a6",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.13.15",
+                "date": "2026-08-12",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.7",
+                "date": "2026-08-12",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0a6",
+                "date": "2026-03-03",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "tar",
+          "version": "1.35+dfsg-3.1",
+          "type": "deb",
+          "id": "CVE-2026-5704",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-75803",
+          "severity": "Critical",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.0.22",
+              "3.4.7",
+              "3.5.8",
+              "3.6.4",
+              "4.0.2"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.0.22",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.7",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.8",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.4",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.2",
+                "date": "2026-08-29",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "bsdutils",
+          "version": "1:2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libblkid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "liblastlog2-2",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libmount1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsmartcols1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libuuid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "login",
+          "version": "1:4.16.0-2+really2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "mount",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-3184",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-19499",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-19499",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119379",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-84243",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-84243",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "gcc-14",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-114691",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "gcc-14-base",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-114691",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libgcc-s1",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-114691",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libstdc++6",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-114691",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-6238",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-6238",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "python",
+          "version": "3.12.16",
+          "type": "binary",
+          "id": "CVE-2025-15367",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.15.0a6"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.15.0a6",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0a6",
+                "date": "2026-03-03",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "tar",
+          "version": "1.35+dfsg-3.1",
+          "type": "deb",
+          "id": "CVE-2005-2541",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-77117",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-80489",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-77117",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-80489",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libpam-modules",
+          "version": "1.7.0-5",
+          "type": "deb",
+          "id": "CVE-2026-54411",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libpam-modules-bin",
+          "version": "1.7.0-5",
+          "type": "deb",
+          "id": "CVE-2026-54411",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libpam-runtime",
+          "version": "1.7.0-5",
+          "type": "deb",
+          "id": "CVE-2026-54411",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libpam0g",
+          "version": "1.7.0-5",
+          "type": "deb",
+          "id": "CVE-2026-54411",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119374",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "bsdutils",
+          "version": "1:2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libblkid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "liblastlog2-2",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libmount1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsmartcols1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libuuid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "login",
+          "version": "1:4.16.0-2+really2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "mount",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78408",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "gcc-14",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-115455",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "gcc-14-base",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-115455",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libgcc-s1",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-115455",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libstdc++6",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-115455",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-5435",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-5435",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "bsdutils",
+          "version": "1:2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libblkid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "liblastlog2-2",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libmount1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsmartcols1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libuuid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "login",
+          "version": "1:4.16.0-2+really2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "mount",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-76642",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-75805",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.0.23",
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.0.23",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-35189",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "1.0.2zs",
+              "1.1.1zj",
+              "3.0.23",
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "1.0.2zs",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "1.1.1zj",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.0.23",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-1010022",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-1010022",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-8674",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-8674",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-1010024",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-1010024",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-54875",
+          "severity": "Low",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-1010023",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-1010023",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "bsdutils",
+          "version": "1:2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libblkid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "liblastlog2-2",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libmount1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsmartcols1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libuuid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "login",
+          "version": "1:4.16.0-2+really2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "mount",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78410",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-54872",
+          "severity": "Low",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "1.0.2zs",
+              "1.1.1zj",
+              "3.0.23",
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "1.0.2zs",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "1.1.1zj",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.0.23",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119378",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "login.defs",
+          "version": "1:4.17.4-2",
+          "type": "deb",
+          "id": "CVE-2024-56433",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "passwd",
+          "version": "1:4.17.4-2",
+          "type": "deb",
+          "id": "CVE-2024-56433",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "shadow",
+          "version": "1:4.17.4-2",
+          "type": "deb",
+          "id": "CVE-2024-56433",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "bsdutils",
+          "version": "1:2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libblkid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "liblastlog2-2",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libmount1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsmartcols1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libuuid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "login",
+          "version": "1:4.16.0-2+really2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "mount",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-78409",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "python",
+          "version": "3.12.16",
+          "type": "binary",
+          "id": "CVE-2026-116566",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.16.0"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.16.0",
+                "date": "2026-11-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "openssl",
+          "version": "3.5.7",
+          "type": "binary",
+          "id": "CVE-2026-77696",
+          "severity": "Low",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "1.1.1zj",
+              "3.0.23",
+              "3.4.8",
+              "3.5.9",
+              "3.6.5",
+              "4.0.3"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "1.1.1zj",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.0.23",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.4.8",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.5.9",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.6.5",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              },
+              {
+                "version": "4.0.3",
+                "date": "2026-10-05",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2010-4756",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2010-4756",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "zlib1g",
+          "version": "1:1.3.dfsg+really1.3.1-1+b1",
+          "type": "deb",
+          "id": "CVE-2026-27171",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119373",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-6791",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-6791",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libldap2",
+          "version": "2.6.10+dfsg-1",
+          "type": "deb",
+          "id": "CVE-2020-15719",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-1010025",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-1010025",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-9192",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2019-9192",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-19542",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-19542",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119375",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119371",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libacl1",
+          "version": "2.3.2-2+b1",
+          "type": "deb",
+          "id": "CVE-2026-54369",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-89092",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-89092",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119376",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "python",
+          "version": "3.12.16",
+          "type": "binary",
+          "id": "CVE-2026-3446",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.13.13",
+              "3.14.4",
+              "3.15.0a8"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.13.13",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.4",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0a8",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.13.13",
+                "date": "2026-04-14",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.4",
+                "date": "2026-04-14",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0a8",
+                "date": "2026-04-14",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libgssapi-krb5-2",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2018-5709",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libk5crypto3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2018-5709",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libkrb5-3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2018-5709",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libkrb5support0",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2018-5709",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119591",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libncursesw6",
+          "version": "6.5+20250216-2",
+          "type": "deb",
+          "id": "CVE-2025-6141",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libtinfo6",
+          "version": "6.5+20250216-2",
+          "type": "deb",
+          "id": "CVE-2025-6141",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "ncurses-base",
+          "version": "6.5+20250216-2",
+          "type": "deb",
+          "id": "CVE-2025-6141",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "ncurses-bin",
+          "version": "6.5+20250216-2",
+          "type": "deb",
+          "id": "CVE-2025-6141",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "python",
+          "version": "3.12.16",
+          "type": "binary",
+          "id": "CVE-2026-6019",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.13.14",
+              "3.14.5rc1",
+              "3.15.0b1"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.13.14",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.5rc1",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0b1",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.13.14",
+                "date": "2026-06-25",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.5rc1",
+                "date": "2026-06-25",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0b1",
+                "date": "2026-06-25",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-97399",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-97399",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "python",
+          "version": "3.12.16",
+          "type": "binary",
+          "id": "CVE-2026-103995",
+          "severity": "Low",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.16.0"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.16.0",
+                "date": "2026-10-31",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "libperl5.40",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-15534",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "perl",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-15534",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "perl-base",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-15534",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "perl-modules-5.40",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-15534",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119372",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsystemd0",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-15059",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libudev1",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-15059",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "systemd",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-15059",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-50812",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-50813",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libattr1",
+          "version": "1:2.5.2-3",
+          "type": "deb",
+          "id": "CVE-2026-54371",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2021-45346",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-18374",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-18374",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "tar",
+          "version": "1.35+dfsg-3.1",
+          "type": "deb",
+          "id": "CVE-2026-18508",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libacl1",
+          "version": "2.3.2-2+b1",
+          "type": "deb",
+          "id": "CVE-2026-54370",
+          "severity": "High",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libbz2-1.0",
+          "version": "1.0.8-6",
+          "type": "deb",
+          "id": "CVE-2026-42250",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "gcc-14",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-114690",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "gcc-14-base",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-114690",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libgcc-s1",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-114690",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libstdc++6",
+          "version": "14.2.0-19",
+          "type": "deb",
+          "id": "CVE-2026-114690",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "apt",
+          "version": "3.0.4",
+          "type": "deb",
+          "id": "CVE-2011-3374",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libapt-pkg7.0",
+          "version": "3.0.4",
+          "type": "deb",
+          "id": "CVE-2011-3374",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libgssapi-krb5-2",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2024-26461",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libk5crypto3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2024-26461",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libkrb5-3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2024-26461",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libkrb5support0",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2024-26461",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-86805",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-86805",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsystemd0",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-40228",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libudev1",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-40228",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "systemd",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-40228",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "gzip",
+          "version": "1.13",
+          "type": "binary",
+          "id": "CVE-2026-41991",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "login.defs",
+          "version": "1:4.17.4-2",
+          "type": "deb",
+          "id": "CVE-2007-5686",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "passwd",
+          "version": "1:4.17.4-2",
+          "type": "deb",
+          "id": "CVE-2007-5686",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "shadow",
+          "version": "1:4.17.4-2",
+          "type": "deb",
+          "id": "CVE-2007-5686",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libgssapi-krb5-2",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2024-26458",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libk5crypto3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2024-26458",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libkrb5-3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2024-26458",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libkrb5support0",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2024-26458",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2026-119377",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "tar",
+          "version": "1.35+dfsg-3.1",
+          "type": "deb",
+          "id": "CVE-2026-18477",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-95818",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-95818",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libsystemd0",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-16742",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libudev1",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-16742",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "systemd",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-16742",
+          "severity": "Medium",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc-bin",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-6368",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libc6",
+          "version": "2.41-12+deb13u4",
+          "type": "deb",
+          "id": "CVE-2026-6368",
+          "severity": "Low",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "wont-fix"
+          }
+        },
+        {
+          "package": "libperl5.40",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2011-4116",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "perl",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2011-4116",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "perl-base",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2011-4116",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "perl-modules-5.40",
+          "version": "5.40.1-6+deb13u1",
+          "type": "deb",
+          "id": "CVE-2011-4116",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libsystemd0",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2013-4392",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libudev1",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2013-4392",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "systemd",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2013-4392",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libsqlite3-0",
+          "version": "3.46.1-7+deb13u2",
+          "type": "deb",
+          "id": "CVE-2025-70873",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "bsdutils",
+          "version": "1:2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libblkid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "liblastlog2-2",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libmount1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libsmartcols1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libuuid1",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "login",
+          "version": "1:4.16.0-2+really2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "mount",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "util-linux",
+          "version": "2.41.5-0+deb13u1",
+          "type": "deb",
+          "id": "CVE-2022-0563",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libsystemd0",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2023-31439",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libudev1",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2023-31439",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "systemd",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2023-31439",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libldap2",
+          "version": "2.6.10+dfsg-1",
+          "type": "deb",
+          "id": "CVE-2017-14159",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "coreutils",
+          "version": "9.7-3",
+          "type": "deb",
+          "id": "CVE-2017-18018",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libsystemd0",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2023-31437",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libudev1",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2023-31437",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "systemd",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2023-31437",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "diffutils",
+          "version": "1:3.10-4",
+          "type": "deb",
+          "id": "CVE-2026-53910",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libsystemd0",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2023-31438",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libudev1",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2023-31438",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "systemd",
+          "version": "257.13-1~deb13u1",
+          "type": "deb",
+          "id": "CVE-2023-31438",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "coreutils",
+          "version": "9.7-3",
+          "type": "deb",
+          "id": "CVE-2025-5278",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libgssapi-krb5-2",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-11850",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libk5crypto3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-11850",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libkrb5-3",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-11850",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libkrb5support0",
+          "version": "1.21.3-5+deb13u1",
+          "type": "deb",
+          "id": "CVE-2026-11850",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "python",
+          "version": "3.12.16",
+          "type": "binary",
+          "id": "CVE-2026-3479",
+          "severity": "Negligible",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [
+              "3.13.13",
+              "3.14.4",
+              "3.15.0a8"
+            ],
+            "state": "fixed",
+            "available": [
+              {
+                "version": "3.13.13",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.4",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0a8",
+                "date": "2026-09-22",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.13.13",
+                "date": "2026-04-10",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.14.4",
+                "date": "2026-04-10",
+                "kind": "first-observed"
+              },
+              {
+                "version": "3.15.0a8",
+                "date": "2026-04-10",
+                "kind": "first-observed"
+              }
+            ]
+          }
+        },
+        {
+          "package": "coreutils",
+          "version": "9.7-3",
+          "type": "deb",
+          "id": "CVE-2026-56392",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "libldap2",
+          "version": "2.6.10+dfsg-1",
+          "type": "deb",
+          "id": "CVE-2026-22185",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "coreutils",
+          "version": "9.7-3",
+          "type": "deb",
+          "id": "CVE-2026-56391",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "dash",
+          "version": "0.5.12-12",
+          "type": "deb",
+          "id": "CVE-2026-102474",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        },
+        {
+          "package": "dash",
+          "version": "0.5.12-12",
+          "type": "deb",
+          "id": "CVE-2026-102473",
+          "severity": "Negligible",
+          "namespace": "debian:distro:debian:13",
+          "fix": {
+            "versions": [],
+            "state": "not-fixed"
+          }
+        }
+      ]
+    },
+    {
+      "image": "cadrisyn-phase4-web:accepted",
+      "image_id": "sha256:3daba4c3ebeba2bc83cebf84fad37d0137a66ef72fc8b41e2c17f1c72eff45f4",
+      "grype_version": "0.121.2",
+      "database": {
+        "built": "2026-11-06T06:21:59Z",
+        "valid": true,
+        "schemaVersion": "v6.1.10"
+      },
+      "distro": {
+        "name": "alpine",
+        "version": "3.24.4",
+        "idLike": []
+      },
+      "counts": {
+        "Medium": 3
+      },
+      "matches": [
+        {
+          "package": "busybox",
+          "version": "1.37.0-r31",
+          "type": "apk",
+          "id": "CVE-2025-60876",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "busybox-binsh",
+          "version": "1.37.0-r31",
+          "type": "apk",
+          "id": "CVE-2025-60876",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        },
+        {
+          "package": "ssl_client",
+          "version": "1.37.0-r31",
+          "type": "apk",
+          "id": "CVE-2025-60876",
+          "severity": "Medium",
+          "namespace": "nvd:cpe",
+          "fix": {
+            "versions": [],
+            "state": ""
+          }
+        }
+      ]
+    }
+  ]
+}

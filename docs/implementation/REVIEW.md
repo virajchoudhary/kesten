@@ -1,6 +1,6 @@
 # Implementation review record
 
-These are independent read-only reviews by Azure GPT-6 Luna at Max effort, followed by parent-owned corrections and runtime acceptance. They are not a provider-diverse panel, penetration test, legal clearance, or quantitative-model certification.
+These independent read-only reviews are followed by parent-owned corrections and runtime acceptance. Earlier foundation reviews used Azure GPT-6 Luna at Max effort. Phase-specific identity evidence and limits are recorded below. These reviews are not a provider-diverse panel, penetration test, legal clearance, or quantitative-model certification.
 
 ## Backend review
 
@@ -78,3 +78,25 @@ Worker routes are verified by the parent from each task's own latest runtime con
 The original database and protected file hashes remain preserved. The new qualification configuration does not alter the default application profile. The supported 23-case legacy selection passes; this does not certify the old import-time diagnostic/network scripts or repair the isolated legacy dependency conflicts. Current numerical correctness remains distinct from empirical market validation. Hosted CI and external production/security-state recovery gates remain open as specified in [Phase 3.5](PHASE35.md).
 
 A separate bounded reader returned PASS for the corrected working-tree instructions and service wording. It reported FAIL for the earlier staged snapshot it observed before restaging. The parent subsequently verifies the final staged files equal the corrected working tree in [the index comparison](evidence/phase35/index-correction-verification.json). [The raw correction review](evidence/phase35/documentation-acceptance.json) retains both verdicts. [The structured command receipt](evidence/phase35/documented-fixture-setup.json) binds the documented stdin body hash, literal interpreter arguments and successful exit code. This acceptance covers the two documentation corrections only; no further independent runtime or global production PASS is implied.
+
+## Phase 4
+
+Two initial source readers proposed bounded workflow and research-integrity designs. The chosen implementation uses a setup/history rail, an interactive result canvas, additive summary history, exact existing replay checks, and synthetic-only exports. Comparisons retain two immutable run IDs in the URL rather than introducing a database entity. Both numerical references remain evaluated; no training or unsupported model configuration is implied.
+
+The backend acceptance reader returned FAIL for a dataset-version discrepancy in history summaries. The correction selects both stored result and dataset versions and fails the page with a sanitized 503 if they disagree. It does not silently assign the current version to an old result. A new test first reproduced 200 where 503 was required, then passed after the correction. A later independent frontend/integrity reader confirmed this guard and the raw-result export/checksum implementation by source inspection. The full final PostgreSQL selection passes 129 tests.
+
+The frontend acceptance reader returned Standards PASS and Spec FAIL for three findings:
+
+| Finding | Correction | Evidence |
+| --- | --- | --- |
+| P1 stale private research after another tab changes account | Credential-free login/logout invalidation channel; focus/visibility recheck hides private content while checking; username keys reset workspace state. | Focused-tab regression and real two-tab logout/login as an account with no datasets; foreign run remains 404. |
+| P2 late evaluation completion overrides newer navigation | Setup is keyed by URL state; unmount aborts the client request and suppresses late callbacks. Server-completed work remains private and discoverable. | Delayed response after unmount cannot invoke `onCreated`; the AbortSignal is aborted. |
+| P2 benchmark joins ignore information cutoff | Shared row identity includes partition, origin, target, input hash, and cutoff; response parsing rejects duplicate/misaligned model rows or different observed values. | A valid-format cutoff mutation is rejected; chart joins use the same identity function. |
+
+All three focused regressions failed before correction and all six focused tests passed afterward. A fresh independent read-only verifier returned PASS for the exact correction set, with no unclosed introduced finding. It inspected actual source and the before/after receipts; it did not rerun the browser or database. Parent verification owns the final 75-unit-test and packaged-browser results.
+
+Actual browser checks additionally found low-contrast public action links caused by CSS layer precedence and transient theme-switch button contrast. The correction puts link defaults in the base layer and uses the installed theme provider's documented transition-disable option. Chart-axis/evidence-table test assertions were updated for the new full dates and intentional collapsed disclosures. A manual screenshot check widened the setup controls to avoid squeezing the dataset name beside the submit button.
+
+The backend reviewer reported its own runtime context as `azure-kmamc/gpt-6-luna` at Max. The two later readers reported curated GPT-6 Luna but could not independently expose provider routing or effort. Their source-review verdicts are retained; those later routing claims remain **unverified**, not certified Azure/Max execution. Two implementation lanes encountered upstream HTTP 429; the parent completed and verified their partial backend/scanning work. Review identities, model billing, hosted CI, runtime acceptance, and production approval are separate facts.
+
+The final gates and remaining image-security/data-licensing blockers are in [Phase 4](PHASE4.md) and its [evidence index](evidence/phase4/README.md). No source-review PASS is represented as empirical forecasting acceptance, complete accessibility conformance, penetration testing, or production release approval.

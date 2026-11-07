@@ -1,0 +1,21 @@
+{
+  "origin": "http://127.0.0.1:8085",
+  "scope": "Existing full-run list; same private owner, uncompressed response bytes, local warm requests; not forecasting metrics",
+  "samples": [
+    {
+      "milliseconds": 73.92,
+      "bytes": 215033,
+      "runs": 4
+    },
+    {
+      "milliseconds": 61.11,
+      "bytes": 215033,
+      "runs": 4
+    },
+    {
+      "milliseconds": 63.9,
+      "bytes": 215033,
+      "runs": 4
+    }
+  ]
+}

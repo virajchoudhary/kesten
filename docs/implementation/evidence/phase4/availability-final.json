@@ -1,0 +1,95 @@
+{
+  "http_probes": [
+    {
+      "route": "/health/",
+      "status": 200
+    },
+    {
+      "route": "/health/ready/",
+      "status": 200
+    },
+    {
+      "route": "/sign-in/",
+      "status": 200
+    },
+    {
+      "route": "/data/",
+      "status": 200
+    },
+    {
+      "route": "/methodology/",
+      "status": 200
+    },
+    {
+      "route": "/app/research/",
+      "status": 200
+    }
+  ],
+  "services": [
+    {
+      "name": "cadrisyn-phase4-web",
+      "status": "Up 7 minutes"
+    },
+    {
+      "name": "cadrisyn-phase4-restored-api",
+      "status": "Exited (0) 9 minutes ago"
+    },
+    {
+      "name": "cadrisyn-phase4-web-before-review",
+      "status": "Exited (143) 7 minutes ago"
+    },
+    {
+      "name": "cadrisyn-phase4-gateway",
+      "status": "Up 7 minutes"
+    },
+    {
+      "name": "cadrisyn-phase4-web-before-theme",
+      "status": "Exited (143) 24 minutes ago"
+    },
+    {
+      "name": "cadrisyn-phase4-api",
+      "status": "Up 33 minutes"
+    },
+    {
+      "name": "cadrisyn-phase4-api-before-lineage",
+      "status": "Exited (137) 33 minutes ago"
+    },
+    {
+      "name": "cadrisyn-phase35-upgrade-verification",
+      "status": "Exited (0) 5 hours ago"
+    },
+    {
+      "name": "cadrisyn-phase35-restore-api",
+      "status": "Exited (0) 5 hours ago"
+    },
+    {
+      "name": "cadrisyn-phase35-restore-verification",
+      "status": "Exited (0) 5 hours ago"
+    },
+    {
+      "name": "cadrisyn-phase35-gateway-1",
+      "status": "Up 6 hours"
+    },
+    {
+      "name": "cadrisyn-phase35-web-1",
+      "status": "Up 6 hours (healthy)"
+    },
+    {
+      "name": "cadrisyn-phase35-api-1",
+      "status": "Up 6 hours (healthy)"
+    },
+    {
+      "name": "cadrisyn-phase35-migrate-1",
+      "status": "Exited (0) 6 hours ago"
+    },
+    {
+      "name": "cadrisyn-phase35-database-1",
+      "status": "Up 6 hours (healthy)"
+    },
+    {
+      "name": "cadrisyn-phase35-cache-1",
+      "status": "Up 6 hours (healthy)"
+    }
+  ],
+  "scope": "Loopback preview only. Declared Phase3.5 healthchecks differ from manual Phase4 HTTP probes."
+}

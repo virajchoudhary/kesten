@@ -1,0 +1,6 @@
+{
+  "version_output": "Application:         grype\nVersion:             0.121.2\nBuildDate:           2026-11-05T21:17:09Z\nGitCommit:           82d7a0ea911946b99343c672056867d372f9b319\nGitDescription:      v0.121.2\nPlatform:            windows/amd64\nGoVersion:           go1.27.3\nCompiler:            gc\nSyft Version:        v1.57.0\nSupported DB Schema: 6\n",
+  "release_immutable": true,
+  "official_release_asset_digest_verified": "sha256:27d5ce85c7c90900b10a6e61baf2b0729fd6246e32c0ca70e91c913f86644cf7",
+  "action_commit_signature_verified": true
+}

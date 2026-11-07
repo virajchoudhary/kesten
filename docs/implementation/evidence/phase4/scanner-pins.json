@@ -1,0 +1,52 @@
+[
+  {
+    "repo": "actions/checkout",
+    "tag": "v7.0.1",
+    "commit": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "verified": true
+  },
+  {
+    "repo": "actions/setup-python",
+    "tag": "v7.1.0",
+    "commit": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+    "verified": true
+  },
+  {
+    "repo": "actions/setup-node",
+    "tag": "v7.1.0",
+    "commit": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+    "verified": true
+  },
+  {
+    "repo": "anchore/scan-action",
+    "tag": "v7.4.2",
+    "commit": "27805bf3b4e84b4a5c980df22ed233c00390a439",
+    "verified": true
+  },
+  {
+    "repo": "anchore/grype",
+    "tag": "v0.121.2",
+    "immutable": true,
+    "assets": [
+      {
+        "name": "grype_0.121.2_checksums.txt",
+        "browser_download_url": "https://github.com/anchore/grype/releases/download/v0.121.2/grype_0.121.2_checksums.txt",
+        "digest": "sha256:031a06d6c9184a3a0b379f1544938bdf8ecc18327aa2e46ea912bbf6ce51fc65"
+      },
+      {
+        "name": "grype_0.121.2_checksums.txt.sigstore.json",
+        "browser_download_url": "https://github.com/anchore/grype/releases/download/v0.121.2/grype_0.121.2_checksums.txt.sigstore.json",
+        "digest": "sha256:14053877797c09f6e1c097f52146dbda3b029a8aad7ddd287a6da64d3fc40234"
+      },
+      {
+        "name": "grype_0.121.2_windows_amd64.zip",
+        "browser_download_url": "https://github.com/anchore/grype/releases/download/v0.121.2/grype_0.121.2_windows_amd64.zip",
+        "digest": "sha256:27d5ce85c7c90900b10a6e61baf2b0729fd6246e32c0ca70e91c913f86644cf7"
+      }
+    ]
+  },
+  {
+    "package": "pip-audit",
+    "version": "2.10.1"
+  }
+]

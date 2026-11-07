@@ -3,7 +3,7 @@
 
 Cadrisyn is the temporary working name for a private daily-market research workspace. The new Next.js interface uses a Django session API. Existing Streamlit, forecasting, portfolio, derivatives, RL, and reporting code remains in the repository as research functionality.
 
-The foundation includes closed-registration account lifecycle, revocable sessions, restricted PostgreSQL roles, verified local containers, source-policy safeguards, and backup/restore tooling. See [foundation operations](docs/implementation/FOUNDATION-OPERATIONS.md) and [phase-two verification](docs/implementation/PHASE2.md) for current evidence and remaining release gates.
+The foundation includes closed-registration account lifecycle, revocable sessions, restricted PostgreSQL roles, local containers, source-policy safeguards, and backup/restore tooling. See [current implementation status](docs/implementation/STATUS.md) and [Phase 4 operations](docs/implementation/PHASE4-OPERATIONS.md) for executed checks, working entry points, and remaining release gates.
 
 ## Start the local workspace
 
@@ -37,7 +37,7 @@ Set both `CADRISYN_MARKET_DATA_ENABLED=true` and `CADRISYN_YAHOO_PERSONAL_USE_AC
 
 Open [forecast research](http://127.0.0.1:3000/app/research) after starting the workspace. Explicitly install the reproducible development fixture with `.venv/Scripts/python.exe scripts/research.py seed --owner analyst`. The private workflow compares last-close and expanding historical-log-mean references at one or five exchange sessions, saves provenance and chronological evaluations, and supports exact replay.
 
-The fixture is synthetic. No empirical forecasting performance, advanced ML model, prediction interval or trading strategy is approved. Historical imports require a staff operator, reviewed data rights and per-record availability/action evidence. See [research operations](docs/implementation/RESEARCH-OPERATIONS.md), [Phase 3 evidence](docs/implementation/PHASE3.md), and the model disposition table there. Phase 3.5 restored Docker and passed all 120 supported tests against PostgreSQL from Windows and Linux, plus container browser/recovery/replay checks. The historical-data gate remains blocked. See [current qualification](docs/implementation/PHASE35.md) and [container operations](docs/implementation/PHASE35-OPERATIONS.md).
+The fixture is synthetic. No empirical forecasting performance, advanced ML model, prediction interval or trading strategy is approved. Historical imports require a staff operator, reviewed data rights and per-record availability/action evidence. See [research operations](docs/implementation/RESEARCH-OPERATIONS.md) and [model dispositions](docs/implementation/PHASE3.md). Phase 4 adds interactive analytics, filtered private history, guarded comparisons, exact replay, and synthetic exports. The retained packaged preview is [research on port 8086](http://127.0.0.1:8086/app/research). See [Phase 4 results](docs/implementation/PHASE4.md) and [container operations](docs/implementation/PHASE4-OPERATIONS.md). Historical-data qualification and the image-security release gate remain blocked.
 
 ## Run checks
 
@@ -53,7 +53,7 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-Browser acceptance uses the running local API. Start it separately with `scripts/dev.py --api-only`. See [the frontend guide](web/README.md), [implementation status](docs/implementation/STATUS.md), and [operations instructions](docs/implementation/OPERATIONS.md) for results, remaining gates, and container configuration.
+Browser acceptance uses the running local API. Prepare disposable source fixtures with `.venv/Scripts/python.exe scripts/prepare_browser_fixture.py`, then start the API separately with `scripts/dev.py --api-only`. For the PostgreSQL-backed preview, use the explicit fixture environment and browser commands in [Phase 4 operations](docs/implementation/PHASE4-OPERATIONS.md). See [the frontend guide](web/README.md) and [implementation status](docs/implementation/STATUS.md) for results and remaining gates.
 
 ## Open the preserved research tools
 

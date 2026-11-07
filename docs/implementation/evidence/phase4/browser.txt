@@ -1,0 +1,20 @@
+
+> cadrisyn-web@0.1.0 test:e2e
+> playwright test --workers=1
+
+
+Running 9 tests using 1 worker
+
+(node:26076) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\accounts.spec.ts:95:5 › invitation UI consumes the fragment token and completes the form (933ms)
+  ok 2 [chromium] › e2e\accounts.spec.ts:123:5 › account page changes a password and revokes only other sessions (620ms)
+  ok 3 [chromium] › e2e\accounts.spec.ts:166:5 › activates a disposable account through the real API lifecycle (2.7s)
+  ok 4 [chromium] › e2e\accounts.spec.ts:236:5 › resetting a disposable account revokes its open workspace session (2.3s)
+  ok 5 [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path (3.9s)
+  ok 6 [chromium] › e2e\research-quality.spec.ts:62:5 › public pages retain readable light and dark layouts on narrow screens (4.0s)
+  ok 7 [chromium] › e2e\research-quality.spec.ts:80:5 › research inspection, comparison, replay and exact export use saved identities (10.7s)
+  ok 8 [chromium] › e2e\research-quality.spec.ts:225:5 › account changes in another tab clear private research before a second account loads (2.6s)
+  ok 9 [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API (2.1s)
+
+  9 passed (31.8s)

@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "readiness": 200,
+  "fresh_sign_in": 200,
+  "saved_result_hashes_match": 2,
+  "history_owner_read": 200,
+  "after_logout_history": 403,
+  "scope": "Separate restored fixture database; no production cutover claim"
+}

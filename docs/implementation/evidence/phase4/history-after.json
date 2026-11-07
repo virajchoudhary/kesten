@@ -1,0 +1,118 @@
+{
+  "origin": "http://127.0.0.1:8100",
+  "method": "Five alternating warm requests per endpoint on same current server/owner; response bytes before HTTP compression; exact same run identities; no throughput or forecasting claim",
+  "samples": [
+    {
+      "full": {
+        "ms": 37.96,
+        "bytes": 215033,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      },
+      "summary": {
+        "ms": 25.01,
+        "bytes": 1675,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      }
+    },
+    {
+      "full": {
+        "ms": 61.78,
+        "bytes": 215033,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      },
+      "summary": {
+        "ms": 19.95,
+        "bytes": 1675,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      }
+    },
+    {
+      "full": {
+        "ms": 32.24,
+        "bytes": 215033,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      },
+      "summary": {
+        "ms": 19.56,
+        "bytes": 1675,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      }
+    },
+    {
+      "full": {
+        "ms": 33.15,
+        "bytes": 215033,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      },
+      "summary": {
+        "ms": 19.35,
+        "bytes": 1675,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      }
+    },
+    {
+      "full": {
+        "ms": 35.41,
+        "bytes": 215033,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      },
+      "summary": {
+        "ms": 20.26,
+        "bytes": 1675,
+        "ids": [
+          "e41de0dc-fbb7-49db-8bd0-f5d8847fd643",
+          "4dad4dca-966a-4a0a-b8fe-567656b2e012",
+          "f31570b7-2f1e-4c21-8778-02928d2fb63e",
+          "c7e6db63-9013-4502-8160-1591cb052ca3"
+        ]
+      }
+    }
+  ],
+  "full_median_bytes": 215033,
+  "summary_median_bytes": 1675
+}

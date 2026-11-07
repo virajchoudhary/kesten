@@ -16,6 +16,7 @@ build/
 .vitest-secret-token
 venv/
 .venv/
+.venv-security-phase4/
 .local/
 .npm-cache/
 .next/

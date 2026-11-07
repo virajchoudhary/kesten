@@ -1,0 +1,12 @@
+
+> cadrisyn-web@0.1.0 test
+> vitest run --config .local/review-probe/vitest.config.mts
+
+
+ RUN  v5.1.0 C:/stock price predictor/web
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  06:48:44
+   Duration  1.16s (import 60%, transform 30%, tests 5%, worker 4%)
