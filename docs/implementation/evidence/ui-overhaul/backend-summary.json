@@ -1,0 +1,16 @@
+{
+  "kind": "parent-authored execution summary, not a raw backend log",
+  "command": ".venv/Scripts/python.exe scripts/check_backend.py",
+  "exit_code": 0,
+  "tests_run": 136,
+  "passed": 132,
+  "skipped": 4,
+  "skips": "PostgreSQL-only cases in the isolated SQLite run",
+  "schema": "contracts/openapi.json matches",
+  "migrations": "No changes detected",
+  "system_checks": "No issues in development; existing HSTS preload warning in deployment configuration check",
+  "recovery_unit_command": ".venv/Scripts/python.exe -m unittest discover -s tests -p test_recovery.py",
+  "recovery_unit_tests": 18,
+  "recovery_exit_code": 0,
+  "container_or_postgresql_rerun": false
+}

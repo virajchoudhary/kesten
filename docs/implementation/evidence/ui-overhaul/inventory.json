@@ -1,0 +1,413 @@
+{
+  "text_normalization": "CRLF to LF; PNG bytes unchanged",
+  "files": [
+    {
+      "path": "acceptance/integrated-research.png",
+      "bytes": 231575,
+      "sha256": "9dd00f5c86647f472facfda47ca61c036b0de3faa461696cb198b9cccd40daaa",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-1440-dark.png",
+      "bytes": 95350,
+      "sha256": "1c23d43551a1d8ea8155291e2f65c9142bccf1af931c90eb3d9d65c76ac1df4f",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-1440-light.png",
+      "bytes": 94606,
+      "sha256": "ef6ed098358164b193612d319cda96afbd5de7c3c290a8fca0302830ffacd540",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-1920-dark.png",
+      "bytes": 105012,
+      "sha256": "bc56fad8e1ddd2103aec6519b4ad309cf663f4e15f64f70b3a815923f6840ef6",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-1920-light.png",
+      "bytes": 104276,
+      "sha256": "b478f4eacbcbc7c7d3ee27adcdb6813789023d90c4695ca226fbd880c77a39c8",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-375-dark.png",
+      "bytes": 58875,
+      "sha256": "800b019a598032e953a685497b2664f85f2a02166b11457464cbe5eb1f6e57a5",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-375-light.png",
+      "bytes": 58246,
+      "sha256": "625d6bb9ca42622107b5f14c685a8b4ff34785060a18b7c6191e6823b23bcbee",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-390-dark.png",
+      "bytes": 65498,
+      "sha256": "ae35ed5c180b0fb2fcb26d1279fc8707b3eeb5e5339286aabf818d557edbc9e7",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-390-light.png",
+      "bytes": 64695,
+      "sha256": "461d27a9a4edb5b266e1edc8fdfd200d3bd95350fda2182c9887aa249e183773",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-820-dark.png",
+      "bytes": 99377,
+      "sha256": "75c0f2266c51c4d77b3c7e5fc2b9a6fadc0bd8fa5becb0e170c4b02d397c01e7",
+      "normalize_lf": false
+    },
+    {
+      "path": "acceptance/terminal-820-light.png",
+      "bytes": 98510,
+      "sha256": "37862e9bf33da41588e80d4e60ea4bcbc8c4dcd86c9bec82875d2daabba8f1b4",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/account-1440.png",
+      "bytes": 51650,
+      "sha256": "ae74a74ab3f140bb0feeb2465335c17c1060353d1f4e874acb331721e25d1596",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/account-1920.png",
+      "bytes": 54689,
+      "sha256": "9d1c55dc30c81c142464f1798df41c1cb4d447e29a288a6187381f41f3700e44",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/account-390.png",
+      "bytes": 44400,
+      "sha256": "db4fa1aaf5460b00f687d29da92eb2e40c5ce05e632b8406a5def69438cdcece",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/account-820.png",
+      "bytes": 50039,
+      "sha256": "201d0182d48f5473dff62261cc08c3dc87d3fa5669a6d1ae0813d87c13de3c85",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/data-1440.png",
+      "bytes": 125906,
+      "sha256": "26cda0ba180f1d5de69b70b5b4949957bb723f5f0ceed1735dcfc4e9ccbc317d",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/data-1920.png",
+      "bytes": 128953,
+      "sha256": "77a6f53a9153489965d72604ae1087a00f4f6126e69c4b6c4a3936e7c2da5e5d",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/data-390.png",
+      "bytes": 112594,
+      "sha256": "f45acc54c5c247ed8f0344eed6676f548718e9c2e0923a9f8eed4aefaedce825",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/data-820.png",
+      "bytes": 123269,
+      "sha256": "fa51234cc2152dbe19a121df98c75a530fbf5fb8f7c75bfcf33cbd2628d08502",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/markets-1440.png",
+      "bytes": 123612,
+      "sha256": "26adec646e0ab7c6f5350191af2457e4c5d17e7d95080b13a1ff604331af987a",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/markets-1920.png",
+      "bytes": 151376,
+      "sha256": "51f448d07636027a5d5e11b6b1b5fcfcf3e04d84b1fb477ea0efbb88acbca7f8",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/markets-390.png",
+      "bytes": 69494,
+      "sha256": "7e6de9ecd24c52c7186c3c13d7579afe3d0e2824ac99c4641f6233f9838dcb2d",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/markets-820.png",
+      "bytes": 115156,
+      "sha256": "9128f4a3a27c0750598b4d6e8ce2eaebbf1d98249a00cf0c3fdfaa1e5718fdaf",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/methodology-1440.png",
+      "bytes": 135402,
+      "sha256": "187e18021c4f08128bcbbd48ff95616f44cb2c1b0156859f7c81fabeec5b15e2",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/methodology-1920.png",
+      "bytes": 138172,
+      "sha256": "9258a1b7d7088085ac44e1b6a2da362e9357ba5868a282c8730aedc1b8012e6b",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/methodology-390.png",
+      "bytes": 122210,
+      "sha256": "76094d3b5b73ff1205fbad5f0c687b55e42dffc395c5e211b4c3b73a998f1e0b",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/methodology-820.png",
+      "bytes": 131157,
+      "sha256": "11ffb33f322e5295a10f211b453a7318606a57fad25eea55d3dc14ee61b156bb",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/research-1440.png",
+      "bytes": 85186,
+      "sha256": "6d81b6b20f9a4ea3b8e9608939896a5be99c30886fb0f9cd54414d93b6a7ad7a",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/research-1920.png",
+      "bytes": 88805,
+      "sha256": "d7505ed9de682648e2325b41a22b6546ca17fb3556917f6cda4381878d5c84bc",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/research-390.png",
+      "bytes": 79179,
+      "sha256": "42936d7f319719c28d3c22c67d55bceb55b14a1fa0b414935c8bf5f064597dcb",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/research-820.png",
+      "bytes": 84008,
+      "sha256": "3c36212e04c230f8d24c55104e73b7683bb8df94204ac620aa3cea0042fc7853",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/sign-in-1440.png",
+      "bytes": 26958,
+      "sha256": "b3843035f083abbb3adf8469b4024fe60e223ff109b40e959b115b21fe5dafb7",
+      "normalize_lf": false
+    },
+    {
+      "path": "after/sign-in-390.png",
+      "bytes": 22475,
+      "sha256": "d6982169bbb1cbc745801a623b0718e588ac568fa0e267f8abe7ffc54eba8391",
+      "normalize_lf": false
+    },
+    {
+      "path": "backend-summary.json",
+      "bytes": 672,
+      "sha256": "5f8743dfea9d91cde0ec4a124c981c5e6f0a7670faf50177a7235006a9ba8f19",
+      "normalize_lf": true
+    },
+    {
+      "path": "before/account-1440.png",
+      "bytes": 54361,
+      "sha256": "2d41beed94dafad8cb01e5b79fd951772f53943c7ac65d97aa59337da1e108ad",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/account-1920.png",
+      "bytes": 57481,
+      "sha256": "b3a16bb9a63768663053dd54e2e105b3699621ecc1ee2d2b01a9f528331f88a0",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/account-390.png",
+      "bytes": 46920,
+      "sha256": "53b4034e53b61f8386d5948531f6209af04664c6cfcefdf9abbd53fc5e6eb264",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/account-820.png",
+      "bytes": 52799,
+      "sha256": "3d0baef274912a009db949e6a0e12389697e14085a3e61b91c1ebd00668eb85e",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/data-1440.png",
+      "bytes": 127979,
+      "sha256": "de6fd004d12754b3ab0ddbb3dac37650acff59b3d08aabe6c729933275faede3",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/data-1920.png",
+      "bytes": 130846,
+      "sha256": "ad58d2fb7cce8f4b1e3dd8df7e9c9d0e87ff19eee40c0f67fbe9704f8bc7d2b3",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/data-390.png",
+      "bytes": 113858,
+      "sha256": "d500edad3a0d1e3affc1eaea56518c33c7510898c9563d8dbec52d637925cee5",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/data-820.png",
+      "bytes": 125517,
+      "sha256": "35a00a9c5b7adae90e9a31f48b6f67f33f8c1f17b233cf93d524bee5d65253a6",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/markets-1440.png",
+      "bytes": 143298,
+      "sha256": "30b3e331777aac6baa3acde54f589b3a4a07f6026d4c1e36d677a1c173b361be",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/markets-1920.png",
+      "bytes": 160894,
+      "sha256": "d9dec646f4275cacfc11d9546a2109828cd9e854e156e134dc52738807885f4d",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/markets-390.png",
+      "bytes": 103298,
+      "sha256": "19053255e27406f7ab4644e5b09692e10670825902204c916da5558560ea3dbe",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/markets-820.png",
+      "bytes": 119421,
+      "sha256": "e1da6cce6ad150799245033f835ae0f9db88a5881a08646e7f2dc29ce389f133",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/methodology-1440.png",
+      "bytes": 137927,
+      "sha256": "f5d71f7ed095a7733c4eb75740177106f7ec2919b2d697fb78c4d66d0eb71c35",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/methodology-1920.png",
+      "bytes": 140705,
+      "sha256": "382076f851e26e561b385dd24369626a41b526e04a3b75a7e32f8120aac44553",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/methodology-390.png",
+      "bytes": 123226,
+      "sha256": "ec26510997087297f2b4fc823154b52d166d94983f47bfe4616497356e2394a2",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/methodology-820.png",
+      "bytes": 133676,
+      "sha256": "a55e4b2d07c92f3890bbdc73e860069972468a2e8fb966c2e53a61f4d5874b42",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/research-1440.png",
+      "bytes": 87009,
+      "sha256": "13fb60f8d06833aed03955ad59390a9d100c934ae32b3cdab0ec7dcc0fddb7a3",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/research-1920.png",
+      "bytes": 91024,
+      "sha256": "f780660fea74c5892eb8dc2ef3cc14ac44e8eb0ee203f627a8707764ba3c214a",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/research-390.png",
+      "bytes": 81478,
+      "sha256": "3bb7b4adc2dc19bee19ee15f0a618eff0e719de583cb9af3064428e48e84bcbd",
+      "normalize_lf": false
+    },
+    {
+      "path": "before/research-820.png",
+      "bytes": 86661,
+      "sha256": "b53bfc6c1e3e035558f9f24f418773f52fcb444ba886319543531606c6950557",
+      "normalize_lf": false
+    },
+    {
+      "path": "browser-paced-final.txt",
+      "bytes": 2789,
+      "sha256": "aa84c87272472efd8d0339d325b1363f3beadceb0ff0d53fff357426f95cfd52",
+      "normalize_lf": true
+    },
+    {
+      "path": "build-qualified.txt",
+      "bytes": 925,
+      "sha256": "57b1f167ee50c2e00eea0e9150b42bf156ce56e5fb322fa882bfb614f68360cd",
+      "normalize_lf": true
+    },
+    {
+      "path": "direction-a-graphite.png",
+      "bytes": 128617,
+      "sha256": "67df5b37f16f11b1dac1c4fe742159eba283b1b0c5c1acde289b1abbdcc1c268",
+      "normalize_lf": false
+    },
+    {
+      "path": "direction-b-folio.png",
+      "bytes": 120872,
+      "sha256": "f766047c4ba2e8ce285848a7d7fc5fa2176a0cb684269db22e2ca98430d0ce74",
+      "normalize_lf": false
+    },
+    {
+      "path": "lint-delivery.txt",
+      "bytes": 38,
+      "sha256": "8c560a1c3be925c492e69cc7e925d3de97bb604a2fbea60ef6fd8862e626ab54",
+      "normalize_lf": true
+    },
+    {
+      "path": "navigation-before.txt",
+      "bytes": 2352,
+      "sha256": "6ebff1bc3bed49886274dda6511ff4c695cb126ff49233b5530d2bbc07e4a8dd",
+      "normalize_lf": true
+    },
+    {
+      "path": "preservation.json",
+      "bytes": 455,
+      "sha256": "f0db76d15827611432084175bb8f46b276cc4d4a876d5bde18f362e306bb84ac",
+      "normalize_lf": true
+    },
+    {
+      "path": "privacy.json",
+      "bytes": 229,
+      "sha256": "bb5282e73a1d714ca72aeeab793a143a963b06da127ff766fa0573ef1904e3e6",
+      "normalize_lf": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 4083,
+      "sha256": "62d3abcd02e746512b8efad764427fec3b4db0ed393becc33de9abe666901ac2",
+      "normalize_lf": true
+    },
+    {
+      "path": "REVIEW.md",
+      "bytes": 3347,
+      "sha256": "46a9c82c6b56f71f2c3ca6ba1ae536a5170ea0c6b7331415f6b268e972ba5824",
+      "normalize_lf": true
+    },
+    {
+      "path": "unit-current.txt",
+      "bytes": 556,
+      "sha256": "57c1dac9d8f6dd123b60098db309aeb7e1ba54be02a721400dd461f2aeb2d9a8",
+      "normalize_lf": true
+    },
+    {
+      "path": "unit-delivery.txt",
+      "bytes": 556,
+      "sha256": "5be2f2d50555ffb3f048687fcb11998b5d165c830b4947fa491f862547d479b8",
+      "normalize_lf": true
+    },
+    {
+      "path": "verification.json",
+      "bytes": 1083,
+      "sha256": "21b63e8f0f2d47794517338f2c5ffab04d69b623a092ac66b18f5e46d2d2546d",
+      "normalize_lf": true
+    },
+    {
+      "path": "verify_inventory.py",
+      "bytes": 668,
+      "sha256": "5be861074e35a17cbf7c513da03e8ed7829c0f1ce7a8de90fdf2730c7ae61f52",
+      "normalize_lf": true
+    }
+  ]
+}

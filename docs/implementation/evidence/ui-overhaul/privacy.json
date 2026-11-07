@@ -1,0 +1,6 @@
+{
+  "result": "PASS",
+  "credential_values_checked": 32,
+  "files_with_matches": [],
+  "scope": "Collected text compared against actual local review and retained shared credential values. No secrets are stored in this receipt."
+}

@@ -1,0 +1,54 @@
+
+> cadrisyn-web@0.1.0 test:e2e:terminal
+> node scripts/verify-terminal.mjs
+
+
+Running 4 tests using 1 worker
+
+(node:11780) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\accounts.spec.ts:92:5 › invitation UI consumes the fragment token and completes the form (816ms)
+  ok 2 [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions (618ms)
+  ok 3 [chromium] › e2e\accounts.spec.ts:163:5 › activates a disposable account through the real API lifecycle (3.7s)
+  ok 4 [chromium] › e2e\accounts.spec.ts:233:5 › resetting a disposable account revokes its open workspace session (3.6s)
+
+  4 passed (10.4s)
+Waiting 60 seconds for the configured API throttle window.
+
+Running 1 test using 1 worker
+
+(node:38632) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path (4.8s)
+
+  1 passed (6.5s)
+Waiting 60 seconds for the configured API throttle window.
+
+Running 3 tests using 1 worker
+
+(node:39212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\research-quality.spec.ts:62:5 › public pages retain readable light and dark layouts on narrow screens (4.4s)
+  ok 2 [chromium] › e2e\research-quality.spec.ts:81:5 › research inspection, comparison, replay and exact export use saved identities (10.5s)
+  ok 3 [chromium] › e2e\research-quality.spec.ts:228:5 › account changes in another tab clear private research before a second account loads (2.8s)
+
+  3 passed (19.3s)
+Waiting 60 seconds for the configured API throttle window.
+
+Running 1 test using 1 worker
+
+(node:32472) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API (2.6s)
+
+  1 passed (4.0s)
+Waiting 60 seconds for the configured API throttle window.
+
+Running 1 test using 1 worker
+
+(node:7832) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\terminal.spec.ts:8:5 › terminal preserves provenance, chart controls and integrated research identities (12.0s)
+
+  1 passed (14.3s)
+All terminal browser suites passed with API limits unchanged.

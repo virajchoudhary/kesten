@@ -1,0 +1,38 @@
+{
+  "recorded_at": "2026-11-07T14:09:13.006277+00:00",
+  "ui_commit": "03c9cc452d978986fd39445ef99a978057d4f29e",
+  "frontend_build_id": "aE5tFx2E3DY9WAP-rSymF",
+  "frontend_unit": {
+    "passed": 77,
+    "failed": 0,
+    "files": 24
+  },
+  "backend": {
+    "passed": 132,
+    "skipped": 4,
+    "failed": 0,
+    "selection": "workspace accounts research api.test_security, isolated SQLite"
+  },
+  "recovery_units": {
+    "passed": 18,
+    "failed": 0
+  },
+  "chromium": {
+    "passed": 10,
+    "failed": 0,
+    "real_api_workflows": 7,
+    "isolated_ui_cases": 2,
+    "public_accessibility_case": 1,
+    "runner": "npm run test:e2e:terminal",
+    "rate_limits_unchanged": true
+  },
+  "build": "PASS",
+  "typescript": "PASS, standalone check and final build",
+  "lint": "PASS",
+  "postgresql_and_container_rerun": false,
+  "historical_data_qualified": false,
+  "empirical_forecasting_performance_established": false,
+  "runtime_scope": "Loopback production-mode Next.js frontend with isolated development Django/SQLite API",
+  "public_delivery": false,
+  "hosted_ci_executed": false
+}
