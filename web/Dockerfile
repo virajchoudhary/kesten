@@ -11,7 +11,10 @@ RUN --mount=type=cache,target=/root/.npm npm ci --no-audit --no-fund
 FROM base AS builder
 
 ARG DJANGO_API_URL=http://api:8000
+ARG SOURCE_DATE_EPOCH
+ARG CADRISYN_SOURCE_REVISION=development
 ENV DJANGO_API_URL=${DJANGO_API_URL}
+ENV CADRISYN_BUILD_ID=${CADRISYN_SOURCE_REVISION}
 
 COPY web/ ./
 COPY contracts/openapi.json ../contracts/openapi.json
@@ -19,6 +22,10 @@ COPY contracts/openapi.json ../contracts/openapi.json
 RUN --mount=type=bind,from=dependencies,source=/app/web/node_modules,target=/app/web/node_modules npm run typegen && npm run build
 
 FROM base AS runner
+
+ARG SOURCE_DATE_EPOCH
+ARG CADRISYN_SOURCE_REVISION=development
+LABEL org.opencontainers.image.revision=${CADRISYN_SOURCE_REVISION}
 
 ENV NODE_ENV=production
 ENV HOSTNAME=0.0.0.0

@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { fixturePath } from "./fixtures";
 
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
@@ -21,7 +21,7 @@ async function authenticate(page: Page): Promise<string> {
   const credentials = CredentialsSchema.parse(
     JSON.parse(
       readFileSync(
-        resolve(process.cwd(), "../.local/credentials.json"),
+        fixturePath("credentials.json"),
         "utf8",
       ),
     ),
@@ -229,7 +229,7 @@ test("account changes in another tab clear private research before a second acco
   const credentials = CredentialsSchema.parse(
     JSON.parse(
       readFileSync(
-        resolve(process.cwd(), "../.local/research-e2e-isolation.json"),
+        fixturePath("research-e2e-isolation.json"),
         "utf8",
       ),
     ),

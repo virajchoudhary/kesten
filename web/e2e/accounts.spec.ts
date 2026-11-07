@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { fixturePath } from "./fixtures";
 
 import { expect, test, type Page, type Route } from "@playwright/test";
 import { z } from "zod";
@@ -11,10 +11,7 @@ import {
 } from "../src/features/account/account-api";
 
 const csrfToken = "browser-fixture-csrf";
-const accountInvitationFixturePath = resolve(
-  process.cwd(),
-  "../.local/account-e2e-invitation.txt",
-);
+const accountInvitationFixturePath = fixturePath("account-e2e-invitation.txt");
 
 const AccountInvitationFixtureSchema = z
   .object({
@@ -235,7 +232,7 @@ test("activates a disposable account through the real API lifecycle", async ({ p
 
 test("resetting a disposable account revokes its open workspace session", async ({ page, browser, baseURL }) => {
   test.setTimeout(90_000);
-  const path = resolve(process.cwd(), "../.local/account-e2e-reset.json");
+  const path = fixturePath("account-e2e-reset.json");
   if (!existsSync(path) || !baseURL) {
     throw new Error("Run scripts/prepare_browser_fixture.py before lifecycle browser tests.");
   }

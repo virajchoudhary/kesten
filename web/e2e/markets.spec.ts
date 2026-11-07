@@ -1,5 +1,5 @@
 import { existsSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { fixturePath } from "./fixtures";
 
 import { expect, test } from "@playwright/test";
 import { z } from "zod";
@@ -12,7 +12,7 @@ const LocalCredentialsSchema = z.object({
 });
 
 function loadLocalCredentials(): z.infer<typeof LocalCredentialsSchema> {
-  const path = resolve(process.cwd(), "../.local/credentials.json");
+  const path = fixturePath("credentials.json");
   if (!existsSync(path)) {
     throw new Error("Missing ignored .local/credentials.json for the authenticated browser test.");
   }

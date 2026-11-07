@@ -19,6 +19,7 @@ function djangoOrigin(): string {
 }
 
 const apiOrigin = djangoOrigin();
+const buildId = process.env.CADRISYN_BUILD_ID;
 
 const nextConfig = {
   poweredByHeader: false,
@@ -26,6 +27,7 @@ const nextConfig = {
   trailingSlash: true,
   skipTrailingSlashRedirect: true,
   output: "standalone",
+  generateBuildId: buildId ? async () => buildId : undefined,
   async rewrites() {
     return [
       {
