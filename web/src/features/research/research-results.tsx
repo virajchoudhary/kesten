@@ -1,4 +1,14 @@
+import { useId } from "react";
 import { Badge } from "@/components/ui/badge";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { ResearchAnalytics } from "./research-analytics";
+import { ResearchComparison } from "./research-comparison";
 import {
   formatBasisPoints,
   formatPercentage,
@@ -6,11 +16,13 @@ import {
   formatUsd,
   formatUtcTimestamp,
 } from "./research-formatters";
-import { ResearchForecastChart } from "./research-forecast-chart";
+import { ResearchRunActions } from "./research-run-actions";
 import type {
   ResearchDataset,
+  ResearchReferenceId,
   ResearchRun,
 } from "./research-schemas";
+import { ResearchReferenceIdSchema } from "./research-schemas";
 
 const DIRECTIONS: readonly string[] = ["Down", "Tie", "Up"];
 
@@ -174,14 +186,64 @@ function EvidenceDefinitionList({
   );
 }
 
+function ReferenceFocusControl({
+  value,
+  onChange,
+}: {
+  value: ResearchReferenceId;
+  onChange: (value: ResearchReferenceId) => void;
+}): React.JSX.Element {
+  const controlId = useId();
+
+  return (
+    <div className="grid min-w-0 grid-cols-1 gap-2 border-b border-border-subtle px-4 py-3 sm:grid-cols-[minmax(12rem,18rem)_minmax(0,1fr)] sm:items-end">
+      <div className="min-w-0">
+        <label className="mb-1 block text-xs font-medium" htmlFor={controlId}>
+          Reference focus
+        </label>
+        <Select
+          onValueChange={(nextValue) => {
+            const parsed = ResearchReferenceIdSchema.safeParse(nextValue);
+            if (parsed.success) {
+              onChange(parsed.data);
+            }
+          }}
+          value={value}
+        >
+          <SelectTrigger className="h-10 w-full" id={controlId}>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="last_close">Last close</SelectItem>
+            <SelectItem value="historical_log_mean">Historical log mean</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <p className="text-xs text-secondary">
+        Both references are evaluated in every run. This only changes the chart focus.
+      </p>
+    </div>
+  );
+}
+
 export function ResearchResults({
   run,
   dataset,
   datasetState,
+  csrfToken,
+  focusModel = "historical_log_mean",
+  comparisonRunId = null,
+  onFocusModelChange,
+  onClearComparison,
 }: {
   run: ResearchRun;
   dataset: ResearchDataset | null;
   datasetState: "loading" | "ready" | "failed";
+  csrfToken: string;
+  focusModel?: ResearchReferenceId;
+  comparisonRunId?: string | null;
+  onFocusModelChange: (value: ResearchReferenceId) => void;
+  onClearComparison: () => void;
 }): React.JSX.Element {
   const synthetic = run.data_kind === "synthetic_fixture";
 
@@ -208,144 +270,162 @@ export function ResearchResults({
             ? "Synthetic pipeline check only. No empirical forecasting performance established."
             : "Historical results are descriptive. No empirical forecasting performance established."}
         </p>
-        <p className="mt-2 text-xs text-secondary">
-          Price basis: split-neutral close in initial-share units; cash dividends are excluded.
-        </p>
       </section>
 
-      <section aria-labelledby="research-provenance-title" className="border-b border-border-subtle">
-        <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
-          <h3 className="text-sm font-semibold" id="research-provenance-title">Data and run provenance</h3>
-        </div>
-        <EvidenceDefinitionList dataset={dataset} datasetState={datasetState} run={run} />
-        <div className="border-t border-border-subtle px-4 py-3 text-xs text-secondary">
-          <p>
-            {run.result.target.units}; return convention: {run.result.target.return_convention}.
-          </p>
-          <p className="mt-1">
-            {run.result.protocol.id} · protocol SHA-256{" "}
-            <code className="break-all font-mono">{run.result.protocol.protocol_sha256}</code>
-          </p>
-        </div>
-      </section>
-
+      <ResearchRunActions csrfToken={csrfToken} key={run.id} run={run} />
+      <ReferenceFocusControl onChange={onFocusModelChange} value={focusModel} />
       <section aria-labelledby="research-forecast-title" className="border-b border-border-subtle">
         <div className="flex min-h-11 flex-wrap items-center justify-between gap-2 border-b border-border-subtle px-4 py-2">
-          <h3 className="text-sm font-semibold" id="research-forecast-title">Dataset history and forecast</h3>
-          <span className="text-xs text-secondary">No prediction intervals</span>
+          <h3 className="text-sm font-semibold" id="research-forecast-title">Research analytics</h3>
+          <span className="text-xs text-secondary">Historical observations and evaluation paths</span>
         </div>
-        <ResearchForecastChart
-          forecast={run.result.forecast}
-          models={run.result.models}
+        <ResearchAnalytics focusModel={focusModel} run={run} />
+      </section>
+
+      {comparisonRunId !== null && (
+        <ResearchComparison
+          comparisonRunId={comparisonRunId}
+          currentRun={run}
+          onClear={onClearComparison}
         />
-      </section>
+      )}
 
-      <section aria-labelledby="research-metrics-title" className="border-b border-border-subtle">
-        <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
-          <h3 className="text-sm font-semibold" id="research-metrics-title">Validation and test metrics</h3>
-        </div>
-        <p className="px-4 py-3 text-xs text-secondary">
-          Each metric is reported by model and partition. Return errors are simple price-return errors
-          converted to basis points.
-        </p>
-        <MetricTable run={run} />
-      </section>
+      <details className="border-t border-border-subtle">
+        <summary className="cursor-pointer px-4 py-3 text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus">
+          Protocol, metrics, and run evidence
+        </summary>
+        <div className="border-t border-border-subtle">
+          <section
+            aria-labelledby="research-provenance-title"
+            className="border-b border-border-subtle"
+            role="region"
+          >
+            <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
+              <h3 className="text-sm font-semibold" id="research-provenance-title">Data and run provenance</h3>
+            </div>
+            <EvidenceDefinitionList dataset={dataset} datasetState={datasetState} run={run} />
+            <div className="border-t border-border-subtle px-4 py-3 text-xs text-secondary">
+              <p>
+                Price basis: split-neutral close in initial-share units; cash dividends are excluded.
+              </p>
+              <p className="mt-1">
+                {run.result.target.units}; return convention: {run.result.target.return_convention}.
+              </p>
+              <p className="mt-1">
+                {run.result.protocol.id} · protocol SHA-256{" "}
+                <code className="break-all font-mono">{run.result.protocol.protocol_sha256}</code>
+              </p>
+            </div>
+          </section>
 
-      <section aria-labelledby="research-direction-title" className="border-b border-border-subtle">
-        <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
-          <h3 className="text-sm font-semibold" id="research-direction-title">
-            Direction confusion counts
-          </h3>
-        </div>
-        <p className="px-4 py-3 text-xs text-secondary">
-          Rows are predicted directions and columns are actual directions. Ties are a separate class.
-          Counts follow: {run.result.protocol.directional_policy}
-        </p>
-        <DirectionConfusionTable run={run} />
-      </section>
+          <section aria-labelledby="research-metrics-title" className="border-b border-border-subtle">
+            <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
+              <h3 className="text-sm font-semibold" id="research-metrics-title">Validation and test metrics</h3>
+            </div>
+            <p className="px-4 py-3 text-xs text-secondary">
+              Each metric is reported by model and partition. Return errors are simple price-return errors
+              converted to basis points.
+            </p>
+            <MetricTable run={run} />
+          </section>
 
-      <section aria-labelledby="research-protocol-title" className="border-b border-border-subtle">
-        <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
-          <h3 className="text-sm font-semibold" id="research-protocol-title">Walk-forward protocol</h3>
-        </div>
-        <dl className="grid grid-cols-1 gap-x-6 gap-y-3 px-4 py-4 sm:grid-cols-2 xl:grid-cols-3">
-          <div>
-            <dt className="text-xs text-secondary">Train</dt>
-            <dd className="mt-1 text-sm">
-              {formatSessionDate(run.result.protocol.train_start)} – {formatSessionDate(run.result.protocol.train_end)}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-xs text-secondary">Validation</dt>
-            <dd className="mt-1 text-sm">
-              {formatSessionDate(run.result.protocol.validation_start)} – {formatSessionDate(run.result.protocol.validation_end)}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-xs text-secondary">Test</dt>
-            <dd className="mt-1 text-sm">
-              {formatSessionDate(run.result.protocol.test_start)} – {formatSessionDate(run.result.protocol.test_end)}
-            </dd>
-          </div>
-          <div>
-            <dt className="text-xs text-secondary">Training policy</dt>
-            <dd className="mt-1 break-words text-sm">{run.result.protocol.training_policy}</dd>
-          </div>
-          <div>
-            <dt className="text-xs text-secondary">Configuration trials</dt>
-            <dd className="mt-1 text-sm">{run.result.protocol.configuration_trials}</dd>
-          </div>
-          <div>
-            <dt className="text-xs text-secondary">Issue lag</dt>
-            <dd className="mt-1 text-sm">{run.result.protocol.issue_lag_minutes} minutes</dd>
-          </div>
-        </dl>
-      </section>
+          <section aria-labelledby="research-direction-title" className="border-b border-border-subtle">
+            <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
+              <h3 className="text-sm font-semibold" id="research-direction-title">
+                Direction confusion counts
+              </h3>
+            </div>
+            <p className="px-4 py-3 text-xs text-secondary">
+              Rows are predicted directions and columns are actual directions. Ties are a separate class.
+              Counts follow: {run.result.protocol.directional_policy}
+            </p>
+            <DirectionConfusionTable run={run} />
+          </section>
 
-      <section aria-labelledby="research-limitations-title" className="border-b border-border-subtle">
-        <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
-          <h3 className="text-sm font-semibold" id="research-limitations-title">Limitations</h3>
-        </div>
-        <ul className="list-disc space-y-2 px-9 py-4 text-sm text-secondary">
-          {run.result.limitations.map((limitation, index) => (
-            <li key={`${index}-${limitation}`}>{limitation}</li>
-          ))}
-        </ul>
-      </section>
+          <section aria-labelledby="research-protocol-title" className="border-b border-border-subtle">
+            <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
+              <h3 className="text-sm font-semibold" id="research-protocol-title">Walk-forward protocol</h3>
+            </div>
+            <dl className="grid grid-cols-1 gap-x-6 gap-y-3 px-4 py-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div>
+                <dt className="text-xs text-secondary">Train</dt>
+                <dd className="mt-1 text-sm">
+                  {formatSessionDate(run.result.protocol.train_start)} – {formatSessionDate(run.result.protocol.train_end)}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs text-secondary">Validation</dt>
+                <dd className="mt-1 text-sm">
+                  {formatSessionDate(run.result.protocol.validation_start)} – {formatSessionDate(run.result.protocol.validation_end)}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs text-secondary">Test</dt>
+                <dd className="mt-1 text-sm">
+                  {formatSessionDate(run.result.protocol.test_start)} – {formatSessionDate(run.result.protocol.test_end)}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs text-secondary">Training policy</dt>
+                <dd className="mt-1 break-words text-sm">{run.result.protocol.training_policy}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-secondary">Configuration trials</dt>
+                <dd className="mt-1 text-sm">{run.result.protocol.configuration_trials}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-secondary">Issue lag</dt>
+                <dd className="mt-1 text-sm">{run.result.protocol.issue_lag_minutes} minutes</dd>
+              </div>
+            </dl>
+          </section>
 
-      <section aria-labelledby="research-runtime-title">
-        <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
-          <h3 className="text-sm font-semibold" id="research-runtime-title">Runtime evidence</h3>
+          <section aria-labelledby="research-limitations-title" className="border-b border-border-subtle">
+            <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
+              <h3 className="text-sm font-semibold" id="research-limitations-title">Limitations</h3>
+            </div>
+            <ul className="list-disc space-y-2 px-9 py-4 text-sm text-secondary">
+              {run.result.limitations.map((limitation, index) => (
+                <li key={`${index}-${limitation}`}>{limitation}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section aria-labelledby="research-runtime-title">
+            <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
+              <h3 className="text-sm font-semibold" id="research-runtime-title">Runtime evidence</h3>
+            </div>
+            <dl className="grid grid-cols-1 gap-x-6 gap-y-3 px-4 py-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div>
+                <dt className="text-xs text-secondary">Engine</dt>
+                <dd className="mt-1 text-sm">{run.result.engine_version}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-secondary">Python</dt>
+                <dd className="mt-1 text-sm">{run.runtime.python}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-secondary">Exchange calendar package</dt>
+                <dd className="mt-1 text-sm">{run.runtime.dependencies.exchange_calendars}</dd>
+              </div>
+              <div className="min-w-0">
+                <dt className="text-xs text-secondary">Engine source SHA-256</dt>
+                <dd className="mt-1 break-all font-mono text-xs">{run.runtime.engine_source_sha256}</dd>
+              </div>
+              <div className="min-w-0">
+                <dt className="text-xs text-secondary">Dependency lock SHA-256</dt>
+                <dd className="mt-1 break-all font-mono text-xs">{run.runtime.dependency_lock_sha256}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-secondary">Execution</dt>
+                <dd className="mt-1 text-sm">
+                  Deterministic · {run.attempts} attempt · random seed not applicable
+                </dd>
+              </div>
+            </dl>
+          </section>
         </div>
-        <dl className="grid grid-cols-1 gap-x-6 gap-y-3 px-4 py-4 sm:grid-cols-2 xl:grid-cols-3">
-          <div>
-            <dt className="text-xs text-secondary">Engine</dt>
-            <dd className="mt-1 text-sm">{run.result.engine_version}</dd>
-          </div>
-          <div>
-            <dt className="text-xs text-secondary">Python</dt>
-            <dd className="mt-1 text-sm">{run.runtime.python}</dd>
-          </div>
-          <div>
-            <dt className="text-xs text-secondary">Exchange calendar package</dt>
-            <dd className="mt-1 text-sm">{run.runtime.dependencies.exchange_calendars}</dd>
-          </div>
-          <div className="min-w-0">
-            <dt className="text-xs text-secondary">Engine source SHA-256</dt>
-            <dd className="mt-1 break-all font-mono text-xs">{run.runtime.engine_source_sha256}</dd>
-          </div>
-          <div className="min-w-0">
-            <dt className="text-xs text-secondary">Dependency lock SHA-256</dt>
-            <dd className="mt-1 break-all font-mono text-xs">{run.runtime.dependency_lock_sha256}</dd>
-          </div>
-          <div>
-            <dt className="text-xs text-secondary">Execution</dt>
-            <dd className="mt-1 text-sm">
-              Deterministic · {run.attempts} attempt · random seed not applicable
-            </dd>
-          </div>
-        </dl>
-      </section>
+      </details>
     </article>
   );
 }

@@ -1,10 +1,14 @@
-import { act, render, screen, waitFor } from "@testing-library/react";
+import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { SessionProvider } from "@/features/session/session-provider";
 
-import { researchDatasetFixture, researchRunFixture } from "./research-test-fixtures";
+import {
+  researchDatasetFixture,
+  researchHistoryItemFixture,
+  researchRunFixture,
+} from "./research-test-fixtures";
 import { ResearchRunRequestSchema } from "./research-schemas";
 import { ResearchWorkspace } from "./research-workspace";
 
@@ -23,6 +27,7 @@ function jsonResponse(payload: unknown, status = 200): Response {
 }
 
 afterEach(() => {
+  cleanup();
   vi.unstubAllGlobals();
 });
 
@@ -36,6 +41,8 @@ describe("research run detail", () => {
       id: "44444444-4444-4444-8444-444444444444",
       name: "Selected run",
     });
+    const historyA = researchHistoryItemFixture({ id: runA.id, name: runA.name });
+    const historyB = researchHistoryItemFixture({ id: runB.id, name: runB.name });
     let resolveRunA: ((response: Response) => void) | undefined;
     const pendingRunA = new Promise<Response>((resolve) => {
       resolveRunA = resolve;
@@ -54,8 +61,13 @@ describe("research run detail", () => {
       if (path === "/api/v1/research/datasets/") {
         return Promise.resolve(jsonResponse({ items: [researchDatasetFixture()] }));
       }
-      if (path === "/api/v1/research/runs/") {
-        return Promise.resolve(jsonResponse({ items: [runA, runB] }));
+      if (path.startsWith("/api/v1/research/history/")) {
+        return Promise.resolve(jsonResponse({
+          items: [historyA, historyB],
+          total: 2,
+          offset: 0,
+          limit: 20,
+        }));
       }
       if (path === `/api/v1/research/runs/${runA.id}/`) {
         return pendingRunA;
@@ -109,7 +121,7 @@ describe("research evaluation submission", () => {
       name: "Retry idempotency fixture",
     });
     const requestBodies: unknown[] = [];
-    let runListRequests = 0;
+    let historyRequests = 0;
     const fetchMock = vi.fn<typeof fetch>().mockImplementation((input, init) => {
       const path = String(input);
       const method = init?.method ?? "GET";
@@ -125,10 +137,15 @@ describe("research evaluation submission", () => {
       if (path === "/api/v1/research/datasets/") {
         return Promise.resolve(jsonResponse({ items: [dataset] }));
       }
-      if (path === "/api/v1/research/runs/" && method === "GET") {
-        runListRequests += 1;
+      if (path.startsWith("/api/v1/research/history/")) {
+        historyRequests += 1;
         return Promise.resolve(jsonResponse({
-          items: runListRequests === 1 ? [] : [createdRun],
+          items: historyRequests === 1
+            ? []
+            : [researchHistoryItemFixture({ id: createdRun.id, name: createdRun.name })],
+          total: historyRequests === 1 ? 0 : 1,
+          offset: 0,
+          limit: 20,
         }));
       }
       if (path === "/api/v1/research/runs/" && method === "POST") {
@@ -165,5 +182,11 @@ describe("research evaluation submission", () => {
     const firstRequest = ResearchRunRequestSchema.parse(requestBodies[0]);
     const secondRequest = ResearchRunRequestSchema.parse(requestBodies[1]);
     expect(firstRequest).toEqual(secondRequest);
+    expect(historyRequests).toBeGreaterThanOrEqual(2);
+    expect(
+      fetchMock.mock.calls.some(([input, init]) =>
+        String(input) === "/api/v1/research/runs/" && (init?.method ?? "GET") === "GET",
+      ),
+    ).toBe(false);
   });
 });

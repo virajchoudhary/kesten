@@ -6,6 +6,7 @@ import {
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -17,7 +18,11 @@ import {
   logout as logoutRequest,
   SESSION_RECHECK_EVENT,
 } from "@/lib/api/client";
-import type { AuthenticatedSession, Credentials, Session } from "@/lib/api/schemas";
+import type {
+  AuthenticatedSession,
+  Credentials,
+  Session,
+} from "@/lib/api/schemas";
 
 export type SessionState =
   | { kind: "checking" }
@@ -59,11 +64,16 @@ function asApiError(error: unknown): ApiError {
   });
 }
 
-export function SessionProvider({ children }: { children: ReactNode }): React.JSX.Element {
+export function SessionProvider({
+  children,
+}: {
+  children: ReactNode;
+}): React.JSX.Element {
   const [attempt, setAttempt] = useState(0);
   const [result, setResult] = useState<SessionResult | null>(null);
+  const sessionChannel = useRef<BroadcastChannel | null>(null);
   const state = useMemo<SessionState>(
-    () => result?.attempt === attempt ? result.state : { kind: "checking" },
+    () => (result?.attempt === attempt ? result.state : { kind: "checking" }),
     [attempt, result],
   );
 
@@ -72,8 +82,25 @@ export function SessionProvider({ children }: { children: ReactNode }): React.JS
   }, []);
 
   useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState === "visible") refresh();
+    };
+    const channel =
+      typeof BroadcastChannel === "undefined"
+        ? null
+        : new BroadcastChannel("cadrisyn-session");
+    if (channel) channel.onmessage = refresh;
+    sessionChannel.current = channel;
     window.addEventListener(SESSION_RECHECK_EVENT, refresh);
-    return () => window.removeEventListener(SESSION_RECHECK_EVENT, refresh);
+    window.addEventListener("focus", refresh);
+    document.addEventListener("visibilitychange", onVisible);
+    return () => {
+      window.removeEventListener(SESSION_RECHECK_EVENT, refresh);
+      window.removeEventListener("focus", refresh);
+      document.removeEventListener("visibilitychange", onVisible);
+      channel?.close();
+      sessionChannel.current = null;
+    };
   }, [refresh]);
 
   useEffect(() => {
@@ -82,7 +109,10 @@ export function SessionProvider({ children }: { children: ReactNode }): React.JS
     void getSession(controller.signal)
       .then((session) => {
         if (!controller.signal.aborted) {
-          setResult({ attempt: requestAttempt, state: toSessionState(session) });
+          setResult({
+            attempt: requestAttempt,
+            state: toSessionState(session),
+          });
         }
       })
       .catch((error: unknown) => {
@@ -117,6 +147,7 @@ export function SessionProvider({ children }: { children: ReactNode }): React.JS
       }
 
       setResult({ attempt, state: { kind: "authenticated", session } });
+      sessionChannel.current?.postMessage("changed");
       return session;
     },
     [attempt, state],
@@ -129,6 +160,7 @@ export function SessionProvider({ children }: { children: ReactNode }): React.JS
     try {
       const session = await logoutRequest(state.session.csrf_token);
       setResult({ attempt, state: toSessionState(session) });
+      sessionChannel.current?.postMessage("changed");
     } catch (error: unknown) {
       throw asApiError(error);
     }
@@ -139,7 +171,9 @@ export function SessionProvider({ children }: { children: ReactNode }): React.JS
     [state, refresh, authenticate, signOut],
   );
 
-  return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;
+  return (
+    <SessionContext.Provider value={value}>{children}</SessionContext.Provider>
+  );
 }
 
 export function useSession(): SessionContextValue {

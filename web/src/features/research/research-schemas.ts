@@ -1,22 +1,38 @@
 import { z } from "zod";
+import { researchRowIdentity } from "./research-row-identity";
 
 const NonEmptyTextSchema = z.string().trim().min(1).max(2048);
 const ShortTextSchema = z.string().trim().min(1).max(256);
 
 export const ResearchRunIdSchema = z.string().uuid();
 export const ResearchSha256Schema = z.string().regex(/^[a-f0-9]{64}$/u);
+export const ResearchInstrumentIdSchema = z
+  .string()
+  .trim()
+  .regex(/^[a-z0-9]+(?:-[a-z0-9]+)+$/u)
+  .max(32);
+export const ResearchReferenceIdSchema = z.enum([
+  "last_close",
+  "historical_log_mean",
+]);
 
 export const ResearchSessionDateSchema = z
   .string()
   .regex(/^\d{4}-\d{2}-\d{2}$/u)
   .refine((value) => {
     const timestamp = Date.parse(`${value}T00:00:00Z`);
-    return Number.isFinite(timestamp) && new Date(timestamp).toISOString().slice(0, 10) === value;
+    return (
+      Number.isFinite(timestamp) &&
+      new Date(timestamp).toISOString().slice(0, 10) === value
+    );
   }, "Enter a valid exchange session date.");
 
 const ResearchDateTimeSchema = z.string().datetime({ offset: true });
 
-export const ResearchDataKindSchema = z.enum(["synthetic_fixture", "historical"]);
+export const ResearchDataKindSchema = z.enum([
+  "synthetic_fixture",
+  "historical",
+]);
 export const ResearchHorizonSchema = z.union([z.literal(1), z.literal(5)]);
 
 export const ResearchDatasetSchema = z
@@ -40,7 +56,8 @@ export const ResearchDatasetSchema = z
     if (dataset.first_session > dataset.last_session) {
       context.addIssue({
         code: "custom",
-        message: "The dataset's first session must not follow its last session.",
+        message:
+          "The dataset's first session must not follow its last session.",
         path: ["first_session"],
       });
     }
@@ -65,7 +82,7 @@ export const ResearchDatasetListSchema = z
   });
 
 const ResearchModelSchema = z.strictObject({
-  id: z.enum(["last_close", "historical_log_mean"]),
+  id: ResearchReferenceIdSchema,
   label: ShortTextSchema,
   version: z.literal("1"),
 });
@@ -79,7 +96,7 @@ const DirectionConfusionSchema = z.tuple([
 
 const ResearchEvaluationSummarySchema = z
   .strictObject({
-    model_id: z.enum(["last_close", "historical_log_mean"]),
+    model_id: ResearchReferenceIdSchema,
     partition: z.enum(["validation", "test"]),
     n: z.number().int().positive(),
     mae: z.number().finite().nonnegative(),
@@ -105,7 +122,7 @@ const ResearchEvaluationSummarySchema = z
 
 const ResearchEvaluationRowSchema = z
   .strictObject({
-    model_id: z.enum(["last_close", "historical_log_mean"]),
+    model_id: ResearchReferenceIdSchema,
     partition: z.enum(["validation", "test"]),
     origin: ResearchSessionDateSchema,
     target: ResearchSessionDateSchema,
@@ -131,7 +148,7 @@ const ResearchForecastPointSchema = z.strictObject({
 });
 
 const ResearchForecastModelSchema = z.strictObject({
-  model_id: z.enum(["last_close", "historical_log_mean"]),
+  model_id: ResearchReferenceIdSchema,
   points: z.array(ResearchForecastPointSchema).min(2).max(6),
 });
 
@@ -164,7 +181,10 @@ export const ResearchEvaluationSchema = z
     dataset_version: ResearchSha256Schema,
     data_kind: ResearchDataKindSchema,
     empirical_performance_established: z.literal(false),
-    evidence_kind: z.enum(["synthetic_pipeline_check", "historical_walk_forward"]),
+    evidence_kind: z.enum([
+      "synthetic_pipeline_check",
+      "historical_walk_forward",
+    ]),
     target: z.strictObject({
       name: z.literal("split_neutral_close"),
       horizon_sessions: ResearchHorizonSchema,
@@ -189,12 +209,19 @@ export const ResearchEvaluationSchema = z
     }
 
     const expectedEvaluations = new Set(
-      result.models.flatMap((model) => [`${model.id}:validation`, `${model.id}:test`]),
+      result.models.flatMap((model) => [
+        `${model.id}:validation`,
+        `${model.id}:test`,
+      ]),
     );
     const summaries = new Map<string, (typeof result.evaluation)[number]>();
     for (const [index, summary] of result.evaluation.entries()) {
       const key = `${summary.model_id}:${summary.partition}`;
-      if (!modelIds.has(summary.model_id) || !expectedEvaluations.has(key) || summaries.has(key)) {
+      if (
+        !modelIds.has(summary.model_id) ||
+        !expectedEvaluations.has(key) ||
+        summaries.has(key)
+      ) {
         context.addIssue({
           code: "custom",
           message: "Each model must have one validation and one test summary.",
@@ -227,7 +254,40 @@ export const ResearchEvaluationSchema = z
       }
     }
 
-    const forecastModelIds = new Set(result.forecast.models.map((model) => model.model_id));
+    const referenceRows = new Map(
+      result.evaluation_rows
+        .filter((row) => row.model_id === "last_close")
+        .map((row) => [researchRowIdentity(row), row]),
+    );
+    for (const modelId of modelIds) {
+      const rows = result.evaluation_rows.filter(
+        (row) => row.model_id === modelId,
+      );
+      const identities = new Set(rows.map(researchRowIdentity));
+      if (
+        identities.size !== rows.length ||
+        identities.size !== referenceRows.size ||
+        rows.some((row) => {
+          const reference = referenceRows.get(researchRowIdentity(row));
+          return (
+            !reference ||
+            reference.actual !== row.actual ||
+            reference.origin_value !== row.origin_value
+          );
+        })
+      ) {
+        context.addIssue({
+          code: "custom",
+          message:
+            "Reference rows must share unique target, input, cutoff and observed-value identities.",
+          path: ["evaluation_rows"],
+        });
+      }
+    }
+
+    const forecastModelIds = new Set(
+      result.forecast.models.map((model) => model.model_id),
+    );
     if (forecastModelIds.size !== result.forecast.models.length) {
       context.addIssue({
         code: "custom",
@@ -268,7 +328,8 @@ export const ResearchEvaluationSchema = z
     if (forecastOrigin !== result.forecast.origin) {
       context.addIssue({
         code: "custom",
-        message: "The final historical observation must match the forecast origin.",
+        message:
+          "The final historical observation must match the forecast origin.",
         path: ["forecast", "origin"],
       });
     }
@@ -280,15 +341,22 @@ export const ResearchEvaluationSchema = z
       if (
         forecastModel.points.length !== expectedPointCount ||
         times[0] !== result.forecast.origin ||
-        times.some((time, pointIndex) => pointIndex > 0 && time <= (times[pointIndex - 1] ?? ""))
+        times.some(
+          (time, pointIndex) =>
+            pointIndex > 0 && time <= (times[pointIndex - 1] ?? ""),
+        )
       ) {
         context.addIssue({
           code: "custom",
-          message: "Each forecast line must include its origin and every next scheduled session.",
+          message:
+            "Each forecast line must include its origin and every next scheduled session.",
           path: ["forecast", "models", index, "points"],
         });
       }
-      if (forecastTimes !== null && times.some((time, timeIndex) => time !== forecastTimes?.[timeIndex])) {
+      if (
+        forecastTimes !== null &&
+        times.some((time, timeIndex) => time !== forecastTimes?.[timeIndex])
+      ) {
         context.addIssue({
           code: "custom",
           message: "Forecast models must use the same scheduled sessions.",
@@ -303,9 +371,11 @@ const ResearchRuntimeSchema = z.strictObject({
   python: ShortTextSchema,
   engine_source_sha256: ResearchSha256Schema,
   dependency_lock_sha256: ResearchSha256Schema,
-  dependencies: z.object({
-    exchange_calendars: ShortTextSchema,
-  }).catchall(ShortTextSchema),
+  dependencies: z
+    .object({
+      exchange_calendars: ShortTextSchema,
+    })
+    .catchall(ShortTextSchema),
   random_seed: z.null(),
   deterministic: z.literal(true),
 });
@@ -389,11 +459,134 @@ export const ResearchRunRequestSchema = z.strictObject({
   idempotency_key: ResearchRunIdSchema,
 });
 
+export const ResearchHistoryQuerySchema = z.strictObject({
+  q: z.string().trim().max(128).optional(),
+  instrument_id: ResearchInstrumentIdSchema.optional(),
+  horizon_sessions: ResearchHorizonSchema.optional(),
+  data_kind: ResearchDataKindSchema.optional(),
+  offset: z.number().int().nonnegative(),
+  limit: z.number().int().min(1).max(50),
+});
+
+export const ResearchHistoryItemSchema = z.strictObject({
+  id: ResearchRunIdSchema,
+  dataset_id: ResearchRunIdSchema,
+  dataset_version: ResearchSha256Schema,
+  name: ShortTextSchema,
+  data_kind: ResearchDataKindSchema,
+  instrument_id: ShortTextSchema,
+  horizon_sessions: ResearchHorizonSchema,
+  created_at: ResearchDateTimeSchema,
+  completed_at: ResearchDateTimeSchema,
+  status: z.literal("succeeded"),
+});
+
+export const ResearchHistoryResponseSchema = z
+  .strictObject({
+    items: z.array(ResearchHistoryItemSchema).max(50),
+    total: z.number().int().nonnegative(),
+    offset: z.number().int().nonnegative(),
+    limit: z.number().int().min(1).max(50),
+  })
+  .superRefine((history, context) => {
+    if (history.items.length > history.limit) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "A history page cannot contain more items than its requested limit.",
+        path: ["items"],
+      });
+    }
+
+    const identifiers = new Set<string>();
+    for (const [index, item] of history.items.entries()) {
+      if (identifiers.has(item.id)) {
+        context.addIssue({
+          code: "custom",
+          message: "Saved run identifiers must be unique in a history page.",
+          path: ["items", index, "id"],
+        });
+      }
+      identifiers.add(item.id);
+    }
+  });
+
+export const ResearchComparisonResponseSchema = z.strictObject({
+  left_id: ResearchRunIdSchema,
+  right_id: ResearchRunIdSchema,
+  compatible: z.boolean(),
+  reasons: z.array(NonEmptyTextSchema).max(20),
+});
+
+export const ResearchReplayResponseSchema = z.strictObject({
+  run_id: ResearchRunIdSchema,
+  result: z.enum(["PASS", "FAIL"]),
+  dataset_matches: z.boolean(),
+  engine_matches: z.boolean(),
+  dependency_lock_matches: z.boolean(),
+  runtime_versions_match: z.boolean(),
+  result_matches: z.boolean(),
+  result_sha256: ResearchSha256Schema,
+});
+
+export const ResearchExportResponseSchema = z
+  .strictObject({
+    format: z.literal("cadrisyn-research-v1"),
+    disclosure: z.literal(
+      "Synthetic pipeline check. Not empirical market evidence.",
+    ),
+    dataset: ResearchDatasetSchema,
+    run: ResearchRunSchema,
+    result_sha256: ResearchSha256Schema,
+  })
+  .superRefine((exported, context) => {
+    if (
+      exported.dataset.id !== exported.run.dataset_id ||
+      exported.dataset.version !== exported.run.dataset_version
+    ) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "The exported dataset must match the saved run's immutable dataset identity.",
+        path: ["dataset"],
+      });
+    }
+    if (
+      exported.dataset.data_kind !== "synthetic_fixture" ||
+      exported.run.data_kind !== "synthetic_fixture"
+    ) {
+      context.addIssue({
+        code: "custom",
+        message:
+          "This export format is reserved for synthetic pipeline checks.",
+        path: ["run", "data_kind"],
+      });
+    }
+  });
+
 export type ResearchDataKind = z.infer<typeof ResearchDataKindSchema>;
+export type ResearchReferenceId = z.infer<typeof ResearchReferenceIdSchema>;
 export type ResearchDataset = z.infer<typeof ResearchDatasetSchema>;
 export type ResearchRun = z.infer<typeof ResearchRunSchema>;
 export type ResearchEvaluation = z.infer<typeof ResearchEvaluationSchema>;
 export type ResearchForecast = z.infer<typeof ResearchForecastSchema>;
 export type ResearchRunRequest = z.infer<typeof ResearchRunRequestSchema>;
 export type ResearchRunList = z.infer<typeof ResearchRunListSchema>;
-export type ResearchDatasetList = z.infer<typeof ResearchDatasetListResponseSchema>;
+export type ResearchDatasetList = z.infer<
+  typeof ResearchDatasetListResponseSchema
+>;
+export type ResearchEvaluationRow = z.infer<typeof ResearchEvaluationRowSchema>;
+export type ResearchHistoryQuery = z.infer<typeof ResearchHistoryQuerySchema>;
+export type ResearchHistoryItem = z.infer<typeof ResearchHistoryItemSchema>;
+export type ResearchHistoryResponse = z.infer<
+  typeof ResearchHistoryResponseSchema
+>;
+export type ResearchComparisonResponse = z.infer<
+  typeof ResearchComparisonResponseSchema
+>;
+export type ResearchReplayResponse = z.infer<
+  typeof ResearchReplayResponseSchema
+>;
+export type ResearchExportResponse = z.infer<
+  typeof ResearchExportResponseSchema
+>;

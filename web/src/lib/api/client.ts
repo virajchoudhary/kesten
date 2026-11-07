@@ -75,13 +75,19 @@ function apiErrorFrom(response: Response, payload: unknown): ApiError {
   });
 }
 
-export async function requestJson<T>(options: {
+type JsonRequest<T> = {
   path: string;
   schema: z.ZodType<T>;
   init?: RequestInit;
   csrfToken?: string;
   signal?: AbortSignal;
-}): Promise<T> {
+};
+
+export async function requestJson<T>(options: JsonRequest<T>): Promise<T> {
+  return (await requestJsonDocument(options)).data;
+}
+
+export async function requestJsonDocument<T>(options: JsonRequest<T>): Promise<{ data: T; source: string }> {
   const headers = new Headers(options.init?.headers);
   headers.set("Accept", "application/json");
   if (options.init?.body !== undefined && !headers.has("Content-Type")) {
@@ -111,7 +117,13 @@ export async function requestJson<T>(options: {
     });
   }
 
-  const payload = await readJson(response);
+  const source = await response.text();
+  let payload: unknown = null;
+  try {
+    payload = JSON.parse(source);
+  } catch {
+    payload = null;
+  }
   if (!response.ok) {
     throw apiErrorFrom(response, payload);
   }
@@ -125,7 +137,7 @@ export async function requestJson<T>(options: {
     });
   }
 
-  return parsed.data;
+  return { data: parsed.data, source };
 }
 
 async function requestNoContent(options: {

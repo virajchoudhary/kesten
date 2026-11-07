@@ -1,7 +1,8 @@
 "use client";
 
 import { useId } from "react";
-import { LoaderCircle, RefreshCw, Star, X } from "lucide-react";
+import Link from "next/link";
+import { FlaskConical, LoaderCircle, RefreshCw, Star, X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -143,6 +144,9 @@ export function WatchlistPanel({
                   </span>
                   <span className="shrink-0 text-[11px] text-secondary">{instrument.exchange}</span>
                 </button>
+                <Link aria-label={`Research ${instrument.symbol}`} href={`/app/research?instrument=${encodeURIComponent(instrument.id)}`} className="inline-flex size-11 shrink-0 items-center justify-center rounded-control text-secondary hover:bg-raised hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus min-[1440px]:size-8">
+                  <FlaskConical aria-hidden="true" size={14} />
+                </Link>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button

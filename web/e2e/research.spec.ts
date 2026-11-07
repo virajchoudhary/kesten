@@ -7,7 +7,7 @@ import { z } from "zod";
 import { SessionSchema } from "../src/lib/api/schemas";
 import {
   ResearchDatasetListResponseSchema,
-  ResearchRunListSchema,
+  ResearchHistoryResponseSchema,
   ResearchRunRequestSchema,
   ResearchRunSchema,
 } from "../src/features/research/research-schemas";
@@ -86,23 +86,24 @@ test("runs and reloads a private synthetic research evaluation against the real 
   const datasetsResponsePromise = page.waitForResponse((response) =>
     isApiResponse(response, "/api/v1/research/datasets/", "GET"),
   );
-  const runsResponsePromise = page.waitForResponse((response) =>
-    isApiResponse(response, "/api/v1/research/runs/", "GET"),
+  const historyResponsePromise = page.waitForResponse((response) =>
+    isApiResponse(response, "/api/v1/research/history/", "GET"),
   );
   await page.getByRole("link", { name: "Research", exact: true }).click();
   await page.waitForURL(/\/app\/research\/?$/u);
-  const [datasetsResponse, runsResponse] = await Promise.all([
+  const [datasetsResponse, historyResponse] = await Promise.all([
     datasetsResponsePromise,
-    runsResponsePromise,
+    historyResponsePromise,
   ]);
   expect(datasetsResponse.status()).toBe(200);
-  expect(runsResponse.status()).toBe(200);
+  expect(historyResponse.status()).toBe(200);
   const datasets = ResearchDatasetListResponseSchema.parse(await datasetsResponse.json());
-  const initialRuns = ResearchRunListSchema.parse(await runsResponse.json());
+  const initialHistory = ResearchHistoryResponseSchema.parse(await historyResponse.json());
   const fixture = datasets.items.find((dataset) => dataset.name === "Synthetic pipeline fixture");
   expect(fixture).toBeDefined();
   expect(fixture?.data_kind).toBe("synthetic_fixture");
-  expect(initialRuns.items.every((run) => run.status === "succeeded")).toBe(true);
+  expect(initialHistory.items.every((run) => run.status === "succeeded")).toBe(true);
+  expect(initialHistory.items.every((run) => !("result" in run))).toBe(true);
 
   const datasetControl = page.getByRole("combobox", { name: "Private research dataset" });
   await datasetControl.click();
@@ -135,7 +136,7 @@ test("runs and reloads a private synthetic research evaluation against the real 
     .toBeVisible();
   await expect(page.getByRole("img", { name: "Dataset history and forecast paths" }))
     .toBeVisible();
-  const axisLabels = await page.getByRole("region", { name: "Dataset history and forecast", exact: true })
+  const axisLabels = await page.getByRole("region", { name: "Research analytics", exact: true })
     .locator("svg text").evaluateAll((nodes) => nodes.map((node) => {
       const bounds = node.getBoundingClientRect();
       return { text: node.textContent?.trim() ?? "", left: bounds.left, right: bounds.right, top: bounds.top, bottom: bounds.bottom };
@@ -143,18 +144,21 @@ test("runs and reloads a private synthetic research evaluation against the real 
   type LabelBounds = Omit<(typeof axisLabels)[number], "text">;
   const overlap = (a: LabelBounds, b: LabelBounds): boolean =>
     a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top;
-  const unitsLabel = axisLabels.find((label) => label.text === "USD per initial share");
+  const unitsCaption = page.getByText("Split-neutral close · USD per initial share", { exact: true });
+  await expect(unitsCaption).toBeVisible();
+  const unitsLabel = await unitsCaption.boundingBox();
   if (!unitsLabel) throw new Error("The chart must show its price-axis units.");
   const prices = axisLabels.filter((label) => label.text.startsWith("$"));
-  const dates = axisLabels.filter((label) => /^[A-Za-z]{3} \d{1,2}$/u.test(label.text));
+  const dates = axisLabels.filter((label) => /^[A-Za-z]{3} \d{1,2}, \d{4}$/u.test(label.text));
   expect(prices.length).toBeGreaterThanOrEqual(2);
   expect(dates.length).toBeGreaterThanOrEqual(2);
-  expect(prices.some((label) => overlap(label, unitsLabel))).toBe(false);
+  expect(prices.some((label) => overlap(label, { left: unitsLabel.x, right: unitsLabel.x + unitsLabel.width, top: unitsLabel.y, bottom: unitsLabel.y + unitsLabel.height }))).toBe(false);
   expect(dates.some((label, index) => dates.slice(index + 1).some((other) => overlap(label, other)))).toBe(false);
-  await expect(page.getByText("Dataset history", { exact: true }).first()).toBeVisible();
+  await expect(page.getByText("Dataset value", { exact: true }).first()).toBeVisible();
   await expect(
     page.getByText("Historical log mean · geometric drift path", { exact: true }).first(),
   ).toBeVisible();
+  await page.getByText("Protocol, metrics, and run evidence", { exact: true }).click();
   await expect(page.getByRole("heading", { name: "Validation and test metrics" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Direction confusion counts" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Data and run provenance" })).toBeVisible();
@@ -180,6 +184,7 @@ test("runs and reloads a private synthetic research evaluation against the real 
     .toBeVisible();
 
   await page.setViewportSize({ width: 1440, height: 960 });
+  await page.getByText("Protocol, metrics, and run evidence", { exact: true }).click();
   await expect(page.getByRole("table", { name: /Validation and test metrics/u })).toBeVisible();
   expect(pageErrors).toEqual([]);
 });

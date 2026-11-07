@@ -54,10 +54,13 @@ def main():
     call_command("issue_invitation", username="e2e_invited_" + suffix, issued_by=operator.username, base_url="http://127.0.0.1:3000", stdout=invitation, no_color=True)
     initial_password = secrets.token_urlsafe(32)
     reset_user = users.create_user("e2e_reset_" + suffix, password=initial_password)
+    isolation_password = secrets.token_urlsafe(32)
+    isolation_user = users.create_user("e2e_isolation_" + suffix, password=isolation_password)
     _, token = issue_password_reset(user=reset_user, issued_by=operator)
     files = {
         "account-e2e-invitation.txt": invitation.getvalue(),
         "account-e2e-reset.json": json.dumps({"username": reset_user.username, "initial_password": initial_password, "token": token}),
+        "research-e2e-isolation.json": json.dumps({"username": isolation_user.username, "password": isolation_password}),
     }
     for name, contents in files.items():
         path = ROOT / ".local" / name

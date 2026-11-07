@@ -1,4 +1,6 @@
 import type {
+  ResearchExportResponse,
+  ResearchHistoryItem,
   ResearchDataset,
   ResearchRun,
 } from "./research-schemas";
@@ -150,5 +152,40 @@ export function researchRunFixture(options: {
     started_at: "2026-11-05T10:00:00Z",
     completed_at: "2026-11-05T10:00:01Z",
     attempts: 1,
+  };
+}
+
+export function researchHistoryItemFixture(
+  overrides: Partial<ResearchHistoryItem> = {},
+): ResearchHistoryItem {
+  const dataset = researchDatasetFixture();
+  return {
+    id: "22222222-2222-4222-8222-222222222222",
+    dataset_id: dataset.id,
+    dataset_version: dataset.version,
+    name: "Synthetic pipeline fixture",
+    data_kind: "synthetic_fixture",
+    instrument_id: dataset.instrument_id,
+    horizon_sessions: 1,
+    created_at: "2026-11-05T10:00:00Z",
+    completed_at: "2026-11-05T10:00:01Z",
+    status: "succeeded",
+    ...overrides,
+  };
+}
+
+export function researchExportFixture(
+  run = researchRunFixture({
+    id: "22222222-2222-4222-8222-222222222222",
+    name: "Synthetic pipeline fixture",
+  }),
+  dataset = researchDatasetFixture(),
+): ResearchExportResponse {
+  return {
+    format: "cadrisyn-research-v1",
+    disclosure: "Synthetic pipeline check. Not empirical market evidence.",
+    dataset,
+    run,
+    result_sha256: HASH,
   };
 }
