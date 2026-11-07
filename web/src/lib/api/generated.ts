@@ -116,6 +116,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/research/history/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["research_history"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/research/runs/": {
         parameters: {
             query?: never;
@@ -142,6 +158,54 @@ export interface paths {
         get: operations["research_run_read"];
         put?: never;
         post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/research/runs/{run_id}/compare/{other_id}/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["research_runs_compare"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/research/runs/{run_id}/export/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["research_run_export"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/v1/research/runs/{run_id}/replay/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["research_run_replay"];
         delete?: never;
         options?: never;
         head?: never;
@@ -260,6 +324,11 @@ export interface components {
         DatasetList: {
             items: components["schemas"]["Dataset"][];
         };
+        /**
+         * @description * `Synthetic pipeline check. Not empirical market evidence.` - Synthetic pipeline check. Not empirical market evidence.
+         * @enum {string}
+         */
+        DisclosureEnum: "Synthetic pipeline check. Not empirical market evidence.";
         Error: {
             code: string;
             message: string;
@@ -321,6 +390,11 @@ export interface components {
             /** Format: double */
             value: number;
         };
+        /**
+         * @description * `cadrisyn-research-v1` - cadrisyn-research-v1
+         * @enum {string}
+         */
+        FormatEnum: "cadrisyn-research-v1";
         /**
          * @description * `current` - current
          *     * `stale` - stale
@@ -469,6 +543,27 @@ export interface components {
             snapshot_id: string;
             disclaimer: string;
         };
+        ResearchCompare: {
+            /** Format: uuid */
+            left_id: string;
+            /** Format: uuid */
+            right_id: string;
+            compatible: boolean;
+            reasons: string[];
+        };
+        ResearchExport: {
+            format: components["schemas"]["FormatEnum"];
+            disclosure: components["schemas"]["DisclosureEnum"];
+            dataset: components["schemas"]["Dataset"];
+            run: components["schemas"]["ResearchRun"];
+            result_sha256: string;
+        };
+        ResearchHistory: {
+            items: components["schemas"]["ResearchRunSummary"][];
+            total: number;
+            offset: number;
+            limit: number;
+        };
         ResearchInput: {
             /** Format: uuid */
             dataset_id: string;
@@ -482,6 +577,17 @@ export interface components {
          * @enum {string}
          */
         ResearchModelEnum: "last_close" | "historical_log_mean";
+        ResearchReplay: {
+            /** Format: uuid */
+            run_id: string;
+            result: components["schemas"]["ResultEnum"];
+            dataset_matches: boolean;
+            engine_matches: boolean;
+            dependency_lock_matches: boolean;
+            runtime_versions_match: boolean;
+            result_matches: boolean;
+            result_sha256: string;
+        };
         ResearchResult: {
             schema_version: number;
             engine_version: string;
@@ -522,6 +628,28 @@ export interface components {
         ResearchRunList: {
             items: components["schemas"]["ResearchRun"][];
         };
+        ResearchRunSummary: {
+            /** Format: uuid */
+            id: string;
+            /** Format: uuid */
+            dataset_id: string;
+            dataset_version: string;
+            name: string;
+            data_kind: components["schemas"]["DataKindEnum"];
+            instrument_id: string;
+            horizon_sessions: components["schemas"]["HorizonSessionsEnum"];
+            /** Format: date-time */
+            created_at: string;
+            /** Format: date-time */
+            completed_at: string;
+            status: components["schemas"]["StatusEnum"];
+        };
+        /**
+         * @description * `PASS` - PASS
+         *     * `FAIL` - FAIL
+         * @enum {string}
+         */
+        ResultEnum: "PASS" | "FAIL";
         /**
          * @description * `simple price return` - simple price return
          * @enum {string}
@@ -904,6 +1032,64 @@ export interface operations {
             };
         };
     };
+    research_history: {
+        parameters: {
+            query?: {
+                /**
+                 * @description * `synthetic_fixture` - synthetic_fixture
+                 *     * `historical` - historical
+                 */
+                data_kind?: "synthetic_fixture" | "historical" | "";
+                /**
+                 * @description * `1` - 1
+                 *     * `5` - 5
+                 */
+                horizon_sessions?: 1 | 5 | "";
+                instrument_id?: string;
+                limit?: number;
+                offset?: number;
+                q?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResearchHistory"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            503: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
     research_runs: {
         parameters: {
             query?: never;
@@ -1046,6 +1232,150 @@ export interface operations {
                 };
             };
             404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    research_runs_compare: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                other_id: string;
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResearchCompare"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    research_run_export: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResearchExport"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    research_run_replay: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                run_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ResearchReplay"];
+                };
+            };
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            415: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            429: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            503: {
                 headers: {
                     [name: string]: unknown;
                 };

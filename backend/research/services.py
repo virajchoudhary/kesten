@@ -146,3 +146,26 @@ def run_info(run):
         "attempts": 1, "status": "succeeded", "result": run.result,
         "runtime": run.runtime, "error_code": None,
     }
+
+
+def validate_synthetic_export(run):
+    from .quant import parse_dataset
+
+    try:
+        parsed = parse_dataset(run.dataset.payload, now=timezone.now())
+    except (KeyError, TypeError, ValueError) as error:
+        raise DatasetUnavailable("The saved run is not eligible for export.") from error
+
+    result = run.result
+    if (
+        parsed.version != run.dataset.version
+        or type(result) is not dict
+        or result.get("dataset_version") != run.dataset.version
+        or parsed.data_kind != "synthetic_fixture"
+        or result.get("data_kind") != "synthetic_fixture"
+        or result.get("evidence_kind") != "synthetic_pipeline_check"
+        or result.get("empirical_performance_established") is not False
+        or type(result.get("target")) is not dict
+        or result["target"].get("horizon_sessions") != run.horizon_sessions
+    ):
+        raise DatasetUnavailable("The saved run is not eligible for export.")

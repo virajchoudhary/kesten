@@ -495,6 +495,124 @@
                 }
             }
         },
+        "/api/v1/research/history/": {
+            "get": {
+                "operationId": "research_history",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "data_kind",
+                        "schema": {
+                            "enum": [
+                                "synthetic_fixture",
+                                "historical",
+                                ""
+                            ],
+                            "type": "string"
+                        },
+                        "description": "* `synthetic_fixture` - synthetic_fixture\n* `historical` - historical"
+                    },
+                    {
+                        "in": "query",
+                        "name": "horizon_sessions",
+                        "schema": {
+                            "enum": [
+                                1,
+                                5,
+                                ""
+                            ]
+                        },
+                        "description": "* `1` - 1\n* `5` - 5"
+                    },
+                    {
+                        "in": "query",
+                        "name": "instrument_id",
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 32
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 50,
+                            "minimum": 1,
+                            "default": 20
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "default": 0
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 128
+                        }
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchHistory"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/api/v1/research/runs/": {
             "get": {
                 "operationId": "research_runs",
@@ -687,6 +805,223 @@
                         "description": ""
                     },
                     "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/{run_id}/compare/{other_id}/": {
+            "get": {
+                "operationId": "research_runs_compare",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "other_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "run_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchCompare"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/{run_id}/export/": {
+            "get": {
+                "operationId": "research_run_export",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "run_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchExport"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/{run_id}/replay/": {
+            "post": {
+                "operationId": "research_run_replay",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "run_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchReplay"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "415": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "429": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -1105,6 +1440,13 @@
                     "items"
                 ]
             },
+            "DisclosureEnum": {
+                "enum": [
+                    "Synthetic pipeline check. Not empirical market evidence."
+                ],
+                "type": "string",
+                "description": "* `Synthetic pipeline check. Not empirical market evidence.` - Synthetic pipeline check. Not empirical market evidence."
+            },
             "Error": {
                 "type": "object",
                 "properties": {
@@ -1301,6 +1643,13 @@
                     "time",
                     "value"
                 ]
+            },
+            "FormatEnum": {
+                "enum": [
+                    "cadrisyn-research-v1"
+                ],
+                "type": "string",
+                "description": "* `cadrisyn-research-v1` - cadrisyn-research-v1"
             },
             "FreshnessStateEnum": {
                 "enum": [
@@ -1728,6 +2077,91 @@
                     "source_label"
                 ]
             },
+            "ResearchCompare": {
+                "type": "object",
+                "properties": {
+                    "left_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "right_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "compatible": {
+                        "type": "boolean"
+                    },
+                    "reasons": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "compatible",
+                    "left_id",
+                    "reasons",
+                    "right_id"
+                ]
+            },
+            "ResearchExport": {
+                "type": "object",
+                "properties": {
+                    "format": {
+                        "$ref": "#/components/schemas/FormatEnum"
+                    },
+                    "disclosure": {
+                        "$ref": "#/components/schemas/DisclosureEnum"
+                    },
+                    "dataset": {
+                        "$ref": "#/components/schemas/Dataset"
+                    },
+                    "run": {
+                        "$ref": "#/components/schemas/ResearchRun"
+                    },
+                    "result_sha256": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "dataset",
+                    "disclosure",
+                    "format",
+                    "result_sha256",
+                    "run"
+                ]
+            },
+            "ResearchHistory": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ResearchRunSummary"
+                        }
+                    },
+                    "total": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "maximum": 50,
+                        "minimum": 1
+                    }
+                },
+                "required": [
+                    "items",
+                    "limit",
+                    "offset",
+                    "total"
+                ]
+            },
             "ResearchInput": {
                 "type": "object",
                 "properties": {
@@ -1756,6 +2190,46 @@
                 ],
                 "type": "string",
                 "description": "* `last_close` - last_close\n* `historical_log_mean` - historical_log_mean"
+            },
+            "ResearchReplay": {
+                "type": "object",
+                "properties": {
+                    "run_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/ResultEnum"
+                    },
+                    "dataset_matches": {
+                        "type": "boolean"
+                    },
+                    "engine_matches": {
+                        "type": "boolean"
+                    },
+                    "dependency_lock_matches": {
+                        "type": "boolean"
+                    },
+                    "runtime_versions_match": {
+                        "type": "boolean"
+                    },
+                    "result_matches": {
+                        "type": "boolean"
+                    },
+                    "result_sha256": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "dataset_matches",
+                    "dependency_lock_matches",
+                    "engine_matches",
+                    "result",
+                    "result_matches",
+                    "result_sha256",
+                    "run_id",
+                    "runtime_versions_match"
+                ]
             },
             "ResearchResult": {
                 "type": "object",
@@ -1914,6 +2388,65 @@
                 "required": [
                     "items"
                 ]
+            },
+            "ResearchRunSummary": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "dataset_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "dataset_version": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "data_kind": {
+                        "$ref": "#/components/schemas/DataKindEnum"
+                    },
+                    "instrument_id": {
+                        "type": "string"
+                    },
+                    "horizon_sessions": {
+                        "$ref": "#/components/schemas/HorizonSessionsEnum"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "completed_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/StatusEnum"
+                    }
+                },
+                "required": [
+                    "completed_at",
+                    "created_at",
+                    "data_kind",
+                    "dataset_id",
+                    "dataset_version",
+                    "horizon_sessions",
+                    "id",
+                    "instrument_id",
+                    "name",
+                    "status"
+                ]
+            },
+            "ResultEnum": {
+                "enum": [
+                    "PASS",
+                    "FAIL"
+                ],
+                "type": "string",
+                "description": "* `PASS` - PASS\n* `FAIL` - FAIL"
             },
             "ReturnConventionEnum": {
                 "enum": [

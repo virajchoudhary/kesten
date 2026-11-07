@@ -153,3 +153,78 @@ class ResearchRunSerializer(serializers.Serializer):
 
 class ResearchRunListSerializer(serializers.Serializer):
     items = ResearchRunSerializer(many=True)
+
+
+class ResearchHistoryQuerySerializer(serializers.Serializer):
+    q = serializers.CharField(required=False, allow_blank=True, max_length=128, trim_whitespace=True)
+    instrument_id = serializers.CharField(required=False, allow_blank=True, max_length=32, trim_whitespace=True)
+    horizon_sessions = serializers.ChoiceField(choices=[1, 5], required=False, allow_blank=True)
+    data_kind = serializers.ChoiceField(
+        choices=["synthetic_fixture", "historical"], required=False, allow_blank=True
+    )
+    offset = serializers.IntegerField(required=False, default=0, min_value=0, max_value=2147483647)
+    limit = serializers.IntegerField(required=False, default=20, min_value=1, max_value=50)
+
+    def to_internal_value(self, data):
+        if hasattr(data, "keys") and set(data.keys()) - set(self.fields):
+            raise serializers.ValidationError(
+                {"non_field_errors": ["Use only the declared filters and pagination fields."]}
+            )
+        return super().to_internal_value(data)
+
+
+class ResearchRunSummarySerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    dataset_id = serializers.UUIDField()
+    dataset_version = serializers.CharField()
+    name = serializers.CharField()
+    data_kind = serializers.ChoiceField(choices=["synthetic_fixture", "historical"])
+    instrument_id = serializers.CharField()
+    horizon_sessions = serializers.ChoiceField(choices=[1, 5])
+    created_at = serializers.DateTimeField()
+    completed_at = serializers.DateTimeField()
+    status = serializers.ChoiceField(choices=["succeeded"])
+
+
+class ResearchHistorySerializer(serializers.Serializer):
+    items = ResearchRunSummarySerializer(many=True)
+    total = serializers.IntegerField(min_value=0)
+    offset = serializers.IntegerField(min_value=0)
+    limit = serializers.IntegerField(min_value=1, max_value=50)
+
+
+class ResearchReplayRequestSerializer(serializers.Serializer):
+    def to_internal_value(self, data):
+        if type(data) is not dict or data:
+            raise serializers.ValidationError(
+                {"non_field_errors": ["Replay accepts an empty JSON object."]}
+            )
+        return {}
+
+
+class ResearchReplaySerializer(serializers.Serializer):
+    run_id = serializers.UUIDField()
+    result = serializers.ChoiceField(choices=["PASS", "FAIL"])
+    dataset_matches = serializers.BooleanField()
+    engine_matches = serializers.BooleanField()
+    dependency_lock_matches = serializers.BooleanField()
+    runtime_versions_match = serializers.BooleanField()
+    result_matches = serializers.BooleanField()
+    result_sha256 = serializers.CharField()
+
+
+class ResearchExportSerializer(serializers.Serializer):
+    format = serializers.ChoiceField(choices=["cadrisyn-research-v1"])
+    disclosure = serializers.ChoiceField(
+        choices=["Synthetic pipeline check. Not empirical market evidence."]
+    )
+    dataset = DatasetSerializer()
+    run = ResearchRunSerializer()
+    result_sha256 = serializers.CharField()
+
+
+class ResearchCompareSerializer(serializers.Serializer):
+    left_id = serializers.UUIDField()
+    right_id = serializers.UUIDField()
+    compatible = serializers.BooleanField()
+    reasons = serializers.ListField(child=serializers.CharField())
