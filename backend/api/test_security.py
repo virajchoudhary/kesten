@@ -3,6 +3,9 @@ import subprocess
 import sys
 import tempfile
 from pathlib import Path
+from urllib.parse import quote
+
+import certifi
 
 from django.contrib.auth.models import AnonymousUser, User
 from django.test import SimpleTestCase, override_settings
@@ -122,8 +125,8 @@ blocked = {"api.ai_services", "torch", "fastembed", "groq", "polygon"} & set(sys
 if blocked:
     raise SystemExit("unexpected quant imports: " + ", ".join(sorted(blocked)))
 """
-        with tempfile.TemporaryDirectory(dir=REPO_ROOT) as temp_dir:
-            environment = os.environ.copy()
+        with tempfile.TemporaryDirectory() as temp_dir:
+            environment = {key: value for key, value in os.environ.items() if not key.startswith(('DJANGO_', 'CADRISYN_', 'DATABASE_URL'))}
             environment.update(
                 {
                     "DJANGO_SETTINGS_MODULE": "quantvision.settings",
@@ -160,13 +163,14 @@ if blocked:
 
 class SettingsConfigurationTests(SimpleTestCase):
     def test_dangerous_settings_fail_closed_before_database_access(self):
-        base_environment = os.environ.copy()
+        base_environment = {key: value for key, value in os.environ.items() if not key.startswith(('DJANGO_', 'CADRISYN_', 'DATABASE_URL'))}
         base_environment.update(
             {
                 "DJANGO_SETTINGS_MODULE": "quantvision.settings",
                 "DJANGO_DEBUG": "true",
                 "DJANGO_SECRET_KEY": "unit-test-only-cadrisyn-key",
                 "DJANGO_ALLOWED_HOSTS": "testserver",
+                "DJANGO_CSRF_TRUSTED_ORIGINS": "",
                 "CADRISYN_DB_PATH": str(
                     Path(tempfile.gettempdir()) / "cadrisyn-settings-negative-test.sqlite3"
                 ),
@@ -195,7 +199,7 @@ class SettingsConfigurationTests(SimpleTestCase):
             ("invalid freshness window", {"CADRISYN_EOD_GRACE_HOURS": "49"}, "must be an integer from 0 to 48"),
             ("weak production secret", {"DJANGO_DEBUG": "false"}, "at least 50 characters"),
             ("missing production database", {"DJANGO_DEBUG": "false", "DJANGO_SECRET_KEY": "configuration-test-key-" * 4}, "explicit PostgreSQL"),
-            ("missing shared cache", {"DJANGO_DEBUG": "false", "DJANGO_SECRET_KEY": "configuration-test-key-" * 4, "DATABASE_URL": "postgresql://probe@database.invalid/cadrisyn"}, "explicit shared Redis"),
+            ("missing shared cache", {"DJANGO_DEBUG": "false", "DJANGO_SECRET_KEY": "configuration-test-key-" * 4, "DATABASE_URL": "postgresql://probe:fixture@database.invalid/cadrisyn?sslmode=verify-full&sslrootcert=" + quote(certifi.where())}, "explicit shared Redis"),
             ("invalid cache URL", {"DJANGO_CACHE_URL": "file:///tmp/cache"}, "Redis URL with a host"),
         )
 

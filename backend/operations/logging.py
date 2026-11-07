@@ -8,6 +8,7 @@ import uuid
 from contextvars import ContextVar
 from datetime import datetime, timezone
 from django.conf import settings
+from .metrics import record_request
 
 request_id = ContextVar("request_id", default=None)
 logger = logging.getLogger("cadrisyn.requests")
@@ -51,12 +52,14 @@ class RequestLoggingMiddleware:
                 response["Cache-Control"] = "private, no-store"
             return response
         finally:
+            elapsed = time.monotonic() - started
+            record_request(response.status_code if response is not None else 500, elapsed)
             match = getattr(request, "resolver_match", None)
             logger.info("request", extra={
                 "event": "http_request",
                 "method": request.method,
                 "route": match.route if match else "unmatched",
                 "status": response.status_code if response is not None else 500,
-                "duration_ms": round((time.monotonic() - started) * 1000, 2),
+                "duration_ms": round(elapsed * 1000, 2),
             })
             request_id.reset(token)

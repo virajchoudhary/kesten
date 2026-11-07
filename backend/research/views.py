@@ -1,8 +1,10 @@
+from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.db.models import CharField, Q, Value
 from django.db.models.functions import Cast, Replace
 from drf_spectacular.utils import extend_schema
 from rest_framework.parsers import JSONParser
+from rest_framework.exceptions import NotFound
 from rest_framework.response import Response
 from rest_framework.throttling import ScopedRateThrottle
 from workspace.serializers import ErrorSerializer
@@ -35,14 +37,21 @@ from .services import (
 )
 
 
-class DatasetsView(PrivateAPIView):
+class ResearchAPIView(PrivateAPIView):
+    def initial(self, request, *args, **kwargs):
+        if getattr(settings, "CADRISYN_RELEASE_PROFILE", "development") == "demo":
+            raise NotFound("Private research is unavailable in the demo-only release profile.")
+        return super().initial(request, *args, **kwargs)
+
+
+class DatasetsView(ResearchAPIView):
     @extend_schema(responses={200: DatasetListSerializer, 403: ErrorSerializer}, operation_id="research_datasets")
     def get(self, request):
         datasets = ResearchDataset.objects.filter(owner=request.user)[:100]
         return Response(DatasetListSerializer({"items": [dataset_info(item) for item in datasets]}).data)
 
 
-class RunsView(PrivateAPIView):
+class RunsView(ResearchAPIView):
     parser_classes = (JSONParser,)
     throttle_classes = (ScopedRateThrottle,)
     throttle_scope = "research"
@@ -74,14 +83,14 @@ class RunsView(PrivateAPIView):
         return Response(ResearchRunSerializer(run_info(run)).data, status=201 if created else 200)
 
 
-class RunView(PrivateAPIView):
+class RunView(ResearchAPIView):
     @extend_schema(responses={200: ResearchRunSerializer, 403: ErrorSerializer, 404: ErrorSerializer}, operation_id="research_run_read")
     def get(self, request, run_id):
         run = get_object_or_404(ResearchRun.objects.select_related("dataset"), id=run_id, owner=request.user)
         return Response(ResearchRunSerializer(run_info(run)).data)
 
 
-class ResearchHistoryView(PrivateAPIView):
+class ResearchHistoryView(ResearchAPIView):
     @extend_schema(
         parameters=[ResearchHistoryQuerySerializer],
         responses={200: ResearchHistorySerializer, 400: ErrorSerializer, 403: ErrorSerializer, 503: ErrorSerializer},
@@ -160,7 +169,7 @@ class ResearchHistoryView(PrivateAPIView):
         }).data)
 
 
-class ResearchReplayView(PrivateAPIView):
+class ResearchReplayView(ResearchAPIView):
     parser_classes = (JSONParser,)
     throttle_classes = (ScopedRateThrottle,)
     throttle_scope = "research"
@@ -193,7 +202,7 @@ class ResearchReplayView(PrivateAPIView):
         return Response(ResearchReplaySerializer(receipt).data)
 
 
-class ResearchExportView(PrivateAPIView):
+class ResearchExportView(ResearchAPIView):
     @extend_schema(
         responses={
             200: ResearchExportSerializer,
@@ -235,7 +244,7 @@ class ResearchExportView(PrivateAPIView):
         return response
 
 
-class ResearchCompareView(PrivateAPIView):
+class ResearchCompareView(ResearchAPIView):
     @extend_schema(
         responses={
             200: ResearchCompareSerializer,

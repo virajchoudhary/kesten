@@ -124,8 +124,21 @@ class RecoveryTests(unittest.TestCase):
             )
         with self.assertRaisesRegex(recovery.RecoveryError, "Unsupported"):
             recovery.parse_postgres_url(
-                "postgresql://user:pass@host/db?sslrootcert=%2Ftmp%2Froot.crt"
+                "postgresql://user:pass@host/db?options=-cunsafe"
             )
+
+    def test_verified_tls_ca_is_passed_explicitly_without_inherited_pg_settings(self):
+        from urllib.parse import quote
+
+        certificate = self.temp / 'private-ca.crt'
+        certificate.write_text('local test CA')
+        parsed = recovery.parse_postgres_url(TARGET_URL + '&sslrootcert=' + quote(str(certificate)))
+        with patch.dict(os.environ, {'PGSSLROOTCERT': 'unrelated-ca', 'PGSSLMODE': 'disable'}):
+            with recovery._postgres_environment(parsed) as environment:
+                self.assertEqual(environment['PGSSLROOTCERT'], str(certificate))
+                self.assertEqual(environment['PGSSLMODE'], 'verify-full')
+        with self.assertRaisesRegex(recovery.RecoveryError, 'CA certificate'):
+            recovery.parse_postgres_url(TARGET_URL + '&sslrootcert=missing-ca-file')
 
     def test_cli_rejects_url_argument_without_echoing_it(self):
         standard_error = io.StringIO()

@@ -30,6 +30,10 @@ class DevelopmentIsolationTests(unittest.TestCase):
             'DJANGO_SETTINGS_MODULE': 'quantvision.legacy_settings',
             'CADRISYN_LEGACY_ENABLED': 'true',
             'CADRISYN_LEGACY_SCHEDULER_ENABLED': 'true',
+            'DJANGO_SECRET_KEY_FILE': '/private/production-key',
+            'DATABASE_URL_FILE': '/private/production-database',
+            'DJANGO_CACHE_URL_FILE': '/private/production-cache',
+            'CADRISYN_RELEASE_PROFILE': 'demo',
         }
         with patch.dict(os.environ, inherited):
             environment = development_environment()
@@ -39,6 +43,9 @@ class DevelopmentIsolationTests(unittest.TestCase):
         self.assertEqual(environment['DJANGO_SETTINGS_MODULE'], 'quantvision.settings')
         self.assertEqual(environment['CADRISYN_LEGACY_ENABLED'], 'false')
         self.assertEqual(environment['CADRISYN_LEGACY_SCHEDULER_ENABLED'], 'false')
+        self.assertEqual(environment['CADRISYN_RELEASE_PROFILE'], 'development')
+        for name in ('DJANGO_SECRET_KEY_FILE', 'DATABASE_URL_FILE', 'DJANGO_CACHE_URL_FILE'):
+            self.assertNotIn(name, environment)
 
 
 if __name__ == '__main__':

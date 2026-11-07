@@ -37,6 +37,22 @@ def _env_list(name, default=()):
     return items
 
 
+def _env_secret(name):
+    value = os.environ.get(name, "").strip()
+    filename = os.environ.get(name + "_FILE", "").strip()
+    if value and filename:
+        raise ImproperlyConfigured(f"Configure either {name} or {name}_FILE, not both.")
+    if filename:
+        try:
+            raw = Path(filename).read_bytes()
+            if not 1 <= len(raw) <= 65536:
+                raise ValueError
+            value = raw.decode("utf-8").rstrip("\r\n")
+        except (OSError, UnicodeDecodeError, ValueError) as error:
+            raise ImproperlyConfigured(f"{name}_FILE must contain a readable non-empty UTF-8 secret.") from error
+    return value
+
+
 def _database_from_url(database_url):
     parsed = urlparse(database_url)
     if parsed.scheme not in {"postgres", "postgresql"}:
@@ -48,11 +64,12 @@ def _database_from_url(database_url):
 
     query = parse_qs(parsed.query)
     options = {"connect_timeout": 5}
-    for name in ("sslmode", "connect_timeout", "application_name"):
+    for name in ("sslmode", "sslrootcert", "connect_timeout", "application_name"):
         if name in query:
             options[name] = query[name][-1]
     if not DEBUG:
-        options.setdefault("sslmode", "require")
+        if options.get("sslmode") != "verify-full" or not Path(options.get("sslrootcert", "")).is_file() or not parsed.password:
+            raise ImproperlyConfigured("Production PostgreSQL requires password authentication and verify-full TLS with an explicit CA file.")
 
     return {
         "ENGINE": "django.db.backends.postgresql",
@@ -68,11 +85,17 @@ def _database_from_url(database_url):
 
 
 DEBUG = _env_bool("DJANGO_DEBUG", False)
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "").strip()
+SECRET_KEY = _env_secret("DJANGO_SECRET_KEY")
 if not SECRET_KEY:
     raise ImproperlyConfigured("DJANGO_SECRET_KEY must be configured.")
 if not DEBUG and len(SECRET_KEY) < 50:
     raise ImproperlyConfigured("DJANGO_SECRET_KEY must contain at least 50 characters outside development.")
+
+CADRISYN_RELEASE_PROFILE = os.environ.get("CADRISYN_RELEASE_PROFILE", "development" if DEBUG else "demo")
+if CADRISYN_RELEASE_PROFILE not in {"development", "demo", "historical_research"}:
+    raise ImproperlyConfigured("CADRISYN_RELEASE_PROFILE must name a supported release profile.")
+if not DEBUG and CADRISYN_RELEASE_PROFILE == "development":
+    raise ImproperlyConfigured("The development release profile requires DJANGO_DEBUG=true.")
 
 _local_hosts = ("localhost", "127.0.0.1", "[::1]") if DEBUG else ()
 ALLOWED_HOSTS = _env_list("DJANGO_ALLOWED_HOSTS", _local_hosts)
@@ -83,6 +106,11 @@ CSRF_TRUSTED_ORIGINS = _env_list("DJANGO_CSRF_TRUSTED_ORIGINS")
 CORS_ALLOWED_ORIGINS = _env_list("DJANGO_CORS_ALLOWED_ORIGINS")
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = False
+if not DEBUG:
+    for origin in [*CSRF_TRUSTED_ORIGINS, *CORS_ALLOWED_ORIGINS]:
+        parsed_origin = urlparse(origin)
+        if parsed_origin.scheme != "https" or parsed_origin.username or parsed_origin.password or parsed_origin.path or parsed_origin.query or parsed_origin.fragment or parsed_origin.hostname not in ALLOWED_HOSTS:
+            raise ImproperlyConfigured("Production origins must be exact HTTPS origins on an allowed host.")
 
 CADRISYN_LEGACY_ENABLED = _env_bool("CADRISYN_LEGACY_ENABLED", False)
 CADRISYN_ADMIN_ENABLED = _env_bool("CADRISYN_ADMIN_ENABLED", DEBUG)
@@ -93,6 +121,8 @@ CADRISYN_LEGACY_SCHEDULER_ENABLED = _env_bool(
 )
 CADRISYN_MARKET_DATA_ENABLED = _env_bool("CADRISYN_MARKET_DATA_ENABLED", False)
 CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED = _env_bool("CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED", False)
+if not DEBUG and (CADRISYN_LEGACY_ENABLED or CADRISYN_MARKET_DATA_ENABLED or CADRISYN_ADMIN_ENABLED or CADRISYN_LEGACY_SCHEDULER_ENABLED):
+    raise ImproperlyConfigured("Unqualified providers, legacy scheduling and admin routes are disabled in production profiles.")
 try:
     CADRISYN_EOD_GRACE_HOURS = int(os.environ.get("CADRISYN_EOD_GRACE_HOURS", "4"))
 except ValueError as error:
@@ -151,7 +181,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "quantvision.wsgi.application"
 ASGI_APPLICATION = "quantvision.asgi.application"
 
-database_url = os.environ.get("DATABASE_URL", "").strip()
+database_url = _env_secret("DATABASE_URL")
 if not DEBUG and not database_url:
     raise ImproperlyConfigured("Production requires an explicit PostgreSQL DATABASE_URL.")
 if database_url:
@@ -184,17 +214,22 @@ else:
         }
     }
 
-cache_url = os.environ.get("DJANGO_CACHE_URL", "").strip()
+cache_url = _env_secret("DJANGO_CACHE_URL")
 if not DEBUG and not cache_url:
     raise ImproperlyConfigured("Production requires an explicit shared Redis DJANGO_CACHE_URL.")
 if cache_url:
     if urlparse(cache_url).scheme not in {"redis", "rediss"} or not urlparse(cache_url).hostname:
         raise ImproperlyConfigured("DJANGO_CACHE_URL must be a Redis URL with a host.")
+    if not DEBUG:
+        parsed_cache = urlparse(cache_url)
+        cache_options = parse_qs(parsed_cache.query)
+        if parsed_cache.scheme != "rediss" or not parsed_cache.password or not Path(cache_options.get("ssl_ca_certs", [""])[-1]).is_file() or cache_options.get("ssl_cert_reqs", ["required"]) != ["required"] or cache_options.get("ssl_check_hostname", ["true"]) != ["true"]:
+            raise ImproperlyConfigured("Production Redis requires password authentication and hostname-verified TLS with an explicit CA file.")
     CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.redis.RedisCache",
             "LOCATION": cache_url,
-            "OPTIONS": {"socket_connect_timeout": 3, "socket_timeout": 3},
+            "OPTIONS": {"socket_connect_timeout": 3, "socket_timeout": 3, **({"ssl_check_hostname": True} if not DEBUG else {})},
         }
     }
 else:
@@ -243,6 +278,8 @@ CSRF_COOKIE_SECURE = not DEBUG
 CSRF_FAILURE_VIEW = "workspace.exceptions.csrf_failure"
 
 SECURE_SSL_REDIRECT = _env_bool("DJANGO_SECURE_SSL_REDIRECT", not DEBUG)
+if not DEBUG and not SECURE_SSL_REDIRECT:
+    raise ImproperlyConfigured("Production profiles require HTTPS redirection.")
 SECURE_HSTS_SECONDS = 0 if DEBUG else 31_536_000
 SECURE_HSTS_INCLUDE_SUBDOMAINS = not DEBUG
 SECURE_HSTS_PRELOAD = _env_bool("DJANGO_SECURE_HSTS_PRELOAD", False)

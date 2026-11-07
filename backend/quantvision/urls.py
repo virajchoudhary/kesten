@@ -21,11 +21,14 @@ from django.conf import settings
 from drf_spectacular.views import SpectacularAPIView
 from rest_framework.permissions import IsAdminUser
 from workspace.views import health
-from operations.health import readiness
+from operations.health import readiness, release_configuration
+from operations.metrics import metrics
 
 urlpatterns = [
     path("health/", health),
     path("health/ready/", readiness),
+    path("health/metrics/", metrics),
+    path("health/release/", release_configuration),
     path("api/v1/", include("workspace.urls")),
     path("api/v1/account/", include("accounts.urls")),
     path("api/v1/research/", include("research.urls")),

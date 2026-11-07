@@ -30,5 +30,6 @@ backend/api/rl_models/
 logs/
 ._*
 !config/.env.example
+!config/.env.production.example
 !web/.env.example
 !backend/.env.example

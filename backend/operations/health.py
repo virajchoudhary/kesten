@@ -2,11 +2,24 @@ import logging
 import uuid
 
 from django.core.cache import cache
+from django.conf import settings
 from django.db import connection
 from django.db.migrations.executor import MigrationExecutor
 from django.http import JsonResponse
 
 logger = logging.getLogger("cadrisyn.readiness")
+
+
+def release_configuration(request):
+    profile = settings.CADRISYN_RELEASE_PROFILE
+    response = JsonResponse({
+        'profile': profile,
+        'debug': settings.DEBUG,
+        'private_research_enabled': profile != 'demo',
+        'market_data_enabled': settings.CADRISYN_MARKET_DATA_ENABLED,
+    })
+    response['Cache-Control'] = 'no-store'
+    return response
 
 
 def readiness(request):

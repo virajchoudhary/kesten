@@ -1,13 +1,16 @@
-FROM python:3.12-slim@sha256:4840d514c583a4d3d8cad3940e68dee6f0f6f3635c12fcd0a3d74c21a5b93a54
+FROM python:3.12.16-alpine3.24@sha256:e064671ca452259bab50e8e2c7bd896e39e9a343bb06ca25234adf6fe18d0fc7
+ARG SOURCE_DATE_EPOCH
+ARG CADRISYN_SOURCE_REVISION=development
+LABEL org.opencontainers.image.revision=${CADRISYN_SOURCE_REVISION}
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /app
-RUN apt-get update && apt-get install -y --no-install-recommends postgresql-client openssl libssl3t64 && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache postgresql17-client=17.11-r0 && apk add --no-cache --virtual .build-deps build-base linux-headers
 COPY backend/requirements-workspace.lock.txt backend/requirements-runtime.txt /app/
-RUN python -m pip install --no-cache-dir pip==26.3 && python -m pip install --no-cache-dir -r requirements-runtime.txt
+RUN python -m pip install --no-cache-dir --no-compile pip==26.3 && python -m pip install --no-cache-dir --no-compile -r requirements-runtime.txt && apk del .build-deps
 COPY backend /app/backend
 COPY scripts/ops /app/scripts/ops
 COPY scripts/migrate_workspace.py /app/scripts/migrate_workspace.py
-RUN groupadd --system cadrisyn && useradd --system --gid cadrisyn --home-dir /app cadrisyn && mkdir -p /app/static && chown -R cadrisyn:cadrisyn /app
+RUN addgroup -S cadrisyn && adduser -S -G cadrisyn -h /app cadrisyn && mkdir -p /app/static && chown -R cadrisyn:cadrisyn /app
 WORKDIR /app/backend
 RUN DJANGO_SECRET_KEY=build-only-non-runtime-secret-000000000000000000000000000 DJANGO_DEBUG=true DJANGO_STATIC_ROOT=/app/static python manage.py collectstatic --noinput
 USER cadrisyn

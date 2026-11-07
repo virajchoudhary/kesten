@@ -23,8 +23,11 @@ def development_environment():
         if os.name != "nt":
             secret_file.chmod(0o600)
     environment = os.environ.copy()
+    for name in ('DJANGO_SECRET_KEY_FILE', 'DATABASE_URL_FILE', 'DJANGO_CACHE_URL_FILE'):
+        environment.pop(name, None)
     environment.update({
         "DJANGO_DEBUG": "true",
+        "CADRISYN_RELEASE_PROFILE": "development",
         "DJANGO_SECRET_KEY": secret_file.read_text(encoding="utf-8").strip(),
         "DJANGO_ALLOWED_HOSTS": "localhost,127.0.0.1,[::1]",
         "DJANGO_CSRF_TRUSTED_ORIGINS": "http://localhost:3000,http://127.0.0.1:3000",

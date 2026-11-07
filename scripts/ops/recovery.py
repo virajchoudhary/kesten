@@ -25,7 +25,7 @@ _PRESERVED_SQLITE = (_ROOT / "backend" / "db.sqlite3").resolve()
 _SHA256 = re.compile(r"^[0-9a-fA-F]{64}$")
 _SAFE_ENV_NAME = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
 _SSL_MODES = {"disable", "allow", "prefer", "require", "verify-ca", "verify-full"}
-_URL_OPTIONS = {"sslmode", "connect_timeout", "application_name"}
+_URL_OPTIONS = {"sslmode", "sslrootcert", "connect_timeout", "application_name"}
 _METADATA_SQL = """
 WITH app_namespaces AS (
   SELECT oid, nspname FROM pg_namespace
@@ -65,6 +65,7 @@ class PostgresConnection:
     sslmode: str | None
     connect_timeout: int | None
     application_name: str | None
+    sslrootcert: str | None
 
     @property
     def endpoint_fingerprint(self) -> str:
@@ -124,7 +125,10 @@ def parse_postgres_url(value: str) -> PostgresConnection:
         raise RecoveryError("connect_timeout must be between 1 and 600 seconds.")
 
     application_name = options.get("application_name")
-    for item in (host, username, password, database, application_name or ""):
+    sslrootcert = options.get("sslrootcert")
+    if sslrootcert is not None and not Path(sslrootcert).is_file():
+        raise RecoveryError("sslrootcert must name a readable CA certificate file.")
+    for item in (host, username, password, database, application_name or "", sslrootcert or ""):
         if any(ord(char) < 32 or ord(char) == 127 for char in item):
             raise RecoveryError("PostgreSQL URL components cannot contain control characters.")
     return PostgresConnection(
@@ -136,6 +140,7 @@ def parse_postgres_url(value: str) -> PostgresConnection:
         sslmode,
         timeout,
         application_name,
+        sslrootcert,
     )
 
 
@@ -432,6 +437,7 @@ def _postgres_environment(connection: PostgresConnection) -> Iterator[dict[str, 
             environment.pop(name, None)
     for key, value in (
         ("PGSSLMODE", connection.sslmode),
+        ("PGSSLROOTCERT", connection.sslrootcert),
         ("PGCONNECT_TIMEOUT", str(connection.connect_timeout) if connection.connect_timeout else None),
         ("PGAPPNAME", connection.application_name),
     ):
