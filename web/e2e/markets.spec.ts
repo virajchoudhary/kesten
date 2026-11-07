@@ -143,7 +143,7 @@ test("signs in and completes the authenticated daily market research path", asyn
       delay_seconds: null,
     });
     await expect(page.getByRole("heading", { name: "Apple Inc." })).toBeVisible();
-    await expect(page.getByText("Synthetic demonstration dataset", { exact: true }).filter({ visible: true }).first())
+    await expect(page.getByText("Synthetic demonstration. Not observed market prices.", { exact: true }))
       .toBeVisible();
     await expect(page.getByTestId("price-chart").locator("canvas").first()).toBeVisible();
 
@@ -173,14 +173,14 @@ test("signs in and completes the authenticated daily market research path", asyn
         url.searchParams.get("mode") === "demo"
       );
     });
-    await page.getByRole("combobox", { name: "Displayed range" }).click();
-    await page.getByRole("option", { name: "3 months" }).click();
+    await page.getByRole("button", { name: "3M", exact: true }).click();
     const threeMonthResponse = await rangeReload;
     expect(threeMonthResponse.status()).toBe(200);
     const threeMonthData = MarketResponseSchema.parse(await threeMonthResponse.json());
     expect(threeMonthData.bars.length).toBeGreaterThan(30);
-    await expect(page.getByText("Daily · 3 months", { exact: true })).toBeVisible();
+    await expect(page.getByRole("button", { name: "3M", exact: true })).toHaveAttribute("aria-pressed", "true");
 
+    await page.getByRole("button", { name: "Indicators", exact: true }).click();
     await page.getByRole("checkbox", { name: "SMA 20" }).uncheck();
     await page.getByRole("checkbox", { name: "RSI 14" }).uncheck();
     await expect(page.getByRole("checkbox", { name: "SMA 20" })).not.toBeChecked();
@@ -189,10 +189,9 @@ test("signs in and completes the authenticated daily market research path", asyn
     await page.getByRole("checkbox", { name: "RSI 14" }).check();
     await page.getByRole("button", { name: "Hide data table" }).click();
 
-    await page.getByRole("combobox", { name: "Data mode" }).click();
     const delayedDataOption = page.getByRole("option", { name: "Delayed data" });
     if (!session.market_data_enabled) {
-      await expect(delayedDataOption).toBeDisabled();
+      await expect(delayedDataOption).toHaveAttribute("disabled", "");
     }
     await page.keyboard.press("Escape");
 
@@ -275,8 +274,7 @@ test("signs in and completes the authenticated daily market research path", asyn
       status: 503, contentType: "application/json",
       body: JSON.stringify({code: "market_data_unavailable", message: "Data source unavailable in browser fault test.", field_errors: {}, request_id: "browser-fault-test"}),
     }));
-    await page.getByRole("combobox", { name: "Displayed range" }).click();
-    await page.getByRole("option", { name: "1 month", exact: true }).click();
+    await page.getByRole("button", { name: "1M", exact: true }).click();
     await expect(page.getByRole("heading", { name: "Daily history unavailable" })).toBeVisible();
     await expect(page.getByTestId("price-chart")).toHaveCount(0);
     await page.unroute("**/api/v1/instruments/*/bars/**");

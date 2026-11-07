@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ChartNoAxesCombined } from "lucide-react";
+import { brand } from "@/lib/brand";
 
 export function PublicHeader(): React.JSX.Element {
   return (
-    <header className="flex h-14 min-w-0 gap-3 items-center justify-between border-b border-border-subtle bg-surface px-4 sm:px-8">
-      <Link aria-label="Cadrisyn home" className="inline-flex shrink-0 items-center gap-2 font-semibold" href="/">
-        <ChartNoAxesCombined aria-hidden="true" className="text-accent" size={18} />
-        <span>Cadrisyn</span>
+    <header className="public-header flex h-14 min-w-0 gap-3 items-center justify-between border-b border-border-subtle bg-surface px-4 sm:px-8">
+      <Link aria-label={`${brand.name} home`} className="terminal-wordmark" href="/">
+        <span aria-hidden="true" className="brand-mark"><span /><span /><span /></span>
+        <span>{brand.name}</span>
       </Link>
       <nav aria-label="Main" className="flex min-w-0 items-center gap-1 overflow-x-auto">
         <Link

@@ -4,13 +4,14 @@ import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 
 import { Providers } from "@/components/providers";
+import { brand } from "@/lib/brand";
 
 import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Cadrisyn | Markets",
-    template: "%s | Cadrisyn",
+    default: `${brand.name} | Markets`,
+    template: `%s | ${brand.name}`,
   },
   description: "A private market research workspace.",
 };

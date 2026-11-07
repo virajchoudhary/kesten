@@ -27,7 +27,7 @@ export const DialogOverlay = React.forwardRef<
 
 export const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & { hideClose?: boolean; placement?: "center" | "left" }
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & { hideClose?: boolean; placement?: "center" | "left" | "right" }
 >(function DialogContent({ className, children, hideClose = false, placement = "center", ...props }, ref) {
   return (
     <DialogPortal>
@@ -37,7 +37,7 @@ export const DialogContent = React.forwardRef<
           "fixed z-50 overflow-y-auto border border-border-subtle bg-surface text-foreground shadow-2xl outline-none",
           placement === "center"
             ? "left-1/2 top-1/2 grid max-h-[min(90vh,760px)] w-[min(92vw,560px)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-dialog p-5"
-            : "inset-y-0 left-0 flex h-dvh max-h-dvh w-[min(88vw,360px)] flex-col p-0",
+            : `inset-y-0 ${placement === "left" ? "left-0" : "right-0"} flex h-dvh max-h-dvh w-[min(88vw,360px)] flex-col p-0`,
           className,
         )}
         ref={ref}

@@ -63,6 +63,7 @@ test("public pages retain readable light and dark layouts on narrow screens", as
   page,
 }) => {
   test.setTimeout(120_000);
+  await page.addInitScript(() => localStorage.setItem("cadrisyn-theme", "system"));
   await page.setViewportSize({ width: 375, height: 812 });
   for (const colorScheme of ["light", "dark"] as const) {
     await page.emulateMedia({ colorScheme });
@@ -195,8 +196,10 @@ test("research inspection, comparison, replay and exact export use saved identit
   ).toBeVisible();
 
   await page.goto(`/app/research?run=${run.id}`);
+  await expect(page.getByRole("button", {name: /^Use (light|dark) theme$/u})).toBeVisible();
   for (const colorScheme of ["light", "dark"] as const) {
-    await page.emulateMedia({ colorScheme });
+    const themeButton = page.getByRole("button", {name: `Use ${colorScheme} theme`, exact: true});
+    if (await themeButton.count()) await themeButton.click();
     await expect(page.locator("html")).toHaveClass(
       new RegExp(`\\b${colorScheme}\\b`, "u"),
     );

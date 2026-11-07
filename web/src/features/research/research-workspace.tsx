@@ -33,6 +33,7 @@ type ResearchDetailState =
   | { kind: "failed"; error: ApiError };
 
 function AuthenticatedResearchWorkspace({
+  embedded = false,
   requestedRunId,
   requestedCompareId,
   requestedInstrumentId,
@@ -43,6 +44,7 @@ function AuthenticatedResearchWorkspace({
   signOutPending,
   signOutError,
 }: {
+  embedded?: boolean;
   requestedRunId: string | null;
   requestedCompareId: string | null;
   requestedInstrumentId: string | null;
@@ -54,6 +56,7 @@ function AuthenticatedResearchWorkspace({
   signOutError: string | null;
 }): React.JSX.Element {
   const router = useRouter();
+  const Content = embedded ? "div" : "main";
   const [datasetRefresh, setDatasetRefresh] = useState(0);
   const [historyRefresh, setHistoryRefresh] = useState(0);
   const [detailRefresh, setDetailRefresh] = useState(0);
@@ -160,6 +163,7 @@ function AuthenticatedResearchWorkspace({
     setHistoryRefresh((current) => current + 1);
     router.push(
       researchWorkspaceHref({
+        embedded,
         runId: run.id,
         compareId: null,
         instrumentId: requestedInstrumentId,
@@ -172,6 +176,7 @@ function AuthenticatedResearchWorkspace({
   function handleFocusModelChange(nextFocusModel: ResearchReferenceId): void {
     router.replace(
       researchWorkspaceHref({
+        embedded,
         runId: requestedRunId,
         compareId: requestedCompareId,
         instrumentId: requestedInstrumentId,
@@ -184,6 +189,7 @@ function AuthenticatedResearchWorkspace({
   function handleClearComparison(): void {
     router.replace(
       researchWorkspaceHref({
+        embedded,
         runId: requestedRunId,
         compareId: null,
         instrumentId: requestedInstrumentId,
@@ -194,15 +200,26 @@ function AuthenticatedResearchWorkspace({
   }
 
   return (
-    <div className="min-h-dvh bg-canvas text-foreground">
-      <a className="skip-link" href="#main-content">
-        Skip to research workspace
-      </a>
-      <WorkspaceHeader
-        onSignOut={onSignOut}
-        signOutPending={signOutPending}
-        username={username}
-      />
+    <div
+      className={
+        embedded
+          ? "research-workspace"
+          : "research-workspace min-h-dvh bg-canvas text-foreground"
+      }
+    >
+      {!embedded && (
+        <a className="skip-link" href="#main-content">
+          Skip to research workspace
+        </a>
+      )}
+      {!embedded && (
+        <WorkspaceHeader
+          active="Research"
+          onSignOut={onSignOut}
+          signOutPending={signOutPending}
+          username={username}
+        />
+      )}
       {signOutError && (
         <div
           className="border-b border-negative/40 bg-negative/10 px-4 py-2 text-sm text-negative"
@@ -212,9 +229,9 @@ function AuthenticatedResearchWorkspace({
         </div>
       )}
 
-      <main
-        className="mx-auto min-w-0 max-w-[1600px]"
-        id="main-content"
+      <Content
+        className="research-main min-w-0"
+        id={embedded ? "research-content" : "main-content"}
         tabIndex={-1}
       >
         <div className="flex min-h-12 flex-wrap items-center justify-between gap-3 border-b border-border-subtle px-4 py-2">
@@ -229,7 +246,7 @@ function AuthenticatedResearchWorkspace({
           </div>
         </div>
 
-        <div className="grid min-w-0 grid-cols-1 lg:grid-cols-[minmax(18rem,24rem)_minmax(0,1fr)] lg:grid-rows-[auto_minmax(0,1fr)]">
+        <div className="research-layout grid min-w-0 grid-cols-1 lg:grid-cols-[340px_minmax(0,1fr)] lg:grid-rows-[auto_minmax(0,1fr)]">
           <ResearchEvaluationSetup
             key={`${requestedRunId}:${requestedCompareId}:${requestedInstrumentId}:${focusModel}`}
             csrfToken={csrfToken}
@@ -254,10 +271,14 @@ function AuthenticatedResearchWorkspace({
             </div>
 
             {detailState.kind === "empty" && (
-              <p className="px-4 py-5 text-sm text-secondary">
-                Select a saved evaluation to inspect its chart, metrics, and
-                provenance.
-              </p>
+              <div className="research-empty">
+                <FlaskConical size={28} strokeWidth={1} aria-hidden="true" />
+                <h3>No evaluation open</h3>
+                <p>
+                  Choose a private dataset and horizon, or open a saved
+                  evaluation.
+                </p>
+              </div>
             )}
             {detailState.kind === "loading" && (
               <p
@@ -302,6 +323,7 @@ function AuthenticatedResearchWorkspace({
           </section>
 
           <ResearchHistory
+            embedded={embedded}
             key={requestedInstrumentId ?? "all-instruments"}
             className="border-b lg:col-start-1 lg:row-start-2 lg:border-r"
             focusModel={focusModel}
@@ -311,17 +333,19 @@ function AuthenticatedResearchWorkspace({
             selectedRunId={requestedRunId}
           />
         </div>
-      </main>
+      </Content>
     </div>
   );
 }
 
 export function ResearchWorkspace({
+  embedded = false,
   requestedRunId,
   requestedCompareId = null,
   requestedInstrumentId = null,
   focusModel = "historical_log_mean",
 }: {
+  embedded?: boolean;
   requestedRunId: string | null;
   requestedCompareId?: string | null;
   requestedInstrumentId?: string | null;
@@ -390,6 +414,7 @@ export function ResearchWorkspace({
   return (
     <AuthenticatedResearchWorkspace
       key={state.session.user.username}
+      embedded={embedded}
       csrfToken={state.session.csrf_token}
       focusModel={focusModel}
       onSignOut={() => void handleSignOut()}

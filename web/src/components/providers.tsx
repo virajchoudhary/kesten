@@ -8,7 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 export function Providers({ children }: { children: ReactNode }): React.JSX.Element {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" disableTransitionOnChange enableSystem storageKey="cadrisyn-theme">
+    <ThemeProvider attribute="class" defaultTheme="dark" disableTransitionOnChange enableSystem storageKey="cadrisyn-theme">
       <SessionProvider>
         <TooltipProvider delayDuration={400}>{children}</TooltipProvider>
       </SessionProvider>

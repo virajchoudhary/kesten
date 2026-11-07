@@ -1,6 +1,12 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { ApiError, getMarketBars, getWatchlist, login, SESSION_RECHECK_EVENT } from "@/lib/api/client";
+import {
+  ApiError,
+  getMarketBars,
+  getWatchlist,
+  login,
+  SESSION_RECHECK_EVENT,
+} from "@/lib/api/client";
 
 const demoPayload = {
   instrument: {
@@ -49,11 +55,25 @@ describe("market API client", () => {
   it("requests a session recheck after authorization expires, preserving the safe error", async () => {
     const recheck = vi.fn();
     window.addEventListener(SESSION_RECHECK_EVENT, recheck);
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
-      code: "permission_denied", message: "Sign in again.", field_errors: {}, request_id: "expired-session",
-    }), { status: 403 })));
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response(
+          JSON.stringify({
+            code: "permission_denied",
+            message: "Sign in again.",
+            field_errors: {},
+            request_id: "expired-session",
+          }),
+          { status: 403 },
+        ),
+      ),
+    );
     try {
-      await expect(getWatchlist()).rejects.toMatchObject({ status: 403, requestId: "expired-session" });
+      await expect(getWatchlist()).rejects.toMatchObject({
+        status: 403,
+        requestId: "expired-session",
+      });
       expect(recheck).toHaveBeenCalledOnce();
     } finally {
       window.removeEventListener(SESSION_RECHECK_EVENT, recheck);
@@ -63,11 +83,24 @@ describe("market API client", () => {
   it("does not request a session recheck for an incorrect password", async () => {
     const recheck = vi.fn();
     window.addEventListener(SESSION_RECHECK_EVENT, recheck);
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(new Response(JSON.stringify({
-      code: "invalid_credentials", message: "Incorrect credentials.", field_errors: {}, request_id: "invalid-login",
-    }), { status: 403 })));
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response(
+          JSON.stringify({
+            code: "invalid_credentials",
+            message: "Incorrect credentials.",
+            field_errors: {},
+            request_id: "invalid-login",
+          }),
+          { status: 403 },
+        ),
+      ),
+    );
     try {
-      await expect(login({ username: "analyst", password: "incorrect" }, "csrf")).rejects.toMatchObject({ code: "invalid_credentials" });
+      await expect(
+        login({ username: "analyst", password: "incorrect" }, "csrf"),
+      ).rejects.toMatchObject({ code: "invalid_credentials" });
       expect(recheck).not.toHaveBeenCalled();
     } finally {
       window.removeEventListener(SESSION_RECHECK_EVENT, recheck);
@@ -89,14 +122,19 @@ describe("market API client", () => {
     );
     vi.stubGlobal("fetch", fetchMock);
 
-    const session = await login({ username: "analyst", password: "secret" }, "current-csrf-token");
+    const session = await login(
+      { username: "analyst", password: "secret" },
+      "current-csrf-token",
+    );
     const request = fetchMock.mock.calls[0];
 
     expect(session.authenticated).toBe(true);
     expect(request?.[0]).toBe("/api/v1/session/");
     expect(request?.[1]?.method).toBe("POST");
     expect(request?.[1]?.credentials).toBe("same-origin");
-    expect(new Headers(request?.[1]?.headers).get("X-CSRFToken")).toBe("current-csrf-token");
+    expect(new Headers(request?.[1]?.headers).get("X-CSRFToken")).toBe(
+      "current-csrf-token",
+    );
   });
 
   it("keeps requests same-origin and uncached", async () => {
@@ -140,6 +178,31 @@ describe("market API client", () => {
         range: "1y",
         mode: "market",
       }),
+    ).rejects.toMatchObject({ code: "market_mode_mismatch", status: 502 });
+  });
+
+  it("rejects delayed provenance when the user explicitly selected demo", async () => {
+    const payload = {
+      ...demoPayload,
+      provenance: {
+        ...demoPayload.provenance,
+        data_mode: "delayed",
+        source_id: "provider-fixture",
+        source_label: "Provider contract fixture",
+        price_basis: "split_and_dividend_adjusted",
+      },
+    };
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response(JSON.stringify(payload), {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }),
+      ),
+    );
+    await expect(
+      getMarketBars({ instrumentId: "xnas-aapl", range: "1y", mode: "demo" }),
     ).rejects.toMatchObject({ code: "market_mode_mismatch", status: 502 });
   });
 

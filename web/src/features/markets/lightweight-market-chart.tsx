@@ -1,15 +1,8 @@
 "use client";
 
-import {
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTheme } from "next-themes";
-import type {
-  IChartApi,
-  ISeriesApi,
-} from "lightweight-charts";
+import type { IChartApi, ISeriesApi } from "lightweight-charts";
 
 import {
   toCandlestickData,
@@ -51,7 +44,10 @@ type ThemeTokens = {
 };
 
 function readToken(name: string): string {
-  return window.getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  return window
+    .getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
 }
 
 function readThemeTokens(): ThemeTokens {
@@ -98,7 +94,11 @@ function updateChartData(
   instances.sma20.setData(toLineData(data.indicators.sma20));
   instances.sma50.setData(toLineData(data.indicators.sma50));
 
-  if (instances.rsi !== null && instances.rsi30 !== null && instances.rsi70 !== null) {
+  if (
+    instances.rsi !== null &&
+    instances.rsi30 !== null &&
+    instances.rsi70 !== null
+  ) {
     instances.rsi.setData(toLineData(data.indicators.rsi14));
     const thresholds = data.bars.map(({ time }) => ({ time, value: 30 }));
     const upperThresholds = data.bars.map(({ time }) => ({ time, value: 70 }));
@@ -120,9 +120,13 @@ function updateChartTheme(
   const tokens = readThemeTokens();
   instances.chart.applyOptions({
     layout: {
-      background: { type: instances.library.ColorType.Solid, color: tokens.surface },
+      background: {
+        type: instances.library.ColorType.Solid,
+        color: tokens.surface,
+      },
       textColor: tokens.text,
-      fontFamily: '"Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif',
+      fontFamily:
+        '"Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif',
       fontSize: 12,
       attributionLogo: true,
     },
@@ -131,8 +135,14 @@ function updateChartTheme(
       horzLines: { color: tokens.grid },
     },
     crosshair: {
-      vertLine: { color: tokens.crosshair, labelBackgroundColor: tokens.secondary },
-      horzLine: { color: tokens.crosshair, labelBackgroundColor: tokens.secondary },
+      vertLine: {
+        color: tokens.crosshair,
+        labelBackgroundColor: tokens.secondary,
+      },
+      horzLine: {
+        color: tokens.crosshair,
+        labelBackgroundColor: tokens.secondary,
+      },
     },
     rightPriceScale: { borderColor: tokens.border },
     timeScale: { borderColor: tokens.border },
@@ -159,11 +169,15 @@ export function LightweightMarketChart({
   showSma20,
   showSma50,
   showRsi,
+  showGrid = true,
+  resetToken = 0,
 }: {
   data: MarketResponse;
   showSma20: boolean;
   showSma50: boolean;
   showRsi: boolean;
+  showGrid?: boolean;
+  resetToken?: number;
 }): React.JSX.Element {
   const containerRef = useRef<HTMLDivElement>(null);
   const instancesRef = useRef<MarketChartInstances | null>(null);
@@ -171,7 +185,20 @@ export function LightweightMarketChart({
   const visibilityRef = useRef({ showSma20, showSma50 });
   const visibleRangeRef = useRef<VisibleLogicalRange | null>(null);
   const { resolvedTheme } = useTheme();
-  const [chartState, setChartState] = useState<"loading" | "ready" | "failed">("loading");
+  const [chartState, setChartState] = useState<"loading" | "ready" | "failed">(
+    "loading",
+  );
+  const [hoveredBar, setHoveredBar] = useState<
+    MarketResponse["bars"][number] | null
+  >(null);
+  const activeBar =
+    hoveredBar && data.bars.includes(hoveredBar)
+      ? hoveredBar
+      : data.bars.at(-1);
+  const legendPrice = new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
   useEffect(() => {
     dataRef.current = data;
@@ -197,9 +224,13 @@ export function LightweightMarketChart({
         const chart = library.createChart(container, {
           autoSize: true,
           layout: {
-            background: { type: library.ColorType.Solid, color: tokens.surface },
+            background: {
+              type: library.ColorType.Solid,
+              color: tokens.surface,
+            },
             textColor: tokens.text,
-            fontFamily: '"Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif',
+            fontFamily:
+              '"Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif',
             fontSize: 12,
             attributionLogo: true,
           },
@@ -248,7 +279,11 @@ export function LightweightMarketChart({
             wickUpColor: tokens.up,
             wickDownColor: tokens.down,
             priceLineVisible: false,
-            priceFormat: { type: "custom", minMove: 0.01, formatter: formatPrice(dataRef.current.instrument.currency) },
+            priceFormat: {
+              type: "custom",
+              minMove: 0.01,
+              formatter: formatPrice(dataRef.current.instrument.currency),
+            },
           },
           0,
         );
@@ -316,7 +351,7 @@ export function LightweightMarketChart({
                 color: tokens.border,
                 lineWidth: 1,
                 lineStyle: library.LineStyle.Dashed,
-                title: "RSI 30 reference",
+                title: "",
                 priceLineVisible: false,
                 lastValueVisible: false,
                 crosshairMarkerVisible: false,
@@ -331,7 +366,7 @@ export function LightweightMarketChart({
                 color: tokens.border,
                 lineWidth: 1,
                 lineStyle: library.LineStyle.Dashed,
-                title: "RSI 70 reference",
+                title: "",
                 priceLineVisible: false,
                 lastValueVisible: false,
                 crosshairMarkerVisible: false,
@@ -340,9 +375,21 @@ export function LightweightMarketChart({
             );
 
         const [pricePane, volumePane, rsiPane] = chart.panes();
-        pricePane?.setStretchFactor(showRsi ? 0.64 : 0.78);
-        volumePane?.setStretchFactor(showRsi ? 0.18 : 0.22);
+        pricePane?.setStretchFactor(showRsi ? 0.72 : 0.88);
+        volumePane?.setStretchFactor(0.1);
         rsiPane?.setStretchFactor(0.18);
+
+        chart.subscribeCrosshairMove((event) => {
+          const point = event.seriesData.get(candles);
+          if (point && "open" in point) {
+            const bar = dataRef.current.bars.find(
+              (item) => item.time === point.time,
+            );
+            setHoveredBar(bar ?? null);
+          } else {
+            setHoveredBar(null);
+          }
+        });
 
         const instances: MarketChartInstances = {
           library,
@@ -404,18 +451,57 @@ export function LightweightMarketChart({
     instancesRef.current?.sma50.applyOptions({ visible: showSma50 });
   }, [showSma50]);
 
+  useEffect(() => {
+    instancesRef.current?.chart.applyOptions({
+      grid: {
+        vertLines: { visible: showGrid },
+        horzLines: { visible: showGrid },
+      },
+    });
+  }, [showGrid, chartState]);
+
+  useEffect(() => {
+    instancesRef.current?.chart.timeScale().fitContent();
+  }, [resetToken]);
+
   return (
     <div
       aria-describedby="market-chart-summary"
       aria-label={`${data.instrument.symbol} daily candlestick chart`}
-      className="relative min-w-0"
+      className="market-chart relative min-w-0"
       role="group"
     >
       <div
-        className="chart-host h-[430px] w-full min-w-0"
+        className="chart-host w-full min-w-0"
         data-testid="price-chart"
         ref={containerRef}
       />
+      {activeBar && (
+        <div className="chart-legend" aria-label="Chart observation">
+          <span>{activeBar.time}</span>
+          <span>
+            O <b>{legendPrice.format(activeBar.open)}</b>
+          </span>
+          <span>
+            H <b>{legendPrice.format(activeBar.high)}</b>
+          </span>
+          <span>
+            L <b>{legendPrice.format(activeBar.low)}</b>
+          </span>
+          <span>
+            C <b>{legendPrice.format(activeBar.close)}</b>
+          </span>
+          <span>
+            Vol{" "}
+            <b>
+              {new Intl.NumberFormat("en-US", {
+                notation: "compact",
+                maximumFractionDigits: 2,
+              }).format(activeBar.volume)}
+            </b>
+          </span>
+        </div>
+      )}
       {chartState === "loading" && (
         <span className="sr-only" role="status">
           Loading chart
@@ -426,7 +512,8 @@ export function LightweightMarketChart({
           className="absolute inset-x-4 top-4 border border-warning/50 bg-surface px-3 py-2 text-sm text-warning"
           role="status"
         >
-          Interactive chart unavailable. The session data table remains available.
+          Interactive chart unavailable. The session data table remains
+          available.
         </div>
       )}
     </div>

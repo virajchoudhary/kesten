@@ -113,7 +113,7 @@ export async function requestJsonDocument<T>(options: JsonRequest<T>): Promise<{
     throw new ApiError({
       status: 0,
       code: "network_error",
-      message: "The Cadrisyn API could not be reached. Check that the local services are running.",
+      message: "The API could not be reached. Check that the local services are running.",
     });
   }
 
@@ -162,7 +162,7 @@ async function requestNoContent(options: {
     throw new ApiError({
       status: 0,
       code: "network_error",
-      message: "The Cadrisyn API could not be reached. Check that the local services are running.",
+      message: "The API could not be reached. Check that the local services are running.",
     });
   }
 
@@ -240,11 +240,12 @@ export async function getMarketBars(options: {
     signal: options.signal,
   });
 
-  if (options.mode === "market" && response.provenance.data_mode === "demo") {
+  const expectedMode = options.mode === "demo" ? "demo" : "delayed";
+  if (response.provenance.data_mode !== expectedMode) {
     throw new ApiError({
       status: 502,
       code: "market_mode_mismatch",
-      message: "Market data was requested, but the API returned a demo data response.",
+      message: "The API returned a different data provenance category than requested.",
     });
   }
 

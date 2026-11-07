@@ -49,8 +49,10 @@ export function researchWorkspaceHref(options: {
   compareId: string | null;
   instrumentId: string | null;
   focusModel: ResearchReferenceId;
+  embedded?: boolean;
 }): string {
   const params = new URLSearchParams();
+  if (options.embedded) params.set("view", "research");
   if (options.runId !== null) {
     params.set("run", options.runId);
   }
@@ -64,5 +66,6 @@ export function researchWorkspaceHref(options: {
     params.set("method", options.focusModel);
   }
   const query = params.toString();
-  return query ? `/app/research?${query}` : "/app/research";
+  const path = options.embedded ? "/app/markets" : "/app/research";
+  return query ? `${path}?${query}` : path;
 }

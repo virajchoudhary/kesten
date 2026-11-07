@@ -3,7 +3,8 @@
 import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ChartNoAxesCombined, LoaderCircle } from "lucide-react";
+import { LoaderCircle } from "lucide-react";
+import { brand } from "@/lib/brand";
 
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/features/session/session-provider";
@@ -59,12 +60,12 @@ export function AccountSecurityPage(): React.JSX.Element {
       </a>
       <header className="flex min-h-12 flex-wrap items-center gap-3 border-b border-border-subtle bg-surface px-3 py-2 sm:px-4">
         <Link
-          aria-label="Cadrisyn markets"
-          className="inline-flex items-center gap-2 font-semibold"
+          aria-label={`${brand.name} markets`}
+          className="terminal-wordmark"
           href="/app/markets"
         >
-          <ChartNoAxesCombined aria-hidden="true" className="text-accent" size={18} />
-          <span>Cadrisyn</span>
+          <span aria-hidden="true" className="brand-mark"><span /><span /><span /></span>
+          <span>{brand.name}</span>
         </Link>
         <nav aria-label="Workspace" className="flex min-h-9 items-center gap-4 text-xs">
           <Link className="text-secondary hover:text-foreground" href="/app/markets">

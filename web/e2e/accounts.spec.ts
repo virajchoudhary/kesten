@@ -262,7 +262,7 @@ test("resetting a disposable account revokes its open workspace session", async 
     await resetPage.getByRole("button", { name: "Reset password", exact: true }).click();
     await expect(resetPage.getByRole("status")).toContainText("Your password has been reset.");
     await expect(resetPage).toHaveURL(/\/account\/reset\/?$/u);
-    await page.getByRole("button", { name: "Reload watchlist" }).click();
+    await page.reload();
     await page.waitForURL(/\/sign-in\/?$/u);
     await resetPage.goto("/sign-in");
     await resetPage.getByLabel("Username").fill(fixture.username);

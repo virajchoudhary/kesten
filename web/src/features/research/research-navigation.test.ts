@@ -61,4 +61,23 @@ describe("research workspace navigation", () => {
       }),
     ).toBe(`/app/research?run=${RUN_A}`);
   });
+
+  it("keeps exact research identities when navigating inside the market terminal", () => {
+    const href = researchWorkspaceHref({
+      embedded: true,
+      runId: RUN_A,
+      compareId: RUN_B,
+      instrumentId: "xnys-jpm",
+      focusModel: "last_close",
+    });
+    const url = new URL(href, "http://localhost");
+    expect(url.pathname).toBe("/app/markets");
+    expect(url.searchParams.get("view")).toBe("research");
+    expect(parseResearchPageSearchParams(Object.fromEntries(url.searchParams))).toEqual({
+      requestedRunId: RUN_A,
+      requestedCompareId: RUN_B,
+      requestedInstrumentId: "xnys-jpm",
+      focusModel: "last_close",
+    });
+  });
 });

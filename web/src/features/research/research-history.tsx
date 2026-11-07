@@ -35,6 +35,7 @@ export function ResearchHistory({
   instrumentContext,
   focusModel,
   className,
+  embedded = false,
 }: {
   refreshToken: number;
   selectedRunId: string | null;
@@ -42,6 +43,7 @@ export function ResearchHistory({
   instrumentContext: string | null;
   focusModel: ResearchReferenceId;
   className?: string;
+  embedded?: boolean;
 }): React.JSX.Element {
   const ids = useId();
   const [search, setSearch] = useState("");
@@ -124,9 +126,9 @@ export function ResearchHistory({
       : { kind: "loading" };
   const activeFilters = Boolean(
     search.trim() ||
-      normalizedInstrumentId ||
-      horizonFilter !== "" ||
-      dataKindFilter !== "all",
+    normalizedInstrumentId ||
+    horizonFilter !== "" ||
+    dataKindFilter !== "all",
   );
 
   function updateSearch(value: string): void {
@@ -305,12 +307,14 @@ export function ResearchHistory({
               const selected = selectedRunId === run.id;
               const comparing = selectedCompareId === run.id;
               const runHref = researchWorkspaceHref({
+                embedded,
                 runId: run.id,
                 compareId: selectedCompareId,
                 instrumentId: instrumentContext,
                 focusModel,
               });
               const compareHref = researchWorkspaceHref({
+                embedded,
                 runId: selectedRunId,
                 compareId: comparing ? null : run.id,
                 instrumentId: instrumentContext,

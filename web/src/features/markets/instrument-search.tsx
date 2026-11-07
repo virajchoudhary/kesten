@@ -26,9 +26,11 @@ type SearchState =
 export function InstrumentSearch({
   onSelect,
   disabled = false,
+  label = "Add instrument",
 }: {
   onSelect: (instrument: Instrument) => void;
   disabled?: boolean;
+  label?: string;
 }): React.JSX.Element {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -133,13 +135,13 @@ export function InstrumentSearch({
     <Dialog onOpenChange={handleOpenChange} open={open}>
       <DialogTrigger asChild>
         <Button
-          aria-label="Add instrument"
+          aria-label={label}
           className="min-h-11 w-full justify-start gap-2 text-secondary min-[1440px]:min-h-9"
           disabled={disabled}
           variant="outline"
         >
           <Search aria-hidden="true" size={15} />
-          <span>Add instrument</span>
+          <span className="truncate">{label}</span>
         </Button>
       </DialogTrigger>
       <DialogContent aria-describedby={`${listId}-description`} className="gap-0 p-0">
