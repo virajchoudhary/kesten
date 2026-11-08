@@ -1,6 +1,6 @@
-# Cadrisyn web workspace
+# Kesten web workspace
 
-This is the first Next.js market workspace. Cadrisyn is a temporary working name.
+Kesten is the selected local identity for the Next.js research terminal. Public clearance remains unresolved; see [the identity record](../docs/design/terminal-depth/KESTEN.md). `src/lib/brand.ts` centralizes the revisable display name. Existing storage, protocol and package identifiers remain unchanged.
 The browser uses the same-origin `/api/v1/` routes; Next rewrites those requests to
 the fixed `DJANGO_API_URL` server origin. The browser never chooses an API host.
 

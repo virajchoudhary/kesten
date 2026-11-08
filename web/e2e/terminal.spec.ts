@@ -105,8 +105,9 @@ test("terminal preserves provenance, chart controls and integrated research iden
     .click();
   await expect(page).toHaveURL(/view=research.*instrument=xnys-jpm/u);
   await expect(
-    page.getByRole("heading", { name: "Forecasting research", exact: true }),
+    page.getByRole("region", { name: "Integrated research", exact: true }),
   ).toBeVisible();
+  await page.getByRole("tab", { name: "New evaluation", exact: true }).click();
   await expect(
     page.getByRole("button", { name: "Run evaluation", exact: true }),
   ).toBeEnabled();
@@ -124,6 +125,7 @@ test("terminal preserves provenance, chart controls and integrated research iden
   await page
     .getByRole("link", { name: "Instrument research", exact: true })
     .click();
+  await page.getByRole("tab", { name: "New evaluation", exact: true }).click();
   await page
     .getByRole("button", { name: "Run evaluation", exact: true })
     .click();
@@ -146,9 +148,12 @@ test("terminal preserves provenance, chart controls and integrated research iden
   ).toBeVisible();
   await expect(
     page
-      .getByText("No empirical forecasting performance established.", {
-        exact: true,
-      })
+      .getByText(
+        "Synthetic pipeline check only. No empirical forecasting performance established.",
+        {
+          exact: true,
+        },
+      )
       .first(),
   ).toBeVisible();
   await page.screenshot({

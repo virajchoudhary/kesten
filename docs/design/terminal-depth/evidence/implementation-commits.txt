@@ -1,0 +1,4 @@
+e75f01a42460a93bb475dc12e1a16f9e8ed43521 feat(terminal): deliver configurable chart workspace and Kesten identity
+666f13070b9e43f4b07b525f04eb8c85ac20aa87 feat(charts): add validated display settings and causal study calculations
+0d31d2a784341750e657b22ecb0022db338303f9 feat(research): add private experiment inspector dock
+08aaf86dad03d75e26e60ce36e8924b181e5e803 feat(research): deepen saved analytics and add rights-aware CSV exports

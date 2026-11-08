@@ -1,5 +1,7 @@
 # Product blueprint and approval gate
 
+**Historical package.** The architecture was subsequently provisionally approved and implemented. The user selected **Kesten** on 8 November 2026 for the local redesign. Current identity and unresolved public-use conflicts are recorded in [the Kesten decision](../design/terminal-depth/KESTEN.md). The original proposals below are retained as history, not current naming recommendations or clearance.
+
 Status: discovery complete, awaiting brand and architecture approval. Research date: 5 November 2026, Asia/Calcutta. No implementation, deployment, repository rename, purchase, training run, or certification is authorized or claimed by this package.
 
 ## Recommendation

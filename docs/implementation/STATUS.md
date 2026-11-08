@@ -1,4 +1,10 @@
-# Cadrisyn implementation status
+# Implementation status
+
+The Phase 4.5 interface and Cadrisyn public name were rejected. The current terminal-depth implementation and its own verification evidence are documented in [the terminal delivery record](../design/terminal-depth/README.md). Kesten is now the user-selected local identity. Public use remains gated on unresolved brand conflicts and legal clearance; see [the identity record](../design/terminal-depth/KESTEN.md). Phase 5 release engineering is paused.
+
+The current review application uses [localhost:3000](http://127.0.0.1:3000/app/markets) and an isolated `.local/terminal-depth/preview.sqlite3` API on port 8000. Do not infer that the older container ports below are running. Current credentials are in `.local/terminal-depth/credentials.json`; existing user credentials and databases are preserved. This UI task does not renew the older infrastructure qualification.
+
+## Earlier Phase 4 verification record
 
 Phase 4 is implemented on `codex/cadrisyn-foundation`, continuing `ae0d028`. Cadrisyn remains a temporary working name. The local research experience is verified; production release and empirical forecasting qualification remain blocked.
 

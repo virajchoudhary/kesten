@@ -1,0 +1,32 @@
+
+Running 1 test using 1 worker
+
+(node:30384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\terminal-depth.spec.ts:8:5 › customizes, compares and measures daily charts, then inspects an exact saved run (6.7s)
+
+
+  1) [chromium] › e2e\terminal-depth.spec.ts:8:5 › customizes, compares and measures daily charts, then inspects an exact saved run
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      144 |   const measurementBox = await page.locator(".measurement-readout").boundingBox();
+      145 |   if (!attributionBox || !measurementBox) throw new Error("Missing chart attribution or measurement geometry");
+    > 146 |   expect(measurementBox.y + measurementBox.height <= attributionBox.y || measurementBox.x >= attributionBox.x + attributionBox.width).toBe(true);
+          |                                                                                                                                       ^
+      147 |   await page.screenshot({
+      148 |     path: testInfo.outputPath("custom-analysis-1440.png"),
+      149 |     fullPage: true,
+        at C:\stock price predictor\web\e2e\terminal-depth.spec.ts:146:135
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\terminal-depth-customizes--06de5-inspects-an-exact-saved-run-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\terminal-depth-customizes--06de5-inspects-an-exact-saved-run-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\terminal-depth.spec.ts:8:5 › customizes, compares and measures daily charts, then inspects an exact saved run

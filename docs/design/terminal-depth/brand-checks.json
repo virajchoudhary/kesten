@@ -1,0 +1,59 @@
+{
+  "checked_on": "2026-11-07",
+  "observations": [
+    {
+      "name": "Statrium",
+      "check": "GitHub",
+      "url": "https://api.github.com/search/repositories?q=Statrium+in:name&per_page=30",
+      "status": 200,
+      "exact_repositories": []
+    },
+    {
+      "name": "Statrium",
+      "check": "COM RDAP",
+      "url": "https://rdap.verisign.com/com/v1/domain/statrium.com",
+      "status": 200,
+      "domain": "STATRIUM.COM"
+    },
+    {
+      "name": "Markovell",
+      "check": "GitHub",
+      "url": "https://api.github.com/search/repositories?q=Markovell+in:name&per_page=30",
+      "status": 200,
+      "exact_repositories": []
+    },
+    {
+      "name": "Markovell",
+      "check": "COM RDAP",
+      "url": "https://rdap.verisign.com/com/v1/domain/markovell.com",
+      "status": 404
+    },
+    {
+      "name": "Ordelyt",
+      "check": "GitHub",
+      "url": "https://api.github.com/search/repositories?q=Ordelyt+in:name&per_page=30",
+      "status": 200,
+      "exact_repositories": []
+    },
+    {
+      "name": "Ordelyt",
+      "check": "COM RDAP",
+      "url": "https://rdap.verisign.com/com/v1/domain/ordelyt.com",
+      "status": 404
+    },
+    {
+      "name": "Sessionfield",
+      "check": "GitHub",
+      "url": "https://api.github.com/search/repositories?q=Sessionfield+in:name&per_page=30",
+      "status": 200,
+      "exact_repositories": []
+    },
+    {
+      "name": "Sessionfield",
+      "check": "COM RDAP",
+      "url": "https://rdap.verisign.com/com/v1/domain/sessionfield.com",
+      "status": 404
+    }
+  ],
+  "warning": "No trademark clearance or registration availability is asserted."
+}

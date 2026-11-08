@@ -1,0 +1,6 @@
+{
+  "result": "PASS",
+  "same_source_accepted": true,
+  "mismatched_receipt_rejected": true,
+  "source_sha256": "59e67cb4a51e85a665ef949f5ac8674c4c6e3692389c2bf35d1761d2fc14eba8"
+}

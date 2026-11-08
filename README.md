@@ -1,7 +1,9 @@
 
-# Cadrisyn
+# Kesten
 
-Cadrisyn is the temporary working name for a private daily-market research workspace. The new Next.js interface uses a Django session API. Existing Streamlit, forecasting, portfolio, derivatives, RL, and reporting code remains in the repository as research functionality.
+Kesten is the user-selected local product identity, pending legal clearance for public use. The name remains configurable through `NEXT_PUBLIC_PRODUCT_NAME` and `NEXT_PUBLIC_PRODUCT_SHORT_NAME`. Existing internal Cadrisyn identifiers remain unchanged. The Next.js interface uses a Django session API; Streamlit, forecasting, portfolio, derivatives, RL and reporting code remain preserved research functionality.
+
+The current [terminal design and product comparison](docs/design/terminal-depth/PRODUCT-COMPARISON.md) and [fresh brand shortlist](docs/design/terminal-depth/BRAND-SHORTLIST.md) supersede acceptance claims for the rejected Phase 4.5 interface. Release engineering remains paused.
 
 The foundation includes closed-registration account lifecycle, revocable sessions, restricted PostgreSQL roles, local containers, source-policy safeguards, and backup/restore tooling. See [current implementation status](docs/implementation/STATUS.md) and [Phase 4 operations](docs/implementation/PHASE4-OPERATIONS.md) for executed checks, working entry points, and remaining release gates.
 
@@ -29,7 +31,7 @@ Development data lives in `.local/cadrisyn.sqlite3`. Development startup explici
 
 ## Data and capabilities
 
-The default chart is an explicitly synthetic demonstration dataset. It contains no observed stock prices or performance results. Search covers 20 curated US stocks. Daily candles, SMA20, SMA50, Wilder RSI14, an accessible price table, and private watchlists use the versioned API.
+The default chart is an explicitly synthetic demonstration dataset. It contains no observed stock prices or empirical performance results. Search covers 20 curated US stocks. Daily OHLCV, SMA20/50, Wilder RSI14, exact data tables and private watchlists use the versioned API. Display controls add alternate chart types/scales, configurable EMA/Bollinger studies, common-session indexed comparison, measurement, temporary price levels and browser-local display layouts. The integrated research dock preserves standalone research access and saved identities.
 
 Set both `CADRISYN_MARKET_DATA_ENABLED=true` and `CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED=true` only for permitted local personal research with Yahoo daily history through yfinance. The adapter is disabled outside development. No licensed live feed, guaranteed delay or redistribution entitlement is configured. Provider failures remain unavailable and never substitute demonstration data.
 
@@ -65,4 +67,4 @@ This optional launcher uses the existing `backend/venv`, clones the original dat
 
 The experimental FastAPI agent scaffold has its original dependency list in `agents/requirements.txt`. It is outside workspace startup. The supported workspace and optional research dependency profiles are separate under `backend/`.
 
-The [product blueprint](docs/rebrand/README.md) records design and architecture decisions. Cadrisyn has no trademark clearance, registered domain, certification, or finalized public identity.
+The [product blueprint](docs/rebrand/README.md) records historical design and architecture decisions. Kesten was selected on 8 November 2026. Public use is blocked by unresolved exact-name finance/software conflicts and incomplete legal clearance. Read the [Kesten identity and conflict record](docs/design/terminal-depth/KESTEN.md). No domain purchase, repository rename or publication is authorized.

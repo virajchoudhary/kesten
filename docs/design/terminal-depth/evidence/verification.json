@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-08",
+  "brand": "Kesten",
+  "branch": "codex/cadrisyn-foundation",
+  "base_commit": "2cf72c26c33e14197d914a4a4121f85a8c86ba1a",
+  "source_sha256": "ff60f80a36b5abc115a6dcd159b006bd046a756c5c771e211fd0e132ada49ffd",
+  "build_id": "IzxR0fWMryZ62d721NkKG",
+  "frontend": {
+    "tests": 115,
+    "files": 32,
+    "typecheck": "PASS",
+    "lint": "PASS",
+    "production_build": "PASS"
+  },
+  "backend": {
+    "tests": 136,
+    "passed": 132,
+    "skipped": 4,
+    "postgresql_container_requalification": "NOT_RUN_UI_PHASE",
+    "contract": "PASS",
+    "migration_drift": "NONE"
+  },
+  "chromium": {
+    "scenarios": 11,
+    "suites": 6,
+    "result": "PASS",
+    "source_unchanged": true
+  },
+  "public_brand_clearance": "BLOCKED_CONFLICTS_AND_UNVERIFIED_TRADEMARK_CLEARANCE",
+  "deployment": "NOT_PERFORMED",
+  "visual_capture": {
+    "primary_routes": 5,
+    "viewport_sizes": [
+      [
+        1440,
+        900
+      ],
+      [
+        1920,
+        1080
+      ],
+      [
+        820,
+        1180
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "primary_captures": 20,
+    "additional_sign_in_captures": 2,
+    "horizontal_overflow": false,
+    "application_name_and_title": "Kesten",
+    "icon_http_status": 200,
+    "source_sha256": "ff60f80a36b5abc115a6dcd159b006bd046a756c5c771e211fd0e132ada49ffd"
+  },
+  "independent_review": {
+    "verdict": "PASS_BOUNDED_LOCAL_UI_EVIDENCE",
+    "source_hash_recomputed": true,
+    "visual_artifacts_inspected": true,
+    "test_receipts_inspected": true,
+    "independent_test_rerun": false,
+    "public_brand_clearance": false
+  }
+}
