@@ -39,7 +39,7 @@ const REPLAY_CHECKS: ReadonlyArray<{
 ];
 
 export function researchExportFilename(runId: string): string {
-  return `cadrisyn-research-${runId}.json`;
+  return `research-${runId}.json`;
 }
 
 export function downloadResearchExport(

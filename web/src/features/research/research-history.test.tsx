@@ -1,9 +1,18 @@
-import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
+import {
+  act,
+  cleanup,
+  render,
+  screen,
+  waitFor,
+  within,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { researchHistoryItemFixture } from "./research-test-fixtures";
 import { ResearchHistory } from "./research-history";
+import { researchWorkspaceHref } from "./research-navigation";
+import { formatUtcTimestamp } from "./research-formatters";
 
 const RUN_A = "22222222-2222-4222-8222-222222222222";
 const RUN_B = "44444444-4444-4444-8444-444444444444";
@@ -25,6 +34,62 @@ afterEach(() => {
 });
 
 describe("research history", () => {
+  it("renders dataset identity in a semantic table and retains compact mode", async () => {
+    const run = researchHistoryItemFixture({
+      id: RUN_A,
+      name: "Current evaluation",
+    });
+    vi.stubGlobal(
+      "fetch",
+      vi.fn<typeof fetch>().mockResolvedValue(
+        jsonResponse(page([run], 1)),
+      ),
+    );
+    const props: React.ComponentProps<typeof ResearchHistory> = {
+      focusModel: "last_close",
+      instrumentContext: "xnas-aapl",
+      refreshToken: 0,
+      selectedCompareId: RUN_A,
+      selectedRunId: RUN_B,
+      embedded: true,
+    };
+    const { rerender } = render(<ResearchHistory {...props} />);
+
+    const table = await screen.findByRole("table", {
+      name: "Saved evaluations with dataset identity, category, and version.",
+    });
+    const row = screen.getByRole("row", { name: /Current evaluation/u });
+    expect(table).toBeVisible();
+    expect(row).toHaveTextContent(run.dataset_id);
+    expect(row).toHaveTextContent(run.dataset_version.slice(0, 12));
+    expect(row).toHaveTextContent("xnas-aapl");
+    expect(row).toHaveTextContent("1 session");
+    expect(row).toHaveTextContent("SYNTHETIC");
+    expect(
+      within(row).getByText(formatUtcTimestamp(run.completed_at)),
+    ).toHaveAttribute("datetime", run.completed_at);
+    expect(
+      screen.getByRole("link", { name: "Open Current evaluation" }),
+    ).toHaveAttribute(
+      "href",
+      researchWorkspaceHref({
+        embedded: true,
+        runId: RUN_A,
+        compareId: RUN_A,
+        instrumentId: "xnas-aapl",
+        focusModel: "last_close",
+      }),
+    );
+    expect(
+      screen.getByRole("link", { name: "Remove comparison" }),
+    ).toBeVisible();
+
+    rerender(<ResearchHistory {...props} compact />);
+    expect(screen.queryByRole("table")).toBeNull();
+    expect(screen.getByRole("list")).toBeVisible();
+    expect(screen.getByRole("link", { name: /Current evaluation/u })).toBeVisible();
+  });
+
   it("uses the lightweight history endpoint and builds a URL to compare another saved run", async () => {
     const first = researchHistoryItemFixture({ id: RUN_A, name: "Current evaluation" });
     const second = researchHistoryItemFixture({ id: RUN_B, name: "Second evaluation" });
@@ -107,9 +172,11 @@ describe("research history", () => {
       />,
     );
 
-    await screen.findByRole("link", { name: /^Evaluation 1 SYNTHETIC/u });
+    await screen.findByRole("link", { name: "Open Evaluation 1" });
     await user.click(screen.getByRole("button", { name: "Next" }));
-    expect(await screen.findByRole("link", { name: /Evaluation 21/u })).toBeVisible();
+    expect(
+      await screen.findByRole("link", { name: "Open Evaluation 21" }),
+    ).toBeVisible();
     expect(screen.getByRole("button", { name: "Previous" })).toBeEnabled();
     const requestedOffsets = fetchMock.mock.calls.map(([input]) =>
       new URL(String(input), "https://workspace.test").searchParams.get("offset"),

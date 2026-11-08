@@ -21,12 +21,71 @@ import {
   ResearchHistoryQuerySchema,
   ResearchInstrumentIdSchema,
   type ResearchHistoryQuery,
+  type ResearchHistoryItem,
   type ResearchReferenceId,
   type ResearchRunRequest,
 } from "./research-schemas";
 import { ErrorMessage, type LoadState } from "./research-workspace-parts";
 
 const PAGE_SIZE = 20;
+
+function HistoryActions({
+  run,
+  selectedRunId,
+  selectedCompareId,
+  instrumentContext,
+  focusModel,
+  embedded,
+}: {
+  run: ResearchHistoryItem;
+  selectedRunId: string | null;
+  selectedCompareId: string | null;
+  instrumentContext: string | null;
+  focusModel: ResearchReferenceId;
+  embedded: boolean;
+}): React.JSX.Element {
+  const selected = selectedRunId === run.id;
+  const comparing = selectedCompareId === run.id;
+  const runHref = researchWorkspaceHref({
+    embedded,
+    runId: run.id,
+    compareId: selectedCompareId,
+    instrumentId: instrumentContext,
+    focusModel,
+  });
+  const compareHref = researchWorkspaceHref({
+    embedded,
+    runId: selectedRunId,
+    compareId: comparing ? null : run.id,
+    instrumentId: instrumentContext,
+    focusModel,
+  });
+
+  return (
+    <div className="flex flex-wrap items-center gap-1.5">
+      <Link
+        aria-current={selected ? "page" : undefined}
+        aria-label={`Open ${run.name}`}
+        className="inline-flex min-h-9 items-center rounded-control px-2 font-medium text-accent hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+        href={runHref}
+        scroll={false}
+      >
+        Open
+      </Link>
+      {selectedRunId !== null && selectedRunId !== run.id && (
+        <Link
+          aria-current={comparing ? "true" : undefined}
+          className="inline-flex min-h-9 items-center gap-1.5 rounded-control px-2 text-secondary hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+          href={compareHref}
+          scroll={false}
+        >
+          <ArrowLeftRight aria-hidden="true" size={14} />
+          {comparing ? "Remove comparison" : "Compare with open run"}
+        </Link>
+      )}
+    </div>
+  );
+}
 
 export function ResearchHistory({
   refreshToken,
@@ -36,6 +95,7 @@ export function ResearchHistory({
   focusModel,
   className,
   embedded = false,
+  compact = false,
 }: {
   refreshToken: number;
   selectedRunId: string | null;
@@ -44,6 +104,7 @@ export function ResearchHistory({
   focusModel: ResearchReferenceId;
   className?: string;
   embedded?: boolean;
+  compact?: boolean;
 }): React.JSX.Element {
   const ids = useId();
   const [search, setSearch] = useState("");
@@ -161,11 +222,11 @@ export function ResearchHistory({
 
   return (
     <section
-      aria-labelledby="research-history-title"
+      aria-labelledby={`${ids}-title`}
       className={`min-w-0 ${className ?? ""}`}
     >
       <div className="flex min-h-11 items-center justify-between gap-3 border-b border-border-subtle px-4">
-        <h2 className="text-sm font-semibold" id="research-history-title">
+        <h2 className="text-sm font-semibold" id={`${ids}-title`}>
           Saved evaluations
         </h2>
         <Button
@@ -302,81 +363,171 @@ export function ResearchHistory({
         </p>
       ) : (
         <>
-          <ol className="max-h-[55vh] divide-y divide-border-subtle overflow-y-auto">
-            {historyState.data.items.map((run) => {
-              const selected = selectedRunId === run.id;
-              const comparing = selectedCompareId === run.id;
-              const runHref = researchWorkspaceHref({
-                embedded,
-                runId: run.id,
-                compareId: selectedCompareId,
-                instrumentId: instrumentContext,
-                focusModel,
-              });
-              const compareHref = researchWorkspaceHref({
-                embedded,
-                runId: selectedRunId,
-                compareId: comparing ? null : run.id,
-                instrumentId: instrumentContext,
-                focusModel,
-              });
-              return (
-                <li className="min-w-0 px-3 py-2" key={run.id}>
-                  <div
-                    className={`min-w-0 border-l-2 pl-2 ${
-                      selected
-                        ? "border-accent bg-raised"
-                        : "border-transparent"
-                    }`}
-                  >
-                    <Link
-                      aria-current={selected ? "page" : undefined}
-                      className="grid min-w-0 gap-1 rounded-control px-2 py-2 text-sm hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
-                      href={runHref}
-                      scroll={false}
+          {compact ? (
+            <ol className="max-h-[55vh] divide-y divide-border-subtle overflow-y-auto">
+              {historyState.data.items.map((run) => {
+                const selected = selectedRunId === run.id;
+                const comparing = selectedCompareId === run.id;
+                const runHref = researchWorkspaceHref({
+                  embedded,
+                  runId: run.id,
+                  compareId: selectedCompareId,
+                  instrumentId: instrumentContext,
+                  focusModel,
+                });
+                const compareHref = researchWorkspaceHref({
+                  embedded,
+                  runId: selectedRunId,
+                  compareId: comparing ? null : run.id,
+                  instrumentId: instrumentContext,
+                  focusModel,
+                });
+                return (
+                  <li className="min-w-0 px-3 py-2" key={run.id}>
+                    <div
+                      className={`min-w-0 border-l-2 pl-2 ${
+                        selected
+                          ? "border-accent bg-raised"
+                          : "border-transparent"
+                      }`}
                     >
-                      <span className="flex min-w-0 flex-wrap items-center gap-1.5">
-                        <span className="min-w-0 flex-1 truncate font-medium">
-                          {run.name}
+                      <Link
+                        aria-current={selected ? "page" : undefined}
+                        className="grid min-w-0 gap-1 rounded-control px-2 py-2 text-sm hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                        href={runHref}
+                        scroll={false}
+                      >
+                        <span className="flex min-w-0 flex-wrap items-center gap-1.5">
+                          <span className="min-w-0 flex-1 truncate font-medium">
+                            {run.name}
+                          </span>
+                          {run.data_kind === "synthetic_fixture" ? (
+                            <Badge variant="demo">SYNTHETIC</Badge>
+                          ) : (
+                            <Badge variant="neutral">HISTORICAL</Badge>
+                          )}
+                          {selected && <Badge variant="neutral">OPEN</Badge>}
+                          {comparing && <Badge variant="neutral">COMPARE</Badge>}
                         </span>
+                        <span className="break-words text-xs text-secondary">
+                          {run.instrument_id} · {run.horizon_sessions} next{" "}
+                          {run.horizon_sessions === 1 ? "session" : "sessions"} ·
+                          Succeeded
+                        </span>
+                        <span className="break-words text-[11px] text-secondary">
+                          {formatUtcTimestamp(run.completed_at)} · dataset v
+                          {run.dataset_version.slice(0, 12)}
+                        </span>
+                      </Link>
+                      {selectedRunId !== null && selectedRunId !== run.id && (
+                        <Link
+                          aria-current={comparing ? "true" : undefined}
+                          className="mb-1 ml-2 inline-flex min-h-9 items-center gap-1.5 rounded-control px-2 text-xs font-medium text-accent hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                          href={compareHref}
+                          scroll={false}
+                        >
+                          <ArrowLeftRight aria-hidden="true" size={14} />
+                          <span>
+                            {comparing
+                              ? "Remove comparison"
+                              : "Compare with open run"}
+                          </span>
+                        </Link>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          ) : (
+            <div
+              aria-label="Saved evaluation records"
+              className="max-h-[55vh] overflow-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+              role="region"
+              tabIndex={0}
+            >
+              <table className="research-history-table w-full min-w-[920px] border-collapse text-left text-xs">
+                <caption className="sr-only">
+                  Saved evaluations with dataset identity, category, and version.
+                </caption>
+                <thead className="border-b border-border-subtle text-secondary">
+                  <tr>
+                    <th className="px-3 py-2 font-medium" scope="col">
+                      Evaluation / dataset
+                    </th>
+                    <th className="px-3 py-2 font-medium" scope="col">
+                      Instrument
+                    </th>
+                    <th className="px-3 py-2 font-medium" scope="col">
+                      Horizon
+                    </th>
+                    <th className="px-3 py-2 font-medium" scope="col">
+                      Category
+                    </th>
+                    <th className="px-3 py-2 font-medium" scope="col">
+                      Completed / version
+                    </th>
+                    <th className="px-3 py-2 font-medium" scope="col">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border-subtle">
+                  {historyState.data.items.map((run) => (
+                    <tr
+                      className={
+                        selectedRunId === run.id ? "bg-raised" : undefined
+                      }
+                      key={run.id}
+                    >
+                      <th className="max-w-[22rem] px-3 py-2.5 font-medium" scope="row">
+                        <span className="block truncate text-sm">{run.name}</span>
+                        <code
+                          className="mt-1 block break-all text-[11px] font-normal text-secondary"
+                          title={`Dataset ${run.dataset_id}`}
+                        >
+                          {run.dataset_id}
+                        </code>
+                      </th>
+                      <td className="px-3 py-2.5 font-mono">{run.instrument_id}</td>
+                      <td className="px-3 py-2.5 whitespace-nowrap">
+                        {run.horizon_sessions}{" "}
+                        {run.horizon_sessions === 1 ? "session" : "sessions"}
+                      </td>
+                      <td className="px-3 py-2.5">
                         {run.data_kind === "synthetic_fixture" ? (
                           <Badge variant="demo">SYNTHETIC</Badge>
                         ) : (
                           <Badge variant="neutral">HISTORICAL</Badge>
                         )}
-                        {selected && <Badge variant="neutral">OPEN</Badge>}
-                        {comparing && <Badge variant="neutral">COMPARE</Badge>}
-                      </span>
-                      <span className="break-words text-xs text-secondary">
-                        {run.instrument_id} · {run.horizon_sessions} next{" "}
-                        {run.horizon_sessions === 1 ? "session" : "sessions"} ·
-                        Succeeded
-                      </span>
-                      <span className="break-words text-[11px] text-secondary">
-                        {formatUtcTimestamp(run.completed_at)} · dataset v
-                        {run.dataset_version.slice(0, 12)}
-                      </span>
-                    </Link>
-                    {selectedRunId !== null && selectedRunId !== run.id && (
-                      <Link
-                        aria-current={comparing ? "true" : undefined}
-                        className="mb-1 ml-2 inline-flex min-h-9 items-center gap-1.5 rounded-control px-2 text-xs font-medium text-accent hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
-                        href={compareHref}
-                        scroll={false}
-                      >
-                        <ArrowLeftRight aria-hidden="true" size={14} />
-                        <span>
-                          {comparing
-                            ? "Remove comparison"
-                            : "Compare with open run"}
+                      </td>
+                      <td className="px-3 py-2.5 whitespace-nowrap">
+                        <time dateTime={run.completed_at}>
+                          {formatUtcTimestamp(run.completed_at)}
+                        </time>
+                        <span className="mt-1 block text-[11px] text-secondary">
+                          Dataset v
+                          <code title={run.dataset_version}>
+                            {run.dataset_version.slice(0, 12)}
+                          </code>
                         </span>
-                      </Link>
-                    )}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
+                      </td>
+                      <td className="px-3 py-2.5">
+                        <HistoryActions
+                          embedded={embedded}
+                          focusModel={focusModel}
+                          instrumentContext={instrumentContext}
+                          run={run}
+                          selectedCompareId={selectedCompareId}
+                          selectedRunId={selectedRunId}
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
 
           <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border-subtle px-4 py-3">
             <p className="text-xs text-secondary" role="status">

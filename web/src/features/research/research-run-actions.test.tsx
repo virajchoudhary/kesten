@@ -136,13 +136,13 @@ describe("saved run actions", () => {
 
     expect(
       await screen.findByText(
-        `Downloaded cadrisyn-research-${run.id}.json · ${exported.disclosure}`,
+        `Downloaded research-${run.id}.json · ${exported.disclosure}`,
       ),
     ).toBeVisible();
     expect(fetchMock.mock.calls[0]?.[0]).toBe(
       `/api/v1/research/runs/${run.id}/export/`,
     );
-    expect(downloads).toEqual([`cadrisyn-research-${run.id}.json`]);
+    expect(downloads).toEqual([`research-${run.id}.json`]);
     expect(createObjectURL).toHaveBeenCalledWith(expect.any(Blob));
     const blob = createObjectURL.mock.calls[0]?.[0];
     if (!blob) throw new Error("Missing exported JSON blob");

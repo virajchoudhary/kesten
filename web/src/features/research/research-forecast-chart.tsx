@@ -8,10 +8,12 @@ export function ResearchForecastChart({
   forecast,
   models,
   focusModel = "historical_log_mean",
+  compact = false,
 }: {
   forecast: ResearchForecast;
   models: ResearchEvaluation["models"];
   focusModel?: ReferenceId;
+  compact?: boolean;
 }): React.JSX.Element {
   const points = useMemo(
     () => forecastSeries(forecast, focusModel),
@@ -27,6 +29,7 @@ export function ResearchForecastChart({
     <div className="min-w-0">
       <ResearchLineChart
         points={points}
+        compact={compact}
         title="Dataset history and forecast paths"
         focusLabel={modelLabel(focusModel)}
       />

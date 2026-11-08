@@ -262,7 +262,7 @@ function AuthenticatedResearchWorkspace({
 
           <section
             aria-labelledby="research-detail-title"
-            className="min-w-0 border-b border-border-subtle lg:col-start-2 lg:row-span-2 lg:row-start-1"
+            className="min-w-0 border-b border-border-subtle lg:col-start-2 lg:row-start-1"
           >
             <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
               <h2 className="text-sm font-semibold" id="research-detail-title">
@@ -325,7 +325,7 @@ function AuthenticatedResearchWorkspace({
           <ResearchHistory
             embedded={embedded}
             key={requestedInstrumentId ?? "all-instruments"}
-            className="border-b lg:col-start-1 lg:row-start-2 lg:border-r"
+            className="border-b lg:col-span-2 lg:row-start-2"
             focusModel={focusModel}
             instrumentContext={requestedInstrumentId}
             refreshToken={historyRefresh}

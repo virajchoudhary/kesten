@@ -42,21 +42,36 @@ const axisValue = new Intl.NumberFormat("en-US", {
   maximumSignificantDigits: 4,
 });
 
+type TargetWindow = "20" | "60" | "all";
+const TARGET_WINDOWS: ReadonlyArray<{
+  value: TargetWindow;
+  label: string;
+}> = [
+  { value: "20", label: "Show last 20 targets" },
+  { value: "60", label: "Show last 60 targets" },
+  { value: "all", label: "Show all targets" },
+];
+
 export function ResearchLineChart({
   points,
   title,
   focusLabel,
   errors = false,
+  compact = false,
 }: {
   points: readonly ResearchPoint[];
   title: string;
   focusLabel: string;
   errors?: boolean;
+  compact?: boolean;
 }): React.JSX.Element {
+  const height = compact ? 190 : 292;
+  const plotHeight = height - 68;
   const container = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(900);
   const [cursor, setCursor] = useState<number | null>(null);
-  const [showAll, setShowAll] = useState(true);
+  const [pinnedIndex, setPinnedIndex] = useState<number | null>(null);
+  const [targetWindow, setTargetWindow] = useState<TargetWindow>("all");
   const id = useId();
   useEffect(() => {
     const node = container.current;
@@ -68,8 +83,9 @@ export function ResearchLineChart({
     return () => observer.disconnect();
   }, []);
   const visible = useMemo(
-    () => (showAll ? points : points.slice(-60)),
-    [points, showAll],
+    () =>
+      targetWindow === "all" ? points : points.slice(-Number(targetWindow)),
+    [points, targetWindow],
   );
   const geometry = useMemo(() => {
     const values = visible
@@ -84,7 +100,7 @@ export function ResearchLineChart({
       top = maximum + padding;
     const x = (i: number) =>
       78 + (i / Math.max(visible.length - 1, 1)) * (width - 96);
-    const y = (v: number) => 24 + ((top - v) / (top - bottom)) * 224;
+    const y = (v: number) => 24 + ((top - v) / (top - bottom)) * plotHeight;
     return {
       x,
       y,
@@ -92,12 +108,32 @@ export function ResearchLineChart({
       bottom,
       paths: SERIES.map((s) => lineSegments(visible, s.field, x, y)),
     };
-  }, [visible, width, errors]);
+  }, [visible, width, errors, plotHeight]);
   const selectedIndex = Math.min(
-    cursor ?? visible.length - 1,
+    pinnedIndex ?? cursor ?? visible.length - 1,
     visible.length - 1,
   );
   const selected = visible[selectedIndex];
+  function indexAtPointer(
+    event: Pick<React.PointerEvent<SVGSVGElement>, "clientX" | "currentTarget">,
+  ): number | null {
+    if (visible.length === 0) {
+      return null;
+    }
+    if (visible.length === 1) {
+      return 0;
+    }
+    const rect = event.currentTarget.getBoundingClientRect();
+    if (rect.width <= 0) {
+      return null;
+    }
+    const index = Math.round(
+      ((((event.clientX - rect.left) / rect.width) * width - 78) /
+        (width - 96)) *
+        (visible.length - 1),
+    );
+    return Math.max(0, Math.min(visible.length - 1, index));
+  }
   if (!selected)
     return (
       <p className="p-4 text-sm text-secondary">
@@ -116,19 +152,31 @@ export function ResearchLineChart({
           {errors ? "Forecast minus actual" : "Split-neutral close"} · USD per
           initial share
         </span>
-        {points.length > 60 && (
-          <button
-            aria-pressed={!showAll}
-            className="min-h-9 rounded-control border border-control px-3 focus-visible:ring-2 focus-visible:ring-focus"
-            onClick={() => {
-              setShowAll((v) => !v);
-              setCursor(null);
-            }}
-            type="button"
-          >
-            {showAll ? "Show last 60 targets" : "Show all targets"}
-          </button>
-        )}
+        <div
+          aria-label="Target window"
+          className="flex flex-wrap gap-1"
+          role="group"
+        >
+          {TARGET_WINDOWS.map(({ value, label }) => (
+            <button
+              aria-pressed={targetWindow === value}
+              className={`min-h-9 rounded-control border border-control px-2.5 text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus ${
+                targetWindow === value
+                  ? "bg-raised text-foreground"
+                  : "text-secondary"
+              }`}
+              key={value}
+              onClick={() => {
+                setTargetWindow(value);
+                setCursor(null);
+                setPinnedIndex(null);
+              }}
+              type="button"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
       <div
         className="flex flex-wrap gap-x-5 gap-y-2 text-xs"
@@ -151,18 +199,26 @@ export function ResearchLineChart({
       </div>
       <div ref={container} className="mt-2 min-w-0">
         <svg
-          className="block h-[292px] w-full"
+          className="block w-full"
+          style={{ height }}
           role="img"
           aria-labelledby={`${id}-title ${id}-description`}
-          viewBox={`0 0 ${width} 292`}
+          viewBox={`0 0 ${width} ${height}`}
           onPointerMove={(event) => {
-            const rect = event.currentTarget.getBoundingClientRect();
-            const index = Math.round(
-              ((((event.clientX - rect.left) / rect.width) * width - 78) /
-                (width - 96)) *
-                (visible.length - 1),
-            );
-            setCursor(Math.max(0, Math.min(visible.length - 1, index)));
+            if (pinnedIndex !== null) {
+              return;
+            }
+            const index = indexAtPointer(event);
+            if (index !== null) {
+              setCursor(index);
+            }
+          }}
+          onClick={(event) => {
+            const index = indexAtPointer(event);
+            if (index !== null) {
+              setCursor(index);
+              setPinnedIndex((current) => (current === index ? null : index));
+            }
           }}
         >
           <title id={`${id}-title`}>{title}</title>
@@ -181,7 +237,7 @@ export function ResearchLineChart({
                 geometry.x(bands[i + 1]?.index ?? visible.length - 1) -
                   geometry.x(band.index),
               )}
-              height={224}
+              height={plotHeight}
               fill={
                 band.period === "test" ? "var(--chart-sma50)" : "var(--accent)"
               }
@@ -228,7 +284,7 @@ export function ResearchLineChart({
             x1={geometry.x(selectedIndex)}
             x2={geometry.x(selectedIndex)}
             y1={24}
-            y2={248}
+            y2={height - 44}
             stroke="var(--chart-crosshair)"
             strokeDasharray="3 4"
           />
@@ -250,7 +306,7 @@ export function ResearchLineChart({
               key={i}
               aria-hidden="true"
               x={geometry.x(index)}
-              y={274}
+              y={height - 18}
               textAnchor={i === 0 ? "start" : "end"}
               fontSize="11"
               fill="var(--text-secondary)"
@@ -262,6 +318,7 @@ export function ResearchLineChart({
       </div>
       <label htmlFor={`${id}-session`} className="text-xs font-medium">
         Inspect session · {formatSessionDate(selected.time)} · {selected.period}
+        {pinnedIndex !== null ? " · pinned" : ""}
       </label>
       <input
         id={`${id}-session`}
@@ -272,8 +329,29 @@ export function ResearchLineChart({
         min={0}
         max={visible.length - 1}
         value={selectedIndex}
-        onChange={(event) => setCursor(Number(event.target.value))}
+        onChange={(event) => {
+          const index = Number(event.currentTarget.value);
+          setCursor(index);
+          setPinnedIndex((current) => (current === null ? null : index));
+        }}
       />
+      <button
+        aria-pressed={pinnedIndex !== null}
+        className={`mb-3 min-h-9 rounded-control border border-control px-3 text-xs font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus ${
+          pinnedIndex !== null ? "bg-raised text-foreground" : "text-secondary"
+        }`}
+        onClick={() => {
+          if (pinnedIndex === null) {
+            setPinnedIndex(selectedIndex);
+          } else {
+            setCursor(pinnedIndex);
+            setPinnedIndex(null);
+          }
+        }}
+        type="button"
+      >
+        {pinnedIndex === null ? "Pin selected target" : "Unpin selected target"}
+      </button>
       <dl className="grid grid-cols-1 gap-3 rounded-control border border-border-subtle bg-raised p-3 text-xs sm:grid-cols-3">
         {SERIES.map((s) => {
           const value = selected[s.field];

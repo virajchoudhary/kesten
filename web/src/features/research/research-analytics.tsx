@@ -1,7 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Download } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import { ResearchForecastChart } from "./research-forecast-chart";
+import {
+  downloadResearchEvaluationCsv,
+  HISTORICAL_CSV_EXPORT_DISABLED_REASON,
+} from "./research-csv";
 import { ResearchLineChart } from "./research-line-chart";
 import { evaluationSeries, type ReferenceId } from "./research-series";
 import type { ResearchRun } from "./research-schemas";
@@ -12,9 +19,11 @@ const VIEWS = ["Forecast", "Walk-forward", "Errors"] as const;
 export function ResearchAnalytics({
   run,
   focusModel = "historical_log_mean",
+  compact = false,
 }: {
   run: ResearchRun;
   focusModel?: ReferenceId;
+  compact?: boolean;
 }): React.JSX.Element {
   const [view, setView] = useState<(typeof VIEWS)[number]>("Forecast");
   const [partition, setPartition] = useState<"all" | "validation" | "test">(
@@ -29,9 +38,12 @@ export function ResearchAnalytics({
   );
   const label =
     run.result.models.find((m) => m.id === focusModel)?.label ?? focusModel;
+  const csvExportAllowed = run.data_kind === "synthetic_fixture";
   const protocol = run.result.protocol;
   return (
-    <div className="min-w-0">
+    <div
+      className={`research-analytics min-w-0 ${compact ? "is-compact" : ""}`}
+    >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border-subtle px-4 py-3">
         <div
           className="flex gap-1"
@@ -51,29 +63,55 @@ export function ResearchAnalytics({
           ))}
         </div>
         {view !== "Forecast" && (
-          <label className="text-xs text-secondary">
-            Evaluation period{" "}
-            <select
-              aria-label="Evaluation period"
-              className="ml-2 min-h-10 rounded-control border border-control bg-surface px-2 text-foreground"
-              value={partition}
-              onChange={(e) => {
-                if (
-                  e.target.value === "all" ||
-                  e.target.value === "test" ||
-                  e.target.value === "validation"
-                )
-                  setPartition(e.target.value);
-              }}
-            >
-              <option value="all">Validation and test</option>
-              <option value="validation">Validation</option>
-              <option value="test">Test</option>
-            </select>
-          </label>
+          <div className="flex flex-wrap items-center gap-2">
+            <label className="text-xs text-secondary">
+              Evaluation period{" "}
+              <select
+                aria-label="Evaluation period"
+                className="ml-2 min-h-10 rounded-control border border-control bg-surface px-2 text-foreground"
+                value={partition}
+                onChange={(e) => {
+                  if (
+                    e.target.value === "all" ||
+                    e.target.value === "test" ||
+                    e.target.value === "validation"
+                  )
+                    setPartition(e.target.value);
+                }}
+              >
+                <option value="all">Validation and test</option>
+                <option value="validation">Validation</option>
+                <option value="test">Test</option>
+              </select>
+            </label>
+            {csvExportAllowed ? (
+              <Button
+                className="min-h-10"
+                onClick={() =>
+                  downloadResearchEvaluationCsv({
+                    run,
+                    focusModel,
+                    view,
+                    partition,
+                  })
+                }
+                size="sm"
+                variant="outline"
+              >
+                <Download aria-hidden="true" size={15} />
+                Download CSV
+              </Button>
+            ) : (
+              <p className="max-w-xs text-xs text-secondary" role="note">
+                {HISTORICAL_CSV_EXPORT_DISABLED_REASON}
+              </p>
+            )}
+          </div>
         )}
       </div>
-      <div className="grid grid-cols-1 gap-2 border-b border-border-subtle px-4 py-3 text-xs sm:grid-cols-3">
+      <div
+        className={`evaluation-periods ${compact ? "compact-periods" : ""} grid grid-cols-1 gap-2 border-b border-border-subtle px-4 py-3 text-xs sm:grid-cols-3`}
+      >
         {[
           {
             name: "Training",
@@ -100,6 +138,7 @@ export function ResearchAnalytics({
           forecast={run.result.forecast}
           models={run.result.models}
           focusModel={focusModel}
+          compact={compact}
         />
       ) : (
         <>
@@ -122,6 +161,7 @@ export function ResearchAnalytics({
             }
             focusLabel={label}
             errors={view === "Errors"}
+            compact={compact}
           />
           <details className="border-t border-border-subtle px-4 py-3 text-xs">
             <summary className="cursor-pointer font-medium">
