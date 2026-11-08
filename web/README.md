@@ -1,6 +1,8 @@
-# Kesten web workspace
+# Kerquant web workspace
 
-Kesten is the selected local identity for the Next.js research terminal. Public clearance remains unresolved; see [the identity record](../docs/design/terminal-depth/KESTEN.md). `src/lib/brand.ts` centralizes the revisable display name. Existing storage, protocol and package identifiers remain unchanged.
+Kerquant is the selected local identity for the Next.js research terminal. Public use is not cleared; see [the current identity and conflict screen](../docs/design/kerquant/IDENTITY.md). `src/lib/brand.ts` centralizes the display name and optional short name. If `NEXT_PUBLIC_PRODUCT_SHORT_NAME` is unset or blank, it inherits the resolved full name.
+
+Existing storage, protocol, package, and repository identifiers remain unchanged.
 The browser uses the same-origin `/api/v1/` routes; Next rewrites those requests to
 the fixed `DJANGO_API_URL` server origin. The browser never chooses an API host.
 

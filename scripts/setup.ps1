@@ -11,4 +11,4 @@ try {
     npm ci --no-audit --no-fund
     if ($LASTEXITCODE -ne 0) { throw 'Frontend installation failed.' }
 } finally { Pop-Location }
-Write-Output 'Run .venv/Scripts/python.exe scripts/dev.py to start Cadrisyn.'
+Write-Output 'Run .venv/Scripts/python.exe scripts/dev.py to start Kerquant.'

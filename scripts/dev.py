@@ -45,7 +45,7 @@ def development_environment():
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Run the Cadrisyn local workspace using an isolated development database.")
+    parser = argparse.ArgumentParser(description="Run the Kerquant local workspace using an isolated development database.")
     parser.add_argument("--api-only", action="store_true")
     args = parser.parse_args()
     interpreter = ROOT / ".venv" / ("Scripts/python.exe" if os.name == "nt" else "bin/python")
@@ -77,7 +77,7 @@ def main():
         options = {"creationflags": subprocess.CREATE_NO_WINDOW} if os.name == "nt" else {"start_new_session": True}
         children.append(subprocess.Popen(command, cwd=directory, env=environment, **options))
     if not args.api_only:
-        print("Cadrisyn workspace: http://127.0.0.1:3000", flush=True)
+        print("Kerquant workspace: http://127.0.0.1:3000", flush=True)
     print("Django API health: http://127.0.0.1:8000/health/", flush=True)
     print("Local login is stored in .local/credentials.json. Original research database is untouched.", flush=True)
     while all(child.poll() is None for child in children):

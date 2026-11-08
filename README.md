@@ -1,9 +1,9 @@
 
-# Kesten
+# Kerquant
 
-Kesten is the user-selected local product identity, pending legal clearance for public use. The name remains configurable through `NEXT_PUBLIC_PRODUCT_NAME` and `NEXT_PUBLIC_PRODUCT_SHORT_NAME`. Existing internal Cadrisyn identifiers remain unchanged. The Next.js interface uses a Django session API; Streamlit, forecasting, portfolio, derivatives, RL and reporting code remain preserved research functionality.
+Kerquant is the selected local identity for the quantitative research terminal. Public use is not cleared. The name remains configurable through `NEXT_PUBLIC_PRODUCT_NAME` and `NEXT_PUBLIC_PRODUCT_SHORT_NAME`; when the short-name setting is empty, the interface uses the full name. Existing package, environment, database, and repository identifiers remain unchanged for compatibility. The Next.js interface uses a Django session API; Streamlit, forecasting, portfolio, derivatives, RL, and reporting code remain preserved research functionality.
 
-The current [terminal design and product comparison](docs/design/terminal-depth/PRODUCT-COMPARISON.md) and [fresh brand shortlist](docs/design/terminal-depth/BRAND-SHORTLIST.md) supersede acceptance claims for the rejected Phase 4.5 interface. Release engineering remains paused.
+The current [terminal design and product comparison](docs/design/terminal-depth/PRODUCT-COMPARISON.md) supersedes acceptance claims for the rejected Phase 4.5 interface. Earlier brand research remains historical. The current identity and bounded conflict screen are in [the Kerquant identity record](docs/design/kerquant/IDENTITY.md). Release engineering remains paused.
 
 The foundation includes closed-registration account lifecycle, revocable sessions, restricted PostgreSQL roles, local containers, source-policy safeguards, and backup/restore tooling. See [current implementation status](docs/implementation/STATUS.md) and [Phase 4 operations](docs/implementation/PHASE4-OPERATIONS.md) for executed checks, working entry points, and remaining release gates.
 
@@ -67,4 +67,4 @@ This optional launcher uses the existing `backend/venv`, clones the original dat
 
 The experimental FastAPI agent scaffold has its original dependency list in `agents/requirements.txt`. It is outside workspace startup. The supported workspace and optional research dependency profiles are separate under `backend/`.
 
-The [product blueprint](docs/rebrand/README.md) records historical design and architecture decisions. Kesten was selected on 8 November 2026. Public use is blocked by unresolved exact-name finance/software conflicts and incomplete legal clearance. Read the [Kesten identity and conflict record](docs/design/terminal-depth/KESTEN.md). No domain purchase, repository rename or publication is authorized.
+The [product blueprint](docs/rebrand/README.md) records historical design and architecture decisions. Kerquant was selected for local use on 8 November 2026. The exact-name screen found no registered object for `kerquant.com`, `kerquant.app`, or `kerquant.in` in the queried RDAP registries, but domain availability and trademark clearance remain unverified. No domain purchase, repository rename, or public publication is authorized.

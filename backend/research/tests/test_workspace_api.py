@@ -115,7 +115,7 @@ class ResearchWorkspaceAPITests(TestCase):
         self.assertEqual(exported['dataset']['version'], self.dataset.version)
         self.assertEqual(exported['result_sha256'], result_hash(exported['run']['result']))
         self.assertEqual(exported['run']['result'], self.left.result)
-        self.assertEqual(response['Content-Disposition'], f'attachment; filename="cadrisyn-run-{self.left.id}.json"')
+        self.assertEqual(response['Content-Disposition'], f'attachment; filename="research-{self.left.id}.json"')
         self.assertEqual(response['X-Content-Type-Options'], 'nosniff')
         self.assertEqual(response['Cache-Control'], 'private, no-store')
         self.assertNotIn('owner', exported['dataset'])

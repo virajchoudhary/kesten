@@ -5,11 +5,12 @@ import plotly.graph_objects as go
 import os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from branding import page_title
 from components.style import inject_css, page_header, section_label
 
 API_URL = requests.api_url
 
-st.set_page_config(page_title="Dashboard - Cadrisyn Research", page_icon="▲", layout="wide")
+st.set_page_config(page_title=page_title("Dashboard"), page_icon="▲", layout="wide")
 
 inject_css()
 target_date = None

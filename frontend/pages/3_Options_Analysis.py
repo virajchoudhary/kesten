@@ -20,6 +20,7 @@ _FRONTEND_ROOT = os.path.normpath(
 if _FRONTEND_ROOT not in sys.path:
     sys.path.insert(0, _FRONTEND_ROOT)
 
+from branding import page_title
 from components.black_scholes_ui import render_black_scholes_analyzer
 
 API_URL = requests.api_url
@@ -44,7 +45,7 @@ def _uses_simulated_nse_chain(symbol):
 # Page Config
 # ---------------------------------------------------------------------------
 st.set_page_config(
-    page_title="Options Analysis - Cadrisyn Research",
+    page_title=page_title("Options Analysis"),
     layout="wide",
 )
 target_date = None

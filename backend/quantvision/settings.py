@@ -1,4 +1,4 @@
-"""Django settings for the Cadrisyn local workspace and API."""
+"""Django settings for the Kerquant local workspace and API."""
 
 import os
 from pathlib import Path
@@ -323,7 +323,9 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     "ENUM_NAME_OVERRIDES": {"ResearchModelEnum": ["last_close", "historical_log_mean"]},
-    "TITLE": "Cadrisyn API",
+    "TITLE": (
+        f"{os.environ.get('NEXT_PUBLIC_PRODUCT_NAME', 'Kerquant').strip() or 'Kerquant'} API"
+    ),
     "DESCRIPTION": "Private daily-market research workspace API.",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,

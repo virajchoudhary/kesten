@@ -3,16 +3,10 @@ export function BrandMark(): React.JSX.Element {
     <svg
       aria-hidden="true"
       className="product-mark"
-      viewBox="0 0 24 24"
-      fill="none"
+      viewBox="0 0 32 28"
+      fill="currentColor"
     >
-      <path
-        d="M5 4v16M19 4 9 12l10 8M5 12h4"
-        stroke="currentColor"
-        strokeWidth="1.6"
-        strokeLinecap="square"
-        strokeLinejoin="miter"
-      />
+      <path d="M2 2H23V5H5V18H2ZM30 10V26H10V23H27V10ZM14 10H26L18 18H6Z" />
     </svg>
   );
 }

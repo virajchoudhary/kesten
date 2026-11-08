@@ -239,7 +239,7 @@ class ResearchExportView(ResearchAPIView):
             "result_sha256": digest,
         }
         response = Response(body, content_type="application/json")
-        response["Content-Disposition"] = f'attachment; filename="cadrisyn-run-{run.id}.json"'
+        response["Content-Disposition"] = f'attachment; filename="research-{run.id}.json"'
         response["X-Content-Type-Options"] = "nosniff"
         return response
 

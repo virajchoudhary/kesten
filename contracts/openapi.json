@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.3",
     "info": {
-        "title": "Cadrisyn API",
+        "title": "Kerquant API",
         "version": "1.0.0",
         "description": "Private daily-market research workspace API."
     },

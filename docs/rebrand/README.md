@@ -1,12 +1,12 @@
 # Product blueprint and approval gate
 
-**Historical package.** The architecture was subsequently provisionally approved and implemented. The user selected **Kesten** on 8 November 2026 for the local redesign. Current identity and unresolved public-use conflicts are recorded in [the Kesten decision](../design/terminal-depth/KESTEN.md). The original proposals below are retained as history, not current naming recommendations or clearance.
+**Historical package.** This discovery package was completed on 5 November 2026. The architecture was later provisionally approved and implemented. Kerquant is the current local identity, selected on 8 November 2026. Read the [Kerquant identity and current name screen](../design/kerquant/IDENTITY.md). The proposals below record the earlier discovery stage. They are not current naming recommendations or clearance.
 
-Status: discovery complete, awaiting brand and architecture approval. Research date: 5 November 2026, Asia/Calcutta. No implementation, deployment, repository rename, purchase, training run, or certification is authorized or claimed by this package.
+At the time of this package, discovery was complete and brand and architecture approval remained open. This archive does not describe current implementation status. No deployment, repository rename, purchase, training run, or certification is authorized or claimed here.
 
 ## Recommendation
 
-Develop **Cadrisyn** as the leading brand concept, with Basisfold and Apertane as alternatives. The five screened proposals also include Lattivor and Tessivane. A preliminary software soundalike lead lowers Apertane's rank. No proposed name has trademark clearance. Exact-name GitHub searches and registry responses are recorded, while direct Google/Bing checks and trademark databases have explicit limitations.
+The original package recommended **Cadrisyn**, with Basisfold and Apertane as alternatives. The five screened proposals also included Lattivor and Tessivane. A preliminary software soundalike lead lowered Apertane's rank. This recommendation was superseded by later decisions. No name in the original screen received trademark clearance.
 
 Build a daily-market research workspace that connects an instrument's chart, dated evidence, a plainly labelled baseline, and saved private research. Use Next.js, React, and TypeScript for the product interface; retain Django and reviewed Python/PyTorch code behind versioned APIs. Add PostgreSQL, durable Celery jobs on Linux, separate broker/cache processes, and immutable data/model records.
 
@@ -53,4 +53,4 @@ The [final package check](package-validation.json) passed for link/reference int
 
 ## What needs approval
 
-Choose the brand concept and accept or revise the proposed architecture and R1 scope using [the approval gate](10-approval-gate.md). Legal naming clearance, intended launch market/entity, data rights, budget, retention, and actual deployment remain separate decisions. Discovery stops here.
+The original brand and architecture gate is retained in [the approval gate](10-approval-gate.md) as historical evidence. The current local identity is Kerquant. Legal naming clearance, intended launch markets, data rights, budget, retention, and deployment remain separate decisions. See [the current identity record](../design/kerquant/IDENTITY.md) for the exact-name screening limits.
