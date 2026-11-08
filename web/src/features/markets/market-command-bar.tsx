@@ -1,10 +1,15 @@
 "use client";
 
-import { List, SlidersHorizontal } from "lucide-react";
+import { List, SlidersHorizontal, ChartNoAxesCombined } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DialogTrigger } from "@/components/ui/dialog";
 import { InstrumentSearch } from "./instrument-search";
 import type { DataMode, MarketRange } from "@/lib/api/client";
+import {
+  ChartPreferencesSchema,
+  type ChartPreferences,
+} from "./chart-preferences";
+import type { ChartPanel } from "./chart-control-panel";
 import type { Instrument } from "@/lib/api/schemas";
 
 export const MARKET_RANGES = [
@@ -26,8 +31,11 @@ export function MarketCommandBar({
   watchlistOpen,
   mobileWatchlistOpen,
   onWatchlistToggle,
-  indicatorsOpen,
-  onIndicatorsToggle,
+  preferences,
+  onPreferencesChange,
+  panel,
+  onPanel,
+  onCompare,
 }: {
   symbol: string | undefined;
   range: MarketRange;
@@ -39,15 +47,20 @@ export function MarketCommandBar({
   watchlistOpen: boolean;
   mobileWatchlistOpen: boolean;
   onWatchlistToggle: () => void;
-  indicatorsOpen: boolean;
-  onIndicatorsToggle: () => void;
+  preferences: ChartPreferences;
+  onPreferencesChange: (patch: Partial<ChartPreferences>) => void;
+  panel: ChartPanel | null;
+  onPanel: (panel: ChartPanel, trigger: HTMLElement) => void;
+  onCompare: (instrument: Instrument) => void;
 }): React.JSX.Element {
   return (
     <div className="market-command-bar">
       <div className="terminal-symbol-search">
         <InstrumentSearch
           label={symbol ? `${symbol} · Search` : "Search instruments"}
+          compactLabel={symbol ?? "Search"}
           onSelect={onSelect}
+          shortcut
         />
       </div>
       <span
@@ -56,6 +69,39 @@ export function MarketCommandBar({
       >
         1D
       </span>
+      <label className="chart-type-control">
+        <span className="sr-only">Chart type</span>
+        <ChartNoAxesCombined size={15} aria-hidden="true" />
+        <select
+          aria-label="Chart type"
+          value={preferences.chartType}
+          onChange={(event) => {
+            const parsed = ChartPreferencesSchema.shape.chartType.safeParse(
+              event.currentTarget.value,
+            );
+            if (parsed.success) onPreferencesChange({ chartType: parsed.data });
+          }}
+        >
+          <option value="candles">Candles</option>
+          <option value="bars">OHLC bars</option>
+          <option value="line">Line</option>
+          <option value="area">Area</option>
+        </select>
+      </label>
+      <Button
+        aria-label="Indicators"
+        className="indicator-trigger"
+        variant="ghost"
+        aria-expanded={panel === "studies"}
+        aria-controls={panel === "studies" ? "chart-control-panel" : undefined}
+        onClick={(event) => onPanel("studies", event.currentTarget)}
+      >
+        <SlidersHorizontal size={14} aria-hidden="true" />
+        <span>Indicators</span>
+      </Button>
+      <div className="comparison-search">
+        <InstrumentSearch label="Compare" onSelect={onCompare} />
+      </div>
       <div
         className="terminal-ranges"
         role="group"
@@ -72,17 +118,6 @@ export function MarketCommandBar({
           </button>
         ))}
       </div>
-      <Button
-        aria-label="Indicators"
-        className="indicator-trigger"
-        variant="ghost"
-        aria-expanded={indicatorsOpen}
-        aria-controls={indicatorsOpen ? "terminal-indicators" : undefined}
-        onClick={onIndicatorsToggle}
-      >
-        <SlidersHorizontal size={14} aria-hidden="true" />
-        <span>Indicators</span>
-      </Button>
       <label className="terminal-data-mode">
         <span className="sr-only">Data mode</span>
         <select

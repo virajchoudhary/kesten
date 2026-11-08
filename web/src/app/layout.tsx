@@ -9,6 +9,7 @@ import { brand } from "@/lib/brand";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  applicationName: brand.name,
   title: {
     default: `${brand.name} | Markets`,
     template: `%s | ${brand.name}`,

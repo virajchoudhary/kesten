@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -9,6 +9,15 @@ import {
   LoaderCircle,
   Maximize2,
   Settings2,
+  Ruler,
+  Minus,
+  Plus,
+  ChevronLast,
+  X,
+  PanelBottomClose,
+  PanelBottomOpen,
+  Save,
+  MinusSquare,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -16,7 +25,11 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { TerminalHeader } from "@/components/terminal-header";
 import { MarketCommandBar } from "./market-command-bar";
 import { InstrumentSearch } from "./instrument-search";
-import { ResearchWorkspace } from "@/features/research/research-workspace";
+import { ResearchDock } from "@/features/research/research-dock";
+import { ChartControlPanel, type ChartPanel } from "./chart-control-panel";
+import { useChartLayouts } from "./use-chart-layouts";
+import { useMarketComparison } from "./use-market-comparison";
+import type { ChartLevel, ChartCommand } from "./chart-transform";
 import {
   researchWorkspaceHref,
   type ResearchWorkspaceQuery,
@@ -105,16 +118,24 @@ function MarketWorkspaceContent({
   const [range, setRange] = useState<MarketRange>("1y");
   const [mode, setMode] = useState<DataMode>("demo");
   const [marketResult, setMarketResult] = useState<MarketResult | null>(null);
-  const [showSma20, setShowSma20] = useState(true);
-  const [showSma50, setShowSma50] = useState(true);
-  const [showRsi, setShowRsi] = useState(true);
+  const layouts = useChartLayouts();
+  const [panel, setPanel] = useState<ChartPanel | null>(null);
+  const panelTrigger = useRef<HTMLElement | null>(null);
+  const [comparisonInstrument, setComparisonInstrument] =
+    useState<Instrument | null>(null);
+  const [annotations, setAnnotations] = useState<Record<string, ChartLevel[]>>(
+    {},
+  );
+  const [measureEnabled, setMeasureEnabled] = useState(false);
+  const [command, setCommand] = useState<ChartCommand>({
+    action: "fit",
+    sequence: 0,
+  });
+  const [dockHeight, setDockHeight] = useState(400);
+  const [dockMaximized, setDockMaximized] = useState(false);
   const [tableOpen, setTableOpen] = useState(false);
   const [watchlistOpen, setWatchlistOpen] = useState(false);
   const [watchlistExpanded, setWatchlistExpanded] = useState(true);
-  const [indicatorsOpen, setIndicatorsOpen] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
-  const [showGrid, setShowGrid] = useState(true);
-  const [resetToken, setResetToken] = useState(0);
   const [evidenceOpen, setEvidenceOpen] = useState(false);
   const [reloadToken, setReloadToken] = useState(0);
   const [signOutPending, setSignOutPending] = useState(false);
@@ -229,6 +250,36 @@ function MarketWorkspaceContent({
     marketState.data.instrument.id === activeInstrumentId
       ? marketState.data
       : null;
+  const comparison = useMarketComparison({
+    instrument: comparisonInstrument,
+    primary: readyData,
+    range,
+    mode,
+  });
+  const annotationKey = `${activeInstrumentId}:${mode}`;
+  const levels = annotations[annotationKey] ?? [];
+  useEffect(() => {
+    if (panel === null) return;
+    function onEscape(event: KeyboardEvent): void {
+      if (event.key === "Escape" && !event.defaultPrevented) {
+        setPanel(null);
+        panelTrigger.current?.focus();
+      }
+    }
+    document.addEventListener("keydown", onEscape);
+    return () => document.removeEventListener("keydown", onEscape);
+  }, [panel]);
+  function chartCommand(action: ChartCommand["action"]): void {
+    setCommand((previous) => ({ action, sequence: previous.sequence + 1 }));
+  }
+  function openPanel(next: ChartPanel, trigger: HTMLElement): void {
+    panelTrigger.current = trigger;
+    setPanel((previous) => (previous === next ? null : next));
+  }
+  function closePanel(): void {
+    setPanel(null);
+    panelTrigger.current?.focus();
+  }
   const latestBar = readyData?.bars.at(-1);
   const activeInstrument =
     readyData?.instrument ??
@@ -258,6 +309,7 @@ function MarketWorkspaceContent({
       selectedId={activeInstrumentId}
       state={watchlistState}
       onDismiss={dismiss}
+      snapshot={readyData}
     />
   );
 
@@ -292,8 +344,11 @@ function MarketWorkspaceContent({
           watchlistOpen={watchlistExpanded}
           mobileWatchlistOpen={watchlistOpen}
           onWatchlistToggle={toggleWatchlist}
-          indicatorsOpen={indicatorsOpen}
-          onIndicatorsToggle={() => setIndicatorsOpen((value) => !value)}
+          preferences={layouts.preferences}
+          onPreferencesChange={layouts.update}
+          panel={panel}
+          onPanel={openPanel}
+          onCompare={setComparisonInstrument}
         />
         <DialogContent
           id="mobile-watchlist"
@@ -335,206 +390,378 @@ function MarketWorkspaceContent({
             </nav>
             <div className="terminal-chart-actions">
               <Button
+                aria-label="Zoom out"
+                size="icon"
+                variant="ghost"
+                onClick={() => chartCommand("out")}
+              >
+                <Minus size={14} />
+              </Button>
+              <Button
+                aria-label="Zoom in"
+                size="icon"
+                variant="ghost"
+                onClick={() => chartCommand("in")}
+              >
+                <Plus size={14} />
+              </Button>
+              <Button
+                aria-label="Go to latest session"
+                size="icon"
+                variant="ghost"
+                onClick={() => chartCommand("latest")}
+              >
+                <ChevronLast size={14} />
+              </Button>
+              <Button
                 aria-label="Reset chart view"
                 title="Fit all observations"
                 size="icon"
                 variant="ghost"
-                onClick={() => setResetToken((value) => value + 1)}
+                onClick={() => chartCommand("fit")}
               >
                 <Maximize2 size={14} />
               </Button>
-              <Button
-                aria-label="Chart settings"
-                aria-expanded={settingsOpen}
-                size="icon"
-                variant="ghost"
-                onClick={() => setSettingsOpen((value) => !value)}
-              >
-                <Settings2 size={14} />
-              </Button>
             </div>
           </div>
-          {researchView && researchEnabled && (
-            <section
-              className="terminal-research"
-              aria-label="Integrated research"
-            >
-              <ResearchWorkspace {...researchQuery} embedded />
-            </section>
-          )}
           <div
-            className="terminal-chart-view"
-            hidden={researchView && researchEnabled}
+            className={`terminal-analysis ${researchView && researchEnabled ? "has-research" : ""} ${dockMaximized ? "research-maximized" : ""}`}
+            style={{ "--dock-height": `${dockHeight}px` } as CSSProperties}
           >
-            <h1 className="sr-only">Markets</h1>
-            {activeInstrumentId === null ? (
-              <section className="terminal-empty">
-                <h2>No instrument selected</h2>
-                <p>Search for an instrument to open its daily chart.</p>
-                <InstrumentSearch onSelect={selectInstrument} />
-              </section>
-            ) : marketState.kind === "failed" ? (
-              <section role="alert" className="terminal-empty">
-                <h2>Daily history unavailable</h2>
-                <p>{marketState.error.message}</p>
-                {marketState.error.requestId && (
-                  <p className="font-mono text-xs">
-                    Request {marketState.error.requestId}
-                  </p>
-                )}
-                <Button
-                  onClick={() => setReloadToken((value) => value + 1)}
-                  variant="outline"
-                >
-                  Retry
-                </Button>
-              </section>
-            ) : !readyData ? (
-              <div role="status" className="terminal-empty">
-                <LoaderCircle className="animate-spin" size={18} /> Loading
-                daily history
-              </div>
-            ) : (
-              <>
-                <section
-                  className="terminal-instrument"
-                  aria-labelledby="selected-instrument-title"
-                >
-                  <div>
-                    <h2 id="selected-instrument-title">
-                      {readyData.instrument.name}{" "}
-                      <span>{readyData.instrument.symbol}</span>
-                    </h2>
-                    <p>
-                      {readyData.instrument.exchange} <span>·</span>{" "}
-                      {readyData.instrument.currency} <span>·</span> Daily
-                      observations
+            <div className="terminal-chart-view">
+              <h1 className="sr-only">Markets</h1>
+              {activeInstrumentId === null ? (
+                <section className="terminal-empty">
+                  <h2>No instrument selected</h2>
+                  <p>Search for an instrument to open its daily chart.</p>
+                  <InstrumentSearch onSelect={selectInstrument} />
+                </section>
+              ) : marketState.kind === "failed" ? (
+                <section role="alert" className="terminal-empty">
+                  <h2>Daily history unavailable</h2>
+                  <p>{marketState.error.message}</p>
+                  {marketState.error.requestId && (
+                    <p className="font-mono text-xs">
+                      Request {marketState.error.requestId}
                     </p>
+                  )}
+                  <Button
+                    onClick={() => setReloadToken((value) => value + 1)}
+                    variant="outline"
+                  >
+                    Retry
+                  </Button>
+                </section>
+              ) : !readyData ? (
+                <div role="status" className="terminal-empty">
+                  <LoaderCircle className="animate-spin" size={18} /> Loading
+                  daily history
+                </div>
+              ) : (
+                <>
+                  <section
+                    className="terminal-instrument"
+                    aria-labelledby="selected-instrument-title"
+                  >
+                    <div>
+                      <h2 id="selected-instrument-title">
+                        {readyData.instrument.name}{" "}
+                        <span>{readyData.instrument.symbol}</span>
+                      </h2>
+                      <p>
+                        {readyData.instrument.exchange} <span>·</span>{" "}
+                        {readyData.instrument.currency} <span>·</span> Daily
+                        observations
+                      </p>
+                    </div>
+                    <div className="terminal-last-price">
+                      {latestBar && (
+                        <>
+                          <strong>
+                            {formatPrice(
+                              latestBar.close,
+                              readyData.instrument.currency,
+                            )}
+                          </strong>
+                          <span>
+                            Daily close · {formatSessionDate(latestBar.time)}
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </section>
+                  <div className="terminal-provenance-strip">
+                    <Badge variant={mode === "demo" ? "demo" : "neutral"}>
+                      {mode === "demo" ? "Demo" : "Delayed"}
+                    </Badge>
+                    <span>
+                      {mode === "demo"
+                        ? "Synthetic demonstration. Not observed market prices."
+                        : `As of ${readyData.provenance.as_of}. Delayed market observations.`}
+                    </span>
+                    <button type="button" onClick={() => setEvidenceOpen(true)}>
+                      Data evidence <Database size={12} aria-hidden="true" />
+                    </button>
                   </div>
-                  <div className="terminal-last-price">
-                    {latestBar && (
-                      <>
-                        <strong>
-                          {formatPrice(
-                            latestBar.close,
-                            readyData.instrument.currency,
-                          )}
-                        </strong>
-                        <span>
-                          Daily close · {formatSessionDate(latestBar.time)}
-                        </span>
-                      </>
+                  {comparisonInstrument && (
+                    <div className="comparison-strip" role="status">
+                      <span className="comparison-key" />{" "}
+                      {comparisonInstrument.symbol} /{" "}
+                      {readyData.instrument.symbol} ·{" "}
+                      {comparison.kind === "ready"
+                        ? `Indexed to 100 at ${comparison.anchor} · ${comparison.shared} common sessions · ${comparison.omitted} unmatched observations excluded. ${comparison.data.instrument.symbol}: ${comparison.data.provenance.data_mode === "demo" ? "Demo" : "Delayed"}, as of ${comparison.data.provenance.as_of}, ${comparison.data.provenance.freshness_state}. ${readyData.instrument.symbol}: as of ${readyData.provenance.as_of}, ${readyData.provenance.freshness_state}.`
+                        : comparison.kind === "failed"
+                          ? comparison.error.message
+                          : "Loading comparison…"}
+                      <button
+                        type="button"
+                        aria-label="Remove comparison"
+                        onClick={() => setComparisonInstrument(null)}
+                      >
+                        <X size={13} />
+                      </button>
+                    </div>
+                  )}
+                  <div className="chart-stage">
+                    <nav className="chart-tool-rail" aria-label="Chart tools">
+                      <Button
+                        aria-label="Measure session closes"
+                        title="Measure session closes"
+                        aria-pressed={measureEnabled}
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setMeasureEnabled((value) => !value)}
+                      >
+                        <Ruler size={17} />
+                      </Button>
+                      <Button
+                        aria-label="Price levels"
+                        title="Price levels"
+                        aria-expanded={panel === "levels"}
+                        aria-controls={
+                          panel === "levels" ? "chart-control-panel" : undefined
+                        }
+                        variant="ghost"
+                        size="icon"
+                        onClick={(event) =>
+                          openPanel("levels", event.currentTarget)
+                        }
+                      >
+                        <MinusSquare size={17} />
+                      </Button>
+                      <span />
+                      <Button
+                        aria-label="Display layouts"
+                        title="Display layouts"
+                        aria-expanded={panel === "layouts"}
+                        aria-controls={
+                          panel === "layouts"
+                            ? "chart-control-panel"
+                            : undefined
+                        }
+                        variant="ghost"
+                        size="icon"
+                        onClick={(event) =>
+                          openPanel("layouts", event.currentTarget)
+                        }
+                      >
+                        <Save size={17} />
+                      </Button>
+                      <Button
+                        aria-label="Chart settings"
+                        title="Chart settings"
+                        aria-expanded={panel === "display"}
+                        aria-controls={
+                          panel === "display"
+                            ? "chart-control-panel"
+                            : undefined
+                        }
+                        variant="ghost"
+                        size="icon"
+                        onClick={(event) =>
+                          openPanel("display", event.currentTarget)
+                        }
+                      >
+                        <Settings2 size={17} />
+                      </Button>
+                    </nav>
+                    <section
+                      aria-label="Historical price"
+                      className="terminal-chart-panel"
+                    >
+                      <p className="sr-only" id="market-chart-summary">
+                        {readyData.instrument.symbol} daily candles from{" "}
+                        {formatSessionDate(
+                          readyData.bars[0]?.time ?? readyData.provenance.as_of,
+                        )}{" "}
+                        to {formatSessionDate(readyData.provenance.as_of)}.
+                        Price basis: {readyData.provenance.price_basis}. Exact
+                        observations are available in the daily data table.
+                      </p>
+                      <LightweightMarketChart
+                        key={`${activeInstrumentId}:${mode}`}
+                        data={readyData}
+                        preferences={layouts.preferences}
+                        comparison={
+                          comparison.kind === "ready" ? comparison.data : null
+                        }
+                        command={command}
+                        levels={levels}
+                        measureEnabled={measureEnabled}
+                      />
+                    </section>
+                    {panel && (
+                      <ChartControlPanel
+                        key={panel}
+                        panel={panel}
+                        preferences={layouts.preferences}
+                        onUpdate={layouts.update}
+                        onClose={closePanel}
+                        templates={layouts.templates}
+                        onSaveTemplate={layouts.saveTemplate}
+                        onRemoveTemplate={layouts.removeTemplate}
+                        storageError={layouts.storageError}
+                        levels={levels}
+                        onAddLevel={(price) =>
+                          setAnnotations((previous) => ({
+                            ...previous,
+                            [annotationKey]: [
+                              ...levels,
+                              { id: crypto.randomUUID(), price },
+                            ].slice(0, 12),
+                          }))
+                        }
+                        onRemoveLevel={(id) =>
+                          setAnnotations((previous) => ({
+                            ...previous,
+                            [annotationKey]: levels.filter(
+                              (level) => level.id !== id,
+                            ),
+                          }))
+                        }
+                      />
                     )}
                   </div>
-                </section>
-                <div className="terminal-provenance-strip">
-                  <Badge variant={mode === "demo" ? "demo" : "neutral"}>
-                    {mode === "demo" ? "Demo" : "Delayed"}
-                  </Badge>
-                  <span>
-                    {mode === "demo"
-                      ? "Synthetic demonstration. Not observed market prices."
-                      : `As of ${readyData.provenance.as_of}. Delayed market observations.`}
-                  </span>
-                  <button type="button" onClick={() => setEvidenceOpen(true)}>
-                    Data evidence <Database size={12} aria-hidden="true" />
-                  </button>
-                </div>
-                {indicatorsOpen && (
-                  <fieldset
-                    id="terminal-indicators"
-                    className="terminal-indicators"
-                  >
-                    <legend className="sr-only">Technical indicators</legend>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={showSma20}
-                        onChange={(event) =>
-                          setShowSma20(event.currentTarget.checked)
-                        }
-                      />
-                      <i className="bg-[var(--chart-sma20)]" />
-                      SMA 20
-                    </label>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={showSma50}
-                        onChange={(event) =>
-                          setShowSma50(event.currentTarget.checked)
-                        }
-                      />
-                      <i className="bg-[var(--chart-sma50)]" />
-                      SMA 50
-                    </label>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={showRsi}
-                        onChange={(event) =>
-                          setShowRsi(event.currentTarget.checked)
-                        }
-                      />
-                      <i className="bg-[var(--chart-rsi)]" />
-                      RSI 14
-                    </label>
-                  </fieldset>
-                )}
-                {settingsOpen && (
-                  <fieldset className="terminal-indicators">
-                    <legend className="sr-only">Chart settings</legend>
-                    <label>
-                      <input
-                        type="checkbox"
-                        checked={showGrid}
-                        onChange={(event) =>
-                          setShowGrid(event.currentTarget.checked)
-                        }
-                      />
-                      Show grid
-                    </label>
-                    <span className="text-secondary">
-                      Drag to pan · Scroll to zoom · Double-click a scale to
-                      reset
-                    </span>
-                  </fieldset>
-                )}
-                <section
-                  aria-label="Historical price"
-                  className="terminal-chart-panel"
-                >
-                  <p className="sr-only" id="market-chart-summary">
-                    {readyData.instrument.symbol} daily candles from{" "}
-                    {formatSessionDate(
-                      readyData.bars[0]?.time ?? readyData.provenance.as_of,
-                    )}{" "}
-                    to {formatSessionDate(readyData.provenance.as_of)}. Price
-                    basis: {readyData.provenance.price_basis}. Exact
-                    observations are available in the daily data table.
-                  </p>
-                  <LightweightMarketChart
-                    data={readyData}
-                    showRsi={showRsi}
-                    showSma20={showSma20}
-                    showSma50={showSma50}
-                    showGrid={showGrid}
-                    resetToken={resetToken}
+                  <MarketBarsTable
+                    bars={readyData.bars}
+                    instrument={readyData.instrument}
+                    open={tableOpen}
+                    onOpenChange={setTableOpen}
                   />
-                </section>
-                <MarketBarsTable
-                  bars={readyData.bars}
-                  instrument={readyData.instrument}
-                  open={tableOpen}
-                  onOpenChange={setTableOpen}
+                </>
+              )}
+            </div>
+            {researchView && researchEnabled && (
+              <section
+                className="terminal-research-dock"
+                aria-label="Integrated research"
+              >
+                <div
+                  className="dock-resize-handle"
+                  role="separator"
+                  tabIndex={0}
+                  aria-label="Research panel height"
+                  aria-orientation="horizontal"
+                  aria-valuenow={dockHeight}
+                  aria-valuemin={220}
+                  aria-valuemax={700}
+                  onKeyDown={(event) => {
+                    if (
+                      ["ArrowUp", "ArrowDown", "Home", "End"].includes(
+                        event.key,
+                      )
+                    ) {
+                      event.preventDefault();
+                      setDockHeight((value) =>
+                        event.key === "Home"
+                          ? 220
+                          : event.key === "End"
+                            ? 700
+                            : Math.min(
+                                700,
+                                Math.max(
+                                  220,
+                                  value + (event.key === "ArrowUp" ? 20 : -20),
+                                ),
+                              ),
+                      );
+                    }
+                  }}
+                  onPointerDown={(event) => {
+                    const node = event.currentTarget,
+                      start = event.clientY,
+                      height = dockHeight;
+                    node.setPointerCapture(event.pointerId);
+                    node.onpointermove = (move) =>
+                      setDockHeight(
+                        Math.min(
+                          700,
+                          Math.max(220, height + start - move.clientY),
+                        ),
+                      );
+                    node.onpointerup = () => {
+                      node.onpointermove = null;
+                      node.onpointerup = null;
+                    };
+                  }}
                 />
-              </>
+                <div className="dock-title">
+                  <span>
+                    <FlaskConical size={14} aria-hidden="true" /> RESEARCH{" "}
+                    <small>Account-private · immutable evaluations</small>
+                  </span>
+                  <div>
+                    <Button
+                      aria-label={
+                        dockMaximized
+                          ? "Restore research panel"
+                          : "Maximize research panel"
+                      }
+                      size="icon"
+                      variant="ghost"
+                      onClick={() => setDockMaximized((value) => !value)}
+                    >
+                      {dockMaximized ? (
+                        <PanelBottomClose size={14} />
+                      ) : (
+                        <PanelBottomOpen size={14} />
+                      )}
+                    </Button>
+                    <Button
+                      aria-label="Close research panel"
+                      size="icon"
+                      variant="ghost"
+                      onClick={() =>
+                        router.replace(chartHref, { scroll: false })
+                      }
+                    >
+                      <X size={14} />
+                    </Button>
+                  </div>
+                </div>
+                <ResearchDock
+                  key={`${activeInstrumentId}:${session.user.username}`}
+                  query={{
+                    ...researchQuery,
+                    requestedInstrumentId: activeInstrumentId,
+                  }}
+                  csrfToken={session.csrf_token}
+                  onClose={() => router.replace(chartHref, { scroll: false })}
+                />
+              </section>
             )}
           </div>
           <footer className="terminal-status">
             <span className="status-dot" />
-            {mode === "demo" ? "DEMO ENVIRONMENT" : "DELAYED DATA"}
-            <span>1D resolution</span>
+            <span className="chart-status">
+              {mode === "demo" ? "CHART · DEMO" : "CHART · DELAYED"} · 1D
+              resolution
+            </span>
+            {researchView && researchEnabled && (
+              <span className="research-status">
+                PRIVATE RESEARCH · PROVENANCE IN RUN
+              </span>
+            )}
             <Link href="/data">Sources & licensing</Link>
           </footer>
         </main>

@@ -1,14 +1,18 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useState } from "react";
 import Link from "next/link";
 import { FlaskConical, LoaderCircle, RefreshCw, Star, X } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import type { ApiError } from "@/lib/api/client";
-import type { Instrument } from "@/lib/api/schemas";
+import type { Instrument, MarketResponse } from "@/lib/api/schemas";
 import type { WatchlistState } from "@/features/markets/use-watchlist";
 import { InstrumentSearch } from "@/features/markets/instrument-search";
 
@@ -22,6 +26,7 @@ export function WatchlistPanel({
   onRemove,
   onReload,
   onDismiss,
+  snapshot,
 }: {
   state: WatchlistState;
   pendingId: string | null;
@@ -32,10 +37,24 @@ export function WatchlistPanel({
   onRemove: (instrumentId: string) => Promise<boolean>;
   onReload: () => void;
   onDismiss?: () => void;
+  snapshot?: MarketResponse | null;
 }): React.JSX.Element {
   const titleId = useId();
+  const [filter, setFilter] = useState("");
+  const selectedSnapshot =
+    snapshot?.instrument.id === selectedId ? snapshot : null;
+  const latest = selectedSnapshot?.bars.at(-1),
+    previous = selectedSnapshot?.bars.at(-2);
+  const currency = selectedSnapshot?.instrument.currency ?? "USD";
+  const money = (value: number) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency,
+      maximumFractionDigits: 2,
+    }).format(value);
   const items = state.kind === "ready" ? state.items : [];
-  const selectedInWatchlist = selectedId !== null && items.some((item) => item.id === selectedId);
+  const selectedInWatchlist =
+    selectedId !== null && items.some((item) => item.id === selectedId);
 
   return (
     <section aria-labelledby={titleId} className="flex h-full min-h-0 flex-col">
@@ -56,7 +75,9 @@ export function WatchlistPanel({
               >
                 <RefreshCw
                   aria-hidden="true"
-                  className={state.kind === "loading" ? "animate-spin" : undefined}
+                  className={
+                    state.kind === "loading" ? "animate-spin" : undefined
+                  }
                   size={15}
                 />
               </Button>
@@ -87,26 +108,66 @@ export function WatchlistPanel({
         />
       </div>
 
+      {state.kind === "ready" && state.items.length > 0 && (
+        <div className="watchlist-filter">
+          <label>
+            <span className="sr-only">Filter watchlist</span>
+            <input
+              type="search"
+              value={filter}
+              placeholder="Filter watchlist"
+              onChange={(event) => setFilter(event.currentTarget.value)}
+            />
+          </label>
+          <span>
+            {
+              state.items.filter((instrument) =>
+                `${instrument.symbol} ${instrument.name}`
+                  .toLowerCase()
+                  .includes(filter.trim().toLowerCase()),
+              ).length
+            }{" "}
+            instruments
+          </span>
+        </div>
+      )}
       {mutationError && (
-        <div className="mx-3 mt-3 rounded-control border border-negative/40 bg-negative/10 p-2.5" role="alert">
+        <div
+          className="mx-3 mt-3 rounded-control border border-negative/40 bg-negative/10 p-2.5"
+          role="alert"
+        >
           <p className="text-xs text-negative">{mutationError.message}</p>
         </div>
       )}
 
       {state.kind === "loading" && (
-        <div className="flex flex-1 items-center justify-center gap-2 text-sm text-secondary" role="status">
+        <div
+          className="flex flex-1 items-center justify-center gap-2 text-sm text-secondary"
+          role="status"
+        >
           <LoaderCircle aria-hidden="true" className="animate-spin" size={15} />
           Loading watchlist
         </div>
       )}
 
       {state.kind === "failed" && (
-        <div className="m-3 rounded-control border border-negative/40 bg-negative/10 p-3" role="alert">
+        <div
+          className="m-3 rounded-control border border-negative/40 bg-negative/10 p-3"
+          role="alert"
+        >
           <p className="text-sm text-negative">{state.error.message}</p>
           {state.error.requestId && (
-            <p className="mt-1 font-mono text-xs text-secondary">Request {state.error.requestId}</p>
+            <p className="mt-1 font-mono text-xs text-secondary">
+              Request {state.error.requestId}
+            </p>
           )}
-          <Button className="mt-3" disabled={pendingId !== null} onClick={onReload} size="sm" variant="outline">
+          <Button
+            className="mt-3"
+            disabled={pendingId !== null}
+            onClick={onReload}
+            size="sm"
+            variant="outline"
+          >
             Retry
           </Button>
         </div>
@@ -120,58 +181,147 @@ export function WatchlistPanel({
       )}
 
       {state.kind === "ready" && state.items.length > 0 && (
-        <ul aria-label="Saved instruments" className="min-h-0 flex-1 overflow-y-auto py-1">
-          {state.items.map((instrument) => (
-            <li key={instrument.id}>
-              <div
-                className={`group flex min-h-11 items-center gap-2 border-l-2 px-3 transition-colors ${
-                  instrument.id === selectedId
-                    ? "border-accent bg-raised"
-                    : "border-transparent hover:bg-raised"
-                }`}
-              >
-                <button
-                  aria-current={instrument.id === selectedId ? "true" : undefined}
-                  className="flex min-w-0 flex-1 items-center justify-between gap-2 py-1.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-focus"
-                  onClick={() => onSelect(instrument)}
-                  type="button"
+        <ul
+          aria-label="Saved instruments"
+          className="min-h-0 flex-1 overflow-y-auto py-1"
+        >
+          {state.items
+            .filter((instrument) =>
+              `${instrument.symbol} ${instrument.name}`
+                .toLowerCase()
+                .includes(filter.trim().toLowerCase()),
+            )
+            .map((instrument) => (
+              <li key={instrument.id}>
+                <div
+                  className={`group flex min-h-11 items-center gap-2 border-l-2 px-3 transition-colors ${
+                    instrument.id === selectedId
+                      ? "border-accent bg-raised"
+                      : "border-transparent hover:bg-raised"
+                  }`}
                 >
-                  <span className="min-w-0">
-                    <span className="block truncate font-mono text-sm font-medium">
-                      {instrument.symbol}
+                  <button
+                    aria-current={
+                      instrument.id === selectedId ? "true" : undefined
+                    }
+                    className="flex min-w-0 flex-1 items-center justify-between gap-2 py-1.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                    onClick={() => onSelect(instrument)}
+                    type="button"
+                  >
+                    <span className="min-w-0">
+                      <span className="block truncate font-mono text-sm font-medium">
+                        {instrument.symbol}
+                      </span>
+                      <span className="block truncate text-xs text-secondary">
+                        {instrument.name}
+                      </span>
                     </span>
-                    <span className="block truncate text-xs text-secondary">{instrument.name}</span>
-                  </span>
-                  <span className="shrink-0 text-[11px] text-secondary">{instrument.exchange}</span>
-                </button>
-                <Link aria-label={`Research ${instrument.symbol}`} href={`/app/research?instrument=${encodeURIComponent(instrument.id)}`} className="inline-flex size-11 shrink-0 items-center justify-center rounded-control text-secondary hover:bg-raised hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus min-[1440px]:size-8">
-                  <FlaskConical aria-hidden="true" size={14} />
-                </Link>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      aria-label={`Remove ${instrument.symbol} from watchlist`}
-                      className="size-11 min-[1440px]:size-8"
-                      disabled={pendingId !== null}
-                      onClick={() => void onRemove(instrument.id)}
-                      size="icon"
-                      variant="ghost"
-                    >
-                      {pendingId === instrument.id ? (
-                        <LoaderCircle aria-hidden="true" className="animate-spin" size={14} />
-                      ) : (
-                        <X aria-hidden="true" size={14} />
-                      )}
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>Remove {instrument.symbol}</TooltipContent>
-                </Tooltip>
-              </div>
-            </li>
-          ))}
+                    <span className="shrink-0 text-[11px] text-secondary">
+                      {instrument.exchange}
+                    </span>
+                  </button>
+                  <Link
+                    aria-label={`Research ${instrument.symbol}`}
+                    href={`/app/research?instrument=${encodeURIComponent(instrument.id)}`}
+                    className="inline-flex size-11 shrink-0 items-center justify-center rounded-control text-secondary hover:bg-raised hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus min-[1440px]:size-8"
+                  >
+                    <FlaskConical aria-hidden="true" size={14} />
+                  </Link>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        aria-label={`Remove ${instrument.symbol} from watchlist`}
+                        className="size-11 min-[1440px]:size-8"
+                        disabled={pendingId !== null}
+                        onClick={() => void onRemove(instrument.id)}
+                        size="icon"
+                        variant="ghost"
+                      >
+                        {pendingId === instrument.id ? (
+                          <LoaderCircle
+                            aria-hidden="true"
+                            className="animate-spin"
+                            size={14}
+                          />
+                        ) : (
+                          <X aria-hidden="true" size={14} />
+                        )}
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>Remove {instrument.symbol}</TooltipContent>
+                  </Tooltip>
+                </div>
+              </li>
+            ))}
         </ul>
       )}
 
+      {selectedSnapshot && latest && (
+        <section
+          className="watchlist-snapshot"
+          aria-label="Selected instrument snapshot"
+        >
+          <div>
+            <strong>{selectedSnapshot.instrument.symbol}</strong>
+            <Badge
+              variant={
+                selectedSnapshot.provenance.data_mode === "demo"
+                  ? "demo"
+                  : "neutral"
+              }
+            >
+              {selectedSnapshot.provenance.data_mode === "demo"
+                ? "Demo"
+                : "Delayed"}
+            </Badge>
+          </div>
+          <p className="snapshot-name">{selectedSnapshot.instrument.name}</p>
+          <p className="snapshot-price">{money(latest.close)}</p>
+          {previous && (
+            <p
+              className={
+                latest.close >= previous.close
+                  ? "text-positive"
+                  : "text-negative"
+              }
+            >
+              {latest.close >= previous.close ? "+" : ""}
+              {money(latest.close - previous.close)} (
+              {((latest.close / previous.close - 1) * 100).toFixed(2)}%){" "}
+              <span>vs prior session</span>
+            </p>
+          )}
+          <dl>
+            <div>
+              <dt>Open</dt>
+              <dd>{money(latest.open)}</dd>
+            </div>
+            <div>
+              <dt>High / Low</dt>
+              <dd>
+                {money(latest.high)} / {money(latest.low)}
+              </dd>
+            </div>
+            <div>
+              <dt>Volume</dt>
+              <dd>{latest.volume.toLocaleString("en-US")}</dd>
+            </div>
+            <div>
+              <dt>Session</dt>
+              <dd>{latest.time}</dd>
+            </div>
+            <div>
+              <dt>Price basis</dt>
+              <dd>{selectedSnapshot.provenance.price_basis}</dd>
+            </div>
+          </dl>
+          <p className="snapshot-disclosure">
+            {selectedSnapshot.provenance.data_mode === "demo"
+              ? "Synthetic prices. Not observed market data."
+              : "Delayed daily observations. Not a live quote."}
+          </p>
+        </section>
+      )}
       {state.kind === "ready" && selectedInWatchlist && (
         <div className="border-t border-border-subtle px-3 py-2">
           <Badge className="w-fit" variant="neutral">

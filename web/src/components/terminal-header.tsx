@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { brand } from "@/lib/brand";
+import { BrandMark } from "./brand-mark";
 
 export function TerminalHeader({
   username,
@@ -33,12 +34,9 @@ export function TerminalHeader({
         href="/app/markets"
         className="terminal-wordmark"
       >
-        <span aria-hidden="true" className="brand-mark">
-          <span />
-          <span />
-          <span />
-        </span>
-        {brand.name}
+        <BrandMark />
+        <span className="brand-name-wide">{brand.name}</span>
+        <span className="brand-name-short">{brand.shortName}</span>
       </Link>
       <nav aria-label="Workspace" className="terminal-navigation">
         {[

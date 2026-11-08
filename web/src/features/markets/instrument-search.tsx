@@ -26,11 +26,15 @@ type SearchState =
 export function InstrumentSearch({
   onSelect,
   disabled = false,
+  shortcut = false,
   label = "Add instrument",
+  compactLabel,
 }: {
   onSelect: (instrument: Instrument) => void;
   disabled?: boolean;
+  shortcut?: boolean;
   label?: string;
+  compactLabel?: string;
 }): React.JSX.Element {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -45,6 +49,14 @@ export function InstrumentSearch({
         ? searchState
         : { kind: "loading", query: normalizedQuery };
 
+  useEffect(()=>{
+    if(!shortcut || disabled)return;
+    function onKey(event:globalThis.KeyboardEvent):void {
+      if((event.ctrlKey || event.metaKey) && event.key.toLowerCase()==="k") {event.preventDefault();setOpen(true);}
+    }
+    document.addEventListener("keydown",onKey);
+    return()=>document.removeEventListener("keydown",onKey);
+  },[shortcut,disabled]);
   useEffect(() => {
     if (!open || normalizedQuery.length === 0) {
       return;
@@ -141,7 +153,7 @@ export function InstrumentSearch({
           variant="outline"
         >
           <Search aria-hidden="true" size={15} />
-          <span className="truncate">{label}</span>
+          {compactLabel ? <><span className="search-label-wide truncate">{label}</span><span className="search-label-short">{compactLabel}</span></> : <span className="truncate">{label}</span>}
         </Button>
       </DialogTrigger>
       <DialogContent aria-describedby={`${listId}-description`} className="gap-0 p-0">
