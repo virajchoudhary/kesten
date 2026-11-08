@@ -165,7 +165,7 @@ export function ResearchDockInspector({
               ? "Synthetic pipeline check only. No empirical forecasting performance established."
               : "Historical results are descriptive. No empirical forecasting performance established."}
           </p>
-          <dl>
+          <dl className="dock-run-facts">
             <div>
               <dt>Target</dt>
               <dd>
@@ -184,27 +184,30 @@ export function ResearchDockInspector({
               </dd>
             </div>
           </dl>
-          <label>
-            Reference focus
-            <select
-              aria-label="Reference focus"
-              value={focusModel}
-              onChange={(event) => {
-                const parsed = ResearchReferenceIdSchema.safeParse(
-                  event.currentTarget.value,
-                );
-                if (parsed.success) onFocusModelChange(parsed.data);
-              }}
-            >
-              {run.result.models.map((model) => (
-                <option key={model.id} value={model.id}>
-                  {model.label} · v{model.version}
-                </option>
-              ))}
-            </select>
-          </label>
-          <ResearchRunActions key={run.id} run={run} csrfToken={csrfToken} />
-          <details>
+          <div className="dock-run-controls">
+            <label className="dock-run-reference-label">
+              Reference focus
+              <select
+                aria-label="Reference focus"
+                className="dock-run-reference"
+                value={focusModel}
+                onChange={(event) => {
+                  const parsed = ResearchReferenceIdSchema.safeParse(
+                    event.currentTarget.value,
+                  );
+                  if (parsed.success) onFocusModelChange(parsed.data);
+                }}
+              >
+                {run.result.models.map((model) => (
+                  <option key={model.id} value={model.id}>
+                    {model.label} · v{model.version}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <ResearchRunActions key={run.id} run={run} csrfToken={csrfToken} />
+          </div>
+          <details className="dock-run-identities">
             <summary>Dataset and run identities</summary>
             <FactGrid
               facts={[

@@ -191,6 +191,13 @@ test("customizes, compares and measures daily charts, then inspects an exact sav
   await separator.focus();
   await page.keyboard.press("ArrowUp");
   await expect(separator).toHaveAttribute("aria-valuenow", "420");
+  await page.keyboard.press("End");
+  const maximum = Number(await separator.getAttribute("aria-valuemax"));
+  await expect(separator).toHaveAttribute("aria-valuenow", String(maximum));
+  expect(maximum).toBeLessThanOrEqual(600);
+  expect((await chart.boundingBox())?.height).toBeGreaterThanOrEqual(170);
+  await page.keyboard.press("Home");
+  for (let step = 0; step < 10; step++) await page.keyboard.press("ArrowUp");
   await page.screenshot({
     path: testInfo.outputPath("research-dock-1920.png"),
     fullPage: true,

@@ -21,6 +21,13 @@ describe("interactive research analytics", () => {
     expect(
       screen.getByRole("img", { name: /Dataset history and forecast paths/ }),
     ).toBeVisible();
+    expect(
+      screen.getByRole("group", { name: "Evaluation chart view" }),
+    ).toBeVisible();
+    expect(screen.getByRole("button", { name: "Forecast" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
     expect(screen.queryByRole("button", { name: "Download CSV" })).toBeNull();
 
     const NativeURL = URL;
@@ -41,9 +48,7 @@ describe("interactive research analytics", () => {
       downloads.push(this.download);
     });
 
-    await user.click(
-      screen.getByRole("button", { name: "Walk-forward" }),
-    );
+    await user.click(screen.getByRole("button", { name: "Walk-forward" }));
     expect(
       screen.getByRole("img", {
         name: /Walk-forward dataset values and predictions/,
@@ -77,9 +82,7 @@ describe("interactive research analytics", () => {
       "max",
       "0",
     );
-    await user.click(
-      screen.getByRole("button", { name: "Errors" }),
-    );
+    await user.click(screen.getByRole("button", { name: "Errors" }));
     expect(
       screen.getByRole("img", { name: /Walk-forward forecast errors/ }),
     ).toBeVisible();
@@ -119,9 +122,7 @@ describe("interactive research analytics", () => {
 
     await user.click(screen.getByRole("button", { name: "Walk-forward" }));
 
-    expect(
-      screen.queryByRole("button", { name: "Download CSV" }),
-    ).toBeNull();
+    expect(screen.queryByRole("button", { name: "Download CSV" })).toBeNull();
     expect(screen.getByRole("note")).toHaveTextContent(
       HISTORICAL_CSV_EXPORT_DISABLED_REASON,
     );

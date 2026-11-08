@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LoaderCircle } from "lucide-react";
 import { brand } from "@/lib/brand";
+import { BrandMark } from "@/components/brand-mark";
 
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/features/session/session-provider";
@@ -64,7 +65,7 @@ export function AccountSecurityPage(): React.JSX.Element {
           className="terminal-wordmark"
           href="/app/markets"
         >
-          <span aria-hidden="true" className="brand-mark"><span /><span /><span /></span>
+          <BrandMark />
           <span>{brand.name}</span>
         </Link>
         <nav aria-label="Workspace" className="flex min-h-9 items-center gap-4 text-xs">

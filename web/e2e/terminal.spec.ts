@@ -63,6 +63,21 @@ test("terminal preserves provenance, chart controls and integrated research iden
       }).format(value),
     );
   }
+  const studies = page.getByRole("region", {
+    name: /Selected session studies/u,
+  });
+  for (const name of ["sma20", "sma50", "rsi14"] as const) {
+    const point = history.indicators[name].find(
+      (point) => point.time === observation.time,
+    );
+    if (point)
+      await expect(studies).toContainText(
+        point.value.toLocaleString("en-US", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        }),
+      );
+  }
   await page.mouse.wheel(0, -180);
   await page.getByRole("button", { name: "Reset chart view" }).click();
   await page
@@ -212,4 +227,18 @@ test("terminal preserves provenance, chart controls and integrated research iden
   await expect(
     page.getByRole("button", { name: "Open watchlist and instrument search" }),
   ).toBeFocused();
+  await page
+    .getByRole("button", { name: "Open watchlist and instrument search" })
+    .click();
+  const watchlistDialog = page.getByRole("dialog", {
+    name: "Watchlist and instrument search",
+  });
+  await watchlistDialog
+    .getByRole("link", { name: "Research AAPL", exact: true })
+    .click();
+  await expect(page).toHaveURL(/view=research&instrument=xnas-aapl/u);
+  await expect(watchlistDialog).toHaveCount(0);
+  await expect(
+    page.getByRole("region", { name: "Integrated research", exact: true }),
+  ).toBeVisible();
 });

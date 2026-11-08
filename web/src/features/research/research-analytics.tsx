@@ -46,13 +46,13 @@ export function ResearchAnalytics({
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border-subtle px-4 py-3">
         <div
-          className="flex gap-1"
+          className="research-view-switcher flex gap-1"
           role="group"
-          aria-label="Research chart view"
+          aria-label="Evaluation chart view"
         >
           {VIEWS.map((name) => (
             <button
-              className={`min-h-10 rounded-control px-3 text-xs font-medium focus-visible:ring-2 focus-visible:ring-focus ${view === name ? "bg-action text-on-action" : "text-secondary hover:bg-raised"}`}
+              className={`research-view-option min-h-10 rounded-control px-3 text-xs font-medium focus-visible:ring-2 focus-visible:ring-focus ${view === name ? "bg-action text-on-action" : "text-secondary hover:bg-raised"}`}
               aria-pressed={view === name}
               key={name}
               type="button"

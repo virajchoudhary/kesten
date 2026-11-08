@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback, useRef, useState } from "react";
+import { useEffect, useCallback, useMemo, useRef, useState } from "react";
 import { useTheme } from "next-themes";
 import type {
   IChartApi,
@@ -269,6 +269,21 @@ export function LightweightMarketChart({
   const { resolvedTheme } = useTheme();
   const selected =
     data.bars.find((bar) => bar.time === hover) ?? data.bars.at(-1);
+  const studies = useMemo(
+    () => calculateChartStudies(data.bars, preferences),
+    [data.bars, preferences],
+  );
+  const studyValue = (
+    points: ReadonlyArray<{ time: string; value: number }>,
+  ) => {
+    const point = points.find((point) => point.time === selected?.time);
+    return point
+      ? point.value.toLocaleString("en-US", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })
+      : "—";
+  };
   const hasComparison = comparison !== null;
   const choose = useCallback(
     (bar: Bar) =>
@@ -671,7 +686,15 @@ export function LightweightMarketChart({
           </span>
         </div>
       )}
-      <div className="chart-study-legend">
+      <div
+        className="chart-study-legend"
+        role="region"
+        tabIndex={0}
+        aria-label={`Selected session studies, raw prices in ${data.instrument.currency} and RSI index`}
+        onKeyDown={(event) => {
+          if (event.key.startsWith("Arrow")) event.stopPropagation();
+        }}
+      >
         <span>
           Price ·{" "}
           {preferences.scaleMode === "log"
@@ -682,14 +705,36 @@ export function LightweightMarketChart({
                 ? `100 at ${data.bars[0]?.time}`
                 : data.instrument.currency}
         </span>
-        {preferences.showSma20 && <span className="study-sma20">SMA 20</span>}
-        {preferences.showSma50 && <span className="study-sma50">SMA 50</span>}
+        <span className="study-units">
+          Studies · {data.instrument.currency}
+        </span>
+        {preferences.showSma20 && (
+          <span className="study-sma20">
+            SMA 20 <b>{studyValue(data.indicators.sma20)}</b>
+          </span>
+        )}
+        {preferences.showSma50 && (
+          <span className="study-sma50">
+            SMA 50 <b>{studyValue(data.indicators.sma50)}</b>
+          </span>
+        )}
         {preferences.emaEnabled && (
-          <span className="study-ema">EMA {preferences.emaPeriod}</span>
+          <span className="study-ema">
+            EMA {preferences.emaPeriod} <b>{studyValue(studies.ema)}</b>
+          </span>
         )}
         {preferences.bollingerEnabled && (
           <span>
-            BB {preferences.bollingerPeriod} · {preferences.bollingerDeviation}σ
+            BB {preferences.bollingerPeriod} · {preferences.bollingerDeviation}σ{" "}
+            <b>
+              {studyValue(studies.bands.lower)} /{" "}
+              {studyValue(studies.bands.upper)}
+            </b>
+          </span>
+        )}
+        {preferences.showRsi && (
+          <span>
+            RSI 14 <b>{studyValue(data.indicators.rsi14)}</b>
           </span>
         )}
       </div>

@@ -128,7 +128,6 @@ describe("ResearchDock", () => {
     render(
       <ResearchDock
         csrfToken="fixture-csrf"
-        onClose={vi.fn()}
         query={query({
           requestedCompareId: comparisonId,
           requestedInstrumentId: activeInstrument,
@@ -157,6 +156,10 @@ describe("ResearchDock", () => {
         "Synthetic pipeline check only. No empirical forecasting performance established.",
       ),
     ).toBeVisible();
+    expect(screen.getByText("Target")).toBeVisible();
+    expect(screen.getByText("Origin")).toBeVisible();
+    expect(screen.getByText("Information cutoff")).toBeVisible();
+    expect(screen.getByText("1 next scheduled session")).toBeVisible();
     expect(
       screen.getAllByText(
         `${researchDatasetFixture().id} · ${researchDatasetFixture().version}`,
@@ -217,7 +220,6 @@ describe("ResearchDock", () => {
     render(
       <ResearchDock
         csrfToken="fixture-csrf"
-        onClose={vi.fn()}
         query={query({ focusModel: "last_close" })}
       />,
     );
@@ -248,12 +250,11 @@ describe("ResearchDock", () => {
     );
   });
 
-  it("shows selected dataset facts before an evaluation and routes the created run", async () => {
+  it("places dataset and horizon controls before provenance and routes the created run", async () => {
     const user = userEvent.setup();
     render(
       <ResearchDock
         csrfToken="fixture-csrf"
-        onClose={vi.fn()}
         query={query({
           requestedRunId: null,
           requestedInstrumentId: "xnas-aapl",
@@ -263,9 +264,26 @@ describe("ResearchDock", () => {
     );
     await user.click(screen.getByRole("tab", { name: "New evaluation" }));
 
-    await user.click(
-      screen.getByText("Dataset source and permissions", { exact: true }),
+    const datasetSelector = await screen.findByRole("combobox", {
+      name: "Private research dataset",
+    });
+    const horizonSelector = screen.getByRole("radio", {
+      name: "1 next session",
+    });
+    const provenanceDisclosure = screen.getByText(
+      "Dataset source and permissions",
+      { exact: true },
     );
+    expect(
+      datasetSelector.compareDocumentPosition(provenanceDisclosure) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).not.toBe(0);
+    expect(
+      horizonSelector.compareDocumentPosition(provenanceDisclosure) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    ).not.toBe(0);
+
+    await user.click(provenanceDisclosure);
     const provenance = await screen.findByRole("region", {
       name: "Selected dataset provenance",
     });
@@ -276,10 +294,7 @@ describe("ResearchDock", () => {
     const runButton = await screen.findByRole("button", {
       name: "Run evaluation",
     });
-    expect(
-      provenance.compareDocumentPosition(runButton) &
-        Node.DOCUMENT_POSITION_FOLLOWING,
-    ).not.toBe(0);
+    expect(runButton).toBeVisible();
 
     await user.click(runButton);
     await waitFor(() => {
@@ -319,7 +334,6 @@ describe("ResearchDock", () => {
       render(
         <ResearchDock
           csrfToken="fixture-csrf"
-          onClose={vi.fn()}
           query={query({ requestedRunId: null })}
         />,
       );
@@ -361,7 +375,6 @@ describe("ResearchDock", () => {
     const view = render(
       <ResearchDock
         csrfToken="fixture-csrf"
-        onClose={vi.fn()}
         query={query({ requestedRunId: RUN_ID })}
       />,
     );
@@ -370,7 +383,6 @@ describe("ResearchDock", () => {
     view.rerender(
       <ResearchDock
         csrfToken="fixture-csrf"
-        onClose={vi.fn()}
         query={query({ requestedRunId: SECOND_RUN_ID })}
       />,
     );

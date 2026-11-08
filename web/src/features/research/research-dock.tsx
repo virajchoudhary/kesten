@@ -69,7 +69,6 @@ export function ResearchDock({
 }: {
   query: ResearchWorkspaceQuery;
   csrfToken: string;
-  onClose: () => void;
 }): React.JSX.Element {
   const router = useRouter();
   const { refresh } = useSession();
@@ -265,7 +264,10 @@ export function ResearchDock({
   }
 
   return (
-    <section aria-label="Research dock" className="research-dock min-w-0">
+    <section
+      aria-label="Research dock"
+      className="research-dock research-polish min-w-0"
+    >
       <header className="research-dock-tabs flex min-w-0 flex-wrap items-center justify-between gap-2 border-b border-border-subtle px-3 py-2">
         <div
           aria-label="Research dock views"
@@ -391,15 +393,7 @@ export function ResearchDock({
         )}
 
         {activeTab === "evaluate" && (
-          <div className="min-w-0">
-            <details className="dock-setup-provenance">
-              <summary>Dataset source and permissions</summary>
-              <ResearchDockDatasetFacts
-                dataset={selectedDataset}
-                state={datasetState}
-                title="Selected dataset provenance"
-              />
-            </details>
+          <div className="research-polish-evaluation min-w-0">
             <ResearchEvaluationSetup
               csrfToken={csrfToken}
               datasetsState={datasetState}
@@ -414,6 +408,14 @@ export function ResearchDock({
               requestedInstrumentId={query.requestedInstrumentId}
               selectedDatasetId={selectedDataset?.id ?? ""}
             />
+            <details className="dock-setup-provenance">
+              <summary>Dataset source and permissions</summary>
+              <ResearchDockDatasetFacts
+                dataset={selectedDataset}
+                state={datasetState}
+                title="Selected dataset provenance"
+              />
+            </details>
           </div>
         )}
       </div>

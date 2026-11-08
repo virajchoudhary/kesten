@@ -1989,10 +1989,7 @@ select:focus-visible {
   width: 23px;
   height: 23px;
   flex-shrink: 0;
-  color: var(--accent);
-}
-.dark .product-mark {
-  color: #d7bd84;
+  color: var(--text);
 }
 .terminal-wordmark {
   font-weight: 550;

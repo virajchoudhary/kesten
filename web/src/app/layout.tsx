@@ -7,6 +7,8 @@ import { Providers } from "@/components/providers";
 import { brand } from "@/lib/brand";
 
 import "./globals.css";
+import "./terminal-polish.css";
+import "@/features/research/research-polish.css";
 
 export const metadata: Metadata = {
   applicationName: brand.name,

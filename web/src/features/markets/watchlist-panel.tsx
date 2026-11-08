@@ -40,6 +40,7 @@ export function WatchlistPanel({
   snapshot?: MarketResponse | null;
 }): React.JSX.Element {
   const titleId = useId();
+  const [sort, setSort] = useState<"saved" | "symbol" | "name">("saved");
   const [filter, setFilter] = useState("");
   const selectedSnapshot =
     snapshot?.instrument.id === selectedId ? snapshot : null;
@@ -53,6 +54,13 @@ export function WatchlistPanel({
       maximumFractionDigits: 2,
     }).format(value);
   const items = state.kind === "ready" ? state.items : [];
+  const visibleItems = items.filter((instrument) =>
+    `${instrument.symbol} ${instrument.name}`
+      .toLowerCase()
+      .includes(filter.trim().toLowerCase()),
+  );
+  if (sort !== "saved")
+    visibleItems.sort((a, b) => a[sort].localeCompare(b[sort]));
   const selectedInWatchlist =
     selectedId !== null && items.some((item) => item.id === selectedId);
 
@@ -119,16 +127,29 @@ export function WatchlistPanel({
               onChange={(event) => setFilter(event.currentTarget.value)}
             />
           </label>
-          <span>
-            {
-              state.items.filter((instrument) =>
-                `${instrument.symbol} ${instrument.name}`
-                  .toLowerCase()
-                  .includes(filter.trim().toLowerCase()),
-              ).length
-            }{" "}
-            instruments
-          </span>
+          <div className="watchlist-list-controls">
+            <span>{visibleItems.length} instruments</span>
+            <label>
+              <span className="sr-only">Sort watchlist</span>
+              <select
+                aria-label="Sort watchlist"
+                value={sort}
+                onChange={(event) =>
+                  setSort(
+                    event.currentTarget.value === "symbol"
+                      ? "symbol"
+                      : event.currentTarget.value === "name"
+                        ? "name"
+                        : "saved",
+                  )
+                }
+              >
+                <option value="saved">Saved order</option>
+                <option value="symbol">Symbol A–Z</option>
+                <option value="name">Company A–Z</option>
+              </select>
+            </label>
+          </div>
         </div>
       )}
       {mutationError && (
@@ -185,74 +206,98 @@ export function WatchlistPanel({
           aria-label="Saved instruments"
           className="min-h-0 flex-1 overflow-y-auto py-1"
         >
-          {state.items
-            .filter((instrument) =>
-              `${instrument.symbol} ${instrument.name}`
-                .toLowerCase()
-                .includes(filter.trim().toLowerCase()),
-            )
-            .map((instrument) => (
-              <li key={instrument.id}>
-                <div
-                  className={`group flex min-h-11 items-center gap-2 border-l-2 px-3 transition-colors ${
-                    instrument.id === selectedId
-                      ? "border-accent bg-raised"
-                      : "border-transparent hover:bg-raised"
-                  }`}
-                >
-                  <button
-                    aria-current={
-                      instrument.id === selectedId ? "true" : undefined
+          {visibleItems.map((instrument) => (
+            <li key={instrument.id}>
+              <div
+                className={`group flex min-h-11 items-center gap-2 border-l-2 px-3 transition-colors ${
+                  instrument.id === selectedId
+                    ? "border-accent bg-raised"
+                    : "border-transparent hover:bg-raised"
+                }`}
+              >
+                <button
+                  data-watchlist-symbol={instrument.id}
+                  aria-keyshortcuts="ArrowUp ArrowDown Home End"
+                  onKeyDown={(event) => {
+                    const position = visibleItems.findIndex(
+                      (item) => item.id === instrument.id,
+                    );
+                    const next =
+                      event.key === "Home"
+                        ? 0
+                        : event.key === "End"
+                          ? visibleItems.length - 1
+                          : event.key === "ArrowDown"
+                            ? Math.min(visibleItems.length - 1, position + 1)
+                            : event.key === "ArrowUp"
+                              ? Math.max(0, position - 1)
+                              : null;
+                    if (next === null) return;
+                    event.preventDefault();
+                    const target = visibleItems[next];
+                    if (target) {
+                      onSelect(target);
+                      const buttons = event.currentTarget
+                        .closest("ul")
+                        ?.querySelectorAll<HTMLButtonElement>(
+                          "button[data-watchlist-symbol]",
+                        );
+                      buttons?.[next]?.focus();
                     }
-                    className="flex min-w-0 flex-1 items-center justify-between gap-2 py-1.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-focus"
-                    onClick={() => onSelect(instrument)}
-                    type="button"
-                  >
-                    <span className="min-w-0">
-                      <span className="block truncate font-mono text-sm font-medium">
-                        {instrument.symbol}
-                      </span>
-                      <span className="block truncate text-xs text-secondary">
-                        {instrument.name}
-                      </span>
+                  }}
+                  aria-current={
+                    instrument.id === selectedId ? "true" : undefined
+                  }
+                  className="flex min-w-0 flex-1 items-center justify-between gap-2 py-1.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                  onClick={() => onSelect(instrument)}
+                  type="button"
+                >
+                  <span className="min-w-0">
+                    <span className="block truncate font-mono text-sm font-medium">
+                      {instrument.symbol}
                     </span>
-                    <span className="shrink-0 text-[11px] text-secondary">
-                      {instrument.exchange}
+                    <span className="block truncate text-xs text-secondary">
+                      {instrument.name}
                     </span>
-                  </button>
-                  <Link
-                    aria-label={`Research ${instrument.symbol}`}
-                    href={`/app/research?instrument=${encodeURIComponent(instrument.id)}`}
-                    className="inline-flex size-11 shrink-0 items-center justify-center rounded-control text-secondary hover:bg-raised hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus min-[1440px]:size-8"
-                  >
-                    <FlaskConical aria-hidden="true" size={14} />
-                  </Link>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        aria-label={`Remove ${instrument.symbol} from watchlist`}
-                        className="size-11 min-[1440px]:size-8"
-                        disabled={pendingId !== null}
-                        onClick={() => void onRemove(instrument.id)}
-                        size="icon"
-                        variant="ghost"
-                      >
-                        {pendingId === instrument.id ? (
-                          <LoaderCircle
-                            aria-hidden="true"
-                            className="animate-spin"
-                            size={14}
-                          />
-                        ) : (
-                          <X aria-hidden="true" size={14} />
-                        )}
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>Remove {instrument.symbol}</TooltipContent>
-                  </Tooltip>
-                </div>
-              </li>
-            ))}
+                  </span>
+                  <span className="shrink-0 text-[11px] text-secondary">
+                    {instrument.exchange}
+                  </span>
+                </button>
+                <Link
+                  aria-label={`Research ${instrument.symbol}`}
+                  href={`/app/markets?view=research&instrument=${encodeURIComponent(instrument.id)}`}
+                  onNavigate={onDismiss}
+                  className="inline-flex size-11 shrink-0 items-center justify-center rounded-control text-secondary hover:bg-raised hover:text-foreground focus-visible:ring-2 focus-visible:ring-focus min-[1440px]:size-8"
+                >
+                  <FlaskConical aria-hidden="true" size={14} />
+                </Link>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      aria-label={`Remove ${instrument.symbol} from watchlist`}
+                      className="size-11 min-[1440px]:size-8"
+                      disabled={pendingId !== null}
+                      onClick={() => void onRemove(instrument.id)}
+                      size="icon"
+                      variant="ghost"
+                    >
+                      {pendingId === instrument.id ? (
+                        <LoaderCircle
+                          aria-hidden="true"
+                          className="animate-spin"
+                          size={14}
+                        />
+                      ) : (
+                        <X aria-hidden="true" size={14} />
+                      )}
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Remove {instrument.symbol}</TooltipContent>
+                </Tooltip>
+              </div>
+            </li>
+          ))}
         </ul>
       )}
 

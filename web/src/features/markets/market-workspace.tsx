@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type CSSProperties,
+} from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -39,6 +45,7 @@ import { LightweightMarketChart } from "@/features/markets/lightweight-market-ch
 import { MarketBarsTable } from "@/features/markets/market-bars-table";
 import { MarketEvidencePanel } from "@/features/markets/market-evidence-panel";
 import { WatchlistPanel } from "@/features/markets/watchlist-panel";
+import { dockHeightLimit } from "./dock-layout";
 import { useWatchlist } from "@/features/markets/use-watchlist";
 import {
   ApiError,
@@ -65,6 +72,14 @@ type MarketResult = {
   requestKey: string;
   state: SettledMarketState;
 };
+
+function subscribeViewport(listener: () => void): () => void {
+  window.addEventListener("resize", listener);
+  return () => window.removeEventListener("resize", listener);
+}
+function viewportDockLimit(): number {
+  return dockHeightLimit(window.innerHeight, window.innerWidth);
+}
 
 function asApiError(error: unknown): ApiError {
   if (error instanceof ApiError) {
@@ -132,6 +147,12 @@ function MarketWorkspaceContent({
     sequence: 0,
   });
   const [dockHeight, setDockHeight] = useState(400);
+  const maxDockHeight = useSyncExternalStore(
+    subscribeViewport,
+    viewportDockLimit,
+    () => 400,
+  );
+  const visibleDockHeight = Math.min(dockHeight, maxDockHeight);
   const [dockMaximized, setDockMaximized] = useState(false);
   const [tableOpen, setTableOpen] = useState(false);
   const [watchlistOpen, setWatchlistOpen] = useState(false);
@@ -426,7 +447,9 @@ function MarketWorkspaceContent({
           </div>
           <div
             className={`terminal-analysis ${researchView && researchEnabled ? "has-research" : ""} ${dockMaximized ? "research-maximized" : ""}`}
-            style={{ "--dock-height": `${dockHeight}px` } as CSSProperties}
+            style={
+              { "--dock-height": `${visibleDockHeight}px` } as CSSProperties
+            }
           >
             <div className="terminal-chart-view">
               <h1 className="sr-only">Markets</h1>
@@ -590,7 +613,7 @@ function MarketWorkspaceContent({
                       className="terminal-chart-panel"
                     >
                       <p className="sr-only" id="market-chart-summary">
-                        {readyData.instrument.symbol} daily candles from{" "}
+                        {readyData.instrument.symbol} daily observations from{" "}
                         {formatSessionDate(
                           readyData.bars[0]?.time ?? readyData.provenance.as_of,
                         )}{" "}
@@ -662,9 +685,9 @@ function MarketWorkspaceContent({
                   tabIndex={0}
                   aria-label="Research panel height"
                   aria-orientation="horizontal"
-                  aria-valuenow={dockHeight}
+                  aria-valuenow={visibleDockHeight}
                   aria-valuemin={220}
-                  aria-valuemax={700}
+                  aria-valuemax={maxDockHeight}
                   onKeyDown={(event) => {
                     if (
                       ["ArrowUp", "ArrowDown", "Home", "End"].includes(
@@ -676,12 +699,13 @@ function MarketWorkspaceContent({
                         event.key === "Home"
                           ? 220
                           : event.key === "End"
-                            ? 700
+                            ? maxDockHeight
                             : Math.min(
-                                700,
+                                maxDockHeight,
                                 Math.max(
                                   220,
-                                  value + (event.key === "ArrowUp" ? 20 : -20),
+                                  Math.min(value, maxDockHeight) +
+                                    (event.key === "ArrowUp" ? 20 : -20),
                                 ),
                               ),
                       );
@@ -690,18 +714,19 @@ function MarketWorkspaceContent({
                   onPointerDown={(event) => {
                     const node = event.currentTarget,
                       start = event.clientY,
-                      height = dockHeight;
+                      height = visibleDockHeight;
                     node.setPointerCapture(event.pointerId);
                     node.onpointermove = (move) =>
                       setDockHeight(
                         Math.min(
-                          700,
+                          maxDockHeight,
                           Math.max(220, height + start - move.clientY),
                         ),
                       );
-                    node.onpointerup = () => {
+                    node.onpointercancel = node.onpointerup = () => {
                       node.onpointermove = null;
                       node.onpointerup = null;
+                      node.onpointercancel = null;
                     };
                   }}
                 />
@@ -746,7 +771,6 @@ function MarketWorkspaceContent({
                     requestedInstrumentId: activeInstrumentId,
                   }}
                   csrfToken={session.csrf_token}
-                  onClose={() => router.replace(chartHref, { scroll: false })}
                 />
               </section>
             )}
