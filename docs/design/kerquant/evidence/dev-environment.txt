@@ -1,0 +1,7 @@
+test_launcher_overrides_external_storage_and_legacy_scheduler (test_dev_environment.DevelopmentIsolationTests.test_launcher_overrides_external_storage_and_legacy_scheduler) ... ok
+test_workspace_and_legacy_keep_separate_sqlite_transaction_modes (test_dev_environment.DevelopmentIsolationTests.test_workspace_and_legacy_keep_separate_sqlite_transaction_modes) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 3.453s
+
+OK

@@ -1,6 +1,6 @@
 # Verification and review ledger
 
-Current local identity: Kesten. Public use remains blocked; see [the conflict record](KESTEN.md). This ledger distinguishes checks on the UI from older infrastructure evidence. No hosted CI, deployment or empirical forecasting qualification is claimed.
+Historical local identity for the iteration through `41a33b7`: Kesten. Its evidence below retains the identity and source actually tested. The current identity and verification belong to [the Kerquant iteration](../kerquant/README.md). The earlier [conflict record](KESTEN.md) is historical. This ledger distinguishes checks on the UI from older infrastructure evidence. No hosted CI, deployment or empirical forecasting qualification is claimed.
 
 ## Checks
 

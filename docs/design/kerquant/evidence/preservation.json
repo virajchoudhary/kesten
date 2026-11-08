@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "original_database_sha256": "93745bfc1a3149a0f77bbcdd1a50f712195750879f3fb313728ab9811f99715b",
+  "shared_credentials_match_retained_copy": true,
+  "manifests": [
+    {
+      "manifest": "docs/implementation/evidence/preserved-untracked-runtime-files.json",
+      "checked": 496,
+      "changed": []
+    },
+    {
+      "manifest": ".local/phase3-research-artifacts-before.json",
+      "checked": 17,
+      "changed": []
+    }
+  ]
+}

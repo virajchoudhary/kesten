@@ -1,5 +1,7 @@
 # Analysis terminal design
 
+Historical design record through `41a33b7`, when Kesten was the local name. The current identity and refinements are documented in [the Kerquant record](../kerquant/README.md). The implementation and evidence below retain their original context.
+
 The design serves three tasks: inspect an instrument, change the analytical lens, and inspect the record behind an evaluation. It uses continuous work surfaces rather than a dashboard of cards.
 
 ## Structure

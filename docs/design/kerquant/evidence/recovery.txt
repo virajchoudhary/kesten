@@ -1,0 +1,23 @@
+test_backup_paths_are_exclusive_and_existing_files_remain_unchanged (test_recovery.RecoveryTests.test_backup_paths_are_exclusive_and_existing_files_remain_unchanged) ... ok
+test_cli_rejects_url_argument_without_echoing_it (test_recovery.RecoveryTests.test_cli_rejects_url_argument_without_echoing_it) ... ok
+test_pgpass_is_restricted_and_supported_url_settings_reach_clients (test_recovery.RecoveryTests.test_pgpass_is_restricted_and_supported_url_settings_reach_clients) ... ok
+test_postgres_backup_keeps_password_out_of_arguments_and_output (test_recovery.RecoveryTests.test_postgres_backup_keeps_password_out_of_arguments_and_output) ... ok
+test_postgres_client_failures_redact_secrets_and_remove_partial_backups (test_recovery.RecoveryTests.test_postgres_client_failures_redact_secrets_and_remove_partial_backups) ... ok
+test_postgres_restore_rejects_nonempty_target_before_writes (test_recovery.RecoveryTests.test_postgres_restore_rejects_nonempty_target_before_writes) ... ok
+test_postgres_restore_rejects_same_source_without_running_restore (test_recovery.RecoveryTests.test_postgres_restore_rejects_same_source_without_running_restore) ... ok
+test_postgres_restore_uses_single_transaction_without_clean_or_create (test_recovery.RecoveryTests.test_postgres_restore_uses_single_transaction_without_clean_or_create) ... ok
+test_postgres_restore_validates_hash_before_starting_clients (test_recovery.RecoveryTests.test_postgres_restore_validates_hash_before_starting_clients) ... ok
+test_postgres_url_decodes_userinfo_and_preserves_supported_options (test_recovery.RecoveryTests.test_postgres_url_decodes_userinfo_and_preserves_supported_options) ... ok
+test_postgres_url_rejects_ambiguous_or_unsupported_options (test_recovery.RecoveryTests.test_postgres_url_rejects_ambiguous_or_unsupported_options) ... ok
+test_sqlite_backup_and_restore_round_trip_without_changing_source (test_recovery.RecoveryTests.test_sqlite_backup_and_restore_round_trip_without_changing_source) ... ok
+test_sqlite_final_path_is_absent_until_validation_completes (test_recovery.RecoveryTests.test_sqlite_final_path_is_absent_until_validation_completes) ... ok
+test_sqlite_publish_cannot_overwrite_a_concurrently_created_target (test_recovery.RecoveryTests.test_sqlite_publish_cannot_overwrite_a_concurrently_created_target) ... ok
+test_sqlite_restore_refuses_backup_artifact_as_target (test_recovery.RecoveryTests.test_sqlite_restore_refuses_backup_artifact_as_target) ... ok
+test_sqlite_restore_refuses_existing_and_preserved_database_targets (test_recovery.RecoveryTests.test_sqlite_restore_refuses_existing_and_preserved_database_targets) ... ok
+test_sqlite_restore_rejects_tampered_backup_before_creating_target (test_recovery.RecoveryTests.test_sqlite_restore_rejects_tampered_backup_before_creating_target) ... ok
+test_verified_tls_ca_is_passed_explicitly_without_inherited_pg_settings (test_recovery.RecoveryTests.test_verified_tls_ca_is_passed_explicitly_without_inherited_pg_settings) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.479s
+
+OK

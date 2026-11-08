@@ -1,0 +1,9 @@
+{
+  "header_icon_geometry_match": true,
+  "icon_status": 200,
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "source": "Actual compiled sign-in header and served App Router icon"
+}

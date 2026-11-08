@@ -1,0 +1,41 @@
+
+Running 1 test using 1 worker
+
+(node:9220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\terminal.spec.ts:8:5 › terminal preserves provenance, chart controls and integrated research identities (1.1m)
+
+
+  1) [chromium] › e2e\terminal.spec.ts:8:5 › terminal preserves provenance, chart controls and integrated research identities
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('dialog', { name: 'Watchlist and instrument search' })
+    Expected: 0
+    Received: 1
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('dialog', { name: 'Watchlist and instrument search' }) with timeout 10000ms
+      - waiting for getByRole('dialog', { name: 'Watchlist and instrument search' })
+        21 × locator resolved to 1 element
+           - unexpected value "1"
+
+
+      232 |   await watchlistDialog.getByRole("link", { name: "Research AAPL", exact: true }).click();
+      233 |   await expect(page).toHaveURL(/view=research&instrument=xnas-aapl/u);
+    > 234 |   await expect(watchlistDialog).toHaveCount(0);
+          |                                 ^
+      235 |   await expect(page.getByRole("region", { name: "Integrated research", exact: true })).toBeVisible();
+      236 | });
+      237 |
+        at C:\stock price predictor\web\e2e\terminal.spec.ts:234:33
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\terminal-terminal-preserve-bc562-egrated-research-identities-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\terminal-terminal-preserve-bc562-egrated-research-identities-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\terminal.spec.ts:8:5 › terminal preserves provenance, chart controls and integrated research identities

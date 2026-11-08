@@ -1,0 +1,2 @@
+BEFORE rejected as expected: invalid syntax at line 15
+AFTER corrected source compiles without importing models.

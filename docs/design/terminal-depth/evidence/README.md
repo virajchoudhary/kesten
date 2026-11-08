@@ -1,5 +1,7 @@
 # Rendered evidence
 
+Historical evidence through `41a33b7`, when Kesten was the local name. “Current” in the original captions below refers to that tested iteration. See [the Kerquant evidence](../../kerquant/VERIFICATION.md) for the subsequent changes. Images and source receipts below are unchanged.
+
 These are actual Chromium screenshots of the compiled local application. Prices and research results are synthetic demonstrations. No empirical forecasting performance is established.
 
 | View | Rejected starting interface | Current Kesten interface |

@@ -1,0 +1,37 @@
+{
+  "brand": "Kerquant",
+  "source_sha256": "eeabc7906ce7f035866866955f557e9a4d274dbdc53f31a29f1994b686755561",
+  "frontend": {
+    "passed": 119,
+    "files": 33,
+    "workers": 2
+  },
+  "backend": {
+    "executed": 136,
+    "passed": 132,
+    "postgresql_skipped": 4
+  },
+  "browser": {
+    "scenarios_passed": 11,
+    "suites": 6,
+    "compiled_frontend": true,
+    "real_api_scenarios": 8
+  },
+  "captures": {
+    "primary_routes": 5,
+    "viewports": 4,
+    "document_overflow": false,
+    "icon_http_status": 200
+  },
+  "recovery_unit_passed": 18,
+  "migration_unit_passed": 7,
+  "legacy_client_unit_passed": 2,
+  "development_environment_unit_passed": 2,
+  "legacy_branding_unit_passed": 2,
+  "data": "Demo market observations and synthetic research only; no empirical performance established",
+  "infrastructure_requalified": false,
+  "hosted_ci_run": false,
+  "deployment_performed": false,
+  "protected_runtime_files": 496,
+  "protected_research_artifacts": 17
+}

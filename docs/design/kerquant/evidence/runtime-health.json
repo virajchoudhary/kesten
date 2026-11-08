@@ -1,0 +1,18 @@
+[
+  {
+    "url": "http://127.0.0.1:8000/health/",
+    "http_status": 200
+  },
+  {
+    "url": "http://127.0.0.1:3000/sign-in",
+    "http_status": 200
+  },
+  {
+    "url": "http://127.0.0.1:3000/app/markets",
+    "http_status": 200
+  },
+  {
+    "url": "http://127.0.0.1:3000/app/research",
+    "http_status": 200
+  }
+]

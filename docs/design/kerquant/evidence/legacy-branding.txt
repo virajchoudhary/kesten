@@ -1,0 +1,7 @@
+test_rebranded_legacy_pages_compile_without_loading_models (test_display_branding.DisplayBrandingTests.test_rebranded_legacy_pages_compile_without_loading_models) ... ok
+test_revisable_legacy_page_titles (test_display_branding.DisplayBrandingTests.test_revisable_legacy_page_titles) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.429s
+
+OK

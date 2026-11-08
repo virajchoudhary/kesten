@@ -1,5 +1,7 @@
 # Kesten identity and public-use gate
 
+Historical name decision, superseded by the user's Kerquant selection. The original conflict findings below remain evidence for Kesten only. See [the current identity](../kerquant/IDENTITY.md).
+
 Decision date: 8 November 2026. The user selected **Kesten** for the platform. This supersedes the earlier shortlist and neutral display label. The selected name is being integrated locally; selection is not legal clearance or publication authority.
 
 ## Identity

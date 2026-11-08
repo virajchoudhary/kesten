@@ -1,0 +1,41 @@
+
+Running 1 test using 1 worker
+
+(node:15952) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions (10.7s)
+
+
+  1) [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('header .product-mark')
+    Expected: 1
+    Received: 0
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('header .product-mark') with timeout 10000ms
+      - waiting for locator('header .product-mark')
+        23 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      147 |   await page.goto("/app/account");
+      148 |   await expect(page.getByRole("heading", { name: "Account security" })).toBeVisible();
+    > 149 |   await expect(page.locator("header .product-mark")).toHaveCount(1);
+          |                                                      ^
+      150 |   await page.getByLabel("Current password").fill("browser-fixture-current-password");
+      151 |   await page.getByLabel("New password", { exact: true }).fill("browser-fixture-replacement-password");
+      152 |   await page.getByLabel("Confirm new password").fill("browser-fixture-replacement-password");
+        at C:\stock price predictor\web\e2e\accounts.spec.ts:149:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\accounts-account-page-chan-55d1e-revokes-only-other-sessions-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\accounts-account-page-chan-55d1e-revokes-only-other-sessions-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions

@@ -1,6 +1,6 @@
 # Terminal implementation and verification
 
-This work continues `codex/cadrisyn-foundation` from `2cf72c2`. It addresses the rejection of the previous UI. Phase 5 release engineering remains paused. Kesten is the user-selected local identity. Public clearance is unresolved; see [the identity and conflict record](KESTEN.md).
+This historical iteration continued `codex/cadrisyn-foundation` from `2cf72c2` through `41a33b7`. It addressed the rejection of the previous UI under the then-selected local name Kesten. Its evidence retains that identity and tested revision. The current product name is Kerquant; see [the current terminal record](../kerquant/README.md). Phase 5 release engineering remains paused. The [earlier identity and conflict record](KESTEN.md) is retained as history.
 
 Read the [product comparison](PRODUCT-COMPARISON.md), [design system](DESIGN-SYSTEM.md), and [brand screen](BRAND-SHORTLIST.md). The comparison explains which professional-terminal patterns were adopted and which capabilities remain absent. No parity claim is made.
 

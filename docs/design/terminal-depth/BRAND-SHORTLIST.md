@@ -1,6 +1,6 @@
 # Earlier naming screen
 
-**Superseded selection:** The user selected Kesten on 8 November 2026. Keep this shortlist as research history. Current identity, legal/publication gates and exact-name conflicts are recorded in [KESTEN.md](KESTEN.md).
+**Historical shortlist:** Kesten subsequently superseded these proposals, and Kerquant later superseded Kesten. Keep this screen as research history. Current identity and screening limits are recorded in [the Kerquant identity](../kerquant/IDENTITY.md); [KESTEN.md](KESTEN.md) retains the earlier decision and conflicts.
 
 Screened 7 November 2026; documented 8 November 2026. At the time of this screen no name was approved or cleared; the neutral display labels were “Market workspace” and “Workspace”. The later Kesten selection above supersedes those defaults. Repository/package/database identifiers are unchanged.
 
