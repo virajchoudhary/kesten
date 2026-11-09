@@ -12,7 +12,7 @@ from django.contrib.auth import get_user_model
 from django.db import transaction
 from django.utils import timezone
 
-from .models import ResearchDataset, ResearchRun
+from .models import ResearchDataset, ResearchIntakeReceipt, ResearchRun
 
 
 class ResearchConflict(ValueError):
@@ -44,10 +44,17 @@ def dataset_info(dataset):
     }
 
 
-def import_dataset(payload, *, owner, operator, synthetic_bootstrap=False):
+def import_dataset(payload, *, owner, operator, synthetic_bootstrap=False, intake=None):
     from .quant import parse_dataset
 
     parsed = parse_dataset(payload, now=timezone.now())
+    if parsed.data_kind == "historical" and intake is None:
+        raise DatasetUnavailable("Historical imports require source-linked CSV intake evidence.")
+    if intake is not None:
+        from .ingestion import PreparedIntake
+
+        if not isinstance(intake, PreparedIntake) or intake.dataset.version != parsed.version:
+            raise DatasetUnavailable("The intake evidence does not identify this dataset.")
     if synthetic_bootstrap and (not settings.DEBUG or parsed.data_kind != "synthetic_fixture"):
         raise DatasetUnavailable("Fixture bootstrap requires development and synthetic data.")
     with transaction.atomic():
@@ -62,7 +69,7 @@ def import_dataset(payload, *, owner, operator, synthetic_bootstrap=False):
             raise DatasetUnavailable("Active owner and operator accounts are required.")
         if not synthetic_bootstrap and not current_operator.is_staff:
             raise DatasetUnavailable("An active staff operator must attest the import rights.")
-        return ResearchDataset.objects.get_or_create(
+        dataset, created = ResearchDataset.objects.get_or_create(
             owner=current_owner,
             version=parsed.version,
             defaults={
@@ -70,6 +77,27 @@ def import_dataset(payload, *, owner, operator, synthetic_bootstrap=False):
                 "approved_by": current_operator,
             },
         )
+        if intake is not None:
+            evidence = json.loads(intake.receipt_json)
+            receipt, receipt_created = ResearchIntakeReceipt.objects.get_or_create(
+                dataset=dataset,
+                version=intake.version,
+                defaults={
+                    "approved_by": current_operator,
+                    "evidence": evidence,
+                    "csv_content": intake.csv_bytes,
+                    "terms_content": intake.terms_bytes,
+                    "availability_content": intake.availability_bytes,
+                },
+            )
+            if not receipt_created and (
+                receipt.evidence != evidence
+                or bytes(receipt.csv_content) != intake.csv_bytes
+                or bytes(receipt.terms_content) != intake.terms_bytes
+                or bytes(receipt.availability_content) != intake.availability_bytes
+            ):
+                raise DatasetUnavailable("The archived intake evidence failed its content check.")
+        return dataset, created
 
 
 @lru_cache(maxsize=1)

@@ -5,6 +5,7 @@ from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand, CommandError
 
 from research.services import DatasetUnavailable, import_dataset
+from research.ingestion import strict_json_loads
 
 
 class Command(BaseCommand):
@@ -23,9 +24,8 @@ class Command(BaseCommand):
             raise CommandError("An operator must review storage, private-research and transfer rights before import.")
         path = options["file"]
         try:
-            if path.stat().st_size > 2_000_000:
-                raise CommandError("Research manifests are limited to 2 MB.")
-            payload = json.loads(path.read_text(encoding="utf-8"))
+            with path.open("rb") as source:
+                payload = strict_json_loads(source.read(2_000_001))
             users = get_user_model().objects
             owner = users.get(username=options["owner"], is_active=True)
             operator = users.get(username=options["approved_by"], is_active=True, is_staff=True)

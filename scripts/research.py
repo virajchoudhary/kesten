@@ -8,7 +8,10 @@ from dev import ROOT, development_environment
 
 
 def main():
-    commands = {"seed": "seed_research_fixture", "import": "import_research_dataset", "replay": "replay_research_run"}
+    commands = {
+        "seed": "seed_research_fixture", "import": "import_research_dataset", "replay": "replay_research_run",
+        "import-csv": "import_research_csv", "verify-intake": "verify_research_intake",
+    }
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=commands)
     arguments, rest = parser.parse_known_args()
