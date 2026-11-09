@@ -1,0 +1,398 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "pageHeight": 900,
+    "items": {
+      ".terminal-header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 50,
+        "bottom": 50
+      },
+      ".market-command-bar": {
+        "x": 0,
+        "y": 50,
+        "width": 1440,
+        "height": 46,
+        "bottom": 96
+      },
+      ".terminal-main": {
+        "x": 0,
+        "y": 96,
+        "width": 1152,
+        "height": 804,
+        "bottom": 900
+      },
+      ".market-chart": {
+        "x": 48,
+        "y": 222,
+        "width": 1092,
+        "height": 614,
+        "bottom": 836
+      },
+      ".terminal-watchlist": {
+        "x": 1152,
+        "y": 96,
+        "width": 288,
+        "height": 804,
+        "bottom": 900
+      },
+      "[aria-label=\"Saved instruments\"]": {
+        "x": 1153,
+        "y": 276.9375,
+        "width": 287,
+        "height": 294.171875,
+        "bottom": 571.109375
+      },
+      ".watchlist-snapshot": {
+        "x": 1153,
+        "y": 571.109375,
+        "width": 287,
+        "height": 287.890625,
+        "bottom": 859
+      },
+      ".terminal-instrument": {
+        "x": 0,
+        "y": 128,
+        "width": 1152,
+        "height": 65,
+        "bottom": 193
+      },
+      ".terminal-provenance-strip": {
+        "x": 0,
+        "y": 193,
+        "width": 1152,
+        "height": 29,
+        "bottom": 222
+      }
+    }
+  },
+  {
+    "width": 1920,
+    "height": 1080,
+    "pageHeight": 1080,
+    "items": {
+      ".terminal-header": {
+        "x": 0,
+        "y": 0,
+        "width": 1920,
+        "height": 50,
+        "bottom": 50
+      },
+      ".market-command-bar": {
+        "x": 0,
+        "y": 50,
+        "width": 1920,
+        "height": 46,
+        "bottom": 96
+      },
+      ".terminal-main": {
+        "x": 0,
+        "y": 96,
+        "width": 1600,
+        "height": 984,
+        "bottom": 1080
+      },
+      ".market-chart": {
+        "x": 48,
+        "y": 223.046875,
+        "width": 1540,
+        "height": 792.953125,
+        "bottom": 1016
+      },
+      ".terminal-watchlist": {
+        "x": 1600,
+        "y": 96,
+        "width": 320,
+        "height": 984,
+        "bottom": 1080
+      },
+      "[aria-label=\"Saved instruments\"]": {
+        "x": 1601,
+        "y": 276.9375,
+        "width": 319,
+        "height": 474.171875,
+        "bottom": 751.109375
+      },
+      ".watchlist-snapshot": {
+        "x": 1601,
+        "y": 751.109375,
+        "width": 319,
+        "height": 287.890625,
+        "bottom": 1039
+      },
+      ".terminal-instrument": {
+        "x": 0,
+        "y": 128,
+        "width": 1600,
+        "height": 66.046875,
+        "bottom": 194.046875
+      },
+      ".terminal-provenance-strip": {
+        "x": 0,
+        "y": 194.046875,
+        "width": 1600,
+        "height": 29,
+        "bottom": 223.046875
+      }
+    }
+  },
+  {
+    "width": 820,
+    "height": 1180,
+    "pageHeight": 1180,
+    "items": {
+      ".terminal-header": {
+        "x": 0,
+        "y": 0,
+        "width": 820,
+        "height": 50,
+        "bottom": 50
+      },
+      ".market-command-bar": {
+        "x": 0,
+        "y": 50,
+        "width": 820,
+        "height": 84,
+        "bottom": 134
+      },
+      ".terminal-main": {
+        "x": 0,
+        "y": 134,
+        "width": 820,
+        "height": 1046,
+        "bottom": 1180
+      },
+      ".market-chart": {
+        "x": 48,
+        "y": 260,
+        "width": 760,
+        "height": 856,
+        "bottom": 1116
+      },
+      ".terminal-watchlist": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "[aria-label=\"Saved instruments\"]": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      ".watchlist-snapshot": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      ".terminal-instrument": {
+        "x": 0,
+        "y": 166,
+        "width": 820,
+        "height": 65,
+        "bottom": 231
+      },
+      ".terminal-provenance-strip": {
+        "x": 0,
+        "y": 231,
+        "width": 820,
+        "height": 29,
+        "bottom": 260
+      }
+    }
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "pageHeight": 882,
+    "items": {
+      ".terminal-header": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 50,
+        "bottom": 50
+      },
+      ".market-command-bar": {
+        "x": 0,
+        "y": 50,
+        "width": 390,
+        "height": 84,
+        "bottom": 134
+      },
+      ".terminal-main": {
+        "x": 0,
+        "y": 134,
+        "width": 390,
+        "height": 748,
+        "bottom": 882
+      },
+      ".market-chart": {
+        "x": 43,
+        "y": 276.84375,
+        "width": 335,
+        "height": 538.15625,
+        "bottom": 815
+      },
+      ".terminal-watchlist": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      "[aria-label=\"Saved instruments\"]": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      ".watchlist-snapshot": {
+        "x": 0,
+        "y": 0,
+        "width": 0,
+        "height": 0,
+        "bottom": 0
+      },
+      ".terminal-instrument": {
+        "x": 0,
+        "y": 166,
+        "width": 390,
+        "height": 73.84375,
+        "bottom": 239.84375
+      },
+      ".terminal-provenance-strip": {
+        "x": 0,
+        "y": 239.84375,
+        "width": 390,
+        "height": 37,
+        "bottom": 276.84375
+      }
+    }
+  },
+  {
+    "width": 1440,
+    "height": 720,
+    "pageHeight": 786,
+    "items": {
+      ".terminal-header": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 50,
+        "bottom": 50
+      },
+      ".market-command-bar": {
+        "x": 0,
+        "y": 50,
+        "width": 1440,
+        "height": 46,
+        "bottom": 96
+      },
+      ".terminal-main": {
+        "x": 0,
+        "y": 96,
+        "width": 1152,
+        "height": 690,
+        "bottom": 786
+      },
+      ".market-chart": {
+        "x": 48,
+        "y": 222,
+        "width": 1092,
+        "height": 500,
+        "bottom": 722
+      },
+      ".terminal-watchlist": {
+        "x": 1152,
+        "y": 96,
+        "width": 288,
+        "height": 690,
+        "bottom": 786
+      },
+      "[aria-label=\"Saved instruments\"]": {
+        "x": 1153,
+        "y": 276.9375,
+        "width": 287,
+        "height": 180.171875,
+        "bottom": 457.109375
+      },
+      ".watchlist-snapshot": {
+        "x": 1153,
+        "y": 457.109375,
+        "width": 287,
+        "height": 287.890625,
+        "bottom": 745
+      },
+      ".terminal-instrument": {
+        "x": 0,
+        "y": 128,
+        "width": 1152,
+        "height": 65,
+        "bottom": 193
+      },
+      ".terminal-provenance-strip": {
+        "x": 0,
+        "y": 193,
+        "width": 1152,
+        "height": 29,
+        "bottom": 222
+      }
+    }
+  },
+  {
+    "range": "3m",
+    "bars": 67,
+    "first": "2026-07-29",
+    "last": "2026-10-30",
+    "indicators": {
+      "sma20": {
+        "length": 67,
+        "first": "2026-07-29",
+        "last": "2026-10-30"
+      },
+      "sma50": {
+        "length": 67,
+        "first": "2026-07-29",
+        "last": "2026-10-30"
+      },
+      "rsi14": {
+        "length": 67,
+        "first": "2026-07-29",
+        "last": "2026-10-30"
+      }
+    }
+  },
+  {
+    "range": "1y",
+    "bars": 253,
+    "first": "2025-10-29",
+    "last": "2026-10-30",
+    "indicators": {
+      "sma20": {
+        "length": 253,
+        "first": "2025-10-29",
+        "last": "2026-10-30"
+      },
+      "sma50": {
+        "length": 253,
+        "first": "2025-10-29",
+        "last": "2026-10-30"
+      },
+      "rsi14": {
+        "length": 253,
+        "first": "2025-10-29",
+        "last": "2026-10-30"
+      }
+    }
+  }
+]

@@ -1,0 +1,18 @@
+ts	phase	decision	evidence	result
+2026-11-09T09:30:10.702966+00:00	start	Continue5baa05e; preserve24unrelated files and all protected data	starting-status.txt; unrelated-before.json	Scoped local task
+2026-11-09T09:30:10.703001+00:00	ground	Measure real baseline rather than infer plot width from screenshot alone	before-geometry.json; viewport-before.txt	720px overflow66; short list stretched474px
+2026-11-09T09:30:10.703006+00:00	sketch	Retain vertical research stack instead of new sidecar	Independent layout review; existing resizer/source	Chosen small compatible layout
+2026-11-09T09:30:10.703009+00:00	implement	Content-size watchlist, readable metadata, chart/range groups, dock320, pricepane9	Current source diff; product-after.txt	Five focused compiled cases passed
+2026-11-09T09:30:10.703012+00:00	implement	Lock viewed time period on resize; retain pan/zoom controls	resize-mechanics.json; official library types	Default span expanded59to80; locked59preserved
+2026-11-09T09:30:10.703015+00:00	verify	Use existing CPU legacy environment instead of changing main API dependencies	legacy-research.txt; torch-smoke.json	23legacytests and synthetic tensor mechanicsPASS; modelNOT_QUALIFIED
+2026-11-09T09:30:10.703017+00:00	recover	Normal Docker Desktop start; resume retained database/cache with no-recreate	postgres-start.txt; postgresql.txt	Engine29.9.2 healthy; no reset/storage/role changes
+2026-11-09T09:30:10.703020+00:00	verify	Run current source against dedicated PostgreSQL test database	postgresql.txt; postgres-preservation.json	136PASS no skips;26applicationtables andsource unchanged
+2026-11-09T09:30:10.703023+00:00	verify	Run all seven compiled browser suites with throttles intact	browser-final.txt; browser-final/source-after.json	16PASS atfdab309source
+2026-11-09T09:30:10.703025+00:00	correct	Measure/fix remaining phone space with flex viewport sizing	mobile-space-before.txt; prototype-geometry.json	93.16px blank confirmed; prototype390/320 fillsviewport
+2026-11-09T09:30:10.703027+00:00	verify	Rebuild and repeat only four affected market suites	build-source-after.json; browser-affected.txt	Final724647source; affected run inprogress
+2026-11-09T10:03:00.260556+00:00	correct	Reject320px default after actual research capture; restoreoriginal400px and keyboardexpectation	rejected-dock320.png; default-dock-capture.json	Research readability takes priority; no new layoutstate
+2026-11-09T10:03:00.260577+00:00	review	Independent source and mobile delta reviewsPASS; confirm finaldifferencesonlyrestoredfiles	review-coverage.json; README reviewlimits	No unreviewed retainedimplementation path claimed
+2026-11-09T10:03:00.260582+00:00	verify	Repeat four affected suites after final original-height restoration	browser-affected.txt; build-source-after.json	8PASS atd508891source, matching sourceguard
+2026-11-09T10:03:00.260585+00:00	verify	Measure running committed application at6viewports	delivery-geometry.json	All page heights/widths fit including320phone and720laptop
+2026-11-09T10:03:00.260588+00:00	preserve	Recheck originals and unrelatedwork after verification	preservation.json; unrelated-preservation.json; postgres-preservation.json	DB,496runtime,17research,24unrelated files and26PGtables unchanged
+2026-11-09T10:03:00.260590+00:00	commit	Commit offline checker and UI in separatelocalunits	git9d71927; gita170206	No push/merge/deploy

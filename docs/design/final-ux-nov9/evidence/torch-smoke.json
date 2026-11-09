@@ -1,0 +1,17 @@
+{
+  "runtime_smoke": "PASS",
+  "torch": "2.10.0+cpu",
+  "device": "cpu",
+  "input_kind": "synthetic_tensor_only",
+  "checks": [
+    "forward_shape",
+    "finite_output",
+    "deterministic_eval",
+    "finite_backward_gradients"
+  ],
+  "directional_penalty_adds_gradient": false,
+  "optimizer_steps": 0,
+  "model_artifacts_written": false,
+  "empirical_evaluation": false,
+  "model_promotion": "NOT_QUALIFIED"
+}

@@ -1,0 +1,26 @@
+{
+  "result": "PASS",
+  "fixture_kind": "synthetic_renderer_only",
+  "before": [
+    {
+      "from": 0,
+      "to": 59
+    },
+    {
+      "from": 0,
+      "to": 59
+    }
+  ],
+  "after": [
+    {
+      "from": -21.083455344070288,
+      "to": 59
+    },
+    {
+      "from": -7.105427357601002e-15,
+      "to": 59
+    }
+  ],
+  "locked_range_preserved": true,
+  "default_adds_empty_time_space": true
+}

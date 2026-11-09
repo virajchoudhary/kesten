@@ -1,0 +1,48 @@
+[WebServer] (node:24748) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:25376) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path (10.4s)
+
+  1 passed (25.9s)
+Waiting 60 seconds for the configured API throttle window.
+[WebServer] (node:15712) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:27284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\terminal.spec.ts:8:5 › terminal preserves provenance, chart controls and integrated research identities (19.2s)
+
+  1 passed (24.6s)
+Waiting 60 seconds for the configured API throttle window.
+[WebServer] (node:13140) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:28536) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\terminal-depth.spec.ts:8:5 › customizes, compares and measures daily charts, then inspects an exact saved run (10.3s)
+
+  1 passed (15.6s)
+Waiting 60 seconds for the configured API throttle window.
+[WebServer] (node:8668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:19820) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\product-quality.spec.ts:22:5 › symbol selection resets the next search (12.9s)
+  ok 2 [chromium] › e2e\product-quality.spec.ts:38:5 › fits the viewport and opens instrument research from a compact watchlist (3.6s)
+  ok 3 [chromium] › e2e\product-quality.spec.ts:124:5 › mobile settings retain chart context and account navigation stays consistent (2.5s)
+  ok 4 [chromium] › e2e\product-quality.spec.ts:185:5 › mobile history opens the exact result in view (2.2s)
+  ok 5 [chromium] › e2e\product-quality.spec.ts:223:5 › a server-accepted evaluation completes after switching dock tabs (2.4s)
+
+  5 passed (30.3s)
+All affected terminal browser suites passed with API limits unchanged.

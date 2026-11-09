@@ -1,0 +1,35 @@
+
+Running 1 test using 1 worker
+
+(node:1724) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\product-quality.spec.ts:38:5 › fits the viewport and opens instrument research from a compact watchlist (10.5s)
+
+
+  1) [chromium] › e2e\product-quality.spec.ts:38:5 › fits the viewport and opens instrument research from a compact watchlist
+
+    Error: expect(received).toBeLessThanOrEqual(expected)
+
+    Expected: <= 1
+    Received:    66
+
+    Call Log:
+    - Timeout 10000ms exceeded while waiting on the predicate
+
+      43 |   const chart = page.getByTestId("price-chart");
+      44 |   await expect(chart).toHaveAttribute("data-chart-state", "ready");
+    > 45 |   for (const [width, height] of [
+         |                                  ^
+      46 |     [1440, 720],
+      47 |     [1440, 900],
+      48 |     [1920, 1080],
+        at C:\stock price predictor\web\e2e\product-quality.spec.ts:45:103
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\product-quality-fits-the-v-b361c-ch-from-a-compact-watchlist-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\product-quality-fits-the-v-b361c-ch-from-a-compact-watchlist-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\product-quality.spec.ts:38:5 › fits the viewport and opens instrument research from a compact watchlist

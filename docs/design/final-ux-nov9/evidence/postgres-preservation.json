@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "application_database_unchanged": true,
+  "source_unchanged": true,
+  "tables_checked": 26,
+  "test_database": "test_cadrisyn"
+}
