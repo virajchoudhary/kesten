@@ -35,6 +35,92 @@ test("symbol selection resets the next search", async ({ page }) => {
   await expect(page.getByRole("option")).toHaveCount(0);
 });
 
+test("fits the viewport and opens instrument research from a compact watchlist", async ({
+  page,
+}, testInfo) => {
+  await authenticate(page);
+  await page.goto("/app/markets?instrument=xnas-aapl");
+  const chart = page.getByTestId("price-chart");
+  await expect(chart).toHaveAttribute("data-chart-state", "ready");
+  for (const [width, height] of [
+    [1440, 720],
+    [1440, 900],
+    [1920, 1080],
+  ]) {
+    await page.setViewportSize({ width, height });
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () => document.documentElement.scrollHeight - innerHeight,
+        ),
+      )
+      .toBeLessThanOrEqual(1);
+    const sidebar = page.locator(".terminal-watchlist");
+    const list = sidebar.getByRole("list", { name: "Saved instruments" });
+    const last = await list.locator("li").last().boundingBox();
+    const snapshot = sidebar.getByRole("region", {
+      name: "Selected instrument snapshot",
+    });
+    const bounds = await snapshot.boundingBox();
+    if (!last || !bounds)
+      throw new Error("Missing populated watchlist geometry");
+    expect(bounds.y - last.y - last.height).toBeLessThanOrEqual(12);
+    expect(
+      await snapshot
+        .locator("dd")
+        .first()
+        .evaluate((node) => parseFloat(getComputedStyle(node).fontSize)),
+    ).toBeGreaterThanOrEqual(11);
+    await expect(
+      sidebar.getByRole("link", { name: "Open research for AAPL" }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("group", { name: "Displayed range" }),
+    ).toBeVisible();
+    await page.screenshot({
+      path: testInfo.outputPath(`viewport-${width}-${height}.png`),
+      fullPage: true,
+    });
+  }
+  for (const width of [390, 320]) {
+    await page.setViewportSize({ width, height: 844 });
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollHeight - innerHeight)).toBeLessThanOrEqual(1);
+    await expect.poll(() => page.locator(".terminal-status").evaluate((node) => Math.abs(node.getBoundingClientRect().bottom - innerHeight))).toBeLessThanOrEqual(2);
+    await page.screenshot({ path: testInfo.outputPath(`viewport-${width}-844.png`), fullPage: true });
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/app/markets?instrument=xnys-jpm");
+  await expect(chart).toHaveAttribute("data-chart-state", "ready");
+  await page
+    .getByRole("button", {
+      name: "Open watchlist and instrument search",
+      exact: true,
+    })
+    .click();
+  const drawer = page.getByRole("dialog");
+  await drawer
+    .getByRole("link", { name: "Open research for JPM", exact: true })
+    .click();
+  await expect(drawer).not.toBeVisible();
+  await expect(page).toHaveURL(/view=research&instrument=xnys-jpm/u);
+  await expect(
+    page.getByRole("tab", { name: "New evaluation", exact: true }),
+  ).toBeVisible();
+  await page.getByRole("tab", { name: "New evaluation", exact: true }).click();
+  await expect(
+    page.getByRole("combobox", { name: "Private research dataset" }),
+  ).toContainText("Synthetic pipeline fixture");
+  await expect(
+    page.getByText("No empirical forecasting performance established.", {
+      exact: true,
+    }),
+  ).toBeVisible();
+  await page.screenshot({
+    path: testInfo.outputPath("watchlist-research-390.png"),
+    fullPage: true,
+  });
+});
+
 test("mobile settings retain chart context and account navigation stays consistent", async ({
   page,
 }, testInfo) => {

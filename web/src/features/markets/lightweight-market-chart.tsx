@@ -324,7 +324,11 @@ export function LightweightMarketChart({
             fontFamily: '"IBM Plex Mono", monospace',
             fontSize: 10,
           },
-          timeScale: { rightOffset: 3, timeVisible: false },
+          timeScale: {
+            rightOffset: 3,
+            timeVisible: false,
+            lockVisibleTimeRangeOnResize: true,
+          },
           rightPriceScale: {
             minimumWidth: 70,
             scaleMargins: { top: 0.16, bottom: 0.08 },
@@ -434,7 +438,7 @@ export function LightweightMarketChart({
               pane,
             )
           : null;
-        chart.panes()[0]?.setStretchFactor(7);
+        chart.panes()[0]?.setStretchFactor(9);
         let next = 1;
         if (volume) chart.panes()[next++]?.setStretchFactor(1);
         if (rsi) chart.panes()[next++]?.setStretchFactor(2);

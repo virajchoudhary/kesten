@@ -50,6 +50,72 @@
   font-size: 17px;
   font-weight: 550;
 }
+.terminal-main,
+.terminal-watchlist {
+  min-height: 480px;
+}
+.terminal-instrument {
+  min-height: 52px;
+  padding-block: 8px 6px;
+}
+.terminal-provenance-strip {
+  min-height: 26px;
+}
+.market-command-bar .comparison-search {
+  padding-left: 8px;
+  border-left: 1px solid var(--border-subtle);
+}
+.terminal-ranges {
+  padding-left: 12px;
+  border-left: 1px solid var(--border-subtle);
+}
+.watchlist-panel > * {
+  flex-shrink: 0;
+}
+.watchlist-instruments {
+  flex: 0 0 auto;
+  max-height: min(30dvh, 320px);
+}
+.watchlist-snapshot {
+  padding: 14px;
+  font-size: 12px;
+}
+.watchlist-snapshot .snapshot-name,
+.watchlist-snapshot p > span,
+.watchlist-snapshot dt,
+.watchlist-snapshot dd,
+.snapshot-disclosure {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.snapshot-research-link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 36px;
+  margin-top: 12px;
+  padding-inline: 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-control);
+  color: var(--text);
+  font-size: 12px;
+}
+.snapshot-research-link:hover {
+  background: var(--surface-raised);
+}
+.snapshot-research-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.dock-run-context,
+.dock-run-context dd,
+.dock-integrity,
+.research-analytics.is-compact .evaluation-periods,
+.research-analytics.is-compact [aria-label="Chart legend"],
+.research-analytics.is-compact [aria-label="Target window"] button {
+  font-size: 11px;
+  line-height: 1.5;
+}
 .terminal-provenance-strip {
   line-height: 1.5;
 }
@@ -60,6 +126,7 @@
 .chart-legend {
   font-size: 11px;
   gap: 10px;
+  line-height: 1.45;
 }
 .chart-study-legend {
   overflow-x: auto;
@@ -68,7 +135,7 @@
   pointer-events: auto;
   height: 24px;
   align-items: center;
-  font-size: 10px;
+  font-size: 11px;
   scrollbar-width: thin;
 }
 .chart-study-legend span {
@@ -140,10 +207,39 @@
     column-gap: 9px;
   }
   .chart-study-legend {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 @media (max-width: 767px) {
+  .terminal {
+    display: flex;
+    height: 100dvh;
+    flex-direction: column;
+  }
+  .terminal-header,
+  .market-command-bar {
+    flex-shrink: 0;
+  }
+  .terminal-body {
+    flex: 1;
+    min-height: 0;
+  }
+  .terminal-main {
+    height: 100%;
+    min-height: 0;
+  }
+  .terminal-instrument {
+    padding: 8px 12px 6px;
+    min-height: 60px;
+  }
+  .market-command-bar .comparison-search {
+    border-left: 0;
+    padding-left: 0;
+  }
+  .terminal-ranges {
+    border-left: 0;
+    padding-left: 0;
+  }
   .terminal-header {
     padding-inline: 10px;
     gap: 10px;
@@ -162,12 +258,12 @@
     font-size: 14px;
   }
   .chart-legend {
-    font-size: 9px;
+    font-size: 10px;
     gap: 4px 7px;
   }
   .chart-study-legend {
-    top: 43px;
-    font-size: 9px;
+    top: 47px;
+    font-size: 10px;
     height: 22px;
   }
   .watchlist-list-controls select {

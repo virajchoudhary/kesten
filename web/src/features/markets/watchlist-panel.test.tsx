@@ -6,8 +6,76 @@ import { afterEach, expect, it, vi } from "vitest";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ApiError } from "@/lib/api/client";
 import { WatchlistPanel } from "./watchlist-panel";
+import type { MarketResponse } from "@/lib/api/schemas";
 
 afterEach(cleanup);
+
+it("offers research for the loaded instrument even when it is not saved", () => {
+  const snapshot: MarketResponse = {
+    instrument: {
+      id: "xnys-jpm",
+      symbol: "JPM",
+      name: "JPMorgan Chase",
+      exchange: "XNYS",
+      currency: "USD",
+      timezone: "America/New_York",
+    },
+    bars: [
+      {
+        time: "2026-10-30",
+        open: 100,
+        high: 102,
+        low: 99,
+        close: 101,
+        volume: 1000,
+      },
+    ],
+    indicators: { sma20: [], sma50: [], rsi14: [] },
+    provenance: {
+      data_mode: "demo",
+      source_id: "fixture",
+      source_label: "Synthetic fixture",
+      as_of: "2026-10-30",
+      fetched_at: "2026-11-09T00:00:00Z",
+      price_basis: "synthetic",
+      freshness_state: "stale",
+      market_state: "unknown",
+      delay_seconds: null,
+      snapshot_id: "fixture",
+      disclaimer: "Synthetic prices, not observed market prices.",
+    },
+  };
+  const props: ComponentProps<typeof WatchlistPanel> = {
+    state: { kind: "ready", items: [] },
+    pendingId: null,
+    mutationError: null,
+    selectedId: snapshot.instrument.id,
+    snapshot,
+    onSelect: vi.fn(),
+    onAdd: async () => true,
+    onRemove: async () => true,
+    onReload: vi.fn(),
+  };
+  const { rerender } = render(
+    <TooltipProvider>
+      <WatchlistPanel {...props} />
+    </TooltipProvider>,
+  );
+  expect(
+    screen.getByRole("link", { name: "Open research for JPM" }),
+  ).toHaveAttribute("href", "/app/markets?view=research&instrument=xnys-jpm");
+  expect(
+    screen.getByText("Synthetic prices. Not observed market data."),
+  ).toBeVisible();
+  rerender(
+    <TooltipProvider>
+      <WatchlistPanel {...props} selectedId="xnas-aapl" />
+    </TooltipProvider>,
+  );
+  expect(
+    screen.queryByRole("link", { name: "Open research for JPM" }),
+  ).toBeNull();
+});
 
 it("makes failed-read retry unavailable until an ongoing save settles", () => {
   const props: ComponentProps<typeof WatchlistPanel> = {

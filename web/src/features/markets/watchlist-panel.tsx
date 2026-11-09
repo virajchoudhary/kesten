@@ -65,7 +65,10 @@ export function WatchlistPanel({
     selectedId !== null && items.some((item) => item.id === selectedId);
 
   return (
-    <section aria-labelledby={titleId} className="flex h-full min-h-0 flex-col">
+    <section
+      aria-labelledby={titleId}
+      className="watchlist-panel flex h-full min-h-0 flex-col overflow-y-auto"
+    >
       <div className="flex h-12 shrink-0 items-center justify-between border-b border-border-subtle px-3">
         <h2 className="text-sm font-semibold" id={titleId}>
           Watchlist
@@ -204,7 +207,7 @@ export function WatchlistPanel({
       {state.kind === "ready" && state.items.length > 0 && (
         <ul
           aria-label="Saved instruments"
-          className="min-h-0 flex-1 overflow-y-auto py-1"
+          className="watchlist-instruments min-h-0 overflow-y-auto py-1"
         >
           {visibleItems.map((instrument) => (
             <li key={instrument.id}>
@@ -336,6 +339,15 @@ export function WatchlistPanel({
               <span>vs prior session</span>
             </p>
           )}
+          <Link
+            className="snapshot-research-link"
+            aria-label={`Open research for ${selectedSnapshot.instrument.symbol}`}
+            href={`/app/markets?view=research&instrument=${encodeURIComponent(selectedSnapshot.instrument.id)}`}
+            onNavigate={onDismiss}
+          >
+            <FlaskConical aria-hidden="true" size={14} />
+            Open research
+          </Link>
           <dl>
             <div>
               <dt>Open</dt>
