@@ -4,7 +4,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import { z } from "zod";
 
-import { ResearchRunListSchema } from "../src/features/research/research-schemas";
+import { ResearchRunListSchema, ResearchRunSchema } from "../src/features/research/research-schemas";
 
 const credentialsPath = process.env.CADRISYN_RELEASE_CREDENTIALS;
 if (!credentialsPath) throw new Error("Supply credentials for the new isolated qualification accounts.");
@@ -68,4 +68,27 @@ test("saved synthetic research preserves identity and exact replay in production
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await page.screenshot({ path: testInfo.outputPath(`production-research-${width}.png`), fullPage: true });
   }
+});
+
+test("creates and reloads a synthetic evaluation through the non-debug API", async ({ page }) => {
+  await page.goto("/app/research/");
+  await page.getByRole("combobox", { name: "Private research dataset" }).click();
+  await page.getByRole("option", { name: /Synthetic pipeline fixture/ }).click();
+  await page.getByRole("radio", { name: "5 next sessions" }).check();
+  const created = page.waitForResponse(response => new URL(response.url()).pathname === "/api/v1/research/runs/" && response.request().method() === "POST");
+  await page.getByRole("button", { name: "Run evaluation", exact: true }).click();
+  const response = await created;
+  expect(response.status()).toBe(201);
+  const run = ResearchRunSchema.parse(await response.json());
+  expect(run.data_kind).toBe("synthetic_fixture");
+  expect(run.horizon_sessions).toBe(5);
+  expect(run.result.empirical_performance_established).toBe(false);
+  await expect(page).toHaveURL(new RegExp(run.id));
+  await page.reload();
+  await expect(page.getByRole("heading", { name: "Synthetic pipeline fixture", exact: true })).toBeVisible();
+  const replay = page.waitForResponse(item => new URL(item.url()).pathname === `/api/v1/research/runs/${run.id}/replay/` && item.request().method() === "POST");
+  await page.getByRole("button", { name: "Verify exact replay", exact: true }).click();
+  const result = z.object({ result: z.literal("PASS"), result_sha256: z.string() }).parse(await (await replay).json());
+  expect(result.result_sha256).toBe("995a224ce3925f972ca224ece6f548d45277ecdd364a50d13998b4649e5f33be");
+  await expect(page.getByLabel("Exact replay verification")).toContainText("Replay PASS");
 });
