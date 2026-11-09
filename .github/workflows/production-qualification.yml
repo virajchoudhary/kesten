@@ -291,6 +291,7 @@ jobs:
                   or row.get("scan_completed") is not True
                   or row.get("sbom_exit_code") != 0
                   or row.get("scan_exit_code") != 0
+                  or row.get("ignored_match_count") != 0
               ):
                   reject("one or more image scans failed")
 

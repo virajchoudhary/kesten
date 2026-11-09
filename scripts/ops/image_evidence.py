@@ -6,15 +6,14 @@ import json
 import os
 import subprocess
 from collections import Counter
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-
 
 ROOT = Path(__file__).resolve().parents[2]
 
 
 def command(arguments, environment=None):
-    return subprocess.run(list(map(str, arguments)), cwd=ROOT, env=environment, capture_output=True, text=True)
+    return subprocess.run(list(map(str, arguments)), cwd=ROOT, env=environment, capture_output=True, text=True, check=False)
 
 
 def digest(path):
@@ -45,12 +44,17 @@ def collect(images, output, syft, grype, database):
         scan = command([grype, 'docker:' + image_id, '--fail-on', 'medium', '--output', 'json', '--file', findings], environment)
         (output / (prefix + '-scan.log')).write_text(scan.stderr, encoding='utf-8')
         counts = {}
+        ignored_count = 0
+        ignore_rule_count = 0
         valid_report = False
         if findings.is_file():
             try:
                 report = json.loads(findings.read_text(encoding='utf-8'))
                 counts = dict(Counter(match['vulnerability']['severity'] for match in report['matches']))
-                valid_report = isinstance(report['matches'], list)
+                ignored = report.get('ignoredMatches') or []
+                valid_report = isinstance(report['matches'], list) and isinstance(ignored, list)
+                ignored_count = len(ignored)
+                ignore_rule_count = len(report.get('descriptor', {}).get('configuration', {}).get('ignore') or [])
             except (ValueError, KeyError, TypeError):
                 pass
         rows.append({
@@ -59,15 +63,19 @@ def collect(images, output, syft, grype, database):
             'sbom_exit_code': inventory.returncode, 'scan_exit_code': scan.returncode,
             'scan_completed': valid_report and scan.returncode in {0, 2},
             'severity_counts': counts,
+            'ignored_match_count': ignored_count, 'configured_ignore_rule_count': ignore_rule_count,
             'artifacts': [{'path': path.name, 'sha256': digest(path)} for path in [sbom, findings] if path.is_file()],
-            'result': 'PASS' if inventory.returncode == 0 and sbom.is_file() and valid_report and scan.returncode == 0 else 'FAIL',
+            'result': 'PASS' if inventory.returncode == 0 and sbom.is_file() and valid_report and scan.returncode == 0 and ignored_count == 0 else 'FAIL',
         })
     result = {
-        'created_at': datetime.now(timezone.utc).isoformat(), 'collector_checkout_commit': source,
+        'created_at': datetime.now(UTC).isoformat(), 'collector_checkout_commit': source,
         'working_tree_dirty': bool(command(['git', 'status', '--porcelain']).stdout),
         'source_binding': 'UNVERIFIED',
         'tool_versions': versions, 'advisory_database_sha256': digest(output / 'advisory-database.json'),
-        'threshold': 'medium', 'suppressions': [], 'images': rows,
+        'threshold': 'medium', 'suppressions': [
+            {'image_id': row['image_id'], 'ignored_matches': row['ignored_match_count']}
+            for row in rows if row['ignored_match_count']
+        ], 'images': rows,
         'scope': 'Local inventory and advisory receipts; not signed provenance, hosted CI, or production approval.',
         'scan_policy': 'PASS' if all(row['result'] == 'PASS' for row in rows) else 'FAIL',
         'result': 'REVIEW_REQUIRED' if all(row['result'] == 'PASS' for row in rows) else 'FAIL',

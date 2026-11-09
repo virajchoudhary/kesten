@@ -158,7 +158,7 @@ class ProductionWorkflowTests(unittest.TestCase):
         collector = (ROOT / "scripts" / "ops" / "image_evidence.py").read_text(encoding="utf-8")
         self.assertIn("'--fail-on', 'medium'", collector)
         self.assertIn("scan.returncode == 0", collector)
-        self.assertIn("'threshold': 'medium', 'suppressions': []", collector)
+        self.assertIn("'ignored_match_count'", collector)
         self.assertNotIn("--only-fixed", collector)
         self.assertNotIn("production-image-security", self.workflow["jobs"])
         self.assertEqual(5, sum(step.get("run", "").count("docker build ") for step in self.job["steps"]))
@@ -207,6 +207,7 @@ class ProductionWorkflowTests(unittest.TestCase):
                 "scan_completed": True,
                 "sbom_exit_code": 0,
                 "scan_exit_code": 0,
+                "ignored_match_count": 0,
             }
             for image_id in qualified_ids.values()
         ]
@@ -277,6 +278,9 @@ class ProductionWorkflowTests(unittest.TestCase):
         def suppressed_finding(summary):
             summary["suppressions"] = ["CVE-EXAMPLE"]
 
+        def hidden_ignored_match(summary):
+            summary["images"][0]["ignored_match_count"] = 1
+
         def weakened_threshold(summary):
             summary["threshold"] = "critical"
 
@@ -287,6 +291,7 @@ class ProductionWorkflowTests(unittest.TestCase):
             ("scanner reference mismatch", wrong_reference, None),
             ("qualification receipt ID mismatch", None, wrong_receipt_id),
             ("suppression present", suppressed_finding, None),
+            ("ignored match omitted from aggregate", hidden_ignored_match, None),
             ("severity threshold changed", weakened_threshold, None),
         )
         for label, update_summary, update_receipt in cases:
@@ -333,7 +338,7 @@ class ProductionWorkflowTests(unittest.TestCase):
         spec = (ROOT / "web" / "e2e-production" / "qualification.spec.ts").read_text(encoding="utf-8")
         self.assertIn('testDir: "./e2e-production"', config)
         self.assertIn("z.tuple([account, account])", spec)
-        self.assertEqual(2, spec.count('test("'))
+        self.assertNotIn("page.route(", spec)
         self.assertIn('fetch("/api/v1/research/runs/")', spec)
         self.assertIn('expect(run.data_kind).toBe("synthetic_fixture")', spec)
 
