@@ -398,7 +398,7 @@ class TrendPredictor:
             benchmark_used = len(aligned_asset) >= 20
 
         sample_size = min(len(aligned_asset), lookback_days)
-        if sample_size < 20:
+        if sample_size < 20 or not benchmark_used:
             sample_size = min(len(asset_returns), lookback_days)
             asset_window = asset_returns.tail(sample_size)
             mean_daily_return = float(asset_window.mean())

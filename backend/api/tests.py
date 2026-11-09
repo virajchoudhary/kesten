@@ -56,6 +56,22 @@ class SearchedTickerResilienceTests(SimpleTestCase):
 
 class PredictionFallbackTests(SimpleTestCase):
     @patch("api.ai_services.get_price_history")
+    def test_missing_or_nonoverlapping_benchmark_uses_finite_asset_mean(self, mock_history):
+        dates = pd.date_range("2025-01-01", periods=60, freq="B")
+        asset = pd.DataFrame({"Close": 100 * (1.01 ** np.arange(len(dates)))}, index=dates)
+        disjoint = asset.copy()
+        disjoint.index = pd.date_range("2024-01-01", periods=60, freq="B")
+        for benchmark in [pd.DataFrame(), disjoint]:
+            with self.subTest(empty=benchmark.empty):
+                mock_history.side_effect = lambda symbol, **kwargs: asset if symbol == "AAPL" else benchmark
+                result = TrendPredictor._historical_mean_projection("AAPL")
+                self.assertIsNotNone(result)
+                self.assertTrue(np.isfinite(result["predicted_price"]))
+                self.assertAlmostEqual(result["predicted_price"], float(asset["Close"].iloc[-1]) * 1.01)
+                self.assertIsNone(result["benchmark_symbol"])
+                self.assertIsNone(result["benchmark_daily_return"])
+
+    @patch("api.ai_services.get_price_history")
     def test_forecast_price_uses_historical_mean_fallback_when_lstm_disabled(self, mock_get_price_history):
         dates = pd.date_range("2025-01-01", periods=260, freq="B")
         asset_close = pd.Series(100 * (1.0010 ** np.arange(len(dates))), index=dates)
