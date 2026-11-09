@@ -1,0 +1,312 @@
+name: Production qualification
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  production-qualification:
+    name: Qualify isolated TLS production stack
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements-workspace.lock.txt
+
+      - name: Set up Node.js 22.23.4
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: "22.23.4"
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install workspace dependencies
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install --disable-pip-version-check --requirement backend/requirements-workspace.lock.txt
+
+      - name: Install frontend dependencies
+        run: npm ci --no-audit --no-fund
+        working-directory: web
+
+      - name: Install Chromium for production browser qualification
+        run: npx playwright install --with-deps chromium
+        working-directory: web
+
+      - name: Build all production stack images from tested source
+        id: build
+        env:
+          DATABASE_BASE_IMAGE: postgres:17.11@sha256:748a18a54d3842d43bc156f0840d78029b8d349e0feca98c12b9c4ce3404a6b3
+          CACHE_BASE_IMAGE: redis:8.10.3-alpine3.23@sha256:71885d8cc6e42f2bc0aa2eb853bfc4be200b5108a46ac50e117ae1df0531fb80
+          GATEWAY_BASE_IMAGE: nginx:1.30.6-alpine3.24@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311
+        run: |
+          api_ref="cadrisyn-api-qualification:${GITHUB_SHA}"
+          web_ref="cadrisyn-web-qualification:${GITHUB_SHA}"
+          database_ref="cadrisyn-postgres-qualification:${GITHUB_SHA}"
+          cache_ref="cadrisyn-cache-qualification:${GITHUB_SHA}"
+          gateway_ref="cadrisyn-gateway-qualification:${GITHUB_SHA}"
+          docker build --pull --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file backend/Dockerfile --tag "$api_ref" .
+          api_image_id="$(docker image inspect "$api_ref" --format '{{.Id}}')"
+          docker build --pull --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file web/Dockerfile --tag "$web_ref" .
+          web_image_id="$(docker image inspect "$web_ref" --format '{{.Id}}')"
+          docker build --pull --build-arg "BASE_IMAGE=${DATABASE_BASE_IMAGE}" --file deploy/Dockerfile.debian-security --tag "$database_ref" .
+          database_image_id="$(docker image inspect "$database_ref" --format '{{.Id}}')"
+          docker build --pull --build-arg "BASE_IMAGE=${CACHE_BASE_IMAGE}" --file deploy/Dockerfile.alpine-security --tag "$cache_ref" .
+          cache_image_id="$(docker image inspect "$cache_ref" --format '{{.Id}}')"
+          docker build --pull --build-arg "BASE_IMAGE=${GATEWAY_BASE_IMAGE}" --file deploy/Dockerfile.alpine-security --tag "$gateway_ref" .
+          gateway_image_id="$(docker image inspect "$gateway_ref" --format '{{.Id}}')"
+          printf 'api_image_id=%s\nweb_image_id=%s\ndatabase_image_id=%s\ncache_image_id=%s\ngateway_image_id=%s\n' \
+            "$api_image_id" "$web_image_id" "$database_image_id" "$cache_image_id" "$gateway_image_id" >> "$GITHUB_OUTPUT"
+
+      - name: Qualify demo and historical research stacks
+        env:
+          API_IMAGE_ID: ${{ steps.build.outputs.api_image_id }}
+          WEB_IMAGE_ID: ${{ steps.build.outputs.web_image_id }}
+          DATABASE_IMAGE_ID: ${{ steps.build.outputs.database_image_id }}
+          CACHE_IMAGE_ID: ${{ steps.build.outputs.cache_image_id }}
+          GATEWAY_IMAGE_ID: ${{ steps.build.outputs.gateway_image_id }}
+        run: |
+          .venv/bin/python scripts/ops/qualify_production.py \
+            --directory .local/ci-production \
+            --api-image "$API_IMAGE_ID" \
+            --web-image "$WEB_IMAGE_ID" \
+            --database-image "$DATABASE_IMAGE_ID" \
+            --cache-image "$CACHE_IMAGE_ID" \
+            --gateway-image "$GATEWAY_IMAGE_ID" \
+            --tls-port 8452 \
+            --http-port 8092
+
+      - name: Attach sanitized workflow metadata to receipt
+        if: always()
+        env:
+          QUALIFICATION_EVENT_NAME: ${{ github.event_name }}
+          QUALIFICATION_TESTED_SHA: ${{ github.sha }}
+          QUALIFICATION_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || '' }}
+          QUALIFICATION_PR_MERGE_SHA: ${{ github.event_name == 'pull_request' && github.sha || '' }}
+        run: |
+          if test ! -f .local/ci-production/receipt.json; then
+            exit 0
+          fi
+          .venv/bin/python - <<'PY'
+          import json
+          import os
+          import re
+          from pathlib import Path
+
+          event = os.environ["QUALIFICATION_EVENT_NAME"]
+          tested_sha = os.environ["QUALIFICATION_TESTED_SHA"]
+          pr_head_sha = os.environ["QUALIFICATION_PR_HEAD_SHA"]
+          pr_merge_sha = os.environ["QUALIFICATION_PR_MERGE_SHA"]
+          if event not in {"push", "pull_request", "workflow_dispatch"}:
+              raise SystemExit("Unexpected workflow event.")
+          if not re.fullmatch(r"[0-9a-f]{40}", tested_sha):
+              raise SystemExit("Workflow SHA is malformed.")
+          if event == "pull_request":
+              if not re.fullmatch(r"[0-9a-f]{40}", pr_head_sha):
+                  raise SystemExit("Pull request head SHA is malformed.")
+              if pr_merge_sha != tested_sha:
+                  raise SystemExit("Pull request merge SHA does not match the tested SHA.")
+          elif pr_head_sha or pr_merge_sha:
+              raise SystemExit("Pull request metadata was supplied for a non-PR event.")
+
+          receipt_path = Path(".local/ci-production/receipt.json")
+          receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+          if receipt.get("source_commit") != tested_sha:
+              raise SystemExit("Receipt source does not match the tested SHA.")
+          receipt["workflow_metadata"] = {
+              "event_name": event,
+              "tested_sha": tested_sha,
+              "pr_head_sha": pr_head_sha or None,
+              "pr_merge_sha": pr_merge_sha or None,
+          }
+          temporary_path = receipt_path.with_name("receipt.json.tmp")
+          temporary_path.write_text(
+              json.dumps(receipt, indent=2) + "\n",
+              encoding="utf-8",
+              newline="\n",
+          )
+          temporary_path.replace(receipt_path)
+          PY
+
+      - name: Run isolated production browser acceptance
+        env:
+          PLAYWRIGHT_BASE_URL: https://localhost:8452
+          CADRISYN_REHEARSAL_CERT: ${{ github.workspace }}/.local/ci-production/gateway_cert
+          CADRISYN_RELEASE_CREDENTIALS: ${{ github.workspace }}/.local/ci-production/credentials.json
+          KERQUANT_BROWSER_OUTPUT: ${{ github.workspace }}/.local/ci-browser
+        run: npx playwright test --config playwright.qualification.config.ts
+        working-directory: web
+
+      - name: Install checksum-verified Syft and Grype binaries
+        env:
+          SYFT_VERSION: "1.57.0"
+          GRYPE_VERSION: "0.121.2"
+        run: |
+          set -euo pipefail
+          tools_dir="$GITHUB_WORKSPACE/.local/ci-tools"
+          download_dir="$(mktemp -d)"
+          mkdir -p "$tools_dir"
+
+          for tool in syft grype; do
+            if [[ "$tool" == "syft" ]]; then
+              version="$SYFT_VERSION"
+            else
+              version="$GRYPE_VERSION"
+            fi
+            archive="${tool}_${version}_linux_amd64.tar.gz"
+            checksums="${tool}_${version}_checksums.txt"
+            curl --fail --location --silent --show-error \
+              "https://github.com/anchore/${tool}/releases/download/v${version}/${archive}" \
+              --output "$download_dir/$archive"
+            curl --fail --location --silent --show-error \
+              "https://github.com/anchore/${tool}/releases/download/v${version}/${checksums}" \
+              --output "$download_dir/$checksums"
+
+            selected_checksums="$download_dir/${tool}-selected.sha256"
+            awk -v asset="$archive" '
+              $2 == asset { print; count++ }
+              END { if (count != 1) exit 1 }
+            ' "$download_dir/$checksums" > "$selected_checksums"
+            (
+              cd "$download_dir"
+              sha256sum --check --strict "$selected_checksums"
+            )
+            tar --extract --gzip --file "$download_dir/$archive" \
+              --directory "$tools_dir" "$tool"
+            chmod 0755 "$tools_dir/$tool"
+            "$tools_dir/$tool" version
+          done
+
+      - name: Update fresh Grype vulnerability database
+        env:
+          GRYPE_DB_CACHE_DIR: .local/ci-grype
+          GRYPE_DB_AUTO_UPDATE: "false"
+          GRYPE_CHECK_FOR_APP_UPDATE: "false"
+        run: |
+          set -euo pipefail
+          mkdir -p "$GRYPE_DB_CACHE_DIR"
+          .local/ci-tools/grype db update
+          .local/ci-tools/grype db status --output json
+
+      - name: Collect SBOM and vulnerability reports for qualified images
+        id: image-evidence
+        env:
+          QUALIFIED_SOURCE_SHA: ${{ github.sha }}
+          QUALIFIED_API_IMAGE_ID: ${{ steps.build.outputs.api_image_id }}
+          QUALIFIED_WEB_IMAGE_ID: ${{ steps.build.outputs.web_image_id }}
+          QUALIFIED_DATABASE_IMAGE_ID: ${{ steps.build.outputs.database_image_id }}
+          QUALIFIED_CACHE_IMAGE_ID: ${{ steps.build.outputs.cache_image_id }}
+          QUALIFIED_GATEWAY_IMAGE_ID: ${{ steps.build.outputs.gateway_image_id }}
+        run: |
+          set +e
+          .venv/bin/python scripts/ops/image_evidence.py \
+            --image "$QUALIFIED_API_IMAGE_ID" \
+            --image "$QUALIFIED_WEB_IMAGE_ID" \
+            --image "$QUALIFIED_DATABASE_IMAGE_ID" \
+            --image "$QUALIFIED_CACHE_IMAGE_ID" \
+            --image "$QUALIFIED_GATEWAY_IMAGE_ID" \
+            --output .local/ci-security \
+            --syft .local/ci-tools/syft \
+            --grype .local/ci-tools/grype \
+            --db-cache .local/ci-grype
+          collector_status=$?
+          set -e
+          if [[ "$collector_status" -ne 0 && "$collector_status" -ne 1 ]]; then
+            echo "Image evidence collector failed with status $collector_status." >&2
+            exit "$collector_status"
+          fi
+          .venv/bin/python - <<'PY'
+          import json
+          import os
+          import re
+          import sys
+          from pathlib import Path
+
+          qualified_ids = {
+              "api": os.environ["QUALIFIED_API_IMAGE_ID"],
+              "web": os.environ["QUALIFIED_WEB_IMAGE_ID"],
+              "database": os.environ["QUALIFIED_DATABASE_IMAGE_ID"],
+              "cache": os.environ["QUALIFIED_CACHE_IMAGE_ID"],
+              "gateway": os.environ["QUALIFIED_GATEWAY_IMAGE_ID"],
+          }
+
+          def reject(reason):
+              print(f"Image scan evidence rejected: {reason}", file=sys.stderr)
+              raise SystemExit(1)
+
+          if any(not re.fullmatch(r"sha256:[0-9a-f]{64}", value) for value in qualified_ids.values()):
+              reject("qualified image IDs are malformed")
+
+          receipt = json.loads(Path(".local/ci-production/receipt.json").read_text(encoding="utf-8"))
+          summary = json.loads(Path(".local/ci-security/summary.json").read_text(encoding="utf-8"))
+          if receipt.get("result") != "PASS":
+              reject("production qualification receipt is not passing")
+          if receipt.get("source_commit") != os.environ["QUALIFIED_SOURCE_SHA"]:
+              reject("qualification receipt source does not match the tested SHA")
+          receipt_images = receipt.get("images")
+          if not isinstance(receipt_images, dict):
+              reject("qualification receipt has no image ID map")
+          if any(receipt_images.get(name) != image_id for name, image_id in qualified_ids.items()):
+              reject("qualification receipt image IDs do not match the build outputs")
+
+          rows = summary.get("images")
+          if summary.get("collector_checkout_commit") != os.environ["QUALIFIED_SOURCE_SHA"]:
+              reject("scanner checkout does not match the tested SHA")
+          if summary.get("scan_policy") != "PASS":
+              reject("scan policy did not pass")
+          if summary.get("result") != "REVIEW_REQUIRED":
+              reject("collector review state is unexpected")
+          if summary.get("threshold") != "medium":
+              reject("severity threshold is not medium")
+          if summary.get("suppressions") != []:
+              reject("scan suppressions are not empty")
+          if not isinstance(rows, list) or len(rows) != len(qualified_ids):
+              reject("scanner did not produce exactly five image rows")
+
+          expected = list(qualified_ids.values())
+          if [row.get("reference") for row in rows] != expected:
+              reject("scanner references do not match the qualified image IDs")
+          if [row.get("image_id") for row in rows] != expected:
+              reject("scanned image IDs do not match the qualification receipt")
+          for row in rows:
+              if (
+                  row.get("result") != "PASS"
+                  or row.get("scan_completed") is not True
+                  or row.get("sbom_exit_code") != 0
+                  or row.get("scan_exit_code") != 0
+              ):
+                  reject("one or more image scans failed")
+
+          print("Verified image scan policy only; this does not grant deployment approval.")
+          PY
+
+      - name: Upload sanitized qualification and image evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: production-qualification-evidence-${{ github.sha }}
+          path: |
+            .local/ci-production/receipt.json
+            .local/ci-security/summary.json
+            .local/ci-security/*-sbom.spdx.json
+            .local/ci-security/*-vulnerabilities.json
+          retention-days: 7
+          include-hidden-files: true
+          if-no-files-found: ignore
