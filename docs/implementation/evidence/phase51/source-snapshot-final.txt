@@ -1,0 +1,3 @@
+ Container kerquant-phase51-62a1f1-api-run-ec112cfb0685 Creating
+ Container kerquant-phase51-62a1f1-api-run-ec112cfb0685 Created
+{"result": "PASS", "command": "snapshot", "tables": 27, "intakes": 1, "replays": 13, "runtime_ddl": false, "data_kind": "synthetic_fixture", "empirical_evaluation": false}

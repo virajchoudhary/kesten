@@ -1,0 +1,163 @@
+
+> cadrisyn-web@0.1.0 test:e2e
+> playwright test --workers=1 --output ../.local/phase51/browser-source-results
+
+
+Running 16 tests using 1 worker
+
+(node:29852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › e2e\accounts.spec.ts:92:5 › invitation UI consumes the fragment token and completes the form (1.4s)
+  ok  2 [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions (719ms)
+  ok  3 [chromium] › e2e\accounts.spec.ts:167:5 › activates a disposable account through the real API lifecycle (3.8s)
+  ok  4 [chromium] › e2e\accounts.spec.ts:237:5 › resetting a disposable account revokes its open workspace session (6.1s)
+  x   5 [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path (16.7s)
+(node:30920) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  6 [chromium] › e2e\product-quality.spec.ts:22:5 › symbol selection resets the next search (5.5s)
+  x   7 [chromium] › e2e\product-quality.spec.ts:38:5 › fits the viewport and opens instrument research from a compact watchlist (16.3s)
+(node:28032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x   8 [chromium] › e2e\product-quality.spec.ts:124:5 › mobile settings retain chart context and account navigation stays consistent (10.9s)
+(node:19640) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  9 [chromium] › e2e\product-quality.spec.ts:185:5 › mobile history opens the exact result in view (1.5s)
+  ok 10 [chromium] › e2e\product-quality.spec.ts:223:5 › a server-accepted evaluation completes after switching dock tabs (2.0s)
+  ok 11 [chromium] › e2e\research-quality.spec.ts:62:5 › public pages retain readable light and dark layouts on narrow screens (5.4s)
+  ok 12 [chromium] › e2e\research-quality.spec.ts:81:5 › research inspection, comparison, replay and exact export use saved identities (16.8s)
+  ok 13 [chromium] › e2e\research-quality.spec.ts:228:5 › account changes in another tab clear private research before a second account loads (3.6s)
+  ok 14 [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API (4.3s)
+  x  15 [chromium] › e2e\terminal-depth.spec.ts:8:5 › customizes, compares and measures daily charts, then inspects an exact saved run (19.3s)
+(node:10944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  16 [chromium] › e2e\terminal.spec.ts:8:5 › terminal preserves provenance, chart controls and integrated research identities (11.1s)
+
+
+  1) [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path
+
+    TimeoutError: page.waitForResponse: Timeout 15000ms exceeded while waiting for event "response"
+
+      113 |       );
+      114 |     });
+    > 115 |     const watchlistAddPromise = page.waitForResponse((response) =>
+          |                                      ^
+      116 |       isApiResponse(response, "/api/v1/watchlist/", "POST"),
+      117 |     );
+      118 |     shouldRemoveAapl = !alreadySavedAapl;
+        at C:\stock price predictor\web\e2e\markets.spec.ts:115:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.local\phase51\browser-source-results\markets-signs-in-and-compl-fc702--daily-market-research-path-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.local\phase51\browser-source-results\markets-signs-in-and-compl-fc702--daily-market-research-path-chromium\error-context.md
+
+  2) [chromium] › e2e\product-quality.spec.ts:38:5 › fits the viewport and opens instrument research from a compact watchlist
+
+    TimeoutError: locator.boundingBox: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for locator('.terminal-watchlist').getByRole('list', { name: 'Saved instruments' }).locator('li').last()
+
+
+      58 |     const sidebar = page.locator(".terminal-watchlist");
+      59 |     const list = sidebar.getByRole("list", { name: "Saved instruments" });
+    > 60 |     const last = await list.locator("li").last().boundingBox();
+         |                                                  ^
+      61 |     const snapshot = sidebar.getByRole("region", {
+      62 |       name: "Selected instrument snapshot",
+      63 |     });
+        at C:\stock price predictor\web\e2e\product-quality.spec.ts:60:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.local\phase51\browser-source-results\product-quality-fits-the-v-b361c-ch-from-a-compact-watchlist-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.local\phase51\browser-source-results\product-quality-fits-the-v-b361c-ch-from-a-compact-watchlist-chromium\error-context.md
+
+  3) [chromium] › e2e\product-quality.spec.ts:124:5 › mobile settings retain chart context and account navigation stays consistent
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator: getByTestId('price-chart')
+    Expected: "ready"
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveAttribute" getByTestId('price-chart') with timeout 10000ms
+      - waiting for getByTestId('price-chart')
+
+
+      129 |   await page.goto("/app/markets");
+      130 |   const chart = page.getByTestId("price-chart");
+    > 131 |   await expect(chart).toHaveAttribute("data-chart-state", "ready");
+          |                       ^
+      132 |   await page
+      133 |     .getByRole("button", { name: "Chart settings", exact: true })
+      134 |     .click();
+        at C:\stock price predictor\web\e2e\product-quality.spec.ts:131:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.local\phase51\browser-source-results\product-quality-mobile-set-d322a-navigation-stays-consistent-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.local\phase51\browser-source-results\product-quality-mobile-set-d322a-navigation-stays-consistent-chromium\error-context.md
+
+  4) [chromium] › e2e\terminal-depth.spec.ts:8:5 › customizes, compares and measures daily charts, then inspects an exact saved run
+
+    TimeoutError: locator.click: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for getByRole('list', { name: 'Saved instruments', exact: true }).getByRole('button', { name: /^MSFT/u })
+
+
+      86 |     .getByRole("list", { name: "Saved instruments", exact: true })
+      87 |     .getByRole("button", { name: /^MSFT/u })
+    > 88 |     .click();
+         |      ^
+      89 |   await expect(
+      90 |     page.getByRole("heading", { name: /Microsoft Corporation/u }),
+      91 |   ).toBeVisible();
+        at C:\stock price predictor\web\e2e\terminal-depth.spec.ts:88:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.local\phase51\browser-source-results\terminal-depth-customizes--06de5-inspects-an-exact-saved-run-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.local\phase51\browser-source-results\terminal-depth-customizes--06de5-inspects-an-exact-saved-run-chromium\error-context.md
+
+  5) [chromium] › e2e\terminal.spec.ts:8:5 › terminal preserves provenance, chart controls and integrated research identities
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('price-chart').locator('canvas').first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('price-chart').locator('canvas').first() with timeout 10000ms
+      - waiting for getByTestId('price-chart').locator('canvas').first()
+
+
+      25 |   await expect(
+      26 |     page.getByTestId("price-chart").locator("canvas").first(),
+    > 27 |   ).toBeVisible();
+         |     ^
+      28 |   await expect(page.locator("html")).toHaveClass(/dark/u);
+      29 |   const chart = page.getByTestId("price-chart");
+      30 |   const bounds = await chart.boundingBox();
+        at C:\stock price predictor\web\e2e\terminal.spec.ts:27:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.local\phase51\browser-source-results\terminal-terminal-preserve-bc562-egrated-research-identities-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.local\phase51\browser-source-results\terminal-terminal-preserve-bc562-egrated-research-identities-chromium\error-context.md
+
+  5 failed
+    [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path
+    [chromium] › e2e\product-quality.spec.ts:38:5 › fits the viewport and opens instrument research from a compact watchlist
+    [chromium] › e2e\product-quality.spec.ts:124:5 › mobile settings retain chart context and account navigation stays consistent
+    [chromium] › e2e\terminal-depth.spec.ts:8:5 › customizes, compares and measures daily charts, then inspects an exact saved run
+    [chromium] › e2e\terminal.spec.ts:8:5 › terminal preserves provenance, chart controls and integrated research identities
+  11 passed (2.3m)

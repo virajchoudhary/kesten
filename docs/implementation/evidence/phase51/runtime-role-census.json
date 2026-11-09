@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "database": "cadrisyn",
+      "role_memberships": 0,
+      "owned_catalog_objects": 0
+    },
+    {
+      "database": "restore_cadrisyn",
+      "role_memberships": 0,
+      "owned_catalog_objects": 0
+    }
+  ]
+}

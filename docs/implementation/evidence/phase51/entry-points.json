@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "origin": "http://127.0.0.1:8091",
+  "checks": [
+    {
+      "path": "/sign-in/",
+      "status": 200
+    },
+    {
+      "path": "/health/ready/",
+      "status": 200
+    },
+    {
+      "path": "/api/v1/session/",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+ Container kerquant-phase51-62a1f1-migrate-run-da3d591b99c2 Creating
+ Container kerquant-phase51-62a1f1-migrate-run-da3d591b99c2 Created
+{"result": "PASS", "schema": "research.0001", "data_kind": "synthetic_fixture"}

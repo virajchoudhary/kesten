@@ -1,0 +1,90 @@
+{
+  "qualification_schema_version": 2,
+  "result": "LOCAL_TECHNICAL_QUALIFICATION_PASS_EMPIRICAL_BLOCKED",
+  "application_revision": "348d78ecad3a5a01f72299975e7f80f781f56a27",
+  "branch": "codex/cadrisyn-foundation",
+  "application_runtime_code_changed": false,
+  "application_entry_point": "http://127.0.0.1:8091/app/markets",
+  "api_health_entry_point": "http://127.0.0.1:8091/health/ready/",
+  "data_kind": "synthetic_fixture",
+  "empirical_evaluation": false,
+  "historical_archives_acquired": 0,
+  "historical_archives_qualified": 0,
+  "model_promotions": [],
+  "checks": {
+    "current_api_image_build": "PASS",
+    "current_web_image_build": "PASS_AFTER_EXTERNAL_DESKTOP_UPDATE_RETRY",
+    "running_backend_source_archive_match": {
+      "result": "PASS",
+      "python_files": 125
+    },
+    "running_web_build_id": "MATCHES_SOURCE_REVISION",
+    "api_contract": "PASS_UNCHANGED",
+    "pip_check": "PASS",
+    "migrations": "PASS_0001_TO_0002_IDENTITIES_PRESERVED",
+    "container_backend_tests": {
+      "passed": 154,
+      "skipped": 0,
+      "scope": "committed workspace/accounts/research/api.test_security; excludes two pre-existing untracked working-tree tests"
+    },
+    "recovery_unit_and_pure_guard_tests": {
+      "passed": 23
+    },
+    "actual_privilege_sql_tests": {
+      "passed": 4,
+      "scope": "fresh transactional roles/schemas in isolated test_cadrisyn; rollback after each case"
+    },
+    "current_source_and_restored_runtime_privileges": "PASS_NO_MEMBERSHIPS_OR_CATALOG_OWNERSHIP",
+    "postgres_backup_restore": {
+      "result": "PASS",
+      "tables_compared": 27,
+      "rows_compared": 258,
+      "intakes": 1,
+      "exact_replays": 13,
+      "horizons": [
+        1,
+        5
+      ],
+      "original_source_unchanged": true,
+      "browser_restore_database": "restore_cadrisyn",
+      "final_version2_restore_database": "restore_final_cadrisyn"
+    },
+    "actual_restore_rejections": {
+      "source_endpoint_exit_code": 2,
+      "populated_target_exit_code": 2
+    },
+    "restored_chromium_suite": {
+      "passed": 16,
+      "failed": 0,
+      "scope": "full existing e2e suite; two account UI tests use stubs; other workflows use the real local API"
+    },
+    "empty_watchlist_chromium": {
+      "passed": 1
+    },
+    "typescript": "PASS",
+    "eslint": "PASS",
+    "protected_runtime_files": 496,
+    "protected_research_artifacts": 17,
+    "retained_sqlite_files": 21,
+    "unrelated_paths_unchanged": 24,
+    "retained_primary_postgresql_stores_unchanged": 2,
+    "independent_acceptance": "PASS_FINAL_BOUNDED_SOURCE_AND_EVIDENCE_REVIEW"
+  },
+  "not_claimed": [
+    "Historical empirical forecast validity",
+    "Production profile or TLS release acceptance",
+    "Hosted CI success",
+    "Signed image provenance or a fresh image advisory scan",
+    "Data licensing clearance",
+    "Public deployment approval"
+  ],
+  "limitations": [
+    "Desktop auto-update interrupted a build; a later Desktop exit interrupted a browser attempt. Normal non-reset recovery was required.",
+    "The source archive intentionally excludes unrelated pre-existing dirty files.",
+    "Private backups, credentials, one-use tokens and complete database copies remain ignored locally."
+  ],
+  "implementation_commits": [
+    "e0d0f9e83c1b52c53dc23085ab31d6d2ebc6f5de",
+    "1488f0cbae541d5c0a738326de738c3afb61315f"
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "qualification_schema_version": 2,
+  "data_kind": "synthetic_fixture",
+  "empirical_evaluation": false,
+  "tables": {
+    "accounts_accountinvitation": {
+      "rows": 4,
+      "sha256": "a85d452eb4dbcd04a5501f2810fd4b952e85ab8eeeae8b76fe6c3375c236f9b5"
+    },
+    "accounts_accountsecuritystate": {
+      "rows": 8,
+      "sha256": "3bbe26fc09bbf4a39a3819d96f68ea7f86d30b413c56e39953591b941eeee819"
+    },
+    "accounts_loginattemptstate": {
+      "rows": 8,
+      "sha256": "9fe55862cdadf924f4b0dfd3c3c42b9b2cd8fd64d699a58016a7c1983e35a35b"
+    },
+    "accounts_passwordresettoken": {
+      "rows": 4,
+      "sha256": "1f2677662c7469c6c52567c25dbef57dc6e731349ee37a646fedcfe6ee7f5833"
+    },
+    "api_optimizedhyperparams": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "api_searchedticker": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "auth_group": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "auth_group_permissions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "auth_permission": {
+      "rows": 92,
+      "sha256": "83e4a688589eeac15683da8fb8742ea853799db697347a615450080a5f485aca"
+    },
+    "auth_user": {
+      "rows": 17,
+      "sha256": "74624e0656c0a7b42e2ec02f8167873e14a6c4613a2229742aff775c82a55b57"
+    },
+    "auth_user_groups": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "auth_user_user_permissions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "django_admin_log": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "django_celery_beat_clockedschedule": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "django_celery_beat_crontabschedule": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "django_celery_beat_intervalschedule": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "django_celery_beat_periodictask": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "django_celery_beat_periodictasks": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "django_celery_beat_solarschedule": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "django_content_type": {
+      "rows": 23,
+      "sha256": "228532547aa526b4d571ad6eb29161fb3aa1962eeb4df96f6137fde0c2662817"
+    },
+    "django_migrations": {
+      "rows": 47,
+      "sha256": "e2c5df48b78e73b8f005ef9b431cce310fdd08a7a6ddc0b2d269b58778072353"
+    },
+    "django_session": {
+      "rows": 33,
+      "sha256": "cc86c58c698c638ff3aede929ce6499d49d20cf3be282de18730cab79196e6f0"
+    },
+    "research_researchdataset": {
+      "rows": 1,
+      "sha256": "3a5e1f72f9b63d52da5991494fa8e844f78fc1cc6be95135bd4747fb0dd4413e"
+    },
+    "research_researchintakereceipt": {
+      "rows": 1,
+      "sha256": "867237332a8cc93d40f11aa6ed53d5253b6313864a824185b7fbcde26f737587"
+    },
+    "research_researchrun": {
+      "rows": 13,
+      "sha256": "688cd655f3b594ccd8b6c117204029f90a063c05840682fcb0c5df0c66d9a573"
+    },
+    "workspace_marketsnapshot": {
+      "rows": 4,
+      "sha256": "c7519e0d12c2252a72d06c75422a8ec3ff851e9431e21edb2519d6b714b91cd8"
+    },
+    "workspace_watchlistentry": {
+      "rows": 3,
+      "sha256": "b47b2dba63a0a59cdcbd529a3988f79998b9c9748570293c01e8b30704360cda"
+    }
+  },
+  "datasets": [
+    {
+      "id": "fcd8f3ca-6034-47f2-aea7-27104c8e7bc1",
+      "version": "9203cba1c9d58f65505fc7c05120669be1829719c7d033d58ab8155387a47a94",
+      "data_kind": "synthetic_fixture"
+    }
+  ],
+  "intakes": [
+    {
+      "receipt_id": "a0bfef8c-884f-447d-8aff-0e11b1af78f5",
+      "receipt_version": "fe1dd36f93b009a471e7f9f9271869c4b68fd20cd13655cc3bdda9f54615e0a1",
+      "dataset_id": "fcd8f3ca-6034-47f2-aea7-27104c8e7bc1",
+      "dataset_version": "9203cba1c9d58f65505fc7c05120669be1829719c7d033d58ab8155387a47a94",
+      "match": true,
+      "independently_verified_source": false,
+      "data_kind": "synthetic_fixture",
+      "artifact_sha256": {
+        "csv_content": "170c5fa2970a08fd0a40103d2181b785a38a1cf6814ff0d668ff6523dd8eac9f",
+        "terms_content": "3a7b66a2d5bd3c2fd3ab7022db16d99544ff303510839895d99ed1e68d994057",
+        "availability_content": "6e1752c76db6542711608e1d91c75237c20db9aad9fb73d33d28f102257012d3"
+      }
+    }
+  ],
+  "replays": [
+    {
+      "run_id": "2160ab20-9b62-4285-be71-98dbbf1a5a4f",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "9a45a5cca4ce69b11d0ae494f23679a278057ae61b995cf2957d7ea378c19e50",
+      "horizon_sessions": 1
+    },
+    {
+      "run_id": "78c2d9db-4006-4152-bca5-07bb2d22d8f5",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "995a224ce3925f972ca224ece6f548d45277ecdd364a50d13998b4649e5f33be",
+      "horizon_sessions": 5
+    },
+    {
+      "run_id": "8956d48b-ec03-4588-ab72-447c480b97d3",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "995a224ce3925f972ca224ece6f548d45277ecdd364a50d13998b4649e5f33be",
+      "horizon_sessions": 5
+    },
+    {
+      "run_id": "9620f70d-e4be-4171-989c-a65c3842c655",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "9a45a5cca4ce69b11d0ae494f23679a278057ae61b995cf2957d7ea378c19e50",
+      "horizon_sessions": 1
+    },
+    {
+      "run_id": "9ca89475-5ccc-480a-811d-1f759a3d7da8",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "995a224ce3925f972ca224ece6f548d45277ecdd364a50d13998b4649e5f33be",
+      "horizon_sessions": 5
+    },
+    {
+      "run_id": "e5847731-67e2-4f4f-86f5-ae881893ab0f",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "9a45a5cca4ce69b11d0ae494f23679a278057ae61b995cf2957d7ea378c19e50",
+      "horizon_sessions": 1
+    },
+    {
+      "run_id": "e93cae92-3f2f-4bd3-96fa-45705569d582",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "9a45a5cca4ce69b11d0ae494f23679a278057ae61b995cf2957d7ea378c19e50",
+      "horizon_sessions": 1
+    },
+    {
+      "run_id": "ea9c75e5-9a95-44ba-8bc9-2d7334317d66",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "9a45a5cca4ce69b11d0ae494f23679a278057ae61b995cf2957d7ea378c19e50",
+      "horizon_sessions": 1
+    },
+    {
+      "run_id": "ef8301ed-4294-4c7d-b49a-e8c8977e73de",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "995a224ce3925f972ca224ece6f548d45277ecdd364a50d13998b4649e5f33be",
+      "horizon_sessions": 5
+    },
+    {
+      "run_id": "f240ae5b-3a92-4862-854b-9cb4d944321b",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "995a224ce3925f972ca224ece6f548d45277ecdd364a50d13998b4649e5f33be",
+      "horizon_sessions": 5
+    },
+    {
+      "run_id": "f351f457-8fb2-447b-b9d1-9019d6bcb505",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "9a45a5cca4ce69b11d0ae494f23679a278057ae61b995cf2957d7ea378c19e50",
+      "horizon_sessions": 1
+    },
+    {
+      "run_id": "f532ed69-7a8e-4c85-bb25-c7f701368dac",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "995a224ce3925f972ca224ece6f548d45277ecdd364a50d13998b4649e5f33be",
+      "horizon_sessions": 5
+    },
+    {
+      "run_id": "f9513539-f13d-4bf0-9852-7b0ccff3e003",
+      "result": "PASS",
+      "dataset_matches": true,
+      "engine_matches": true,
+      "dependency_lock_matches": true,
+      "runtime_versions_match": true,
+      "result_matches": true,
+      "result_sha256": "9a45a5cca4ce69b11d0ae494f23679a278057ae61b995cf2957d7ea378c19e50",
+      "horizon_sessions": 1
+    }
+  ],
+  "runtime_role": "cadrisyn",
+  "runtime_privileges": {
+    "superuser": false,
+    "create_database": false,
+    "create_role": false,
+    "create_schema": false,
+    "temporary": false,
+    "writable_schema": false,
+    "owns_objects": false,
+    "role_membership": false
+  },
+  "runtime_ddl": false
+}

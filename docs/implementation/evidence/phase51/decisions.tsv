@@ -1,0 +1,3 @@
+decision	evidence	result
+Reject partial privilege enumeration as a complete DDL proof	Two independent reviews found missed database/role-switch/object classes	Check dedicated-role no-membership/no-ownership invariant instead
+Test the configured-role premise before implementing	runtime-role-census.json	Both current runtime databases have zero memberships and zero owned catalog objects

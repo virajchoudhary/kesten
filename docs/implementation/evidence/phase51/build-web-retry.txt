@@ -1,0 +1,144 @@
+ Image kerquant-phase51-62a1f1-web:local Building
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.28kB done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 1.44kB 0.2s done
+#2 DONE 2.2s
+
+#3 [internal] load metadata for docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#3 ...
+
+#4 [auth] library/node:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#3 DONE 6.6s
+
+#5 [internal] load .dockerignore
+#5 transferring context:
+#5 transferring context: 379B done
+#5 DONE 1.7s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [base 1/2] FROM docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#7 resolve docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202
+#7 resolve docker.io/library/node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202 3.8s done
+#7 DONE 4.3s
+
+#8 [base 2/2] WORKDIR /app/web
+#8 CACHED
+
+#9 [runner 1/4] RUN addgroup --system --gid 1001 nodejs     && adduser --system --uid 1001 nextjs     && rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx
+#9 CACHED
+
+#6 [internal] load build context
+#6 transferring context:
+#6 transferring context: 9.51kB 0.0s done
+#6 DONE 3.5s
+
+#10 [builder 1/3] COPY web/ ./
+#10 CACHED
+
+#11 [dependencies 1/2] COPY web/package.json web/package-lock.json ./
+#11 CACHED
+
+#12 [builder 2/3] COPY contracts/openapi.json ../contracts/openapi.json
+#12 CACHED
+
+#13 [dependencies 2/2] RUN --mount=type=cache,target=/root/.npm npm ci --no-audit --no-fund
+#13 151.5 npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+#13 182.6 npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+#13 204.5
+#13 204.5 added 533 packages in 2m
+#13 204.5 npm notice
+#13 204.5 npm notice New major version of npm available! 10.9.9 -> 12.2.2
+#13 204.5 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#13 204.5 npm notice To update run: npm install -g npm@12.2.2
+#13 204.5 npm notice
+#13 DONE 269.7s
+
+#14 [builder 3/3] RUN --mount=type=bind,from=dependencies,source=/app/web/node_modules,target=/app/web/node_modules npm run typegen && npm run build
+#14 5.950
+#14 5.950 > cadrisyn-web@0.1.0 typegen
+#14 5.950 > openapi-typescript ../contracts/openapi.json -o src/lib/api/generated.ts
+#14 5.950
+#14 6.987 ✨ openapi-typescript 7.13.0
+#14 7.333 🚀 ../contracts/openapi.json → src/lib/api/generated.ts [350.2ms]
+#14 7.351 npm notice
+#14 7.351 npm notice New major version of npm available! 10.9.9 -> 12.2.2
+#14 7.351 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+#14 7.351 npm notice To update run: npm install -g npm@12.2.2
+#14 7.351 npm notice
+#14 7.576
+#14 7.576 > cadrisyn-web@0.1.0 build
+#14 7.576 > next build --webpack
+#14 7.576
+#14 8.429 ▲ Next.js 16.4.5 (webpack)
+#14 8.928 ✓ Running next.config.ts took 497ms
+#14 8.949
+#14 9.536   Creating an optimized production build ...
+#14 41.68 ✓ Compiled successfully in 25.6s
+#14 41.68   Running TypeScript ...
+#14 55.44   Finished TypeScript in 13.8s ...
+#14 55.45   Collecting page data using 11 workers ...
+#14 58.75   Generating static pages using 11 workers (0/12) ...
+#14 60.63   Generating static pages using 11 workers (3/12)
+#14 60.63   Generating static pages using 11 workers (6/12)
+#14 61.01   Generating static pages using 11 workers (9/12)
+#14 61.27 ✓ Generating static pages using 11 workers (12/12) in 2.5s
+#14 61.99   Finalizing page optimization ...
+#14 61.99   Collecting build traces ...
+#14 105.3
+#14 105.3 Route (app)
+#14 105.3 ┌ ○ /
+#14 105.3 ├ ○ /_not-found
+#14 105.3 ├ ○ /account/accept
+#14 105.3 ├ ○ /account/reset
+#14 105.3 ├ ○ /app/account
+#14 105.3 ├ ƒ /app/markets
+#14 105.3 ├ ƒ /app/research
+#14 105.3 ├ ○ /data
+#14 105.3 ├ ○ /icon.svg
+#14 105.3 ├ ○ /methodology
+#14 105.3 └ ○ /sign-in
+#14 105.3
+#14 105.3
+#14 105.3 ○  (Static)   prerendered as static content
+#14 105.3 ƒ  (Dynamic)  server-rendered on demand
+#14 105.3
+#14 DONE 109.5s
+
+#15 [runner 2/4] COPY --from=builder --chown=nextjs:nodejs /app/web/.next/standalone ./
+#15 DONE 8.0s
+
+#16 [runner 3/4] COPY --from=builder --chown=nextjs:nodejs /app/web/.next/static ./.next/static
+#16 DONE 2.8s
+
+#17 [runner 4/4] COPY --from=builder --chown=nextjs:nodejs /app/web/public ./public
+#17 DONE 2.6s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 8.2s done
+#18 exporting manifest sha256:7111ae1de49c3baffca5869f04eb24c0e5f5153c7d424b2343bad8ed13df191a
+#18 exporting manifest sha256:7111ae1de49c3baffca5869f04eb24c0e5f5153c7d424b2343bad8ed13df191a 0.5s done
+#18 exporting config sha256:a610de9022f8f6498f2f44d3f468fa1ff85dfc9341465babcb295f7315b09388
+#18 exporting config sha256:a610de9022f8f6498f2f44d3f468fa1ff85dfc9341465babcb295f7315b09388 0.5s done
+#18 exporting attestation manifest sha256:0bbf6d265dc585539487cdd47b75118f3d3357b13dfba990e080829d95d8f246
+#18 exporting attestation manifest sha256:0bbf6d265dc585539487cdd47b75118f3d3357b13dfba990e080829d95d8f246 0.6s done
+#18 exporting manifest list sha256:4788ee8843754bffaf9c014f82e72bb01edeefb8474a78f0b256f9186c8a403f
+#18 exporting manifest list sha256:4788ee8843754bffaf9c014f82e72bb01edeefb8474a78f0b256f9186c8a403f 0.5s done
+#18 naming to docker.io/library/kerquant-phase51-62a1f1-web:local
+#18 naming to docker.io/library/kerquant-phase51-62a1f1-web:local 0.1s done
+#18 unpacking to docker.io/library/kerquant-phase51-62a1f1-web:local
+#18 unpacking to docker.io/library/kerquant-phase51-62a1f1-web:local 3.4s done
+#18 DONE 14.5s
+
+#19 resolving provenance for metadata file
+#19 DONE 0.0s
+ Image kerquant-phase51-62a1f1-web:local Built

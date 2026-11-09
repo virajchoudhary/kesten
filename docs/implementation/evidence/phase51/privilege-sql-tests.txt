@@ -1,0 +1,14 @@
+test_fresh_unprivileged_role_has_no_capabilities (tests.test_research_postgres_privileges.PostgresPrivilegeSqlTests.test_fresh_unprivileged_role_has_no_capabilities) ... ok
+test_noinherit_set_membership_is_detected (tests.test_research_postgres_privileges.PostgresPrivilegeSqlTests.test_noinherit_set_membership_is_detected) ... ok
+test_routine_ownership_without_relations_is_detected (tests.test_research_postgres_privileges.PostgresPrivilegeSqlTests.test_routine_ownership_without_relations_is_detected) ... ok
+test_type_ownership_without_relations_is_detected (tests.test_research_postgres_privileges.PostgresPrivilegeSqlTests.test_type_ownership_without_relations_is_detected) ... ok
+test_changed_tables_evidence_or_replay_are_rejected (tests.test_research_postgres_qualification.PostgresQualificationTests.test_changed_tables_evidence_or_replay_are_rejected) ... ok
+test_exact_snapshot_passes (tests.test_research_postgres_qualification.PostgresQualificationTests.test_exact_snapshot_passes) ... ok
+test_matching_but_empty_incomplete_or_failed_proof_is_rejected (tests.test_research_postgres_qualification.PostgresQualificationTests.test_matching_but_empty_incomplete_or_failed_proof_is_rejected) ... ok
+test_runtime_accepts_only_constrained_role (tests.test_research_postgres_qualification.PostgresQualificationTests.test_runtime_accepts_only_constrained_role) ... ok
+test_runtime_rejects_database_create_or_another_writable_schema (tests.test_research_postgres_qualification.PostgresQualificationTests.test_runtime_rejects_database_create_or_another_writable_schema) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.151s
+
+OK

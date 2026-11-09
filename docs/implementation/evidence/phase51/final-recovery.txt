@@ -1,0 +1,1 @@
+Final version2 qualification PASS: all27 tables,1 archived intake,13 exact replays, zero memberships/ownership; original source and first restored browser database preserved.

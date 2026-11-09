@@ -1,0 +1,380 @@
+ Image kerquant-phase51-62a1f1-api:local Building
+#1 [internal] load local bake definitions
+#1 reading from stdin 692B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 1.48kB 0.1s done
+#2 DONE 1.3s
+
+#3 [internal] load metadata for docker.io/library/python:3.12.16-alpine3.24@sha256:e064671ca452259bab50e8e2c7bd896e39e9a343bb06ca25234adf6fe18d0fc7
+#3 ...
+
+#4 [auth] library/python:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.12.16-alpine3.24@sha256:e064671ca452259bab50e8e2c7bd896e39e9a343bb06ca25234adf6fe18d0fc7
+#3 DONE 2.7s
+
+#5 [internal] load .dockerignore
+#5 transferring context:
+#5 transferring context: 379B 0.0s done
+#5 DONE 1.3s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [ 1/11] FROM docker.io/library/python:3.12.16-alpine3.24@sha256:e064671ca452259bab50e8e2c7bd896e39e9a343bb06ca25234adf6fe18d0fc7
+#7 resolve docker.io/library/python:3.12.16-alpine3.24@sha256:e064671ca452259bab50e8e2c7bd896e39e9a343bb06ca25234adf6fe18d0fc7
+#7 resolve docker.io/library/python:3.12.16-alpine3.24@sha256:e064671ca452259bab50e8e2c7bd896e39e9a343bb06ca25234adf6fe18d0fc7 0.7s done
+#7 DONE 0.8s
+
+#8 [ 2/11] WORKDIR /app
+#8 CACHED
+
+#9 [ 3/11] RUN apk add --no-cache postgresql17-client=17.11-r0 && apk add --no-cache --virtual .build-deps build-base linux-headers
+#9 ...
+
+#6 [internal] load build context
+#6 transferring context: 714.51kB 0.5s done
+#6 DONE 2.4s
+
+#9 [ 3/11] RUN apk add --no-cache postgresql17-client=17.11-r0 && apk add --no-cache --virtual .build-deps build-base linux-headers
+#9 6.781 (1/5) Installing postgresql-common (1.3-r0)
+#9 6.797   Executing postgresql-common-1.3-r0.pre-install
+#9 7.414 (2/5) Installing lz4-libs (1.10.0-r1)
+#9 7.432 (3/5) Installing libpq (18.6-r0)
+#9 7.456 (4/5) Installing zstd-libs (1.5.7-r2)
+#9 7.500 (5/5) Installing postgresql17-client (17.11-r0)
+#9 7.650 Executing busybox-1.37.0-r31.trigger
+#9 7.722 Executing postgresql-common-1.3-r0.trigger
+#9 7.733 * Setting postgresql17 as the default version
+#9 7.956 * find: /usr/share/man: No such file or directory
+#9 8.926 *
+#9 8.926 * You are using 'postgresql17'. It's recommended to upgrade to the latest
+#9 8.926 * major version provided by package 'postgresql18'.
+#9 8.926 * Use command 'pg_versions' to switch between versions.
+#9 8.926 *
+#9 8.931 OK: 17.7 MiB in 43 packages
+#9 9.626 ( 1/23) Installing libgcc (15.2.0-r5)
+#9 9.644 ( 2/23) Installing jansson (2.15.0-r0)
+#9 9.657 ( 3/23) Installing libstdc++ (15.2.0-r5)
+#9 9.750 ( 4/23) Installing binutils (2.45.1-r1)
+#9 10.07 ( 5/23) Installing libmagic (5.47-r2)
+#9 10.17 ( 6/23) Installing file (5.47-r2)
+#9 10.18 ( 7/23) Installing libgcc-static (15.2.0-r5)
+#9 10.38 ( 8/23) Installing libgomp (15.2.0-r5)
+#9 10.41 ( 9/23) Installing libatomic (15.2.0-r5)
+#9 10.41 (10/23) Installing gmp (6.3.0-r4)
+#9 10.44 (11/23) Installing isl26 (0.26-r2)
+#9 10.53 (12/23) Installing mpfr4 (4.2.2-r0)
+#9 10.56 (13/23) Installing mpc1 (1.3.1-r1)
+#9 10.57 (14/23) Installing gcc (15.2.0-r5)
+#9 17.14 (15/23) Installing libstdc++-dev (15.2.0-r5)
+#9 17.64 (16/23) Installing musl-dev (1.2.6-r3)
+#9 17.95 (17/23) Installing g++ (15.2.0-r5)
+#9 19.53 (18/23) Installing make (4.4.1-r4)
+#9 19.55 (19/23) Installing fortify-headers (3.0.1-r2)
+#9 19.56 (20/23) Installing patch (2.8.1-r0)
+#9 19.57 (21/23) Installing build-base (0.5-r4)
+#9 19.57 (22/23) Installing linux-headers (7.0.0-r1)
+#9 19.91 (23/23) Installing .build-deps (20261109.134710)
+#9 19.91 Executing busybox-1.37.0-r31.trigger
+#9 19.92 OK: 291.4 MiB in 66 packages
+#9 DONE 26.9s
+
+#10 [ 4/11] COPY backend/requirements-workspace.lock.txt backend/requirements-runtime.txt /app/
+#10 DONE 2.7s
+
+#11 [ 5/11] RUN python -m pip install --no-cache-dir --no-compile pip==26.3 && python -m pip install --no-cache-dir --no-compile -r requirements-runtime.txt && apk del .build-deps
+#11 9.994 Collecting pip==26.3
+#11 10.08   Downloading pip-26.3-py3-none-any.whl.metadata (4.6 kB)
+#11 10.10 Downloading pip-26.3-py3-none-any.whl (2.0 MB)
+#11 10.29    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 11.8 MB/s eta 0:00:00
+#11 10.35 Installing collected packages: pip
+#11 10.35   Attempting uninstall: pip
+#11 10.36     Found existing installation: pip 25.0.1
+#11 10.66     Uninstalling pip-25.0.1:
+#11 11.63       Successfully uninstalled pip-25.0.1
+#11 12.32 Successfully installed pip-26.3
+#11 12.32 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#11 15.83 Collecting amqp==5.4.2 (from -r /app/requirements-workspace.lock.txt (line 1))
+#11 15.88   Downloading amqp-5.4.2-py3-none-any.whl.metadata (9.4 kB)
+#11 15.91 Collecting anyio==4.16.0 (from -r /app/requirements-workspace.lock.txt (line 2))
+#11 15.92   Downloading anyio-4.16.0-py3-none-any.whl.metadata (4.7 kB)
+#11 15.95 Collecting asgiref==3.13.0 (from -r /app/requirements-workspace.lock.txt (line 3))
+#11 15.97   Downloading asgiref-3.13.0-py3-none-any.whl.metadata (12 kB)
+#11 15.99 Collecting attrs==26.1.0 (from -r /app/requirements-workspace.lock.txt (line 4))
+#11 16.00   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+#11 16.03 Collecting beautifulsoup4==4.15.0 (from -r /app/requirements-workspace.lock.txt (line 5))
+#11 16.04   Downloading beautifulsoup4-4.15.0-py3-none-any.whl.metadata (3.8 kB)
+#11 16.06 Collecting billiard==4.3.2 (from -r /app/requirements-workspace.lock.txt (line 6))
+#11 16.07   Downloading billiard-4.3.2-py3-none-any.whl.metadata (5.0 kB)
+#11 16.12 Collecting celery==5.6.3 (from -r /app/requirements-workspace.lock.txt (line 7))
+#11 16.13   Downloading celery-5.6.3-py3-none-any.whl.metadata (23 kB)
+#11 16.18 Collecting certifi==2026.10.23 (from -r /app/requirements-workspace.lock.txt (line 8))
+#11 16.19   Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+#11 16.43 Collecting cffi==2.1.1 (from -r /app/requirements-workspace.lock.txt (line 9))
+#11 16.44   Downloading cffi-2.1.1-cp312-cp312-musllinux_1_2_x86_64.whl.metadata (2.5 kB)
+#11 16.69 Collecting charset-normalizer==3.5.2 (from -r /app/requirements-workspace.lock.txt (line 10))
+#11 16.70   Downloading charset_normalizer-3.5.2-cp312-cp312-musllinux_1_2_x86_64.whl.metadata (46 kB)
+#11 16.73 Collecting click==8.5.0 (from -r /app/requirements-workspace.lock.txt (line 11))
+#11 16.74   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#11 16.75 Collecting click-didyoumean==0.3.1 (from -r /app/requirements-workspace.lock.txt (line 12))
+#11 16.76   Downloading click_didyoumean-0.3.1-py3-none-any.whl.metadata (3.9 kB)
+#11 16.78 Collecting click-plugins==1.1.1.2 (from -r /app/requirements-workspace.lock.txt (line 13))
+#11 16.79   Downloading click_plugins-1.1.1.2-py2.py3-none-any.whl.metadata (6.5 kB)
+#11 16.81 Collecting click-repl==0.4.1 (from -r /app/requirements-workspace.lock.txt (line 14))
+#11 16.82   Downloading click_repl-0.4.1-py3-none-any.whl.metadata (3.7 kB)
+#11 17.09 Collecting cron-descriptor==1.4.5 (from -r /app/requirements-workspace.lock.txt (line 15))
+#11 17.10   Downloading cron_descriptor-1.4.5-py3-none-any.whl.metadata (5.7 kB)
+#11 17.47 Collecting curl_cffi==0.17.0 (from -r /app/requirements-workspace.lock.txt (line 16))
+#11 17.48   Downloading curl_cffi-0.17.0-cp310-abi3-musllinux_1_2_x86_64.whl.metadata (18 kB)
+#11 17.56 Collecting Django==5.2.19 (from -r /app/requirements-workspace.lock.txt (line 17))
+#11 17.57   Downloading django-5.2.19-py3-none-any.whl.metadata (4.1 kB)
+#11 17.79 Collecting django-celery-beat==2.9.0 (from -r /app/requirements-workspace.lock.txt (line 18))
+#11 17.80   Downloading django_celery_beat-2.9.0-py3-none-any.whl.metadata (13 kB)
+#11 17.83 Collecting django-cors-headers==4.9.0 (from -r /app/requirements-workspace.lock.txt (line 19))
+#11 17.84   Downloading django_cors_headers-4.9.0-py3-none-any.whl.metadata (16 kB)
+#11 18.05 Collecting django-timezone-field==7.2.2 (from -r /app/requirements-workspace.lock.txt (line 20))
+#11 18.06   Downloading django_timezone_field-7.2.2-py3-none-any.whl.metadata (13 kB)
+#11 18.30 Collecting djangorestframework==3.18.3 (from -r /app/requirements-workspace.lock.txt (line 21))
+#11 18.31   Downloading djangorestframework-3.18.3-py3-none-any.whl.metadata (7.8 kB)
+#11 18.58 Collecting drf-spectacular==0.30.0 (from -r /app/requirements-workspace.lock.txt (line 22))
+#11 18.59   Downloading drf_spectacular-0.30.0-py3-none-any.whl.metadata (14 kB)
+#11 18.81 Collecting exchange_calendars==4.13.2 (from -r /app/requirements-workspace.lock.txt (line 23))
+#11 18.82   Downloading exchange_calendars-4.13.2-py3-none-any.whl.metadata (26 kB)
+#11 18.84 Collecting h11==0.16.0 (from -r /app/requirements-workspace.lock.txt (line 24))
+#11 18.85   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#11 18.87 Collecting httpcore==1.0.9 (from -r /app/requirements-workspace.lock.txt (line 25))
+#11 18.88   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#11 18.91 Collecting httpx==0.28.1 (from -r /app/requirements-workspace.lock.txt (line 26))
+#11 18.92   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#11 18.94 Collecting idna==3.20 (from -r /app/requirements-workspace.lock.txt (line 27))
+#11 18.96   Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+#11 19.22 Collecting inflection==0.5.1 (from -r /app/requirements-workspace.lock.txt (line 28))
+#11 19.22   Downloading inflection-0.5.1-py2.py3-none-any.whl.metadata (1.7 kB)
+#11 19.26 Collecting jsonschema==4.26.0 (from -r /app/requirements-workspace.lock.txt (line 29))
+#11 19.27   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+#11 19.30 Collecting jsonschema-specifications==2025.9.1 (from -r /app/requirements-workspace.lock.txt (line 30))
+#11 19.31   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+#11 19.34 Collecting kombu==5.7.0 (from -r /app/requirements-workspace.lock.txt (line 31))
+#11 19.36   Downloading kombu-5.7.0-py3-none-any.whl.metadata (17 kB)
+#11 19.59 Collecting korean_lunar_calendar==0.4.0 (from -r /app/requirements-workspace.lock.txt (line 32))
+#11 19.60   Downloading korean_lunar_calendar-0.4.0-py3-none-any.whl.metadata (6.6 kB)
+#11 20.04 Collecting lxml==6.1.3 (from -r /app/requirements-workspace.lock.txt (line 33))
+#11 20.06   Downloading lxml-6.1.3-cp312-cp312-musllinux_1_2_x86_64.whl.metadata (3.3 kB)
+#11 20.57 Collecting numpy==2.5.4 (from -r /app/requirements-workspace.lock.txt (line 34))
+#11 20.59   Downloading numpy-2.5.4-cp312-cp312-musllinux_1_2_x86_64.whl.metadata (6.6 kB)
+#11 20.89 Collecting pandas==3.1.1 (from -r /app/requirements-workspace.lock.txt (line 35))
+#11 20.90   Downloading pandas-3.1.1-cp312-cp312-musllinux_1_2_x86_64.whl.metadata (16 kB)
+#11 21.20 Collecting peewee==4.5.3 (from -r /app/requirements-workspace.lock.txt (line 36))
+#11 21.21   Downloading peewee-4.5.3-py3-none-any.whl.metadata (10 kB)
+#11 21.25 Collecting platformdirs==4.14.5 (from -r /app/requirements-workspace.lock.txt (line 37))
+#11 21.26   Downloading platformdirs-4.14.5-py3-none-any.whl.metadata (5.7 kB)
+#11 21.30 Collecting prompt_toolkit==3.0.53 (from -r /app/requirements-workspace.lock.txt (line 38))
+#11 21.31   Downloading prompt_toolkit-3.0.53-py3-none-any.whl.metadata (6.4 kB)
+#11 21.55 Collecting protobuf==7.36.2 (from -r /app/requirements-workspace.lock.txt (line 39))
+#11 21.56   Downloading protobuf-7.36.2-py3-none-any.whl.metadata (595 bytes)
+#11 21.59 Collecting psycopg==3.3.8 (from -r /app/requirements-workspace.lock.txt (line 40))
+#11 21.60   Downloading psycopg-3.3.8-py3-none-any.whl.metadata (4.4 kB)
+#11 21.94 Collecting psycopg-binary==3.3.8 (from -r /app/requirements-workspace.lock.txt (line 41))
+#11 21.95   Downloading psycopg_binary-3.3.8-cp312-cp312-musllinux_1_2_x86_64.whl.metadata (2.7 kB)
+#11 22.22 Collecting pycparser==3.12 (from -r /app/requirements-workspace.lock.txt (line 42))
+#11 22.23   Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+#11 22.45 Collecting pyluach==2.3.0 (from -r /app/requirements-workspace.lock.txt (line 43))
+#11 22.46   Downloading pyluach-2.3.0-py3-none-any.whl.metadata (4.3 kB)
+#11 22.72 Collecting python-crontab==3.4.0 (from -r /app/requirements-workspace.lock.txt (line 44))
+#11 22.74   Downloading python_crontab-3.4.0-py3-none-any.whl.metadata (18 kB)
+#11 22.76 Collecting python-dateutil==4.0.0 (from -r /app/requirements-workspace.lock.txt (line 45))
+#11 22.77   Downloading python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+#11 22.80 Collecting python-dotenv==1.2.4 (from -r /app/requirements-workspace.lock.txt (line 46))
+#11 22.81   Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+#11 22.88 Collecting pytz==2026.6 (from -r /app/requirements-workspace.lock.txt (line 47))
+#11 22.89   Downloading pytz-2026.6-py2.py3-none-any.whl.metadata (22 kB)
+#11 23.02 Collecting PyYAML==6.0.3 (from -r /app/requirements-workspace.lock.txt (line 48))
+#11 23.04   Downloading pyyaml-6.0.3-cp312-cp312-musllinux_1_2_x86_64.whl.metadata (2.4 kB)
+#11 23.09 Collecting redis==6.4.0 (from -r /app/requirements-workspace.lock.txt (line 49))
+#11 23.36   Downloading redis-6.4.0-py3-none-any.whl.metadata (10 kB)
+#11 23.40 Collecting referencing==0.37.0 (from -r /app/requirements-workspace.lock.txt (line 50))
+#11 23.42   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+#11 23.46 Collecting requests==2.34.2 (from -r /app/requirements-workspace.lock.txt (line 51))
+#11 23.47   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+#11 24.12 Collecting rpds-py==2026.9.1 (from -r /app/requirements-workspace.lock.txt (line 52))
+#11 24.14   Downloading rpds_py-2026.9.1-cp312-cp312-musllinux_1_2_x86_64.whl.metadata (4.1 kB)
+#11 24.18 Collecting soupsieve==4.0.1 (from -r /app/requirements-workspace.lock.txt (line 53))
+#11 24.19   Downloading soupsieve-4.0.1-py3-none-any.whl.metadata (4.4 kB)
+#11 24.22 Collecting sqlparse==0.6.1 (from -r /app/requirements-workspace.lock.txt (line 54))
+#11 24.24   Downloading sqlparse-0.6.1-py3-none-any.whl.metadata (6.9 kB)
+#11 24.46 Collecting toolz==1.2.0 (from -r /app/requirements-workspace.lock.txt (line 55))
+#11 24.47   Downloading toolz-1.2.0-py3-none-any.whl.metadata (5.2 kB)
+#11 24.50 Collecting typing_extensions==4.16.0 (from -r /app/requirements-workspace.lock.txt (line 56))
+#11 24.51   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#11 24.54 Collecting tzdata==2026.6 (from -r /app/requirements-workspace.lock.txt (line 57))
+#11 24.55   Downloading tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+#11 24.57 Collecting tzlocal==5.4.5 (from -r /app/requirements-workspace.lock.txt (line 58))
+#11 24.59   Downloading tzlocal-5.4.5-py3-none-any.whl.metadata (7.7 kB)
+#11 24.61 Collecting uritemplate==4.2.0 (from -r /app/requirements-workspace.lock.txt (line 59))
+#11 24.62   Downloading uritemplate-4.2.0-py3-none-any.whl.metadata (2.6 kB)
+#11 24.66 Collecting urllib3==2.8.0 (from -r /app/requirements-workspace.lock.txt (line 60))
+#11 24.68   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+#11 24.70 Collecting vine==5.1.0 (from -r /app/requirements-workspace.lock.txt (line 61))
+#11 24.71   Downloading vine-5.1.0-py3-none-any.whl.metadata (2.7 kB)
+#11 24.75 Collecting wcwidth==0.9.4 (from -r /app/requirements-workspace.lock.txt (line 62))
+#11 24.76   Downloading wcwidth-0.9.4-cp310-abi3-musllinux_1_2_x86_64.whl.metadata (23 kB)
+#11 25.07 Collecting websockets==17.4 (from -r /app/requirements-workspace.lock.txt (line 63))
+#11 25.07   Downloading websockets-17.4-cp312-cp312-musllinux_1_2_x86_64.whl.metadata (6.3 kB)
+#11 25.11 Collecting yfinance==1.8.0 (from -r /app/requirements-workspace.lock.txt (line 64))
+#11 25.12   Downloading yfinance-1.8.0-py3-none-any.whl.metadata (6.8 kB)
+#11 25.15 Collecting gunicorn==23.0.0 (from -r requirements-runtime.txt (line 3))
+#11 25.16   Downloading gunicorn-23.0.0-py3-none-any.whl.metadata (4.4 kB)
+#11 25.18 Collecting packaging==26.3 (from -r requirements-runtime.txt (line 4))
+#11 25.19   Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+#11 25.50 Downloading amqp-5.4.2-py3-none-any.whl (51 kB)
+#11 25.51 Downloading vine-5.1.0-py3-none-any.whl (9.6 kB)
+#11 25.52 Downloading anyio-4.16.0-py3-none-any.whl (134 kB)
+#11 25.55 Downloading asgiref-3.13.0-py3-none-any.whl (27 kB)
+#11 25.56 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+#11 25.58 Downloading beautifulsoup4-4.15.0-py3-none-any.whl (109 kB)
+#11 25.60 Downloading billiard-4.3.2-py3-none-any.whl (90 kB)
+#11 25.61 Downloading celery-5.6.3-py3-none-any.whl (451 kB)
+#11 25.66 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#11 25.68 Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+#11 25.70 Downloading cffi-2.1.1-cp312-cp312-musllinux_1_2_x86_64.whl (223 kB)
+#11 25.74 Downloading charset_normalizer-3.5.2-cp312-cp312-musllinux_1_2_x86_64.whl (260 kB)
+#11 25.77 Downloading click_didyoumean-0.3.1-py3-none-any.whl (3.6 kB)
+#11 25.78 Downloading click_plugins-1.1.1.2-py2.py3-none-any.whl (11 kB)
+#11 25.79 Downloading click_repl-0.4.1-py3-none-any.whl (14 kB)
+#11 25.80 Downloading cron_descriptor-1.4.5-py3-none-any.whl (50 kB)
+#11 25.81 Downloading curl_cffi-0.17.0-cp310-abi3-musllinux_1_2_x86_64.whl (13.8 MB)
+#11 26.98    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.8/13.8 MB 12.1 MB/s  0:00:01
+#11 26.99 Downloading django-5.2.19-py3-none-any.whl (8.3 MB)
+#11 27.71    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.3/8.3 MB 11.7 MB/s  0:00:00
+#11 27.72 Downloading django_celery_beat-2.9.0-py3-none-any.whl (105 kB)
+#11 27.76 Downloading django_cors_headers-4.9.0-py3-none-any.whl (12 kB)
+#11 27.77 Downloading django_timezone_field-7.2.2-py3-none-any.whl (13 kB)
+#11 27.78 Downloading djangorestframework-3.18.3-py3-none-any.whl (903 kB)
+#11 27.86    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 904.0/904.0 kB 11.9 MB/s  0:00:00
+#11 27.87 Downloading drf_spectacular-0.30.0-py3-none-any.whl (111 kB)
+#11 27.89 Downloading exchange_calendars-4.13.2-py3-none-any.whl (213 kB)
+#11 27.91 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#11 27.92 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#11 27.94 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#11 27.96 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#11 27.97 Downloading inflection-0.5.1-py2.py3-none-any.whl (9.5 kB)
+#11 27.98 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+#11 28.00 Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+#11 28.01 Downloading kombu-5.7.0-py3-none-any.whl (266 kB)
+#11 28.04 Downloading korean_lunar_calendar-0.4.0-py3-none-any.whl (11 kB)
+#11 28.05 Downloading lxml-6.1.3-cp312-cp312-musllinux_1_2_x86_64.whl (5.3 MB)
+#11 28.62    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.3/5.3 MB 9.3 MB/s  0:00:00
+#11 28.63 Downloading numpy-2.5.4-cp312-cp312-musllinux_1_2_x86_64.whl (18.5 MB)
+#11 30.26    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 18.5/18.5 MB 11.5 MB/s  0:00:01
+#11 30.27 Downloading pandas-3.1.1-cp312-cp312-musllinux_1_2_x86_64.whl (13.1 MB)
+#11 31.59    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.1/13.1 MB 10.0 MB/s  0:00:01
+#11 31.61 Downloading peewee-4.5.3-py3-none-any.whl (194 kB)
+#11 31.66 Downloading platformdirs-4.14.5-py3-none-any.whl (35 kB)
+#11 31.68 Downloading prompt_toolkit-3.0.53-py3-none-any.whl (392 kB)
+#11 31.73 Downloading protobuf-7.36.2-py3-none-any.whl (179 kB)
+#11 31.77 Downloading psycopg-3.3.8-py3-none-any.whl (216 kB)
+#11 31.80 Downloading psycopg_binary-3.3.8-cp312-cp312-musllinux_1_2_x86_64.whl (4.3 MB)
+#11 32.22    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 10.9 MB/s  0:00:00
+#11 32.23 Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+#11 32.25 Downloading pyluach-2.3.0-py3-none-any.whl (25 kB)
+#11 32.26 Downloading python_crontab-3.4.0-py3-none-any.whl (27 kB)
+#11 32.28 Downloading python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+#11 32.30 Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+#11 32.32 Downloading pytz-2026.6-py2.py3-none-any.whl (506 kB)
+#11 32.38 Downloading pyyaml-6.0.3-cp312-cp312-musllinux_1_2_x86_64.whl (790 kB)
+#11 32.45    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 790.2/790.2 kB 10.7 MB/s  0:00:00
+#11 32.46 Downloading redis-6.4.0-py3-none-any.whl (279 kB)
+#11 32.49 Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+#11 32.50 Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+#11 32.52 Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+#11 32.54 Downloading rpds_py-2026.9.1-cp312-cp312-musllinux_1_2_x86_64.whl (578 kB)
+#11 32.59    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 578.5/578.5 kB 10.5 MB/s  0:00:00
+#11 32.61 Downloading soupsieve-4.0.1-py3-none-any.whl (50 kB)
+#11 32.62 Downloading sqlparse-0.6.1-py3-none-any.whl (51 kB)
+#11 32.64 Downloading toolz-1.2.0-py3-none-any.whl (60 kB)
+#11 32.66 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#11 32.67 Downloading tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+#11 32.71 Downloading tzlocal-5.4.5-py3-none-any.whl (18 kB)
+#11 32.72 Downloading uritemplate-4.2.0-py3-none-any.whl (11 kB)
+#11 32.73 Downloading wcwidth-0.9.4-cp310-abi3-musllinux_1_2_x86_64.whl (796 kB)
+#11 32.80    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 796.2/796.2 kB 17.4 MB/s  0:00:00
+#11 32.81 Downloading websockets-17.4-cp312-cp312-musllinux_1_2_x86_64.whl (226 kB)
+#11 32.84 Downloading yfinance-1.8.0-py3-none-any.whl (158 kB)
+#11 32.86 Downloading gunicorn-23.0.0-py3-none-any.whl (85 kB)
+#11 32.88 Downloading packaging-26.3-py3-none-any.whl (129 kB)
+#11 34.00 Installing collected packages: pytz, python-crontab, cron-descriptor, websockets, wcwidth, vine, urllib3, uritemplate, tzlocal, tzdata, typing_extensions, toolz, sqlparse, soupsieve, rpds-py, redis, PyYAML, python-dotenv, pyluach, pycparser, psycopg-binary, protobuf, platformdirs, peewee, packaging, numpy, lxml, korean_lunar_calendar, inflection, idna, h11, click, charset-normalizer, certifi, billiard, attrs, asgiref, requests, referencing, python-dateutil, psycopg, prompt_toolkit, httpcore, gunicorn, Django, click-plugins, click-didyoumean, cffi, beautifulsoup4, anyio, amqp, pandas, kombu, jsonschema-specifications, httpx, djangorestframework, django-timezone-field, django-cors-headers, curl_cffi, click-repl, yfinance, jsonschema, exchange_calendars, celery, drf-spectacular, django-celery-beat
+#11 56.00
+#11 56.02 Successfully installed Django-5.2.19 PyYAML-6.0.3 amqp-5.4.2 anyio-4.16.0 asgiref-3.13.0 attrs-26.1.0 beautifulsoup4-4.15.0 billiard-4.3.2 celery-5.6.3 certifi-2026.10.23 cffi-2.1.1 charset-normalizer-3.5.2 click-8.5.0 click-didyoumean-0.3.1 click-plugins-1.1.1.2 click-repl-0.4.1 cron-descriptor-1.4.5 curl_cffi-0.17.0 django-celery-beat-2.9.0 django-cors-headers-4.9.0 django-timezone-field-7.2.2 djangorestframework-3.18.3 drf-spectacular-0.30.0 exchange_calendars-4.13.2 gunicorn-23.0.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.20 inflection-0.5.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 kombu-5.7.0 korean_lunar_calendar-0.4.0 lxml-6.1.3 numpy-2.5.4 packaging-26.3 pandas-3.1.1 peewee-4.5.3 platformdirs-4.14.5 prompt_toolkit-3.0.53 protobuf-7.36.2 psycopg-3.3.8 psycopg-binary-3.3.8 pycparser-3.12 pyluach-2.3.0 python-crontab-3.4.0 python-dateutil-4.0.0 python-dotenv-1.2.4 pytz-2026.6 redis-6.4.0 referencing-0.37.0 requests-2.34.2 rpds-py-2026.9.1 soupsieve-4.0.1 sqlparse-0.6.1 toolz-1.2.0 typing_extensions-4.16.0 tzdata-2026.6 tzlocal-5.4.5 uritemplate-4.2.0 urllib3-2.8.0 vine-5.1.0 wcwidth-0.9.4 websockets-17.4 yfinance-1.8.0
+#11 56.02 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#11 57.06 ( 1/23) Purging .build-deps (20261109.134710)
+#11 57.06 ( 2/23) Purging build-base (0.5-r4)
+#11 57.06 ( 3/23) Purging file (5.47-r2)
+#11 57.06 ( 4/23) Purging g++ (15.2.0-r5)
+#11 57.07 ( 5/23) Purging libstdc++-dev (15.2.0-r5)
+#11 57.14 ( 6/23) Purging gcc (15.2.0-r5)
+#11 57.20 ( 7/23) Purging binutils (2.45.1-r1)
+#11 57.22 ( 8/23) Purging libgcc-static (15.2.0-r5)
+#11 57.22 ( 9/23) Purging libatomic (15.2.0-r5)
+#11 57.22 (10/23) Purging libgomp (15.2.0-r5)
+#11 57.22 (11/23) Purging libstdc++ (15.2.0-r5)
+#11 57.22 (12/23) Purging make (4.4.1-r4)
+#11 57.22 (13/23) Purging fortify-headers (3.0.1-r2)
+#11 57.22 (14/23) Purging patch (2.8.1-r0)
+#11 57.22 (15/23) Purging linux-headers (7.0.0-r1)
+#11 57.32 (16/23) Purging isl26 (0.26-r2)
+#11 57.32 (17/23) Purging jansson (2.15.0-r0)
+#11 57.32 (18/23) Purging libgcc (15.2.0-r5)
+#11 57.32 (19/23) Purging libmagic (5.47-r2)
+#11 57.33 (20/23) Purging mpc1 (1.3.1-r1)
+#11 57.33 (21/23) Purging mpfr4 (4.2.2-r0)
+#11 57.33 (22/23) Purging musl-dev (1.2.6-r3)
+#11 57.34 (23/23) Purging gmp (6.3.0-r4)
+#11 57.35 Executing busybox-1.37.0-r31.trigger
+#11 57.36 OK: 17.7 MiB in 43 packages
+#11 DONE 81.5s
+
+#12 [ 6/11] COPY backend /app/backend
+#12 DONE 2.8s
+
+#13 [ 7/11] COPY scripts/ops /app/scripts/ops
+#13 DONE 2.2s
+
+#14 [ 8/11] COPY scripts/migrate_workspace.py /app/scripts/migrate_workspace.py
+#14 DONE 2.2s
+
+#15 [ 9/11] RUN addgroup -S cadrisyn && adduser -S -G cadrisyn -h /app cadrisyn && mkdir -p /app/static && chown -R cadrisyn:cadrisyn /app
+#15 DONE 15.4s
+
+#16 [10/11] WORKDIR /app/backend
+#16 DONE 2.0s
+
+#17 [11/11] RUN DJANGO_SECRET_KEY=build-only-non-runtime-secret-000000000000000000000000000 DJANGO_DEBUG=true DJANGO_STATIC_ROOT=/app/static python manage.py collectstatic --noinput
+#17 7.318
+#17 7.318 154 static files copied to '/app/static'.
+#17 DONE 8.8s
+
+#18 exporting to image
+#18 exporting layers
+#18 exporting layers 25.1s done
+#18 exporting manifest sha256:0ed7d49332f45d3f25896be7a64d91878607caa914703ca04c04c0dfc0461bda
+#18 exporting manifest sha256:0ed7d49332f45d3f25896be7a64d91878607caa914703ca04c04c0dfc0461bda 0.5s done
+#18 exporting config sha256:3ec2a4cdd23538ae4d493873304af652fbff3f03533ecc858ad402aab977b187
+#18 exporting config sha256:3ec2a4cdd23538ae4d493873304af652fbff3f03533ecc858ad402aab977b187 0.5s done
+#18 exporting attestation manifest sha256:78817cb9a8f0c320e8670b436a418f007b103c58104ef4a66838e036c025de7a
+#18 exporting attestation manifest sha256:78817cb9a8f0c320e8670b436a418f007b103c58104ef4a66838e036c025de7a 0.7s done
+#18 exporting manifest list sha256:cb594a4e67538fc27ad1d58d6ce2d39ee79eca878ba1d3c01dc650c6bb5d613f
+#18 exporting manifest list sha256:cb594a4e67538fc27ad1d58d6ce2d39ee79eca878ba1d3c01dc650c6bb5d613f 0.5s done
+#18 naming to docker.io/library/kerquant-phase51-62a1f1-api:local
+#18 naming to docker.io/library/kerquant-phase51-62a1f1-api:local 0.1s done
+#18 unpacking to docker.io/library/kerquant-phase51-62a1f1-api:local
+#18 unpacking to docker.io/library/kerquant-phase51-62a1f1-api:local 40.1s done
+#18 DONE 68.3s
+
+#19 resolving provenance for metadata file
+#19 DONE 0.0s
+ Image kerquant-phase51-62a1f1-api:local Built

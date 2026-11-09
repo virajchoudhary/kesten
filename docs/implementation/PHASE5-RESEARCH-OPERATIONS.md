@@ -85,3 +85,5 @@ The existing research application can select imported private datasets and run i
 The retained Docker PostgreSQL instance was used through loopback port 15435. Only `test_cadrisyn` received the new migration. Runtime-role tests use that pre-provisioned database with `--keepdb`; runtime cannot create schemas. A test-only `TRUNCATE` grant for the new table supports Django test cleanup. Do not copy that grant to application databases. No role, volume or application database was recreated.
 
 SQLite archived-byte backup/restore is currently exercised end to end by the reusable proof. PostgreSQL tests exercise bytea storage, migration and replay; a fresh PostgreSQL backup/restore drill containing the new receipt table remains a separate operational gate. Prior PostgreSQL recovery evidence is not relabeled as a current-schema drill.
+
+That remaining technical gate was subsequently exercised in [Phase 5.1](PHASE51-QUALIFICATION.md), using new source/restore databases and the actual current images. This Phase 5 record remains historical evidence; see the later report for current results and its separate historical-data blocker.

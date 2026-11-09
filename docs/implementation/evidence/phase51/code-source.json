@@ -1,0 +1,25 @@
+{
+  "scope": "Reviewed task implementation; physical tested bytes and committed Git blob bytes are distinguished for checkout line endings.",
+  "files": {
+    "scripts/qualify_research_postgres.py": {
+      "tested_worktree_sha256": "677f4e21fafeb3e7b878bbcaa48edab0beb332d97146cfcef4e64163cd6a4435",
+      "git_blob_sha256": "677f4e21fafeb3e7b878bbcaa48edab0beb332d97146cfcef4e64163cd6a4435"
+    },
+    "tests/test_research_postgres_privileges.py": {
+      "tested_worktree_sha256": "6467422ee1357e6fe08541309657cbcfa4ddd53bd1b6aba86aee6c1fffad0214",
+      "git_blob_sha256": "6467422ee1357e6fe08541309657cbcfa4ddd53bd1b6aba86aee6c1fffad0214"
+    },
+    "tests/test_research_postgres_qualification.py": {
+      "tested_worktree_sha256": "b19c0ab5c363397dbb8abde31ad38e14bf80dd8e1ca5d85bd1aa38ea5268541f",
+      "git_blob_sha256": "b19c0ab5c363397dbb8abde31ad38e14bf80dd8e1ca5d85bd1aa38ea5268541f"
+    },
+    "web/e2e/markets.spec.ts": {
+      "tested_worktree_sha256": "1411b06b6470f61af89c3ee90b340500fb88901d48470a5ec4e59993e272dbe0",
+      "git_blob_sha256": "15f30ec6f7f2f7617556e88c57d3e617a60b910be81cb2563f054db29d63c75f"
+    },
+    "web/e2e/research-quality.spec.ts": {
+      "tested_worktree_sha256": "4594383764be7649f8b9fb0844b919b3e8375cd3582982710b031a622ce3392c",
+      "git_blob_sha256": "bc7d90e722797b459e844574b0a2fb00f28243b32528a44e1920e9609b56fdfd"
+    }
+  }
+}

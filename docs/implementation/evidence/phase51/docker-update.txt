@@ -1,0 +1,5 @@
+[2026-11-09T13:49:57.779685700Z][Docker Desktop Updater-245422 (245822).exe.installer] starting, console mode: true
+[2026-11-09T13:49:57.805926100Z][Docker Desktop Updater-245422 (245822).exe.installer] disk space check for d4w extraction: need 100 MiB, 10815 MiB free
+[2026-11-09T13:49:58.046640400Z][Docker Desktop Updater-245422 (245822).exe.installer] disk space check for install skipped: 10736 MiB free (above 5120 MiB threshold)
+[2026-11-09T13:49:58.100193800Z][Docker Desktop Updater-245422 (245822).exe.installer] running "<HOME>\\AppData\\Local\\Temp\\DockerDesktopInstallers\\1794232197788193500\\Docker Desktop Installer.exe" [install -package <HOME>\AppData\Local\Temp\DockerDesktopInstallers\1794232197788193500\DockerDesktop.d4w --auto-update --confirm --auto-close-and-start-app --quiet --errfile=<HOME>\AppData\Local\Docker\installer.error.json --from-version=245422]
+[2026-11-09T13:54:03.342871800Z][Docker Desktop Updater-245422 (245822).exe.installer] removed <HOME>\AppData\Local\Temp\DockerDesktopInstallers\1794232197788193500

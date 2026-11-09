@@ -1,0 +1,33 @@
+{
+  "result": "PASS",
+  "source_revision": "348d78ecad3a5a01f72299975e7f80f781f56a27",
+  "source_archive_sha256": "c5e2fb7479c1b76940c3a1892d7b3be4b1cf81c13da7b380afead6a585ee3373",
+  "images": [
+    {
+      "service": "api",
+      "reference": "kerquant-phase51-62a1f1-api:local",
+      "image_id": "sha256:cb594a4e67538fc27ad1d58d6ce2d39ee79eca878ba1d3c01dc650c6bb5d613f",
+      "revision_label": "348d78ecad3a5a01f72299975e7f80f781f56a27",
+      "user": "cadrisyn",
+      "size_bytes": 838466693,
+      "running_platform_image_id": "sha256:cb594a4e67538fc27ad1d58d6ce2d39ee79eca878ba1d3c01dc650c6bb5d613f"
+    },
+    {
+      "service": "web",
+      "reference": "kerquant-phase51-62a1f1-web:local",
+      "image_id": "sha256:4788ee8843754bffaf9c014f82e72bb01edeefb8474a78f0b256f9186c8a403f",
+      "revision_label": "348d78ecad3a5a01f72299975e7f80f781f56a27",
+      "user": "nextjs",
+      "size_bytes": 342204481,
+      "running_platform_image_id": "sha256:4788ee8843754bffaf9c014f82e72bb01edeefb8474a78f0b256f9186c8a403f"
+    }
+  ],
+  "scope": "Local immutable application images from committed source archive; unrelated dirty files excluded; not signed provenance or deployment approval.",
+  "running_backend_source_files_checked": 125,
+  "running_backend_matches_source_archive": true,
+  "running_web_build_id": "348d78ecad3a5a01f72299975e7f80f781f56a27",
+  "actual_runtime_uids": {
+    "api": 100,
+    "web": 1001
+  }
+}

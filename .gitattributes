@@ -3,3 +3,7 @@ backend/research/quant/*.py text eol=lf
 backend/requirements-workspace.lock.txt text eol=lf
 docs/implementation/evidence/phase4/*.txt text eol=lf
 docs/implementation/evidence/phase4/*.json text eol=lf
+docs/implementation/evidence/phase51/*.txt text eol=lf
+docs/implementation/evidence/phase51/*.json text eol=lf
+docs/implementation/evidence/phase51/*.md text eol=lf
+docs/implementation/evidence/phase51/*.tsv text eol=lf

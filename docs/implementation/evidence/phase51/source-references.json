@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-11-09",
+  "branch": "codex/cadrisyn-foundation",
+  "head": "348d78e",
+  "result": "NO_SOURCE_QUALIFIED",
+  "scope": "Primary-source diligence only. No accounts, API keys, trials, subscriptions, purchases, market-data requests, or market-data downloads.",
+  "v1_requirements": {
+    "minimum_sessions": 120,
+    "maximum_sessions": 1500,
+    "calendar": "XNYS",
+    "currency": "USD",
+    "price_basis": "Raw daily closes in initial-share units with causal split ratios",
+    "actions": "Explicit complete split and cash-dividend fields",
+    "availability_limit_after_exchange_close_minutes": 60,
+    "availability_evidence": "Value-specific historical evidence for when the complete price/action record was available"
+  },
+  "references": [
+    {
+      "id": "R01",
+      "provider": "Nasdaq Data Link",
+      "title": "SHARADAR SEP documentation and pricing access",
+      "url": "https://data.nasdaq.com/databases/SEP/documentation",
+      "access_result": "First-party search-indexed product text was available; direct page extraction returned only a one-line shell."
+    },
+    {
+      "id": "R02",
+      "provider": "Nasdaq Data Link",
+      "title": "Legacy WIKI Prices dataset",
+      "url": "https://data.nasdaq.com/databases/WIKIP",
+      "access_result": "First-party indexed text only; direct page retrieval returned 404 during this review. No current license or access was verified."
+    },
+    {
+      "id": "R03",
+      "provider": "Sharadar",
+      "title": "Personal Use License Terms",
+      "url": "https://sharadar.com/terms",
+      "access_result": "First-party page opened and relevant clauses read. These terms are for Sharadar direct use, not a substitute for a Nasdaq Data Link order form."
+    },
+    {
+      "id": "R04",
+      "provider": "Nasdaq Data Link",
+      "title": "Terms and Conditions",
+      "url": "https://data.nasdaq.com/terms",
+      "access_result": "First-party search-indexed excerpt only; direct page retrieval returned 404. Not treated as a retained terms snapshot or legal clearance."
+    },
+    {
+      "id": "R05",
+      "provider": "Sharadar",
+      "title": "Corporate Actions documentation",
+      "url": "https://sharadar.com/docs/actions"
+    },
+    {
+      "id": "R06",
+      "provider": "Tiingo",
+      "title": "End-of-Day Stock Price API documentation",
+      "url": "https://www.tiingo.com/documentation/end-of-day"
+    },
+    {
+      "id": "R07",
+      "provider": "Tiingo",
+      "title": "Terms of Use",
+      "url": "https://www.tiingo.com/tos/",
+      "access_result": "Parent verified Starter/trial storage restrictions and the Enterprise benchmarking clause in the current official terms."
+    },
+    {
+      "id": "R08",
+      "provider": "Tiingo",
+      "title": "EOD pricing and product coverage",
+      "urls": [
+        {
+          "title": "Pricing",
+          "url": "https://www.tiingo.com/about/pricing"
+        },
+        {
+          "title": "End-of-Day Stock Price Data API",
+          "url": "https://www.tiingo.com/products/end-of-day-stock-price-data"
+        }
+      ]
+    },
+    {
+      "id": "R09",
+      "provider": "Tiingo",
+      "title": "Corporate action endpoints",
+      "urls": [
+        {
+          "title": "Splits API documentation",
+          "url": "https://www.tiingo.com/documentation/corporate-actions/splits"
+        },
+        {
+          "title": "Dividends API documentation",
+          "url": "https://www.tiingo.com/documentation/corporate-actions/dividends"
+        }
+      ]
+    },
+    {
+      "id": "R10",
+      "provider": "Alpha Vantage",
+      "title": "API Documentation",
+      "url": "https://www.alphavantage.co/documentation/"
+    },
+    {
+      "id": "R11",
+      "provider": "Alpha Vantage",
+      "title": "Support and market-data policies",
+      "urls": [
+        {
+          "title": "Support",
+          "url": "https://www.alphavantage.co/support/"
+        },
+        {
+          "title": "Realtime and 15-minute-delayed market-data policy",
+          "url": "https://www.alphavantage.co/realtime_data_policy/"
+        }
+      ]
+    },
+    {
+      "id": "R12",
+      "provider": "Alpha Vantage",
+      "title": "Terms of Service",
+      "url": "https://www.alphavantage.co/terms_of_service/",
+      "access_result": "Official page opened as a PDF; a current revision date was not apparent in the parsed document. No current EOD-specific data custody grant was located."
+    },
+    {
+      "id": "R13",
+      "provider": "Alpha Vantage",
+      "title": "Premium API Key",
+      "url": "https://www.alphavantage.co/premium/",
+      "access_result": "Premium dollar amounts were not exposed in page text. No account or subscription was created."
+    },
+    {
+      "id": "R14",
+      "provider": "Massive",
+      "title": "Stocks pricing",
+      "url": "https://massive.com/stocks",
+      "access_result": "Parent verified current plan prices on the official stock product page; the general pricing page rendered a dynamic shell."
+    },
+    {
+      "id": "R15",
+      "provider": "Massive",
+      "title": "Market Data Terms of Service",
+      "url": "https://massive.com/legal/market-data-terms-of-service"
+    },
+    {
+      "id": "R16",
+      "provider": "Massive",
+      "title": "Businesses Terms of Service",
+      "url": "https://massive.com/legal/businesses-terms-of-service"
+    },
+    {
+      "id": "R17",
+      "provider": "Massive",
+      "title": "Stocks for Business pricing",
+      "url": "https://massive.com/business-stocks"
+    },
+    {
+      "id": "R18",
+      "provider": "Massive",
+      "title": "Stock aggregate adjustment behavior",
+      "urls": [
+        {
+          "title": "Split/dividend adjustment FAQ",
+          "url": "https://massive.com/knowledge-base/article/is-massives-stock-data-adjusted-for-splits-or-dividends"
+        },
+        {
+          "title": "Flat-file stock overview",
+          "url": "https://massive.com/docs/flat-files/stocks/overview"
+        }
+      ]
+    },
+    {
+      "id": "R19",
+      "provider": "Massive",
+      "title": "Corporate action endpoints",
+      "urls": [
+        {
+          "title": "Stocks REST API overview",
+          "url": "https://massive.com/docs/rest/stocks/overview"
+        },
+        {
+          "title": "Splits",
+          "url": "https://massive.com/docs/rest/stocks/corporate-actions/splits"
+        },
+        {
+          "title": "Dividends",
+          "url": "https://massive.com/docs/rest/stocks/corporate-actions/dividends"
+        },
+        {
+          "title": "Split event classification FAQ",
+          "url": "https://massive.com/knowledge-base/article/does-massive-support-normal-and-reverse-splits"
+        }
+      ]
+    },
+    {
+      "id": "R20",
+      "provider": "Massive",
+      "title": "Flat-file daily readiness",
+      "url": "https://massive.com/knowledge-base/article/what-time-are-massives-flat-files-ready-each-day"
+    },
+    {
+      "id": "R21",
+      "provider": "Massive",
+      "title": "Historical stock-data coverage",
+      "url": "https://massive.com/knowledge-base/article/how-much-historical-stock-data-does-massive-have"
+    },
+    {
+      "id": "R22",
+      "provider": "NYSE",
+      "title": "TAQ Closing Prices",
+      "url": "https://www.nyse.com/data-products/catalog/taq-nyse-closing-prices"
+    },
+    {
+      "id": "R23",
+      "provider": "NYSE",
+      "title": "Historical market data and Daily TAQ",
+      "urls": [
+        {
+          "title": "Historical products",
+          "url": "https://www.nyse.com/market-data/historical"
+        },
+        {
+          "title": "Daily TAQ",
+          "url": "https://www.nyse.com/data-products/catalog/daily-taq/"
+        }
+      ]
+    },
+    {
+      "id": "R24",
+      "provider": "NYSE",
+      "title": "Daily TAQ Client Specification v4.3",
+      "url": "https://www.nyse.com/publicdocs/nyse/data/Daily_TAQ_Client_Spec_v4.3.pdf"
+    },
+    {
+      "id": "R25",
+      "provider": "NYSE",
+      "title": "Pricing, policies, contracts, and academic access",
+      "urls": [
+        {
+          "title": "Pricing, policies, contracts and guidelines",
+          "url": "https://www.nyse.com/market-data/pricing-policies-contracts-guidelines"
+        },
+        {
+          "title": "Academic customers",
+          "url": "https://www.nyse.com/market-data/academics"
+        }
+      ]
+    },
+    {
+      "id": "R26",
+      "provider": "UCI Machine Learning Repository",
+      "title": "Dow Jones Index dataset 312",
+      "url": "https://archive.ics.uci.edu/dataset/312/dow_jones_index"
+    },
+    {
+      "id": "R27",
+      "provider": "Creative Commons",
+      "title": "Attribution 4.0 International",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "evidence_labels": {
+    "explicit": "Stated in the cited first-party product, technical, or terms page.",
+    "inference": "A comparison between explicit provider terms/clock and the project's fixed v1 contract.",
+    "unknown": "Not established by the reviewed evidence; must not be treated as permission, completeness, or historical truth."
+  },
+  "limitations": [
+    "No sample market-data bytes were acquired, so actual instrument gaps, point-in-time values, adjustment behavior, and numerical consistency were not tested.",
+    "No legal opinion was obtained. Search-indexed Nasdaq Data Link terms and direct-access failures are reported as evidence limitations.",
+    "Provider product pages and prices may change after 2026-11-09.",
+    "The v1 intake's hashes bind supplied bytes and operator evidence; they do not independently authenticate a source or its historical availability."
+  ]
+}

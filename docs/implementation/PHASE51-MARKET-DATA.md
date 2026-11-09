@@ -1,0 +1,34 @@
+# Historical data diligence, Phase 5.1
+
+Reviewed 2026-11-09 using official product documentation and terms. No accounts, trials, API keys, subscriptions or market-data downloads were created. No source is qualified for ingestion or forecasting evaluation. The prices below are published reference prices, not purchase recommendations or quoted entitlements for Kerquant.
+
+## Access, cost and custody
+
+| Source | Published access and cost | Rights relevant to this application |
+| --- | --- | --- |
+| SHARADAR SEP / Nasdaq Data Link | SEP documents a limited September-to-December 2018 sample; full-product pricing requires sign-in. WIKI is discontinued. | Sharadar's direct license is personal and non-professional, restricts transfer and requires deletion after termination. Institutional use needs a separate arrangement. Nasdaq's terms URL returned 404; product-order custody rights remain unverified. [Direct terms](https://sharadar.com/terms), [SEP documentation](https://data.nasdaq.com/databases/SEP/documentation). |
+| Tiingo EOD | A free Starter plan exists. Published individual pricing is $30/month or $300/year; internal commercial pricing is $50/month or $499/year. | Starter/trial data and derived outputs cannot be persistently retained. Eligible paid storage ends with termination/downgrade, including backups. The current terms require Enterprise permission for AI/ML benchmarking; the exact baseline use needs clarification. [Pricing](https://www.tiingo.com/about/pricing), [terms, updated November 5](https://www.tiingo.com/tos/). |
+| Alpha Vantage | Free service advertises 25 requests/day. Compact daily responses provide at most 100 observations; full history and Daily Adjusted require Premium. Current paid pricing was not verified from the dynamic selector. | A public API does not establish persistent EOD storage, backup, internal-transfer or export rights for this application. Those specific grants and attribution remain unresolved. [API documentation](https://www.alphavantage.co/documentation/), [support](https://www.alphavantage.co/support/), [terms](https://www.alphavantage.co/terms_of_service/). |
+| Massive | Individual Stocks Basic is $0/month with two years; Starter $29/five years; Developer $79/ten years; Advanced $199/20+ years. Business lists $2,499/month before applicable add-ons. | Individual use does not cover an organizational or multi-user service. Termination limits data retention; the temporary unused-backup exception does not permit restored use. Business internal-use rights remain subject to entitlements, upstream terms and express ML-training permission. [Stock plans](https://massive.com/stocks), [individual data terms](https://massive.com/legal/market-data-terms-of-service), [business terms](https://massive.com/legal/businesses-terms-of-service). |
+| NYSE TAQ | Official closing-price history starts in November 2001; Daily TAQ advertises history from 1993. Exact fees require the selected product/order; no current fee was established. | Product agreements and applicable exchange permissions must establish storage, backups, internal transfer and outputs. A public sample is not institutional redistribution permission. [Closing Prices](https://www.nyse.com/data-products/catalog/taq-nyse-closing-prices), [historical products](https://www.nyse.com/market-data/historical), [policies and contracts](https://www.nyse.com/market-data/pricing-policies-contracts-guidelines). |
+| UCI Dow Jones Index | Public contributed dataset with a CC BY 4.0 notice. | Attribution is required, but underlying exchange-data authority was not independently established. More fundamentally, its observations are weekly rather than daily. [Dataset and license](https://archive.ics.uci.edu/dataset/312/dow%2Bjones%2Bindex). |
+
+## Scientific suitability
+
+The frozen v1 protocol needs 120 to 1,500 contiguous XNYS sessions, USD raw closes, complete split/dividend fields and value-specific evidence of availability within 60 minutes of each exchange close. No reviewed source establishes that full package.
+
+- SHARADAR distinguishes raw, split-adjusted and total-adjusted fields. Its actions documentation lists delivery at 17:30 and 23:30 Eastern, already later than the normal v1 deadline. A `lastupdated` date is not a historical publication timestamp. [Actions documentation](https://sharadar.com/docs/actions).
+- Tiingo exposes raw/adjusted prices and corporate-action fields, but documents typical EOD arrival at 17:30 EST and later corrections. Neither the schedule nor a current adjusted history proves the exact earlier vintage. [EOD documentation](https://www.tiingo.com/documentation/end-of-day).
+- Alpha Vantage's free compact response falls below the minimum sample length. Its paid action-aware endpoint still does not establish historical per-value publication evidence. Raw OHLCV and adjusted-close fields are distinct. [Daily API](https://www.alphavantage.co/documentation/).
+- Massive supports unadjusted aggregates and separate actions. Its documented flat-file availability is the next day. REST timing, revision history and action completeness for the intended protocol remain unverified. [Adjustment behavior](https://massive.com/knowledge-base/article/is-massives-stock-data-adjusted-for-splits-or-dividends), [file readiness](https://massive.com/knowledge-base/article/what-time-are-massives-flat-files-ready-each-day).
+- NYSE's closing-price summary establishes close-of-market content, not a close-plus-60-minute publication bound or complete actions. Daily TAQ describes prior-day delivery. UCI's weekly observations cannot be interpolated into empirical daily observations.
+
+No observations were obtained, so actual completeness, symbol changes, currency and session alignment remain untested. There are no legitimate acquisition dates or raw-data hashes to report from this review.
+
+## Decision and next evidence
+
+Keep historical ingestion and exports gated. Obtain a product-specific written grant covering research, durable source/terms archives, recovery, internal transfer, attribution, geographic eligibility and retained outputs. Obtain price/action vintage evidence and correction rules for the exact universe. Public plan descriptions and byte hashes cannot replace either requirement.
+
+Massive's business documentation provides a comparatively explicit internal-use route to investigate if a future budget is approved. Tiingo's current Starter restrictions make it unsuitable for this durable intake pipeline. Neither observation is licensing approval. A T+1 or later issue-time protocol could support different data, but requires a separate version and scientific review; this phase does not relax v1 or claim predictive validity.
+
+The structured [source index](evidence/phase51/source-references.json) records the primary URLs and access limitations. Dynamic or inaccessible pages are identified rather than treated as verified contracts.

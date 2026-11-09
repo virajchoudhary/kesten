@@ -1,0 +1,23 @@
+{
+  "artifact": {
+    "filename": "research-source.dump",
+    "sha256": "3ac4d10dc9a070822ec0e5c520984750e5a4743f6c02a15ec96d5b3300e29646",
+    "size_bytes": 277197
+  },
+  "backup_type": "postgresql_custom",
+  "created_at": "2026-11-09T15:54:15+00:00",
+  "manifest_version": 1,
+  "schema_metadata": {
+    "django_migrations_present": true,
+    "server_version_num": 170011,
+    "toc_entries": 206,
+    "toc_sha256": "15351cb89593c6e84d50f8984a2a54d24389f5a0775c4b016141c437d485ea80",
+    "user_object_count": 187,
+    "user_schema_count": 0
+  },
+  "source": {
+    "cluster_database_fingerprint": "d08d0b70af5c78c383bfbdb4bd0f346b5ca56c93690610f338a1db28441a1cfb",
+    "endpoint_fingerprint": "b1103e3d5fc6b8b3b0eb14b94827a2b1a94e7f00fb6e7dee6d973385119cfb84",
+    "engine": "postgresql"
+  }
+}

@@ -2,6 +2,8 @@
 
 The source-intake foundation is implemented. Empirical forecasting qualification remains blocked. No historical archive was acquired or accepted during this work, and no historical accuracy or investment-performance claim is supported.
 
+The subsequent [Phase 5.1 qualification](PHASE51-QUALIFICATION.md) closes the current-image and new-schema PostgreSQL recovery checks with isolated runtime evidence. Its [source review](PHASE51-MARKET-DATA.md) retains the empirical qualification blocker.
+
 This work continues `2a04197` on `codex/cadrisyn-foundation`. It does not replace the unrelated Phase 5 release-engineering changes already present in this checkout.
 
 ## Implemented behavior

@@ -1,0 +1,35 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "database": "cadrisyn",
+      "result": "PASS",
+      "runtime_role": "cadrisyn",
+      "runtime_privileges": {
+        "superuser": false,
+        "create_database": false,
+        "create_role": false,
+        "create_schema": false,
+        "temporary": false,
+        "writable_schema": false,
+        "owns_objects": false,
+        "role_membership": false
+      }
+    },
+    {
+      "database": "restore_cadrisyn",
+      "result": "PASS",
+      "runtime_role": "cadrisyn",
+      "runtime_privileges": {
+        "superuser": false,
+        "create_database": false,
+        "create_role": false,
+        "create_schema": false,
+        "temporary": false,
+        "writable_schema": false,
+        "owns_objects": false,
+        "role_membership": false
+      }
+    }
+  ]
+}

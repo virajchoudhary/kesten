@@ -1,0 +1,3 @@
+ Container kerquant-phase51-62a1f1-migrate-run-64d21038443c Creating
+ Container kerquant-phase51-62a1f1-migrate-run-64d21038443c Created
+PostgreSQL restore completed from: /verification/research-source.dump

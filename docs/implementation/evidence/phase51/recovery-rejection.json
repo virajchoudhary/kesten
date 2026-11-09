@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "checks": [
+    {
+      "target": "cadrisyn",
+      "exit_code": 2,
+      "rejected_before_restore": true
+    },
+    {
+      "target": "restore_cadrisyn",
+      "exit_code": 2,
+      "rejected_before_restore": true
+    }
+  ]
+}
