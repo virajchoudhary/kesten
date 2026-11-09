@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { fixturePath } from "./fixtures";
 
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type APIResponse, type Page } from "@playwright/test";
 import { z } from "zod";
 
 import {
@@ -17,6 +17,14 @@ const CredentialsSchema = z.strictObject({
   password: z.string().min(1),
 });
 
+async function requestAfterCooldown(request: () => Promise<APIResponse>): Promise<APIResponse> {
+  const response = await request();
+  if (response.status() !== 429) return response;
+  const seconds = z.coerce.number().int().min(1).max(60).parse(response.headers()["retry-after"]);
+  await new Promise((resolve) => setTimeout(resolve, seconds * 1000 + 100));
+  return request();
+}
+
 async function authenticate(page: Page): Promise<string> {
   const credentials = CredentialsSchema.parse(
     JSON.parse(
@@ -26,13 +34,13 @@ async function authenticate(page: Page): Promise<string> {
       ),
     ),
   );
-  const anonymous = SessionSchema.parse(
-    await (await page.request.get("/api/v1/session/")).json(),
-  );
-  const response = await page.request.post("/api/v1/session/", {
+  const anonymousResponse = await requestAfterCooldown(() => page.request.get("/api/v1/session/"));
+  expect(anonymousResponse.status()).toBe(200);
+  const anonymous = SessionSchema.parse(await anonymousResponse.json());
+  const response = await requestAfterCooldown(() => page.request.post("/api/v1/session/", {
     data: credentials,
     headers: { "X-CSRFToken": anonymous.csrf_token },
-  });
+  }));
   expect(response.status()).toBe(200);
   const session = SessionSchema.parse(await response.json());
   expect(session.authenticated).toBe(true);
@@ -229,6 +237,7 @@ test("account changes in another tab clear private research before a second acco
   page,
   context,
 }) => {
+  test.setTimeout(120_000);
   const credentials = CredentialsSchema.parse(
     JSON.parse(
       readFileSync(

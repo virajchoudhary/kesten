@@ -93,7 +93,9 @@ test("signs in and completes the authenticated daily market research path", asyn
 
   let shouldRemoveAapl = false;
   try {
-    const searchButton = page.getByRole("button", { name: "Add instrument", exact: true }).first();
+    const searchButton = page
+      .getByRole("region", { name: "Watchlist", exact: true })
+      .getByRole("button", { name: "Add instrument", exact: true });
     await searchButton.click();
     const search = page.getByRole("combobox", { name: "Search by symbol or company" });
     await search.fill("AAPL");
