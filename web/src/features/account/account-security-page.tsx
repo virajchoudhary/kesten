@@ -1,26 +1,42 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { LoaderCircle } from "lucide-react";
-import { brand } from "@/lib/brand";
-import { BrandMark } from "@/components/brand-mark";
+import { TerminalHeader } from "@/components/terminal-header";
 
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/features/session/session-provider";
 
 import { AccountSecuritySettings } from "./account-security-settings";
+import { normalizeAccountError } from "./account-form-utils";
 
 export function AccountSecurityPage(): React.JSX.Element {
-  const { state, refresh } = useSession();
+  const { state, refresh, signOut } = useSession();
   const router = useRouter();
+  const [signOutPending, setSignOutPending] = useState(false);
+  const [signOutError, setSignOutError] = useState<string | null>(null);
 
   useEffect(() => {
     if (state.kind === "anonymous") {
       router.replace("/sign-in");
     }
   }, [router, state.kind]);
+
+  async function handleSignOut(): Promise<void> {
+    setSignOutPending(true);
+    setSignOutError(null);
+    try {
+      await signOut();
+    } catch (error: unknown) {
+      setSignOutError(
+        normalizeAccountError(error, "Sign out failed. Try again.").message,
+      );
+    } finally {
+      setSignOutPending(false);
+    }
+  }
 
   if (state.kind === "checking") {
     return (
@@ -48,7 +64,10 @@ export function AccountSecurityPage(): React.JSX.Element {
 
   if (state.kind === "anonymous") {
     return (
-      <main className="flex min-h-dvh items-center justify-center bg-canvas text-sm text-secondary" role="status">
+      <main
+        className="flex min-h-dvh items-center justify-center bg-canvas text-sm text-secondary"
+        role="status"
+      >
         Sign-in required
       </main>
     );
@@ -59,45 +78,46 @@ export function AccountSecurityPage(): React.JSX.Element {
       <a className="skip-link" href="#main-content">
         Skip to account security
       </a>
-      <header className="flex min-h-12 flex-wrap items-center gap-3 border-b border-border-subtle bg-surface px-3 py-2 sm:px-4">
-        <Link
-          aria-label={`${brand.name} markets`}
-          className="terminal-wordmark"
-          href="/app/markets"
+      <TerminalHeader
+        active="Account"
+        username={state.session.user.username}
+        onSignOut={() => void handleSignOut()}
+        signOutPending={signOutPending}
+      />
+      {signOutError && (
+        <p
+          role="alert"
+          className="border-b border-negative/40 bg-negative/10 px-4 py-2 text-sm text-negative"
         >
-          <BrandMark />
-          <span>{brand.name}</span>
-        </Link>
-        <nav aria-label="Workspace" className="flex min-h-9 items-center gap-4 text-xs">
-          <Link className="text-secondary hover:text-foreground" href="/app/markets">
-            Markets
-          </Link>
-          <Link className="text-secondary hover:text-foreground" href="/methodology">
-            Methodology
-          </Link>
-          <Link className="text-secondary hover:text-foreground" href="/data">
-            Data
-          </Link>
-          <Link
-            aria-current="page"
-            className="font-medium text-accent"
-            href="/app/account"
-          >
-            Account
-          </Link>
-        </nav>
-        <span className="ml-auto hidden max-w-40 truncate text-xs text-secondary sm:block">
-          {state.session.user.username}
-        </span>
-      </header>
+          {signOutError}
+        </p>
+      )}
 
-      <main className="mx-auto max-w-4xl px-4 py-7 sm:px-8 sm:py-10" id="main-content" tabIndex={-1}>
+      <main
+        className="mx-auto max-w-4xl px-4 py-7 sm:px-8 sm:py-10"
+        id="main-content"
+        tabIndex={-1}
+      >
         <header className="mb-6">
-          <p className="text-xs font-medium text-secondary">Workspace profile</p>
-          <h1 className="mt-1 text-2xl font-semibold leading-8">Account security</h1>
-          <p className="mt-2 text-sm text-secondary">
-            Signed in as <span className="font-medium text-foreground">{state.session.user.username}</span>
+          <p className="text-xs font-medium text-secondary">
+            Workspace profile
           </p>
+          <h1 className="mt-1 text-2xl font-semibold leading-8">
+            Account security
+          </h1>
+          <p className="mt-2 text-sm text-secondary">
+            Signed in as{" "}
+            <span className="font-medium text-foreground">
+              {state.session.user.username}
+            </span>
+          </p>
+          <nav
+            aria-label="Research guidance"
+            className="mt-3 flex gap-4 text-xs text-accent"
+          >
+            <Link href="/methodology">Methodology</Link>
+            <Link href="/data">Data and licensing</Link>
+          </nav>
         </header>
         <AccountSecuritySettings session={state.session} />
       </main>

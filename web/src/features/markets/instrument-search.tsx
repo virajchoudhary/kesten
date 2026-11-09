@@ -111,7 +111,7 @@ export function InstrumentSearch({
 
   function selectInstrument(instrument: Instrument): void {
     onSelect(instrument);
-    setOpen(false);
+    handleOpenChange(false);
   }
 
   function handleKeyDown(event: KeyboardEvent<HTMLInputElement>): void {

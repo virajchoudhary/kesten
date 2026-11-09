@@ -147,6 +147,9 @@ test("account page changes a password and revokes only other sessions", async ({
   await page.goto("/app/account");
   await expect(page.getByRole("heading", { name: "Account security" })).toBeVisible();
   await expect(page.locator("header .product-mark")).toHaveCount(1);
+  await expect(page.getByRole("link", { name: "Research", exact: true })).toBeVisible();
+  await expect(page.getByRole("button", { name: /Use (light|dark) theme/u })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Sign out", exact: true })).toBeVisible();
   await page.getByLabel("Current password").fill("browser-fixture-current-password");
   await page.getByLabel("New password", { exact: true }).fill("browser-fixture-replacement-password");
   await page.getByLabel("Confirm new password").fill("browser-fixture-replacement-password");

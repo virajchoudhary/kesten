@@ -23,7 +23,7 @@ export function TerminalHeader({
   username: string;
   onSignOut: () => void;
   signOutPending: boolean;
-  active?: "Markets" | "Research";
+  active?: "Markets" | "Research" | "Account";
 }): React.JSX.Element {
   const { resolvedTheme, setTheme } = useTheme();
   const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
@@ -59,6 +59,7 @@ export function TerminalHeader({
         <Link
           href="/app/account"
           aria-label="Account"
+          aria-current={active === "Account" ? "page" : undefined}
           className="terminal-account"
           title={username}
         >

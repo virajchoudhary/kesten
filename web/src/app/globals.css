@@ -1074,7 +1074,7 @@ select:focus-visible {
 .chart-control-panel {
   position: absolute;
   top: 8px;
-  bottom: 8px;
+  max-height: calc(100% - 16px);
   right: 10px;
   z-index: 5;
   width: 286px;
@@ -1522,7 +1522,7 @@ select:focus-visible {
     left: 40px;
     width: auto;
     top: 6px;
-    bottom: 6px;
+    max-height: calc(100% - 12px);
   }
   .terminal-analysis.has-research .terminal-chart-view {
     display: none;
