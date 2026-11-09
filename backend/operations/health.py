@@ -1,8 +1,8 @@
 import logging
 import uuid
 
-from django.core.cache import cache
 from django.conf import settings
+from django.core.cache import cache
 from django.db import connection
 from django.db.migrations.executor import MigrationExecutor
 from django.http import JsonResponse
@@ -32,19 +32,29 @@ def readiness(request):
                 cursor.execute(
                     """
                     SELECT r.rolsuper, r.rolcreatedb, r.rolcreaterole, r.rolreplication, r.rolbypassrls,
-                           pg_get_userbyid(d.datdba) = current_user,
-                           has_schema_privilege(current_user, 'public', 'CREATE'),
+                           has_database_privilege(current_user, current_database(), 'CREATE'),
+                           has_database_privilege(current_user, current_database(), 'TEMPORARY'),
                            EXISTS (
                                SELECT 1
-                               FROM pg_class c
-                               JOIN pg_namespace n ON n.oid = c.relnamespace
-                               WHERE n.nspname = 'public'
-                                 AND c.relkind IN ('r', 'p', 'v', 'm', 'S', 'f')
-                                 AND pg_get_userbyid(c.relowner) = current_user
+                               FROM pg_namespace
+                               WHERE nspname !~ '^pg_'
+                                 AND nspname <> 'information_schema'
+                                 AND has_schema_privilege(current_user, oid, 'CREATE')
+                           ),
+                           EXISTS (
+                               SELECT 1
+                               FROM pg_shdepend
+                               WHERE refclassid='pg_authid'::regclass
+                                 AND refobjid=r.oid AND deptype='o'
+                                 AND dbid IN (0, (SELECT oid FROM pg_database WHERE datname=current_database()))
+                           ),
+                           EXISTS (
+                               SELECT 1
+                               FROM pg_auth_members
+                               WHERE member=r.oid
                            )
                     FROM pg_roles r
-                    JOIN pg_database d ON d.datname = current_database()
-                    WHERE r.rolname = current_user
+                    WHERE rolname = current_user
                     """
                 )
                 privileges = cursor.fetchone()
