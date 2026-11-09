@@ -11,7 +11,11 @@ import { ApiError } from "@/lib/api/client";
 import { asResearchError } from "./research-errors";
 import { ResearchEvaluationSetup } from "./research-evaluation-setup";
 import { ResearchHistory } from "./research-history";
-import { researchWorkspaceHref } from "./research-navigation";
+import {
+  RESEARCH_SECTIONS,
+  researchResultHref,
+  researchWorkspaceHref,
+} from "./research-navigation";
 import { getResearchDatasets, getResearchRun } from "./research-api";
 import { ResearchResults } from "./research-results";
 import {
@@ -162,14 +166,14 @@ function AuthenticatedResearchWorkspace({
   function handleCreatedRun(run: ResearchRun): void {
     setHistoryRefresh((current) => current + 1);
     router.push(
-      researchWorkspaceHref({
+      researchResultHref({
         embedded,
         runId: run.id,
         compareId: null,
         instrumentId: requestedInstrumentId,
         focusModel,
       }),
-      { scroll: false },
+      { scroll: !embedded },
     );
   }
 
@@ -246,6 +250,14 @@ function AuthenticatedResearchWorkspace({
           </div>
         </div>
 
+        {!embedded && (
+          <nav aria-label="Research sections" className="research-section-nav">
+            <a href={`#${RESEARCH_SECTIONS.setup}`}>Setup</a>
+            <a href={`#${RESEARCH_SECTIONS.results}`}>Results</a>
+            <a href={`#${RESEARCH_SECTIONS.history}`}>Saved runs</a>
+          </nav>
+        )}
+
         <div className="research-layout grid min-w-0 grid-cols-1 lg:grid-cols-[340px_minmax(0,1fr)] lg:grid-rows-[auto_minmax(0,1fr)]">
           <ResearchEvaluationSetup
             key={`${requestedRunId}:${requestedCompareId}:${requestedInstrumentId}:${focusModel}`}
@@ -261,6 +273,8 @@ function AuthenticatedResearchWorkspace({
           />
 
           <section
+            id={embedded ? undefined : RESEARCH_SECTIONS.results}
+            tabIndex={-1}
             aria-labelledby="research-detail-title"
             className="min-w-0 border-b border-border-subtle lg:col-start-2 lg:row-start-1"
           >

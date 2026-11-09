@@ -121,7 +121,7 @@ describe("research history", () => {
     expect(secondRun).toHaveAttribute("href", expect.stringContaining(`run=${RUN_B}`));
     expect(compareLink).toHaveAttribute(
       "href",
-      `/app/research?run=${RUN_A}&compare=${RUN_B}&instrument=xnas-aapl&method=last_close`,
+      `/app/research?run=${RUN_A}&compare=${RUN_B}&instrument=xnas-aapl&method=last_close#research-results`,
     );
     expect(fetchMock.mock.calls.every(([input]) =>
       String(input).startsWith("/api/v1/research/history/?"),

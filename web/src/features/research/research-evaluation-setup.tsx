@@ -149,7 +149,11 @@ export function ResearchEvaluationSetup({
       className="min-w-0 border-b border-border-subtle lg:border-r"
     >
       <div className="flex min-h-11 items-center border-b border-border-subtle px-4">
-        <h2 className="text-sm font-semibold" id="research-setup-title">
+        <h2
+          className="text-sm font-semibold"
+          id="research-setup-title"
+          tabIndex={-1}
+        >
           Evaluation setup
         </h2>
       </div>

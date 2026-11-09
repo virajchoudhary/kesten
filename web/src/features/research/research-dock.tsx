@@ -392,32 +392,31 @@ export function ResearchDock({
           />
         )}
 
-        {activeTab === "evaluate" && (
-          <div className="research-polish-evaluation min-w-0">
-            <ResearchEvaluationSetup
-              csrfToken={csrfToken}
-              datasetsState={datasetState}
-              horizon={horizon}
-              key={`${query.requestedInstrumentId ?? "all"}:${query.focusModel}`}
-              onCreated={handleCreatedRun}
-              onDatasetChange={setSelectedDatasetId}
-              onHorizonChange={setHorizon}
-              onRetryDatasets={() =>
-                setDatasetRefresh((current) => current + 1)
-              }
-              requestedInstrumentId={query.requestedInstrumentId}
-              selectedDatasetId={selectedDataset?.id ?? ""}
+        <div
+          className="research-polish-evaluation min-w-0"
+          hidden={activeTab !== "evaluate"}
+        >
+          <ResearchEvaluationSetup
+            csrfToken={csrfToken}
+            datasetsState={datasetState}
+            horizon={horizon}
+            key={`${query.requestedInstrumentId ?? "all"}:${query.focusModel}`}
+            onCreated={handleCreatedRun}
+            onDatasetChange={setSelectedDatasetId}
+            onHorizonChange={setHorizon}
+            onRetryDatasets={() => setDatasetRefresh((current) => current + 1)}
+            requestedInstrumentId={query.requestedInstrumentId}
+            selectedDatasetId={selectedDataset?.id ?? ""}
+          />
+          <details className="dock-setup-provenance">
+            <summary>Dataset source and permissions</summary>
+            <ResearchDockDatasetFacts
+              dataset={selectedDataset}
+              state={datasetState}
+              title="Selected dataset provenance"
             />
-            <details className="dock-setup-provenance">
-              <summary>Dataset source and permissions</summary>
-              <ResearchDockDatasetFacts
-                dataset={selectedDataset}
-                state={datasetState}
-                title="Selected dataset provenance"
-              />
-            </details>
-          </div>
-        )}
+          </details>
+        </div>
       </div>
     </section>
   );

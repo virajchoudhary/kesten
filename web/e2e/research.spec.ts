@@ -131,7 +131,7 @@ test("runs and reloads a private synthetic research evaluation against the real 
   expect(createdRun.result.evidence_kind).toBe("synthetic_pipeline_check");
   expect(createdRun.completed_at).toBeTruthy();
 
-  await page.waitForURL(new RegExp(`/app/research\\?run=${createdRun.id}$`, "u"));
+  await page.waitForURL(new RegExp(`/app/research\\?run=${createdRun.id}#research-results$`, "u"));
   await expect(page.getByRole("heading", { name: "Synthetic pipeline fixture", exact: true }))
     .toBeVisible();
   await expect(page.getByRole("img", { name: "Dataset history and forecast paths" }))

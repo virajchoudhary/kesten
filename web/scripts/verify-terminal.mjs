@@ -23,6 +23,7 @@ const suites = [
   "research",
   "terminal",
   "terminal-depth",
+  "product-quality",
 ];
 for (const [index, suite] of suites.entries()) {
   if (index > 0) {

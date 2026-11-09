@@ -16,7 +16,7 @@ import { Input } from "@/components/ui/input";
 import { getResearchHistory } from "./research-api";
 import { asResearchError } from "./research-errors";
 import { formatUtcTimestamp } from "./research-formatters";
-import { researchWorkspaceHref } from "./research-navigation";
+import { RESEARCH_SECTIONS, researchResultHref } from "./research-navigation";
 import {
   ResearchHistoryQuerySchema,
   ResearchInstrumentIdSchema,
@@ -46,14 +46,14 @@ function HistoryActions({
 }): React.JSX.Element {
   const selected = selectedRunId === run.id;
   const comparing = selectedCompareId === run.id;
-  const runHref = researchWorkspaceHref({
+  const runHref = researchResultHref({
     embedded,
     runId: run.id,
     compareId: selectedCompareId,
     instrumentId: instrumentContext,
     focusModel,
   });
-  const compareHref = researchWorkspaceHref({
+  const compareHref = researchResultHref({
     embedded,
     runId: selectedRunId,
     compareId: comparing ? null : run.id,
@@ -68,7 +68,7 @@ function HistoryActions({
         aria-label={`Open ${run.name}`}
         className="inline-flex min-h-9 items-center rounded-control px-2 font-medium text-accent hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
         href={runHref}
-        scroll={false}
+        scroll={!embedded}
       >
         Open
       </Link>
@@ -77,7 +77,7 @@ function HistoryActions({
           aria-current={comparing ? "true" : undefined}
           className="inline-flex min-h-9 items-center gap-1.5 rounded-control px-2 text-secondary hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
           href={compareHref}
-          scroll={false}
+          scroll={!embedded}
         >
           <ArrowLeftRight aria-hidden="true" size={14} />
           {comparing ? "Remove comparison" : "Compare with open run"}
@@ -187,9 +187,9 @@ export function ResearchHistory({
       : { kind: "loading" };
   const activeFilters = Boolean(
     search.trim() ||
-    normalizedInstrumentId ||
-    horizonFilter !== "" ||
-    dataKindFilter !== "all",
+      normalizedInstrumentId ||
+      horizonFilter !== "" ||
+      dataKindFilter !== "all",
   );
 
   function updateSearch(value: string): void {
@@ -222,6 +222,8 @@ export function ResearchHistory({
 
   return (
     <section
+      id={embedded ? undefined : RESEARCH_SECTIONS.history}
+      tabIndex={embedded ? undefined : -1}
       aria-labelledby={`${ids}-title`}
       className={`min-w-0 ${className ?? ""}`}
     >
@@ -368,14 +370,14 @@ export function ResearchHistory({
               {historyState.data.items.map((run) => {
                 const selected = selectedRunId === run.id;
                 const comparing = selectedCompareId === run.id;
-                const runHref = researchWorkspaceHref({
+                const runHref = researchResultHref({
                   embedded,
                   runId: run.id,
                   compareId: selectedCompareId,
                   instrumentId: instrumentContext,
                   focusModel,
                 });
-                const compareHref = researchWorkspaceHref({
+                const compareHref = researchResultHref({
                   embedded,
                   runId: selectedRunId,
                   compareId: comparing ? null : run.id,
@@ -395,7 +397,7 @@ export function ResearchHistory({
                         aria-current={selected ? "page" : undefined}
                         className="grid min-w-0 gap-1 rounded-control px-2 py-2 text-sm hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                         href={runHref}
-                        scroll={false}
+                        scroll={!embedded}
                       >
                         <span className="flex min-w-0 flex-wrap items-center gap-1.5">
                           <span className="min-w-0 flex-1 truncate font-medium">
@@ -407,12 +409,14 @@ export function ResearchHistory({
                             <Badge variant="neutral">HISTORICAL</Badge>
                           )}
                           {selected && <Badge variant="neutral">OPEN</Badge>}
-                          {comparing && <Badge variant="neutral">COMPARE</Badge>}
+                          {comparing && (
+                            <Badge variant="neutral">COMPARE</Badge>
+                          )}
                         </span>
                         <span className="break-words text-xs text-secondary">
                           {run.instrument_id} · {run.horizon_sessions} next{" "}
-                          {run.horizon_sessions === 1 ? "session" : "sessions"} ·
-                          Succeeded
+                          {run.horizon_sessions === 1 ? "session" : "sessions"}{" "}
+                          · Succeeded
                         </span>
                         <span className="break-words text-[11px] text-secondary">
                           {formatUtcTimestamp(run.completed_at)} · dataset v
@@ -424,7 +428,7 @@ export function ResearchHistory({
                           aria-current={comparing ? "true" : undefined}
                           className="mb-1 ml-2 inline-flex min-h-9 items-center gap-1.5 rounded-control px-2 text-xs font-medium text-accent hover:bg-raised focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                           href={compareHref}
-                          scroll={false}
+                          scroll={!embedded}
                         >
                           <ArrowLeftRight aria-hidden="true" size={14} />
                           <span>
@@ -448,7 +452,8 @@ export function ResearchHistory({
             >
               <table className="research-history-table w-full min-w-[920px] border-collapse text-left text-xs">
                 <caption className="sr-only">
-                  Saved evaluations with dataset identity, category, and version.
+                  Saved evaluations with dataset identity, category, and
+                  version.
                 </caption>
                 <thead className="border-b border-border-subtle text-secondary">
                   <tr>
@@ -480,8 +485,13 @@ export function ResearchHistory({
                       }
                       key={run.id}
                     >
-                      <th className="max-w-[22rem] px-3 py-2.5 font-medium" scope="row">
-                        <span className="block truncate text-sm">{run.name}</span>
+                      <th
+                        className="max-w-[22rem] px-3 py-2.5 font-medium"
+                        scope="row"
+                      >
+                        <span className="block truncate text-sm">
+                          {run.name}
+                        </span>
                         <code
                           className="mt-1 block break-all text-[11px] font-normal text-secondary"
                           title={`Dataset ${run.dataset_id}`}
@@ -489,7 +499,9 @@ export function ResearchHistory({
                           {run.dataset_id}
                         </code>
                       </th>
-                      <td className="px-3 py-2.5 font-mono">{run.instrument_id}</td>
+                      <td className="px-3 py-2.5 font-mono">
+                        {run.instrument_id}
+                      </td>
                       <td className="px-3 py-2.5 whitespace-nowrap">
                         {run.horizon_sessions}{" "}
                         {run.horizon_sessions === 1 ? "session" : "sessions"}

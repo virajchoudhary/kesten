@@ -14,7 +14,7 @@ import {
   researchHistoryItemFixture,
   researchRunFixture,
 } from "./research-test-fixtures";
-import type { ResearchRun } from "./research-schemas";
+import type { ResearchRun, ResearchRunRequest } from "./research-schemas";
 import { ResearchDock } from "./research-dock";
 
 const api = vi.hoisted(() => ({
@@ -317,6 +317,115 @@ describe("ResearchDock", () => {
       "fixture-csrf",
       expect.any(AbortSignal),
     );
+  });
+
+  it("keeps a pending evaluation alive while switching dock tabs", async () => {
+    const user = userEvent.setup();
+    const originalUrl = window.location.href;
+    window.history.replaceState(
+      null,
+      "",
+      "/app/markets?view=research&instrument=xnas-aapl&method=last_close#analysis",
+    );
+    const dockUrl = window.location.href;
+    let resolveCreate: ((run: ResearchRun) => void) | undefined;
+    let requestSignal: AbortSignal | undefined;
+    let submittedRequest: ResearchRunRequest | undefined;
+    api.createResearchRun.mockImplementation(
+      (
+        request: ResearchRunRequest,
+        _csrfToken: string,
+        signal?: AbortSignal,
+      ) => {
+        submittedRequest = request;
+        requestSignal = signal;
+        return new Promise<ResearchRun>((resolve) => {
+          resolveCreate = resolve;
+        });
+      },
+    );
+
+    try {
+      render(
+        <ResearchDock
+          csrfToken="fixture-csrf"
+          query={query({
+            requestedRunId: null,
+            requestedInstrumentId: "xnas-aapl",
+            focusModel: "last_close",
+          })}
+        />,
+      );
+      await user.click(screen.getByRole("tab", { name: "New evaluation" }));
+      await user.click(
+        await screen.findByRole("button", { name: "Run evaluation" }),
+      );
+      await waitFor(() => {
+        expect(resolveCreate).toBeDefined();
+        expect(requestSignal).toBeDefined();
+        expect(submittedRequest).toBeDefined();
+      });
+
+      const originalIdempotencyKey = submittedRequest?.idempotency_key;
+      const savedRunsTab = screen.getByRole("tab", { name: "Saved runs" });
+      await user.click(savedRunsTab);
+
+      expect(requestSignal?.aborted).toBe(false);
+      expect(api.createResearchRun).toHaveBeenCalledTimes(1);
+      expect(api.replace).not.toHaveBeenCalled();
+      expect(window.location.href).toBe(dockUrl);
+      expect(savedRunsTab).toHaveAttribute("aria-selected", "true");
+
+      const setupRegion = screen.getByRole("region", {
+        name: "Evaluation setup",
+        hidden: true,
+      });
+      const hiddenEvaluation = setupRegion.closest("[hidden]");
+      expect(hiddenEvaluation).not.toBeNull();
+      expect(hiddenEvaluation?.hasAttribute("hidden")).toBe(true);
+      expect(screen.queryByRole("button", { name: "Evaluating" })).toBeNull();
+      await user.tab();
+      expect(screen.getByRole("link", { name: "Full research" })).toHaveFocus();
+      expect(hiddenEvaluation?.contains(document.activeElement)).toBe(false);
+      await user.tab();
+      expect(screen.getByRole("tabpanel")).toHaveFocus();
+      expect(hiddenEvaluation?.contains(document.activeElement)).toBe(false);
+
+      await user.click(screen.getByRole("tab", { name: "New evaluation" }));
+      expect(
+        await screen.findByRole("button", { name: "Evaluating" }),
+      ).toBeDisabled();
+      expect(submittedRequest?.idempotency_key).toBe(originalIdempotencyKey);
+      expect(api.createResearchRun).toHaveBeenCalledTimes(1);
+
+      await user.click(screen.getByRole("tab", { name: "Saved runs" }));
+      const savedRun = researchRunFixture({
+        id: CREATED_RUN_ID,
+        name: "Completed while saved runs were open",
+      });
+      await act(async () => {
+        resolveCreate?.(savedRun);
+      });
+
+      await waitFor(() => {
+        expect(api.replace).toHaveBeenCalledWith(
+          researchWorkspaceHref({
+            embedded: true,
+            runId: CREATED_RUN_ID,
+            compareId: null,
+            instrumentId: "xnas-aapl",
+            focusModel: "last_close",
+          }),
+          { scroll: false },
+        );
+      });
+      expect(api.createResearchRun).toHaveBeenCalledTimes(1);
+      expect(submittedRequest?.idempotency_key).toBe(originalIdempotencyKey);
+      expect(requestSignal?.aborted).toBe(false);
+      expect(window.location.href).toBe(dockUrl);
+    } finally {
+      window.history.replaceState(null, "", originalUrl);
+    }
   });
 
   it.each([401, 403])(

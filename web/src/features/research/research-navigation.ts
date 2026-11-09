@@ -19,6 +19,12 @@ export type ResearchWorkspaceQuery = {
   focusModel: ResearchReferenceId;
 };
 
+export const RESEARCH_SECTIONS = {
+  setup: "research-setup-title",
+  results: "research-results",
+  history: "research-history",
+} as const;
+
 function singleParameter(value: string | string[] | undefined): string | null {
   return typeof value === "string" ? value : null;
 }
@@ -27,12 +33,20 @@ export function parseResearchPageSearchParams(
   params: ResearchPageSearchParams,
 ): ResearchWorkspaceQuery {
   const runId = ResearchRunIdSchema.safeParse(singleParameter(params.run));
-  const compareId = ResearchRunIdSchema.safeParse(singleParameter(params.compare));
-  const instrumentId = ResearchInstrumentIdSchema.safeParse(singleParameter(params.instrument));
-  const focusModel = ResearchReferenceIdSchema.safeParse(singleParameter(params.method));
+  const compareId = ResearchRunIdSchema.safeParse(
+    singleParameter(params.compare),
+  );
+  const instrumentId = ResearchInstrumentIdSchema.safeParse(
+    singleParameter(params.instrument),
+  );
+  const focusModel = ResearchReferenceIdSchema.safeParse(
+    singleParameter(params.method),
+  );
   const requestedRunId = runId.success ? runId.data : null;
   const requestedCompareId =
-    requestedRunId !== null && compareId.success && compareId.data !== requestedRunId
+    requestedRunId !== null &&
+    compareId.success &&
+    compareId.data !== requestedRunId
       ? compareId.data
       : null;
 
@@ -56,7 +70,11 @@ export function researchWorkspaceHref(options: {
   if (options.runId !== null) {
     params.set("run", options.runId);
   }
-  if (options.runId !== null && options.compareId !== null && options.compareId !== options.runId) {
+  if (
+    options.runId !== null &&
+    options.compareId !== null &&
+    options.compareId !== options.runId
+  ) {
     params.set("compare", options.compareId);
   }
   if (options.instrumentId !== null) {
@@ -68,4 +86,11 @@ export function researchWorkspaceHref(options: {
   const query = params.toString();
   const path = options.embedded ? "/app/markets" : "/app/research";
   return query ? `${path}?${query}` : path;
+}
+
+export function researchResultHref(
+  options: Parameters<typeof researchWorkspaceHref>[0],
+): string {
+  const path = researchWorkspaceHref(options);
+  return options.embedded ? path : `${path}#${RESEARCH_SECTIONS.results}`;
 }
