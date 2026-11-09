@@ -3,6 +3,8 @@ FROM node:22-alpine@sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15
 WORKDIR /app/web
 ENV NEXT_TELEMETRY_DISABLED=1
 
+RUN apk add --no-cache zlib=1.4-r0
+
 FROM base AS dependencies
 
 COPY web/package.json web/package-lock.json ./

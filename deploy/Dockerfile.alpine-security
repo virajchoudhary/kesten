@@ -1,0 +1,5 @@
+# Supply a digest-pinned Alpine 3.23/3.24 base with the verified zlib=1.4-r0 package.
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+RUN apk add --no-cache zlib=1.4-r0

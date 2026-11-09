@@ -4,7 +4,7 @@ ARG CADRISYN_SOURCE_REVISION=development
 LABEL org.opencontainers.image.revision=${CADRISYN_SOURCE_REVISION}
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 WORKDIR /app
-RUN apk add --no-cache postgresql17-client=17.11-r0 && apk add --no-cache --virtual .build-deps build-base linux-headers
+RUN apk add --no-cache postgresql17-client=17.11-r0 zlib=1.4-r0 && apk add --no-cache --virtual .build-deps build-base linux-headers
 COPY backend/requirements-workspace.lock.txt backend/requirements-runtime.txt /app/
 RUN python -m pip install --no-cache-dir --no-compile pip==26.3 && python -m pip install --no-cache-dir --no-compile -r requirements-runtime.txt && apk del .build-deps
 COPY backend /app/backend
