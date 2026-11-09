@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+(node:3688) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions (10.8s)
+
+
+  1) [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('link', { name: 'Research', exact: true })
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('link', { name: 'Research', exact: true }) with timeout 10000ms
+      - waiting for getByRole('link', { name: 'Research', exact: true })
+
+
+      148 |   await expect(page.getByRole("heading", { name: "Account security" })).toBeVisible();
+      149 |   await expect(page.locator("header .product-mark")).toHaveCount(1);
+    > 150 |   await expect(page.getByRole("link", { name: "Research", exact: true })).toBeVisible();
+          |                                                                           ^
+      151 |   await expect(page.getByRole("button", { name: /Use (light|dark) theme/u })).toBeVisible();
+      152 |   await expect(page.getByRole("button", { name: "Sign out", exact: true })).toBeVisible();
+      153 |   await page.getByLabel("Current password").fill("browser-fixture-current-password");
+        at C:\stock price predictor\web\e2e\accounts.spec.ts:150:75
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\accounts-account-page-chan-55d1e-revokes-only-other-sessions-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\accounts-account-page-chan-55d1e-revokes-only-other-sessions-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions

@@ -1,0 +1,39 @@
+
+Running 1 test using 1 worker
+
+(node:3672) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\product-quality.spec.ts:78:5 › a server-accepted evaluation completes after switching dock tabs (12.5s)
+
+
+  1) [chromium] › e2e\product-quality.spec.ts:78:5 › a server-accepted evaluation completes after switching dock tabs
+
+    Error: expect(page).toHaveURL(expected) failed
+
+    Expected pattern: /run=1d9b952e-5a2e-4c79-a12d-f4a22571cfc6/u
+    Received string:  "http://127.0.0.1:3000/app/markets?view=research&instrument=xnys-jpm"
+    Timeout: 10000ms
+
+    Call log:
+      - Expect "toHaveURL" with timeout 10000ms
+        23 × locator resolved to <html lang="en" class="dark">…</html>
+           - unexpected value "http://127.0.0.1:3000/app/markets?view=research&instrument=xnys-jpm"
+
+
+      102 |   await page.getByRole("tab", { name: "Saved runs", exact: true }).click();
+      103 |   releaseResponse();
+    > 104 |   await expect(page).toHaveURL(new RegExp(`run=${run.id}`, "u"));
+          |                      ^
+      105 |   await expect(page.getByRole("region", { name: "Integrated research", exact: true }).getByRole("heading", { name: "Evaluation results", exact: true })).toBeVisible();
+      106 |   const saved = ResearchRunSchema.parse(await (await page.request.get(`/api/v1/research/runs/${run.id}/`)).json());
+      107 |   expect(saved.id).toBe(run.id);
+        at C:\stock price predictor\web\e2e\product-quality.spec.ts:104:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\product-quality-a-server-a-738e8-s-after-switching-dock-tabs-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\product-quality-a-server-a-738e8-s-after-switching-dock-tabs-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\product-quality.spec.ts:78:5 › a server-accepted evaluation completes after switching dock tabs

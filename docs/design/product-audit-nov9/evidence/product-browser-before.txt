@@ -1,0 +1,102 @@
+
+Running 3 tests using 1 worker
+
+(node:8380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\product-quality.spec.ts:16:5 › symbol selection resets the next search (12.9s)
+(node:13956) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  2 [chromium] › e2e\product-quality.spec.ts:28:5 › mobile settings retain chart context and account navigation stays consistent (1.8s)
+(node:20484) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  3 [chromium] › e2e\product-quality.spec.ts:57:5 › mobile history opens the exact result in view (11.8s)
+
+
+  1) [chromium] › e2e\product-quality.spec.ts:16:5 › symbol selection resets the next search ───────
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByRole('combobox', { name: 'Search by symbol or company' })
+    Expected: ""
+    Received: "MSFT"
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toHaveValue" getByRole('combobox', { name: 'Search by symbol or company' }) with timeout 10000ms
+      - waiting for getByRole('combobox', { name: 'Search by symbol or company' })
+        23 × locator resolved to <input type="text" value="MSFT" role="combobox" aria-expanded="true" aria-controls="_r_3_" aria-autocomplete="list" placeholder="Symbol or company name" aria-activedescendant="_r_3_-option-0" aria-label="Search by symbol or company" class="flex h-10 w-full rounded-control border border-control bg-surface px-3 py-2 text-sm text-foreground outline-none placeholder:text-secondary focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:cursor-n…/>
+           - unexpected value "MSFT"
+
+
+      22 |   await expect(page.getByRole("heading", { name: /Microsoft/u })).toBeVisible();
+      23 |   await page.getByRole("button", { name: /MSFT · Search/u }).click();
+    > 24 |   await expect(page.getByRole("combobox", { name: "Search by symbol or company" })).toHaveValue("");
+         |                                                                                     ^
+      25 |   await expect(page.getByRole("option")).toHaveCount(0);
+      26 | });
+      27 |
+        at C:\stock price predictor\web\e2e\product-quality.spec.ts:24:85
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\product-quality-symbol-selection-resets-the-next-search-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\product-quality-symbol-selection-resets-the-next-search-chromium\error-context.md
+
+  2) [chromium] › e2e\product-quality.spec.ts:28:5 › mobile settings retain chart context and account navigation stays consistent
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 403.6171875
+    Received:   526.15625
+
+      37 |   const chartBounds = await chart.boundingBox();
+      38 |   if (!panelBounds || !chartBounds) throw new Error("Missing live chart-panel geometry");
+    > 39 |   expect(panelBounds.height).toBeLessThan(chartBounds.height * 0.75);
+         |                              ^
+      40 |   await expect(page.getByLabel("Price scale", { exact: true })).toBeVisible();
+      41 |   await page.screenshot({ path: testInfo.outputPath("mobile-settings-context.png"), fullPage: true });
+      42 |   await page.getByRole("button", { name: "Close chart panel", exact: true }).click();
+        at C:\stock price predictor\web\e2e\product-quality.spec.ts:39:30
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\product-quality-mobile-set-d322a-navigation-stays-consistent-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\product-quality-mobile-set-d322a-navigation-stays-consistent-chromium\error-context.md
+
+  3) [chromium] › e2e\product-quality.spec.ts:57:5 › mobile history opens the exact result in view ─
+
+    Error: expect(locator).toBeInViewport() failed
+
+    Locator:  getByRole('heading', { name: 'Evaluation results', exact: true })
+    Expected: in viewport
+    Received: viewport ratio 0
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeInViewport" getByRole('heading', { name: 'Evaluation results', exact: true }) with timeout 10000ms
+      - waiting for getByRole('heading', { name: 'Evaluation results', exact: true })
+        23 × locator resolved to <h2 id="research-detail-title" class="text-sm font-semibold">Evaluation results</h2>
+           - unexpected value "viewport ratio 0"
+
+
+      69 |   await open.click();
+      70 |   await expect(page).toHaveURL(new RegExp(`run=${id}`, "u"));
+    > 71 |   await expect(page.getByRole("heading", { name: "Evaluation results", exact: true })).toBeInViewport();
+         |                                                                                        ^
+      72 |   await expect(page.getByRole("heading", { name: "Research analytics", exact: true })).toBeVisible();
+      73 |   await page.getByRole("navigation", { name: "Research sections", exact: true }).getByRole("link", { name: "Saved runs", exact: true }).click();
+      74 |   await expect(history).toBeInViewport();
+        at C:\stock price predictor\web\e2e\product-quality.spec.ts:71:88
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\product-quality-mobile-his-570e5-ns-the-exact-result-in-view-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\product-quality-mobile-his-570e5-ns-the-exact-result-in-view-chromium\error-context.md
+
+  3 failed
+    [chromium] › e2e\product-quality.spec.ts:16:5 › symbol selection resets the next search ────────
+    [chromium] › e2e\product-quality.spec.ts:28:5 › mobile settings retain chart context and account navigation stays consistent
+    [chromium] › e2e\product-quality.spec.ts:57:5 › mobile history opens the exact result in view ──

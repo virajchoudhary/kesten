@@ -1,0 +1,20 @@
+{
+  "result": "PASS",
+  "before": {
+    "width": 256,
+    "scrollWidth": 379,
+    "scrollLeft": 0,
+    "overflowX": "auto",
+    "tabIndex": 0,
+    "text": "Price · USDStudies · USDSMA 20 125.92SMA 50 124.33RSI 14 62.73"
+  },
+  "after": {
+    "width": 256,
+    "scrollWidth": 379,
+    "scrollLeft": 123,
+    "overflowX": "auto",
+    "tabIndex": 0,
+    "text": "Price · USDStudies · USDSMA 20 125.92SMA 50 124.33RSI 14 62.73"
+  },
+  "lastStudyVisible": true
+}

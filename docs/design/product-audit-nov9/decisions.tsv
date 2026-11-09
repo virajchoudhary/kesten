@@ -1,0 +1,17 @@
+phase	decision	evidence	result
+start	Audit HEAD163fd04 on existing branch; preserve dirty work	starting-status.txt; unrelated-starting-hashes.json	Recorded
+ground	Restore only isolated local previews, not original database	api-before.txt; web-before.txt; preservation.json	Live Chromium login succeeded; protected hashes PASS
+ground	Inspect task continuity rather than add commercial-feed features	TradingView Supercharts configuration; Koyfin Historical Graph/right-sidebar primary documentation	Existing scientific/API scope retained
+sketch	Reuse TerminalHeader on account versus extending duplicate account-only navigation	Live account AX tree lacks Research/theme/sign-out; source duplicates header	Prefer shared header with Account active state; retain data/methodology links in account content
+diagnose	Confirm five bounded product defects; reject speculative financial-scale issue	Independent audit findings; CUA baseline views; product-browser-before.txt; dock-browser-before.txt	Actual functional/geometry/navigation failures reproduced
+implement	Keep dock setup mounted but hidden across tabs; preserve existing unmount/account boundaries	ResearchDock diff; worker focused tests; delayed real-server regression	One submission/idempotency scope retained across tabs
+implement	Use native result fragments and section links instead of exclusive content tabs	Research navigation/history diff; Next.js installed Link documentation	Preserves setup state and exact run/comparison queries
+verify	Add four product browser scenarios to the paced existing runner	e2e/product-quality.spec.ts; scripts/verify-terminal.mjs	All four fail on baseline; full final run pending
+verify	Use explicit production profile after interrupted browser access	product-smoke-production.txt; browser-initial-fragment.txt	Account/search/settings/dock passed; empty standalone fixture and old exact-fragment assertion recorded
+correct	Update old research browser expectation to exact new fragment; await actual completed build	e2e/research.spec.ts; build-source-after.json	Production build exited zero; f4cbfbbd3f14247c286ef0cc5fd964b40018c8e4b72b57f3208b6377bf077f55
+verify	Run full paced compiled browser harness without changing API throttles	browser-final.txt; browser-final/source-before.json; browser-final/source-after.json	15 scenarios passed; matching build and browser source receipts
+review	Separate scoped code verifier; no actionable findings	docs/design/product-audit-nov9/verification.md	Source review PASS; runtime claims independently owned by parent
+review	Triage visual reviewer low-severity legend clipping finding against actual behavior	legend-proof.json; legend-keyboard-390.png	Already focusable/scrollable; ArrowRight reaches123px and final RSI value, no code change
+verify	Review22 route captures and focused final screenshots	delivery-final/capture-manifest.json; final-contact-sheet.png	No document overflow or captured errors; Firefox and physical devices unverified
+preserve	Check original database/runtime/research and unrelated starting files	preservation.json; unrelated-preservation-final.json	DB,496runtime,17research and24unrelated files unchanged
+blocker	Keep legacy research import failure explicit	legacy-research.txt	Missing torch; no model promotion, package install, or scientific PASS

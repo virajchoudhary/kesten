@@ -1,0 +1,75 @@
+[WebServer] (node:23452) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:25136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\accounts.spec.ts:92:5 › invitation UI consumes the fragment token and completes the form (951ms)
+  ok 2 [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions (842ms)
+  ok 3 [chromium] › e2e\accounts.spec.ts:167:5 › activates a disposable account through the real API lifecycle (4.2s)
+  ok 4 [chromium] › e2e\accounts.spec.ts:237:5 › resetting a disposable account revokes its open workspace session (4.0s)
+
+  4 passed (15.5s)
+Waiting 60 seconds for the configured API throttle window.
+[WebServer] (node:21644) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:9728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path (5.6s)
+
+  1 passed (11.4s)
+Waiting 60 seconds for the configured API throttle window.
+[WebServer] (node:24220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:1904) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\research-quality.spec.ts:62:5 › public pages retain readable light and dark layouts on narrow screens (6.1s)
+  ok 2 [chromium] › e2e\research-quality.spec.ts:81:5 › research inspection, comparison, replay and exact export use saved identities (10.6s)
+  ok 3 [chromium] › e2e\research-quality.spec.ts:228:5 › account changes in another tab clear private research before a second account loads (3.8s)
+
+  3 passed (26.6s)
+Waiting 60 seconds for the configured API throttle window.
+[WebServer] (node:26596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:24544) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API (3.0m)
+
+
+  1) [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API
+
+    Test timeout of 180000ms exceeded.
+
+    Error: page.waitForURL: Test timeout of 180000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation until "load"
+      navigated to "http://127.0.0.1:3000/app/research?run=ed51b3b8-2c51-4e06-919e-e655d6089eac#research-results"
+    ============================================================
+
+      132 |   expect(createdRun.completed_at).toBeTruthy();
+      133 |
+    > 134 |   await page.waitForURL(new RegExp(`/app/research\\?run=${createdRun.id}$`, "u"));
+          |              ^
+      135 |   await expect(page.getByRole("heading", { name: "Synthetic pipeline fixture", exact: true }))
+      136 |     .toBeVisible();
+      137 |   await expect(page.getByRole("img", { name: "Dataset history and forecast paths" }))
+        at C:\stock price predictor\web\e2e\research.spec.ts:134:14
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\research-runs-and-reloads--455a5-uation-against-the-real-API-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\research-runs-and-reloads--455a5-uation-against-the-real-API-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API

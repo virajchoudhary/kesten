@@ -1,0 +1,170 @@
+{
+  "brand": "Kerquant",
+  "source_sha256": "f4cbfbbd3f14247c286ef0cc5fd964b40018c8e4b72b57f3208b6377bf077f55",
+  "icon_status": 200,
+  "direct_export_filename": "attachment; filename=\"research-835a620f-6c9d-4e88-aabb-b644b0061e46.json\"",
+  "export_format_preserved": true,
+  "captures": [
+    {
+      "file": "markets-1440.png",
+      "route": "/app/markets",
+      "width": 1440,
+      "height": 900,
+      "title": "Markets | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "research-1440.png",
+      "route": "/app/research",
+      "width": 1440,
+      "height": 900,
+      "title": "Research | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "account-1440.png",
+      "route": "/app/account",
+      "width": 1440,
+      "height": 900,
+      "title": "Account security | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "data-1440.png",
+      "route": "/data",
+      "width": 1440,
+      "height": 900,
+      "title": "Data | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "methodology-1440.png",
+      "route": "/methodology",
+      "width": 1440,
+      "height": 900,
+      "title": "Methodology | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "markets-1920.png",
+      "route": "/app/markets",
+      "width": 1920,
+      "height": 1080,
+      "title": "Markets | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "research-1920.png",
+      "route": "/app/research",
+      "width": 1920,
+      "height": 1080,
+      "title": "Research | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "account-1920.png",
+      "route": "/app/account",
+      "width": 1920,
+      "height": 1080,
+      "title": "Account security | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "data-1920.png",
+      "route": "/data",
+      "width": 1920,
+      "height": 1080,
+      "title": "Data | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "methodology-1920.png",
+      "route": "/methodology",
+      "width": 1920,
+      "height": 1080,
+      "title": "Methodology | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "markets-820.png",
+      "route": "/app/markets",
+      "width": 820,
+      "height": 1180,
+      "title": "Markets | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "research-820.png",
+      "route": "/app/research",
+      "width": 820,
+      "height": 1180,
+      "title": "Research | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "account-820.png",
+      "route": "/app/account",
+      "width": 820,
+      "height": 1180,
+      "title": "Account security | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "data-820.png",
+      "route": "/data",
+      "width": 820,
+      "height": 1180,
+      "title": "Data | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "methodology-820.png",
+      "route": "/methodology",
+      "width": 820,
+      "height": 1180,
+      "title": "Methodology | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "markets-390.png",
+      "route": "/app/markets",
+      "width": 390,
+      "height": 844,
+      "title": "Markets | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "research-390.png",
+      "route": "/app/research",
+      "width": 390,
+      "height": 844,
+      "title": "Research | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "account-390.png",
+      "route": "/app/account",
+      "width": 390,
+      "height": 844,
+      "title": "Account security | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "data-390.png",
+      "route": "/data",
+      "width": 390,
+      "height": 844,
+      "title": "Data | Kerquant",
+      "horizontal_overflow": false
+    },
+    {
+      "file": "methodology-390.png",
+      "route": "/methodology",
+      "width": 390,
+      "height": 844,
+      "title": "Methodology | Kerquant",
+      "horizontal_overflow": false
+    }
+  ],
+  "diagnostics": []
+}

@@ -1,0 +1,33 @@
+
+> cadrisyn-web@0.1.0 test
+> vitest run src/features/markets/instrument-search.test.tsx --maxWorkers=2 --reporter=dot
+
+
+ RUN  v5.1.0 C:/stock price predictor/web
+
+x
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/markets/instrument-search.test.tsx > starts a fresh keyboard search after choosing a result
+Error: expect(element).toHaveValue()
+
+Expected the element to have value:
+
+Received:
+  MSFT
+ ❯ src/features/markets/instrument-search.test.tsx:36:18
+     34|   await user.click(screen.getByRole("button", { name: "Add instrument"…
+     35|   const search = screen.getByRole("combobox", { name: "Search by symbo…
+     36|   expect(search).toHaveValue("");
+       |                  ^
+     37|   expect(search).not.toHaveAttribute("aria-activedescendant");
+     38|   expect(screen.queryByRole("option")).toBeNull();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  09:35:17
+   Duration  4.75s (environment 49%, import 22%, tests 19%, setup 6%, transform 4%)
