@@ -1,0 +1,9 @@
+decision	evidence	result
+Keep numerical v1 unchanged	Frozen hashes and future-perturbation checks	No quant source edits
+Reject candidate historical sources	PHASE5-RESEARCH-SOURCES.md primary references	No acquisition or empirical claims
+Archive operator-attested intake separately	CSV/terms/availability hashes and exact replay	Additive receipt model and CLI
+Test migration without application DDL	PostgreSQL test_cadrisyn and26-table snapshot	156 tests PASS; application preserved
+Fix missing benchmark mean fallback	legacy-before.txt and legacy-after.txt	Nonfinite reproduction fixed; model not promoted
+Preserve dirty and protected artifacts	preservation.json and unrelated-after.json	496 runtime,17 research,24 unrelated paths unchanged
+Boundary Discipline	Pure CSV validator, thin management commands	Provider-facing checks remain outside numerical v1
+Prove It Works	Actual CLI import, upgrade, restore and exact replay	Verified runtime evidence rather than compilation alone

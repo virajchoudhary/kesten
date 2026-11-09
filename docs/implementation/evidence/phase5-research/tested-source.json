@@ -1,0 +1,6 @@
+{
+  "result": "PASS",
+  "scope": "backend production Python source tested by final PostgreSQL run; excludes tests",
+  "files_checked": 126,
+  "current_matches_tested_source": true
+}

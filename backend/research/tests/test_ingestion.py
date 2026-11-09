@@ -268,4 +268,3 @@ class CsvIntakeTests(unittest.TestCase):
         ).hexdigest()
         with self.assertRaises(DatasetError):
             prepare_csv_intake(**arguments)
-

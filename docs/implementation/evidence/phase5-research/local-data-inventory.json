@@ -1,0 +1,20 @@
+[
+  {
+    "database": ".local/cadrisyn.sqlite3",
+    "dataset_counts_by_kind": [
+      [
+        "synthetic_fixture",
+        1
+      ]
+    ]
+  },
+  {
+    "database": ".local/terminal-depth/preview.sqlite3",
+    "dataset_counts_by_kind": [
+      [
+        "synthetic_fixture",
+        17
+      ]
+    ]
+  }
+]

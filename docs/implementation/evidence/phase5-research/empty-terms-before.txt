@@ -1,0 +1,23 @@
+Found 13 test(s).
+System check identified no issues (0 silenced).
+......FF......
+======================================================================
+FAIL: test_rejects_hash_mismatches_and_false_internal_permissions (research.tests.test_ingestion.CsvIntakeTests.test_rejects_hash_mismatches_and_false_internal_permissions) (terms=b'')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\stock price predictor\backend\research\tests\test_ingestion.py", line 116, in test_rejects_hash_mismatches_and_false_internal_permissions
+    with self.subTest(terms=terms), self.assertRaises(DatasetError):
+AssertionError: DatasetError not raised
+
+======================================================================
+FAIL: test_rejects_hash_mismatches_and_false_internal_permissions (research.tests.test_ingestion.CsvIntakeTests.test_rejects_hash_mismatches_and_false_internal_permissions) (terms=b' \r\n\t')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\stock price predictor\backend\research\tests\test_ingestion.py", line 116, in test_rejects_hash_mismatches_and_false_internal_permissions
+    with self.subTest(terms=terms), self.assertRaises(DatasetError):
+AssertionError: DatasetError not raised
+
+----------------------------------------------------------------------
+Ran 13 tests in 22.607s
+
+FAILED (failures=2)

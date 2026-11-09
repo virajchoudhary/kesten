@@ -1,0 +1,76 @@
+{
+  "starting_commit": "2a04197f7c285fafc7cb505028f900b48866ea9d",
+  "branch": "codex/cadrisyn-foundation",
+  "result": "FOUNDATION_VERIFIED_EMPIRICAL_BLOCKED",
+  "historical_archives_qualified": 0,
+  "historical_archives_acquired": 0,
+  "empirical_evaluation": false,
+  "model_promotions": [],
+  "checks": {
+    "sqlite_backend": {
+      "tests": 156,
+      "passed": 152,
+      "skipped": 4,
+      "skip_reason": "PostgreSQL-specific cases run in PostgreSQL suite",
+      "scope": "Full run before final terms check; 20 affected tests rerun after review fixes"
+    },
+    "postgresql_backend": {
+      "tests": 156,
+      "passed": 156,
+      "skipped": 0,
+      "database": "test_cadrisyn",
+      "runtime_role": "cadrisyn",
+      "application_tables_unchanged": 26
+    },
+    "frontend_units": {
+      "tests": 125,
+      "passed": 125
+    },
+    "frontend_typecheck": "PASS",
+    "legacy_offline": {
+      "tests": 24,
+      "passed": 24,
+      "includes_reproduced_missing_benchmark_regression": true
+    },
+    "torch_cpu_smoke": "PASS_SYNTHETIC_ONLY_NO_TRAINING",
+    "recovery_unit": {
+      "tests": 18,
+      "passed": 18
+    },
+    "sqlite_actual_upgrade_intake_backup_restore_replay": "PASS_SYNTHETIC_ONLY",
+    "api_schema": "UNCHANGED",
+    "numerical_v1_outputs": "EXACTLY_UNCHANGED",
+    "protected_runtime_files": 496,
+    "protected_research_artifacts": 17,
+    "unrelated_paths_unchanged": 24,
+    "sqlite_intake_scientific_after_review": {
+      "tests": 20,
+      "passed": 20,
+      "skipped": 0
+    },
+    "recovery_qualification_negative_guards": {
+      "tests": 3,
+      "passed": 3,
+      "rejects": "missing/duplicate/changed/failed runs, changed receipt and archived-byte hashes"
+    },
+    "frontend_lint": "PASS",
+    "independent_review": "PASS bounded source review after two verified fixes; reviewer did not rerun tests"
+  },
+  "not_run": [
+    "Genuine historical evaluations: no qualified archive",
+    "New-schema PostgreSQL backup/restore drill",
+    "New application container image build/run",
+    "Fresh browser screenshots: frontend source is unchanged",
+    "Hosted CI: no push authorized"
+  ],
+  "frontend_source_sha256": "d508891c1f98c2de94a745bc581ae427ff115e8def54b8be60753fcb624ec263",
+  "limitations": [
+    "Receipts are staff attestations, not independent source or legal verification",
+    "Existing preview and application databases remain unmigrated for the new receipt table",
+    "No uncertainty calibration or complex-model promotion"
+  ],
+  "implementation_commits": [
+    "7f11b73",
+    "e8fbdd1"
+  ]
+}

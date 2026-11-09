@@ -1,0 +1,19 @@
+{
+  "backend/api/ai_services.py": "b7d86f0f0373eee7e138cf0f64b4371bd5017e6c65420a2b9ed754b02a95d01d",
+  "backend/api/tests.py": "badfb4ba8e6223a5771905eed6eedda854e94b18cb31e0e909f59ab50c64f772",
+  "backend/research/ingestion.py": "e68a255941784768d59718be20d2fa97e766f32f902d7a6c618b046b58471c81",
+  "backend/research/intake_replay.py": "d7f702628aa86c441b299c57c453c0264f525201eaa126247d63e4d8e4d9b438",
+  "backend/research/management/commands/import_research_csv.py": "c8aaafc62c8bc7a69915d4a276486c645049b104ed9ffac3d6e0e779577e7bcf",
+  "backend/research/management/commands/import_research_dataset.py": "fdd27b0d0e7b6dc9ad5f248565984771c41a1bc7f9b704569e2b955d5418d6fc",
+  "backend/research/management/commands/verify_research_intake.py": "a1eba9b23482dbe9a222723b3fd14d1bec62e65e7318cd41eb48a60cb09b76c9",
+  "backend/research/migrations/0002_researchintakereceipt.py": "9d80188ecc92db3eba028a704f6b6e59fab319bd4dc26180957440c668333c4a",
+  "backend/research/models.py": "5fca82d7d1c5f4d2117beca377555eb77f17dd01d379ed9a534f0a772463522d",
+  "backend/research/services.py": "ef3ee8e4dc8a7196fc48c35a4b8792933f8985e7d36732d71b17f77b8944b612",
+  "backend/research/tests/intake_fixtures.py": "6b6e897a22901c1bb125a503e20b819722b3d31bd4f072412da4ec15c55913a2",
+  "backend/research/tests/test_ingestion.py": "dad420702365ccb539036751138235ecff01b58c119ba2a6d60546f09e996f62",
+  "backend/research/tests/test_intake_storage.py": "9fd360d3511402be952f7a1192d619fa94d717cec92cd6a14017f8fd30c3a206",
+  "backend/research/tests/test_phase5_science.py": "61cfc34fd83f4f2f73faebba0382d5bf68947707fd095645f45489a4eaede493",
+  "scripts/check_research_intake.py": "432b45f8564085fd1d64fbb2c45ed1e6e6c971b692794c5a4ced5c674fc5f40d",
+  "scripts/research.py": "b038feabf6ccd45c583e0529baecac09afb50150145ee8f7461b93d671683715",
+  "tests/test_research_intake_qualification.py": "1b395dee0cc87011fae3cc4eca71b158c18cee3299e923542923ed96d1298003"
+}

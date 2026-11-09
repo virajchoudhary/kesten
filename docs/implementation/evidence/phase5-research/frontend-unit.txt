@@ -1,0 +1,17 @@
+
+> cadrisyn-web@0.1.0 test
+> vitest run --reporter=dot
+
+
+ RUN  v5.1.0 C:/stock price predictor/web
+
+·····························································································································
+
+ Test Files  35 passed (35)
+      Tests  125 passed (125)
+   Start at  18:52:02
+   Duration  55.92s (environment 60%, import 18%, setup 13%, tests 8%, transform 2%)
+
+Environment  jsdom was created 35 times · 338.37s total, 60% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments

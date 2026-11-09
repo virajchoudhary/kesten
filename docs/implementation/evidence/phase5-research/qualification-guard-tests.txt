@@ -1,0 +1,8 @@
+test_changed_receipt_and_archived_bytes_are_rejected (tests.test_research_intake_qualification.RestoredIntakeQualificationTests.test_changed_receipt_and_archived_bytes_are_rejected) ... ok
+test_exact_restored_receipt_bytes_and_two_runs_pass (tests.test_research_intake_qualification.RestoredIntakeQualificationTests.test_exact_restored_receipt_bytes_and_two_runs_pass) ... ok
+test_missing_duplicate_changed_or_failed_runs_are_rejected (tests.test_research_intake_qualification.RestoredIntakeQualificationTests.test_missing_duplicate_changed_or_failed_runs_are_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.001s
+
+OK
