@@ -13,6 +13,22 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  windows-secret-preparation:
+    name: Verify Windows private-directory ACLs
+    runs-on: windows-2025
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up Python 3.12
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Test secret preparation without generating runtime credentials
+        run: python -m unittest discover -s tests -p test_local_tls_permissions.py
+
   production-qualification:
     name: Qualify isolated TLS production stack
     runs-on: ubuntu-24.04
@@ -57,20 +73,21 @@ jobs:
           CACHE_BASE_IMAGE: redis:8.10.3-alpine3.23@sha256:71885d8cc6e42f2bc0aa2eb853bfc4be200b5108a46ac50e117ae1df0531fb80
           GATEWAY_BASE_IMAGE: nginx:1.30.6-alpine3.24@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311
         run: |
+          source_epoch="$(git log -1 --format=%ct "$GITHUB_SHA")"
           api_ref="cadrisyn-api-qualification:${GITHUB_SHA}"
           web_ref="cadrisyn-web-qualification:${GITHUB_SHA}"
           database_ref="cadrisyn-postgres-qualification:${GITHUB_SHA}"
           cache_ref="cadrisyn-cache-qualification:${GITHUB_SHA}"
           gateway_ref="cadrisyn-gateway-qualification:${GITHUB_SHA}"
-          docker build --pull --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file backend/Dockerfile --tag "$api_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file backend/Dockerfile --tag "$api_ref" .
           api_image_id="$(docker image inspect "$api_ref" --format '{{.Id}}')"
-          docker build --pull --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file web/Dockerfile --tag "$web_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file web/Dockerfile --tag "$web_ref" .
           web_image_id="$(docker image inspect "$web_ref" --format '{{.Id}}')"
-          docker build --pull --build-arg "BASE_IMAGE=${DATABASE_BASE_IMAGE}" --file deploy/Dockerfile.debian-security --tag "$database_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "BASE_IMAGE=${DATABASE_BASE_IMAGE}" --file deploy/Dockerfile.debian-security --tag "$database_ref" .
           database_image_id="$(docker image inspect "$database_ref" --format '{{.Id}}')"
-          docker build --pull --build-arg "BASE_IMAGE=${CACHE_BASE_IMAGE}" --file deploy/Dockerfile.alpine-security --tag "$cache_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "BASE_IMAGE=${CACHE_BASE_IMAGE}" --file deploy/Dockerfile.alpine-security --tag "$cache_ref" .
           cache_image_id="$(docker image inspect "$cache_ref" --format '{{.Id}}')"
-          docker build --pull --build-arg "BASE_IMAGE=${GATEWAY_BASE_IMAGE}" --file deploy/Dockerfile.alpine-security --tag "$gateway_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "BASE_IMAGE=${GATEWAY_BASE_IMAGE}" --file deploy/Dockerfile.alpine-security --tag "$gateway_ref" .
           gateway_image_id="$(docker image inspect "$gateway_ref" --format '{{.Id}}')"
           printf 'api_image_id=%s\nweb_image_id=%s\ndatabase_image_id=%s\ncache_image_id=%s\ngateway_image_id=%s\n' \
             "$api_image_id" "$web_image_id" "$database_image_id" "$cache_image_id" "$gateway_image_id" >> "$GITHUB_OUTPUT"

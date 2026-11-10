@@ -55,10 +55,19 @@ class ProductionWorkflowTests(unittest.TestCase):
     def test_triggers_are_additive_and_permissions_are_read_only(self):
         self.assertEqual({"pull_request", "push", "workflow_dispatch"}, set(self.workflow["on"]))
         self.assertEqual({"contents": "read"}, self.workflow["permissions"])
-        self.assertEqual({"production-qualification"}, set(self.workflow["jobs"]))
+        self.assertEqual({"production-qualification", "windows-secret-preparation"}, set(self.workflow["jobs"]))
         for job in self.workflow["jobs"].values():
             self.assertNotIn("permissions", job)
         self.assertEqual("90", self.job["timeout-minutes"])
+
+    def test_windows_job_exercises_real_acl_tests_without_docker_or_runtime_secrets(self):
+        job = self.workflow["jobs"]["windows-secret-preparation"]
+        self.assertEqual("windows-2025", job["runs-on"])
+        self.assertEqual("10", job["timeout-minutes"])
+        checkout = next(step for step in job["steps"] if step.get("uses", "").startswith("actions/checkout@"))
+        self.assertEqual("false", checkout["with"]["persist-credentials"])
+        runs = [step["run"] for step in job["steps"] if "run" in step]
+        self.assertEqual(["python -m unittest discover -s tests -p test_local_tls_permissions.py"], runs)
 
     def test_actions_are_official_pinned_commits_and_checkout_has_no_token_persistence(self):
         uses = {
@@ -83,6 +92,8 @@ class ProductionWorkflowTests(unittest.TestCase):
         build_step = self.steps["Build all production stack images from tested source"]
         build = build_step["run"]
         self.assertEqual(5, build.count("docker build "))
+        self.assertIn('source_epoch="$(git log -1 --format=%ct "$GITHUB_SHA")"', build)
+        self.assertEqual(5, build.count('--build-arg "SOURCE_DATE_EPOCH=${source_epoch}"'))
         self.assertEqual(2, build.count('--build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}"'))
         self.assertIn("--file backend/Dockerfile", build)
         self.assertIn("--file web/Dockerfile", build)
