@@ -1,7 +1,39 @@
 ARG BASE_IMAGE
+FROM python:3.12.16-alpine3.24@sha256:e064671ca452259bab50e8e2c7bd896e39e9a343bb06ca25234adf6fe18d0fc7 AS gosu-release
+ARG TARGETARCH
+ARG TARGETVARIANT
+RUN python - <<'PY'
+import os
+from pathlib import Path
+from urllib.request import urlopen
+
+architecture = os.environ['TARGETARCH']
+names = {'386': 'i386', 'ppc64le': 'ppc64el', 'mips64le': 'mips64el'}
+name = names.get(architecture, architecture)
+if architecture == 'arm':
+    name = 'armhf' if os.environ.get('TARGETVARIANT') == 'v7' else 'armel'
+destination = Path('/gosu')
+destination.mkdir()
+for suffix in ('', '.asc'):
+    with urlopen(f'https://github.com/tianon/gosu/releases/download/1.20/gosu-{name}{suffix}', timeout=90) as response:
+        (destination / ('gosu' + suffix)).write_bytes(response.read())
+PY
+
 FROM ${BASE_IMAGE}
+COPY deploy/vendor/gosu-release-key.asc /tmp/gosu-release-key.asc
 
 # Preserve the PostgreSQL major and image configuration; apply the available vendor fix.
 RUN apt-get update \
     && apt-get install --yes --no-install-recommends zlib1g=1:1.3.dfsg+really1.3.1-1+deb13u1 \
     && rm -rf /var/lib/apt/lists/*
+
+RUN --mount=type=bind,from=gosu-release,source=/gosu,target=/gosu \
+    set -eu; \
+    export GNUPGHOME="$(mktemp -d)"; \
+    gpg --batch --import /tmp/gosu-release-key.asc; \
+    fingerprint="$(gpg --batch --with-colons --fingerprint | awk -F: '$1 == "fpr" { print $10; exit }')"; \
+    test "$fingerprint" = B42F6819007F00F88E364FD4036A9C25BF357DD4; \
+    gpg --batch --verify /gosu/gosu.asc /gosu/gosu; \
+    install -m 755 /gosu/gosu /usr/local/bin/gosu; \
+    gosu nobody true; \
+    rm -rf "$GNUPGHOME" /tmp/gosu-release-key.asc
