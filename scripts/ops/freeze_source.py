@@ -65,13 +65,19 @@ def _contains_private_path(path):
 
 def _tree_entries(commit):
     entries = {}
+    portable_prefixes = {}
     for row in _git("ls-tree", "-rz", "--full-tree", commit).split(b"\0"):
         if not row:
             continue
         metadata, raw_path = row.split(b"\t", 1)
         mode, kind, object_id = metadata.decode("ascii").split()
         path = raw_path.decode("utf-8")
-        _safe_parts(path)
+        parts = _safe_parts(path)
+        for length in range(1, len(parts) + 1):
+            prefix = "/".join(parts[:length])
+            folded = prefix.casefold()
+            if portable_prefixes.setdefault(folded, prefix) != prefix:
+                raise ValueError("The committed source contains a case-insensitive path collision.")
         if mode == "120000" or kind != "blob":
             raise ValueError("The committed source contains a symlink or submodule, which is unsupported.")
         if mode not in {"100644", "100755"}:

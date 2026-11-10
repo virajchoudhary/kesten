@@ -130,6 +130,19 @@ class FrozenSourceTests(unittest.TestCase):
                 freeze_source.freeze_source(revision, destination)
         self.assertFalse(destination.exists())
 
+    def test_case_colliding_directory_prefixes_are_rejected(self):
+        self._commit({"base.txt": b"base\n"})
+        blob = self._git("hash-object", "-w", "--stdin", input_bytes=b"data\n").decode("ascii").strip()
+        for name in ("A/foo", "a/bar"):
+            self._git("-c", "core.ignorecase=false", "update-index", "--add", "--cacheinfo", f"100644,{blob},{name}")
+        self._git("commit", "--quiet", "-m", "case-colliding directories")
+        revision = self._git("rev-parse", "HEAD").decode("ascii").strip()
+        destination = self.root / ".local" / "rejected-prefixes"
+        with patch.object(freeze_source, "ROOT", self.root):
+            with self.assertRaisesRegex(ValueError, "case-insensitive path collision"):
+                freeze_source.freeze_source(revision, destination)
+        self.assertFalse(destination.exists())
+
     def test_invalid_revisions_and_unsafe_destinations_do_not_create_output(self):
         revision = self._commit({"src/module.py": b"pass\n"})
         local = self.root / ".local"
