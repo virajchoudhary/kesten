@@ -28,6 +28,8 @@ jobs:
           python-version: "3.12"
       - name: Test secret preparation without generating runtime credentials
         run: python -m unittest discover -s tests -p test_local_tls_permissions.py
+      - name: Verify canonical source export on Windows
+        run: python -m unittest discover -s tests -p test_frozen_source.py
 
   production-qualification:
     name: Qualify isolated TLS production stack
@@ -66,6 +68,11 @@ jobs:
         run: npx playwright install --with-deps chromium
         working-directory: web
 
+      - name: Verify and freeze committed build source
+        run: |
+          .venv/bin/python -m unittest discover -s tests -p test_frozen_source.py
+          .venv/bin/python scripts/ops/freeze_source.py --revision "$GITHUB_SHA" --directory .local/ci-source
+
       - name: Build all production stack images from tested source
         id: build
         env:
@@ -74,20 +81,21 @@ jobs:
           GATEWAY_BASE_IMAGE: nginx:1.30.6-alpine3.24@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311
         run: |
           source_epoch="$(git log -1 --format=%ct "$GITHUB_SHA")"
+          source_dir=".local/ci-source/tree"
           api_ref="cadrisyn-api-qualification:${GITHUB_SHA}"
           web_ref="cadrisyn-web-qualification:${GITHUB_SHA}"
           database_ref="cadrisyn-postgres-qualification:${GITHUB_SHA}"
           cache_ref="cadrisyn-cache-qualification:${GITHUB_SHA}"
           gateway_ref="cadrisyn-gateway-qualification:${GITHUB_SHA}"
-          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file backend/Dockerfile --tag "$api_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file "$source_dir/backend/Dockerfile" --tag "$api_ref" "$source_dir"
           api_image_id="$(docker image inspect "$api_ref" --format '{{.Id}}')"
-          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file web/Dockerfile --tag "$web_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}" --file "$source_dir/web/Dockerfile" --tag "$web_ref" "$source_dir"
           web_image_id="$(docker image inspect "$web_ref" --format '{{.Id}}')"
-          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "BASE_IMAGE=${DATABASE_BASE_IMAGE}" --file deploy/Dockerfile.debian-security --tag "$database_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "BASE_IMAGE=${DATABASE_BASE_IMAGE}" --file "$source_dir/deploy/Dockerfile.debian-security" --tag "$database_ref" "$source_dir"
           database_image_id="$(docker image inspect "$database_ref" --format '{{.Id}}')"
-          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "BASE_IMAGE=${CACHE_BASE_IMAGE}" --file deploy/Dockerfile.alpine-security --tag "$cache_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "BASE_IMAGE=${CACHE_BASE_IMAGE}" --file "$source_dir/deploy/Dockerfile.alpine-security" --tag "$cache_ref" "$source_dir"
           cache_image_id="$(docker image inspect "$cache_ref" --format '{{.Id}}')"
-          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "BASE_IMAGE=${GATEWAY_BASE_IMAGE}" --file deploy/Dockerfile.alpine-security --tag "$gateway_ref" .
+          docker build --pull --build-arg "SOURCE_DATE_EPOCH=${source_epoch}" --build-arg "BASE_IMAGE=${GATEWAY_BASE_IMAGE}" --file "$source_dir/deploy/Dockerfile.alpine-security" --tag "$gateway_ref" "$source_dir"
           gateway_image_id="$(docker image inspect "$gateway_ref" --format '{{.Id}}')"
           printf 'api_image_id=%s\nweb_image_id=%s\ndatabase_image_id=%s\ncache_image_id=%s\ngateway_image_id=%s\n' \
             "$api_image_id" "$web_image_id" "$database_image_id" "$cache_image_id" "$gateway_image_id" >> "$GITHUB_OUTPUT"
@@ -100,8 +108,8 @@ jobs:
           CACHE_IMAGE_ID: ${{ steps.build.outputs.cache_image_id }}
           GATEWAY_IMAGE_ID: ${{ steps.build.outputs.gateway_image_id }}
         run: |
-          .venv/bin/python scripts/ops/qualify_production.py \
-            --directory .local/ci-production \
+          .venv/bin/python .local/ci-source/tree/scripts/ops/qualify_production.py \
+            --directory .local/ci-source/tree/.local/ci-production \
             --api-image "$API_IMAGE_ID" \
             --web-image "$WEB_IMAGE_ID" \
             --database-image "$DATABASE_IMAGE_ID" \
@@ -118,7 +126,7 @@ jobs:
           QUALIFICATION_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha || '' }}
           QUALIFICATION_PR_MERGE_SHA: ${{ github.event_name == 'pull_request' && github.sha || '' }}
         run: |
-          if test ! -f .local/ci-production/receipt.json; then
+          if test ! -f .local/ci-source/tree/.local/ci-production/receipt.json; then
             exit 0
           fi
           .venv/bin/python - <<'PY'
@@ -143,7 +151,7 @@ jobs:
           elif pr_head_sha or pr_merge_sha:
               raise SystemExit("Pull request metadata was supplied for a non-PR event.")
 
-          receipt_path = Path(".local/ci-production/receipt.json")
+          receipt_path = Path(".local/ci-source/tree/.local/ci-production/receipt.json")
           receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
           if receipt.get("source_commit") != tested_sha:
               raise SystemExit("Receipt source does not match the tested SHA.")
@@ -165,8 +173,8 @@ jobs:
       - name: Run isolated production browser acceptance
         env:
           PLAYWRIGHT_BASE_URL: https://localhost:8452
-          CADRISYN_REHEARSAL_CERT: ${{ github.workspace }}/.local/ci-production/gateway_cert
-          CADRISYN_RELEASE_CREDENTIALS: ${{ github.workspace }}/.local/ci-production/credentials.json
+          CADRISYN_REHEARSAL_CERT: ${{ github.workspace }}/.local/ci-source/tree/.local/ci-production/gateway_cert
+          CADRISYN_RELEASE_CREDENTIALS: ${{ github.workspace }}/.local/ci-source/tree/.local/ci-production/credentials.json
           KERQUANT_BROWSER_OUTPUT: ${{ github.workspace }}/.local/ci-browser
         run: npx playwright test --config playwright.qualification.config.ts
         working-directory: web
@@ -271,7 +279,7 @@ jobs:
           if any(not re.fullmatch(r"sha256:[0-9a-f]{64}", value) for value in qualified_ids.values()):
               reject("qualified image IDs are malformed")
 
-          receipt = json.loads(Path(".local/ci-production/receipt.json").read_text(encoding="utf-8"))
+          receipt = json.loads(Path(".local/ci-source/tree/.local/ci-production/receipt.json").read_text(encoding="utf-8"))
           summary = json.loads(Path(".local/ci-security/summary.json").read_text(encoding="utf-8"))
           if receipt.get("result") != "PASS":
               reject("production qualification receipt is not passing")
@@ -321,7 +329,8 @@ jobs:
         with:
           name: production-qualification-evidence-${{ github.sha }}
           path: |
-            .local/ci-production/receipt.json
+            .local/ci-source/tree/.local/ci-production/receipt.json
+            .local/ci-source/receipt.json
             .local/ci-security/summary.json
             .local/ci-security/*-sbom.spdx.json
             .local/ci-security/*-vulnerabilities.json

@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import shlex
 import subprocess
 import sys
 import tempfile
@@ -67,7 +68,10 @@ class ProductionWorkflowTests(unittest.TestCase):
         checkout = next(step for step in job["steps"] if step.get("uses", "").startswith("actions/checkout@"))
         self.assertEqual("false", checkout["with"]["persist-credentials"])
         runs = [step["run"] for step in job["steps"] if "run" in step]
-        self.assertEqual(["python -m unittest discover -s tests -p test_local_tls_permissions.py"], runs)
+        self.assertEqual([
+            "python -m unittest discover -s tests -p test_local_tls_permissions.py",
+            "python -m unittest discover -s tests -p test_frozen_source.py",
+        ], runs)
 
     def test_actions_are_official_pinned_commits_and_checkout_has_no_token_persistence(self):
         uses = {
@@ -95,10 +99,13 @@ class ProductionWorkflowTests(unittest.TestCase):
         self.assertIn('source_epoch="$(git log -1 --format=%ct "$GITHUB_SHA")"', build)
         self.assertEqual(5, build.count('--build-arg "SOURCE_DATE_EPOCH=${source_epoch}"'))
         self.assertEqual(2, build.count('--build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}"'))
-        self.assertIn("--file backend/Dockerfile", build)
-        self.assertIn("--file web/Dockerfile", build)
-        self.assertIn("--file deploy/Dockerfile.debian-security", build)
-        self.assertEqual(2, build.count("--file deploy/Dockerfile.alpine-security"))
+        self.assertIn('--file "$source_dir/backend/Dockerfile"', build)
+        self.assertIn('--file "$source_dir/web/Dockerfile"', build)
+        self.assertIn('--file "$source_dir/deploy/Dockerfile.debian-security"', build)
+        self.assertEqual(2, build.count('--file "$source_dir/deploy/Dockerfile.alpine-security"'))
+        for line in build.splitlines():
+            if line.startswith("docker build "):
+                self.assertEqual("$source_dir", shlex.split(line)[-1])
         for base_image in ("DATABASE_BASE_IMAGE", "CACHE_BASE_IMAGE", "GATEWAY_BASE_IMAGE"):
             with self.subTest(base_image=base_image):
                 self.assertIn(f'"BASE_IMAGE=${{{base_image}}}"', build)
@@ -122,7 +129,7 @@ class ProductionWorkflowTests(unittest.TestCase):
         qualify = self.steps["Qualify demo and historical research stacks"]
         command = qualify["run"]
         self.assertIn("scripts/ops/qualify_production.py", command)
-        self.assertIn("--directory .local/ci-production", command)
+        self.assertIn("--directory .local/ci-source/tree/.local/ci-production", command)
         for argument, name in (
             ("--api-image", "API"),
             ("--web-image", "WEB"),
@@ -134,6 +141,17 @@ class ProductionWorkflowTests(unittest.TestCase):
                 self.assertIn(f'{argument} "${name}_IMAGE_ID"', command)
         self.assertIn("--tls-port 8452", command)
         self.assertIn("--http-port 8092", command)
+
+    def test_build_and_acceptance_share_a_committed_source_export(self):
+        freeze = self.steps["Verify and freeze committed build source"]["run"]
+        self.assertIn('scripts/ops/freeze_source.py --revision "$GITHUB_SHA" --directory .local/ci-source', freeze)
+        names = [step.get("name") for step in self.job["steps"]]
+        self.assertLess(names.index("Verify and freeze committed build source"), names.index("Build all production stack images from tested source"))
+        build = self.steps["Build all production stack images from tested source"]["run"]
+        self.assertIn('source_dir=".local/ci-source/tree"', build)
+        qualify = self.steps["Qualify demo and historical research stacks"]["run"]
+        self.assertIn('.local/ci-source/tree/scripts/ops/qualify_production.py', qualify)
+        self.assertIn('--directory .local/ci-source/tree/.local/ci-production', qualify)
 
     def test_scanner_uses_only_the_five_ids_already_qualified_in_this_job(self):
         collect = self.steps["Collect SBOM and vulnerability reports for qualified images"]
@@ -238,7 +256,7 @@ class ProductionWorkflowTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory(dir=ROOT, prefix=".tmp-production-scan-policy-") as temporary_directory:
             local = Path(temporary_directory) / ".local"
-            qualification = local / "ci-production"
+            qualification = local / "ci-source" / "tree" / ".local" / "ci-production"
             security = local / "ci-security"
             qualification.mkdir(parents=True)
             security.mkdir(parents=True)
@@ -338,8 +356,8 @@ class ProductionWorkflowTests(unittest.TestCase):
         self.assertEqual(
             {
                 "PLAYWRIGHT_BASE_URL": "https://localhost:8452",
-                "CADRISYN_REHEARSAL_CERT": "${{ github.workspace }}/.local/ci-production/gateway_cert",
-                "CADRISYN_RELEASE_CREDENTIALS": "${{ github.workspace }}/.local/ci-production/credentials.json",
+                "CADRISYN_REHEARSAL_CERT": "${{ github.workspace }}/.local/ci-source/tree/.local/ci-production/gateway_cert",
+                "CADRISYN_RELEASE_CREDENTIALS": "${{ github.workspace }}/.local/ci-source/tree/.local/ci-production/credentials.json",
                 "KERQUANT_BROWSER_OUTPUT": "${{ github.workspace }}/.local/ci-browser",
             },
             browser["env"],
@@ -392,7 +410,7 @@ class ProductionWorkflowTests(unittest.TestCase):
         head_sha = "b" * 40
 
         with tempfile.TemporaryDirectory(dir=ROOT, prefix=".tmp-production-workflow-") as temporary_directory:
-            receipt_directory = Path(temporary_directory) / ".local" / "ci-production"
+            receipt_directory = Path(temporary_directory) / ".local" / "ci-source" / "tree" / ".local" / "ci-production"
             receipt_directory.mkdir(parents=True)
             receipt_path = receipt_directory / "receipt.json"
             receipt_path.write_text(json.dumps({"source_commit": tested_sha}), encoding="utf-8")
@@ -435,7 +453,8 @@ class ProductionWorkflowTests(unittest.TestCase):
         self.assertEqual("always()", upload["if"])
         self.assertEqual(
             [
-                ".local/ci-production/receipt.json",
+                ".local/ci-source/tree/.local/ci-production/receipt.json",
+                ".local/ci-source/receipt.json",
                 ".local/ci-security/summary.json",
                 ".local/ci-security/*-sbom.spdx.json",
                 ".local/ci-security/*-vulnerabilities.json",
