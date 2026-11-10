@@ -1,0 +1,7 @@
+{
+  "result": "PASS",
+  "old_working_tree_build_rejected": true,
+  "failures": 0,
+  "errors": 1,
+  "mutations": "in-memory only"
+}

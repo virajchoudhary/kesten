@@ -15,3 +15,11 @@ docs/implementation/evidence/phase53/*.txt text eol=lf
 docs/implementation/evidence/phase53/*.json text eol=lf
 docs/implementation/evidence/phase53/*.md text eol=lf
 docs/implementation/evidence/phase53/*.tsv text eol=lf
+
+docs/implementation/evidence/phase53-followup/*.txt text eol=lf
+
+docs/implementation/evidence/phase53-followup/*.json text eol=lf
+
+docs/implementation/evidence/phase53-followup/*.md text eol=lf
+
+docs/implementation/evidence/phase53-followup/*.tsv text eol=lf

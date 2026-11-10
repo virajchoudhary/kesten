@@ -1,0 +1,14 @@
+{
+  "source_revision": "5add654b7a389456a2b36a5c36a0fca4e84edfa2",
+  "base_cache_permitted": true,
+  "application_build_cache_disabled": true,
+  "first_image_id": "sha256:ab6e5b3b112cb9a4f36a2b985e5ef67d4cf7c1b5d99d0c7495c14bc714c03142",
+  "cold_image_id": "sha256:2d0240279fd997a38355b945ad9b393c4885f3ede2c627fcef931177967acb4e",
+  "same_runtime_configuration": true,
+  "same_filesystem_layers": false,
+  "same_created": true,
+  "first_rootfs_sha256": "bc24a83be747ff14afde0655e477c821d5303b942400effd54d149faea57dcc7",
+  "cold_rootfs_sha256": "5235faece32f7f9c3cb48a14b5f285a30c7e244555232671656b4e7c0683b3be",
+  "scope": "Independent uncached API RUN/COPY rebuild with the same canonical source/epoch/pins. Does not establish cold determinism for four other images or identical provenance envelopes.",
+  "result": "NOT_REPRODUCED"
+}

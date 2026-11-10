@@ -1,0 +1,15 @@
+{
+  "cache": "D:\\KerquantQualification\\phase53-followup-20261110-advisories",
+  "metadata": {
+    "schemaVersion": "v6.1.10",
+    "from": "https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.10_2026-11-10T00:20:15Z_1794291680.tar.zst?checksum=sha256%3Af536af5882d8e03ad3e3ea5b32b3fc1965d55321ddab67ad7a5d7aeec3725190",
+    "built": "2026-11-10T06:21:20Z",
+    "path": "D:\\KerquantQualification\\phase53-followup-20261110-advisories\\6\\vulnerability.db",
+    "valid": true
+  },
+  "database_sha256": "6b578d6c5196d1164928c85d0d3a6335f08d54845f5e34705419b62d0325e824",
+  "database_bytes": 3409813504,
+  "archive_sha256": "f536af5882d8e03ad3e3ea5b32b3fc1965d55321ddab67ad7a5d7aeec3725190",
+  "storage_scope": "New ACL-private task cache on D:. No existing cache, WSL distribution or volume was relocated.",
+  "acquisition_date": "2026-11-10"
+}

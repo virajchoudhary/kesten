@@ -1,0 +1,45 @@
+{
+  "capture_date": "2026-11-10",
+  "probes": [
+    {
+      "service": "api",
+      "image_id": "sha256:ac776c1244684c1abb3ed9a3f96facba19d16d84de33a25d8462e4dc0dd50a1d",
+      "exit_code": 0,
+      "raw_log": ".local/phase53-followup/vendor-retry/api.log",
+      "raw_log_sha256": "3114f438fc71b45b3287dce219da20641ab0a031fd526a4ab4e0f8cf7c814619"
+    },
+    {
+      "service": "web",
+      "image_id": "sha256:12e7e3d7dfc43815048d4cf2c1bfe1da322f7a2b55ceea694baaa6f8071655f9",
+      "exit_code": 0,
+      "raw_log": ".local/phase53-followup/vendor-retry/web.log",
+      "raw_log_sha256": "f1b4d1c20186f4fe8702fdbb62e0027a3373a7649f7f9eb334bdce9b3a91086f"
+    },
+    {
+      "service": "gateway",
+      "image_id": "sha256:b68706f717db058e395a85e7cd5953cf695b92a5a946a56d8275275091c76763",
+      "exit_code": 0,
+      "raw_log": ".local/phase53-followup/vendor-retry/gateway.log",
+      "raw_log_sha256": "9a7aac921f14cdf180a126420aef63b09540b04c5c90e6d4ed6fe594d94e0183"
+    },
+    {
+      "service": "database",
+      "exit_code": "Not retained in the incomplete parallel aggregate receipt; completed output retained.",
+      "raw_log": ".local/phase53-followup/vendor/database.log",
+      "raw_log_sha256": "8b226037e61d43097155af8ec6f854c9601645320003369aad2a10b68b9f5d09",
+      "upgrade_simulation": {
+        "upgraded": 0,
+        "new": 0,
+        "removed": 0,
+        "held": 0
+      }
+    },
+    {
+      "service": "cache",
+      "exit_code": "Not retained in the incomplete parallel aggregate receipt; completed output retained.",
+      "raw_log": ".local/phase53-followup/vendor/cache.log",
+      "raw_log_sha256": "566aaae5bd1454f83b8c38009221f46c97b306aae9289858e182ecfd3a8a3099"
+    }
+  ],
+  "scope": "Signed stable repository indexes in new one-off probe containers, no existing database mounts. Earlier API/web/gateway attempts timed out during Docker startup; their successful retry receipt is above. Package versions adopted are separately verified in final SBOMs."
+}

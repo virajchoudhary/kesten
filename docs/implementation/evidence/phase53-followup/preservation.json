@@ -1,0 +1,16 @@
+{
+  "result": "PASS",
+  "unchanged_counts": {
+    "protected_runtime": 496,
+    "research_artifacts": 17,
+    "unrelated_starting_paths": 22,
+    "previous_sqlite_files": 22
+  },
+  "authorized_integrated_paths": [],
+  "original_database_sha256": "93745bfc1a3149a0f77bbcdd1a50f712195750879f3fb313728ab9811f99715b",
+  "retained_postgres_stores": [
+    "kerquant-phase51-62a1f1-api-1",
+    "cadrisyn-phase5-prod-api-1"
+  ],
+  "retained_postgres_logical_hashes_unchanged": true
+}

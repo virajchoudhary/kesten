@@ -1,0 +1,65 @@
+{
+  "backend_postgresql": {
+    "passed": 156,
+    "skipped": 0,
+    "isolated_test_database": true
+  },
+  "frontend": {
+    "passed": 125,
+    "files": 35,
+    "workers": 2,
+    "typescript": "PASS",
+    "eslint": "PASS",
+    "initial_default_worker_run": "124 passed; one existing account test exceeded 5 seconds under build contention. Isolated account tests and full bounded-worker suite passed without changing assertions or timeout."
+  },
+  "operational_guards": {
+    "run": 90,
+    "passed": 86,
+    "skipped": 4,
+    "skip_reason": "The four SQL privilege tests require an explicitly isolated administrator connection; they are run separately below.",
+    "includes_real_windows_acl": true
+  },
+  "postgres_privilege_sql": {
+    "passed": 4,
+    "skipped": 0,
+    "isolated_test_database": true
+  },
+  "production_acceptance": {
+    "passed": 14
+  },
+  "browser": {
+    "passed": 3,
+    "real_api": true,
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "widths": [
+      1440,
+      390
+    ],
+    "axe_violations": 0
+  },
+  "ruff": {
+    "version": "0.17.3",
+    "result": "PASS",
+    "selection": "E4,E7,E9,F",
+    "scope": "Four changed Python files. Full optional style rules reported 13 findings, not claimed clean."
+  },
+  "actionlint": {
+    "version": "1.7.12",
+    "result": "PASS",
+    "shellcheck": "UNAVAILABLE"
+  },
+  "log_sha256": {
+    "postgres-tests-final.log": "f06923a1ff56f1c03266033b9185a130e51a5fb5041131abc368c3689e8be724",
+    "browser-final.log": "90c0a90fc14cb834777f265069d6d47d749c5a95e57da5bceab60e30ddcc8683",
+    "frontend-bounded-tests.log": "ec751bca21997280e1617c20410d8d8cf84946bfef7239b1bc6cab3653342fd1",
+    "qualified-guards.log": "3cda6cfbe029ff5b4fe5318fd24c154fdedbf6b8e89560bc2417a23115733779",
+    "postgres-privilege-sql.log": "62a886cecbf7e1f82febb53f0dd287b24ce2142dcc94b5aa32f0a058d98bd123",
+    "frontend-types.log": "0ab97c6a37c618d8162278e85c3f84b91452c3191419d787c380b79d071b7b42",
+    "frontend-lint.log": "6568dfe06cfeabe34c286240735b525fa15b5dfe984293e4986123e5b4ea82e5",
+    "ruff-final.log": "a4443afdcfb6d7363adb285762515ccf7cf50473b1a05c20c1a50f6bed4d26b0",
+    "actionlint-final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

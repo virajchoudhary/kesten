@@ -1,0 +1,8 @@
+{
+  "result": "PASS",
+  "application_source_commit": "2650696dfda4e0aea896a19fad8d88b088ff3199",
+  "archive_sha256": "9b1791e7e9a7ee28cb1e978606323d0bf8c2a47801c94416f14331f9a6d3e482",
+  "files": 1044,
+  "same_zip_and_manifest_after_prefix_fix": true,
+  "application_images_rebuilt_for_tool_only_fix": false
+}

@@ -1,0 +1,47 @@
+{
+  "result": "PASS_FOR_REGRESSION_SCOPE",
+  "reviewed": [
+    "Desktop dark market chart, indicators, watchlist and demo disclosure",
+    "Mobile light market layout and demo disclosure",
+    "Mobile saved synthetic research, replay identity and no-empirical-performance disclosure"
+  ],
+  "scope": "Root visually inspected real Chromium screenshots; no UI redesign or broad design acceptance is implied.",
+  "screenshots": [
+    {
+      "private_path": ".local/phase53-followup/browser-final/qualification-production-c-def4a-ive-themes-use-the-real-API-chromium-production-profile/production-markets-1440-dark.png",
+      "sha256": "932898d3639a65b6616d447e52a1efea2ad2b08d8f3ab32629cf451831b91bea",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "private_path": ".local/phase53-followup/browser-final/qualification-production-c-def4a-ive-themes-use-the-real-API-chromium-production-profile/production-markets-1440-light.png",
+      "sha256": "d0f6ca86888a06dfddfccd4698cd1ba6b5663bef29fa37da2fbdbed0a231efd2",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "private_path": ".local/phase53-followup/browser-final/qualification-production-c-def4a-ive-themes-use-the-real-API-chromium-production-profile/production-markets-390-dark.png",
+      "sha256": "5531d6332ac2df5b740ab32c99356a293511069e2f33aa207009494704a2ce91",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "private_path": ".local/phase53-followup/browser-final/qualification-production-c-def4a-ive-themes-use-the-real-API-chromium-production-profile/production-markets-390-light.png",
+      "sha256": "7b5a8937f8eae41aaa066921b3a7259d5d7e5cd7fe0a9c285ebccfe18b807edf",
+      "width": 390,
+      "height": 844
+    },
+    {
+      "private_path": ".local/phase53-followup/browser-final/qualification-saved-synthe-ba026--exact-replay-in-production-chromium-production-profile/production-research-1440.png",
+      "sha256": "c47d7bfd035c98ba3b6af9ed5f95322577705930dc5be169e9c52e5be8a1c377",
+      "width": 1440,
+      "height": 1855
+    },
+    {
+      "private_path": ".local/phase53-followup/browser-final/qualification-saved-synthe-ba026--exact-replay-in-production-chromium-production-profile/production-research-390.png",
+      "sha256": "161ea3be7757306ec7a7c978e34bdc2221170a26427fd1a54a609b51d8f6f25f",
+      "width": 390,
+      "height": 3278
+    }
+  ]
+}

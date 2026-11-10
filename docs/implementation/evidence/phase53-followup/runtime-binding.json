@@ -1,0 +1,72 @@
+{
+  "result": "PASS",
+  "application_source_revision": "4862522e6a856882cc4916847ed6453307903e9d",
+  "source_archive_sha256": "96ebb5b8a8940c673575403e797b1157924220004df149973daf33f67d4720a9",
+  "backend_python_files_matched": 126,
+  "web_build_id": "4862522e6a856882cc4916847ed6453307903e9d",
+  "containers": {
+    "api": {
+      "image_id": "sha256:cf7233b38db1a072a51c0df41673c1f1179cfbdf70a8bd0d88f302fee7d0d920",
+      "pid1_uid": 100,
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "memory_bytes": 1073741824,
+      "ports": {}
+    },
+    "web": {
+      "image_id": "sha256:a91d601ee6c5e440305d002e1edcc8591f751b633ff356721fadd2694cd2ea1c",
+      "pid1_uid": 1001,
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "memory_bytes": 536870912,
+      "ports": {}
+    },
+    "database": {
+      "image_id": "sha256:5cb074c424af72768d239358b6c007b513c165e62ec6c8ac33825ec2625f13c1",
+      "pid1_uid": 999,
+      "read_only": false,
+      "cap_drop": null,
+      "memory_bytes": 805306368,
+      "ports": {}
+    },
+    "cache": {
+      "image_id": "sha256:4f15261ed9b8aabbda48e94c09f3c421fa0e7e627215743478712e89073e39bc",
+      "pid1_uid": 999,
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "memory_bytes": 201326592,
+      "ports": {}
+    },
+    "gateway": {
+      "image_id": "sha256:328ac272576677f2f27d59e36dd84e1d446041452d4947d70bff81079860897d",
+      "pid1_uid": 101,
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "memory_bytes": 134217728,
+      "ports": {
+        "8080/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8100"
+          }
+        ],
+        "8443/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "8460"
+          }
+        ]
+      }
+    }
+  },
+  "signed_provenance": false,
+  "scope": "Read-back of the actual local running images, source bytes and process identities; not a registry publication or signed attestation."
+}

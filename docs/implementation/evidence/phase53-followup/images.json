@@ -1,0 +1,42 @@
+{
+  "source_revision": "4862522e6a856882cc4916847ed6453307903e9d",
+  "epoch": 1794319753,
+  "archive_sha256": "96ebb5b8a8940c673575403e797b1157924220004df149973daf33f67d4720a9",
+  "images": [
+    {
+      "service": "api",
+      "reference": "kerquant-phase53-qualified-api:4862522",
+      "image_id": "sha256:cf7233b38db1a072a51c0df41673c1f1179cfbdf70a8bd0d88f302fee7d0d920",
+      "base": null,
+      "revision_label": "4862522e6a856882cc4916847ed6453307903e9d"
+    },
+    {
+      "service": "web",
+      "reference": "kerquant-phase53-qualified-web:4862522",
+      "image_id": "sha256:a91d601ee6c5e440305d002e1edcc8591f751b633ff356721fadd2694cd2ea1c",
+      "base": null,
+      "revision_label": "4862522e6a856882cc4916847ed6453307903e9d"
+    },
+    {
+      "service": "database",
+      "reference": "kerquant-phase53-qualified-database:4862522",
+      "image_id": "sha256:5cb074c424af72768d239358b6c007b513c165e62ec6c8ac33825ec2625f13c1",
+      "base": "postgres:17.11@sha256:748a18a54d3842d43bc156f0840d78029b8d349e0feca98c12b9c4ce3404a6b3",
+      "revision_label": null
+    },
+    {
+      "service": "cache",
+      "reference": "kerquant-phase53-qualified-cache:4862522",
+      "image_id": "sha256:4f15261ed9b8aabbda48e94c09f3c421fa0e7e627215743478712e89073e39bc",
+      "base": "redis:8.10.3-alpine3.23@sha256:71885d8cc6e42f2bc0aa2eb853bfc4be200b5108a46ac50e117ae1df0531fb80",
+      "revision_label": null
+    },
+    {
+      "service": "gateway",
+      "reference": "kerquant-phase53-qualified-gateway:4862522",
+      "image_id": "sha256:328ac272576677f2f27d59e36dd84e1d446041452d4947d70bff81079860897d",
+      "base": "nginx:1.30.6-alpine3.24@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311",
+      "revision_label": null
+    }
+  ]
+}

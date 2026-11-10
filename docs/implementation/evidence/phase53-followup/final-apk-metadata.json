@@ -1,0 +1,36 @@
+[
+  {
+    "image_id": "sha256:ab6e5b3b112cb9a4f36a2b985e5ef67d4cf7c1b5d99d0c7495c14bc714c03142",
+    "files": {
+      "/var/log/apk.log": {
+        "sha256": "8a783e344a32ff4f9c31eb90e9644d6e3b67ec388ccd49b7adfa6b49a320f41a",
+        "bytes": 14032
+      },
+      "/lib/apk/db/installed": {
+        "sha256": "238cd09468d9f93e285cc38ba70341b601a30709bb4e0698dba96cbd87b5cbd9",
+        "bytes": 68244
+      },
+      "/etc/apk/world": {
+        "sha256": "012a30d089639bef426e507220192a48c52a65f11057bad2b44f606e37004e30",
+        "bytes": 190
+      }
+    }
+  },
+  {
+    "image_id": "sha256:2d0240279fd997a38355b945ad9b393c4885f3ede2c627fcef931177967acb4e",
+    "files": {
+      "/var/log/apk.log": {
+        "sha256": "8a783e344a32ff4f9c31eb90e9644d6e3b67ec388ccd49b7adfa6b49a320f41a",
+        "bytes": 14032
+      },
+      "/lib/apk/db/installed": {
+        "sha256": "238cd09468d9f93e285cc38ba70341b601a30709bb4e0698dba96cbd87b5cbd9",
+        "bytes": 68244
+      },
+      "/etc/apk/world": {
+        "sha256": "012a30d089639bef426e507220192a48c52a65f11057bad2b44f606e37004e30",
+        "bytes": 190
+      }
+    }
+  }
+]

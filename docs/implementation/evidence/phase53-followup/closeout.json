@@ -1,0 +1,8 @@
+{
+  "created_at_utc": "2026-11-10T14:45:15.054751+00:00",
+  "preservation_after_all_runtime_workflows": "PASS",
+  "preservation_log_sha256": "d0c22f6c8c1b306fde79ec6a8327f969b0acf59f644e2809c26317d09363f1c6",
+  "source_commit": "4862522e6a856882cc4916847ed6453307903e9d",
+  "decision": "NO_GO",
+  "scope": "Local-only changes and evidence. No push, merge, deployment, purchases, security waivers or model promotion."
+}

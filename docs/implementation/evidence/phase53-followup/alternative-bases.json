@@ -1,0 +1,20 @@
+[
+  {
+    "reference": "node:22-bookworm-slim",
+    "pinned_reference": "node:22-bookworm-slim@sha256:5ec23b7c622b00547753bc6ffd78085dd868a68aeb41c8e0a1418f033e13d96d",
+    "image_id": "sha256:5ec23b7c622b00547753bc6ffd78085dd868a68aeb41c8e0a1418f033e13d96d",
+    "status": "INVENTORY_ONLY_NOT_APPLICATION_QUALIFIED"
+  },
+  {
+    "reference": "redis:8.10.3-trixie",
+    "pinned_reference": "redis:8.10.3-trixie@sha256:1f88291b4c57bdf249f02eb085a8669889b2d2954e91d4de5118a5da6b78dd53",
+    "image_id": "sha256:1f88291b4c57bdf249f02eb085a8669889b2d2954e91d4de5118a5da6b78dd53",
+    "status": "INVENTORY_ONLY_NOT_APPLICATION_QUALIFIED"
+  },
+  {
+    "reference": "nginx:1.30.6-trixie",
+    "pinned_reference": "nginx:1.30.6-trixie@sha256:42c68eab6f7e22611786a9fe1d1c019e275c50185bd54b8f75dc2b9184322703",
+    "image_id": "sha256:42c68eab6f7e22611786a9fe1d1c019e275c50185bd54b8f75dc2b9184322703",
+    "status": "INVENTORY_ONLY_NOT_APPLICATION_QUALIFIED"
+  }
+]

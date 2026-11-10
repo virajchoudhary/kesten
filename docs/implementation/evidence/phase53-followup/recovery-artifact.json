@@ -1,0 +1,9 @@
+{
+  "bytes": 145936,
+  "dump_sha256": "3149b30ccc03b9fb37853ee48822bccda5b2aa2b913652e016a9aba7a6830402",
+  "manifest_sha256": "b53098ebf42d79e3cdb7fe17c776747284346864f8e78702d08de5b024126d30",
+  "kind": "synthetic_fixture",
+  "contents_committed": false,
+  "off_host": false,
+  "encryption_drill": "Prior Phase 5.3 local AES256 roundtrip and tamper-rejection receipt retained unchanged. Not rerun; encryption code unchanged."
+}

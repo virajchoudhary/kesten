@@ -1,0 +1,24 @@
+{
+  "api": {
+    "busybox": "1.37.0-r31",
+    "krb5-libs": "1.22.3-r0",
+    "sqlite-libs": "3.53.4-r0",
+    "zlib": "1.4-r0"
+  },
+  "web": {
+    "busybox": "1.37.0-r31",
+    "zlib": "1.4-r0"
+  },
+  "database": {
+    "github.com/moby/sys/user": "v0.4.1"
+  },
+  "cache": {
+    "busybox": "1.37.0-r30",
+    "zlib": "1.4-r0"
+  },
+  "gateway": {
+    "busybox": "1.37.0-r31",
+    "libxslt": "1.1.43-r4",
+    "zlib": "1.4-r0"
+  }
+}

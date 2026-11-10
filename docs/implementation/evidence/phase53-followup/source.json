@@ -1,0 +1,9 @@
+{
+  "archive_sha256": "96ebb5b8a8940c673575403e797b1157924220004df149973daf33f67d4720a9",
+  "commit": "4862522e6a856882cc4916847ed6453307903e9d",
+  "commit_epoch": 1794319753,
+  "tree": "0b75c1865cc01dfbcbdc2ebd3347f66680d4fe96",
+  "file_count": 1044,
+  "private_full_receipt_sha256": "dab4b0845c3794e78c67b34747fe397f37b482e2479ce69f61fa260767990391",
+  "scope": "All exported files validated against committed Git blobs. Source archive and full extracted tree remain private."
+}

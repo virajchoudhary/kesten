@@ -1,0 +1,19 @@
+{
+  "result": "NO_GO",
+  "created_at": "2026-11-10T14:39:43.130554+00:00",
+  "starting_commit": "91a0cc3bf36cbe28ff55faa101802911621258fe",
+  "application_source_commit": "4862522e6a856882cc4916847ed6453307903e9d",
+  "local_url": "https://localhost:8460/app/markets/",
+  "security": "All five final image policies fail unchanged medium threshold.",
+  "scientific_qualification": "NO QUALIFIED HISTORICAL ARCHIVE; no empirical forecasting claim or model promotion.",
+  "hosted_ci": "NOT_EXECUTED",
+  "off_host_acceptance": "UNTESTED",
+  "other_untested": [
+    "Cold-build determinism for web/database/cache/gateway",
+    "Identical OCI provenance envelopes",
+    "Other architectures or hosts",
+    "Production PKI/ingress and registry promotion",
+    "Production encryption key custody, rotation, alerts, on-call ownership and capacity"
+  ],
+  "scope": "Local isolated qualification only; no push, merge, deployment, purchases or security exemptions."
+}

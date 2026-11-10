@@ -1,5 +1,7 @@
 # Phase 5.3 security and release qualification
 
+The later [Phase 5.3 follow-up](PHASE53-FOLLOWUP.md) supersedes advisory freshness, canonical-source and cold-build findings below. This original acceptance record remains historical.
+
 Assessment: 10 November 2026, Asia/Calcutta. **Release decision: NO-GO.** One genuine image dependency defect and the Windows clean-source TLS blocker are fixed. All five images still fail the unchanged medium-severity policy. This report does not grant deployment, historical-data rights or model qualification.
 
 ## Accepted source and changes

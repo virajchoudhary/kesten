@@ -1,0 +1,34 @@
+{
+  "result": "PASS",
+  "source_commit": "4862522e6a856882cc4916847ed6453307903e9d",
+  "files": {
+    "deploy/compose.production.yaml": {
+      "sha256": "48b7c6bc147f01ad14eaac59e52a7ec1475ab26000e889a165e423cebf6168ad",
+      "same_committed_bytes": true
+    },
+    "deploy/compose.production-qualification.yaml": {
+      "sha256": "e322e48f4b1d9669de22b7e5173ed560c531d37f9abe7740009ddfd4c4d04ff7",
+      "same_committed_bytes": true
+    },
+    "deploy/nginx.production.conf": {
+      "sha256": "9b99711c62d7cba474b670859ba09d09cd6ace94a2471369371988d3c398d7c8",
+      "same_committed_bytes": true
+    },
+    "scripts/ops/qualify_production.py": {
+      "sha256": "8eecd4201fc8b4af402421da5b270c0bbdda27e4796cf9db360a0fb6d76476cb",
+      "same_committed_bytes": true
+    },
+    "scripts/ops/production_probe.py": {
+      "sha256": "b3dbeed9306f8b3b240bfad7f99c6928988463539f3d530e2c55c1492be906c0",
+      "same_committed_bytes": true
+    },
+    "scripts/ops/prepare_local_tls.py": {
+      "sha256": "73f2d335e95451c52f7d485b07f2fe55932040ffb9d620de73b4ce7f04e4c9cd",
+      "same_committed_bytes": true
+    },
+    "scripts/qualify_research_postgres.py": {
+      "sha256": "677f4e21fafeb3e7b878bbcaa48edab0beb332d97146cfcef4e64163cd6a4435",
+      "same_committed_bytes": true
+    }
+  }
+}
