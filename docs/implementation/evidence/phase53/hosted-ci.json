@@ -1,0 +1,13 @@
+{
+  "status": "NOT_EXECUTED",
+  "reason": "No push, dispatch, repository settings change or hosted execution authorized.",
+  "workflow": ".github/workflows/production-qualification.yml",
+  "jobs": [
+    "windows-secret-preparation",
+    "production-qualification"
+  ],
+  "local_actionlint": "PASS",
+  "local_workflow_tests": 13,
+  "source_commit": "2e5f63d60c37ea60e94b6368125a9f31bd2e0ce2",
+  "hosted_run_urls": []
+}

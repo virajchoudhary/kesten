@@ -1,0 +1,40 @@
+{
+  "result": "FAIL",
+  "source_revision": "2e5f63d60c37ea60e94b6368125a9f31bd2e0ce2",
+  "epoch": "1794297747",
+  "cache_used": true,
+  "cold_build_byte_identity": "UNTESTED",
+  "scope": "Re-executed exact commands from the same frozen archive with existing BuildKit cache. This does not establish cold-build determinism or reproducibility against future live package indexes.",
+  "images": [
+    {
+      "service": "api",
+      "first_image_id": "sha256:ac776c1244684c1abb3ed9a3f96facba19d16d84de33a25d8462e4dc0dd50a1d",
+      "repeat_image_id": "sha256:3182d61101e6a7df3bdd7ae7d2f4135f8fa2ecbc04ccca05cd56663d6cad4b3f",
+      "same_identity": false
+    },
+    {
+      "service": "web",
+      "first_image_id": "sha256:12e7e3d7dfc43815048d4cf2c1bfe1da322f7a2b55ceea694baaa6f8071655f9",
+      "repeat_image_id": "sha256:56bd75af00df360dac693046b9f8606f118c3274821bb5ef2d73cf617ef32cc2",
+      "same_identity": false
+    },
+    {
+      "service": "database",
+      "first_image_id": "sha256:f59196d789cb1158f1d8a0a59736a07ef0a543a8d671d239a69d24761c269f7d",
+      "repeat_image_id": "sha256:4fac2db3a9b182b2509eb797e24e0b7efe0d7b0169ce532bfc4cbe58072d2502",
+      "same_identity": false
+    },
+    {
+      "service": "cache",
+      "first_image_id": "sha256:fbb924a1d73768be3b28d6eedd4613a678c0890c95cecc596a403e0aa33a9cc0",
+      "repeat_image_id": "sha256:fb2f42e489f86a9164b18ab4b6d30f7e09292e2173f8a4574aa2e24106427c83",
+      "same_identity": false
+    },
+    {
+      "service": "gateway",
+      "first_image_id": "sha256:b68706f717db058e395a85e7cd5953cf695b92a5a946a56d8275275091c76763",
+      "repeat_image_id": "sha256:e6fcf2a6ce25f820f48526e8bb0fce0e9c9ff2bfd7f8efca7de1695c811170ff",
+      "same_identity": false
+    }
+  ]
+}

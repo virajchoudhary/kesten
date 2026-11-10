@@ -1,0 +1,15 @@
+{
+  "sources": [
+    "https://github.com/tianon/gosu/releases/tag/1.20",
+    "https://github.com/moby/sys/security/advisories/GHSA-mjcv-p78q-w5fw",
+    "https://keys.openpgp.org/vks/v1/by-fingerprint/B42F6819007F00F88E364FD4036A9C25BF357DD4",
+    "https://grype.anchore.io/databases/v6/latest.json",
+    "https://www.python.org/downloads/release/python-31216/",
+    "https://security-tracker.debian.org/tracker/CVE-2026-6653",
+    "https://security-tracker.debian.org/tracker/CVE-2026-63073",
+    "https://security-tracker.debian.org/tracker/CVE-2026-75803",
+    "https://security-tracker.debian.org/tracker/CVE-2026-119373",
+    "https://docs.docker.com/build/ci/github-actions/reproducible-builds/",
+    "https://www.postgresql.org/docs/17/backup-dump.html"
+  ]
+}

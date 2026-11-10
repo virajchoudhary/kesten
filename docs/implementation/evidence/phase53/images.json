@@ -1,0 +1,41 @@
+{
+  "source_revision": "2e5f63d60c37ea60e94b6368125a9f31bd2e0ce2",
+  "epoch": "1794297747",
+  "images": [
+    {
+      "service": "api",
+      "reference": "kerquant-phase53-api:2e5f63d",
+      "image_id": "sha256:ac776c1244684c1abb3ed9a3f96facba19d16d84de33a25d8462e4dc0dd50a1d",
+      "base": null,
+      "revision_label": "2e5f63d60c37ea60e94b6368125a9f31bd2e0ce2"
+    },
+    {
+      "service": "web",
+      "reference": "kerquant-phase53-web:2e5f63d",
+      "image_id": "sha256:12e7e3d7dfc43815048d4cf2c1bfe1da322f7a2b55ceea694baaa6f8071655f9",
+      "base": null,
+      "revision_label": "2e5f63d60c37ea60e94b6368125a9f31bd2e0ce2"
+    },
+    {
+      "service": "database",
+      "reference": "kerquant-phase53-database:2e5f63d",
+      "image_id": "sha256:f59196d789cb1158f1d8a0a59736a07ef0a543a8d671d239a69d24761c269f7d",
+      "base": "postgres:17.11@sha256:748a18a54d3842d43bc156f0840d78029b8d349e0feca98c12b9c4ce3404a6b3",
+      "revision_label": null
+    },
+    {
+      "service": "cache",
+      "reference": "kerquant-phase53-cache:2e5f63d",
+      "image_id": "sha256:fbb924a1d73768be3b28d6eedd4613a678c0890c95cecc596a403e0aa33a9cc0",
+      "base": "redis:8.10.3-alpine3.23@sha256:71885d8cc6e42f2bc0aa2eb853bfc4be200b5108a46ac50e117ae1df0531fb80",
+      "revision_label": null
+    },
+    {
+      "service": "gateway",
+      "reference": "kerquant-phase53-gateway:2e5f63d",
+      "image_id": "sha256:b68706f717db058e395a85e7cd5953cf695b92a5a946a56d8275275091c76763",
+      "base": "nginx:1.30.6-alpine3.24@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311",
+      "revision_label": null
+    }
+  ]
+}

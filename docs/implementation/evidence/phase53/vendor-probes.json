@@ -1,0 +1,48 @@
+{
+  "result": "VERIFIED",
+  "probes": [
+    {
+      "service": "api",
+      "image_id": "sha256:f4e2b685f0955d719fbb22cc9280c65478f209522cd12628b564506d356548d8",
+      "exit_code": 0,
+      "log": "packages-api.log",
+      "raw_log_sha256": "8d92fed7e41f6710c6e27f7dd5b869c8fec1f91cc55d98397608241edb9c5e5a"
+    },
+    {
+      "service": "web",
+      "image_id": "sha256:db27f6fb66db336b75f99f1ea533bfc0d858bace46c5740a11aae662b7fe8fb3",
+      "exit_code": 0,
+      "log": "packages-web.log",
+      "raw_log_sha256": "04bbe731d26fca5b5970977ad230cc7325296b70599d2cdb13952a34e83fc089"
+    },
+    {
+      "service": "cache",
+      "image_id": "sha256:7061e7783118eae364273acc0ed96ed86e77e7673b14fdb2c234f4abcf1c9ca5",
+      "exit_code": 0,
+      "log": "packages-cache.log",
+      "raw_log_sha256": "a70c0840b1f6316e3f303b0e3bca06d833344b295675d2db6db05aa8c99b1bdf"
+    },
+    {
+      "service": "gateway",
+      "image_id": "sha256:e0015249adf43968015e24f518a1b811d6e8e82defa801b872ff6fd5d547755c",
+      "exit_code": 0,
+      "log": "packages-gateway.log",
+      "raw_log_sha256": "13552ceb05c34bf6025075751dadffe61ba4912d801f768b59083271a7e01220"
+    },
+    {
+      "service": "database",
+      "image_id": "sha256:92d4f3d659a277a1c3baece448a3ff08a5c88de6cb3cf4f75440717c36483986",
+      "exit_code": 0,
+      "log": "packages-database.log",
+      "raw_log_sha256": "0302d406c66d6c7db8ceb8450d795eaa94fb02c39f7961f1275863e11155856c"
+    }
+  ],
+  "debian_full_upgrade_simulation": {
+    "upgraded": 0,
+    "newly_installed": 0,
+    "removed": 0,
+    "not_upgraded": 0,
+    "raw_log_sha256": "9e414eb6c1bf8b726da2bec95be693e7ae645c841c238694aabc09f90e1b076d"
+  },
+  "scope": "Signed stable indexes; no edge/testing repositories, package metadata removal, scanner exemptions or numerical lock changes."
+}

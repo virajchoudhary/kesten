@@ -1,0 +1,47 @@
+{
+  "backend_postgresql": {
+    "run": 156,
+    "passed": 156,
+    "skipped": 0
+  },
+  "frontend": {
+    "passed": 125,
+    "files": 35,
+    "typescript": "PASS",
+    "eslint": "PASS"
+  },
+  "operational_and_research_guards": {
+    "passed": 77,
+    "groups": [
+      59,
+      18
+    ]
+  },
+  "production_browser": {
+    "passed": 3,
+    "real_api": true,
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "themes": [
+      "dark",
+      "light"
+    ],
+    "axe_violations": 0
+  },
+  "production_acceptance": {
+    "passed": 14
+  },
+  "ruff": {
+    "version": "0.15.17",
+    "result": "PASS",
+    "scope": "Changed Python files"
+  },
+  "actionlint": {
+    "version": "1.7.12",
+    "result": "PASS",
+    "shellcheck": "UNAVAILABLE"
+  },
+  "sqlite_full_backend_suite": "Not repeated; PostgreSQL full suite and SQLite recovery guard tests executed."
+}

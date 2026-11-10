@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-11-10T08:22:05.811884+00:00",
+  "result": "PASS",
+  "source_commit": "2e5f63d60c37ea60e94b6368125a9f31bd2e0ce2",
+  "working_tree_dirty": true,
+  "project": "kerquant-qualification-4b8db2be67c5d8eadfa3efdc",
+  "checks": [
+    {
+      "check": "fresh_tls_stack",
+      "status": "PASS",
+      "evidence": true
+    },
+    {
+      "check": "synthetic_numerical_contract",
+      "status": "PASS",
+      "evidence": {
+        "result": "PASS",
+        "data_kind": "synthetic_fixture",
+        "empirical_evaluation": false,
+        "result_hashes": {
+          "1": "9a45a5cca4ce69b11d0ae494f23679a278057ae61b995cf2957d7ea378c19e50",
+          "5": "995a224ce3925f972ca224ece6f548d45277ecdd364a50d13998b4649e5f33be"
+        }
+      }
+    },
+    {
+      "check": "demo_https_auth_privacy_and_provenance",
+      "status": "PASS",
+      "evidence": true
+    },
+    {
+      "check": "historical_research_https_auth_privacy_and_provenance",
+      "status": "PASS",
+      "evidence": true
+    },
+    {
+      "check": "container_preflight",
+      "status": "PASS",
+      "evidence": {
+        "result": "PASS",
+        "profile": "historical_research",
+        "checks": [
+          {
+            "check": "non_debug",
+            "status": "PASS"
+          },
+          {
+            "check": "release_profile",
+            "status": "PASS"
+          },
+          {
+            "check": "matching_web_profile",
+            "status": "PASS"
+          },
+          {
+            "check": "explicit_hosts",
+            "status": "PASS"
+          },
+          {
+            "check": "https_csrf_origins",
+            "status": "PASS"
+          },
+          {
+            "check": "same_origin_cors",
+            "status": "PASS"
+          },
+          {
+            "check": "https_redirect",
+            "status": "PASS"
+          },
+          {
+            "check": "trusted_gateway_proto",
+            "status": "PASS"
+          },
+          {
+            "check": "cadrisyn_legacy_enabled",
+            "status": "PASS"
+          },
+          {
+            "check": "cadrisyn_market_data_enabled",
+            "status": "PASS"
+          },
+          {
+            "check": "cadrisyn_admin_enabled",
+            "status": "PASS"
+          },
+          {
+            "check": "cadrisyn_legacy_scheduler_enabled",
+            "status": "PASS"
+          },
+          {
+            "check": "django_secret_key_file_injection",
+            "status": "PASS"
+          },
+          {
+            "check": "django_secret_length",
+            "status": "PASS"
+          },
+          {
+            "check": "database_url_file_injection",
+            "status": "PASS"
+          },
+          {
+            "check": "django_cache_url_file_injection",
+            "status": "PASS"
+          },
+          {
+            "check": "database_authenticated_verified_tls",
+            "status": "PASS"
+          },
+          {
+            "check": "cache_authenticated_verified_tls",
+            "status": "PASS"
+          },
+          {
+            "check": "api_image_immutable",
+            "status": "PASS"
+          },
+          {
+            "check": "web_image_immutable",
+            "status": "PASS"
+          }
+        ],
+        "scope": "Configuration only; does not establish hosted CI, data rights, off-host recovery or production deployment readiness."
+      }
+    },
+    {
+      "check": "role_drift_membership",
+      "status": "PASS",
+      "evidence": true
+    },
+    {
+      "check": "role_drift_routine_ownership",
+      "status": "PASS",
+      "evidence": true
+    },
+    {
+      "check": "role_drift_type_ownership",
+      "status": "PASS",
+      "evidence": true
+    },
+    {
+      "check": "role_drift_nonpublic_schema",
+      "status": "PASS",
+      "evidence": true
+    },
+    {
+      "check": "postgres_dump_restore_and_exact_replay",
+      "status": "PASS",
+      "evidence": {
+        "result": "PASS",
+        "tables": 27,
+        "runs_replayed": 2,
+        "intakes": 1,
+        "refused": [
+          "source",
+          "populated"
+        ],
+        "dump_bytes": 145918,
+        "runtime_privileges": {
+          "superuser": false,
+          "create_database": false,
+          "create_role": false,
+          "create_schema": false,
+          "temporary": false,
+          "writable_schema": false,
+          "owns_objects": false,
+          "role_membership": false
+        },
+        "data_kind": "synthetic_fixture",
+        "empirical_evaluation": false
+      }
+    },
+    {
+      "check": "restored_https_auth_privacy_and_provenance",
+      "status": "PASS",
+      "evidence": true
+    },
+    {
+      "check": "restored_http_database_binding",
+      "status": "PASS",
+      "evidence": {
+        "database": "qualification_restore",
+        "restore_only_marker_observed_and_removed": true
+      }
+    },
+    {
+      "check": "cache_failure_and_recovery",
+      "status": "PASS",
+      "evidence": true
+    },
+    {
+      "check": "database_failure_and_recovery",
+      "status": "PASS",
+      "evidence": true
+    }
+  ],
+  "error": null,
+  "images": {
+    "api": "sha256:ac776c1244684c1abb3ed9a3f96facba19d16d84de33a25d8462e4dc0dd50a1d",
+    "web": "sha256:12e7e3d7dfc43815048d4cf2c1bfe1da322f7a2b55ceea694baaa6f8071655f9",
+    "cache": "sha256:fbb924a1d73768be3b28d6eedd4613a678c0890c95cecc596a403e0aa33a9cc0",
+    "gateway": "sha256:b68706f717db058e395a85e7cd5953cf695b92a5a946a56d8275275091c76763",
+    "database": "sha256:f59196d789cb1158f1d8a0a59736a07ef0a543a8d671d239a69d24761c269f7d"
+  },
+  "configuration_sha256": {
+    "deploy/compose.production.yaml": "af3f15828bbfbea85d8bcdf9eeb6a31396c17663449e09938ab324b95def213c",
+    "deploy/compose.production-qualification.yaml": "4fb22c3d7ff433eb57ac7eb4543ef829cd8616dcb8a5408736e04c0de6893e42",
+    "deploy/nginx.production.conf": "482f912d7aa81f135154b15a2a875449f42ee432cfca4d25ac1333218d51b4e1"
+  },
+  "tooling_sha256": {
+    "scripts/ops/qualify_production.py": "1acd73e325c8357db7a9633321375de8948cda36d061e9c03354e0ca66f8a220",
+    "scripts/ops/production_probe.py": "c57d30048f4d1fefb0510884beb8bfd58a0c9d63d7c3a5d0fd4993d99beb13a5",
+    "scripts/ops/prepare_local_tls.py": "f188b3f94d88da138043dc81f9dfe7c8158ade220e393bef27f2c0821fad6b39",
+    "scripts/qualify_research_postgres.py": "e39bdb61ae5bcd7efbf4d579c82520105738102d1151573127dbeab2ffb4a3d4"
+  },
+  "data_kind": "synthetic_fixture",
+  "empirical_evaluation": false,
+  "scope": "Isolated local production-profile rehearsal with a job-local CA; not hosted CI, public TLS, off-host recovery, or deployment approval."
+}

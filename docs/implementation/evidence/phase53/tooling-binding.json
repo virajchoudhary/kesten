@@ -1,0 +1,49 @@
+{
+  "result": "VERIFIED_WITH_LINE_ENDING_QUALIFICATION",
+  "source_commit": "2e5f63d60c37ea60e94b6368125a9f31bd2e0ce2",
+  "files": {
+    "deploy/compose.production.yaml": {
+      "accepted_archive_sha256": "af3f15828bbfbea85d8bcdf9eeb6a31396c17663449e09938ab324b95def213c",
+      "git_blob_sha256": "48b7c6bc147f01ad14eaac59e52a7ec1475ab26000e889a165e423cebf6168ad",
+      "same_bytes": false,
+      "same_line_end_normalized_content": true
+    },
+    "deploy/compose.production-qualification.yaml": {
+      "accepted_archive_sha256": "4fb22c3d7ff433eb57ac7eb4543ef829cd8616dcb8a5408736e04c0de6893e42",
+      "git_blob_sha256": "e322e48f4b1d9669de22b7e5173ed560c531d37f9abe7740009ddfd4c4d04ff7",
+      "same_bytes": false,
+      "same_line_end_normalized_content": true
+    },
+    "deploy/nginx.production.conf": {
+      "accepted_archive_sha256": "482f912d7aa81f135154b15a2a875449f42ee432cfca4d25ac1333218d51b4e1",
+      "git_blob_sha256": "9b99711c62d7cba474b670859ba09d09cd6ace94a2471369371988d3c398d7c8",
+      "same_bytes": false,
+      "same_line_end_normalized_content": true
+    },
+    "scripts/ops/qualify_production.py": {
+      "accepted_archive_sha256": "1acd73e325c8357db7a9633321375de8948cda36d061e9c03354e0ca66f8a220",
+      "git_blob_sha256": "8eecd4201fc8b4af402421da5b270c0bbdda27e4796cf9db360a0fb6d76476cb",
+      "same_bytes": false,
+      "same_line_end_normalized_content": true
+    },
+    "scripts/ops/production_probe.py": {
+      "accepted_archive_sha256": "c57d30048f4d1fefb0510884beb8bfd58a0c9d63d7c3a5d0fd4993d99beb13a5",
+      "git_blob_sha256": "b3dbeed9306f8b3b240bfad7f99c6928988463539f3d530e2c55c1492be906c0",
+      "same_bytes": false,
+      "same_line_end_normalized_content": true
+    },
+    "scripts/ops/prepare_local_tls.py": {
+      "accepted_archive_sha256": "f188b3f94d88da138043dc81f9dfe7c8158ade220e393bef27f2c0821fad6b39",
+      "git_blob_sha256": "73f2d335e95451c52f7d485b07f2fe55932040ffb9d620de73b4ce7f04e4c9cd",
+      "same_bytes": false,
+      "same_line_end_normalized_content": true
+    },
+    "scripts/qualify_research_postgres.py": {
+      "accepted_archive_sha256": "e39bdb61ae5bcd7efbf4d579c82520105738102d1151573127dbeab2ffb4a3d4",
+      "git_blob_sha256": "677f4e21fafeb3e7b878bbcaa48edab0beb332d97146cfcef4e64163cd6a4435",
+      "same_bytes": false,
+      "same_line_end_normalized_content": true
+    }
+  },
+  "scope": "All four tools and three configuration files match the accepted archive bytes and committed content after explicit CRLF normalization. Windows Git archive exported these text files with CRLF. No uncommitted helper or Compose edits were used. Byte equality with Linux checkout files is not claimed."
+}

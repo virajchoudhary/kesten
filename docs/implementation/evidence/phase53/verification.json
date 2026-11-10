@@ -1,0 +1,33 @@
+{
+  "assessment_date": "2026-11-10",
+  "created_at_utc": "2026-11-10T08:37:55.953452+00:00",
+  "result": "NO_GO",
+  "branch": "codex/cadrisyn-foundation",
+  "starting_commit": "fa7fbc098684bce67377d8782af21193df54c3d6",
+  "application_source_commit": "2e5f63d60c37ea60e94b6368125a9f31bd2e0ce2",
+  "local_url": "https://localhost:8457/app/markets/",
+  "verified": [
+    "Five committed-source builds",
+    "Fourteen clean-archive production gates",
+    "Full PostgreSQL backend suite",
+    "Desktop/mobile browser workflows",
+    "Windows ACL enforcement and failure paths",
+    "Signed gosu upgrade removes GHSA-mjcv-p78q-w5fw",
+    "Local encrypted backup roundtrip and tamper rejection",
+    "Protected files and retained database preservation"
+  ],
+  "blocked": [
+    "All five image scans fail medium threshold; 411 raw matches remain",
+    "Hosted CI not published or executed under no-push boundary",
+    "No qualified historical archive or empirical forecast validity"
+  ],
+  "untested_or_partial": [
+    "Independent cold-build byte identity",
+    "Whole OCI index repeatability; warm runtime configuration/layers match all five, cache attestation difference inspected",
+    "Actual off-host transfer/restore and production key custody",
+    "Public PKI/ingress, capacity, secret rotation, alerts/on-call and launch acceptance",
+    "Other image architectures",
+    "Sustained Docker Desktop host reliability"
+  ],
+  "scope": "Local qualification only. No push, merge, deployment, purchase, data acquisition, gate exemption, live trading or model promotion."
+}

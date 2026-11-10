@@ -1,0 +1,8 @@
+{
+  "version": "1.20",
+  "signing_fingerprint": "B42F6819007F00F88E364FD4036A9C25BF357DD4",
+  "signature_valid": true,
+  "tampered_copy_rejected": true,
+  "binary_sha256": "b1892636c281590f34bc63c1118f058cd9de66c4ea463772e3909672d8b302ac",
+  "public_key_sha256": "1c4c20f7b2a036e7d1bd9a153342662896041d71b5c89e66fa47cef15e196a6b"
+}

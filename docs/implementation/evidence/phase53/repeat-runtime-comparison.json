@@ -1,0 +1,42 @@
+[
+  {
+    "service": "api",
+    "same_created": true,
+    "same_config": true,
+    "same_layers": true,
+    "first_created": "2026-11-10T08:02:27Z",
+    "repeat_created": "2026-11-10T08:02:27Z"
+  },
+  {
+    "service": "web",
+    "same_created": true,
+    "same_config": true,
+    "same_layers": true,
+    "first_created": "2026-11-10T08:02:27Z",
+    "repeat_created": "2026-11-10T08:02:27Z"
+  },
+  {
+    "service": "database",
+    "same_created": true,
+    "same_config": true,
+    "same_layers": true,
+    "first_created": "2026-11-10T08:02:27Z",
+    "repeat_created": "2026-11-10T08:02:27Z"
+  },
+  {
+    "service": "cache",
+    "same_created": true,
+    "same_config": true,
+    "same_layers": true,
+    "first_created": "2026-11-10T08:02:27Z",
+    "repeat_created": "2026-11-10T08:02:27Z"
+  },
+  {
+    "service": "gateway",
+    "same_created": true,
+    "same_config": true,
+    "same_layers": true,
+    "first_created": "2026-11-10T08:02:27Z",
+    "repeat_created": "2026-11-10T08:02:27Z"
+  }
+]

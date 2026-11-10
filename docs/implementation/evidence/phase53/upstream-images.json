@@ -1,0 +1,30 @@
+{
+  "references": [
+    {
+      "reference": "python:3.12.16-alpine3.24",
+      "current_index_digest": "sha256:e064671ca452259bab50e8e2c7bd896e39e9a343bb06ca25234adf6fe18d0fc7",
+      "amd64_manifest_digest": "sha256:a61cbd76a882645de7f91423329fe43a67eed60d7da24f9e5331414bb3618b20"
+    },
+    {
+      "reference": "node:22-alpine",
+      "current_index_digest": "sha256:0e1754758c2df4cfa3e68d59e2e1b7374bb7fd9ea6328eaaacf15cc934af8202",
+      "amd64_manifest_digest": "sha256:947e5454e08bfe0b8ddda604915ad76275276c774f47da90d0137252c793a778"
+    },
+    {
+      "reference": "postgres:17.11",
+      "current_index_digest": "sha256:ff87138949ad9a46f32ff23bd6852b52ce024a13dffe9b4087be98292cdd3b4f",
+      "amd64_manifest_digest": "sha256:996e9dc583ba9f0265a2c75547a9c95fb22c251e394749cab205a0a00e1856a1"
+    },
+    {
+      "reference": "redis:8.10.3-alpine3.23",
+      "current_index_digest": "sha256:71885d8cc6e42f2bc0aa2eb853bfc4be200b5108a46ac50e117ae1df0531fb80",
+      "amd64_manifest_digest": "sha256:41ed50f5c0d9cf8b2151ad63df24ba96d018ccc84804d0688e9b9f1ed3d9f558"
+    },
+    {
+      "reference": "nginx:1.30.6-alpine3.24",
+      "current_index_digest": "sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311",
+      "amd64_manifest_digest": "sha256:bb8f722b4be005fcd7827816a136ab779fd40185d85b5171be915cc7fc0575c7"
+    }
+  ],
+  "postgresql_index_change": "Only the riscv64 runtime differs from the pinned index; amd64 remains sha256:996e9dc583ba9f0265a2c75547a9c95fb22c251e394749cab205a0a00e1856a1. No amd64 remediation is credited to this index change."
+}

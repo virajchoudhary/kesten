@@ -1,0 +1,50 @@
+{
+  "result": "EXPLAINED",
+  "service": "cache",
+  "same_runtime_manifest": true,
+  "different_attestation_manifests": true,
+  "rows": [
+    {
+      "name": {
+        "io.containerd.image.name": "docker.io/library/kerquant-phase53-cache:2e5f63d",
+        "org.opencontainers.image.ref.name": "2e5f63d"
+      },
+      "index_digest": "sha256:fbb924a1d73768be3b28d6eedd4613a678c0890c95cecc596a403e0aa33a9cc0",
+      "runtime_manifest_digests": [
+        "sha256:d4f4c08bef90c8fe56ed4da7fdeaeca0e107f7a3631f1a2a5c3bf3a3ed1e4e7f"
+      ],
+      "attestations": [
+        {
+          "manifest_digest": "sha256:03255f9e429115f70ee44cf2b007ee51d6f84236567ca3769f9a0c9654ab6acd",
+          "evidence": [
+            {
+              "predicate_type": "https://slsa.dev/provenance/v1",
+              "build_metadata": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": {
+        "io.containerd.image.name": "docker.io/library/kerquant-phase53-repeat-cache:2e5f63d",
+        "org.opencontainers.image.ref.name": "2e5f63d"
+      },
+      "index_digest": "sha256:fb2f42e489f86a9164b18ab4b6d30f7e09292e2173f8a4574aa2e24106427c83",
+      "runtime_manifest_digests": [
+        "sha256:d4f4c08bef90c8fe56ed4da7fdeaeca0e107f7a3631f1a2a5c3bf3a3ed1e4e7f"
+      ],
+      "attestations": [
+        {
+          "manifest_digest": "sha256:92bad808bc797e066fc20645d19e0735e25bfd4e0e1d898498d641d87ab525b4",
+          "evidence": [
+            {
+              "predicate_type": "https://slsa.dev/provenance/v1",
+              "build_metadata": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

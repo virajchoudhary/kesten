@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "cipher": "AES256",
+  "plaintext_sha256": "55e7796549e0a0f47af5c095eb203cbb4a3203926f38f3f046b1e462139a7550",
+  "roundtrip_sha256": "55e7796549e0a0f47af5c095eb203cbb4a3203926f38f3f046b1e462139a7550",
+  "ciphertext_sha256": "9f1e705fac9f14d2e5abfb25031799fe684d4d9918551a8bd122b92b8fddec06",
+  "tampered_ciphertext_rejected": true,
+  "off_host_transfer": false,
+  "scope": "Local disposable encryption/verification drill only; no production key custody, external storage or off-host restoration accepted."
+}

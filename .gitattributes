@@ -11,3 +11,7 @@ docs/implementation/evidence/phase52/*.txt text eol=lf
 docs/implementation/evidence/phase52/*.json text eol=lf
 docs/implementation/evidence/phase52/*.md text eol=lf
 docs/implementation/evidence/phase52/*.tsv text eol=lf
+docs/implementation/evidence/phase53/*.txt text eol=lf
+docs/implementation/evidence/phase53/*.json text eol=lf
+docs/implementation/evidence/phase53/*.md text eol=lf
+docs/implementation/evidence/phase53/*.tsv text eol=lf

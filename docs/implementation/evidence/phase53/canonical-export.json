@@ -1,0 +1,16 @@
+{
+  "result": "PASS",
+  "core_autocrlf": false,
+  "source_commit": "2e5f63d60c37ea60e94b6368125a9f31bd2e0ce2",
+  "exact_git_blob_matches": {
+    "deploy/compose.production.yaml": "48b7c6bc147f01ad14eaac59e52a7ec1475ab26000e889a165e423cebf6168ad",
+    "deploy/compose.production-qualification.yaml": "e322e48f4b1d9669de22b7e5173ed560c531d37f9abe7740009ddfd4c4d04ff7",
+    "deploy/nginx.production.conf": "9b99711c62d7cba474b670859ba09d09cd6ace94a2471369371988d3c398d7c8",
+    "scripts/ops/qualify_production.py": "8eecd4201fc8b4af402421da5b270c0bbdda27e4796cf9db360a0fb6d76476cb",
+    "scripts/ops/production_probe.py": "b3dbeed9306f8b3b240bfad7f99c6928988463539f3d530e2c55c1492be906c0",
+    "scripts/ops/prepare_local_tls.py": "73f2d335e95451c52f7d485b07f2fe55932040ffb9d620de73b4ce7f04e4c9cd",
+    "scripts/qualify_research_postgres.py": "677f4e21fafeb3e7b878bbcaa48edab0beb332d97146cfcef4e64163cd6a4435"
+  },
+  "archive_sha256": "351a486b95b54a1bc1d1bb456b0b88026de140c4e74211b4992df2e0c99f15fb",
+  "built_or_runtime_qualified": false
+}
