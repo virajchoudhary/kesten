@@ -1,7 +1,9 @@
 """Prepare a new, isolated loopback TLS rehearsal; never provision production trust."""
 
 import argparse
+import csv
 import os
+import re
 import secrets
 import subprocess
 from pathlib import Path
@@ -11,13 +13,28 @@ from urllib.parse import quote
 ROOT = Path(__file__).resolve().parents[2]
 
 
+def protect_directory(destination):
+    if os.name == 'nt':
+        identity = subprocess.run(['whoami', '/user', '/fo', 'csv', '/nh'], capture_output=True, text=True, check=True)
+        rows = list(csv.reader(identity.stdout.splitlines()))
+        if len(rows) != 1 or len(rows[0]) != 2:
+            raise RuntimeError('Could not determine a valid Windows user SID; refusing to prepare TLS files.')
+        sid = rows[0][1].strip()
+        if re.fullmatch(r'S-[0-9]+(?:-[0-9]+)+', sid, flags=re.ASCII) is None:
+            raise RuntimeError('Could not determine a valid Windows user SID; refusing to prepare TLS files.')
+        result = subprocess.run(['icacls', str(destination), '/inheritance:r', '/grant:r', '*' + sid + ':(OI)(CI)F', '*S-1-5-18:(OI)(CI)F'], capture_output=True, text=True)
+        if result.returncode:
+            raise RuntimeError('Could not restrict the new private directory to its creator and SYSTEM.')
+    else:
+        destination.chmod(0o700)
+
+
 def prepare(destination, openssl, api_image, web_image):
     destination = destination.resolve()
     if not destination.is_relative_to(ROOT / '.local'):
         raise ValueError('Local rehearsal files must be inside this repository .local directory.')
-    destination.mkdir(parents=True, exist_ok=False)
-    if os.name != 'nt':
-        destination.chmod(0o700)
+    destination.mkdir(mode=0o700, parents=True, exist_ok=False)
+    protect_directory(destination)
     config = destination / 'openssl.cnf'
     config.write_text('[req]\ndistinguished_name=dn\n[dn]\n', encoding='ascii')
 
