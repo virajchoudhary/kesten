@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "v6.1.10",
+  "from": "https://grype.anchore.io/databases/v6/vulnerability-db_v6.1.10_2026-11-08T00:22:04Z_1794118797.tar.zst?checksum=sha256%3Adcca24722e16c2bcf4a542a3f7fdd2147baf9215c17b973f5a7d4243fbddacea",
+  "built": "2026-11-08T06:19:57Z",
+  "valid": true,
+  "database_file_bytes": 3406405632,
+  "database_file_sha256": "fa3df65210a2f5e69592e99e87f496840d2ceff18d665cf1fe7d4531ff163567",
+  "status_receipt_sha256": "8dfc47aa5910b84184beaff29605fcaaab49c4ddd694ce2ce5f6fc1900dde28e",
+  "note": "The legacy summary advisory_database_sha256 field hashes the status JSON. This receipt additionally hashes the actual database file."
+}

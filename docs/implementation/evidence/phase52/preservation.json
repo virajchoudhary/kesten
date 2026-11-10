@@ -1,0 +1,30 @@
+{
+  "result": "PASS",
+  "manifests": [
+    {
+      "manifest": "docs/implementation/evidence/preserved-untracked-runtime-files.json",
+      "count": 496,
+      "changed": []
+    },
+    {
+      "manifest": ".local/phase3-research-artifacts-before.json",
+      "count": 17,
+      "changed": []
+    },
+    {
+      "manifest": ".local/phase52/unrelated-before.json",
+      "count": 24,
+      "changed": []
+    },
+    {
+      "manifest": ".local/phase52/retained-sqlite-before.json",
+      "count": 22,
+      "changed": []
+    }
+  ],
+  "retained_postgres_containers": [
+    "kerquant-phase51-62a1f1-api-1",
+    "cadrisyn-phase5-prod-api-1"
+  ],
+  "original_database_unchanged": true
+}

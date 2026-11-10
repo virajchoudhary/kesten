@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "source_commit": "17d7300a2bb1641c68435a2f946f3fdca9d9e1f0",
+  "files": {
+    "scripts/ops/qualify_production.py": {
+      "receipt_sha256": "8eecd4201fc8b4af402421da5b270c0bbdda27e4796cf9db360a0fb6d76476cb",
+      "current_sha256": "8eecd4201fc8b4af402421da5b270c0bbdda27e4796cf9db360a0fb6d76476cb",
+      "git_blob_sha256": "8eecd4201fc8b4af402421da5b270c0bbdda27e4796cf9db360a0fb6d76476cb",
+      "matches_committed_source": true
+    },
+    "scripts/ops/production_probe.py": {
+      "receipt_sha256": "b3dbeed9306f8b3b240bfad7f99c6928988463539f3d530e2c55c1492be906c0",
+      "current_sha256": "b3dbeed9306f8b3b240bfad7f99c6928988463539f3d530e2c55c1492be906c0",
+      "git_blob_sha256": "b3dbeed9306f8b3b240bfad7f99c6928988463539f3d530e2c55c1492be906c0",
+      "matches_committed_source": true
+    },
+    "scripts/ops/prepare_local_tls.py": {
+      "receipt_sha256": "fb16e6663333163f7eae36f99bd26f073f72a3e693288a9e79312d744c93c3a7",
+      "current_sha256": "fb16e6663333163f7eae36f99bd26f073f72a3e693288a9e79312d744c93c3a7",
+      "git_blob_sha256": "da2359fc1d0a4dd0a4bc1b19bc719cccb8288600fb375814856d8f2472888635",
+      "matches_committed_source": false
+    },
+    "scripts/qualify_research_postgres.py": {
+      "receipt_sha256": "677f4e21fafeb3e7b878bbcaa48edab0beb332d97146cfcef4e64163cd6a4435",
+      "current_sha256": "677f4e21fafeb3e7b878bbcaa48edab0beb332d97146cfcef4e64163cd6a4435",
+      "git_blob_sha256": "677f4e21fafeb3e7b878bbcaa48edab0beb332d97146cfcef4e64163cd6a4435",
+      "matches_committed_source": true
+    }
+  },
+  "scope": "All four execution-time hashes match the current working files. Three match the committed blobs; the preserved pre-existing Windows TLS ACL helper remains outside these commits. Production Compose edits are also retained local configuration, explicitly hashed in the acceptance receipt."
+}

@@ -1,0 +1,15 @@
+Phase 5.2 local verification, 10 November 2026 (Asia/Calcutta)
+PostgreSQL candidate application tests: 156 passed, zero skipped.
+SQLite working-tree application tests: 156 collected, 152 passed and four PostgreSQL-only skips.
+Frontend: 125 unit tests / 35 files passed; TypeScript and ESLint passed.
+Production Chromium: 3 workflows passed; actual non-debug API, chart/provenance, persisted evaluation and exact replay.
+Production acceptance: 14 gates passed; 27 tables, one archived synthetic intake and two saved replays preserved by actual dump/restore.
+Operational/recovery/qualification guards: 49 passed; readiness unit tests: 2 passed, also included in PostgreSQL count.
+Five source-archive builds passed; 126 running backend Python files match; web build ID matches; all five PID 1 identities are non-root.
+Python runtime and npm production package advisory audits: zero known findings.
+Grype: all five candidate images fail medium threshold; seven baseline matches removed; zero ignored matches. Four built-in kernel-header rules matched none; no project waiver.
+Final acceptance source: 17d7300a2bb1641c68435a2f946f3fdca9d9e1f0; runner matches committed Git blob; all four execution-time tooling hashes match current files. Preserved Windows TLS helper remains uncommitted.
+Actionlint 1.7.12: new and two preserved workflows passed; ShellCheck disabled/unavailable.
+Preservation: 496 runtime files, 17 artifacts, 24 initial dirty paths, 22 SQLite files, original database and two existing application PostgreSQL stores unchanged.
+Hosted CI/public TLS/off-host recovery/capacity/signed promotion: not passed; see verification.json.
+Raw logs remain private; initial sandbox/fixture failures and Desktop interruption were retained rather than relabeled as passes.

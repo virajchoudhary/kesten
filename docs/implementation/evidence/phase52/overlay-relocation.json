@@ -1,0 +1,15 @@
+{
+  "result": "PASS",
+  "legacy_overlay_restored_to_committed_bytes": true,
+  "during_acceptance_path": "deploy/compose.qualification.yaml",
+  "current_production_overlay_path": "deploy/compose.production-qualification.yaml",
+  "identical_overlay_sha256": "e322e48f4b1d9669de22b7e5173ed560c531d37f9abe7740009ddfd4c4d04ff7",
+  "running_service_configuration_hashes_match": {
+    "api": "f23d6590f9c8f3a69d7c07f27176f690a05fbb4230f361ae25fab6b58f19ee62",
+    "web": "2e1f5cca146274b50de09ed20eb990d455f835ed3b2662cfbb3881418577ba9b",
+    "database": "5462254effdd076ef1aaa9fc79b2f610273474f59ad54409903cb2962ae89053",
+    "cache": "e0181c8e8affd9543fde6e0568734f9798d719b6bb8f7d569a89a14edbc310cc",
+    "gateway": "11ac17c24f16cedb2b298b09e31e20101ef1d847f04a596fc4d17f2445d2d2bb"
+  },
+  "scope": "The production overlay was moved to avoid changing the existing preview workflow; all five running service configurations are identical."
+}

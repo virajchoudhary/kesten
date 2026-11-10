@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "assessment_date_local": "2026-11-10",
+  "created_at_utc": "2026-11-10T05:06:56.399648+00:00",
+  "result": "NO_GO",
+  "branch": "codex/cadrisyn-foundation",
+  "starting_commit": "0dcd07ec0f16833a0a7a6afc34ba411f512d83da",
+  "application_image_source_commit": "6df28a13118c8af709742bfdf244599982bdffab",
+  "final_tooling_commit": "17d7300a2bb1641c68435a2f946f3fdca9d9e1f0",
+  "checks": [
+    {
+      "requirement": "local_production_profiles",
+      "status": "VERIFIED",
+      "checks": 14,
+      "evidence": "production-acceptance.json"
+    },
+    {
+      "requirement": "postgresql_application_tests",
+      "status": "VERIFIED",
+      "tests": 156,
+      "skipped": 0,
+      "scope": "Candidate image: 154 committed core tests plus two new readiness tests; separate test_cadrisyn and Redis database 2."
+    },
+    {
+      "requirement": "sqlite_working_tree_tests",
+      "status": "VERIFIED",
+      "tests": 156,
+      "passed": 152,
+      "skipped": 4,
+      "scope": "Includes two preserved pre-existing local bootstrap tests; skips were PostgreSQL-specific."
+    },
+    {
+      "requirement": "frontend_unit_tests",
+      "status": "VERIFIED",
+      "tests": 125,
+      "files": 35
+    },
+    {
+      "requirement": "production_chromium_workflows",
+      "status": "VERIFIED",
+      "tests": 3,
+      "viewports": [
+        "1440x900",
+        "390x844"
+      ],
+      "themes": [
+        "dark",
+        "light"
+      ],
+      "axe_violations": 0,
+      "scope": "Real TLS API, chart/provenance, saved replay, non-debug evaluation creation/persistence."
+    },
+    {
+      "requirement": "operational_recovery_and_qualification_guards",
+      "status": "VERIFIED",
+      "tests": 49
+    },
+    {
+      "requirement": "running_container_source_and_identity",
+      "status": "VERIFIED",
+      "evidence": "runtime-binding.json",
+      "signed_provenance": false
+    },
+    {
+      "requirement": "immutable_image_scans",
+      "status": "BLOCKED",
+      "scan_policy": "FAIL",
+      "images_failing_medium_gate": 5,
+      "evidence": "scan-summary.json"
+    },
+    {
+      "requirement": "hosted_ci",
+      "status": "BLOCKED",
+      "evidence": "hosted-ci.json"
+    },
+    {
+      "requirement": "clean_windows_bootstrap",
+      "status": "BLOCKED",
+      "reason": "Pre-existing ACL helper hardening remains uncommitted and untouched. The harness fails before generating secrets without it."
+    },
+    {
+      "requirement": "genuine_historical_forecast_validity",
+      "status": "BLOCKED",
+      "qualified_archives": 0,
+      "empirical_evaluation": false
+    },
+    {
+      "requirement": "public_trusted_tls_and_external_ingress",
+      "status": "UNTESTED"
+    },
+    {
+      "requirement": "encrypted_off_host_recovery",
+      "status": "UNTESTED"
+    },
+    {
+      "requirement": "secret_vault_rotation",
+      "status": "UNTESTED"
+    },
+    {
+      "requirement": "real_alert_delivery_and_oncall",
+      "status": "UNTESTED"
+    },
+    {
+      "requirement": "production_load_capacity",
+      "status": "UNTESTED"
+    },
+    {
+      "requirement": "signed_registry_promotion",
+      "status": "UNTESTED"
+    },
+    {
+      "requirement": "final_launch_approval",
+      "status": "UNTESTED"
+    }
+  ],
+  "preservation": {
+    "result": "PASS",
+    "manifests": [
+      {
+        "manifest": "docs/implementation/evidence/preserved-untracked-runtime-files.json",
+        "count": 496,
+        "changed": []
+      },
+      {
+        "manifest": ".local/phase3-research-artifacts-before.json",
+        "count": 17,
+        "changed": []
+      },
+      {
+        "manifest": ".local/phase52/unrelated-before.json",
+        "count": 24,
+        "changed": []
+      },
+      {
+        "manifest": ".local/phase52/retained-sqlite-before.json",
+        "count": 22,
+        "changed": []
+      }
+    ],
+    "retained_postgres_containers": [
+      "kerquant-phase51-62a1f1-api-1",
+      "cadrisyn-phase5-prod-api-1"
+    ],
+    "original_database_unchanged": true
+  },
+  "known_deltas_after_runtime_acceptance": [],
+  "tooling_traceability": "tooling-traceability.json",
+  "private_evidence_directory": ".local/phase52",
+  "final_acceptance_directory": ".local/phase52/rehearsal-current",
+  "application_url": "https://localhost:8456/app/markets/",
+  "scope": "Local qualification only. No push, merge, deployment, purchase, live trading or empirical model promotion."
+}

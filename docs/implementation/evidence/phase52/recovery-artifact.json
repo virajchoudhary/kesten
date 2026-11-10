@@ -1,0 +1,9 @@
+{
+  "dump_sha256": "846d4ac770c5c75262b487c2d24838feefbc4ff907cca3e0fc4e923efa7d7a26",
+  "bytes": 145925,
+  "manifest_sha256": "e6a45efda1c7f64622c824bcc2381223f2f83095f7f83b63412d4a3c2f21fc10",
+  "data_kind": "synthetic_fixture",
+  "empirical_evaluation": false,
+  "private_path": ".local/phase52/rehearsal-current/recovery/database.dump",
+  "scope": "Metadata only. No database contents or credentials committed."
+}

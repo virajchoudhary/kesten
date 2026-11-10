@@ -1,0 +1,45 @@
+{
+  "assessment_date_local": "2026-11-10",
+  "sources": [
+    {
+      "topic": "GitHub workflow security",
+      "url": "https://docs.github.com/en/actions/reference/security/secure-use"
+    },
+    {
+      "topic": "Artifact hidden-file handling",
+      "url": "https://github.com/actions/upload-artifact#uploading-hidden-files"
+    },
+    {
+      "topic": "Grype failure thresholds",
+      "url": "https://oss.anchore.com/docs/guides/vulnerability/filter-results/"
+    },
+    {
+      "topic": "Debian zlib fix",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-76844"
+    },
+    {
+      "topic": "Debian second zlib fix",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-85091"
+    },
+    {
+      "topic": "Debian OpenSSL backport",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-63073"
+    },
+    {
+      "topic": "Debian OpenSSL backport",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-75803"
+    },
+    {
+      "topic": "Unresolved stable libxml2",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-6653"
+    },
+    {
+      "topic": "Unresolved stable SQLite",
+      "url": "https://security-tracker.debian.org/tracker/CVE-2026-119373"
+    },
+    {
+      "topic": "Alpine branch package availability",
+      "url": "https://dl-cdn.alpinelinux.org/alpine/v3.24/main/"
+    }
+  ]
+}

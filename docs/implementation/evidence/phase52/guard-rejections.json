@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "scope": "In-memory counterfactuals only; no source files or resources modified.",
+  "counterfactuals": [
+    {
+      "representative_mistake": "Omit hidden-file inclusion for the explicit .local artifact allowlist",
+      "result": "EXPECTED_REJECTION",
+      "failures": 0,
+      "errors": 1
+    },
+    {
+      "representative_mistake": "Overwrite the existing HTTP preview overlay with production configuration",
+      "result": "EXPECTED_REJECTION",
+      "failures": 0,
+      "errors": 1
+    }
+  ]
+}

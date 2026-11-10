@@ -1,0 +1,45 @@
+{
+  "source_revision": "6df28a13118c8af709742bfdf244599982bdffab",
+  "images": [
+    {
+      "service": "api",
+      "reference": "kerquant-phase52-api:6df28a1",
+      "image_id": "sha256:f4e2b685f0955d719fbb22cc9280c65478f209522cd12628b564506d356548d8",
+      "user": "cadrisyn",
+      "revision_label": "6df28a13118c8af709742bfdf244599982bdffab",
+      "base": null
+    },
+    {
+      "service": "web",
+      "reference": "kerquant-phase52-web:6df28a1",
+      "image_id": "sha256:db27f6fb66db336b75f99f1ea533bfc0d858bace46c5740a11aae662b7fe8fb3",
+      "user": "nextjs",
+      "revision_label": "6df28a13118c8af709742bfdf244599982bdffab",
+      "base": null
+    },
+    {
+      "service": "cache",
+      "reference": "kerquant-phase52-cache:6df28a1",
+      "image_id": "sha256:7061e7783118eae364273acc0ed96ed86e77e7673b14fdb2c234f4abcf1c9ca5",
+      "user": null,
+      "revision_label": null,
+      "base": "redis:8.10.3-alpine3.23@sha256:71885d8cc6e42f2bc0aa2eb853bfc4be200b5108a46ac50e117ae1df0531fb80"
+    },
+    {
+      "service": "gateway",
+      "reference": "kerquant-phase52-gateway:6df28a1",
+      "image_id": "sha256:e0015249adf43968015e24f518a1b811d6e8e82defa801b872ff6fd5d547755c",
+      "user": null,
+      "revision_label": null,
+      "base": "nginx:1.30.6-alpine3.24@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311"
+    },
+    {
+      "service": "database",
+      "reference": "kerquant-phase52-database:6df28a1",
+      "image_id": "sha256:92d4f3d659a277a1c3baece448a3ff08a5c88de6cb3cf4f75440717c36483986",
+      "user": null,
+      "revision_label": null,
+      "base": "postgres:17.11@sha256:748a18a54d3842d43bc156f0840d78029b8d349e0feca98c12b9c4ce3404a6b3"
+    }
+  ]
+}

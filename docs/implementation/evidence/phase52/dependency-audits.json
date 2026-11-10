@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "python_pinned_runtime_vulnerabilities": 0,
+  "npm_production_vulnerabilities": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "raw_report_sha256": {
+    "python": "6d733b30c4cc861b6f1a234c6ce800f318d754d5d102c038b909d01585bf481b",
+    "npm": "9b0b035f75695046afdfefc66ed1ee571a43ec069e981c9c4a9345bfd5526f87"
+  },
+  "scope": "Known package advisories at acquisition; does not override OS image findings or qualify development-tool support."
+}
