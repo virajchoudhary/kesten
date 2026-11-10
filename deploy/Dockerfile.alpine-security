@@ -2,5 +2,5 @@
 ARG BASE_IMAGE
 FROM ${BASE_IMAGE}
 
-RUN apk add --no-cache zlib=1.4-r0 \
-    && if apk info -e libxslt; then apk add --no-cache libxslt=1.1.43-r4; fi
+RUN apk --no-logfile add --no-cache zlib=1.4-r0 \
+    && if apk info -e libxslt; then apk --no-logfile add --no-cache libxslt=1.1.43-r4; fi

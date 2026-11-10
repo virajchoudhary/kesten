@@ -96,6 +96,7 @@ class ProductionWorkflowTests(unittest.TestCase):
         build_step = self.steps["Build all production stack images from tested source"]
         build = build_step["run"]
         self.assertEqual(5, build.count("docker build "))
+        self.assertEqual(5, build.count("--output type=image,push=false,rewrite-timestamp=true"))
         self.assertIn('source_epoch="$(git log -1 --format=%ct "$GITHUB_SHA")"', build)
         self.assertEqual(5, build.count('--build-arg "SOURCE_DATE_EPOCH=${source_epoch}"'))
         self.assertEqual(2, build.count('--build-arg "CADRISYN_SOURCE_REVISION=${GITHUB_SHA}"'))
@@ -475,6 +476,7 @@ class ProductionWorkflowTests(unittest.TestCase):
             "production-image-security",
             "only-fixed",
             "continue-on-error",
+            "provenance=false",
         ):
             with self.subTest(forbidden=forbidden):
                 self.assertNotIn(forbidden, source)
