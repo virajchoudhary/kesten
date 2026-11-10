@@ -20,6 +20,14 @@ class ContainerSecurityRefreshTests(unittest.TestCase):
         self.assertIn(f"RUN apk --no-logfile add --no-cache {FIXED_ZLIB}", base_stage)
         self.assertNotIn("zlib=", remaining_stages)
 
+    def test_api_build_tools_are_removed_in_the_same_layer(self):
+        dockerfile = (ROOT / "backend/Dockerfile").read_text(encoding="utf-8")
+        instructions = dockerfile.replace("\\\n", " ").splitlines()
+        install = [line for line in instructions if line.startswith("RUN ") and "--virtual .build-deps" in line]
+        self.assertEqual(len(install), 1)
+        self.assertIn("python -m pip install", install[0])
+        self.assertIn("apk --no-logfile del .build-deps", install[0])
+
     def test_refresh_image_requires_a_supplied_base_and_preserves_its_user(self):
         dockerfile = (ROOT / "deploy" / "Dockerfile.alpine-security").read_text(
             encoding="utf-8"
