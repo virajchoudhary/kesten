@@ -28,3 +28,6 @@ docs/implementation/evidence/image-security-rootcause/*.json text eol=lf
 docs/implementation/evidence/image-security-rootcause/*.tsv text eol=lf
 docs/implementation/evidence/image-security-rootcause/*.md text eol=lf
 docs/implementation/evidence/image-security-rootcause/*.txt text eol=lf
+docs/implementation/evidence/historical-research-20261112/*.json text eol=lf
+docs/implementation/evidence/historical-research-20261112/*.md text eol=lf
+docs/implementation/evidence/historical-research-20261112/*.txt text eol=lf

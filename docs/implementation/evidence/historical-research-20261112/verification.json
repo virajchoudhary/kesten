@@ -1,0 +1,74 @@
+{
+  "checked_at_utc": "2026-11-12T07:44:35.285717+00:00",
+  "baseline_commit": "b34eebe65f7808685a7716a3df9665f701a48d55",
+  "production_readiness": "NO_GO",
+  "historical_source_qualification": "BLOCKED",
+  "qualified_archives": [],
+  "empirical_results": null,
+  "historical_data_acquired": false,
+  "market_data_integrated": false,
+  "model_training": false,
+  "research_suite": {
+    "run": 79,
+    "passed": 78,
+    "skipped": 1,
+    "skipped_test": "research.tests.test_postgres.ResearchPostgresTests.test_concurrent_identical_requests_persist_one_complete_result",
+    "skip_reason": "Requires PostgreSQL row locks and concurrent transactions",
+    "environment": "Django disposable in-memory SQLite, no network provider calls"
+  },
+  "new_tests_passed": 6,
+  "numerical_frozen_hashes_unchanged": true,
+  "future_perturbation_invariance_passed": true,
+  "native_cli_preflight": "PASS: accepted synthetic package, rejected altered terms, no configured database parent created",
+  "regression_before": "Authenticated POST created a historical run without archived intake evidence, HTTP 201 versus required 503.",
+  "interim_test_failures": "First post-fix assertion used wrong existing API response shape; first expanded suite had two new-fixture serialization errors. Corrected tests without changing production parsing or numerical behavior.",
+  "ruff": {
+    "version": "0.15.17",
+    "rules": "E4,E7,E9,F",
+    "result": "PASS",
+    "scope": [
+      "backend/research/services.py",
+      "backend/research/management/commands/import_research_csv.py",
+      "backend/research/tests/test_intake_readiness.py"
+    ],
+    "environment_note": "Workspace venv has no Ruff; used the already installed executable on PATH, no installation or dependency change."
+  },
+  "unchanged_contracts": [
+    "quant engine source",
+    "v1 dataset format and one/five-session outputs",
+    "dependency lock",
+    "database migrations",
+    "replay implementation",
+    "authentication and watchlist contracts"
+  ],
+  "not_rerun": [
+    "completed image-security investigation and scans",
+    "container builds and recovery",
+    "PostgreSQL acceptance",
+    "frontend/browser qualification; no frontend changes",
+    "legacy-model promotion audits; prior rejections retained"
+  ],
+  "remaining_blockers": [
+    "No source establishes all durable application rights and complete value-specific historical publication vintages required by v1.",
+    "No empirical baseline or complex-model qualification is supported.",
+    "Production remains NO_GO under the existing independent release blockers."
+  ],
+  "independent_acceptance": {
+    "result": "PASS_FOR_BOUNDED_IMPLEMENTATION",
+    "targeted_tests_independently_passed": 4,
+    "scope": "Three historical admission tests plus existing receipt privacy/tamper test, scoped Ruff/AST/diff checks. Did not rerun file-producing preflight tests or full research suite.",
+    "model_routing": "ROUTING_UNVERIFIED",
+    "historical_source_qualification": "BLOCKED",
+    "production_readiness": "NO_GO"
+  },
+  "input_classification": "Synthetic/schema-only software checks; never empirical market research.",
+  "private_log_sha256": {
+    "admission-before.log": "8a9eba50834660ed768694f33ff451ca879958095e85ccf5fc1cd50c8e55db22",
+    "admission-after.log": "5a4fb40c3cb4209c2eed64bc9398fb2f226a4a9887ab13e4b9ea5ca76225a82e",
+    "research-regressions.log": "08bc07cbbefa0c9cee1b511e2c80496f7e8226b9a553182352306288f880a3ac",
+    "readiness-six-tests.log": "4ae0257386f46a711f64ddb808f262ff3a92e2601e3fed09d590fc5a5ae4afd8",
+    "all-research-tests.log": "6d694dd8c75b83767e65d5c7ba078737f29d35f66e9d672cb17c2f1441cead39"
+  },
+  "documented_launcher_preflight": "PASS: scripts/research.py import-csv --dry-run emitted matching dataset/receipt identities.",
+  "implementation_commit": "f93aa527ba27ed36120f579adb46d922d6ce418a"
+}

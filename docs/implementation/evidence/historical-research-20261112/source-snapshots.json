@@ -1,0 +1,69 @@
+{
+  "retrieval_date": "2026-11-12",
+  "scope": "Provider documentation and terms only; these are not market-data acquisition hashes. Full HTML retained privately; no price API was requested.",
+  "records": [
+    {
+      "id": "eodhd-eod",
+      "url": "https://eodhd.com/financial-apis/api-for-historical-data-and-volumes",
+      "retrieved_at_utc": "2026-11-12T07:17:28.1407435Z",
+      "status": 200,
+      "sha256": "edc8601ab5efbf0f4519ebe0ed57726560a2579fdb9839ad30730184d2ee59dc",
+      "bytes": 183077
+    },
+    {
+      "id": "eodhd-methodology",
+      "url": "https://eodhd.com/help/methodology",
+      "retrieved_at_utc": "2026-11-12T07:29:17.7767730Z",
+      "status": 200,
+      "sha256": "7cabefb2449db2e5cee59d525c477a04d2fdbd7915853eb0df100a8d01bb1d5c",
+      "bytes": 67026
+    },
+    {
+      "id": "eodhd-storage",
+      "url": "https://eodhd.com/help/storage",
+      "retrieved_at_utc": "2026-11-12T07:29:17.7767570Z",
+      "status": 200,
+      "sha256": "8c32bf0f9a6a270962857979f6c609412fd8ce53c2b5c41f3237cb62607b75f8",
+      "bytes": 67911
+    },
+    {
+      "id": "eodhd-terms",
+      "url": "https://eodhd.com/financial-apis/terms-conditions",
+      "retrieved_at_utc": "2026-11-12T07:17:28.1407236Z",
+      "status": 200,
+      "sha256": "fb5af3e578e55c3f0780fb8b392947fe2ed84e639769b9c80ac0e6291e0b3dcd",
+      "bytes": 139846
+    },
+    {
+      "id": "nasdaq-terms",
+      "url": "https://data.nasdaq.com/terms",
+      "retrieved_at_utc": "2026-11-12T07:17:29.7353931Z",
+      "status": "FETCH_FAILED",
+      "reason": "Response status code does not indicate success: 404 (Not Found)."
+    },
+    {
+      "id": "simfin-pricing",
+      "url": "https://www.simfin.com/en/prices/",
+      "retrieved_at_utc": "2026-11-12T07:17:29.9600282Z",
+      "status": 200,
+      "sha256": "9984ffe7aadaaeed7a0a59726224dbe7bd4da6fcd5ef9cf894618a000fe3fcff",
+      "bytes": 139572
+    },
+    {
+      "id": "twelve-eod",
+      "url": "https://support.twelvedata.com/en/articles/9935903-us-equities-market-data",
+      "retrieved_at_utc": "2026-11-12T07:29:17.7767829Z",
+      "status": 200,
+      "sha256": "69417365f00a2f9dc2a06ffff9aed5a26aa905e4efa49cfa6903aefc6ced5309",
+      "bytes": 92741
+    },
+    {
+      "id": "twelve-terms",
+      "url": "https://twelvedata.com/terms",
+      "retrieved_at_utc": "2026-11-12T07:17:28.1407353Z",
+      "status": 200,
+      "sha256": "da50fa795c2941b40e464631628bf7e1d9d08f31a93b6650a48f36aada6f9efb",
+      "bytes": 177926
+    }
+  ]
+}

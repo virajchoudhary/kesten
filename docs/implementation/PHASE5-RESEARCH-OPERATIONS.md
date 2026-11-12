@@ -16,7 +16,7 @@ The original `backend/db.sqlite3` is never a target. Do not delete retained proo
 
 First complete the [source review](PHASE5-RESEARCH-SOURCES.md). Do not use this procedure to relabel the test fixture. Select an isolated or explicitly approved application database through the existing environment configuration. Keep runtime and migrator PostgreSQL roles separate.
 
-Back up the selected database with the existing `scripts/ops/recovery.py` workflow. Apply the additive migration with the configured migration role:
+After the preflight described below, back up the selected database with the existing `scripts/ops/recovery.py` workflow. Apply the additive migration with the configured migration role:
 
 ```powershell
 .venv/Scripts/python.exe backend/manage.py migrate --noinput
@@ -59,6 +59,23 @@ All four internal permissions must be true to use this storage/recovery workflow
 
 The availability document has exactly `schema_version: 1`, `source_id` and `observations`. Every row has exactly `session`, `available_at`, `reference` and `observation_sha256`. Row order and count must match the parsed dataset. Hash the UTF-8 output of `research.quant.dataset.canonical_json(normalized_observation)` after the existing parser normalizes the row. This digest includes close, actions, session and availability. Hashing raw CSV row text is not equivalent. The synthetic test helper demonstrates serialization only; it is not a source of historical publication evidence.
 
+## Preflight before database work
+
+Validate a lawful candidate package before backing up, migrating or selecting an application database:
+
+```powershell
+.venv/Scripts/python.exe scripts/research.py import-csv --dry-run `
+  --csv path/to/prices.csv --metadata path/to/metadata.json `
+  --source path/to/source.json --terms path/to/terms.bin `
+  --availability path/to/availability.json
+```
+
+This mode reads the five bounded local files through the same validator used by import. It makes no database queries or writes and needs no actor names or acknowledgement. The local launcher still loads the existing development configuration; it does not start a server or migrate a database. Direct `backend/manage.py import_research_csv --dry-run` also works under a correctly supplied environment without a usable database.
+
+Exit 0 means the supplied structure, hashes and protocol declarations validated. Output contains `validation_only: true`, `imported: false`, `empirical_evaluation: false`, dataset/receipt versions, source/acquisition identifiers, artifact hashes and declared permissions. It retains `source_attestation: operator_attested` and `independently_verified_source: false`. It is not source authentication, legal approval or empirical qualification. Errors exit nonzero and identify the failing validation without importing anything.
+
+Only after independent source review and successful preflight should you prepare the chosen database for import. The [12 November source review](HISTORICAL-RESEARCH-PROGRESS.md) still qualifies no archive; do not use synthetic helpers to manufacture historical evidence.
+
 ## Import and verify
 
 Under the configured runtime environment for the migrated target:
@@ -77,6 +94,8 @@ Under the configured runtime environment for the migrated target:
 Import emits dataset/receipt UUIDs and versions, data kind, whether the numerical dataset was created and `independently_verified_source: false`. Store these identities with the experiment record. Repeating identical input is idempotent. Updating acquisition evidence creates a new receipt without changing an otherwise identical dataset or its runs.
 
 Verification reads archived blobs and reconstructs both versions. It does not rewrite evidence or certify upstream authenticity. A mismatch is an integrity failure. Preserve the failing database and receipt, investigate the source of corruption, and restore into a new target using the documented recovery workflow. Do not edit a receipt to make verification pass.
+
+New historical evaluations reverify the newest receipt before running. Missing or corrupt evidence returns `dataset_unavailable` and stores no new run. An older valid receipt does not hide a corrupt newer acquisition. Existing saved-result access, idempotent responses and numerical replay remain available; they do not renew source qualification.
 
 The existing research application can select imported private datasets and run its fixed one/five-session references. It has no new source-acquisition screen. Until a real archive passes review, use only explicitly synthetic research checks and report empirical qualification as blocked.
 

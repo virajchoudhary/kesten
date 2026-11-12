@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "entrypoint": "scripts/research.py import-csv --dry-run",
+  "input_kind": "synthetic_fixture",
+  "exit_code": 0,
+  "dataset_version": "9203cba1c9d58f65505fc7c05120669be1829719c7d033d58ab8155387a47a94",
+  "receipt_version": "fe1dd36f93b009a471e7f9f9271869c4b68fd20cd13655cc3bdda9f54615e0a1",
+  "database_queries_proof": "SimpleTestCase disallows queries; direct native command also passed against a non-existent database directory."
+}

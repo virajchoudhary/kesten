@@ -1,0 +1,36 @@
+{
+  "result": "PASS",
+  "scope": "Real management-command process, synthetic inputs only; not historical qualification.",
+  "valid_exit_code": 0,
+  "tampered_exit_code": 1,
+  "unconfigured_database_parent_created": false,
+  "valid_preflight": {
+    "validation_only": true,
+    "imported": false,
+    "empirical_evaluation": false,
+    "dataset_version": "9203cba1c9d58f65505fc7c05120669be1829719c7d033d58ab8155387a47a94",
+    "receipt_version": "fe1dd36f93b009a471e7f9f9271869c4b68fd20cd13655cc3bdda9f54615e0a1",
+    "data_kind": "synthetic_fixture",
+    "observation_count": 180,
+    "first_session": "2024-01-02",
+    "last_session": "2024-09-18",
+    "source_attestation": "operator_attested",
+    "independently_verified_source": false,
+    "source_id": "SYNTHETIC: deterministic local fixture",
+    "acquired_at": "2026-11-06T23:59:00+00:00",
+    "artifact_sha256": {
+      "csv": "170c5fa2970a08fd0a40103d2181b785a38a1cf6814ff0d668ff6523dd8eac9f",
+      "terms": "3a7b66a2d5bd3c2fd3ab7022db16d99544ff303510839895d99ed1e68d994057",
+      "availability": "6e1752c76db6542711608e1d91c75237c20db9aad9fb73d33d28f102257012d3"
+    },
+    "declared_permissions": {
+      "backup": true,
+      "internal_transfer": true,
+      "private_research": true,
+      "redistribution": false,
+      "storage": true
+    },
+    "limitation": "Source metadata and rights are operator attestations. Hashes prove byte identity, not entitlement or point-in-time authenticity; upstream source truth is not independently verified."
+  },
+  "rejected_stderr": "CommandError: CSV preflight failed: source_record terms_sha256 does not match the supplied bytes."
+}

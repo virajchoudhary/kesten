@@ -1,0 +1,19 @@
+{
+  "result": "PASS",
+  "checked_file_counts": {
+    "protected_runtime": 496,
+    "research_artifacts": 17,
+    "unrelated_starting_paths": 22
+  },
+  "original_database_sha256": "93745bfc1a3149a0f77bbcdd1a50f712195750879f3fb313728ab9811f99715b",
+  "numerical_source_and_storage_contracts_unchanged": [
+    "backend/research/quant",
+    "backend/research/models.py",
+    "backend/research/migrations",
+    "backend/research/replay.py",
+    "backend/requirements-workspace.lock.txt"
+  ],
+  "existing_application_database_writes": false,
+  "existing_data_volumes_used": false,
+  "new_database_scope": "Django test databases are disposable in-memory SQLite; native preflight used an uncreated directory. No existing stores were migrated or restored."
+}
