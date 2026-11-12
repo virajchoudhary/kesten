@@ -234,7 +234,7 @@ jobs:
           curl --fail http://127.0.0.1:8080/sign-in/
       - name: Qualify isolated non-debug demo transport
         run: |
-          python scripts/ops/prepare_local_tls.py --directory .local/ci-tls --api-image "$(docker image inspect cadrisyn-ci-api --format '{{.Id}}')" --web-image "$(docker image inspect cadrisyn-ci-web --format '{{.Id}}')"
+          python scripts/ops/prepare_local_tls.py --directory .local/ci-tls --api-image "$(docker image inspect cadrisyn-ci-api:local --format '{{.Id}}')" --web-image "$(docker image inspect cadrisyn-ci-web:local --format '{{.Id}}')"
           docker compose --project-name cadrisyn-ci-prod --env-file .local/ci-tls/rehearsal.env -f deploy/compose.production.yaml up --detach --wait --wait-timeout 240
           docker compose --project-name cadrisyn-ci-prod --env-file .local/ci-tls/rehearsal.env -f deploy/compose.production.yaml exec -T api python /app/scripts/ops/preflight.py --environment
           curl --fail --cacert .local/ci-tls/tls_ca https://localhost:8443/health/ready/
