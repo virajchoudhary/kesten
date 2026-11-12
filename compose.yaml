@@ -1,0 +1,107 @@
+services:
+  database:
+    image: postgres:17.11
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Set a separate POSTGRES_ADMIN_PASSWORD}
+      CADRISYN_DB_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      CADRISYN_MIGRATION_PASSWORD: ${POSTGRES_MIGRATION_PASSWORD:?Set a separate POSTGRES_MIGRATION_PASSWORD}
+    volumes:
+      - database:/var/lib/postgresql/data
+      - ./deploy/postgres-init.sh:/docker-entrypoint-initdb.d/10-cadrisyn.sh:ro
+    healthcheck:
+      test: ["CMD-SHELL", "PGPASSWORD=\"$${CADRISYN_MIGRATION_PASSWORD}\" psql -h 127.0.0.1 -U cadrisyn_migrator -d cadrisyn -tAc 'SELECT 1' >/dev/null"]
+      interval: 5s
+      timeout: 5s
+      start_period: 120s
+      retries: 30
+  cache:
+    image: redis:8.0.6
+    command: ["redis-server", "--maxmemory", "128mb", "--maxmemory-policy", "allkeys-lru"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  api:
+    image: ${COMPOSE_PROJECT_NAME:-cadrisyn}-api:local
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set DJANGO_SECRET_KEY}
+      DJANGO_DEBUG: "true"
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:-localhost,127.0.0.1}
+      DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:-http://localhost:8080,http://127.0.0.1:8080}
+      DATABASE_URL: postgresql://cadrisyn:${POSTGRES_PASSWORD}@database:5432/cadrisyn
+      DJANGO_CACHE_URL: redis://cache:6379/0
+      DJANGO_SECURE_SSL_REDIRECT: "false"
+      CADRISYN_LEGACY_ENABLED: "false"
+      CADRISYN_MARKET_DATA_ENABLED: "false"
+      CADRISYN_TRUST_REQUEST_ID: "true"
+      CADRISYN_TRUST_CLIENT_IP: "true"
+      DJANGO_STATIC_ROOT: /app/static
+    volumes:
+      - static:/app/static
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8000/health/ready/', headers={'Host': 'localhost'}), timeout=5)"]
+      interval: 15s
+      timeout: 8s
+      start_period: 20s
+      retries: 5
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+  migrate:
+    image: ${COMPOSE_PROJECT_NAME:-cadrisyn}-api:local
+    pull_policy: never
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?Set DJANGO_SECRET_KEY}
+      DJANGO_DEBUG: "true"
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
+      DATABASE_URL: postgresql://cadrisyn_migrator:${POSTGRES_MIGRATION_PASSWORD}@database:5432/cadrisyn
+    command: ["python", "manage.py", "migrate", "--noinput"]
+    depends_on:
+      database:
+        condition: service_healthy
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+  web:
+    image: ${COMPOSE_PROJECT_NAME:-cadrisyn}-web:local
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    environment:
+      DJANGO_API_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/sign-in/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 15s
+      timeout: 8s
+      retries: 5
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+  gateway:
+    image: nginx:1.28.3-alpine
+    volumes:
+      - ./deploy/nginx.conf:/etc/nginx/nginx.conf:ro
+      - static:/static:ro
+    ports:
+      - "127.0.0.1:8080:8080"
+    depends_on:
+      web:
+        condition: service_healthy
+      api:
+        condition: service_healthy
+volumes:
+  database:
+  static:

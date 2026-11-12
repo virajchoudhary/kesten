@@ -1,7 +1,8 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name="quant_reporter",
     version="1.0.0",
-    packages=find_packages(include=["quant_reporter", "quant_reporter.*"]),
+    packages=["quant_reporter"],
+    package_dir={"quant_reporter": "."},
 )

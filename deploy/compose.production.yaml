@@ -1,0 +1,146 @@
+services:
+  database:
+    image: postgres:17.11@sha256:748a18a54d3842d43bc156f0840d78029b8d349e0feca98c12b9c4ce3404a6b3
+    entrypoint: ["/bin/sh", "/opt/cadrisyn/postgres-tls.sh"]
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD_FILE: /run/secrets/admin_password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=peer
+    volumes:
+      - database:/var/lib/postgresql/data
+      - ./postgres-init.sh:/docker-entrypoint-initdb.d/10-cadrisyn.sh:ro
+      - ./postgres-tls.sh:/opt/cadrisyn/postgres-tls.sh:ro
+      - ./pg_hba.production.conf:/etc/postgresql/pg_hba.production.conf:ro
+    tmpfs: [/run/postgresql-tls]
+    secrets: [admin_password, runtime_password, migration_password, database_cert, database_key]
+    networks: [data]
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 5s
+      retries: 30
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+    mem_limit: 768m
+    cpus: 2
+    pids_limit: 160
+  cache:
+    image: redis:8.0.6@sha256:ae471bdc20de180beed36e347d170ec0bdf8faa327959ea1f24692f22b05b955
+    command: ["redis-server", "/run/secrets/redis_config"]
+    secrets: [redis_config, cache_cert, cache_key, tls_ca]
+    networks: [data]
+    user: redis
+    cap_drop: [ALL]
+    read_only: true
+    tmpfs: ["/tmp:size=16m,mode=1777"]
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+    mem_limit: 192m
+    cpus: 1
+    pids_limit: 64
+  migrate:
+    image: ${API_IMAGE:?Supply a qualified immutable API image}
+    command: ["python", "manage.py", "migrate", "--noinput"]
+    environment: &api_environment
+      CADRISYN_RELEASE_PROFILE: ${CADRISYN_RELEASE_PROFILE:?Choose a release profile}
+      CADRISYN_WEB_RELEASE_PROFILE: ${CADRISYN_RELEASE_PROFILE}
+      API_IMAGE: ${API_IMAGE}
+      WEB_IMAGE: ${WEB_IMAGE}
+      DJANGO_DEBUG: "false"
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS:?List exact hosts}
+      DJANGO_CSRF_TRUSTED_ORIGINS: ${DJANGO_CSRF_TRUSTED_ORIGINS:?List exact HTTPS origins}
+      DJANGO_SECRET_KEY_FILE: /run/secrets/django_secret
+      DATABASE_URL_FILE: /run/secrets/database_url
+      DJANGO_CACHE_URL_FILE: /run/secrets/cache_url
+      DJANGO_TRUST_X_FORWARDED_PROTO: "true"
+      CADRISYN_TRUST_REQUEST_ID: "true"
+      CADRISYN_TRUST_CLIENT_IP: "true"
+    secrets:
+      - django_secret
+      - source: migration_url
+        target: database_url
+      - cache_url
+      - tls_ca
+    networks: [data]
+    depends_on:
+      database: {condition: service_healthy}
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1g
+    cpus: 2
+    pids_limit: 128
+  api:
+    image: ${API_IMAGE:?Supply a qualified immutable API image}
+    environment: *api_environment
+    secrets: [django_secret, database_url, cache_url, tls_ca]
+    networks: [app, data]
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      cache: {condition: service_started}
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    read_only: true
+    tmpfs: ["/tmp:size=64m,mode=1777"]
+    restart: unless-stopped
+    mem_limit: 1g
+    cpus: 2
+    pids_limit: 128
+    healthcheck:
+      test: ["CMD", "python", "-c", "import os,urllib.request; urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8000/health/ready/',headers={'Host':os.environ['DJANGO_ALLOWED_HOSTS'].split(',')[0],'X-Forwarded-Proto':'https'}),timeout=5)"]
+      interval: 10s
+      retries: 15
+  web:
+    image: ${WEB_IMAGE:?Supply a qualified immutable web image}
+    environment:
+      CADRISYN_WEB_RELEASE_PROFILE: ${CADRISYN_RELEASE_PROFILE:?Choose a release profile}
+    networks: [app]
+    depends_on:
+      api: {condition: service_healthy}
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    read_only: true
+    tmpfs: ["/tmp:size=64m,mode=1777", "/app/web/.next/cache:size=64m,mode=1777"]
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 2
+    pids_limit: 128
+  gateway:
+    image: nginx:1.28.3-alpine@sha256:a8b39bd9cf0f83869a2162827a0caf6137ddf759d50a171451b335cecc87d236
+    entrypoint: ["nginx", "-g", "daemon off;"]
+    ports: ["127.0.0.1:8443:8443", "127.0.0.1:8087:8080"]
+    volumes: ["./nginx.production.conf:/etc/nginx/nginx.conf:ro"]
+    secrets: [gateway_cert, gateway_key]
+    networks: [app]
+    user: nginx
+    cap_drop: [ALL]
+    read_only: true
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    depends_on:
+      api: {condition: service_healthy}
+      web: {condition: service_started}
+    security_opt: [no-new-privileges:true]
+    restart: unless-stopped
+    mem_limit: 128m
+    cpus: 1
+    pids_limit: 64
+networks:
+  app: {}
+  data: {internal: true}
+volumes:
+  database: {}
+secrets:
+  django_secret: {file: "${CADRISYN_SECRET_DIR:?Choose private secret storage}/django_secret"}
+  database_url: {file: "${CADRISYN_SECRET_DIR}/database_url"}
+  migration_url: {file: "${CADRISYN_SECRET_DIR}/migration_url"}
+  cache_url: {file: "${CADRISYN_SECRET_DIR}/cache_url"}
+  admin_password: {file: "${CADRISYN_SECRET_DIR}/admin_password"}
+  runtime_password: {file: "${CADRISYN_SECRET_DIR}/runtime_password"}
+  migration_password: {file: "${CADRISYN_SECRET_DIR}/migration_password"}
+  redis_config: {file: "${CADRISYN_SECRET_DIR}/redis_config"}
+  tls_ca: {file: "${CADRISYN_SECRET_DIR}/tls_ca"}
+  gateway_cert: {file: "${CADRISYN_SECRET_DIR}/gateway_cert"}
+  gateway_key: {file: "${CADRISYN_SECRET_DIR}/gateway_key"}
+  database_cert: {file: "${CADRISYN_SECRET_DIR}/database_cert"}
+  database_key: {file: "${CADRISYN_SECRET_DIR}/database_key"}
+  cache_cert: {file: "${CADRISYN_SECRET_DIR}/cache_cert"}
+  cache_key: {file: "${CADRISYN_SECRET_DIR}/cache_key"}

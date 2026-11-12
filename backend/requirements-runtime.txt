@@ -1,0 +1,4 @@
+-r requirements-workspace.lock.txt
+# Linux WSGI image additions. Keep the resolver inputs pinned.
+gunicorn==23.0.0
+packaging==26.3

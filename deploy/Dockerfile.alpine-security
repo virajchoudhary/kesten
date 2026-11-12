@@ -1,0 +1,6 @@
+# Supply a digest-pinned Alpine 3.23/3.24 base with the verified zlib=1.4-r0 package.
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE}
+
+RUN apk --no-logfile add --no-cache zlib=1.4-r0 \
+    && if apk info -e libxslt; then apk --no-logfile add --no-cache libxslt=1.1.43-r4; fi

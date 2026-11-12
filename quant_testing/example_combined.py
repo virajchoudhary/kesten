@@ -1,4 +1,4 @@
-the import quant_reporter as qr
+import quant_reporter as qr
 import os
 import traceback
 from datetime import datetime, timedelta

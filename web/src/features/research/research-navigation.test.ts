@@ -1,0 +1,107 @@
+import { describe, expect, it } from "vitest";
+
+import {
+  parseResearchPageSearchParams,
+  researchWorkspaceHref,
+  researchResultHref,
+} from "./research-navigation";
+
+const RUN_A = "22222222-2222-4222-8222-222222222222";
+const RUN_B = "44444444-4444-4444-8444-444444444444";
+
+describe("research workspace navigation", () => {
+  it("targets selected standalone results while retaining exact query identities", () => {
+    const options = {
+      runId: RUN_A,
+      compareId: RUN_B,
+      instrumentId: "xnys-jpm",
+      focusModel: "last_close",
+    } as const;
+    const url = new URL(researchResultHref(options), "http://localhost");
+    expect(url.hash).toBe("#research-results");
+    expect(
+      parseResearchPageSearchParams(Object.fromEntries(url.searchParams)),
+    ).toEqual({
+      requestedRunId: RUN_A,
+      requestedCompareId: RUN_B,
+      requestedInstrumentId: "xnys-jpm",
+      focusModel: "last_close",
+    });
+    expect(researchResultHref({ ...options, embedded: true })).toBe(
+      researchWorkspaceHref({ ...options, embedded: true }),
+    );
+  });
+  it("parses bookmarkable run, comparison, watchlist, and display-focus parameters", () => {
+    expect(
+      parseResearchPageSearchParams({
+        run: RUN_A,
+        compare: RUN_B,
+        instrument: "xnas-aapl",
+        method: "last_close",
+      }),
+    ).toEqual({
+      requestedRunId: RUN_A,
+      requestedCompareId: RUN_B,
+      requestedInstrumentId: "xnas-aapl",
+      focusModel: "last_close",
+    });
+  });
+
+  it("ignores malformed or repeated parameters and defaults to display-only historical log mean", () => {
+    expect(
+      parseResearchPageSearchParams({
+        run: [RUN_A, RUN_B],
+        compare: RUN_B,
+        instrument: "../../private",
+        method: "trained-neural-network",
+      }),
+    ).toEqual({
+      requestedRunId: null,
+      requestedCompareId: null,
+      requestedInstrumentId: null,
+      focusModel: "historical_log_mean",
+    });
+  });
+
+  it("builds a shareable comparison URL and drops invalid self-comparisons", () => {
+    const href = researchWorkspaceHref({
+      runId: RUN_A,
+      compareId: RUN_B,
+      instrumentId: "xnas-aapl",
+      focusModel: "last_close",
+    });
+
+    expect(href).toBe(
+      `/app/research?run=${RUN_A}&compare=${RUN_B}&instrument=xnas-aapl&method=last_close`,
+    );
+    expect(
+      researchWorkspaceHref({
+        runId: RUN_A,
+        compareId: RUN_A,
+        instrumentId: null,
+        focusModel: "historical_log_mean",
+      }),
+    ).toBe(`/app/research?run=${RUN_A}`);
+  });
+
+  it("keeps exact research identities when navigating inside the market terminal", () => {
+    const href = researchWorkspaceHref({
+      embedded: true,
+      runId: RUN_A,
+      compareId: RUN_B,
+      instrumentId: "xnys-jpm",
+      focusModel: "last_close",
+    });
+    const url = new URL(href, "http://localhost");
+    expect(url.pathname).toBe("/app/markets");
+    expect(url.searchParams.get("view")).toBe("research");
+    expect(
+      parseResearchPageSearchParams(Object.fromEntries(url.searchParams)),
+    ).toEqual({
+      requestedRunId: RUN_A,
+      requestedCompareId: RUN_B,
+      requestedInstrumentId: "xnys-jpm",
+      focusModel: "last_close",
+    });
+  });
+});
