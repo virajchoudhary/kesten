@@ -1,0 +1,19 @@
+test_browser_fixtures_are_explicit_and_never_overwrite_one_use_secrets (tests.test_portfolio_demo.PortfolioDemoTests.test_browser_fixtures_are_explicit_and_never_overwrite_one_use_secrets) ... ok
+test_demo_environment_isolated_from_inherited_production_and_market_settings (tests.test_portfolio_demo.PortfolioDemoTests.test_demo_environment_isolated_from_inherited_production_and_market_settings) ... ok
+test_occupied_port_is_not_reused (tests.test_portfolio_demo.PortfolioDemoTests.test_occupied_port_is_not_reused) ... ok
+test_real_bootstrap_and_restart_preserve_accounts_and_saved_results (tests.test_portfolio_demo.PortfolioDemoTests.test_real_bootstrap_and_restart_preserve_accounts_and_saved_results) ... ok
+test_refuses_unrelated_or_unmarked_directories_without_writing (tests.test_portfolio_demo.PortfolioDemoTests.test_refuses_unrelated_or_unmarked_directories_without_writing) ... ok
+test_test_workspace_is_created_for_a_clean_checkout (tests.test_portfolio_demo.PortfolioDemoTests.test_test_workspace_is_created_for_a_clean_checkout) ... ok
+test_launcher_overrides_external_storage_and_legacy_scheduler (tests.test_dev_environment.DevelopmentIsolationTests.test_launcher_overrides_external_storage_and_legacy_scheduler) ... ok
+test_workspace_and_legacy_keep_separate_sqlite_transaction_modes (tests.test_dev_environment.DevelopmentIsolationTests.test_workspace_and_legacy_keep_separate_sqlite_transaction_modes) ... ok
+test_nonlocal_configuration_is_rejected (tests.test_research_client.ResearchClientTests.test_nonlocal_configuration_is_rejected) ... ok
+test_staff_credentials_are_sent_only_to_exact_local_api (tests.test_research_client.ResearchClientTests.test_staff_credentials_are_sent_only_to_exact_local_api) ... ok
+test_existing_directory_is_refused_without_replacing_credentials (tests.test_browser_fixture_files.BrowserFixtureDirectoryTests.test_existing_directory_is_refused_without_replacing_credentials) ... ok
+test_new_explicit_output_is_private_and_separate_from_retained_files (tests.test_browser_fixture_files.BrowserFixtureDirectoryTests.test_new_explicit_output_is_private_and_separate_from_retained_files) ... ok
+test_output_outside_local_is_refused_without_creating_it (tests.test_browser_fixture_files.BrowserFixtureDirectoryTests.test_output_outside_local_is_refused_without_creating_it) ... ok
+test_diagnostics_import_without_network_or_output_file_access (tests.test_legacy_probe_imports.LegacyProbeImportTests.test_diagnostics_import_without_network_or_output_file_access) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 67.313s
+
+OK

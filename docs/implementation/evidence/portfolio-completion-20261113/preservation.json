@@ -1,0 +1,127 @@
+{
+  "checked_at": "2026-11-12T20:17:43.421Z",
+  "preserved": [
+    {
+      "scope": "protected_runtime",
+      "count": 496,
+      "mismatches": []
+    },
+    {
+      "scope": "research_artifacts",
+      "count": 17,
+      "mismatches": []
+    }
+  ],
+  "dirtyCheck": [
+    {
+      "path": ".github/workflows/security.yml",
+      "unchanged": true,
+      "sha256": "03af6751dec34d33ccda7481e9fdf73654598d6072349eeddf3efec86fd5c072"
+    },
+    {
+      "path": ".github/workflows/workspace.yml",
+      "unchanged": true,
+      "sha256": "c87783031d36a47e74d73a4e2e1b78bb15ed8ad23ddbc2a54fc4d61525956a16"
+    },
+    {
+      "path": "backend/db.sqlite3",
+      "unchanged": true,
+      "sha256": "93745bfc1a3149a0f77bbcdd1a50f712195750879f3fb313728ab9811f99715b"
+    },
+    {
+      "path": "backend/workspace/management/commands/create_local_user.py",
+      "unchanged": true,
+      "sha256": "f62bf29900d918f630ea21270f0c6058b76efa77bbad9ad4f402c9cf44cc968f"
+    },
+    {
+      "path": "config/.env.production.example",
+      "unchanged": true,
+      "sha256": "dc569470824fd96e2d44e7d25cb07623943268f26321cfc2ece51ca9a325ea64"
+    },
+    {
+      "path": "deploy/compose.production.yaml",
+      "unchanged": true,
+      "sha256": "62aba1585fcaf81f071be6aba82e5b4cf501c7bf1b97bd3e3d47c8ed44fbc1e4"
+    },
+    {
+      "path": "docs/implementation/PHASE5-CI.md",
+      "unchanged": true,
+      "sha256": "7d6d45a86a3ccc7cb2749a18f803793395f9186ee27813a683c8631dd72a7001"
+    },
+    {
+      "path": "scripts/prepare_browser_fixture.py",
+      "unchanged": true,
+      "sha256": "21022f0cf4e15b4d46ab99a964e9ce5a8755e8cf8255ee0fc4522d50f8febe27"
+    },
+    {
+      "path": "tests/test_backtest.py",
+      "unchanged": true,
+      "sha256": "492a9d1501a91b38a7a3777b5bd63f2fcef2be90a8fc919d781b2fdbd6cd6745"
+    },
+    {
+      "path": "tests/test_bt_dump.py",
+      "unchanged": true,
+      "sha256": "2f3f7c764fae2d6246ff28ea690893361e30bc5545c82b6acc68169ff8cad380"
+    },
+    {
+      "path": "tests/test_opt.py",
+      "unchanged": true,
+      "sha256": "ed5bbfdcbc833d66d2969b482ef3b2b0105ec157538c4353b021741b16884266"
+    },
+    {
+      "path": "tests/test_opt_dump.py",
+      "unchanged": true,
+      "sha256": "3b6c1feb76136df7364292a8a7fe00fda22716dfa881d8cad234999088a5dcd4"
+    },
+    {
+      "path": "tests/test_opt_json.py",
+      "unchanged": true,
+      "sha256": "3b82368eb6a75d46df9042373dcebbbed0a514f40482ec804cdb1da71102f806"
+    },
+    {
+      "path": "tests/test_out.py",
+      "unchanged": true,
+      "sha256": "248b2a20cfc9db5d40955db26dc2a24e5fa6dae98629e4043557db5e896d7874"
+    },
+    {
+      "path": "tests/test_release_gate.py",
+      "unchanged": true,
+      "sha256": "5e5289334cbdccdf100055878524d9698290b0d75fa26ba4ad1844079c1aa5da"
+    },
+    {
+      "path": "tests/test_req.py",
+      "unchanged": true,
+      "sha256": "884b93b2a0ba7d5b0c547fb9b0b3fc7ae61e519b511bbad3bf151f8b31d88cad"
+    },
+    {
+      "path": "web/e2e-release/demo.spec.ts",
+      "unchanged": true,
+      "sha256": "527c8c45973bc378ceded86cd452c7caf1c287bf77490a877857e48ee5cfee26"
+    },
+    {
+      "path": "backend/workspace/test_local_bootstrap.py",
+      "unchanged": true,
+      "sha256": "97156c7fc85c7349a04f2c201894638842a4712d0fc0324cef683c13359a93ad"
+    },
+    {
+      "path": "docs/implementation/PHASE5-OPERATIONS.md",
+      "unchanged": true,
+      "sha256": "44ed95280984eb6746b512f933f4b0193216b05f9d23eb6231e65dfbe44c53f1"
+    },
+    {
+      "path": "docs/implementation/PHASE5.md",
+      "unchanged": true,
+      "sha256": "01c2f84b51cb04c3365f32e0e1d3714fe5973a7533950fe042cb34b549b1d700"
+    },
+    {
+      "path": "tests/test_browser_fixture_files.py",
+      "unchanged": true,
+      "sha256": "ac94e882092b4bad03a1230ccb8d764253c8585b07bf742066e28a97000e163c"
+    },
+    {
+      "path": "tests/test_legacy_probe_imports.py",
+      "unchanged": true,
+      "sha256": "75df216960f5df9fe12386d27e009e00b948ff4076054b06d8610f3bfa09b92b"
+    }
+  ]
+}

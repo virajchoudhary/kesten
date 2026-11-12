@@ -1,0 +1,6 @@
+{
+  "ApiStatus": 200,
+  "ApiBody": "{\"status\": \"ok\", \"service\": \"cadrisyn-api\"}",
+  "FrontendStatus": 200,
+  "KerquantVisible": true
+}

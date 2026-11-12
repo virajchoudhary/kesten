@@ -1,0 +1,72 @@
+{
+  "recorded_at": "2026-11-12T20:10:25.091Z",
+  "base_commit": "08a7dfa660e993ba39edbcfd036572f3c383c96f",
+  "branch": "codex/cadrisyn-foundation",
+  "portfolio_scope": "local_synthetic",
+  "production": "NO_GO",
+  "backend": {
+    "tests_run": 168,
+    "passed": 164,
+    "skipped": 4,
+    "skip_reason": "PostgreSQL row-lock concurrency under SQLite"
+  },
+  "frontend": {
+    "files": 38,
+    "passed": 134
+  },
+  "browser": {
+    "engine": "chromium",
+    "passed": 17,
+    "retries": 0,
+    "workers": 1
+  },
+  "focused": {
+    "passed": 14
+  },
+  "launcher": {
+    "result": "PASS",
+    "api_health": 200,
+    "session": 200,
+    "watchlist": 200,
+    "authenticated": true,
+    "research_visible": true,
+    "page_errors": [],
+    "frontend": "http://127.0.0.1:3001",
+    "api": "http://127.0.0.1:8002"
+  },
+  "sourceHashes": [
+    {
+      "path": "scripts/demo.py",
+      "sha256": "45c6c114017fa4222ccdb1189797ba258f56ee430adb01a54fd399d85d0b32ac"
+    },
+    {
+      "path": "tests/test_portfolio_demo.py",
+      "sha256": "b03c04ffb994fe4d5f61a0b103a09e42a1d64f993eb505ab06ac35c25e5e8c05"
+    },
+    {
+      "path": "scripts/setup.ps1",
+      "sha256": "31ee79dec491d33619978cc3ed71eca5ce54de4b38b1de6d42fb741520786f30"
+    },
+    {
+      "path": "scripts/setup.sh",
+      "sha256": "b8a59aced4db18fe20261a1bd2a9c315b596779c6434567ac21eefa04267ef9e"
+    },
+    {
+      "path": "web/e2e/fixtures.ts",
+      "sha256": "b5977bf48844dc5470aa4e88b773022964990bd2b4c85a53144a4cea7764dd0a"
+    },
+    {
+      "path": "web/e2e/terminal-depth.spec.ts",
+      "sha256": "11a95f6bdc57635fabc3f712c8c4424daef576e00e645ee51ff55e1cdd02235f"
+    },
+    {
+      "path": "README.md",
+      "sha256": "0c994304f0aba6d7b01df388d072be1b5d9cc772f7877a55a08a59d4974e15d9"
+    },
+    {
+      "path": "docs/PORTFOLIO.md",
+      "sha256": "c00ca6c615e44197de69c0dfc20d47dcc6a2df8592fc1ace3d96fad7f2cee5f4"
+    }
+  ],
+  "implementation_commit": "97771fbc18d0b7822183b21f6ed30ac2cb4aa706"
+}

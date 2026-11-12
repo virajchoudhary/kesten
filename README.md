@@ -1,11 +1,11 @@
 
 # Kerquant
 
-Kerquant is the selected local identity for the quantitative research terminal. Public use is not cleared. The name remains configurable through `NEXT_PUBLIC_PRODUCT_NAME` and `NEXT_PUBLIC_PRODUCT_SHORT_NAME`; when the short-name setting is empty, the interface uses the full name. Existing package, environment, database, and repository identifiers remain unchanged for compatibility. The Next.js interface uses a Django session API; Streamlit, forecasting, portfolio, derivatives, RL, and reporting code remain preserved research functionality.
+Kerquant is a local financial analysis terminal built with Next.js, Django, and Python. Its supported portfolio demonstration covers daily chart analysis, private watchlists, reproducible synthetic baseline research, and account security. Historical forecasting qualification and production release remain blocked. Original ML, portfolio, derivatives, RL, Streamlit, and reporting code is preserved separately.
 
-The current [terminal design and product comparison](docs/design/terminal-depth/PRODUCT-COMPARISON.md) supersedes acceptance claims for the rejected Phase 4.5 interface. Earlier brand research remains historical. The current identity and bounded conflict screen are in [the Kerquant identity record](docs/design/kerquant/IDENTITY.md). Release engineering remains paused.
+The name remains configurable through `NEXT_PUBLIC_PRODUCT_NAME` and `NEXT_PUBLIC_PRODUCT_SHORT_NAME`. Existing package, environment, database, and repository identifiers remain unchanged. Public branding is not legally cleared; see [the identity record](docs/design/kerquant/IDENTITY.md).
 
-The foundation includes closed-registration account lifecycle, revocable sessions, restricted PostgreSQL roles, local containers, source-policy safeguards, and backup/restore tooling. See [current implementation status](docs/implementation/STATUS.md) and [Phase 4 operations](docs/implementation/PHASE4-OPERATIONS.md) for executed checks, working entry points, and remaining release gates.
+Start with the [portfolio demonstration guide](docs/PORTFOLIO.md). The [completion record](docs/implementation/PORTFOLIO-COMPLETION.md) separates current verification from historical infrastructure evidence. Production remains **NO-GO** until security and release gates pass.
 
 ## Start the local workspace
 
@@ -15,19 +15,19 @@ On Windows, run these commands from the repository root.
 
 ```powershell
 ./scripts/setup.ps1
-.venv/Scripts/python.exe scripts/dev.py
+.venv/Scripts/python.exe scripts/demo.py
 ```
 
 On Linux or macOS, run these commands.
 
 ```sh
 sh scripts/setup.sh
-.venv/bin/python scripts/dev.py
+.venv/bin/python scripts/demo.py
 ```
 
-Open [the workspace](http://127.0.0.1:3000/app/markets). Read the generated username and password from the ignored `.local/credentials.json`. The launcher creates the user only if absent and preserves its password on later starts. The API health endpoint is [localhost:8000/health](http://127.0.0.1:8000/health/). Stop the launcher with Ctrl+C to stop its owned services.
+Run setup once to install the locked dependencies. On later starts, run only `scripts/demo.py`. Open [the workspace](http://127.0.0.1:3000/app/markets) and use the generated credentials in `.local/portfolio-demo/credentials.json`. This command explicitly creates a private synthetic account, a starter watchlist, and saved one/five-session baseline evaluations. Restarts preserve the password, saved results, and watchlist edits. The API health endpoint is [localhost:8000/health](http://127.0.0.1:8000/health/). Stop the launcher with Ctrl+C.
 
-Development data lives in `.local/cadrisyn.sqlite3`. Development startup explicitly overrides inherited database and cache URLs. If the local credential file is lost, use Django's `changepassword analyst` with the same development environment rather than deleting the database.
+Demo data lives in `.local/portfolio-demo/workspace.sqlite3`. The launcher ignores inherited production storage and disables external market providers. It refuses unrelated directories and occupied ports. For an optimized local preview, add `--build`; this builds locally and does not deploy. The original `scripts/dev.py` workflow and its `.local/cadrisyn.sqlite3` database remain available for existing development work.
 
 ## Data and capabilities
 
@@ -37,9 +37,9 @@ Set both `CADRISYN_MARKET_DATA_ENABLED=true` and `CADRISYN_YAHOO_PERSONAL_USE_AC
 
 ## Private forecast research
 
-Open [forecast research](http://127.0.0.1:3000/app/research) after starting the workspace. Explicitly install the reproducible development fixture with `.venv/Scripts/python.exe scripts/research.py seed --owner analyst`. The private workflow compares last-close and expanding historical-log-mean references at one or five exchange sessions, saves provenance and chronological evaluations, and supports exact replay.
+Open [research](http://127.0.0.1:3000/app/research) after starting the demo. The prepared fixture and both saved horizons are already available. The private workflow compares last-close and expanding historical-log-mean references, saves provenance and chronological evaluations, and supports exact replay.
 
-The fixture is synthetic. No empirical forecasting performance, advanced ML model, prediction interval or trading strategy is approved. Historical imports require a staff operator, reviewed data rights and per-record availability/action evidence. See [research operations](docs/implementation/RESEARCH-OPERATIONS.md) and [model dispositions](docs/implementation/PHASE3.md). Phase 4 adds interactive analytics, filtered private history, guarded comparisons, exact replay, and synthetic exports. The retained packaged preview is [research on port 8086](http://127.0.0.1:8086/app/research). See [Phase 4 results](docs/implementation/PHASE4.md) and [container operations](docs/implementation/PHASE4-OPERATIONS.md). Historical-data qualification and the image-security release gate remain blocked.
+The fixture is synthetic. No empirical forecasting performance, advanced ML model, prediction interval, or trading strategy is approved. Historical imports retain the staff, rights, and per-record availability/action gates. See [model dispositions](docs/implementation/PHASE3.md) and [the source investigation](docs/implementation/PHASE5-RESEARCH-SOURCES.md). The existing `scripts/research.py` commands target the original development workspace, not the portfolio demo.
 
 ## Run checks
 
@@ -51,11 +51,9 @@ npm run build
 npm run typecheck
 npm run lint
 npm test
-npx playwright install chromium
-npm run test:e2e
 ```
 
-Browser acceptance uses the running local API. Prepare disposable source fixtures with `.venv/Scripts/python.exe scripts/prepare_browser_fixture.py`, then start the API separately with `scripts/dev.py --api-only`. For the PostgreSQL-backed preview, use the explicit fixture environment and browser commands in [Phase 4 operations](docs/implementation/PHASE4-OPERATIONS.md). See [the frontend guide](web/README.md) and [implementation status](docs/implementation/STATUS.md) for results and remaining gates.
+For browser acceptance, use the [disposable portfolio test procedure](docs/PORTFOLIO.md#run-browser-acceptance). Do not run account-lifecycle tests against your own demo account or existing research workspace. The [frontend guide](web/README.md) covers the existing frontend commands; historical PostgreSQL/container evidence remains in the implementation records.
 
 ## Open the preserved research tools
 

@@ -1,0 +1,9 @@
+ts	phase	decision	why	evidence	result
+2026-11-13	closeout	Resume terminal acceptance without repeating infrastructure audits	Existing source and recovery work is unchanged	browser-final.txt	17 Chromium tests passed
+2026-11-13	preservation	Hash original runtime files artifacts and pre-existing dirty files	User data and unrelated work must remain intact	preservation.json	496 runtime and 17 research files unchanged
+2026-11-13	restart	Retain changed account password on demo restart	Account password change must not break the launcher or reset credentials	password-restart-before.txt; workflow-tests.txt	Failing-before reproduced; 13 final checks passed
+2026-11-13	startup	Exercise both launcher services on isolated alternative ports	Printed URLs do not prove application integration	launcher-http.json; launcher-browser.txt	HTTP 200 and Chromium sign-in plus Research passed
+2026-11-13	release	Keep production NO-GO and use explicit synthetic demonstration	No current security PASS or accepted historical archive exists	../../IMAGE-SECURITY-ROOTCAUSE.md; ../../acquisition-20261112/PLAN.md	No purchase import push merge or deployment
+2026-11-12T20:18:46.476Z	correction	Create test workspace on clean checkout and verify identities after password change	Independent reviewer found a real cold-start precondition gap	workflow-tests.txt; ../../../tests/test_portfolio_demo.py	14 final checks passed
+2026-11-12T20:19:34.699Z	correction	Correct the prior test-file evidence path	The previous relative pointer had too few parent segments	../../../../tests/test_portfolio_demo.py; workflow-tests.txt	Resolved to the actual test source
+2026-11-12T20:22:18.331Z	acceptance	Commit reviewed frozen implementation locally	All relevant tests and final correction review passed	independent-review.md; commit 97771fbc18d0b7822183b21f6ed30ac2cb4aa706	Portfolio GO for local synthetic scope; production NO-GO

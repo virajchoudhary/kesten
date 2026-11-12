@@ -1,0 +1,26 @@
+[WebServer] (node:24112) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 17 tests using 1 worker
+
+(node:23352) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › e2e\accounts.spec.ts:92:5 › invitation UI consumes the fragment token and completes the form (841ms)
+  ok  2 [chromium] › e2e\accounts.spec.ts:120:5 › account page changes a password and revokes only other sessions (738ms)
+  ok  3 [chromium] › e2e\accounts.spec.ts:167:5 › activates a disposable account through the real API lifecycle (4.7s)
+  ok  4 [chromium] › e2e\accounts.spec.ts:237:5 › resetting a disposable account revokes its open workspace session (3.6s)
+  ok  5 [chromium] › e2e\markets.spec.ts:53:5 › signs in and completes the authenticated daily market research path (6.4s)
+  ok  6 [chromium] › e2e\product-quality.spec.ts:22:5 › symbol selection resets the next search (2.0s)
+  ok  7 [chromium] › e2e\product-quality.spec.ts:38:5 › fits the viewport and opens instrument research from a compact watchlist (3.6s)
+  ok  8 [chromium] › e2e\product-quality.spec.ts:124:5 › mobile settings retain chart context and account navigation stays consistent (1.8s)
+  ok  9 [chromium] › e2e\product-quality.spec.ts:185:5 › mobile history opens the exact result in view (1.8s)
+  ok 10 [chromium] › e2e\product-quality.spec.ts:223:5 › a server-accepted evaluation completes after switching dock tabs (2.4s)
+  ok 11 [chromium] › e2e\research-quality.spec.ts:70:5 › public pages retain readable light and dark layouts on narrow screens (5.1s)
+  ok 12 [chromium] › e2e\research-quality.spec.ts:89:5 › research inspection, comparison, replay and exact export use saved identities (41.9s)
+  ok 13 [chromium] › e2e\research-quality.spec.ts:236:5 › account changes in another tab clear private research before a second account loads (3.3s)
+  ok 14 [chromium] › e2e\research-usability.spec.ts:13:5 › private dataset discovery, source inspection and baseline interpretation remain exploratory (7.4s)
+  ok 15 [chromium] › e2e\research.spec.ts:61:5 › runs and reloads a private synthetic research evaluation against the real API (3.1s)
+  ok 16 [chromium] › e2e\terminal-depth.spec.ts:8:5 › customizes, compares and measures daily charts, then inspects an exact saved run (9.5s)
+  ok 17 [chromium] › e2e\terminal.spec.ts:8:5 › terminal preserves provenance, chart controls and integrated research identities (15.5s)
+
+  17 passed (2.0m)

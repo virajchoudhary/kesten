@@ -1,0 +1,1 @@
+{"result":"PASS","api_health":200,"session":200,"watchlist":200,"authenticated":true,"research_visible":true,"page_errors":[],"frontend":"http://127.0.0.1:3001","api":"http://127.0.0.1:8002"}
