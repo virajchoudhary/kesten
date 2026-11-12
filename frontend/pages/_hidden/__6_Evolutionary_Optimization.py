@@ -2,7 +2,7 @@ import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", message=".*keyword arguments.*deprecated.*")
 import streamlit as st
-import requests
+from api_client import client as requests
 import json
 import pandas as pd
 import plotly.graph_objects as go

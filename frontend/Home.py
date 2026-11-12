@@ -1,14 +1,15 @@
 import streamlit as st
 import os, sys
-import requests
+from api_client import client as requests
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from branding import PRODUCT_NAME, page_title
 from components.style import inject_css
 
-API_URL = "http://127.0.0.1:8000/api"
+API_URL = requests.api_url
 
 st.set_page_config(
-    page_title="QuantVision",
+    page_title=page_title("Research"),
     page_icon="📈",
     layout="wide"
 )
@@ -48,11 +49,15 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- Hero ---------------------------------------------------------------
-st.title("Institutional-Grade Market Analytics")
+st.title(PRODUCT_NAME)
+st.subheader("Quantitative research workspace")
 st.markdown(
-    "A full-stack quantitative research platform combining deep learning, "
-    "classical econometrics, and reinforcement learning for rigorous "
-    "price prediction and portfolio optimization."
+    "Explore market data, technical studies, portfolio scenarios, options "
+    "calculations, and historical model experiments. Data sources and methods "
+    "vary across these preserved tools; some paths may use delayed, synthetic, "
+    "or otherwise unqualified inputs. Check each workflow's source disclosure "
+    "and assumptions before interpreting its outputs. These tools are exploratory "
+    "research and do not establish predictive performance or provide investment advice."
 )
 
 # --- Module cards -------------------------------------------------------
@@ -64,9 +69,8 @@ with col1:
     st.markdown('''
     <div class="module-card">
       <h4>Dashboard</h4>
-      <p>Bidirectional LSTM price forecasting with 7 technical features (RSI, MACD, Bollinger Bands, ATR, SMA distance, OBV). Weekly resampling reduces noise. 30-day dampened momentum projection with T+1 execution simulation.</p>
-      <span class="tag">LSTM</span>
-      <span class="tag">BiLSTM</span>
+      <p>Explore market data and technical analysis for a selected symbol. Forecast outputs use legacy experimental methods and should not be treated as validated performance.</p>
+      <span class="tag">Market Data</span>
       <span class="tag">Technical Analysis</span>
     </div>
     ''', unsafe_allow_html=True)
@@ -75,10 +79,9 @@ with col2:
     st.markdown('''
     <div class="module-card">
       <h4>Portfolio Optimizer</h4>
-      <p>Three-profile allocation engine: inverse-volatility (conservative), minimum-variance (balanced), and maximum-Sharpe (aggressive). Blended via risk tolerance slider. Black-Litterman with LSTM-derived views. RL ensemble (A2C + SAC + TD3) for dynamic rebalancing.</p>
-      <span class="tag">Black-Litterman</span>
-      <span class="tag">RL Ensemble</span>
-      <span class="tag">PyPortfolioOpt</span>
+      <p>Compare allocation scenarios under selected risk and market assumptions. Results are analytical estimates, not investment recommendations.</p>
+      <span class="tag">Allocation Scenarios</span>
+      <span class="tag">Portfolio Methods</span>
     </div>
     ''', unsafe_allow_html=True)
 
@@ -86,11 +89,9 @@ with col3:
     st.markdown('''
     <div class="module-card">
       <h4>Options Analysis</h4>
-      <p>Black-Scholes pricing engine with full Greeks. SABR stochastic volatility model for IV surface calibration. Mispricing detection at 2% threshold. 3D volatility mesh across strikes and expiries.</p>
-      <span class="tag">Black-Scholes</span>
-      <span class="tag">SABR</span>
+      <p>Inspect model-based option prices and Greeks using the inputs shown. Some options inputs may be synthetic; check provenance before interpreting results.</p>
+      <span class="tag">Option Models</span>
       <span class="tag">Greeks</span>
-      <span class="tag">IV Surface</span>
     </div>
     ''', unsafe_allow_html=True)
 
@@ -98,11 +99,9 @@ with col4:
     st.markdown('''
     <div class="module-card">
       <h4>Backtest Engine</h4>
-      <p>Point-in-time validation with strict train/test separation. LSTM versus ARIMA+GARCH comparison on identical historical windows. T+1 open execution with 0.1% fees and 0.05% slippage. Equity curve, Sharpe ratio, max drawdown, and per-row price verification log.</p>
-      <span class="tag">ARIMA</span>
-      <span class="tag">GARCH</span>
-      <span class="tag">Zero Lookahead</span>
-      <span class="tag">Walk-Forward</span>
+      <p>Run preserved historical comparisons and inspect forecast paths. Legacy models and data sources are not independently qualified for out-of-sample performance.</p>
+      <span class="tag">Historical Analysis</span>
+      <span class="tag">Model Comparison</span>
     </div>
     ''', unsafe_allow_html=True)
 
@@ -113,34 +112,29 @@ st.markdown("## How It Works")
 m1, m2, m3 = st.columns(3)
 
 with m1:
-    st.markdown("### Data Pipeline")
+    st.markdown("### Market Data")
     st.markdown(
-        "Market data is sourced via yfinance with Polygon.io as primary. "
-        "Raw OHLCV is resampled to weekly frequency to reduce microstructure "
-        "noise. Seven features are computed: RSI(14), MACD(12/26/9), "
-        "Bollinger Band width, ATR(14), SMA(20) distance, OBV, and closing "
-        "price. All features are MinMax-scaled to [0,1] before model input."
+        "Legacy workflows may use different data sources and adjustment "
+        "conventions. Availability and timestamps vary. Confirm the source "
+        "and assumptions shown by the individual tool."
     )
 
 with m2:
-    st.markdown("### Prediction Engine")
+    st.markdown("### Research Methods")
     st.markdown(
-        "A Bidirectional LSTM processes sequences of 20 weekly windows. "
-        "The model predicts log returns (stationary target) rather than "
-        "price levels, eliminating non-stationarity. Predictions are "
-        "inverse-transformed via price(T) = price(T-1) × exp(log_return). "
-        "Hyperparameters are evolved via Genetic Algorithm and cached with "
-        "a 3-day TTL."
+        "The workspace preserves statistical, machine-learning, portfolio, "
+        "and options methods from earlier development. Availability and "
+        "validation differ by workflow; no legacy model is presented as "
+        "independently qualified."
     )
 
 with m3:
-    st.markdown("### Validation Framework")
+    st.markdown("### Interpretation")
     st.markdown(
-        "All backtests enforce strict temporal separation. The model is "
-        "instantiated and trained only on data before the selected cutoff "
-        "date. ARIMA+GARCH provides a classical statistical baseline for "
-        "comparison. Metrics include RMSE, MAE, directional accuracy, "
-        "Sharpe ratio, max drawdown, and a per-prediction verification log."
+        "Historical outputs are exploratory unless the selected workflow "
+        "documents data provenance, target alignment, point-in-time access, "
+        "and train/test controls. Past results do not establish future "
+        "performance."
     )
 
 # --- System status ------------------------------------------------------

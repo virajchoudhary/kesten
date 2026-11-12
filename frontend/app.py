@@ -1,24 +1,27 @@
 import streamlit as st
-import requests
+from api_client import client as requests
 import os
+from branding import PRODUCT_NAME, page_title
 
 # Configuration
-API_URL = "http://127.0.0.1:8000/api"
+API_URL = requests.api_url
 
 st.set_page_config(
-    page_title="QuantVision",
+    page_title=page_title("Research"),
     layout="wide",
     initial_sidebar_state="expanded",
 )
 
-st.title("QuantVision")
-st.subheader("AI-Driven Intraday Market Trend Predictor & Investment Advisor")
+st.title(PRODUCT_NAME)
+st.subheader("Quantitative research workspace")
 
 st.markdown("""
-Welcome to **QuantVision**. This app leverages advanced AI to provide:
-*   **Intraday Trend Predictions** for Indian Equities.
-*   **Personalized Portfolio Optimization**.
-*   **AI Financial Advisor Chatbot**.
+Explore market data, technical studies, portfolio scenarios, options calculations,
+and historical model experiments. Data sources and methods vary across these
+preserved tools; some paths may use delayed, synthetic, or otherwise unqualified
+inputs. Check each workflow's source disclosure and assumptions before interpreting
+its outputs. These tools are exploratory research and do not establish predictive
+performance or provide investment advice.
 
 Navigate using the sidebar to access different features.
 """)

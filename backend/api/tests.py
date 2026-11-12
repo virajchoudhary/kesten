@@ -3,10 +3,11 @@ import pandas as pd
 import re
 import sys
 from pathlib import Path
-from django.test import SimpleTestCase
+from django.contrib.auth.models import User
+from django.test import SimpleTestCase, override_settings
 from unittest.mock import patch
 from django.db.utils import OperationalError, ProgrammingError
-from rest_framework.test import APIRequestFactory
+from rest_framework.test import APIRequestFactory, force_authenticate
 
 from .ai_services import PortfolioOptimizer, TrendPredictor
 from .bl_numpy import (
@@ -55,12 +56,28 @@ class SearchedTickerResilienceTests(SimpleTestCase):
 
 class PredictionFallbackTests(SimpleTestCase):
     @patch("api.ai_services.get_price_history")
+    def test_missing_or_nonoverlapping_benchmark_uses_finite_asset_mean(self, mock_history):
+        dates = pd.date_range("2025-01-01", periods=60, freq="B")
+        asset = pd.DataFrame({"Close": 100 * (1.01 ** np.arange(len(dates)))}, index=dates)
+        disjoint = asset.copy()
+        disjoint.index = pd.date_range("2024-01-01", periods=60, freq="B")
+        for benchmark in [pd.DataFrame(), disjoint]:
+            with self.subTest(empty=benchmark.empty):
+                mock_history.side_effect = lambda symbol, **kwargs: asset if symbol == "AAPL" else benchmark
+                result = TrendPredictor._historical_mean_projection("AAPL")
+                self.assertIsNotNone(result)
+                self.assertTrue(np.isfinite(result["predicted_price"]))
+                self.assertAlmostEqual(result["predicted_price"], float(asset["Close"].iloc[-1]) * 1.01)
+                self.assertIsNone(result["benchmark_symbol"])
+                self.assertIsNone(result["benchmark_daily_return"])
+
+    @patch("api.ai_services.get_price_history")
     def test_forecast_price_uses_historical_mean_fallback_when_lstm_disabled(self, mock_get_price_history):
         dates = pd.date_range("2025-01-01", periods=260, freq="B")
         asset_close = pd.Series(100 * (1.0010 ** np.arange(len(dates))), index=dates)
         benchmark_close = pd.Series(100 * (1.0005 ** np.arange(len(dates))), index=dates)
 
-        def fake_history(symbol, period="2y"):
+        def fake_history(symbol, period="2y", target_date=None):
             if symbol == "AAPL":
                 return pd.DataFrame({"Close": asset_close})
             if symbol == "SPY":
@@ -281,7 +298,7 @@ class PortfolioOptimizerBlendTests(SimpleTestCase):
             "TSLA": 80 * np.cumprod(1 + 0.00190 + 0.00450 * np.sin(steps / 5)),
         }
 
-        def fake_history(symbol, period="2y"):
+        def fake_history(symbol, period="2y", target_date=None):
             close = histories.get(symbol)
             if close is None:
                 return pd.DataFrame()
@@ -321,7 +338,7 @@ class BlackLittermanAllocatorTests(SimpleTestCase):
             "TSLA": 80 * np.cumprod(1 + 0.00220 + 0.00500 * np.sin(steps / 4.5)),
         }
 
-        def fake_history(symbol, period="2y"):
+        def fake_history(symbol, period="2y", target_date=None):
             close = histories.get(symbol)
             if close is None:
                 return pd.DataFrame()
@@ -362,6 +379,7 @@ class BlackLittermanAllocatorTests(SimpleTestCase):
 class BLOptimizationViewTests(SimpleTestCase):
     @patch("api.views._timed_call", return_value="")
     @patch("api.bl_optimizer.run_black_litterman")
+    @override_settings(CADRISYN_LEGACY_ENABLED=True)
     def test_bl_endpoint_passes_risk_tolerance(self, mock_run_black_litterman, _mock_timed_call):
         from .views import BLOptimizationView
 
@@ -386,8 +404,11 @@ class BLOptimizationViewTests(SimpleTestCase):
             {"tickers": ["AAPL", "MSFT"], "risk_tolerance": 0.75},
             format="json",
         )
+        force_authenticate(request, user=User(username="operator", is_staff=True))
         response = BLOptimizationView.as_view()(request)
 
         self.assertEqual(response.status_code, 200)
-        mock_run_black_litterman.assert_called_once_with(["AAPL", "MSFT"], 0.75)
+        mock_run_black_litterman.assert_called_once_with(
+            ["AAPL", "MSFT"], 0.75, target_date=None
+        )
 
