@@ -160,6 +160,13 @@ test("customizes, compares and measures daily charts, then inspects an exact sav
   await page
     .getByRole("button", { name: "Remove comparison", exact: true })
     .click();
+  const active = SessionSchema.parse(await (await page.request.get("/api/v1/session/")).json());
+  const added = await page.request.post("/api/v1/watchlist/", {
+    data: { instrument_id: "xnas-nvda" },
+    headers: { "X-CSRFToken": active.csrf_token },
+  });
+  expect([200, 201]).toContain(added.status());
+  await page.getByRole("button", { name: "Reload watchlist", exact: true }).click();
   await page.getByLabel("Filter watchlist", { exact: true }).fill("NVDA");
   await expect(
     page.getByRole("list", { name: "Saved instruments" }).getByRole("listitem"),
