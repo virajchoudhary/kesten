@@ -2,6 +2,7 @@ import type {
   ResearchExportResponse,
   ResearchHistoryItem,
   ResearchDataset,
+  ResearchDatasetProvenance,
   ResearchRun,
 } from "./research-schemas";
 
@@ -36,6 +37,22 @@ export function researchDatasetFixture(): ResearchDataset {
     first_session: "2025-01-02",
     last_session: "2026-10-02",
     created_at: "2026-11-05T10:00:00Z",
+  };
+}
+
+export function researchProvenanceFixture(): ResearchDatasetProvenance {
+  return {
+    dataset: researchDatasetFixture(), point_in_time_qualification: "not_independently_verified",
+    independently_verified_source: false,
+    intake: {
+      status: "verified", receipt_id: "55555555-5555-4555-8555-555555555555",
+      receipt_version: HASH, source_attestation: "operator_attested",
+      source_id: "synthetic-fixture-v1", source_url: "https://example.invalid/source",
+      terms_url: "https://example.invalid/terms", acquired_at: "2026-11-06T10:00:00Z",
+      review_reference: "SYNTHETIC review, not a market-data license",
+      artifact_sha256: { csv: HASH, terms: HASH, availability: HASH },
+      declared_permissions: { storage: true, private_research: true, backup: true, internal_transfer: true, redistribution: false },
+    },
   };
 }
 

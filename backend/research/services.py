@@ -44,6 +44,45 @@ def dataset_info(dataset):
     }
 
 
+def dataset_provenance(dataset, *, owner):
+    from .intake_replay import verify_intake
+    from .quant import DatasetError, parse_dataset
+
+    if dataset.owner_id != owner.pk or not owner.is_active:
+        raise DatasetUnavailable("The research dataset is unavailable.")
+    try:
+        parsed = parse_dataset(dataset.payload, now=timezone.now())
+    except DatasetError as error:
+        raise DatasetUnavailable("The dataset does not meet the research protocol.") from error
+    if parsed.version != dataset.version:
+        raise DatasetUnavailable("The immutable dataset failed its content check.")
+    result = {
+        "dataset": dataset_info(dataset),
+        "point_in_time_qualification": "not_independently_verified",
+        "independently_verified_source": False,
+        "intake": {"status": "not_archived"},
+    }
+    receipt = dataset.intake_receipts.select_related("dataset").order_by("-created_at", "-id").first()
+    if receipt is None:
+        return result
+    try:
+        verify_intake(receipt, owner=owner)
+    except DatasetUnavailable:
+        result["intake"] = {"status": "failed", "receipt_id": str(receipt.id)}
+        return result
+    source = receipt.evidence["source"]
+    result["intake"] = {
+        "status": "verified", "receipt_id": str(receipt.id), "receipt_version": receipt.version,
+        "source_attestation": "operator_attested",
+        "source_id": source["source_id"], "source_url": source["source_url"],
+        "terms_url": source["terms_url"], "acquired_at": source["acquired_at"],
+        "review_reference": source["review_reference"],
+        "artifact_sha256": {key: source[f"{key}_sha256"] for key in ("csv", "terms", "availability")},
+        "declared_permissions": source["permissions"],
+    }
+    return result
+
+
 def import_dataset(payload, *, owner, operator, synthetic_bootstrap=False, intake=None):
     from .quant import parse_dataset
 

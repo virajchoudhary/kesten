@@ -7,6 +7,7 @@ import {
   createResearchRun,
   getResearchExport,
   getResearchHistory,
+  getResearchDatasetProvenance,
   verifyResearchReplay,
 } from "./research-api";
 import {
@@ -14,6 +15,7 @@ import {
   researchExportFixture,
   researchHistoryItemFixture,
   researchRunFixture,
+  researchProvenanceFixture,
 } from "./research-test-fixtures";
 import {
   ResearchHistoryQuerySchema,
@@ -39,6 +41,19 @@ afterEach(() => {
 });
 
 describe("research API client", () => {
+  it("binds provenance to the requested dataset and version without accepting a qualification claim", async () => {
+    const evidence = researchProvenanceFixture();
+    const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(jsonResponse(evidence));
+    vi.stubGlobal("fetch", fetchMock);
+    const request = { datasetId: evidence.dataset.id, datasetVersion: evidence.dataset.version };
+    expect(await getResearchDatasetProvenance(request)).toEqual(evidence);
+    expect(fetchMock.mock.calls[0]?.[0]).toBe(`/api/v1/research/datasets/${evidence.dataset.id}/provenance/`);
+    fetchMock.mockResolvedValueOnce(jsonResponse({ ...evidence, dataset: { ...evidence.dataset, version: "c".repeat(64) } }));
+    await expect(getResearchDatasetProvenance(request)).rejects.toMatchObject({ code: "research_dataset_mismatch" });
+    fetchMock.mockResolvedValueOnce(jsonResponse({ ...evidence, independently_verified_source: true }));
+    await expect(getResearchDatasetProvenance(request)).rejects.toBeInstanceOf(ApiError);
+  });
+
   it("requests a bounded, filtered lightweight history page", async () => {
     const item = researchHistoryItemFixture();
     const query = ResearchHistoryQuerySchema.parse({

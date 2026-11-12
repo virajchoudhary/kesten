@@ -9,6 +9,8 @@ import type {
 } from "./research-schemas";
 import type { LoadState } from "./research-workspace-parts";
 import { ResearchAnalytics } from "./research-analytics";
+import { ResearchBaselineSummary } from "./research-baseline-summary";
+import { ResearchDatasetEvidence } from "./research-dataset-evidence";
 import { ResearchRunActions } from "./research-run-actions";
 import { ResearchComparison } from "./research-comparison";
 import { ResearchReferenceIdSchema } from "./research-schemas";
@@ -16,7 +18,7 @@ import { ResearchReferenceIdSchema } from "./research-schemas";
 function categoryLabel(dataKind: ResearchDataKind): string {
   return dataKind === "synthetic_fixture"
     ? "Synthetic pipeline check"
-    : "Historical research";
+    : "Exploratory historical research";
 }
 
 type Fact = { label: string; value: string; mono?: boolean };
@@ -231,10 +233,12 @@ export function ResearchDockInspector({
               state={datasetState}
               title="Immutable dataset provenance"
             />
+            <ResearchDatasetEvidence datasetId={run.dataset_id} datasetVersion={run.dataset_version} label="Inspect run dataset provenance" />
           </details>
         </aside>
         <div className="dock-analytics">
           <ResearchAnalytics compact run={run} focusModel={focusModel} />
+          <ResearchBaselineSummary key={run.id} run={run} />
           {comparisonRunId && (
             <ResearchComparison
               currentRun={run}

@@ -377,7 +377,7 @@ describe("ResearchDock", () => {
       expect(savedRunsTab).toHaveAttribute("aria-selected", "true");
 
       const setupRegion = screen.getByRole("region", {
-        name: "Evaluation setup",
+        name: "New evaluation setup",
         hidden: true,
       });
       const hiddenEvaluation = setupRegion.closest("[hidden]");

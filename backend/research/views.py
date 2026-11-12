@@ -16,6 +16,7 @@ from .replay import replay_run, result_hash
 from .serializers import (
     DatasetListSerializer,
     DatasetSerializer,
+    DatasetProvenanceSerializer,
     ResearchCompareSerializer,
     ResearchExportSerializer,
     ResearchHistoryQuerySerializer,
@@ -31,6 +32,7 @@ from .services import (
     DatasetUnavailable,
     ResearchConflict,
     dataset_info,
+    dataset_provenance,
     run_evaluation,
     run_info,
     validate_synthetic_export,
@@ -49,6 +51,20 @@ class DatasetsView(ResearchAPIView):
     def get(self, request):
         datasets = ResearchDataset.objects.filter(owner=request.user)[:100]
         return Response(DatasetListSerializer({"items": [dataset_info(item) for item in datasets]}).data)
+
+
+class DatasetProvenanceView(ResearchAPIView):
+    @extend_schema(
+        responses={200: DatasetProvenanceSerializer, 403: ErrorSerializer, 404: ErrorSerializer, 503: ErrorSerializer},
+        operation_id="research_dataset_provenance",
+    )
+    def get(self, request, dataset_id):
+        dataset = get_object_or_404(ResearchDataset, id=dataset_id, owner=request.user)
+        try:
+            evidence = dataset_provenance(dataset, owner=request.user)
+        except DatasetUnavailable:
+            return api_error("dataset_unavailable", "The dataset failed its research integrity check.", 503)
+        return Response(DatasetProvenanceSerializer(evidence).data)
 
 
 class RunsView(ResearchAPIView):

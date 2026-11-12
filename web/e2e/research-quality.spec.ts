@@ -225,7 +225,7 @@ test("research inspection, comparison, replay and exact export use saved identit
   }
   await page.goto("/app/research?instrument=xnas-aapl");
   await expect(
-    page.getByText(/No private research dataset is available for xnas-aapl/u),
+    page.getByText(/No dataset for xnas-aapl is present in the current picker list/u),
   ).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Run evaluation", exact: true }),

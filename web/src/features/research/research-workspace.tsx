@@ -239,7 +239,7 @@ function AuthenticatedResearchWorkspace({
         tabIndex={-1}
       >
         <div className="flex min-h-12 flex-wrap items-center justify-between gap-3 border-b border-border-subtle px-4 py-2">
-          <h1 className="text-base font-semibold">Forecasting research</h1>
+          <h1 className="text-base font-semibold">Exploratory research</h1>
           <div className="flex items-center gap-2 text-xs text-secondary">
             <FlaskConical
               aria-hidden="true"

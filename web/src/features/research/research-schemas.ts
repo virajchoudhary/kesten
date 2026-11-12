@@ -81,6 +81,31 @@ export const ResearchDatasetListSchema = z
     }
   });
 
+const IntakePermissionsSchema = z.strictObject({
+  storage: z.literal(true), private_research: z.literal(true),
+  backup: z.literal(true), internal_transfer: z.literal(true), redistribution: z.boolean(),
+});
+
+export const ResearchDatasetProvenanceSchema = z.strictObject({
+  dataset: ResearchDatasetSchema,
+  point_in_time_qualification: z.literal("not_independently_verified"),
+  independently_verified_source: z.literal(false),
+  intake: z.discriminatedUnion("status", [
+    z.strictObject({ status: z.literal("not_archived") }),
+    z.strictObject({ status: z.literal("failed"), receipt_id: ResearchRunIdSchema }),
+    z.strictObject({
+      status: z.literal("verified"), receipt_id: ResearchRunIdSchema,
+      receipt_version: ResearchSha256Schema, source_attestation: z.literal("operator_attested"),
+      source_id: ShortTextSchema, source_url: z.string().url(), terms_url: z.string().url(),
+      acquired_at: ResearchDateTimeSchema, review_reference: NonEmptyTextSchema,
+      artifact_sha256: z.strictObject({ csv: ResearchSha256Schema, terms: ResearchSha256Schema, availability: ResearchSha256Schema }),
+      declared_permissions: IntakePermissionsSchema,
+    }),
+  ]),
+});
+
+export type ResearchDatasetProvenance = z.infer<typeof ResearchDatasetProvenanceSchema>;
+
 const ResearchModelSchema = z.strictObject({
   id: ResearchReferenceIdSchema,
   label: ShortTextSchema,

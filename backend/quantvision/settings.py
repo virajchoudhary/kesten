@@ -322,7 +322,13 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "ENUM_NAME_OVERRIDES": {"ResearchModelEnum": ["last_close", "historical_log_mean"]},
+    "ENUM_NAME_OVERRIDES": {
+        "ResearchModelEnum": ["last_close", "historical_log_mean"],
+        "ResearchIntakeMissingStatus": ["not_archived"],
+        "ResearchIntakeFailedStatus": ["failed"],
+        "ResearchIntakeVerifiedStatus": ["verified"],
+        "StatusEnum": ["succeeded"],
+    },
     "TITLE": (
         f"{os.environ.get('NEXT_PUBLIC_PRODUCT_NAME', 'Kerquant').strip() or 'Kerquant'} API"
     ),

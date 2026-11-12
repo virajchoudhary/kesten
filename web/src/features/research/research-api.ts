@@ -3,6 +3,8 @@ import { ApiError, requestJson, requestJsonDocument } from "@/lib/api/client";
 import {
   ResearchComparisonResponseSchema,
   ResearchDatasetListResponseSchema,
+  ResearchDatasetProvenanceSchema,
+  ResearchSha256Schema,
   ResearchExportResponseSchema,
   ResearchHistoryQuerySchema,
   ResearchHistoryResponseSchema,
@@ -13,6 +15,7 @@ import {
   ResearchRunSchema,
   type ResearchComparisonResponse,
   type ResearchDatasetList,
+  type ResearchDatasetProvenance,
   type ResearchExportResponse,
   type ResearchHistoryQuery,
   type ResearchHistoryResponse,
@@ -30,6 +33,21 @@ export function getResearchDatasets(
     schema: ResearchDatasetListResponseSchema,
     signal,
   });
+}
+
+export async function getResearchDatasetProvenance({
+  datasetId, datasetVersion, signal,
+}: { datasetId: string; datasetVersion: string; signal?: AbortSignal }): Promise<ResearchDatasetProvenance> {
+  const id = ResearchRunIdSchema.parse(datasetId);
+  const version = ResearchSha256Schema.parse(datasetVersion);
+  const evidence = await requestJson({
+    path: `/api/v1/research/datasets/${encodeURIComponent(id)}/provenance/`,
+    schema: ResearchDatasetProvenanceSchema, signal,
+  });
+  if (evidence.dataset.id !== id || evidence.dataset.version !== version) {
+    throw new ApiError({ status: 502, code: "research_dataset_mismatch", message: "The API returned evidence for a different dataset version." });
+  }
+  return evidence;
 }
 
 export function getResearchRuns(

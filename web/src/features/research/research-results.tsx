@@ -8,6 +8,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ResearchAnalytics } from "./research-analytics";
+import { ResearchBaselineSummary } from "./research-baseline-summary";
+import { ResearchDatasetEvidence } from "./research-dataset-evidence";
 import { ResearchComparison } from "./research-comparison";
 import {
   formatBasisPoints,
@@ -149,11 +151,11 @@ function EvidenceDefinitionList({
     { label: "Horizon", value: `${run.horizon_sessions} next scheduled ${run.horizon_sessions === 1 ? "session" : "sessions"}` },
     { label: "Dataset", value: run.name },
     { label: "Dataset version", value: run.dataset_version },
-    { label: "Source", value: dataset?.source_id ?? "Not present in the current private dataset list" },
-    { label: "License reference", value: dataset?.license_reference ?? "Not present in the current private dataset list" },
-    { label: "Availability evidence", value: dataset?.availability_evidence ?? "Not present in the current private dataset list" },
-    { label: "Exchange calendar", value: dataset?.calendar ?? "Not present in the current private dataset list" },
-    { label: "Adjustment basis", value: dataset?.adjustment_basis ?? "Not present in the current private dataset list" },
+    { label: "Source", value: dataset?.source_id ?? "Inspect run dataset provenance above" },
+    { label: "License reference", value: dataset?.license_reference ?? "Inspect run dataset provenance above" },
+    { label: "Availability evidence", value: dataset?.availability_evidence ?? "Inspect run dataset provenance above" },
+    { label: "Exchange calendar", value: dataset?.calendar ?? "Inspect run dataset provenance above" },
+    { label: "Adjustment basis", value: dataset?.adjustment_basis ?? "Inspect run dataset provenance above" },
   ];
 
   return (
@@ -173,13 +175,12 @@ function EvidenceDefinitionList({
       )}
       {datasetState === "failed" && (
         <p className="border-t border-border-subtle px-4 py-2 text-xs text-negative" role="alert">
-          Source, license, and availability evidence could not be loaded. Retry the private dataset list above.
+          The dataset list could not be loaded. Inspect run dataset provenance above to retrieve evidence by its exact identity.
         </p>
       )}
       {dataset === null && datasetState === "ready" && (
         <p className="border-t border-border-subtle px-4 py-2 text-xs text-secondary">
-          This saved dataset version is not present in the current private dataset list, so its source,
-          license, and availability evidence are unavailable here.
+          This saved version is outside the current dataset list. Inspect run dataset provenance above to retrieve its source evidence directly.
         </p>
       )}
     </div>
@@ -246,6 +247,7 @@ export function ResearchResults({
   onClearComparison: () => void;
 }): React.JSX.Element {
   const synthetic = run.data_kind === "synthetic_fixture";
+  const baselineHeadingId = `research-baselines-${run.id}`;
 
   return (
     <article aria-labelledby="research-run-title" className="min-w-0">
@@ -270,10 +272,12 @@ export function ResearchResults({
             ? "Synthetic pipeline check only. No empirical forecasting performance established."
             : "Historical results are descriptive. No empirical forecasting performance established."}
         </p>
+        <a href={`#${baselineHeadingId}`} className="inline-flex min-h-9 items-center text-xs font-medium text-accent underline underline-offset-4 focus-visible:ring-2 focus-visible:ring-focus">Compare baseline errors</a>
       </section>
 
       <ResearchRunActions csrfToken={csrfToken} key={run.id} run={run} />
       <ReferenceFocusControl onChange={onFocusModelChange} value={focusModel} />
+      <ResearchDatasetEvidence datasetId={run.dataset_id} datasetVersion={run.dataset_version} label="Inspect run dataset provenance" />
       <section aria-labelledby="research-forecast-title" className="border-b border-border-subtle">
         <div className="flex min-h-11 flex-wrap items-center justify-between gap-2 border-b border-border-subtle px-4 py-2">
           <h3 className="text-sm font-semibold" id="research-forecast-title">Research analytics</h3>
@@ -281,6 +285,7 @@ export function ResearchResults({
         </div>
         <ResearchAnalytics focusModel={focusModel} run={run} />
       </section>
+      <ResearchBaselineSummary key={`baseline:${run.id}`} run={run} headingId={baselineHeadingId} />
 
       {comparisonRunId !== null && (
         <ResearchComparison

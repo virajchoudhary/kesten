@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from drf_spectacular.utils import PolymorphicProxySerializer, extend_schema_field
 
 
 class DatasetSerializer(serializers.Serializer):
@@ -20,6 +21,65 @@ class DatasetSerializer(serializers.Serializer):
 
 class DatasetListSerializer(serializers.Serializer):
     items = DatasetSerializer(many=True)
+
+
+class IntakePermissionsSerializer(serializers.Serializer):
+    storage = serializers.BooleanField()
+    private_research = serializers.BooleanField()
+    backup = serializers.BooleanField()
+    internal_transfer = serializers.BooleanField()
+    redistribution = serializers.BooleanField()
+
+
+class IntakeHashesSerializer(serializers.Serializer):
+    csv = serializers.CharField()
+    terms = serializers.CharField()
+    availability = serializers.CharField()
+
+
+class MissingIntakeSerializer(serializers.Serializer):
+    status = serializers.ChoiceField(choices=["not_archived"])
+
+
+class FailedIntakeSerializer(serializers.Serializer):
+    status = serializers.ChoiceField(choices=["failed"])
+    receipt_id = serializers.UUIDField()
+
+
+class VerifiedIntakeSerializer(serializers.Serializer):
+    status = serializers.ChoiceField(choices=["verified"])
+    receipt_id = serializers.UUIDField()
+    receipt_version = serializers.CharField()
+    source_attestation = serializers.ChoiceField(choices=["operator_attested"])
+    source_id = serializers.CharField()
+    source_url = serializers.URLField()
+    terms_url = serializers.URLField()
+    acquired_at = serializers.DateTimeField()
+    review_reference = serializers.CharField()
+    artifact_sha256 = IntakeHashesSerializer()
+    declared_permissions = IntakePermissionsSerializer()
+
+
+_INTAKE_SERIALIZERS = {
+    "not_archived": MissingIntakeSerializer,
+    "failed": FailedIntakeSerializer,
+    "verified": VerifiedIntakeSerializer,
+}
+
+
+class DatasetProvenanceSerializer(serializers.Serializer):
+    dataset = DatasetSerializer()
+    point_in_time_qualification = serializers.ChoiceField(choices=["not_independently_verified"])
+    independently_verified_source = serializers.BooleanField()
+    intake = serializers.SerializerMethodField()
+
+    @extend_schema_field(PolymorphicProxySerializer(
+        component_name="ResearchIntakeProvenance", serializers=_INTAKE_SERIALIZERS,
+        resource_type_field_name=None,
+    ))
+    def get_intake(self, instance):
+        value = instance["intake"]
+        return _INTAKE_SERIALIZERS[value["status"]](value).data
 
 
 class ResearchInputSerializer(serializers.Serializer):

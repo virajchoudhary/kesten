@@ -495,6 +495,72 @@
                 }
             }
         },
+        "/api/v1/research/datasets/{dataset_id}/provenance/": {
+            "get": {
+                "operationId": "research_dataset_provenance",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "dataset_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DatasetProvenance"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
         "/api/v1/research/history/": {
             "get": {
                 "operationId": "research_history",
@@ -1440,6 +1506,34 @@
                     "items"
                 ]
             },
+            "DatasetProvenance": {
+                "type": "object",
+                "properties": {
+                    "dataset": {
+                        "$ref": "#/components/schemas/Dataset"
+                    },
+                    "point_in_time_qualification": {
+                        "$ref": "#/components/schemas/PointInTimeQualificationEnum"
+                    },
+                    "independently_verified_source": {
+                        "type": "boolean"
+                    },
+                    "intake": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ResearchIntakeProvenance"
+                            }
+                        ],
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "dataset",
+                    "independently_verified_source",
+                    "intake",
+                    "point_in_time_qualification"
+                ]
+            },
             "DisclosureEnum": {
                 "enum": [
                     "Synthetic pipeline check. Not empirical market evidence."
@@ -1595,6 +1689,22 @@
                 ],
                 "type": "string",
                 "description": "* `synthetic_pipeline_check` - synthetic_pipeline_check\n* `historical_walk_forward` - historical_walk_forward"
+            },
+            "FailedIntake": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/ResearchIntakeFailedStatus"
+                    },
+                    "receipt_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "required": [
+                    "receipt_id",
+                    "status"
+                ]
             },
             "Forecast": {
                 "type": "object",
@@ -1785,6 +1895,52 @@
                     "items"
                 ]
             },
+            "IntakeHashes": {
+                "type": "object",
+                "properties": {
+                    "csv": {
+                        "type": "string"
+                    },
+                    "terms": {
+                        "type": "string"
+                    },
+                    "availability": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "availability",
+                    "csv",
+                    "terms"
+                ]
+            },
+            "IntakePermissions": {
+                "type": "object",
+                "properties": {
+                    "storage": {
+                        "type": "boolean"
+                    },
+                    "private_research": {
+                        "type": "boolean"
+                    },
+                    "backup": {
+                        "type": "boolean"
+                    },
+                    "internal_transfer": {
+                        "type": "boolean"
+                    },
+                    "redistribution": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "backup",
+                    "internal_transfer",
+                    "private_research",
+                    "redistribution",
+                    "storage"
+                ]
+            },
             "InvitationAccept": {
                 "type": "object",
                 "properties": {
@@ -1911,6 +2067,17 @@
                     "points"
                 ]
             },
+            "MissingIntake": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/ResearchIntakeMissingStatus"
+                    }
+                },
+                "required": [
+                    "status"
+                ]
+            },
             "NameEnum": {
                 "enum": [
                     "split_neutral_close"
@@ -1961,6 +2128,13 @@
                     "new_password",
                     "token"
                 ]
+            },
+            "PointInTimeQualificationEnum": {
+                "enum": [
+                    "not_independently_verified"
+                ],
+                "type": "string",
+                "description": "* `not_independently_verified` - not_independently_verified"
             },
             "Protocol": {
                 "type": "object",
@@ -2182,6 +2356,40 @@
                     "horizon_sessions",
                     "idempotency_key"
                 ]
+            },
+            "ResearchIntakeFailedStatus": {
+                "enum": [
+                    "failed"
+                ],
+                "type": "string",
+                "description": "* `failed` - failed"
+            },
+            "ResearchIntakeMissingStatus": {
+                "enum": [
+                    "not_archived"
+                ],
+                "type": "string",
+                "description": "* `not_archived` - not_archived"
+            },
+            "ResearchIntakeProvenance": {
+                "oneOf": [
+                    {
+                        "$ref": "#/components/schemas/MissingIntake"
+                    },
+                    {
+                        "$ref": "#/components/schemas/FailedIntake"
+                    },
+                    {
+                        "$ref": "#/components/schemas/VerifiedIntake"
+                    }
+                ]
+            },
+            "ResearchIntakeVerifiedStatus": {
+                "enum": [
+                    "verified"
+                ],
+                "type": "string",
+                "description": "* `verified` - verified"
             },
             "ResearchModelEnum": {
                 "enum": [
@@ -2561,6 +2769,13 @@
                     "revoked"
                 ]
             },
+            "SourceAttestationEnum": {
+                "enum": [
+                    "operator_attested"
+                ],
+                "type": "string",
+                "description": "* `operator_attested` - operator_attested"
+            },
             "StatusEnum": {
                 "enum": [
                     "succeeded"
@@ -2604,6 +2819,61 @@
                 "required": [
                     "is_staff",
                     "username"
+                ]
+            },
+            "VerifiedIntake": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/ResearchIntakeVerifiedStatus"
+                    },
+                    "receipt_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "receipt_version": {
+                        "type": "string"
+                    },
+                    "source_attestation": {
+                        "$ref": "#/components/schemas/SourceAttestationEnum"
+                    },
+                    "source_id": {
+                        "type": "string"
+                    },
+                    "source_url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "terms_url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "acquired_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "review_reference": {
+                        "type": "string"
+                    },
+                    "artifact_sha256": {
+                        "$ref": "#/components/schemas/IntakeHashes"
+                    },
+                    "declared_permissions": {
+                        "$ref": "#/components/schemas/IntakePermissions"
+                    }
+                },
+                "required": [
+                    "acquired_at",
+                    "artifact_sha256",
+                    "declared_permissions",
+                    "receipt_id",
+                    "receipt_version",
+                    "review_reference",
+                    "source_attestation",
+                    "source_id",
+                    "source_url",
+                    "status",
+                    "terms_url"
                 ]
             },
             "WatchlistInput": {

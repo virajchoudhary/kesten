@@ -116,6 +116,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v1/research/datasets/{dataset_id}/provenance/": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["research_dataset_provenance"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/research/history/": {
         parameters: {
             query?: never;
@@ -324,6 +340,12 @@ export interface components {
         DatasetList: {
             items: components["schemas"]["Dataset"][];
         };
+        DatasetProvenance: {
+            dataset: components["schemas"]["Dataset"];
+            point_in_time_qualification: components["schemas"]["PointInTimeQualificationEnum"];
+            independently_verified_source: boolean;
+            readonly intake: components["schemas"]["ResearchIntakeProvenance"];
+        };
         /**
          * @description * `Synthetic pipeline check. Not empirical market evidence.` - Synthetic pipeline check. Not empirical market evidence.
          * @enum {string}
@@ -376,6 +398,11 @@ export interface components {
          * @enum {string}
          */
         EvidenceKindEnum: "synthetic_pipeline_check" | "historical_walk_forward";
+        FailedIntake: {
+            status: components["schemas"]["ResearchIntakeFailedStatus"];
+            /** Format: uuid */
+            receipt_id: string;
+        };
         Forecast: {
             /** Format: date */
             origin: string;
@@ -455,6 +482,18 @@ export interface components {
         InstrumentList: {
             items: components["schemas"]["Instrument"][];
         };
+        IntakeHashes: {
+            csv: string;
+            terms: string;
+            availability: string;
+        };
+        IntakePermissions: {
+            storage: boolean;
+            private_research: boolean;
+            backup: boolean;
+            internal_transfer: boolean;
+            redistribution: boolean;
+        };
         InvitationAccept: {
             new_password: string;
             confirm_password: string;
@@ -489,6 +528,9 @@ export interface components {
             model_id: components["schemas"]["ResearchModelEnum"];
             points: components["schemas"]["ForecastPoint"][];
         };
+        MissingIntake: {
+            status: components["schemas"]["ResearchIntakeMissingStatus"];
+        };
         /**
          * @description * `split_neutral_close` - split_neutral_close
          * @enum {string}
@@ -508,6 +550,11 @@ export interface components {
             confirm_password: string;
             token: string;
         };
+        /**
+         * @description * `not_independently_verified` - not_independently_verified
+         * @enum {string}
+         */
+        PointInTimeQualificationEnum: "not_independently_verified";
         Protocol: {
             id: string;
             /** Format: date */
@@ -571,6 +618,22 @@ export interface components {
             /** Format: uuid */
             idempotency_key: string;
         };
+        /**
+         * @description * `failed` - failed
+         * @enum {string}
+         */
+        ResearchIntakeFailedStatus: "failed";
+        /**
+         * @description * `not_archived` - not_archived
+         * @enum {string}
+         */
+        ResearchIntakeMissingStatus: "not_archived";
+        ResearchIntakeProvenance: components["schemas"]["MissingIntake"] | components["schemas"]["FailedIntake"] | components["schemas"]["VerifiedIntake"];
+        /**
+         * @description * `verified` - verified
+         * @enum {string}
+         */
+        ResearchIntakeVerifiedStatus: "verified";
         /**
          * @description * `last_close` - last_close
          *     * `historical_log_mean` - historical_log_mean
@@ -687,6 +750,11 @@ export interface components {
             csrf_token: string | null;
         };
         /**
+         * @description * `operator_attested` - operator_attested
+         * @enum {string}
+         */
+        SourceAttestationEnum: "operator_attested";
+        /**
          * @description * `succeeded` - succeeded
          * @enum {string}
          */
@@ -700,6 +768,23 @@ export interface components {
         User: {
             username: string;
             is_staff: boolean;
+        };
+        VerifiedIntake: {
+            status: components["schemas"]["ResearchIntakeVerifiedStatus"];
+            /** Format: uuid */
+            receipt_id: string;
+            receipt_version: string;
+            source_attestation: components["schemas"]["SourceAttestationEnum"];
+            source_id: string;
+            /** Format: uri */
+            source_url: string;
+            /** Format: uri */
+            terms_url: string;
+            /** Format: date-time */
+            acquired_at: string;
+            review_reference: string;
+            artifact_sha256: components["schemas"]["IntakeHashes"];
+            declared_permissions: components["schemas"]["IntakePermissions"];
         };
         WatchlistInput: {
             instrument_id: components["schemas"]["InstrumentIdEnum"];
@@ -1023,6 +1108,51 @@ export interface operations {
                 };
             };
             403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+        };
+    };
+    research_dataset_provenance: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                dataset_id: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DatasetProvenance"];
+                };
+            };
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["Error"];
+                };
+            };
+            503: {
                 headers: {
                     [name: string]: unknown;
                 };

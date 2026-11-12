@@ -6,6 +6,8 @@ import { LoaderCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { createResearchRun } from "./research-api";
+import { ResearchDatasetEvidence } from "./research-dataset-evidence";
+import { formatSessionDate } from "./research-formatters";
 import { asResearchError } from "./research-errors";
 import {
   ResearchHorizonSchema,
@@ -60,16 +62,19 @@ export function ResearchEvaluationSetup({
   const [createAttempt, setCreateAttempt] = useState<CreateAttempt>({
     kind: "idle",
   });
+  const [datasetQuery, setDatasetQuery] = useState("");
   const evaluationFormRef = useRef<HTMLFormElement>(null);
   const requestController = useRef<AbortController | null>(null);
   useEffect(() => () => requestController.current?.abort(), []);
   const allDatasets = datasetsState.kind === "ready" ? datasetsState.data : [];
-  const datasets =
+  const scopedDatasets =
     requestedInstrumentId === null
       ? allDatasets
       : allDatasets.filter(
           (dataset) => dataset.instrument_id === requestedInstrumentId,
         );
+  const query = datasetQuery.trim().toLocaleLowerCase();
+  const datasets = scopedDatasets.filter((dataset) => [dataset.name, dataset.instrument_id, dataset.source_id, dataset.data_kind].join(" ").toLocaleLowerCase().includes(query));
   const selectedDataset =
     datasets.find((dataset) => dataset.id === selectedDatasetId) ?? null;
   const createPending = createAttempt.kind === "pending";
@@ -154,7 +159,7 @@ export function ResearchEvaluationSetup({
           id="research-setup-title"
           tabIndex={-1}
         >
-          Evaluation setup
+          New evaluation setup
         </h2>
       </div>
 
@@ -195,15 +200,13 @@ export function ResearchEvaluationSetup({
 
       {datasetsState.kind === "ready" &&
         allDatasets.length > 0 &&
-        datasets.length === 0 && (
+        scopedDatasets.length === 0 && (
           <p className="px-4 py-5 text-sm text-secondary" role="status">
-            No private research dataset is available for {requestedInstrumentId}
-            . Choose an instrument with an imported dataset to run an
-            evaluation.
+            No dataset for {requestedInstrumentId} is present in the current picker list. Older saved runs retain access to their exact dataset provenance.
           </p>
         )}
 
-      {datasetsState.kind === "ready" && datasets.length > 0 && (
+      {datasetsState.kind === "ready" && scopedDatasets.length > 0 && (
         <>
           <form
             className="grid min-w-0 grid-cols-1 gap-4 px-4 py-4"
@@ -211,12 +214,26 @@ export function ResearchEvaluationSetup({
             ref={evaluationFormRef}
           >
             <div className="grid min-w-0 grid-cols-1 gap-4">
+              <label className="grid gap-1.5 text-xs font-medium">
+                Find a private dataset
+                <input type="search" placeholder="Name, instrument or source" value={datasetQuery} disabled={createPending}
+                  onChange={(event) => { setDatasetQuery(event.currentTarget.value); setCreateAttempt({ kind: "idle" }); }}
+                  className="min-h-10 min-w-0 rounded-control border border-control bg-surface px-3 font-normal outline-none focus-visible:ring-2 focus-visible:ring-focus" />
+              </label>
               <DatasetSelector
                 datasets={datasets}
                 disabled={createPending}
                 onChange={handleDatasetChange}
-                selectedDatasetId={selectedDatasetId}
+                selectedDatasetId={selectedDataset?.id ?? ""}
               />
+              <p role="status" className="text-xs text-secondary">{datasets.length === 0 ? "No matching datasets in the available private list." : `${datasets.length} available ${datasets.length === 1 ? "dataset" : "datasets"}`}</p>
+              {allDatasets.length >= 100 && <p role="note" className="text-xs text-secondary">The picker searches the 100 newest private datasets. Open older saved runs to inspect other dataset versions.</p>}
+              {selectedDataset !== null && <div className="min-w-0 space-y-1 text-xs">
+                <p className="break-words font-medium">{selectedDataset.name}</p>
+                <p className="text-secondary">{selectedDataset.observation_count} observations · {selectedDataset.calendar}</p>
+                <p className="text-secondary">{formatSessionDate(selectedDataset.first_session)} – {formatSessionDate(selectedDataset.last_session)}</p>
+                <p className="break-words text-secondary">Source: {selectedDataset.source_id}</p>
+              </div>}
               <HorizonSelector
                 disabled={createPending}
                 onChange={handleHorizonChange}
@@ -254,10 +271,11 @@ export function ResearchEvaluationSetup({
                   </p>
                 </>
               ) : (
-                <Badge variant="neutral">Historical dataset</Badge>
+                <><Badge variant="neutral">Exploratory historical data</Badge><p className="text-xs text-warning">Point-in-time qualification is not independently verified.</p></>
               )}
             </div>
           )}
+          {selectedDataset !== null && <ResearchDatasetEvidence datasetId={selectedDataset.id} datasetVersion={selectedDataset.version} label="Inspect selected dataset provenance" />}
         </>
       )}
 
