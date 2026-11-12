@@ -142,6 +142,13 @@ def run_evaluation(*, owner, dataset, horizon, idempotency_key):
         parsed = parse_dataset(dataset.payload, now=started)
         if parsed.version != dataset.version:
             raise DatasetUnavailable("The immutable dataset failed its content check.")
+        if parsed.data_kind == "historical":
+            from .intake_replay import verify_intake
+
+            receipt = dataset.intake_receipts.select_related("dataset").order_by("-created_at", "-id").first()
+            if receipt is None:
+                raise DatasetUnavailable("Historical evaluation requires archived source intake evidence.")
+            verify_intake(receipt, owner=owner)
         result = evaluate(parsed, horizon=horizon)
         # Never persist a partial or non-JSON numerical result.
         json.dumps(result, allow_nan=False)
