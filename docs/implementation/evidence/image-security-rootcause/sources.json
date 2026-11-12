@@ -1,0 +1,29 @@
+[
+  {
+    "file": "debian-tracker.json",
+    "url": "https://security-tracker.debian.org/tracker/data/json",
+    "retrieved_at": "2026-11-12T05:29:57.941365+00:00",
+    "sha256": "2de609610fa2e8bd8bf1e50295924ce2c0e9d5e1ff6eae37db599fc4b13dd550",
+    "bytes": 88767844,
+    "last_modified": "Thu, 12 Nov 2026 05:21:39 GMT",
+    "etag": null
+  },
+  {
+    "file": "alpine-3.24-main.json",
+    "url": "https://secdb.alpinelinux.org/v3.24/main.json",
+    "retrieved_at": "2026-11-12T05:29:49.284417+00:00",
+    "sha256": "f67c32a8b2991e918f5ac546c4ed8e6c817d1288c791142000343fa0c48252f2",
+    "bytes": 95221,
+    "last_modified": "Thu, 12 Nov 2026 03:08:38 GMT",
+    "etag": "\"6af52db6-173f5\""
+  },
+  {
+    "file": "alpine-3.23-main.json",
+    "url": "https://secdb.alpinelinux.org/v3.23/main.json",
+    "retrieved_at": "2026-11-12T05:29:49.219466+00:00",
+    "sha256": "640262079ce191df0fdab90528a75bcfff4e9c42a8bc0b315494c64449e8ce3a",
+    "bytes": 97695,
+    "last_modified": "Wed, 11 Nov 2026 22:16:35 GMT",
+    "etag": "\"6af4e943-17d9f\""
+  }
+]

@@ -1,0 +1,65 @@
+{
+  "assessment_date": "2026-11-12",
+  "created_at_utc": "2026-11-12T06:46:50.205642+00:00",
+  "baseline_commit": "2e4627dc5a2441783d84f4cd1adc08e4ae6471f4",
+  "image_application_source": "4862522e6a856882cc4916847ed6453307903e9d",
+  "decision": "NO_GO",
+  "new_image_builds": 0,
+  "new_advisory_scans": 0,
+  "application_code_changes": false,
+  "security_policy_changes": false,
+  "test_results": {
+    "focused_tests_passed": 8,
+    "new_classifier_methods": 6,
+    "existing_scanner_contract_methods": 2,
+    "full_corpus_counts_match": true,
+    "classification_replay_identical": true,
+    "local_evidence_references_resolved": true,
+    "original_test_temp_failure": "Sandbox TEMP ACL prevented fixture writes; same tests passed under task-local TEMP. No assertions changed.",
+    "ruff": {
+      "result": "PASS",
+      "scope": "E4,E7,E9,F on the two new Python files"
+    },
+    "bytecode_note": "Review initially updated only the new ignored test/classifier pyc files, then used -B. Protected-file hashes passed afterward."
+  },
+  "passing_qualification_reused_not_repeated": [
+    "Phase5.3 five-image builds and uncached API comparison",
+    "156 PostgreSQL backend tests",
+    "125 frontend tests and TypeScript/ESLint",
+    "14 production profile gates",
+    "3 Chromium workflows and prior recovery/replay receipts"
+  ],
+  "new_native_checks": [
+    "All five immutable image identities",
+    "28 native Debian backport comparisons",
+    "Signed stable apt/apk candidate probes",
+    "SQLite/Python compile and source features",
+    "Network-isolated wget injection in all four Alpine images",
+    "Existing qualification database UID/capability/port readback"
+  ],
+  "runtime_or_exposure_limits": [
+    "No new exploit against libxml2 or a live database",
+    "No exhaustive transitive stdlib/callgraph proof",
+    "No new latest-Grype-database count",
+    "No hosted CI or off-host production acceptance"
+  ],
+  "regression_receipt_sha256": {
+    "coverage-regression-before.log": "c6c5b46c553d2150a73bd28092a2c6ff16ed763aff34f1e832a171bf22959ade",
+    "coverage-regression-after.log": "68461ca8ffdb9f2df370a0f1b957d28bd0b513e60f91e337f8dc5c7ee629698f",
+    "evidence-regression-before.log": "0a515243f1759aab5ec2fa8e1f9a30dd80a44535110bb054fdaae8de1c3e0885",
+    "evidence-regression-after.log": "c6b52cd21d03e10422e71177e9477c57f6e1019057522ba5877540b55de7d451",
+    "triage-tests.log": "42b7a0978a005071f207a5ace3f16e65d5098930d5ec2db2a1ade6e9a5d60cd6"
+  },
+  "independent_closure_review": {
+    "result": "PASS_FOR_BOUNDED_CLASSIFICATION_AND_REPORT",
+    "release_decision": "NO_GO",
+    "local_references_verified": 702,
+    "distinct_local_reference_paths": 10,
+    "report_local_links_verified": 30,
+    "canonical_outputs_identical": true,
+    "routing_status": "ROUTING_UNVERIFIED",
+    "tests_independently_rerun": false,
+    "test_receipts_independently_verified": true,
+    "noncanonical_intermediate_outputs": "Ignored .local/final-classification has stale groups/summary; not accepted or cited as canonical evidence."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "container": "kerquant-qualification-ac2a72950e6fdb5c9e61a67c-database-1",
+  "image_id": "sha256:5cb074c424af72768d239358b6c007b513c165e62ec6c8ac33825ec2625f13c1",
+  "running": true,
+  "security_opt": [
+    "no-new-privileges:true"
+  ],
+  "ports": {},
+  "cap_add": null,
+  "cap_drop": null,
+  "devices": null,
+  "pid1_fields": {
+    "Name": "postgres",
+    "Uid": "999\t999\t999\t999",
+    "CapEff": "0000000000000000",
+    "CapBnd": "00000000a80425fb",
+    "NoNewPrivs": "1",
+    "Seccomp": "2"
+  },
+  "probe_exit": 0
+}

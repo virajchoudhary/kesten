@@ -1,0 +1,17 @@
+{
+  "result": "PASS_FOR_CHECKED_FILES_AND_RUNNING_STORES",
+  "unchanged_file_counts": {
+    "protected_runtime": 496,
+    "research_artifacts": 17,
+    "unrelated_starting_paths": 22,
+    "previous_sqlite_files": 22
+  },
+  "original_database_sha256": "93745bfc1a3149a0f77bbcdd1a50f712195750879f3fb313728ab9811f99715b",
+  "retained_postgresql": {
+    "kerquant-phase51-62a1f1-api-1": "NOT_REPEATED: retained container stopped; not started for this check.",
+    "cadrisyn-phase5-prod-api-1": "PASS: read-only logical snapshot unchanged."
+  },
+  "application_sql_writes": false,
+  "existing_data_volumes_attached_to_probe_containers": false,
+  "scope": "Hash checks plus read-only logical checks only for already running retained containers; no schema changes, restores, migrations or retained-container starts."
+}

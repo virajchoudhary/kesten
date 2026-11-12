@@ -1,0 +1,23 @@
+[
+  {
+    "service": "web",
+    "image_id": "sha256:a91d601ee6c5e440305d002e1edcc8591f751b633ff356721fadd2694cd2ea1c",
+    "exit_code": 0,
+    "output": "/usr/bin/wget\n/bin/busybox\nwget",
+    "error": ""
+  },
+  {
+    "service": "cache",
+    "image_id": "sha256:4f15261ed9b8aabbda48e94c09f3c421fa0e7e627215743478712e89073e39bc",
+    "exit_code": 0,
+    "output": "/usr/bin/wget\n/bin/busybox\nwget",
+    "error": ""
+  },
+  {
+    "service": "gateway",
+    "image_id": "sha256:328ac272576677f2f27d59e36dd84e1d446041452d4947d70bff81079860897d",
+    "exit_code": 0,
+    "output": "/usr/bin/wget\n/bin/busybox\nwget",
+    "error": ""
+  }
+]

@@ -1,0 +1,14 @@
+# Bounded independent review
+
+The configured verifier route is Azure Luna Max. Actual provider/model/effort could not be independently attested by this session, so model-routing status is ROUTING_UNVERIFIED. Reviews are behaviorally read-only, not claimed sandbox-enforced or model-diverse.
+
+1. Debian/PostgreSQL research reviewed actual raw rows, the current Debian tracker and native installed versions. It confirmed 28 installed backports, the genuine open libxml2 issue, source-package duplication, and conditional XML/GSS exposure. It performed no Docker mutation or rebuild.
+2. Alpine/Python research checked primary upstream advisories and source tags. It distinguished the SQLite CLI mismatch, Valkey/Redis source disagreement, Python module prerequisites and BusyBox wget scope. It did not prove every transitive call path or execute exploit tests. Root separately reproduced wget header injection using harmless loopback markers in all four exact Alpine images.
+3. Initial full-corpus tool review returned FAIL because five referenced receipt paths were not yet materialized, affecting 663 references. It independently reconciled all 431 raw rows, 169 advisory IDs, 179 source pairs, 182 image/source pairs and 28 native backport comparisons; all original policies remained FAIL. Five classifier test methods passed independently.
+4. Root materialized every referenced receipt, added local reference validation, and reproduced the missing-reference defect before fixing it. The failing-before log reports one expected failure; the current combined suite passes eight tests. Empty/null assessment rejection also has a separate failing-before record. A cross-family link assertion addresses the review's smaller test limitation. The corrected PostgreSQL feature receipt records the successful native path after the original wrong-path ldd probe failed.
+
+5. Fresh bounded closure review returned **PASS for the classification and report**, with release status still **NO-GO**. Its read-only in-memory replay independently reconciled all counts and all four canonical output hashes. It verified 702 local evidence references across ten repository paths, rejected an outside-root reference probe, resolved 30 report links, confirmed 28/28 backport comparisons and checked all four BusyBox records against exact image identities. It verified the eight-test regression receipts without claiming to rerun those tests. No files were changed by this review.
+
+The closure reviewer identified stale `groups.json` and `summary.json` in the ignored intermediate `.local/final-classification` directory. That directory is not accepted evidence. Use the committed canonical outputs and `classification-replay.json`, which agree with the current classifier and its accepted replay. No intermediate outputs were deleted or overwritten.
+
+No review grants an image exemption, production GO, scientific qualification or hosted CI PASS.

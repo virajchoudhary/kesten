@@ -1,0 +1,39 @@
+{
+  "result": "REPRODUCED_IN_ALL_FOUR_EXACT_ALPINE_IMAGES",
+  "advisory": "CVE-2025-60876",
+  "tests": [
+    {
+      "service": "api",
+      "image_id": "sha256:cf7233b38db1a072a51c0df41673c1f1179cfbdf70a8bd0d88f302fee7d0d920",
+      "raw_header_injected": true,
+      "busybox_sha256": "01a989eb4d1d04b0d146c790ac536abd88f374ec74a2e110c58910b840d42045",
+      "request_hex": "474554202f70726f62653f783d610d0a582d4b65727175616e742d50726f62653a206c6f63616c2d6f6e6c7920485454502f312e310d0a486f73743a203132372e302e302e313a35303333350d0a557365722d4167656e743a20576765740d0a4163636570743a202a2f2a0d0a436f6e6e656374696f6e3a20636c6f73650d0a0d0a",
+      "client_exit": 0
+    },
+    {
+      "service": "web",
+      "image_id": "sha256:a91d601ee6c5e440305d002e1edcc8591f751b633ff356721fadd2694cd2ea1c",
+      "raw_header_injected": true,
+      "busybox_sha256": "01a989eb4d1d04b0d146c790ac536abd88f374ec74a2e110c58910b840d42045",
+      "request_hex": "474554202f70726f62653f783d610d0a582d4b65727175616e742d50726f62653a206c6f63616c2d6f6e6c7920485454502f312e310d0a486f73743a203132372e302e302e313a31383038300d0a557365722d4167656e743a20576765740d0a4163636570743a202a2f2a0d0a436f6e6e656374696f6e3a20636c6f73650d0a0d0a",
+      "client_exit": 0
+    },
+    {
+      "service": "cache",
+      "image_id": "sha256:4f15261ed9b8aabbda48e94c09f3c421fa0e7e627215743478712e89073e39bc",
+      "raw_header_injected": true,
+      "busybox_sha256": "f3547b3d78d08a028a4833ddb83b77cf012838c078bfd2b76355f53d1d8bba62",
+      "request_hex": "474554202f70726f62653f783d610d0a582d4b65727175616e742d50726f62653a206c6f63616c2d6f6e6c7920485454502f312e310d0a486f73743a203132372e302e302e313a31383038300d0a557365722d4167656e743a20576765740d0a4163636570743a202a2f2a0d0a436f6e6e656374696f6e3a20636c6f73650d0a0d0a",
+      "client_exit": 0
+    },
+    {
+      "service": "gateway",
+      "image_id": "sha256:328ac272576677f2f27d59e36dd84e1d446041452d4947d70bff81079860897d",
+      "raw_header_injected": true,
+      "busybox_sha256": "01a989eb4d1d04b0d146c790ac536abd88f374ec74a2e110c58910b840d42045",
+      "request_hex": "474554202f70726f62653f783d610d0a582d4b65727175616e742d50726f62653a206c6f63616c2d6f6e6c7920485454502f312e310d0a486f73743a203132372e302e302e313a31383038300d0a557365722d4167656e743a20576765740d0a4163636570743a202a2f2a0d0a436f6e6e656374696f6e3a20636c6f73650d0a0d0a",
+      "client_exit": 0
+    }
+  ],
+  "scope": "Own loopback HTTP marker only, no external host or existing service. Docker network none and read-only image; remaining three use 1MiB temporary memory filesystem. This establishes vulnerable applet behavior, not an application URL-to-wget path."
+}

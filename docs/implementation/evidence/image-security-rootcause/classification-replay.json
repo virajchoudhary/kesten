@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "files_sha256": {
+    "findings.json": "b038b77ee23cb8ce5e0ac52ef14cdfaa58ec2d0637b6fddf5c5e124d25f8613d",
+    "advisories.json": "27dfb34a3364de77c737320a28a6b7a2f0dabf3f0398e987f9d5c404e614f8ff",
+    "groups.json": "24f7bab4b307b2f088758a127d9c22d96a5caa2c89bf93bf0d528621c49324e6",
+    "summary.json": "ab2129b75eb5fc9e6ae2754df5fb264481678c0551a4c1597db4bb9fad062612"
+  },
+  "scope": "Two independent executions of the current classifier, with the same hash-bound corpus and materialized local evidence references. Not new image/scanner qualification."
+}

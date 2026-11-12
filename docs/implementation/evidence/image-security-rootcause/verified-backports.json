@@ -1,0 +1,238 @@
+{
+  "image_id": "sha256:5cb074c424af72768d239358b6c007b513c165e62ec6c8ac33825ec2625f13c1",
+  "method": "Native dpkg --compare-versions against actual installed source-package versions and current Debian trixie fixed_version. No scanner findings suppressed.",
+  "comparisons": [
+    {
+      "family": "gzip",
+      "advisory": "CVE-2026-41991",
+      "installed_source_version": "1.13-1+deb13u1",
+      "fixed_version": "1.13-1+deb13u1",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-41991",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "gzip",
+      "advisory": "CVE-2026-41992",
+      "installed_source_version": "1.13-1+deb13u1",
+      "fixed_version": "1.13-1+deb13u1",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-41992",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "krb5",
+      "advisory": "CVE-2026-40355",
+      "installed_source_version": "1.21.3-5+deb13u1",
+      "fixed_version": "1.21.3-5+deb13u1",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-40355",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "krb5",
+      "advisory": "CVE-2026-40356",
+      "installed_source_version": "1.21.3-5+deb13u1",
+      "fixed_version": "1.21.3-5+deb13u1",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-40356",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-14456",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-14456",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-14457",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-14457",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-18798",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-18798",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-35189",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-35189",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-35191",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-35191",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-42772",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-42772",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-54872",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-54872",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-54873",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-54873",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-54874",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-54874",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-54875",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-54875",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-63072",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-63072",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-63073",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-63073",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-63074",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-63074",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-63075",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-63075",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-63076",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-63076",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-72897",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-72897",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-75803",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u2",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-75803",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-75804",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-75804",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-75805",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-75805",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-75806",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-75806",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-77696",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-77696",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-84782",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-84782",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "openssl",
+      "advisory": "CVE-2026-84784",
+      "installed_source_version": "3.5.7-1~deb13u3",
+      "fixed_version": "3.5.7-1~deb13u3",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-84784",
+      "native_dpkg_ge_fixed": true
+    },
+    {
+      "family": "xz-utils",
+      "advisory": "CVE-2026-34743",
+      "installed_source_version": "5.8.1-1+deb13u2",
+      "fixed_version": "5.8.1-1+deb13u1",
+      "vendor_url": "https://security-tracker.debian.org/tracker/CVE-2026-34743",
+      "native_dpkg_ge_fixed": true
+    }
+  ],
+  "exit_code": 0,
+  "package_verification": {
+    "missing_inherited_documentation_files": 402,
+    "content_mismatch_lines": 0,
+    "exit_code": 0,
+    "raw_log_sha256": "323f6cff49e5bbc6d9066d71e8e667ca1456583dea35ffc6d8af4e9838cba245",
+    "scope": "The base omits documentation; executable/library checksum mismatches were not reported. No metadata or files were removed by this task."
+  }
+}

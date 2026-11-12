@@ -1,0 +1,92 @@
+{
+  "counts": {
+    "raw_matches": 431,
+    "advisory_ids": 169,
+    "source_dependencies": 34,
+    "source_advisory_pairs": 179,
+    "image_source_advisory_pairs": 182
+  },
+  "classification": "COMPLETE",
+  "unreviewed": [],
+  "classification_changes_policy": false,
+  "local_evidence_references_validated": true,
+  "release_decision": "NO_GO",
+  "disposition_group_counts": {
+    "stable_vendor_open": 129,
+    "stable_fix_unavailable": 1,
+    "vendor_backport_present": 28,
+    "required_component_absent": 2,
+    "stdlib_fix_unqualified": 7,
+    "disputed_advisory": 1,
+    "upstream_source_disagrees_with_cpe": 1,
+    "upstream_fix_not_packaged": 10
+  },
+  "disposition_raw_counts": {
+    "stable_vendor_open": 370,
+    "stable_fix_unavailable": 12,
+    "vendor_backport_present": 28,
+    "required_component_absent": 2,
+    "stdlib_fix_unqualified": 7,
+    "disputed_advisory": 1,
+    "upstream_source_disagrees_with_cpe": 1,
+    "upstream_fix_not_packaged": 10
+  },
+  "images": [
+    {
+      "service": "api",
+      "image_id": "sha256:cf7233b38db1a072a51c0df41673c1f1179cfbdf70a8bd0d88f302fee7d0d920",
+      "scanner_config_id": "sha256:ea13daba0ab80c8446f209f05b35ea0fe04144499c8263dc84289d3665189364",
+      "raw_artifacts": {
+        "1-sbom.spdx.json": "65064b12f30847916105dad8e2b09f209d1ca411660b4ac1dbba489a2f25e3c4",
+        "1-vulnerabilities.json": "bad30c03caa0ea7b88691467b66b4a66fafb13c5f4a1d4306f2d45a7f186210a"
+      },
+      "scan_result": "FAIL",
+      "ignored_matches": 0
+    },
+    {
+      "service": "web",
+      "image_id": "sha256:a91d601ee6c5e440305d002e1edcc8591f751b633ff356721fadd2694cd2ea1c",
+      "scanner_config_id": "sha256:37772355f82f6c2e0685e5e74f155777c1b23368134e440cd20d53224829e5c4",
+      "raw_artifacts": {
+        "2-sbom.spdx.json": "b89b1c21df0cee96367e8fd323ac0be574c87239936583036b7276a0f047ab21",
+        "2-vulnerabilities.json": "86e5073112497e2c7c03c4dfdcf269c96873624b5fce26ef3f9311fdbddda34c"
+      },
+      "scan_result": "FAIL",
+      "ignored_matches": 0
+    },
+    {
+      "service": "database",
+      "image_id": "sha256:5cb074c424af72768d239358b6c007b513c165e62ec6c8ac33825ec2625f13c1",
+      "scanner_config_id": "sha256:78eff1154cc99e1b56b10226e8ff7b841750a961a6dada2c21640eccf56bf199",
+      "raw_artifacts": {
+        "3-sbom.spdx.json": "7e419235e47817fbfdaaba4fecbb24eb8ae61bc1d863c558fdc82eb90e1366cd",
+        "3-vulnerabilities.json": "81ee060633048f625ad9c89a29ae9dce6fe004c2d1a503e40e63c2e536365802"
+      },
+      "scan_result": "FAIL",
+      "ignored_matches": 0
+    },
+    {
+      "service": "cache",
+      "image_id": "sha256:4f15261ed9b8aabbda48e94c09f3c421fa0e7e627215743478712e89073e39bc",
+      "scanner_config_id": "sha256:d5adc9b09165b35fb66501818087bc8397bb5248d24f550e8e4f0d2ad0616aa5",
+      "raw_artifacts": {
+        "4-sbom.spdx.json": "939de72035b51e39841bbf9b349a151e3c565d7d165f154a0b5cad9d18480611",
+        "4-vulnerabilities.json": "492bf672ebb57c0bf13469fbc8ea1790dce00cfc853b4413a227ad3f10e50838"
+      },
+      "scan_result": "FAIL",
+      "ignored_matches": 0
+    },
+    {
+      "service": "gateway",
+      "image_id": "sha256:328ac272576677f2f27d59e36dd84e1d446041452d4947d70bff81079860897d",
+      "scanner_config_id": "sha256:ddd2cf95dd7c923b4baf480e9fa49bfc17a772f4276d353aed92c76b5b86a099",
+      "raw_artifacts": {
+        "5-sbom.spdx.json": "c7406c518bfc9f40b70d946969d7345814476fcb057c2ce204ea5711e7a06986",
+        "5-vulnerabilities.json": "4bfa1645f4104928e24c6de438350a8e8d8279d0acf8bf42d55201df1a7046f7"
+      },
+      "scan_result": "FAIL",
+      "ignored_matches": 0
+    }
+  ],
+  "scope": "Primary advisory IDs are exact, not fuzzy aliases. Source groups retain every image, package, version and raw match. Assessments never waive the original policy."
+}

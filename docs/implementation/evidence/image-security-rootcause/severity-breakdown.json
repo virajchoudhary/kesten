@@ -1,0 +1,22 @@
+{
+  "all_raw_severities": {
+    "High": 133,
+    "Medium": 134,
+    "Low": 47,
+    "Negligible": 114,
+    "Critical": 3
+  },
+  "blocking_threshold": "medium",
+  "policy_blocking_raw_matches": 270,
+  "policy_blocking_advisory_ids": 102,
+  "policy_blocking_source_advisory_pairs": 111,
+  "blocking_dispositions": {
+    "required_component_absent": 2,
+    "stdlib_fix_unqualified": 6,
+    "upstream_fix_not_packaged": 9,
+    "stable_fix_unavailable": 12,
+    "vendor_backport_present": 24,
+    "stable_vendor_open": 217
+  },
+  "scope": "Policy severity counts before any explanatory assessment. No findings removed."
+}

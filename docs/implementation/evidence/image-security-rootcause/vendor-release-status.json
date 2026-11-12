@@ -1,0 +1,2614 @@
+[
+  {
+    "source_dependency": "acl",
+    "debian_source": "acl",
+    "advisory": "CVE-2026-54369",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.3.2-2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Will be fixed first in unstable, then point release update; not to be backported by individual patches",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "acl",
+    "debian_source": "acl",
+    "advisory": "CVE-2026-54370",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.3.2-2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Will be fixed first in unstable, then point release update; not to be backported by individual patches",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "apt",
+    "debian_source": "apt",
+    "advisory": "CVE-2011-3374",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.0.3",
+        "trixie-security": "3.0.4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "attr",
+    "debian_source": "attr",
+    "advisory": "CVE-2026-54371",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1:2.5.2-3"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Will be fixed first in unstable, then point release update; not to be backported by individual patches",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "bzip2",
+    "debian_source": "bzip2",
+    "advisory": "CVE-2026-42250",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.0.8-6"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "coreutils",
+    "debian_source": "coreutils",
+    "advisory": "CVE-2017-18018",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "9.7-3"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "coreutils",
+    "debian_source": "coreutils",
+    "advisory": "CVE-2025-5278",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "9.7-3"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "coreutils",
+    "debian_source": "coreutils",
+    "advisory": "CVE-2026-56391",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "9.7-3"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "coreutils",
+    "debian_source": "coreutils",
+    "advisory": "CVE-2026-56392",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "9.7-3"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "cyrus-sasl2",
+    "debian_source": "cyrus-sasl2",
+    "advisory": "CVE-2026-107161",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.1.28+dfsg1-9"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Will be fixed via point release; suggested patch taken for update",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "dash",
+    "debian_source": "dash",
+    "advisory": "CVE-2026-102473",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "0.5.12-12"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "dash",
+    "debian_source": "dash",
+    "advisory": "CVE-2026-102474",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "0.5.12-12"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "diffutils",
+    "debian_source": "diffutils",
+    "advisory": "CVE-2026-53910",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1:3.10-4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gcc-14",
+    "debian_source": "gcc-14",
+    "advisory": "CVE-2026-102010",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "14.2.0-19"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gcc-14",
+    "debian_source": "gcc-14",
+    "advisory": "CVE-2026-114690",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "14.2.0-19"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gcc-14",
+    "debian_source": "gcc-14",
+    "advisory": "CVE-2026-114691",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "14.2.0-19"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gcc-14",
+    "debian_source": "gcc-14",
+    "advisory": "CVE-2026-115455",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "14.2.0-19"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gcc-14",
+    "debian_source": "gcc-14",
+    "advisory": "CVE-2026-115456",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "14.2.0-19"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gcc-14",
+    "debian_source": "gcc-14",
+    "advisory": "CVE-2026-95619",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "14.2.0-19"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2010-4756",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2018-20796",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2019-1010022",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2019-1010023",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2019-1010024",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2019-1010025",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2019-9192",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-18374",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-19499",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-19542",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-5435",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-6238",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-6368",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-6791",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-77117",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-80489",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-84243",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-8674",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-86805",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-89092",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-95818",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "glibc",
+    "debian_source": "glibc",
+    "advisory": "CVE-2026-97399",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41-12+deb13u4"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnupg2",
+    "debian_source": "gnupg2",
+    "advisory": "CVE-2022-3219",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.4.7-21+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnupg2",
+    "debian_source": "gnupg2",
+    "advisory": "CVE-2025-68972",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.4.7-21+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnupg2",
+    "debian_source": "gnupg2",
+    "advisory": "CVE-2026-105712",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.4.7-21+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnupg2",
+    "debian_source": "gnupg2",
+    "advisory": "CVE-2026-24882",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.4.7-21+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnupg2",
+    "debian_source": "gnupg2",
+    "advisory": "CVE-2026-57062",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.4.7-21+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": "",
+      "next_point_update": true
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnutls28",
+    "debian_source": "gnutls28",
+    "advisory": "CVE-2011-3389",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.8.9-3+deb13u4",
+        "trixie-security": "3.8.9-3+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnutls28",
+    "debian_source": "gnutls28",
+    "advisory": "CVE-2026-67693",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.8.9-3+deb13u4",
+        "trixie-security": "3.8.9-3+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnutls28",
+    "debian_source": "gnutls28",
+    "advisory": "CVE-2026-88647",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.8.9-3+deb13u4",
+        "trixie-security": "3.8.9-3+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnutls28",
+    "debian_source": "gnutls28",
+    "advisory": "CVE-2026-88648",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.8.9-3+deb13u4",
+        "trixie-security": "3.8.9-3+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnutls28",
+    "debian_source": "gnutls28",
+    "advisory": "CVE-2026-95184",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.8.9-3+deb13u4",
+        "trixie-security": "3.8.9-3+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gnutls28",
+    "debian_source": "gnutls28",
+    "advisory": "CVE-2026-95210",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.8.9-3+deb13u4",
+        "trixie-security": "3.8.9-3+deb13u4"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gzip",
+    "debian_source": "gzip",
+    "advisory": "CVE-2026-41991",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "1.13-1+deb13u1"
+      },
+      "fixed_version": "1.13-1+deb13u1",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "gzip",
+    "debian_source": "gzip",
+    "advisory": "CVE-2026-41992",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "1.13-1+deb13u1"
+      },
+      "fixed_version": "1.13-1+deb13u1",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2007-3149",
+    "release": "trixie",
+    "status": {},
+    "scope": null,
+    "description_available": false
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2018-5709",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2024-26458",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2024-26461",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2026-107708",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2026-107778",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2026-112321",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2026-112322",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2026-112323",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2026-11850",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2026-119079",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2026-40355",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "fixed_version": "1.21.3-5+deb13u1",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "krb5",
+    "debian_source": "krb5",
+    "advisory": "CVE-2026-40356",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "1.21.3-5+deb13u1",
+        "trixie-security": "1.21.3-5+deb13u1"
+      },
+      "fixed_version": "1.21.3-5+deb13u1",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libgcrypt20",
+    "debian_source": "libgcrypt20",
+    "advisory": "CVE-2018-6829",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.11.0-7+deb13u1",
+        "trixie-security": "1.11.0-7+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libgcrypt20",
+    "debian_source": "libgcrypt20",
+    "advisory": "CVE-2024-2236",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.11.0-7+deb13u1",
+        "trixie-security": "1.11.0-7+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-11979",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-6653",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-74860",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-76781",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-86137",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-86138",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-86139",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-86140",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-86141",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-86142",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-86143",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxml2",
+    "debian_source": "libxml2",
+    "advisory": "CVE-2026-86144",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+        "trixie-security": "2.12.7+dfsg+really2.9.14-2.1+deb13u1"
+      },
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxslt",
+    "debian_source": "libxslt",
+    "advisory": "CVE-2015-9019",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.1.35-1.2+deb13u3",
+        "trixie-security": "1.1.35-1.2+deb13u2"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxslt",
+    "debian_source": "libxslt",
+    "advisory": "CVE-2025-10911",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.1.35-1.2+deb13u3",
+        "trixie-security": "1.1.35-1.2+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "(Minor issue, revisit when fix is merged upstream",
+      "nodsa_reason": "postponed"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "libxslt",
+    "debian_source": "libxslt",
+    "advisory": "CVE-2025-11731",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.1.35-1.2+deb13u3",
+        "trixie-security": "1.1.35-1.2+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "llvm-toolchain-19",
+    "debian_source": "llvm-toolchain-19",
+    "advisory": "CVE-2024-7883",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1:19.1.7-3"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue, doesn't affect the default build flags in Debian and no backport into release branch 19 planned",
+      "nodsa_reason": "ignored"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "llvm-toolchain-19",
+    "debian_source": "llvm-toolchain-19",
+    "advisory": "CVE-2026-13573",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1:19.1.7-3"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "llvm-toolchain-19",
+    "debian_source": "llvm-toolchain-19",
+    "advisory": "CVE-2026-13574",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1:19.1.7-3"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "ncurses",
+    "debian_source": "ncurses",
+    "advisory": "CVE-2025-6141",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "6.5+20250216-2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "ncurses",
+    "debian_source": "ncurses",
+    "advisory": "CVE-2025-69720",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "6.5+20250216-2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openldap",
+    "debian_source": "openldap",
+    "advisory": "CVE-2015-3276",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.6.10+dfsg-1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openldap",
+    "debian_source": "openldap",
+    "advisory": "CVE-2017-14159",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.6.10+dfsg-1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openldap",
+    "debian_source": "openldap",
+    "advisory": "CVE-2017-17740",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.6.10+dfsg-1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openldap",
+    "debian_source": "openldap",
+    "advisory": "CVE-2020-15719",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.6.10+dfsg-1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openldap",
+    "debian_source": "openldap",
+    "advisory": "CVE-2026-22185",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.6.10+dfsg-1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-14456",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-14457",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-18798",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-35189",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-35191",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-42772",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-54872",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-54873",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-54874",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-54875",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-63072",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-63073",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-63074",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-63075",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-63076",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-72897",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-75803",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u2",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-75804",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-75805",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-75806",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-77696",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-84782",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "openssl",
+    "debian_source": "openssl",
+    "advisory": "CVE-2026-84784",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "3.5.7-1~deb13u2",
+        "trixie-security": "3.5.7-1~deb13u3"
+      },
+      "fixed_version": "3.5.7-1~deb13u3",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "p11-kit",
+    "debian_source": "p11-kit",
+    "advisory": "CVE-2026-13757",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "0.25.5-3"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "p11-kit",
+    "debian_source": "p11-kit",
+    "advisory": "CVE-2026-18938",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "0.25.5-3"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "pam",
+    "debian_source": "pam",
+    "advisory": "CVE-2026-54411",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.7.0-5"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "perl",
+    "debian_source": "perl",
+    "advisory": "CVE-2011-4116",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "5.40.1-6+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "perl",
+    "debian_source": "perl",
+    "advisory": "CVE-2026-15534",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "5.40.1-6+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Wait for exposure unstable and coordinate with Perl maintainers",
+      "nodsa_reason": "postponed"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "perl",
+    "debian_source": "perl",
+    "advisory": "CVE-2026-82560",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "5.40.1-6+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "perl",
+    "debian_source": "perl",
+    "advisory": "CVE-2026-9538",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "5.40.1-6+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue; wait for regressions upstream sorted out",
+      "nodsa_reason": "postponed"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "shadow",
+    "debian_source": "shadow",
+    "advisory": "CVE-2007-5686",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1:4.17.4-2"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "shadow",
+    "debian_source": "shadow",
+    "advisory": "CVE-2024-56433",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1:4.17.4-2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2021-45346",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2025-70873",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119371",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119372",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119373",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119374",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119375",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119376",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119377",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119378",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119379",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-119591",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-50812",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "sqlite3",
+    "debian_source": "sqlite3",
+    "advisory": "CVE-2026-50813",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "3.46.1-7+deb13u2"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "systemd",
+    "debian_source": "systemd",
+    "advisory": "CVE-2013-4392",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "257.13-1~deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "systemd",
+    "debian_source": "systemd",
+    "advisory": "CVE-2023-31437",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "257.13-1~deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "systemd",
+    "debian_source": "systemd",
+    "advisory": "CVE-2023-31438",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "257.13-1~deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "systemd",
+    "debian_source": "systemd",
+    "advisory": "CVE-2023-31439",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "257.13-1~deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "systemd",
+    "debian_source": "systemd",
+    "advisory": "CVE-2026-15059",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "257.13-1~deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "systemd",
+    "debian_source": "systemd",
+    "advisory": "CVE-2026-16742",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "257.13-1~deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "systemd",
+    "debian_source": "systemd",
+    "advisory": "CVE-2026-40228",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "257.13-1~deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "tar",
+    "debian_source": "tar",
+    "advisory": "CVE-2005-2541",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.35+dfsg-3.1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "tar",
+    "debian_source": "tar",
+    "advisory": "CVE-2026-18477",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.35+dfsg-3.1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "tar",
+    "debian_source": "tar",
+    "advisory": "CVE-2026-18508",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.35+dfsg-3.1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "tar",
+    "debian_source": "tar",
+    "advisory": "CVE-2026-5704",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "1.35+dfsg-3.1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "util-linux",
+    "debian_source": "util-linux",
+    "advisory": "CVE-2022-0563",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41.5-0+deb13u1",
+        "trixie-security": "2.41.5-0+deb13u1"
+      },
+      "urgency": "unimportant"
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "util-linux",
+    "debian_source": "util-linux",
+    "advisory": "CVE-2026-3184",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41.5-0+deb13u1",
+        "trixie-security": "2.41.5-0+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "util-linux",
+    "debian_source": "util-linux",
+    "advisory": "CVE-2026-76642",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41.5-0+deb13u1",
+        "trixie-security": "2.41.5-0+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "util-linux",
+    "debian_source": "util-linux",
+    "advisory": "CVE-2026-78408",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41.5-0+deb13u1",
+        "trixie-security": "2.41.5-0+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "util-linux",
+    "debian_source": "util-linux",
+    "advisory": "CVE-2026-78409",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41.5-0+deb13u1",
+        "trixie-security": "2.41.5-0+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "util-linux",
+    "debian_source": "util-linux",
+    "advisory": "CVE-2026-78410",
+    "release": "trixie",
+    "status": {
+      "status": "open",
+      "repositories": {
+        "trixie": "2.41.5-0+deb13u1",
+        "trixie-security": "2.41.5-0+deb13u1"
+      },
+      "urgency": "not yet assigned",
+      "nodsa": "Minor issue",
+      "nodsa_reason": ""
+    },
+    "scope": "local",
+    "description_available": true
+  },
+  {
+    "source_dependency": "xz",
+    "debian_source": "xz-utils",
+    "advisory": "CVE-2026-34743",
+    "release": "trixie",
+    "status": {
+      "status": "resolved",
+      "repositories": {
+        "trixie": "5.8.1-1+deb13u1",
+        "trixie-security": "5.8.1-1+deb13u2"
+      },
+      "fixed_version": "5.8.1-1+deb13u1",
+      "urgency": "not yet assigned"
+    },
+    "scope": "local",
+    "description_available": true
+  }
+]

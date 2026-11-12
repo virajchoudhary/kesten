@@ -1,0 +1,858 @@
+{
+  "image_id": "sha256:5cb074c424af72768d239358b6c007b513c165e62ec6c8ac33825ec2625f13c1",
+  "packages": [
+    {
+      "binary_package": "adduser",
+      "version": "3.152",
+      "source_package": "adduser",
+      "source_version": "3.152"
+    },
+    {
+      "binary_package": "apt",
+      "version": "3.0.4",
+      "source_package": "apt",
+      "source_version": "3.0.4"
+    },
+    {
+      "binary_package": "base-files",
+      "version": "13.8+deb13u7",
+      "source_package": "base-files",
+      "source_version": "13.8+deb13u7"
+    },
+    {
+      "binary_package": "base-passwd",
+      "version": "3.6.7",
+      "source_package": "base-passwd",
+      "source_version": "3.6.7"
+    },
+    {
+      "binary_package": "bash",
+      "version": "5.2.37-2+b10",
+      "source_package": "bash",
+      "source_version": "5.2.37-2"
+    },
+    {
+      "binary_package": "bsdutils",
+      "version": "1:2.41.5-0+deb13u1",
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1"
+    },
+    {
+      "binary_package": "coreutils",
+      "version": "9.7-3",
+      "source_package": "coreutils",
+      "source_version": "9.7-3"
+    },
+    {
+      "binary_package": "dash",
+      "version": "0.5.12-12",
+      "source_package": "dash",
+      "source_version": "0.5.12-12"
+    },
+    {
+      "binary_package": "debconf",
+      "version": "1.5.91",
+      "source_package": "debconf",
+      "source_version": "1.5.91"
+    },
+    {
+      "binary_package": "debian-archive-keyring",
+      "version": "2025.1",
+      "source_package": "debian-archive-keyring",
+      "source_version": "2025.1"
+    },
+    {
+      "binary_package": "debianutils",
+      "version": "5.23.2",
+      "source_package": "debianutils",
+      "source_version": "5.23.2"
+    },
+    {
+      "binary_package": "diffutils",
+      "version": "1:3.10-4",
+      "source_package": "diffutils",
+      "source_version": "1:3.10-4"
+    },
+    {
+      "binary_package": "dirmngr",
+      "version": "2.4.7-21+deb13u1+b5",
+      "source_package": "gnupg2",
+      "source_version": "2.4.7-21+deb13u1"
+    },
+    {
+      "binary_package": "dpkg",
+      "version": "1.22.22",
+      "source_package": "dpkg",
+      "source_version": "1.22.22"
+    },
+    {
+      "binary_package": "findutils",
+      "version": "4.10.0-3",
+      "source_package": "findutils",
+      "source_version": "4.10.0-3"
+    },
+    {
+      "binary_package": "gcc-14-base:amd64",
+      "version": "14.2.0-19",
+      "source_package": "gcc-14",
+      "source_version": "14.2.0-19"
+    },
+    {
+      "binary_package": "gnupg",
+      "version": "2.4.7-21+deb13u1",
+      "source_package": "gnupg2",
+      "source_version": "2.4.7-21+deb13u1"
+    },
+    {
+      "binary_package": "gnupg-l10n",
+      "version": "2.4.7-21+deb13u1",
+      "source_package": "gnupg2",
+      "source_version": "2.4.7-21+deb13u1"
+    },
+    {
+      "binary_package": "gpg",
+      "version": "2.4.7-21+deb13u1+b5",
+      "source_package": "gnupg2",
+      "source_version": "2.4.7-21+deb13u1"
+    },
+    {
+      "binary_package": "gpg-agent",
+      "version": "2.4.7-21+deb13u1+b5",
+      "source_package": "gnupg2",
+      "source_version": "2.4.7-21+deb13u1"
+    },
+    {
+      "binary_package": "gpgconf",
+      "version": "2.4.7-21+deb13u1+b5",
+      "source_package": "gnupg2",
+      "source_version": "2.4.7-21+deb13u1"
+    },
+    {
+      "binary_package": "gpgsm",
+      "version": "2.4.7-21+deb13u1+b5",
+      "source_package": "gnupg2",
+      "source_version": "2.4.7-21+deb13u1"
+    },
+    {
+      "binary_package": "grep",
+      "version": "3.11-4",
+      "source_package": "grep",
+      "source_version": "3.11-4"
+    },
+    {
+      "binary_package": "gzip",
+      "version": "1.13-1+deb13u1",
+      "source_package": "gzip",
+      "source_version": "1.13-1+deb13u1"
+    },
+    {
+      "binary_package": "hostname",
+      "version": "3.25",
+      "source_package": "hostname",
+      "source_version": "3.25"
+    },
+    {
+      "binary_package": "init-system-helpers",
+      "version": "1.69~deb13u1",
+      "source_package": "init-system-helpers",
+      "source_version": "1.69~deb13u1"
+    },
+    {
+      "binary_package": "less",
+      "version": "668-1",
+      "source_package": "less",
+      "source_version": "668-1"
+    },
+    {
+      "binary_package": "libacl1:amd64",
+      "version": "2.3.2-2+b1",
+      "source_package": "acl",
+      "source_version": "2.3.2-2"
+    },
+    {
+      "binary_package": "libapt-pkg7.0:amd64",
+      "version": "3.0.4",
+      "source_package": "apt",
+      "source_version": "3.0.4"
+    },
+    {
+      "binary_package": "libassuan9:amd64",
+      "version": "3.0.2-2",
+      "source_package": "libassuan",
+      "source_version": "3.0.2-2"
+    },
+    {
+      "binary_package": "libattr1:amd64",
+      "version": "1:2.5.2-3",
+      "source_package": "attr",
+      "source_version": "1:2.5.2-3"
+    },
+    {
+      "binary_package": "libaudit-common",
+      "version": "1:4.0.2-2+deb13u1",
+      "source_package": "audit",
+      "source_version": "1:4.0.2-2+deb13u1"
+    },
+    {
+      "binary_package": "libaudit1:amd64",
+      "version": "1:4.0.2-2+deb13u1",
+      "source_package": "audit",
+      "source_version": "1:4.0.2-2+deb13u1"
+    },
+    {
+      "binary_package": "libblkid1:amd64",
+      "version": "2.41.5-0+deb13u1",
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1"
+    },
+    {
+      "binary_package": "libbsd0:amd64",
+      "version": "0.12.2-2",
+      "source_package": "libbsd",
+      "source_version": "0.12.2-2"
+    },
+    {
+      "binary_package": "libbz2-1.0:amd64",
+      "version": "1.0.8-6",
+      "source_package": "bzip2",
+      "source_version": "1.0.8-6"
+    },
+    {
+      "binary_package": "libc-bin",
+      "version": "2.41-12+deb13u4",
+      "source_package": "glibc",
+      "source_version": "2.41-12+deb13u4"
+    },
+    {
+      "binary_package": "libc-l10n",
+      "version": "2.41-12+deb13u4",
+      "source_package": "glibc",
+      "source_version": "2.41-12+deb13u4"
+    },
+    {
+      "binary_package": "libc6:amd64",
+      "version": "2.41-12+deb13u4",
+      "source_package": "glibc",
+      "source_version": "2.41-12+deb13u4"
+    },
+    {
+      "binary_package": "libcap-ng0:amd64",
+      "version": "0.8.5-4+b1",
+      "source_package": "libcap-ng",
+      "source_version": "0.8.5-4"
+    },
+    {
+      "binary_package": "libcap2:amd64",
+      "version": "1:2.75-10+deb13u1+b3",
+      "source_package": "libcap2",
+      "source_version": "1:2.75-10+deb13u1"
+    },
+    {
+      "binary_package": "libcom-err2:amd64",
+      "version": "1.47.2-3+b12",
+      "source_package": "e2fsprogs",
+      "source_version": "1.47.2-3"
+    },
+    {
+      "binary_package": "libcrypt1:amd64",
+      "version": "1:4.4.38-1",
+      "source_package": "libxcrypt",
+      "source_version": "1:4.4.38-1"
+    },
+    {
+      "binary_package": "libdb5.3t64:amd64",
+      "version": "5.3.28+dfsg2-9",
+      "source_package": "db5.3",
+      "source_version": "5.3.28+dfsg2-9"
+    },
+    {
+      "binary_package": "libdebconfclient0:amd64",
+      "version": "0.280",
+      "source_package": "cdebconf",
+      "source_version": "0.280"
+    },
+    {
+      "binary_package": "libedit2:amd64",
+      "version": "3.1-20250104-1",
+      "source_package": "libedit",
+      "source_version": "3.1-20250104-1"
+    },
+    {
+      "binary_package": "libffi8:amd64",
+      "version": "3.4.8-2",
+      "source_package": "libffi",
+      "source_version": "3.4.8-2"
+    },
+    {
+      "binary_package": "libgcc-s1:amd64",
+      "version": "14.2.0-19",
+      "source_package": "gcc-14",
+      "source_version": "14.2.0-19"
+    },
+    {
+      "binary_package": "libgcrypt20:amd64",
+      "version": "1.11.0-7+deb13u1",
+      "source_package": "libgcrypt20",
+      "source_version": "1.11.0-7+deb13u1"
+    },
+    {
+      "binary_package": "libgdbm-compat4t64:amd64",
+      "version": "1.24-2",
+      "source_package": "gdbm",
+      "source_version": "1.24-2"
+    },
+    {
+      "binary_package": "libgdbm6t64:amd64",
+      "version": "1.24-2",
+      "source_package": "gdbm",
+      "source_version": "1.24-2"
+    },
+    {
+      "binary_package": "libgmp10:amd64",
+      "version": "2:6.3.0+dfsg-3",
+      "source_package": "gmp",
+      "source_version": "2:6.3.0+dfsg-3"
+    },
+    {
+      "binary_package": "libgnutls30t64:amd64",
+      "version": "3.8.9-3+deb13u4",
+      "source_package": "gnutls28",
+      "source_version": "3.8.9-3+deb13u4"
+    },
+    {
+      "binary_package": "libgpg-error0:amd64",
+      "version": "1.51-4",
+      "source_package": "libgpg-error",
+      "source_version": "1.51-4"
+    },
+    {
+      "binary_package": "libgssapi-krb5-2:amd64",
+      "version": "1.21.3-5+deb13u1",
+      "source_package": "krb5",
+      "source_version": "1.21.3-5+deb13u1"
+    },
+    {
+      "binary_package": "libhogweed6t64:amd64",
+      "version": "3.10.1-1",
+      "source_package": "nettle",
+      "source_version": "3.10.1-1"
+    },
+    {
+      "binary_package": "libicu76:amd64",
+      "version": "76.1-4",
+      "source_package": "icu",
+      "source_version": "76.1-4"
+    },
+    {
+      "binary_package": "libidn2-0:amd64",
+      "version": "2.3.8-2",
+      "source_package": "libidn2",
+      "source_version": "2.3.8-2"
+    },
+    {
+      "binary_package": "libjson-perl",
+      "version": "4.10000-1",
+      "source_package": "libjson-perl",
+      "source_version": "4.10000-1"
+    },
+    {
+      "binary_package": "libk5crypto3:amd64",
+      "version": "1.21.3-5+deb13u1",
+      "source_package": "krb5",
+      "source_version": "1.21.3-5+deb13u1"
+    },
+    {
+      "binary_package": "libkeyutils1:amd64",
+      "version": "1.6.3-6",
+      "source_package": "keyutils",
+      "source_version": "1.6.3-6"
+    },
+    {
+      "binary_package": "libkrb5-3:amd64",
+      "version": "1.21.3-5+deb13u1",
+      "source_package": "krb5",
+      "source_version": "1.21.3-5+deb13u1"
+    },
+    {
+      "binary_package": "libkrb5support0:amd64",
+      "version": "1.21.3-5+deb13u1",
+      "source_package": "krb5",
+      "source_version": "1.21.3-5+deb13u1"
+    },
+    {
+      "binary_package": "libksba8:amd64",
+      "version": "1.6.7-2+b1",
+      "source_package": "libksba",
+      "source_version": "1.6.7-2"
+    },
+    {
+      "binary_package": "liblastlog2-2:amd64",
+      "version": "2.41.5-0+deb13u1",
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1"
+    },
+    {
+      "binary_package": "libldap2:amd64",
+      "version": "2.6.10+dfsg-1",
+      "source_package": "openldap",
+      "source_version": "2.6.10+dfsg-1"
+    },
+    {
+      "binary_package": "libllvm19:amd64",
+      "version": "1:19.1.7-3+b1",
+      "source_package": "llvm-toolchain-19",
+      "source_version": "1:19.1.7-3"
+    },
+    {
+      "binary_package": "liblz4-1:amd64",
+      "version": "1.10.0-4",
+      "source_package": "lz4",
+      "source_version": "1.10.0-4"
+    },
+    {
+      "binary_package": "liblzma5:amd64",
+      "version": "5.8.1-1+deb13u2",
+      "source_package": "xz-utils",
+      "source_version": "5.8.1-1+deb13u2"
+    },
+    {
+      "binary_package": "libmd0:amd64",
+      "version": "1.1.0-2+b1",
+      "source_package": "libmd",
+      "source_version": "1.1.0-2"
+    },
+    {
+      "binary_package": "libmount1:amd64",
+      "version": "2.41.5-0+deb13u1",
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1"
+    },
+    {
+      "binary_package": "libncursesw6:amd64",
+      "version": "6.5+20250216-2",
+      "source_package": "ncurses",
+      "source_version": "6.5+20250216-2"
+    },
+    {
+      "binary_package": "libnettle8t64:amd64",
+      "version": "3.10.1-1",
+      "source_package": "nettle",
+      "source_version": "3.10.1-1"
+    },
+    {
+      "binary_package": "libnpth0t64:amd64",
+      "version": "1.8-3",
+      "source_package": "npth",
+      "source_version": "1.8-3"
+    },
+    {
+      "binary_package": "libnss-wrapper:amd64",
+      "version": "1.1.16-1",
+      "source_package": "nss-wrapper",
+      "source_version": "1.1.16-1"
+    },
+    {
+      "binary_package": "libp11-kit0:amd64",
+      "version": "0.25.5-3",
+      "source_package": "p11-kit",
+      "source_version": "0.25.5-3"
+    },
+    {
+      "binary_package": "libpam-modules:amd64",
+      "version": "1.7.0-5",
+      "source_package": "pam",
+      "source_version": "1.7.0-5"
+    },
+    {
+      "binary_package": "libpam-modules-bin",
+      "version": "1.7.0-5",
+      "source_package": "pam",
+      "source_version": "1.7.0-5"
+    },
+    {
+      "binary_package": "libpam-runtime",
+      "version": "1.7.0-5",
+      "source_package": "pam",
+      "source_version": "1.7.0-5"
+    },
+    {
+      "binary_package": "libpam0g:amd64",
+      "version": "1.7.0-5",
+      "source_package": "pam",
+      "source_version": "1.7.0-5"
+    },
+    {
+      "binary_package": "libpcre2-8-0:amd64",
+      "version": "10.46-1~deb13u3",
+      "source_package": "pcre2",
+      "source_version": "10.46-1~deb13u3"
+    },
+    {
+      "binary_package": "libperl5.40:amd64",
+      "version": "5.40.1-6+deb13u1",
+      "source_package": "perl",
+      "source_version": "5.40.1-6+deb13u1"
+    },
+    {
+      "binary_package": "libpq5:amd64",
+      "version": "18.6-1.pgdg13+2",
+      "source_package": "postgresql-18",
+      "source_version": "18.6-1.pgdg13+2"
+    },
+    {
+      "binary_package": "libproc2-0:amd64",
+      "version": "2:4.0.4-9",
+      "source_package": "procps",
+      "source_version": "2:4.0.4-9"
+    },
+    {
+      "binary_package": "libreadline8t64:amd64",
+      "version": "8.2-6",
+      "source_package": "readline",
+      "source_version": "8.2-6"
+    },
+    {
+      "binary_package": "libsasl2-2:amd64",
+      "version": "2.1.28+dfsg1-9",
+      "source_package": "cyrus-sasl2",
+      "source_version": "2.1.28+dfsg1-9"
+    },
+    {
+      "binary_package": "libsasl2-modules-db:amd64",
+      "version": "2.1.28+dfsg1-9",
+      "source_package": "cyrus-sasl2",
+      "source_version": "2.1.28+dfsg1-9"
+    },
+    {
+      "binary_package": "libseccomp2:amd64",
+      "version": "2.6.0-2",
+      "source_package": "libseccomp",
+      "source_version": "2.6.0-2"
+    },
+    {
+      "binary_package": "libselinux1:amd64",
+      "version": "3.8.1-1",
+      "source_package": "libselinux",
+      "source_version": "3.8.1-1"
+    },
+    {
+      "binary_package": "libsemanage-common",
+      "version": "3.8.1-1",
+      "source_package": "libsemanage",
+      "source_version": "3.8.1-1"
+    },
+    {
+      "binary_package": "libsemanage2:amd64",
+      "version": "3.8.1-1",
+      "source_package": "libsemanage",
+      "source_version": "3.8.1-1"
+    },
+    {
+      "binary_package": "libsepol2:amd64",
+      "version": "3.8.1-1",
+      "source_package": "libsepol",
+      "source_version": "3.8.1-1"
+    },
+    {
+      "binary_package": "libsmartcols1:amd64",
+      "version": "2.41.5-0+deb13u1",
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1"
+    },
+    {
+      "binary_package": "libsqlite3-0:amd64",
+      "version": "3.46.1-7+deb13u2",
+      "source_package": "sqlite3",
+      "source_version": "3.46.1-7+deb13u2"
+    },
+    {
+      "binary_package": "libssl3t64:amd64",
+      "version": "3.5.7-1~deb13u3",
+      "source_package": "openssl",
+      "source_version": "3.5.7-1~deb13u3"
+    },
+    {
+      "binary_package": "libstdc++6:amd64",
+      "version": "14.2.0-19",
+      "source_package": "gcc-14",
+      "source_version": "14.2.0-19"
+    },
+    {
+      "binary_package": "libsystemd0:amd64",
+      "version": "257.13-1~deb13u1",
+      "source_package": "systemd",
+      "source_version": "257.13-1~deb13u1"
+    },
+    {
+      "binary_package": "libtasn1-6:amd64",
+      "version": "4.20.0-2+deb13u1",
+      "source_package": "libtasn1-6",
+      "source_version": "4.20.0-2+deb13u1"
+    },
+    {
+      "binary_package": "libtext-charwidth-perl:amd64",
+      "version": "0.04-11+b4",
+      "source_package": "libtext-charwidth-perl",
+      "source_version": "0.04-11"
+    },
+    {
+      "binary_package": "libtext-wrapi18n-perl",
+      "version": "0.06-10",
+      "source_package": "libtext-wrapi18n-perl",
+      "source_version": "0.06-10"
+    },
+    {
+      "binary_package": "libtinfo6:amd64",
+      "version": "6.5+20250216-2",
+      "source_package": "ncurses",
+      "source_version": "6.5+20250216-2"
+    },
+    {
+      "binary_package": "libudev1:amd64",
+      "version": "257.13-1~deb13u1",
+      "source_package": "systemd",
+      "source_version": "257.13-1~deb13u1"
+    },
+    {
+      "binary_package": "libunistring5:amd64",
+      "version": "1.3-2",
+      "source_package": "libunistring",
+      "source_version": "1.3-2"
+    },
+    {
+      "binary_package": "libuuid1:amd64",
+      "version": "2.41.5-0+deb13u1",
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1"
+    },
+    {
+      "binary_package": "libxml2:amd64",
+      "version": "2.12.7+dfsg+really2.9.14-2.1+deb13u3",
+      "source_package": "libxml2",
+      "source_version": "2.12.7+dfsg+really2.9.14-2.1+deb13u3"
+    },
+    {
+      "binary_package": "libxslt1.1:amd64",
+      "version": "1.1.35-1.2+deb13u3",
+      "source_package": "libxslt",
+      "source_version": "1.1.35-1.2+deb13u3"
+    },
+    {
+      "binary_package": "libxxhash0:amd64",
+      "version": "0.8.3-2",
+      "source_package": "xxhash",
+      "source_version": "0.8.3-2"
+    },
+    {
+      "binary_package": "libz3-4:amd64",
+      "version": "4.13.3-1",
+      "source_package": "z3",
+      "source_version": "4.13.3-1"
+    },
+    {
+      "binary_package": "libzstd1:amd64",
+      "version": "1.5.7+dfsg-1",
+      "source_package": "libzstd",
+      "source_version": "1.5.7+dfsg-1"
+    },
+    {
+      "binary_package": "locales",
+      "version": "2.41-12+deb13u4",
+      "source_package": "glibc",
+      "source_version": "2.41-12+deb13u4"
+    },
+    {
+      "binary_package": "login",
+      "version": "1:4.16.0-2+really2.41.5-0+deb13u1",
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1"
+    },
+    {
+      "binary_package": "login.defs",
+      "version": "1:4.17.4-2",
+      "source_package": "shadow",
+      "source_version": "1:4.17.4-2"
+    },
+    {
+      "binary_package": "mawk",
+      "version": "1.3.4.20250131-1",
+      "source_package": "mawk",
+      "source_version": "1.3.4.20250131-1"
+    },
+    {
+      "binary_package": "mount",
+      "version": "2.41.5-0+deb13u1",
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1"
+    },
+    {
+      "binary_package": "ncurses-base",
+      "version": "6.5+20250216-2",
+      "source_package": "ncurses",
+      "source_version": "6.5+20250216-2"
+    },
+    {
+      "binary_package": "ncurses-bin",
+      "version": "6.5+20250216-2",
+      "source_package": "ncurses",
+      "source_version": "6.5+20250216-2"
+    },
+    {
+      "binary_package": "netbase",
+      "version": "6.5",
+      "source_package": "netbase",
+      "source_version": "6.5"
+    },
+    {
+      "binary_package": "openssl",
+      "version": "3.5.7-1~deb13u3",
+      "source_package": "openssl",
+      "source_version": "3.5.7-1~deb13u3"
+    },
+    {
+      "binary_package": "openssl-provider-legacy",
+      "version": "3.5.7-1~deb13u3",
+      "source_package": "openssl",
+      "source_version": "3.5.7-1~deb13u3"
+    },
+    {
+      "binary_package": "passwd",
+      "version": "1:4.17.4-2",
+      "source_package": "shadow",
+      "source_version": "1:4.17.4-2"
+    },
+    {
+      "binary_package": "perl",
+      "version": "5.40.1-6+deb13u1",
+      "source_package": "perl",
+      "source_version": "5.40.1-6+deb13u1"
+    },
+    {
+      "binary_package": "perl-base",
+      "version": "5.40.1-6+deb13u1",
+      "source_package": "perl",
+      "source_version": "5.40.1-6+deb13u1"
+    },
+    {
+      "binary_package": "perl-modules-5.40",
+      "version": "5.40.1-6+deb13u1",
+      "source_package": "perl",
+      "source_version": "5.40.1-6+deb13u1"
+    },
+    {
+      "binary_package": "pinentry-curses",
+      "version": "1.3.1-2",
+      "source_package": "pinentry",
+      "source_version": "1.3.1-2"
+    },
+    {
+      "binary_package": "postgresql-17",
+      "version": "17.11-1.pgdg13+2",
+      "source_package": "postgresql-17",
+      "source_version": "17.11-1.pgdg13+2"
+    },
+    {
+      "binary_package": "postgresql-client-17",
+      "version": "17.11-1.pgdg13+2",
+      "source_package": "postgresql-17",
+      "source_version": "17.11-1.pgdg13+2"
+    },
+    {
+      "binary_package": "postgresql-client-common",
+      "version": "293.pgdg13+1",
+      "source_package": "postgresql-common",
+      "source_version": "293.pgdg13+1"
+    },
+    {
+      "binary_package": "postgresql-common",
+      "version": "293.pgdg13+1",
+      "source_package": "postgresql-common",
+      "source_version": "293.pgdg13+1"
+    },
+    {
+      "binary_package": "procps",
+      "version": "2:4.0.4-9",
+      "source_package": "procps",
+      "source_version": "2:4.0.4-9"
+    },
+    {
+      "binary_package": "readline-common",
+      "version": "8.2-6",
+      "source_package": "readline",
+      "source_version": "8.2-6"
+    },
+    {
+      "binary_package": "sed",
+      "version": "4.9-2+deb13u1",
+      "source_package": "sed",
+      "source_version": "4.9-2+deb13u1"
+    },
+    {
+      "binary_package": "sensible-utils",
+      "version": "0.0.25",
+      "source_package": "sensible-utils",
+      "source_version": "0.0.25"
+    },
+    {
+      "binary_package": "sqv",
+      "version": "1.3.0-3+b2",
+      "source_package": "rust-sequoia-sqv",
+      "source_version": "1.3.0-3"
+    },
+    {
+      "binary_package": "ssl-cert",
+      "version": "1.1.3",
+      "source_package": "ssl-cert",
+      "source_version": "1.1.3"
+    },
+    {
+      "binary_package": "sysvinit-utils",
+      "version": "3.14-4",
+      "source_package": "sysvinit",
+      "source_version": "3.14-4"
+    },
+    {
+      "binary_package": "tar",
+      "version": "1.35+dfsg-3.1",
+      "source_package": "tar",
+      "source_version": "1.35+dfsg-3.1"
+    },
+    {
+      "binary_package": "tzdata",
+      "version": "2026f-0+deb13u1",
+      "source_package": "tzdata",
+      "source_version": "2026f-0+deb13u1"
+    },
+    {
+      "binary_package": "ucf",
+      "version": "3.0052",
+      "source_package": "ucf",
+      "source_version": "3.0052"
+    },
+    {
+      "binary_package": "util-linux",
+      "version": "2.41.5-0+deb13u1",
+      "source_package": "util-linux",
+      "source_version": "2.41.5-0+deb13u1"
+    },
+    {
+      "binary_package": "xz-utils",
+      "version": "5.8.1-1+deb13u2",
+      "source_package": "xz-utils",
+      "source_version": "5.8.1-1+deb13u2"
+    },
+    {
+      "binary_package": "zlib1g:amd64",
+      "version": "1:1.3.dfsg+really1.3.1-1+deb13u1",
+      "source_package": "zlib",
+      "source_version": "1:1.3.dfsg+really1.3.1-1+deb13u1"
+    },
+    {
+      "binary_package": "zstd",
+      "version": "1.5.7+dfsg-1",
+      "source_package": "libzstd",
+      "source_version": "1.5.7+dfsg-1"
+    }
+  ],
+  "raw_log_sha256": "d1ba6acc867bebeb383f5d2d71b434b198280dd538ee47c7aa3a0d9016e6c32e"
+}

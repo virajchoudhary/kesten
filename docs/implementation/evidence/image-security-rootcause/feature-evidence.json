@@ -1,0 +1,245 @@
+{
+  "api": {
+    "image_id": "sha256:cf7233b38db1a072a51c0df41673c1f1179cfbdf70a8bd0d88f302fee7d0d920",
+    "features": {
+      "python": "3.12.16 (main, Nov  5 2026, 19:26:55) [GCC 15.2.0]",
+      "ssl": "OpenSSL 3.5.9 29 Sep 2026",
+      "sqlite": "3.53.4",
+      "compile_options": [
+        "ATOMIC_INTRINSICS=1",
+        "COMPILER=gcc-15.2.0",
+        "DEFAULT_AUTOVACUUM",
+        "DEFAULT_CACHE_SIZE=-2000",
+        "DEFAULT_FILE_FORMAT=4",
+        "DEFAULT_JOURNAL_SIZE_LIMIT=-1",
+        "DEFAULT_MMAP_SIZE=0",
+        "DEFAULT_PAGE_SIZE=4096",
+        "DEFAULT_PCACHE_INITSZ=20",
+        "DEFAULT_RECURSIVE_TRIGGERS",
+        "DEFAULT_SECTOR_SIZE=4096",
+        "DEFAULT_SYNCHRONOUS=2",
+        "DEFAULT_WAL_AUTOCHECKPOINT=1000",
+        "DEFAULT_WAL_SYNCHRONOUS=2",
+        "DEFAULT_WORKER_THREADS=0",
+        "DIRECT_OVERFLOW_READ",
+        "ENABLE_COLUMN_METADATA",
+        "ENABLE_DBSTAT_VTAB",
+        "ENABLE_FTS3",
+        "ENABLE_FTS3_PARENTHESIS",
+        "ENABLE_FTS4",
+        "ENABLE_FTS5",
+        "ENABLE_GEOPOLY",
+        "ENABLE_MATH_FUNCTIONS",
+        "ENABLE_PERCENTILE",
+        "ENABLE_PREUPDATE_HOOK",
+        "ENABLE_RTREE",
+        "ENABLE_SESSION",
+        "ENABLE_UNLOCK_NOTIFY",
+        "MALLOC_SOFT_LIMIT=1024",
+        "MAX_ATTACHED=10",
+        "MAX_COLUMN=2000",
+        "MAX_COMPOUND_SELECT=500",
+        "MAX_DEFAULT_PAGE_SIZE=8192",
+        "MAX_EXPR_DEPTH=1000",
+        "MAX_FUNCTION_ARG=1000",
+        "MAX_LENGTH=1000000000",
+        "MAX_LIKE_PATTERN_LENGTH=50000",
+        "MAX_MMAP_SIZE=0x7fff0000",
+        "MAX_PAGE_COUNT=0xfffffffe",
+        "MAX_PAGE_SIZE=65536",
+        "MAX_SQL_LENGTH=1000000000",
+        "MAX_TRIGGER_DEPTH=1000",
+        "MAX_VARIABLE_NUMBER=250000",
+        "MAX_VDBE_OP=250000000",
+        "MAX_WORKER_THREADS=8",
+        "MUTEX_PTHREADS",
+        "SECURE_DELETE",
+        "SOUNDEX",
+        "SYSTEM_MALLOC",
+        "TEMP_STORE=1",
+        "THREADSAFE=1",
+        "USE_URI"
+      ],
+      "commands": {
+        "sqlite3": null,
+        "wget": "/usr/bin/wget",
+        "sudo": null,
+        "krb5kdc": null,
+        "gzip": "/bin/gzip",
+        "xz": null,
+        "openssl": null
+      },
+      "sqlite_module": "/usr/local/lib/python3.12/sqlite3/__init__.py"
+    },
+    "harmless_python_checks": {
+      "source_files": {
+        "base64": {
+          "path": "/usr/local/lib/python3.12/base64.py",
+          "sha256": "8d1f608dbf030d11d6ec4df9e4c55b73fb68cdfbd9f53a7c91684a93b55564b5"
+        },
+        "imaplib": {
+          "path": "/usr/local/lib/python3.12/imaplib.py",
+          "sha256": "ab3d485f7ee89deaf132533cd135888326be3c92a88ede79a16fa4c0e4709632"
+        },
+        "poplib": {
+          "path": "/usr/local/lib/python3.12/poplib.py",
+          "sha256": "e1596878e408b1702dea74ca55f13b367f93b12fd9950fc62f70d8e7b47fce83"
+        },
+        "http.client": {
+          "path": "/usr/local/lib/python3.12/http/client.py",
+          "sha256": "c2c0694155837d72fc710a4138e5d1e53ae1a652b117a2e23a5b1b0db527a0f9"
+        },
+        "http.cookies": {
+          "path": "/usr/local/lib/python3.12/http/cookies.py",
+          "sha256": "6387f676095ae5374943eff99fbcd2d9c681172c00209fadf54c311cf7228149"
+        },
+        "pkgutil": {
+          "path": "/usr/local/lib/python3.12/pkgutil.py",
+          "sha256": "44300bc77f6f52ef2ad74d26e5053309c04f49eaa91c099356eb61426cde504f"
+        }
+      },
+      "strict_extra_padding": {
+        "accepted": false,
+        "exception": "Error"
+      },
+      "strict_altchars_accepts_standard": {
+        "accepted": true,
+        "decoded_hex": "03efff"
+      },
+      "nul_numeric_host": "accepted_truncated_numeric_host"
+    }
+  },
+  "database": {
+    "image_id": "sha256:5cb074c424af72768d239358b6c007b513c165e62ec6c8ac33825ec2625f13c1",
+    "postgres_binary": "/usr/lib/postgresql/17/bin/postgres",
+    "linked_libraries": [
+      {
+        "library": "libzstd.so.1",
+        "path": "/lib/x86_64-linux-gnu/libzstd.so.1"
+      },
+      {
+        "library": "liblz4.so.1",
+        "path": "/lib/x86_64-linux-gnu/liblz4.so.1"
+      },
+      {
+        "library": "libxml2.so.2",
+        "path": "/lib/x86_64-linux-gnu/libxml2.so.2"
+      },
+      {
+        "library": "libpam.so.0",
+        "path": "/lib/x86_64-linux-gnu/libpam.so.0"
+      },
+      {
+        "library": "libssl.so.3",
+        "path": "/lib/x86_64-linux-gnu/libssl.so.3"
+      },
+      {
+        "library": "libcrypto.so.3",
+        "path": "/lib/x86_64-linux-gnu/libcrypto.so.3"
+      },
+      {
+        "library": "libgssapi_krb5.so.2",
+        "path": "/lib/x86_64-linux-gnu/libgssapi_krb5.so.2"
+      },
+      {
+        "library": "libz.so.1",
+        "path": "/lib/x86_64-linux-gnu/libz.so.1"
+      },
+      {
+        "library": "libm.so.6",
+        "path": "/lib/x86_64-linux-gnu/libm.so.6"
+      },
+      {
+        "library": "libldap.so.2",
+        "path": "/lib/x86_64-linux-gnu/libldap.so.2"
+      },
+      {
+        "library": "libicui18n.so.76",
+        "path": "/lib/x86_64-linux-gnu/libicui18n.so.76"
+      },
+      {
+        "library": "libicuuc.so.76",
+        "path": "/lib/x86_64-linux-gnu/libicuuc.so.76"
+      },
+      {
+        "library": "libsystemd.so.0",
+        "path": "/lib/x86_64-linux-gnu/libsystemd.so.0"
+      },
+      {
+        "library": "libc.so.6",
+        "path": "/lib/x86_64-linux-gnu/libc.so.6"
+      },
+      {
+        "library": "libxxhash.so.0",
+        "path": "/lib/x86_64-linux-gnu/libxxhash.so.0"
+      },
+      {
+        "library": "liblzma.so.5",
+        "path": "/lib/x86_64-linux-gnu/liblzma.so.5"
+      },
+      {
+        "library": "libaudit.so.1",
+        "path": "/lib/x86_64-linux-gnu/libaudit.so.1"
+      },
+      {
+        "library": "libkrb5.so.3",
+        "path": "/lib/x86_64-linux-gnu/libkrb5.so.3"
+      },
+      {
+        "library": "libk5crypto.so.3",
+        "path": "/lib/x86_64-linux-gnu/libk5crypto.so.3"
+      },
+      {
+        "library": "libcom_err.so.2",
+        "path": "/lib/x86_64-linux-gnu/libcom_err.so.2"
+      },
+      {
+        "library": "libkrb5support.so.0",
+        "path": "/lib/x86_64-linux-gnu/libkrb5support.so.0"
+      },
+      {
+        "library": "liblber.so.2",
+        "path": "/lib/x86_64-linux-gnu/liblber.so.2"
+      },
+      {
+        "library": "libsasl2.so.2",
+        "path": "/lib/x86_64-linux-gnu/libsasl2.so.2"
+      },
+      {
+        "library": "libstdc++.so.6",
+        "path": "/lib/x86_64-linux-gnu/libstdc++.so.6"
+      },
+      {
+        "library": "libgcc_s.so.1",
+        "path": "/lib/x86_64-linux-gnu/libgcc_s.so.1"
+      },
+      {
+        "library": "libicudata.so.76",
+        "path": "/lib/x86_64-linux-gnu/libicudata.so.76"
+      },
+      {
+        "library": "libcap.so.2",
+        "path": "/lib/x86_64-linux-gnu/libcap.so.2"
+      },
+      {
+        "library": "libcap-ng.so.0",
+        "path": "/lib/x86_64-linux-gnu/libcap-ng.so.0"
+      },
+      {
+        "library": "libkeyutils.so.1",
+        "path": "/lib/x86_64-linux-gnu/libkeyutils.so.1"
+      },
+      {
+        "library": "libresolv.so.2",
+        "path": "/lib/x86_64-linux-gnu/libresolv.so.2"
+      }
+    ],
+    "corrected_probe_exit": 0,
+    "probe_scope": "Read-only, network-disabled image. No database started or mounted.",
+    "original_probe_exit": 1,
+    "original_probe_error": "ldd used /usr/local/bin/postgres; corrected probe uses command -v postgres.",
+    "raw_probe_sha256": "961fbbe3fc4bfb9c5e21e838cb356ad51da6a8b65e48fb1127efb68e4d9b037e",
+    "installed_package_receipt": "installed-packages.json"
+  },
+  "scope": "Presence and native behavior evidence, not exploitability proof for every function or dependency."
+}

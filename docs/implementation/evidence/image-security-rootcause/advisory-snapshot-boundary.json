@@ -1,0 +1,16 @@
+{
+  "baseline_scan_date": "2026-11-10",
+  "baseline_db_built": "2026-11-10T06:21:20Z",
+  "current_publisher_pointer_observed_at": "2026-11-12T06:37:03.115731+00:00",
+  "publisher_url": "https://grype.anchore.io/databases/v6/latest.json",
+  "current_pointer": {
+    "status": "active",
+    "schemaVersion": "v6.1.10",
+    "built": "2026-11-11T06:21:32Z",
+    "path": "vulnerability-db_v6.1.10_2026-11-11T00:20:48Z_1794378092.tar.zst",
+    "checksum": "sha256:47f709e0217cf091eaf8dc57c8cdea33f9ba2c7d5374237c5011871a0c99d24e"
+  },
+  "new_database_downloaded": false,
+  "new_scans_run": false,
+  "reason": "This task classifies the exact recorded 431 matches. Current vendor status and exact image/package identity are freshly verified. No image input changed; no passing or failed scan is relabeled. Newer-database counts remain untested."
+}

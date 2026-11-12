@@ -1,0 +1,174 @@
+[
+  {
+    "service": "api",
+    "reference": "kerquant-phase53-qualified-api:4862522",
+    "image_id": "sha256:cf7233b38db1a072a51c0df41673c1f1179cfbdf70a8bd0d88f302fee7d0d920",
+    "base": null,
+    "revision_label": "4862522e6a856882cc4916847ed6453307903e9d",
+    "architecture": "amd64",
+    "rootfs": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064",
+        "sha256:d6c38381cc85b3dfb2dc52f4ad75386f844a220358291e69c060b0c6bda7f493",
+        "sha256:c55c05421254604f61c029616b7e7f3de8d875d262a12f30ead74640bc93398a",
+        "sha256:33245a72efc0b5e9c6338ed25da088588bda96f70b9a58e02de970f1a72a55a4",
+        "sha256:76e5b1fd58c0a4b9a2472a8f09b3ecd1e8a3783f983bca89bb5f311cb12dd1d6",
+        "sha256:8513bf72a72e70dead46c8ebb625fd62c38606fb63416e09231d1a2988beafc1",
+        "sha256:a20aa4af3dc9daf2a589f46e22e848d82cbc4f64b83c61cd20c6a9ae9bfd5f98",
+        "sha256:41f2b2575598ebcd789090e87b13e64ad2b3b4680ba77fd3c955bab0dd24718c",
+        "sha256:4ce993ecab70bfe620b88b4e366ab1875ad244768a3dc4127403577e4399abf0",
+        "sha256:88e482a123884c0d68e8c89299c5af3b753996d5074c1e1cecd08a1c9ea79558",
+        "sha256:38a438dcbe9bd00d441e927d6c35db57790c9d0d5a91397e0916cc0869b9ab4b",
+        "sha256:687303883bbbebe99f09beff4f9df5bf498ba48d319b8537f8f61d5b1bc139a9",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:427ffc29497aea2733e711fbc00367ed65980b2d5e08a2499e645fbf388695ad"
+      ]
+    },
+    "user": "cadrisyn",
+    "entrypoint": null,
+    "cmd": [
+      "gunicorn",
+      "quantvision.wsgi:application",
+      "--bind",
+      "0.0.0.0:8000",
+      "--workers",
+      "2",
+      "--timeout",
+      "30",
+      "--access-logfile",
+      "-",
+      "--access-logformat",
+      "{\"event\":\"gunicorn_request\",\"method\":\"%(m)s\",\"status\":%(s)s,\"duration_seconds\":%(L)s}",
+      "--error-logfile",
+      "-"
+    ]
+  },
+  {
+    "service": "web",
+    "reference": "kerquant-phase53-qualified-web:4862522",
+    "image_id": "sha256:a91d601ee6c5e440305d002e1edcc8591f751b633ff356721fadd2694cd2ea1c",
+    "base": null,
+    "revision_label": "4862522e6a856882cc4916847ed6453307903e9d",
+    "architecture": "amd64",
+    "rootfs": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064",
+        "sha256:71bd3a5dcf979e297883c67d3bf0325e5a59041dcedaa2d0bf324e561412e174",
+        "sha256:837230a36a0765821c2413275e54c7fbf2d9c6e8e29ab9b0d3f01b6ad9024345",
+        "sha256:c0b32f8d02c19b4e7281340ebffd727d84fa64ec829411b4722c1a295532762c",
+        "sha256:381be54551fcbc459bb75710742d0b81b49ca76f3ad40cdc45d7622aa1e2e88d",
+        "sha256:63f7160f257a43ae303e5782f5fc56c345074ad3125b9b38a8d54649f275db9c",
+        "sha256:05c05c1ee0e31d6707007e908f110c86d749d7b6b4e417a6cba3fd6fa954b246",
+        "sha256:2d182d7e5b40bf8c5ea2a8bc265e3f7a052944da17300a90e94419627fe3c349",
+        "sha256:052c6251eca46f7733ae3638b99b5fba8c315d139074e4321cc4bb6698608053",
+        "sha256:d4370c69418ad4d703d3167142c01996003e56594784025be24a5c165d9c77cf"
+      ]
+    },
+    "user": "nextjs",
+    "entrypoint": [
+      "docker-entrypoint.sh"
+    ],
+    "cmd": [
+      "node",
+      "server.js"
+    ]
+  },
+  {
+    "service": "database",
+    "reference": "kerquant-phase53-qualified-database:4862522",
+    "image_id": "sha256:5cb074c424af72768d239358b6c007b513c165e62ec6c8ac33825ec2625f13c1",
+    "base": "postgres:17.11@sha256:748a18a54d3842d43bc156f0840d78029b8d349e0feca98c12b9c4ce3404a6b3",
+    "revision_label": null,
+    "architecture": "amd64",
+    "rootfs": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:dd57f90311a2567b55ff22eeacff1602fd04ad7566e315957731359eab173b90",
+        "sha256:4965f903ce49317dddf26253f70619ddcd2a9427bc8d6703f184a0bef55a787b",
+        "sha256:67ce605411e0e6d6c71d33170c626c02d72ca0ba9498d809d31922ba0058450f",
+        "sha256:9dc92db23b555ddfe3920bae7c41cd4ea5c163095565c28c882052fbae919df0",
+        "sha256:ab3b4943097adcb81ee21a18b7994ca32b1e72852d09fc4a8e66ee92aaacd43a",
+        "sha256:f95b725eb3e362d4ca8b7505cdc463c33ad657743e6ef27db8e46211c4adfcc9",
+        "sha256:56f0f2af12552d013c51b90cce15919aa4cb56b636f922b0fc99bb0df8c9ee01",
+        "sha256:85a21df63d899584e498aeda19065f0959de3ad52dd900c70c57e6b4e6945ecd",
+        "sha256:891bba6e22a8a64359be5402e72fbf70338932054f7dd65bee7383180c021dad",
+        "sha256:99e1eb90dcecbdc4be59696448a693be40f9d5d1619b8cdff4d0ceb68a627cef",
+        "sha256:0360c19c84ff3fdbf7b1d13ba04ca5a2c5468ec1d0b4fab2a9818bd9abcd5845",
+        "sha256:d43e4618825b23cc877fca609fbefb74d97950885118c068dbbb0bbd55c89ad5",
+        "sha256:f02c0b095eb7ff0b8b456361c2d76cf99a722e62d531a49a45ebe6e5cece3369",
+        "sha256:ec1c2a913f57ef0d583024f5fc87b91fec4a5cae0eb631eb4badf360e30fed55",
+        "sha256:3d7dc7d1e28d5973f32ab1f479e9e93286fe5922fb47299b98905680941933ee",
+        "sha256:b9259cda0be5558b01f0a41005a821a2f37078cb50b8e101c2957d6b5405cc8f",
+        "sha256:593c98cb2245458d9fca350dbc978982fa10ac8cd95817e73aab048e35be17b3"
+      ]
+    },
+    "user": null,
+    "entrypoint": [
+      "docker-entrypoint.sh"
+    ],
+    "cmd": [
+      "postgres"
+    ]
+  },
+  {
+    "service": "cache",
+    "reference": "kerquant-phase53-qualified-cache:4862522",
+    "image_id": "sha256:4f15261ed9b8aabbda48e94c09f3c421fa0e7e627215743478712e89073e39bc",
+    "base": "redis:8.10.3-alpine3.23@sha256:71885d8cc6e42f2bc0aa2eb853bfc4be200b5108a46ac50e117ae1df0531fb80",
+    "revision_label": null,
+    "architecture": "amd64",
+    "rootfs": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:7900194cf2429d4e860306cd85f7b1d04154ef522ab603ff058bd8221b0cee62",
+        "sha256:3387579b1b829075dd96dd1fd5837c7a2f245bee69dc62d31b99ec37eca32e54",
+        "sha256:248b23271bfbe5f21611e4357644b9884f13e327d896bcda697731af3ed6c44a",
+        "sha256:8fef4d5c59e488abdf29dcefc5a1b81b3579fc9e78d672b52bdaafa9d56d905f",
+        "sha256:af668163a04720d23abd34677c62e02d802b7f9399fdf7b98672974724577855",
+        "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+        "sha256:88479abaea81b63d9021500f9e2acd9f20d96b3753840ce40d69d3e5667f0112",
+        "sha256:7e317b80771570ae1d57f399c4048e049bbe1d52251816e072e54a8bf0395187"
+      ]
+    },
+    "user": null,
+    "entrypoint": [
+      "docker-entrypoint.sh"
+    ],
+    "cmd": [
+      "redis-server"
+    ]
+  },
+  {
+    "service": "gateway",
+    "reference": "kerquant-phase53-qualified-gateway:4862522",
+    "image_id": "sha256:328ac272576677f2f27d59e36dd84e1d446041452d4947d70bff81079860897d",
+    "base": "nginx:1.30.6-alpine3.24@sha256:583b7f2fce1cdb8da5ad5c39ebd3c33b98b87d493190e548bdee1fa8c619c311",
+    "revision_label": null,
+    "architecture": "amd64",
+    "rootfs": {
+      "Type": "layers",
+      "Layers": [
+        "sha256:75f1d9657d880da5f75298e8f40e9928bb6e260c50d26f97af196845307e3064",
+        "sha256:495c4fa2cdd4685f4fe4eabd11e86f59285fab926335bba75d4160d5ff3b6154",
+        "sha256:8a4b8e348afac340cd546c8d53f590002cbd871c2eb6978b916961073e8a3b16",
+        "sha256:58eeef868683cc63489dafb4f1d7dd419f989548f0702cc3182476b4dae141f5",
+        "sha256:3831075a57f3b915290905a7c4072930c51d329dccead9f41eb439925205711a",
+        "sha256:3abae6d8a7fc137a1bd5f4a86932b1b8b7c1da3191b6590d9195f263519b4257",
+        "sha256:8f5b99f326f295649f3ca11561d758e897be5cb851fcc0c2497b9214fdcacd64",
+        "sha256:7249c65f5b3fbe84a1b5dcedaa13a7ce52fee36aeaa1cf590fb04ad689bad31e",
+        "sha256:90eaa4496f8b48a97356bcb06a1676072b357bd406aa0589d31d88a93e7ab735"
+      ]
+    },
+    "user": null,
+    "entrypoint": [
+      "/docker-entrypoint.sh"
+    ],
+    "cmd": [
+      "nginx",
+      "-g",
+      "daemon off;"
+    ]
+  }
+]
