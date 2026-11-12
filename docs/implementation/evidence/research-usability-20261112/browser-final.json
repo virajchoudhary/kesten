@@ -1,0 +1,20 @@
+{
+  "result": "PASS",
+  "scope": "Synthetic browser qualification, not empirical research",
+  "browser": "156.0.8078.4",
+  "dataset_id": "b8029614-5dab-46cb-be7a-917538a441d9",
+  "dataset_version": "9203cba1c9d58f65505fc7c05120669be1829719c7d033d58ab8155387a47a94",
+  "run_id": "71bd2cea-a20f-4033-bf20-091b33f0f0b6",
+  "horizon_sessions": 5,
+  "source_receipt_status": "verified",
+  "independently_verified_source": false,
+  "empirical_performance_established": false,
+  "overflow_checks": [
+    "1920x1080",
+    "768x1024",
+    "375x812 dark",
+    "375x812 light"
+  ],
+  "mobile_accessibility_violations": 0,
+  "page_errors": []
+}

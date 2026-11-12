@@ -1,0 +1,60 @@
+
+> cadrisyn-web@0.1.0 test
+> vitest run --reporter=dot
+
+
+ RUN  v5.1.0 C:/stock price predictor/web
+
+······x···x··x························································································································
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/features/account/account-security-settings.test.tsx > account security settings > changes the password through the CSRF-protected same-origin API
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/features/account/account-security-settings.test.tsx:50:3
+     48|
+     49| describe("account security settings", () => {
+     50|   it("changes the password through the CSRF-protected same-origin API"…
+       |   ^
+     51|     const fetchMock = vi.fn<typeof fetch>().mockResolvedValue(
+     52|       jsonResponse({ password_changed: true }),
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  src/features/markets/instrument-search.test.tsx > starts a fresh keyboard search after choosing a result
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/features/markets/instrument-search.test.tsx:11:1
+      9| });
+     10|
+     11| it("starts a fresh keyboard search after choosing a result", async () …
+       | ^
+     12|   const user = userEvent.setup();
+     13|   const onSelect = vi.fn();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  src/features/research/research-results.test.tsx > research direction confusion results > renders asymmetric counts with predicted directions in rows and actual directions in columns
+Error: Test timed out in 5000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ src/features/research/research-results.test.tsx:9:3
+      7|
+      8| describe("research direction confusion results", () => {
+      9|   it("renders asymmetric counts with predicted directions in rows and …
+       |   ^
+     10|     const run = researchRunFixture({
+     11|       id: "22222222-2222-4222-8222-222222222222",
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+
+ Test Files  3 failed | 35 passed (38)
+      Tests  3 failed | 131 passed (134)
+   Start at  21:00:28
+   Duration  100.65s (environment 54%, import 22%, setup 13%, tests 7%, transform 3%)
+
+Environment  jsdom was created 38 times · 551.62s total, 54% of tracked time
+             create it once per worker with pool: 'vmThreads' (keeps per-file isolation) or isolate: false (shares it across files)
+             learn more: https://vitest.dev/guide/improving-performance#test-environments
+

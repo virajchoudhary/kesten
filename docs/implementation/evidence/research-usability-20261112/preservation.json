@@ -1,0 +1,24 @@
+{
+  "captured_at": "2026-11-12T15:49:00.303632+00:00",
+  "checks": [
+    {
+      "scope": "protected_runtime",
+      "count": 496,
+      "mismatches": [],
+      "result": "PASS"
+    },
+    {
+      "scope": "research_artifacts",
+      "count": 17,
+      "mismatches": [],
+      "result": "PASS"
+    },
+    {
+      "scope": "pre_existing_changes",
+      "count": 22,
+      "mismatches": [],
+      "result": "PASS"
+    }
+  ],
+  "original_database_sha256": "93745bfc1a3149a0f77bbcdd1a50f712195750879f3fb313728ab9811f99715b"
+}

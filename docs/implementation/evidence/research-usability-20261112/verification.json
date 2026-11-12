@@ -1,0 +1,242 @@
+{
+  "captured_at": "2026-11-12T15:55:37.178197+00:00",
+  "branch": "codex/cadrisyn-foundation",
+  "feature_commit": "a8de2b8731c1d7e0d2c2945b60436731b0b42df5",
+  "concurrency_commit": "24254cee393aa1a987cd788ecb814dd075928dd5",
+  "baseline_commit": "b8ca34f7649c4833b9dc215dac87bc7295e6b0bd",
+  "scope": "Private research usability over synthetic/schema fixtures; no empirical forecasting acceptance",
+  "release_decision": "NO_GO",
+  "qualified_historical_archive": false,
+  "checks": {
+    "postgres_research": {
+      "result": "PASS",
+      "tests": 85,
+      "skips": 0,
+      "receipt": "postgres-qualification.json",
+      "test_database_teardown": "PASS"
+    },
+    "postgres_selected_after_connection_fix": {
+      "result": "PASS",
+      "tests": 12,
+      "skips": 0,
+      "log": "postgres-selected-tests.txt"
+    },
+    "post_postgres_metadata_change": {
+      "description": "Optional OpenAPI discriminator hint removed; runtime serializers unchanged",
+      "changed_sources": {
+        "backend/research/serializers.py": {
+          "tested_sha256": "d1add068a2d91318fb62fded0420cd422349725b656c54f2e9d1c687129ca177",
+          "current_sha256": "bdf7f41766d7bb70aabcbb3a035533d3b1a57a990758b2d6ac9b584022d86b1b"
+        }
+      },
+      "followup_api_tests": 6,
+      "followup_result": "PASS",
+      "log": "provenance-followup.txt"
+    },
+    "frontend": {
+      "result": "PASS",
+      "tests": 134,
+      "files": 38,
+      "workers": 2,
+      "timeouts_unchanged": true,
+      "log": "frontend-tests.txt"
+    },
+    "typescript": {
+      "result": "PASS",
+      "log": "typecheck.txt",
+      "also_validated_by_final_build": true
+    },
+    "eslint": {
+      "result": "PASS",
+      "log": "lint.txt",
+      "subsequent_changed_paths_scoped_check": "PASS"
+    },
+    "ruff": {
+      "result": "PASS",
+      "version": "0.15.17",
+      "rules": "E4,E7,E9,F",
+      "notes": "Workspace venv has no ruff module; existing host executable used. No dependency change."
+    },
+    "openapi": {
+      "result": "PASS",
+      "command": "manage.py spectacular --format openapi-json --validate --fail-on-warn",
+      "semantic_match": "contracts/openapi.json",
+      "unused_database_absent": true
+    },
+    "optimized_local_build": {
+      "result": "PASS",
+      "log": "build.txt",
+      "deployed": false
+    },
+    "chromium": {
+      "result": "PASS",
+      "distinct_cases": 4,
+      "split_execution": true,
+      "notes": "Initial four-case run passed three; old empty-state selector corrected, affected existing workflow passed. Final new workflow passed after mobile offset correction.",
+      "browser": "156.0.8078.4",
+      "final_workflow": "browser-final.json",
+      "source": "web/e2e/research-usability.spec.ts"
+    },
+    "independent_closure": {
+      "result": "PASS",
+      "standards_findings": 0,
+      "spec_findings": 0,
+      "scope": "Picker limit, generated provenance contract, reviewed affected code; parent closed final mobile browser regression",
+      "model_attribution": "ROUTING_UNVERIFIED",
+      "report": "independent-review.md"
+    },
+    "preservation": {
+      "result": "PASS",
+      "runtime_files": 496,
+      "research_artifacts": 17,
+      "pre_existing_changes": 22,
+      "receipt": "preservation.json"
+    }
+  },
+  "source_worktree_sha256": {
+    "backend/quantvision/settings.py": "61cfd1e4ff822974f3cd023cdfe2b7c8341f2bfced03b36e1857ee176f16c1b3",
+    "backend/research/services.py": "54a4958bc7fc0ca187b90d41de3056909ebcb58257e886bf55c395eea28270ee",
+    "backend/research/serializers.py": "bdf7f41766d7bb70aabcbb3a035533d3b1a57a990758b2d6ac9b584022d86b1b",
+    "backend/research/views.py": "cba22072aa14df5ac3a630bf7d8e06faf168d4ac2ada07434faa79e45bd4e7c4",
+    "backend/research/urls.py": "562f85ba5780bdd4422b8e91722d2e5ade3b75bcc19c1fc4d2b1d925fe96be7c",
+    "backend/research/tests/test_provenance.py": "e7c50afb9aa42da69f9df6ff1475d3c312142372d1f171131251b4788583a230",
+    "contracts/openapi.json": "a7e51ffc4390d426e2f89b3dc13ac2198e7a0f223115164f8f5776a5eb7b3b3d",
+    "web/src/lib/api/generated.ts": "0c6a0890d6425037757595f43a1cb58c37d4e935c2ebe349d11bafdc9efa9c52",
+    "web/e2e/research-usability.spec.ts": "be303e055ca92a2c25681c6b3ea0705e0876326cc1864fff047c785e08c2cb1a",
+    "web/e2e/research-quality.spec.ts": "1a79115dd3b1374ad5a294ede202470d8bd6b290fcfd249d846172e5df0a837f",
+    "web/src/features/research/research-api.ts": "62bba1349b60c4d2a6290982b48ac7ba749b1bb954b4d0af826552b215a7da8c",
+    "web/src/features/research/research-api.test.ts": "623426b173849b85dfb89a2f4789d57fc899bfddb7be547af4f79e681eac04d1",
+    "web/src/features/research/research-schemas.ts": "2126e99aad3e6611171abcec4f8e0936c9f0aff6165364550ff4993ed89f48c7",
+    "web/src/features/research/research-workspace.tsx": "d1b465d0d86150780f4c7845096a0aff4f65498da66fdc48da68b78db25f6e46",
+    "web/src/features/research/research-evaluation-setup.tsx": "44f86bf0f1a71fcf0454c99522b64a57ab4c83a94ec4302ace77928bb1f33967",
+    "web/src/features/research/research-evaluation-setup.test.tsx": "c688c9d9c4991b64ac0f21686fc934efee52c28d9526d6f8fa95e75a00f76415",
+    "web/src/features/research/research-results.tsx": "06703291bd33c89f2300c5f6fb9815dd1f27f62a367635012207095c0f785ffc",
+    "web/src/features/research/research-dock-inspector.tsx": "ed0f024997db6704885abf5aac98fbb110943e4e4bf3c17b9193f744ffed27ee",
+    "web/src/features/research/research-dock.test.tsx": "cc7a1d51d3dc2317f290d964fdd2bf87a4cbb71569b9566b8634d08cae26c551",
+    "web/src/features/research/research-test-fixtures.ts": "ccb53db25a6c9e9650f69b033979ee01cf8b1e515fbc337e38a7d8a68bb423e8",
+    "web/src/features/research/research-dataset-evidence.tsx": "4c5ba4922450ca380d0f419b33b5c72f75e7562157cd53d4dedf9fd1ecc7259d",
+    "web/src/features/research/research-dataset-evidence.test.tsx": "a0ea2a710d7b272c3c7acda316a8ed6de3435ca771a84796bb99188bc68092ec",
+    "web/src/features/research/research-baseline-summary.tsx": "f81be8e83ff09115823b6d30efacf6f3bd3e0afffabc9fbfe3314f7009f1e80a",
+    "web/src/features/research/research-baseline-summary.test.tsx": "9b1c8362bbf7d90b1ad630c585d616de4eeeb5a522db7ce68154c1bcf2bb0320",
+    "web/src/features/research/research-provenance-contract.test.ts": "466a463caa709d175af2eceb365a2272257097f5a28d3a7b8e89c97b89d226ab"
+  },
+  "unchanged_quantitative_paths": [],
+  "artifacts": {
+    "after-baselines-mobile-dark-viewport.png": {
+      "bytes": 47704,
+      "sha256": "f10795c5ce20a2577cfbd45793800ef1c40e817064ab827064fc7ed8c475d53e"
+    },
+    "after-baselines-mobile-light-viewport.png": {
+      "bytes": 47490,
+      "sha256": "9d41c8a60f4c835105a41cd06c1cf07aa4ec18435bb6e4c39f6a03441f5f9452"
+    },
+    "after-provenance-desktop.png": {
+      "bytes": 311875,
+      "sha256": "5b862b8d1753f3d81cde8dc7a5332850f84caa4e8dfd5602b2763ae8ab014840"
+    },
+    "after-results-desktop.png": {
+      "bytes": 374971,
+      "sha256": "21c6ba1fe7b6d70392ad8c8eb8978b7a8131118ec66bac846ef8394e22b2c4fc"
+    },
+    "after-results-tablet.png": {
+      "bytes": 324916,
+      "sha256": "c0023151c95e4a88391a717c16c917e8b3f9fb74448ffacb45bb310be6fcf2f2"
+    },
+    "after-results-wide.png": {
+      "bytes": 401838,
+      "sha256": "5bc7ecf107ff0a808cb3590faed572f3f71ff5154c81a405ba90b90502ee5667"
+    },
+    "after-setup-desktop.png": {
+      "bytes": 189633,
+      "sha256": "b97fedf7d7a97e16138fe0ca6eee2afc06668c1fa2d5bdc536238e83db77ccf7"
+    },
+    "before-results-desktop.png": {
+      "bytes": 192982,
+      "sha256": "d9bddad89460a0941416dcdfb51ec2996f1f42f1560c1fac9dd42d39170a835c"
+    },
+    "before-results-mobile.png": {
+      "bytes": 182222,
+      "sha256": "247e33320d3fa15488640d313219d62443d98d4fa8e828f571c9733770478207"
+    },
+    "before-setup-desktop.png": {
+      "bytes": 69832,
+      "sha256": "5374e8ba72a9e4d44ec2c7db91c532b165c4957e9f87ab795f28c19804c879d5"
+    },
+    "browser-existing-workflow-closure.txt": {
+      "bytes": 361,
+      "sha256": "abae3894162fbbf9ee6d398d1f1098e5e91d19d41147e8f11b7cf7a1a51b94a1"
+    },
+    "browser-final.json": {
+      "bytes": 632,
+      "sha256": "9f4b7fbb1cdc32a9e8e7d9b370019d777d04889ce40f2f930ecbd3471f359979"
+    },
+    "browser-final.txt": {
+      "bytes": 378,
+      "sha256": "48d3de0b0f4ff7e1189c7200374c0f2b646b4d15109d5111472feab99042cccc"
+    },
+    "browser-initial.txt": {
+      "bytes": 2896,
+      "sha256": "08cce2aad04cd9d2870e1217e352cb162b621a75e029f2e4771c162780af4364"
+    },
+    "build.txt": {
+      "bytes": 950,
+      "sha256": "9dbf6abe02542f5bd1de71afb63f9869cd5f86e654c71e2f6788ab10e1e23adb"
+    },
+    "frontend-contention-before.txt": {
+      "bytes": 3023,
+      "sha256": "a650d80e1f541540048d85b620e3bf3a57ab374d977b5e55c572935a833fc858"
+    },
+    "frontend-tests.txt": {
+      "bytes": 569,
+      "sha256": "802fe8e542eeb04a475733456cc091884d9d059343fd5a4a7616cfa6d7aec923"
+    },
+    "generated-contract-after.txt": {
+      "bytes": 48,
+      "sha256": "726e9b14eafc499bf986a898e2451e8c6c37d576682b5694583c5ac7fd1f2752"
+    },
+    "generated-contract-before.txt": {
+      "bytes": 2032,
+      "sha256": "289ababafb61cb5064d19831540faad58ac32c7b6a3815b7d298f4043f323372"
+    },
+    "independent-review.md": {
+      "bytes": 3270,
+      "sha256": "5a2eb73f4eac018befd32b08e2819b06ecfe44cd830556b78a2d5f8981583eae"
+    },
+    "lint.txt": {
+      "bytes": 39,
+      "sha256": "c1de7ea4f43c3a1f92742eb5198bbe321648fd1d07c582d49333a7d416202a9a"
+    },
+    "mobile-anchor-before.txt": {
+      "bytes": 2256,
+      "sha256": "fb40895f44f3b35816a139dbe630dbd8fcd581b3dba9ce0ff1168100f8dac615"
+    },
+    "postgres-qualification.json": {
+      "bytes": 5529,
+      "sha256": "24668ca011da197d1062357ee2cf66946912a49d21167a788c15c834dd637ca3"
+    },
+    "postgres-selected-qualification.txt": {
+      "bytes": 994,
+      "sha256": "9b4d2c109c2acfe8c8fecdaca78144c6bb312c36d9ec23184e07e72bc18b1e26"
+    },
+    "postgres-selected-tests.txt": {
+      "bytes": 8546,
+      "sha256": "650622b7e5688c03018e45aec403e57f53b8bb82335d1bb99a4714d64b4a063c"
+    },
+    "postgres-tests.txt": {
+      "bytes": 57344,
+      "sha256": "9fedc36503ec84d4d992516d80c66860ee9cb62f5a01a59bc498e05f768a2da7"
+    },
+    "preservation.json": {
+      "bytes": 522,
+      "sha256": "9b40c076d7b11aae48503d8ea2ded4b11648199d738de003ec3e7c6edab1e50f"
+    },
+    "provenance-followup.txt": {
+      "bytes": 6905,
+      "sha256": "5103c5e454b6387bfdab24c89119566698f84cad0676ce8f52dd058f427cdc0d"
+    },
+    "typecheck.txt": {
+      "bytes": 48,
+      "sha256": "726e9b14eafc499bf986a898e2451e8c6c37d576682b5694583c5ac7fd1f2752"
+    }
+  }
+}

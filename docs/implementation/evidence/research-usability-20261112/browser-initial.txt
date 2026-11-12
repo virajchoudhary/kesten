@@ -1,0 +1,45 @@
+
+Running 4 tests using 1 worker
+
+(node:34696) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › e2e\research-quality.spec.ts:70:5 › public pages retain readable light and dark layouts on narrow screens (17.2s)
+  x  2 [chromium] › e2e\research-quality.spec.ts:89:5 › research inspection, comparison, replay and exact export use saved identities (55.7s)
+(node:37596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 3 [chromium] › e2e\research-quality.spec.ts:236:5 › account changes in another tab clear private research before a second account loads (6.2s)
+  ok 4 [chromium] › e2e\research-usability.spec.ts:13:5 › private dataset discovery, source inspection and baseline interpretation remain exploratory (27.7s)
+
+
+  1) [chromium] › e2e\research-quality.spec.ts:89:5 › research inspection, comparison, replay and exact export use saved identities 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText(/No private research dataset is available for xnas-aapl/u)
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText(/No private research dataset is available for xnas-aapl/u) with timeout 10000ms
+      - waiting for getByText(/No private research dataset is available for xnas-aapl/u)
+
+
+      227 |   await expect(
+      228 |     page.getByText(/No private research dataset is available for xnas-aapl/u),
+    > 229 |   ).toBeVisible();
+          |     ^
+      230 |   await expect(
+      231 |     page.getByRole("button", { name: "Run evaluation", exact: true }),
+      232 |   ).toHaveCount(0);
+        at C:\stock price predictor\web\e2e\research-quality.spec.ts:229:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.local\research-usability-20261112\browser-final\research-quality-research--b22a8-export-use-saved-identities-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.local\research-usability-20261112\browser-final\research-quality-research--b22a8-export-use-saved-identities-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\research-quality.spec.ts:89:5 › research inspection, comparison, replay and exact export use saved identities 
+  3 passed (2.5m)

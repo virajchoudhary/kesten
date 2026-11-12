@@ -1,0 +1,134 @@
+{
+  "run_id": "5fec032612dd4cb2bd139b8b8d112253",
+  "captured_at_utc": "2026-11-12T19:24:52.608796+05:30",
+  "branch": "codex/cadrisyn-foundation",
+  "commit": "b8ca34f7649c4833b9dc215dac87bc7295e6b0bd",
+  "scope": "Full Django research.tests suite on a fresh isolated PostgreSQL instance; no source edits or commits.",
+  "image": {
+    "tag": "postgres:17.11",
+    "image_id": "sha256:748a18a54d3842d43bc156f0840d78029b8d349e0feca98c12b9c4ce3404a6b3",
+    "os": "linux",
+    "architecture": "amd64",
+    "repo_digests": [
+      "postgres@sha256:748a18a54d3842d43bc156f0840d78029b8d349e0feca98c12b9c4ce3404a6b3"
+    ],
+    "vendor_attribution": "Docker Official Image repository: docker.io/library/postgres",
+    "pull_policy": "never"
+  },
+  "postgres_server_version": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "container": {
+    "id": "8e83929ac17b581f4d96b0bc833dabe2e91a805a55c6467cf745c202f6cbfe74",
+    "name": "kerquant-research-pg-final-5fec032612dd",
+    "labels": {
+      "kerquant.test.run": "5fec032612dd4cb2bd139b8b8d112253",
+      "kerquant.test.scope": "research-usability"
+    },
+    "status_before_tests": "running",
+    "data_mount": "tmpfs:/var/lib/postgresql/data",
+    "data_mount_options": "rw,nosuid,nodev,size=512m",
+    "data_filesystem_verified_inside_container": "tmpfs",
+    "host_binding": "127.0.0.1:53939",
+    "database_user_is_unique_to_run": true,
+    "password_is_random_and_not_recorded": true
+  },
+  "suite": {
+    "command": ".venv/Scripts/python.exe manage.py test research.tests --verbosity 2",
+    "working_directory": "backend",
+    "django_version": "5.2.19",
+    "psycopg_version": "3.3.8",
+    "started_at_utc": "2026-11-12T19:23:54.7305885+05:30",
+    "finished_at_utc": "2026-11-12T19:24:48.3608464+05:30",
+    "exit_code": 0,
+    "tests_run": 85,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "migration_steps_applied_in_test_database": 46,
+    "provenance_test_results": [
+      {
+        "name": "test_private_metadata_is_readable_before_evaluation_without_archived_receipt",
+        "passed": true
+      },
+      {
+        "name": "test_matching_receipt_exposes_identities_and_declared_rights_not_source_qualification",
+        "passed": true
+      },
+      {
+        "name": "test_failed_integrity_does_not_disclose_corrupt_source_fields_or_rewrite_evidence",
+        "passed": true
+      },
+      {
+        "name": "test_owner_lookup_is_not_limited_to_the_newest_hundred_datasets",
+        "passed": true
+      },
+      {
+        "name": "test_other_account_and_anonymous_cannot_inspect_provenance",
+        "passed": true
+      },
+      {
+        "name": "test_dataset_identity_mismatch_is_an_integrity_failure",
+        "passed": true
+      }
+    ],
+    "concurrency_test_passed": true,
+    "test_database_removed_after_suite": true,
+    "isolated_application_database_present_until_container_shutdown": true,
+    "sqlite_fallback_file_absent": true,
+    "result": "PASS",
+    "migration_steps_logged_after_first_test": 1,
+    "all_logged_migration_steps_succeeded": true,
+    "all_discovered_tests_passed": true
+  },
+  "container_cleanup": {
+    "stop_succeeded": true,
+    "removed": true,
+    "detail": "verified_id_label_stop",
+    "label_used_to_verify_ownership": "kerquant.test.run=5fec032612dd4cb2bd139b8b8d112253",
+    "only_new_container_may_be_stopped": true
+  },
+  "source_file_sha256": {
+    "backend/research/services.py": {
+      "sha256_before": "54a4958bc7fc0ca187b90d41de3056909ebcb58257e886bf55c395eea28270ee",
+      "sha256_after": "54a4958bc7fc0ca187b90d41de3056909ebcb58257e886bf55c395eea28270ee",
+      "unchanged_during_run": true
+    },
+    "backend/research/serializers.py": {
+      "sha256_before": "d1add068a2d91318fb62fded0420cd422349725b656c54f2e9d1c687129ca177",
+      "sha256_after": "d1add068a2d91318fb62fded0420cd422349725b656c54f2e9d1c687129ca177",
+      "unchanged_during_run": true
+    },
+    "backend/research/views.py": {
+      "sha256_before": "cba22072aa14df5ac3a630bf7d8e06faf168d4ac2ada07434faa79e45bd4e7c4",
+      "sha256_after": "cba22072aa14df5ac3a630bf7d8e06faf168d4ac2ada07434faa79e45bd4e7c4",
+      "unchanged_during_run": true
+    },
+    "backend/research/urls.py": {
+      "sha256_before": "562f85ba5780bdd4422b8e91722d2e5ade3b75bcc19c1fc4d2b1d925fe96be7c",
+      "sha256_after": "562f85ba5780bdd4422b8e91722d2e5ade3b75bcc19c1fc4d2b1d925fe96be7c",
+      "unchanged_during_run": true
+    },
+    "backend/quantvision/settings.py": {
+      "sha256_before": "61cfd1e4ff822974f3cd023cdfe2b7c8341f2bfced03b36e1857ee176f16c1b3",
+      "sha256_after": "61cfd1e4ff822974f3cd023cdfe2b7c8341f2bfced03b36e1857ee176f16c1b3",
+      "unchanged_during_run": true
+    },
+    "backend/research/tests/test_postgres.py": {
+      "sha256_before": "4a74f987d9a3cdde4567202b50e8e1d63deb77800862670a3051d3ceffa895db",
+      "sha256_after": "4a74f987d9a3cdde4567202b50e8e1d63deb77800862670a3051d3ceffa895db",
+      "unchanged_during_run": true
+    },
+    "backend/research/tests/test_provenance.py": {
+      "sha256_before": "e7c50afb9aa42da69f9df6ff1475d3c312142372d1f171131251b4788583a230",
+      "sha256_after": "e7c50afb9aa42da69f9df6ff1475d3c312142372d1f171131251b4788583a230",
+      "unchanged_during_run": true
+    }
+  },
+  "source_files_stable_during_run": true,
+  "data_integrity_scope": "Synthetic fixtures and schema/provenance behavior only; no empirical market-data or forecasting qualification.",
+  "no_image_build_or_pull": true,
+  "failure": null,
+  "evidence_files": [
+    "qualification.json",
+    "test-results.txt"
+  ]
+}

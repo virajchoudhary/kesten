@@ -1,0 +1,93 @@
+Creating test database for alias 'default' ('test_research_adcd455254d5')...
+
+Found 12 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: corsheaders, drf_spectacular, messages, rest_framework, staticfiles
+  Apply all migrations: accounts, admin, api, auth, contenttypes, django_celery_beat, research, sessions, workspace
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying accounts.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying api.0001_initial... OK
+  Applying api.0002_searchedticker_alter_optimizedhyperparams_id... OK
+  Applying api.0003_optimizedhyperparams_dropout_and_more... OK
+  Applying api.0004_alter_optimizedhyperparams_id_and_more... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying django_celery_beat.0001_initial... OK
+  Applying django_celery_beat.0002_auto_20161118_0346... OK
+  Applying django_celery_beat.0003_auto_20161209_0049... OK
+  Applying django_celery_beat.0004_auto_20170221_0000... OK
+  Applying django_celery_beat.0005_add_solarschedule_events_choices... OK
+  Applying django_celery_beat.0006_auto_20180322_0932... OK
+  Applying django_celery_beat.0007_auto_20180521_0826... OK
+  Applying django_celery_beat.0008_auto_20180914_1922... OK
+  Applying django_celery_beat.0006_auto_20180210_1226... OK
+  Applying django_celery_beat.0006_periodictask_priority... OK
+  Applying django_celery_beat.0009_periodictask_headers... OK
+  Applying django_celery_beat.0010_auto_20190429_0326... OK
+  Applying django_celery_beat.0011_auto_20190508_0153... OK
+  Applying django_celery_beat.0012_periodictask_expire_seconds... OK
+  Applying django_celery_beat.0013_auto_20200609_0727... OK
+  Applying django_celery_beat.0014_remove_clockedschedule_enabled... OK
+  Applying django_celery_beat.0015_edit_solarschedule_events_choices... OK
+  Applying django_celery_beat.0016_alter_crontabschedule_timezone... OK
+  Applying django_celery_beat.0017_alter_crontabschedule_month_of_year... OK
+  Applying django_celery_beat.0018_improve_crontab_helptext... OK
+  Applying django_celery_beat.0019_alter_periodictasks_options... OK
+  Applying research.0001_initial... OK
+  Applying research.0002_researchintakereceipt... OK
+  Applying sessions.0001_initial... OK
+test_csv_command_and_duplicate_json_rejection (research.tests.test_intake_storage.IntakeStorageTests.test_csv_command_and_duplicate_json_rejection) ... ok
+test_exact_artifacts_repeat_acquisitions_and_baseline_replay (research.tests.test_intake_storage.IntakeStorageTests.test_exact_artifacts_repeat_acquisitions_and_baseline_replay) ... ok
+test_historical_declarations_without_source_receipt_are_rejected (research.tests.test_intake_storage.IntakeStorageTests.test_historical_declarations_without_source_receipt_are_rejected) ... ok
+test_mismatched_source_and_unauthorized_operator_leave_no_rows (research.tests.test_intake_storage.IntakeStorageTests.test_mismatched_source_and_unauthorized_operator_leave_no_rows) ... ok
+test_private_receipt_isolation_and_tamper_detection (research.tests.test_intake_storage.IntakeStorageTests.test_private_receipt_isolation_and_tamper_detection) ... {"timestamp":"2026-11-12T13:26:30.323784+00:00","level":"INFO","event":"http_request","request_id":"330939cc4ff241c28fb8dc01044485d5","method":"GET","route":"api/v1/research/datasets/","status":200,"duration_ms":15.0}
+ok
+test_corrupt_archive_blocks_new_runs_but_preserves_saved_results_and_replay (research.tests.test_intake_readiness.HistoricalEvaluationReadinessTests.test_corrupt_archive_blocks_new_runs_but_preserves_saved_results_and_replay) ... {"timestamp":"2026-11-12T13:26:30.810245+00:00","level":"INFO","event":"http_request","request_id":"78e32911499a4fa991c700a3468c8613","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:26:31.383837+00:00","level":"INFO","event":"http_request","request_id":"70970928bc724911948d86b8e193e8fc","method":"POST","route":"api/v1/research/runs/","status":201,"duration_ms":109.0}
+{"timestamp":"2026-11-12T13:26:31.446965+00:00","level":"INFO","event":"http_request","request_id":"d02f197bf36e49259b05e076d8062364","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":62.0}
+{"timestamp":"2026-11-12T13:26:31.451410+00:00","level":"ERROR","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:26:31.555862+00:00","level":"INFO","event":"http_request","request_id":"20b506f67658449488827bad98d3a8bf","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":110.0}
+{"timestamp":"2026-11-12T13:26:31.555862+00:00","level":"ERROR","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:26:31.578719+00:00","level":"INFO","event":"http_request","request_id":"07ba36341a9a41de911ccd7f796d3e1e","method":"POST","route":"api/v1/research/runs/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:26:31.596951+00:00","level":"INFO","event":"http_request","request_id":"304e6aabdb5a46f2ae451eb886f2c38f","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/","status":200,"duration_ms":16.0}
+ok
+test_historical_dataset_without_source_receipt_cannot_start_new_run (research.tests.test_intake_readiness.HistoricalEvaluationReadinessTests.test_historical_dataset_without_source_receipt_cannot_start_new_run) ... {"timestamp":"2026-11-12T13:26:32.053325+00:00","level":"INFO","event":"http_request","request_id":"ca966b70802d4aa2bfc9b686556d96b2","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:26:32.095076+00:00","level":"INFO","event":"http_request","request_id":"d6ea879185074ef299ee05c942493c97","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":31.0}
+{"timestamp":"2026-11-12T13:26:32.095076+00:00","level":"ERROR","event":"django.request","request_id":null}
+ok
+test_invalid_newest_receipt_is_not_hidden_by_an_older_valid_acquisition (research.tests.test_intake_readiness.HistoricalEvaluationReadinessTests.test_invalid_newest_receipt_is_not_hidden_by_an_older_valid_acquisition) ... {"timestamp":"2026-11-12T13:26:32.503859+00:00","level":"INFO","event":"http_request","request_id":"b00a0be974a8439c8f3fcdd84d408d59","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:26:33.434542+00:00","level":"INFO","event":"http_request","request_id":"ade6554cbc0b4b4f8a943c412e925cdb","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":47.0}
+{"timestamp":"2026-11-12T13:26:33.435091+00:00","level":"ERROR","event":"django.request","request_id":null}
+ok
+test_concurrent_identical_requests_persist_one_complete_result (research.tests.test_postgres.ResearchPostgresTests.test_concurrent_identical_requests_persist_one_complete_result) ... ok
+test_dry_run_validates_without_actors_or_database_and_does_not_certify_source (research.tests.test_intake_readiness.IntakePreflightTests.test_dry_run_validates_without_actors_or_database_and_does_not_certify_source) ... ok
+test_preflight_rejects_missing_rights_and_tampered_bytes_without_database (research.tests.test_intake_readiness.IntakePreflightTests.test_preflight_rejects_missing_rights_and_tampered_bytes_without_database) ... ok
+test_write_mode_still_requires_acknowledgement_and_both_actors (research.tests.test_intake_readiness.IntakePreflightTests.test_write_mode_still_requires_acknowledgement_and_both_actors) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 10.624s
+
+OK
+Destroying test database for alias 'default' ('test_research_adcd455254d5')...
+
+  Applying workspace.0001_initial... OK
+System check identified no issues (0 silenced).
+

@@ -1,5 +1,7 @@
 # Run private forecast research
 
+For dataset discovery, source inspection and baseline interpretation, see the [research usability workflow](RESEARCH-USABILITY-OPERATIONS.md) and [12 November qualification](RESEARCH-USABILITY.md). The isolated PostgreSQL research suite now includes a passing concurrency check with clean teardown. Historical source qualification remains blocked.
+
 For current Phase 3.5 container/PostgreSQL qualification and the isolated 8085 preview, use [qualification operations](PHASE35-OPERATIONS.md) and [results](PHASE35.md). The earlier Docker startup blocker is resolved; historical-data qualification remains blocked.
 
 This phase supports fixed reference methods over frozen datasets. The supplied 180-session fixture is synthetic and establishes no empirical forecasting performance. No advanced ML model, interval, strategy or paid provider is enabled.

@@ -1,0 +1,32 @@
+
+Running 1 test using 1 worker
+
+(node:30772) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › e2e\research-usability.spec.ts:13:5 › private dataset discovery, source inspection and baseline interpretation remain exploratory (7.3s)
+
+
+  1) [chromium] › e2e\research-usability.spec.ts:13:5 › private dataset discovery, source inspection and baseline interpretation remain exploratory 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 45
+    Received:    0.296875
+
+       99 |     const navigationBox = await page.getByRole("navigation", { name: "Research sections" }).boundingBox();
+      100 |     if (!headingBox || !navigationBox) throw new Error("Research navigation or baseline heading is missing.");
+    > 101 |     expect(headingBox.y).toBeGreaterThanOrEqual(navigationBox.y + navigationBox.height);
+          |                          ^
+      102 |     await page.screenshot({ path: testInfo.outputPath(`after-baselines-mobile-${theme}-viewport.png`) });
+      103 |   }
+      104 |   expect(pageErrors).toEqual([]);
+        at C:\stock price predictor\web\e2e\research-usability.spec.ts:101:26
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\.local\research-usability-20261112\browser-anchor-before\research-usability-private-d5d37-retation-remain-exploratory-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\.local\research-usability-20261112\browser-anchor-before\research-usability-private-d5d37-retation-remain-exploratory-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\research-usability.spec.ts:13:5 › private dataset discovery, source inspection and baseline interpretation remain exploratory 

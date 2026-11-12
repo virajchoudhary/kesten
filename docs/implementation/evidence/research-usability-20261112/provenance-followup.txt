@@ -1,0 +1,82 @@
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+
+Found 6 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: corsheaders, drf_spectacular, messages, rest_framework, staticfiles
+  Apply all migrations: accounts, admin, api, auth, contenttypes, django_celery_beat, research, sessions, workspace
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying accounts.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying api.0001_initial... OK
+  Applying api.0002_searchedticker_alter_optimizedhyperparams_id... OK
+  Applying api.0003_optimizedhyperparams_dropout_and_more... OK
+  Applying api.0004_alter_optimizedhyperparams_id_and_more... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying django_celery_beat.0001_initial... OK
+  Applying django_celery_beat.0002_auto_20161118_0346... OK
+  Applying django_celery_beat.0003_auto_20161209_0049... OK
+  Applying django_celery_beat.0004_auto_20170221_0000... OK
+  Applying django_celery_beat.0005_add_solarschedule_events_choices... OK
+  Applying django_celery_beat.0006_auto_20180322_0932... OK
+  Applying django_celery_beat.0007_auto_20180521_0826... OK
+  Applying django_celery_beat.0008_auto_20180914_1922... OK
+  Applying django_celery_beat.0006_auto_20180210_1226... OK
+  Applying django_celery_beat.0006_periodictask_priority... OK
+  Applying django_celery_beat.0009_periodictask_headers... OK
+  Applying django_celery_beat.0010_auto_20190429_0326... OK
+  Applying django_celery_beat.0011_auto_20190508_0153... OK
+  Applying django_celery_beat.0012_periodictask_expire_seconds... OK
+  Applying django_celery_beat.0013_auto_20200609_0727... OK
+  Applying django_celery_beat.0014_remove_clockedschedule_enabled... OK
+  Applying django_celery_beat.0015_edit_solarschedule_events_choices... OK
+  Applying django_celery_beat.0016_alter_crontabschedule_timezone... OK
+  Applying django_celery_beat.0017_alter_crontabschedule_month_of_year... OK
+  Applying django_celery_beat.0018_improve_crontab_helptext... OK
+  Applying django_celery_beat.0019_alter_periodictasks_options... OK
+  Applying research.0001_initial... OK
+  Applying research.0002_researchintakereceipt... OK
+  Applying sessions.0001_initial... OK
+test_dataset_identity_mismatch_is_an_integrity_failure (research.tests.test_provenance.DatasetProvenanceTests.test_dataset_identity_mismatch_is_an_integrity_failure) ... {"timestamp":"2026-11-12T14:05:13.185498+00:00","level":"INFO","event":"http_request","request_id":"7a392e4091e948c8a2ed21c99b522e34","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":503,"duration_ms":47.0}
+{"timestamp":"2026-11-12T14:05:13.187490+00:00","level":"ERROR","event":"django.request","request_id":null}
+ok
+test_failed_integrity_does_not_disclose_corrupt_source_fields_or_rewrite_evidence (research.tests.test_provenance.DatasetProvenanceTests.test_failed_integrity_does_not_disclose_corrupt_source_fields_or_rewrite_evidence) ... {"timestamp":"2026-11-12T14:05:14.128953+00:00","level":"INFO","event":"http_request","request_id":"c62a64d05b6948edb83b68332becc028","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":200,"duration_ms":47.0}
+ok
+test_matching_receipt_exposes_identities_and_declared_rights_not_source_qualification (research.tests.test_provenance.DatasetProvenanceTests.test_matching_receipt_exposes_identities_and_declared_rights_not_source_qualification) ... {"timestamp":"2026-11-12T14:05:15.147256+00:00","level":"INFO","event":"http_request","request_id":"ff65aca20aac44079ad946af773e2d53","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":200,"duration_ms":79.0}
+ok
+test_other_account_and_anonymous_cannot_inspect_provenance (research.tests.test_provenance.DatasetProvenanceTests.test_other_account_and_anonymous_cannot_inspect_provenance) ... {"timestamp":"2026-11-12T14:05:16.029266+00:00","level":"INFO","event":"http_request","request_id":"9b00a450e1bd46d986aff71412b0a71c","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T14:05:16.029266+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T14:05:16.032284+00:00","level":"INFO","event":"http_request","request_id":"32ccd2e0311d4100aa7cbb3a055f75a3","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T14:05:16.032284+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_owner_lookup_is_not_limited_to_the_newest_hundred_datasets (research.tests.test_provenance.DatasetProvenanceTests.test_owner_lookup_is_not_limited_to_the_newest_hundred_datasets) ... {"timestamp":"2026-11-12T14:05:16.651816+00:00","level":"INFO","event":"http_request","request_id":"4177ad9d855941fd8db0b9d1ba01a63f","method":"GET","route":"api/v1/research/datasets/","status":200,"duration_ms":47.0}
+{"timestamp":"2026-11-12T14:05:16.684860+00:00","level":"INFO","event":"http_request","request_id":"f6411096d69b483b8a2947cf775607e1","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":200,"duration_ms":31.0}
+ok
+test_private_metadata_is_readable_before_evaluation_without_archived_receipt (research.tests.test_provenance.DatasetProvenanceTests.test_private_metadata_is_readable_before_evaluation_without_archived_receipt) ... {"timestamp":"2026-11-12T14:05:17.095979+00:00","level":"INFO","event":"http_request","request_id":"5b045d284b484506b186bf6396a1f349","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":200,"duration_ms":31.0}
+ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 5.688s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+
+  Applying workspace.0001_initial... OK
+System check identified no issues (0 silenced).

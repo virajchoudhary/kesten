@@ -1,0 +1,358 @@
+Creating test database for alias 'default' ('test_[REDACTED_TEST_DATABASE]')...
+
+Found 85 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: corsheaders, drf_spectacular, messages, rest_framework, staticfiles
+  Apply all migrations: accounts, admin, api, auth, contenttypes, django_celery_beat, research, sessions, workspace
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying auth.0001_initial... OK
+  Applying accounts.0001_initial... OK
+  Applying admin.0001_initial... OK
+  Applying admin.0002_logentry_remove_auto_add... OK
+  Applying admin.0003_logentry_add_action_flag_choices... OK
+  Applying api.0001_initial... OK
+  Applying api.0002_searchedticker_alter_optimizedhyperparams_id... OK
+  Applying api.0003_optimizedhyperparams_dropout_and_more... OK
+  Applying api.0004_alter_optimizedhyperparams_id_and_more... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying django_celery_beat.0001_initial... OK
+  Applying django_celery_beat.0002_auto_20161118_0346... OK
+  Applying django_celery_beat.0003_auto_20161209_0049... OK
+  Applying django_celery_beat.0004_auto_20170221_0000... OK
+  Applying django_celery_beat.0005_add_solarschedule_events_choices... OK
+  Applying django_celery_beat.0006_auto_20180322_0932... OK
+  Applying django_celery_beat.0007_auto_20180521_0826... OK
+  Applying django_celery_beat.0008_auto_20180914_1922... OK
+  Applying django_celery_beat.0006_auto_20180210_1226... OK
+  Applying django_celery_beat.0006_periodictask_priority... OK
+  Applying django_celery_beat.0009_periodictask_headers... OK
+  Applying django_celery_beat.0010_auto_20190429_0326... OK
+  Applying django_celery_beat.0011_auto_20190508_0153... OK
+  Applying django_celery_beat.0012_periodictask_expire_seconds... OK
+  Applying django_celery_beat.0013_auto_20200609_0727... OK
+  Applying django_celery_beat.0014_remove_clockedschedule_enabled... OK
+  Applying django_celery_beat.0015_edit_solarschedule_events_choices... OK
+  Applying django_celery_beat.0016_alter_crontabschedule_timezone... OK
+  Applying django_celery_beat.0017_alter_crontabschedule_month_of_year... OK
+  Applying django_celery_beat.0018_improve_crontab_helptext... OK
+  Applying django_celery_beat.0019_alter_periodictasks_options... OK
+  Applying research.0001_initial... OK
+  Applying research.0002_researchintakereceipt... OK
+  Applying sessions.0001_initial... OK
+test_anonymous_cannot_read_or_create_private_research (research.tests.test_api.ResearchAPITests.test_anonymous_cannot_read_or_create_private_research) ... {"timestamp":"2026-11-12T13:54:02.632805+00:00","level":"INFO","event":"http_request","request_id":"0156fb3e14634a0a9f4f832184b3d139","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:02.641431+00:00","level":"INFO","event":"http_request","request_id":"5fc6f0e0c4324073b58d0a6f61cb0716","method":"GET","route":"api/v1/research/datasets/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:02.643538+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:02.644597+00:00","level":"INFO","event":"http_request","request_id":"5d161f3c697c4693b6a984e40424816a","method":"GET","route":"api/v1/research/runs/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:02.644597+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:02.645803+00:00","level":"INFO","event":"http_request","request_id":"4ad0eba09bfd4611b52625f82560b2c1","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:02.645803+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:02.647901+00:00","level":"INFO","event":"http_request","request_id":"16d6edcc867e41ccbe7d880e1b4fe0e8","method":"POST","route":"api/v1/research/runs/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:02.647901+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_corrupted_snapshot_fails_without_partial_run (research.tests.test_api.ResearchAPITests.test_corrupted_snapshot_fails_without_partial_run) ... {"timestamp":"2026-11-12T13:54:02.688837+00:00","level":"INFO","event":"http_request","request_id":"b8073c71ea9a40c991c677c24bab4189","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:02.740997+00:00","level":"INFO","event":"http_request","request_id":"495ba207761c4ce6875e369f1bb59477","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":47.0}
+{"timestamp":"2026-11-12T13:54:02.740997+00:00","level":"ERROR","event":"django.request","request_id":null}
+ok
+test_create_requires_csrf_and_foreign_dataset_is_not_found (research.tests.test_api.ResearchAPITests.test_create_requires_csrf_and_foreign_dataset_is_not_found) ... {"timestamp":"2026-11-12T13:54:02.785426+00:00","level":"INFO","event":"http_request","request_id":"8b52883fd26043bbadc8ed5f075053ca","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:02.791847+00:00","level":"INFO","event":"http_request","request_id":"3683fe36acaa4f7d98189c7b92003c22","method":"POST","route":"api/v1/research/runs/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:02.792374+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:02.801269+00:00","level":"INFO","event":"http_request","request_id":"d79b6fb5ae1543f6a4f569660bc819b8","method":"POST","route":"api/v1/research/runs/","status":404,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:02.801269+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_dataset_list_is_private_and_contains_no_raw_observations (research.tests.test_api.ResearchAPITests.test_dataset_list_is_private_and_contains_no_raw_observations) ... {"timestamp":"2026-11-12T13:54:02.838110+00:00","level":"INFO","event":"http_request","request_id":"f9c829e311d24b3981298433c159f252","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:02.848078+00:00","level":"INFO","event":"http_request","request_id":"fecb60e22a7d4834a7c480b68300fec2","method":"GET","route":"api/v1/research/datasets/","status":200,"duration_ms":0.0}
+ok
+test_fixture_seed_is_explicit_idempotent_and_disabled_outside_development (research.tests.test_api.ResearchAPITests.test_fixture_seed_is_explicit_idempotent_and_disabled_outside_development) ... {"timestamp":"2026-11-12T13:54:02.886943+00:00","level":"INFO","event":"http_request","request_id":"cc0369fdcfcc49d0849d14619696dbce","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+ok
+test_horizon_types_bounds_unknown_fields_and_client_bars_are_rejected (research.tests.test_api.ResearchAPITests.test_horizon_types_bounds_unknown_fields_and_client_bars_are_rejected) ... {"timestamp":"2026-11-12T13:54:03.289559+00:00","level":"INFO","event":"http_request","request_id":"ed1a7d8320f245fc8b408e114bb94cb4","method":"GET","route":"api/v1/session/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:03.298513+00:00","level":"INFO","event":"http_request","request_id":"105d267e41db43e59a364394e78bf6b3","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:03.298513+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.306893+00:00","level":"INFO","event":"http_request","request_id":"bc0e57560a844da9a6e38cbabeecb572","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:03.306893+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.314518+00:00","level":"INFO","event":"http_request","request_id":"844328f4ff7c4ecd826e2d6c57ba866b","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:03.314518+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.321495+00:00","level":"INFO","event":"http_request","request_id":"84acac8b79c243298090d8ea9a540d47","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:03.321495+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.328601+00:00","level":"INFO","event":"http_request","request_id":"898fba2c152d47fdada43eaea5a8593e","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:03.329141+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.334957+00:00","level":"INFO","event":"http_request","request_id":"1c1481e7948b4d13879b8de46f429dc8","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:03.334957+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.342284+00:00","level":"INFO","event":"http_request","request_id":"88a8427be82f457badd7b070d3be2d47","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:03.342819+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.352380+00:00","level":"INFO","event":"http_request","request_id":"2d893e3e130a496fab8331818ce3135f","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:03.352380+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.361171+00:00","level":"INFO","event":"http_request","request_id":"d6d2ac6a0a6e484dbcff2837210f5561","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:03.361171+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.368191+00:00","level":"INFO","event":"http_request","request_id":"e8e066a6432f478cbdddb6f8a59c5b90","method":"POST","route":"api/v1/research/runs/","status":400,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:03.368717+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_import_requires_explicit_terms_acknowledgement (research.tests.test_api.ResearchAPITests.test_import_requires_explicit_terms_acknowledgement) ... {"timestamp":"2026-11-12T13:54:03.411961+00:00","level":"INFO","event":"http_request","request_id":"8ce67726f6424179bb58e767cb5c073b","method":"GET","route":"api/v1/session/","status":200,"duration_ms":15.0}
+ok
+test_inactive_owner_or_operator_is_rejected (research.tests.test_api.ResearchAPITests.test_inactive_owner_or_operator_is_rejected) ... {"timestamp":"2026-11-12T13:54:03.456827+00:00","level":"INFO","event":"http_request","request_id":"e3c5c83e56a44468a0c3143a4babf8ae","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+ok
+test_interrupted_calculation_can_retry_without_partial_result (research.tests.test_api.ResearchAPITests.test_interrupted_calculation_can_retry_without_partial_result) ... {"timestamp":"2026-11-12T13:54:03.568327+00:00","level":"INFO","event":"http_request","request_id":"685f316b8f994d40904e96df020ee68c","method":"GET","route":"api/v1/session/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:03.609710+00:00","level":"INFO","event":"http_request","request_id":"51a0495fbb9f4f6eaccb31e5a669aa54","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":32.0}
+{"timestamp":"2026-11-12T13:54:03.609710+00:00","level":"ERROR","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:03.735669+00:00","level":"INFO","event":"http_request","request_id":"8d4c4868fc6d46e89bc29c56c802e714","method":"POST","route":"api/v1/research/runs/","status":201,"duration_ms":125.0}
+ok
+test_real_evaluation_is_persisted_and_replay_does_not_recompute (research.tests.test_api.ResearchAPITests.test_real_evaluation_is_persisted_and_replay_does_not_recompute) ... {"timestamp":"2026-11-12T13:54:03.777323+00:00","level":"INFO","event":"http_request","request_id":"ccd71735e0c54d748063362926564683","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:03.844966+00:00","level":"INFO","event":"http_request","request_id":"a6af0ad98835400f8198cfc7b39f06bf","method":"POST","route":"api/v1/research/runs/","status":201,"duration_ms":62.0}
+{"timestamp":"2026-11-12T13:54:03.866807+00:00","level":"INFO","event":"http_request","request_id":"41dff932d7094a709d2a9cdddebf79d1","method":"POST","route":"api/v1/research/runs/","status":200,"duration_ms":31.0}
+{"timestamp":"2026-11-12T13:54:03.882812+00:00","level":"INFO","event":"http_request","request_id":"d1ec8a4a95374d5585722dcc877a7858","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:03.900050+00:00","level":"INFO","event":"http_request","request_id":"0be2a9b7ad95462794d6c9a1ea452edf","method":"GET","route":"api/v1/research/runs/","status":200,"duration_ms":16.0}
+ok
+test_request_key_conflict_preserves_original_run (research.tests.test_api.ResearchAPITests.test_request_key_conflict_preserves_original_run) ... {"timestamp":"2026-11-12T13:54:03.941098+00:00","level":"INFO","event":"http_request","request_id":"322aed37a5fe4eed878b80f67041aaa0","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:04.008959+00:00","level":"INFO","event":"http_request","request_id":"74c7d2bd229a4916b08fd30f31722020","method":"POST","route":"api/v1/research/runs/","status":201,"duration_ms":63.0}
+{"timestamp":"2026-11-12T13:54:04.026004+00:00","level":"INFO","event":"http_request","request_id":"807bfd1b0fda49cc830b3e52a2e47f85","method":"POST","route":"api/v1/research/runs/","status":409,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:04.026004+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_research_creation_accepts_only_its_documented_json_encoding (research.tests.test_api.ResearchAPITests.test_research_creation_accepts_only_its_documented_json_encoding) ... {"timestamp":"2026-11-12T13:54:04.078939+00:00","level":"INFO","event":"http_request","request_id":"dd4f30b2f8034beb8471b0868116b841","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:04.087066+00:00","level":"INFO","event":"http_request","request_id":"4f5be47c78fc44d9ba233aafffdf7e68","method":"POST","route":"api/v1/research/runs/","status":415,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:04.087612+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_running_engine_keeps_its_original_runtime_fingerprint (research.tests.test_api.ResearchAPITests.test_running_engine_keeps_its_original_runtime_fingerprint) ... {"timestamp":"2026-11-12T13:54:04.132434+00:00","level":"INFO","event":"http_request","request_id":"9b50a6deac8e4527a503b1bc80704d2e","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+ok
+test_same_bytes_import_idempotently_and_nonstaff_cannot_attest_history (research.tests.test_api.ResearchAPITests.test_same_bytes_import_idempotently_and_nonstaff_cannot_attest_history) ... {"timestamp":"2026-11-12T13:54:04.445891+00:00","level":"INFO","event":"http_request","request_id":"2b7761f5956a4237a0c024ac114e821c","method":"GET","route":"api/v1/session/","status":200,"duration_ms":15.0}
+ok
+test_saved_results_do_not_cross_users (research.tests.test_api.ResearchAPITests.test_saved_results_do_not_cross_users) ... {"timestamp":"2026-11-12T13:54:04.720973+00:00","level":"INFO","event":"http_request","request_id":"49e42ae0998c439087f26dcbd439d968","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:04.790337+00:00","level":"INFO","event":"http_request","request_id":"3f0d9029ed5b4336bab51da9f8be8b4e","method":"POST","route":"api/v1/research/runs/","status":201,"duration_ms":78.0}
+{"timestamp":"2026-11-12T13:54:04.817634+00:00","level":"INFO","event":"http_request","request_id":"8a6173ed756a4f7d91e7ebf6a2a120ea","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/","status":404,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:04.817634+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:04.827207+00:00","level":"INFO","event":"http_request","request_id":"035128b618864d97a8fcd85b0767d504","method":"GET","route":"api/v1/research/runs/","status":200,"duration_ms":0.0}
+ok
+test_saved_run_replays_without_writing_and_detects_changed_runtime (research.tests.test_api.ResearchAPITests.test_saved_run_replays_without_writing_and_detects_changed_runtime) ... {"timestamp":"2026-11-12T13:54:04.866854+00:00","level":"INFO","event":"http_request","request_id":"bea3f9824e9c417ba1bc270cced855cc","method":"GET","route":"api/v1/session/","status":200,"duration_ms":15.0}
+ok
+test_service_cannot_evaluate_another_owners_dataset (research.tests.test_api.ResearchAPITests.test_service_cannot_evaluate_another_owners_dataset) ... {"timestamp":"2026-11-12T13:54:05.816307+00:00","level":"INFO","event":"http_request","request_id":"4922280c8f0844aab89bd9bee9dc20d8","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+ok
+test_corrupt_archive_blocks_new_runs_but_preserves_saved_results_and_replay (research.tests.test_intake_readiness.HistoricalEvaluationReadinessTests.test_corrupt_archive_blocks_new_runs_but_preserves_saved_results_and_replay) ... {"timestamp":"2026-11-12T13:54:06.226899+00:00","level":"INFO","event":"http_request","request_id":"334466e183434b978f14f35e3f8ba052","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:06.772123+00:00","level":"INFO","event":"http_request","request_id":"163a56b43bfc454ebb5238dce850eac2","method":"POST","route":"api/v1/research/runs/","status":201,"duration_ms":110.0}
+{"timestamp":"2026-11-12T13:54:06.822234+00:00","level":"INFO","event":"http_request","request_id":"f64c1bbb90f447949d6a75ef9477926a","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":46.0}
+{"timestamp":"2026-11-12T13:54:06.822234+00:00","level":"ERROR","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:06.868924+00:00","level":"INFO","event":"http_request","request_id":"90f143ab63164b86999f839072e577b3","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":47.0}
+{"timestamp":"2026-11-12T13:54:06.868924+00:00","level":"ERROR","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:06.889752+00:00","level":"INFO","event":"http_request","request_id":"2c877f4a6eda41c0a703881caef91250","method":"POST","route":"api/v1/research/runs/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:06.904736+00:00","level":"INFO","event":"http_request","request_id":"61f8b097748641ecb7d95e0b34479f0e","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/","status":200,"duration_ms":16.0}
+ok
+test_historical_dataset_without_source_receipt_cannot_start_new_run (research.tests.test_intake_readiness.HistoricalEvaluationReadinessTests.test_historical_dataset_without_source_receipt_cannot_start_new_run) ... {"timestamp":"2026-11-12T13:54:07.365672+00:00","level":"INFO","event":"http_request","request_id":"251a357b171148c59dc91030e3410c71","method":"GET","route":"api/v1/session/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:07.413711+00:00","level":"INFO","event":"http_request","request_id":"b6990239b49449a994a28ef736ba8fa0","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":47.0}
+{"timestamp":"2026-11-12T13:54:07.413711+00:00","level":"ERROR","event":"django.request","request_id":null}
+ok
+test_invalid_newest_receipt_is_not_hidden_by_an_older_valid_acquisition (research.tests.test_intake_readiness.HistoricalEvaluationReadinessTests.test_invalid_newest_receipt_is_not_hidden_by_an_older_valid_acquisition) ... {"timestamp":"2026-11-12T13:54:07.892680+00:00","level":"INFO","event":"http_request","request_id":"05bc504b54424adc95fc4a2a43eacfd9","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:08.827159+00:00","level":"INFO","event":"http_request","request_id":"a48b610777f2449aa1eefbb820647c8a","method":"POST","route":"api/v1/research/runs/","status":503,"duration_ms":46.0}
+{"timestamp":"2026-11-12T13:54:08.827698+00:00","level":"ERROR","event":"django.request","request_id":null}
+ok
+test_csv_command_and_duplicate_json_rejection (research.tests.test_intake_storage.IntakeStorageTests.test_csv_command_and_duplicate_json_rejection) ... ok
+test_exact_artifacts_repeat_acquisitions_and_baseline_replay (research.tests.test_intake_storage.IntakeStorageTests.test_exact_artifacts_repeat_acquisitions_and_baseline_replay) ... ok
+test_historical_declarations_without_source_receipt_are_rejected (research.tests.test_intake_storage.IntakeStorageTests.test_historical_declarations_without_source_receipt_are_rejected) ... ok
+test_mismatched_source_and_unauthorized_operator_leave_no_rows (research.tests.test_intake_storage.IntakeStorageTests.test_mismatched_source_and_unauthorized_operator_leave_no_rows) ... ok
+test_private_receipt_isolation_and_tamper_detection (research.tests.test_intake_storage.IntakeStorageTests.test_private_receipt_isolation_and_tamper_detection) ... {"timestamp":"2026-11-12T13:54:12.781618+00:00","level":"INFO","event":"http_request","request_id":"a487473de40a466e97778d4dca4db335","method":"GET","route":"api/v1/research/datasets/","status":200,"duration_ms":16.0}
+ok
+test_dataset_identity_mismatch_is_an_integrity_failure (research.tests.test_provenance.DatasetProvenanceTests.test_dataset_identity_mismatch_is_an_integrity_failure) ... {"timestamp":"2026-11-12T13:54:13.297018+00:00","level":"INFO","event":"http_request","request_id":"2fa34a5b7005450ba9a7acf58efac6b7","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":503,"duration_ms":31.0}
+{"timestamp":"2026-11-12T13:54:13.297018+00:00","level":"ERROR","event":"django.request","request_id":null}
+ok
+test_failed_integrity_does_not_disclose_corrupt_source_fields_or_rewrite_evidence (research.tests.test_provenance.DatasetProvenanceTests.test_failed_integrity_does_not_disclose_corrupt_source_fields_or_rewrite_evidence) ... {"timestamp":"2026-11-12T13:54:14.193254+00:00","level":"INFO","event":"http_request","request_id":"1f7f4bf0557648ceab7e987da68aa454","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":200,"duration_ms":62.0}
+ok
+test_matching_receipt_exposes_identities_and_declared_rights_not_source_qualification (research.tests.test_provenance.DatasetProvenanceTests.test_matching_receipt_exposes_identities_and_declared_rights_not_source_qualification) ... {"timestamp":"2026-11-12T13:54:15.116598+00:00","level":"INFO","event":"http_request","request_id":"b13c1943b44741eba0d72dc50e98ee1c","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":200,"duration_ms":78.0}
+ok
+test_other_account_and_anonymous_cannot_inspect_provenance (research.tests.test_provenance.DatasetProvenanceTests.test_other_account_and_anonymous_cannot_inspect_provenance) ... {"timestamp":"2026-11-12T13:54:15.996482+00:00","level":"INFO","event":"http_request","request_id":"1c0b9869b38d44278f6bdf01939a3244","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":404,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:15.996482+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:16.004559+00:00","level":"INFO","event":"http_request","request_id":"a7daba01ba0e48e4a76f4b47c5a63792","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:16.004559+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_owner_lookup_is_not_limited_to_the_newest_hundred_datasets (research.tests.test_provenance.DatasetProvenanceTests.test_owner_lookup_is_not_limited_to_the_newest_hundred_datasets) ... {"timestamp":"2026-11-12T13:54:16.890242+00:00","level":"INFO","event":"http_request","request_id":"44b96978f23d404d8ca059db9832e6a0","method":"GET","route":"api/v1/research/datasets/","status":200,"duration_ms":125.0}
+{"timestamp":"2026-11-12T13:54:16.931345+00:00","level":"INFO","event":"http_request","request_id":"514fd80d66ef4b27aef12c205c73c76c","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":200,"duration_ms":47.0}
+ok
+test_private_metadata_is_readable_before_evaluation_without_archived_receipt (research.tests.test_provenance.DatasetProvenanceTests.test_private_metadata_is_readable_before_evaluation_without_archived_receipt) ... {"timestamp":"2026-11-12T13:54:17.370329+00:00","level":"INFO","event":"http_request","request_id":"94647e69d2a14b599fe8729da4b17363","method":"GET","route":"api/v1/research/datasets/<uuid:dataset_id>/provenance/","status":200,"duration_ms":47.0}
+ok
+test_demo_hides_every_private_research_route_and_preserves_data (research.tests.test_release_profiles.ResearchReleaseProfileTests.test_demo_hides_every_private_research_route_and_preserves_data) ... {"timestamp":"2026-11-12T13:54:17.818442+00:00","level":"INFO","event":"http_request","request_id":"627db0c6b6924557b5950df8ad592f37","method":"GET","route":"api/v1/research/datasets/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.818442+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.818442+00:00","level":"INFO","event":"http_request","request_id":"23bd7f18bbb74e8483966c15eb3afa48","method":"GET","route":"api/v1/research/history/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.818442+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.819443+00:00","level":"INFO","event":"http_request","request_id":"685e66b2fdeb4492bd25c635cd85b0ef","method":"GET","route":"api/v1/research/runs/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.819443+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.819443+00:00","level":"INFO","event":"http_request","request_id":"28005ac0cab84d87a4141f6ebd5c0279","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.819443+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.820435+00:00","level":"INFO","event":"http_request","request_id":"9af2c3c96ae04feeb9130e8ce8f87cf8","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/export/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.820435+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.821436+00:00","level":"INFO","event":"http_request","request_id":"25c9d0d970d14f13ac9c65643d68b826","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.821436+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.822518+00:00","level":"INFO","event":"http_request","request_id":"c818b351ac74430cae24efc151bf2660","method":"POST","route":"api/v1/research/runs/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.824710+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.826422+00:00","level":"INFO","event":"http_request","request_id":"4fc977428d174dbd928a1802768958b3","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.826422+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.862841+00:00","level":"INFO","event":"http_request","request_id":"729adcd356a54a84b6ceae6ed931ca36","method":"GET","route":"api/v1/research/datasets/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.862841+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.869253+00:00","level":"INFO","event":"http_request","request_id":"d36ab169057947d19faf057ad43f4bee","method":"GET","route":"api/v1/research/history/","status":404,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:17.869253+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.876442+00:00","level":"INFO","event":"http_request","request_id":"a4e9bd23aaef435abae59e39a049bd57","method":"GET","route":"api/v1/research/runs/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.876442+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.882706+00:00","level":"INFO","event":"http_request","request_id":"b569ea946f764c9f820ed2c838d034bf","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/","status":404,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:17.882706+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.887749+00:00","level":"INFO","event":"http_request","request_id":"c335ab6e6fa54f4eae0aca85a496503b","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/export/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.889263+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.895490+00:00","level":"INFO","event":"http_request","request_id":"942b8da187f74d29b8530045767d6922","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":404,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:17.895490+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.901892+00:00","level":"INFO","event":"http_request","request_id":"c5d6af84481c4216b8f71d87fd10d3aa","method":"POST","route":"api/v1/research/runs/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.901892+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:17.908422+00:00","level":"INFO","event":"http_request","request_id":"8b9b98266c7f4ef0982d1bb3e83c78ef","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:17.908971+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_development_preserves_existing_private_research (research.tests.test_release_profiles.ResearchReleaseProfileTests.test_development_preserves_existing_private_research) ... {"timestamp":"2026-11-12T13:54:17.970802+00:00","level":"INFO","event":"http_request","request_id":"90534cecdd7d43e990fbb4598eb0a067","method":"GET","route":"api/v1/research/datasets/","status":200,"duration_ms":16.0}
+ok
+test_comparison_requires_full_compatible_evidence (research.tests.test_workspace_api.ResearchWorkspaceAPITests.test_comparison_requires_full_compatible_evidence) ... {"timestamp":"2026-11-12T13:54:18.971134+00:00","level":"INFO","event":"http_request","request_id":"3758bb78762e4f6b8357fdd866b63958","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:18.993270+00:00","level":"INFO","event":"http_request","request_id":"3ac5e9aeb1fc49b2b67d23ca5a9894bb","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:19.018363+00:00","level":"INFO","event":"http_request","request_id":"6914dda2df104b36a36114e0accd3fbe","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.049586+00:00","level":"INFO","event":"http_request","request_id":"8e7d8f69cb36490e95a529d25f62a421","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:19.081383+00:00","level":"INFO","event":"http_request","request_id":"26b9158604e145129f02b3a16772cea3","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:19.105416+00:00","level":"INFO","event":"http_request","request_id":"6fa0a5ea3ce74e46b4d2717437e50fb8","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.135767+00:00","level":"INFO","event":"http_request","request_id":"0628f51a1c2a4f77886e8d5ec423926f","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.165051+00:00","level":"INFO","event":"http_request","request_id":"58345a100b7b4c899e38cb4f6c3f9011","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:19.192497+00:00","level":"INFO","event":"http_request","request_id":"a7667cf62f6b4b04b3451ca2d6dd6f29","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":200,"duration_ms":31.0}
+ok
+test_export_fails_closed_on_historical_or_tampered_identity (research.tests.test_workspace_api.ResearchWorkspaceAPITests.test_export_fails_closed_on_historical_or_tampered_identity) ... {"timestamp":"2026-11-12T13:54:19.238170+00:00","level":"INFO","event":"http_request","request_id":"7786f509e3b0462e819835f881f25185","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.259522+00:00","level":"INFO","event":"http_request","request_id":"e3b4b31b669a4c40985d9b068bacd46c","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/export/","status":403,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.259522+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.322908+00:00","level":"INFO","event":"http_request","request_id":"8dd704aa7a01475bbbf0c565ae997797","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/export/","status":403,"duration_ms":46.0}
+{"timestamp":"2026-11-12T13:54:19.322908+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.379018+00:00","level":"INFO","event":"http_request","request_id":"7d5ef98f23a64557ac46f25e11baae5a","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/export/","status":403,"duration_ms":31.0}
+{"timestamp":"2026-11-12T13:54:19.379018+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_history_is_private_bounded_and_lightweight (research.tests.test_workspace_api.ResearchWorkspaceAPITests.test_history_is_private_bounded_and_lightweight) ... {"timestamp":"2026-11-12T13:54:19.427863+00:00","level":"INFO","event":"http_request","request_id":"e49470dafd1542319f5a20f8cd58082e","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.440335+00:00","level":"INFO","event":"http_request","request_id":"01a0c802ac554bacaf4276ba03c4f270","method":"GET","route":"api/v1/research/history/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.452332+00:00","level":"INFO","event":"http_request","request_id":"f23a36f466d1419098b804332d51ff33","method":"GET","route":"api/v1/research/history/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:19.468131+00:00","level":"INFO","event":"http_request","request_id":"b4614ef3af604b4895390e5b8f73f5a3","method":"GET","route":"api/v1/research/history/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.487344+00:00","level":"INFO","event":"http_request","request_id":"3c8778fb67224f8d843269eadf783298","method":"GET","route":"api/v1/research/runs/","status":200,"duration_ms":16.0}
+ok
+test_history_rejects_inconsistent_dataset_lineage (research.tests.test_workspace_api.ResearchWorkspaceAPITests.test_history_rejects_inconsistent_dataset_lineage) ... {"timestamp":"2026-11-12T13:54:19.530288+00:00","level":"INFO","event":"http_request","request_id":"92af368b2f2144fb8f174bf9e848ef35","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.550198+00:00","level":"INFO","event":"http_request","request_id":"68149bc551a8444f9383df96f853badb","method":"GET","route":"api/v1/research/history/","status":503,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.550198+00:00","level":"ERROR","event":"django.request","request_id":null}
+ok
+test_history_search_filters_and_validation (research.tests.test_workspace_api.ResearchWorkspaceAPITests.test_history_search_filters_and_validation) ... {"timestamp":"2026-11-12T13:54:19.590849+00:00","level":"INFO","event":"http_request","request_id":"cc4bc38b22b34fd59403f7e024371460","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.608429+00:00","level":"INFO","event":"http_request","request_id":"5692d309710a49c5a0bf6f0364f03b38","method":"GET","route":"api/v1/research/history/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.623226+00:00","level":"INFO","event":"http_request","request_id":"1da48543f94e4556b70789b094ef9112","method":"GET","route":"api/v1/research/history/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:19.639050+00:00","level":"INFO","event":"http_request","request_id":"1f2a09d7525a4d1692c69b592b28821b","method":"GET","route":"api/v1/research/history/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.652663+00:00","level":"INFO","event":"http_request","request_id":"f887674788924bc6a3a0d2389c03fa88","method":"GET","route":"api/v1/research/history/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.664347+00:00","level":"INFO","event":"http_request","request_id":"fb0c07c0580342fa989b0c6b283f2854","method":"GET","route":"api/v1/research/history/","status":200,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:19.671902+00:00","level":"INFO","event":"http_request","request_id":"ec68debec8e8476f912254942f7cf471","method":"GET","route":"api/v1/research/history/","status":400,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.671902+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.678291+00:00","level":"INFO","event":"http_request","request_id":"9af018cea4b04bf6a67d6f35b083db55","method":"GET","route":"api/v1/research/history/","status":400,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.678291+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.685316+00:00","level":"INFO","event":"http_request","request_id":"d03da2de53c949beb8e103360a7622c4","method":"GET","route":"api/v1/research/history/","status":400,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.685860+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.692699+00:00","level":"INFO","event":"http_request","request_id":"3c8987d9e0a841a0a475c1d7c6710f30","method":"GET","route":"api/v1/research/history/","status":400,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:19.692699+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.699611+00:00","level":"INFO","event":"http_request","request_id":"2790e3a729504e38af435c6f7eeb8bc2","method":"GET","route":"api/v1/research/history/","status":400,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.699611+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.706894+00:00","level":"INFO","event":"http_request","request_id":"fbdc0e0d263341ab8f80642041eb6c7f","method":"GET","route":"api/v1/research/history/","status":400,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.706894+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.713303+00:00","level":"INFO","event":"http_request","request_id":"6dde5871f7174903bbe9b787685448bc","method":"GET","route":"api/v1/research/history/","status":400,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.713826+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_new_routes_require_owner_and_session (research.tests.test_workspace_api.ResearchWorkspaceAPITests.test_new_routes_require_owner_and_session) ... {"timestamp":"2026-11-12T13:54:19.763371+00:00","level":"INFO","event":"http_request","request_id":"09c45770310b434bab1ef635529af137","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.776599+00:00","level":"INFO","event":"http_request","request_id":"7df5d8c7529449f1837dad88cf6c4ba8","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/export/","status":404,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:19.776599+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.785784+00:00","level":"INFO","event":"http_request","request_id":"1b992313af854601b108bfc2a1e1a997","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":404,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:19.785784+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.795830+00:00","level":"INFO","event":"http_request","request_id":"535a7158ec0743e4a59c4b258475033e","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":404,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.795830+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.817972+00:00","level":"INFO","event":"http_request","request_id":"5c740f46b15f47bc91446ff8d4a09be1","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":404,"duration_ms":31.0}
+{"timestamp":"2026-11-12T13:54:19.817972+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.832801+00:00","level":"INFO","event":"http_request","request_id":"84ce05f6e2cf4671b3c3e8839a749145","method":"GET","route":"api/v1/research/history/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.832801+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.833811+00:00","level":"INFO","event":"http_request","request_id":"e2e241684ca54d5697a7472062e0356c","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/export/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.833811+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.835813+00:00","level":"INFO","event":"http_request","request_id":"d66142a31d0f40bea628b0e5a86ce8b9","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/compare/<uuid:other_id>/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.837318+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:19.838919+00:00","level":"INFO","event":"http_request","request_id":"8f85eb6ee4d241f28fc3803b1dad1a95","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":403,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:19.838919+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_replay_agrees_with_cli_and_does_not_mutate_run (research.tests.test_workspace_api.ResearchWorkspaceAPITests.test_replay_agrees_with_cli_and_does_not_mutate_run) ... {"timestamp":"2026-11-12T13:54:19.901915+00:00","level":"INFO","event":"http_request","request_id":"71adb4d6ca424f4b98068d768a2f2c6d","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:20.015262+00:00","level":"INFO","event":"http_request","request_id":"b796a16cfb604cca8721405c98af923b","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":200,"duration_ms":109.0}
+{"timestamp":"2026-11-12T13:54:20.251673+00:00","level":"INFO","event":"http_request","request_id":"38b07fe138bc471089f2922af0597674","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":200,"duration_ms":109.0}
+ok
+test_replay_csrf_body_media_and_throttle (research.tests.test_workspace_api.ResearchWorkspaceAPITests.test_replay_csrf_body_media_and_throttle) ... {"timestamp":"2026-11-12T13:54:20.312456+00:00","level":"INFO","event":"http_request","request_id":"953dfdcc07ca4e7fb1b86a39f8669e7a","method":"GET","route":"api/v1/session/","status":200,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:20.332298+00:00","level":"INFO","event":"http_request","request_id":"e5f79709635b4a97b0b4f95048d3c0bf","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":403,"duration_ms":15.0}
+{"timestamp":"2026-11-12T13:54:20.333309+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:20.383432+00:00","level":"INFO","event":"http_request","request_id":"26f03d26475e4b8f8ea44f66fb7d9e29","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":400,"duration_ms":47.0}
+{"timestamp":"2026-11-12T13:54:20.383432+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:20.402670+00:00","level":"INFO","event":"http_request","request_id":"100a30d36e1d4267a4fb9ea750f57e03","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":415,"duration_ms":16.0}
+{"timestamp":"2026-11-12T13:54:20.402670+00:00","level":"WARNING","event":"django.request","request_id":null}
+{"timestamp":"2026-11-12T13:54:20.579088+00:00","level":"INFO","event":"http_request","request_id":"1a836a52ba59478f9877f8527d439c65","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":200,"duration_ms":171.0}
+{"timestamp":"2026-11-12T13:54:20.631112+00:00","level":"INFO","event":"http_request","request_id":"085568f2e86448c59f105fbb22da7c3a","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":200,"duration_ms":63.0}
+{"timestamp":"2026-11-12T13:54:20.683181+00:00","level":"INFO","event":"http_request","request_id":"27b33c4ecaff41b8b73a3ac75f1ba5f5","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":200,"duration_ms":47.0}
+{"timestamp":"2026-11-12T13:54:20.733042+00:00","level":"INFO","event":"http_request","request_id":"acd948e50a2c42f4891559d4ab0232b4","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":200,"duration_ms":47.0}
+{"timestamp":"2026-11-12T13:54:20.798922+00:00","level":"INFO","event":"http_request","request_id":"2ca53c58096a43bcb1a63842961e3fee","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":200,"duration_ms":62.0}
+{"timestamp":"2026-11-12T13:54:20.854690+00:00","level":"INFO","event":"http_request","request_id":"c8027a4e90a64a88892168899c6d4e24","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":200,"duration_ms":63.0}
+{"timestamp":"2026-11-12T13:54:20.863664+00:00","level":"INFO","event":"http_request","request_id":"a4d8930cae2f451da9e9559e0c6d6d02","method":"POST","route":"api/v1/research/runs/<uuid:run_id>/replay/","status":429,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:20.864231+00:00","level":"WARNING","event":"django.request","request_id":null}
+ok
+test_synthetic_export_preserves_canonical_result_and_identity (research.tests.test_workspace_api.ResearchWorkspaceAPITests.test_synthetic_export_preserves_canonical_result_and_identity) ... {"timestamp":"2026-11-12T13:54:20.908100+00:00","level":"INFO","event":"http_request","request_id":"5d87e4e8a63041c3a420f088fc80f62d","method":"GET","route":"api/v1/session/","status":200,"duration_ms":0.0}
+{"timestamp":"2026-11-12T13:54:20.975054+00:00","level":"INFO","event":"http_request","request_id":"062e00131c0b4a009a2c963099f54e9e","method":"GET","route":"api/v1/research/runs/<uuid:run_id>/export/","status":200,"duration_ms":63.0}
+ok
+test_dry_run_validates_without_actors_or_database_and_does_not_certify_source (research.tests.test_intake_readiness.IntakePreflightTests.test_dry_run_validates_without_actors_or_database_and_does_not_certify_source) ... ok
+test_preflight_rejects_missing_rights_and_tampered_bytes_without_database (research.tests.test_intake_readiness.IntakePreflightTests.test_preflight_rejects_missing_rights_and_tampered_bytes_without_database) ... ok
+test_write_mode_still_requires_acknowledgement_and_both_actors (research.tests.test_intake_readiness.IntakePreflightTests.test_write_mode_still_requires_acknowledgement_and_both_actors) ... ok
+test_both_references_ignore_future_prices_actions_and_labels (research.tests.test_phase5_science.Phase5ScientificContractTests.test_both_references_ignore_future_prices_actions_and_labels) ... ok
+test_frozen_synthetic_numerical_contract_is_unchanged (research.tests.test_phase5_science.Phase5ScientificContractTests.test_frozen_synthetic_numerical_contract_is_unchanged) ... ok
+test_concurrent_identical_requests_persist_one_complete_result (research.tests.test_postgres.ResearchPostgresTests.test_concurrent_identical_requests_persist_one_complete_result) ... ok
+test_all_invalid_inputs_raise_dataset_error (research.tests.test_ingestion.CsvIntakeTests.test_all_invalid_inputs_raise_dataset_error) ... ok
+test_preserves_v1_dataset_version_and_horizon_results (research.tests.test_ingestion.CsvIntakeTests.test_preserves_v1_dataset_version_and_horizon_results) ... ok
+test_receipt_is_canonical_and_hashes_all_supplied_bytes (research.tests.test_ingestion.CsvIntakeTests.test_receipt_is_canonical_and_hashes_all_supplied_bytes) ... ok
+test_rejects_availability_source_session_time_and_reference_mismatches (research.tests.test_ingestion.CsvIntakeTests.test_rejects_availability_source_session_time_and_reference_mismatches) ... ok
+test_rejects_bad_urls_and_rights_schema (research.tests.test_ingestion.CsvIntakeTests.test_rejects_bad_urls_and_rights_schema) ... ok
+test_rejects_future_or_retrospective_acquisition_and_missing_publication_evidence (research.tests.test_ingestion.CsvIntakeTests.test_rejects_future_or_retrospective_acquisition_and_missing_publication_evidence) ... ok
+test_rejects_hash_mismatches_and_false_internal_permissions (research.tests.test_ingestion.CsvIntakeTests.test_rejects_hash_mismatches_and_false_internal_permissions) ... ok
+test_rejects_malformed_csv_empty_records_and_more_than_1500_rows (research.tests.test_ingestion.CsvIntakeTests.test_rejects_malformed_csv_empty_records_and_more_than_1500_rows) ... ok
+test_rejects_metadata_headers_duplicate_sessions_and_missing_actions (research.tests.test_ingestion.CsvIntakeTests.test_rejects_metadata_headers_duplicate_sessions_and_missing_actions) ... ok
+test_rejects_stale_pit_proof_after_close_or_action_revision (research.tests.test_ingestion.CsvIntakeTests.test_rejects_stale_pit_proof_after_close_or_action_revision) ... ok
+test_source_byte_identity_changes_receipt_version_even_when_dataset_is_identical (research.tests.test_ingestion.CsvIntakeTests.test_source_byte_identity_changes_receipt_version_even_when_dataset_is_identical) ... ok
+test_rejects_duplicate_members_at_root_and_nested_depth (research.tests.test_ingestion.StrictJsonTests.test_rejects_duplicate_members_at_root_and_nested_depth) ... ok
+test_rejects_malformed_utf8_nonfinite_values_and_oversize_input (research.tests.test_ingestion.StrictJsonTests.test_rejects_malformed_utf8_nonfinite_values_and_oversize_input) ... ok
+test_fixture_is_deterministic_valid_and_immutable (research.tests.test_quant.QuantDatasetTests.test_fixture_is_deterministic_valid_and_immutable) ... ok
+test_historical_metadata_with_known_synthetic_markers_is_rejected (research.tests.test_quant.QuantDatasetTests.test_historical_metadata_with_known_synthetic_markers_is_rejected) ... ok
+test_historical_results_are_descriptive_and_never_claim_performance (research.tests.test_quant.QuantDatasetTests.test_historical_results_are_descriptive_and_never_claim_performance) ... ok
+test_dividends_remain_metadata_and_are_excluded_from_price_features (research.tests.test_quant.QuantEvaluationTests.test_dividends_remain_metadata_and_are_excluded_from_price_features) ... ok
+test_fixed_target_partitions_share_targets_across_models (research.tests.test_quant.QuantEvaluationTests.test_fixed_target_partitions_share_targets_across_models) ... ok
+test_forecast_uses_scheduled_sessions_dst_and_early_close_cutoff (research.tests.test_quant.QuantEvaluationTests.test_forecast_uses_scheduled_sessions_dst_and_early_close_cutoff) ... ok
+test_future_price_and_action_perturbations_do_not_change_earlier_inputs (research.tests.test_quant.QuantEvaluationTests.test_future_price_and_action_perturbations_do_not_change_earlier_inputs) ... ok
+test_historical_log_mean_projects_a_geometric_drift_reference_path (research.tests.test_quant.QuantEvaluationTests.test_historical_log_mean_projects_a_geometric_drift_reference_path) ... ok
+test_horizon_five_last_close_error_is_five_dollars (research.tests.test_quant.QuantEvaluationTests.test_horizon_five_last_close_error_is_five_dollars) ... ok
+test_invalid_horizons_are_rejected (research.tests.test_quant.QuantEvaluationTests.test_invalid_horizons_are_rejected) ... ok
+test_last_close_mae_and_rmse_match_hand_calculation (research.tests.test_quant.QuantEvaluationTests.test_last_close_mae_and_rmse_match_hand_calculation) ... ok
+test_replay_is_deterministic_and_result_is_finite_json (research.tests.test_quant.QuantEvaluationTests.test_replay_is_deterministic_and_result_is_finite_json) ... ok
+test_split_is_applied_causally_and_unsplit_drop_remains_a_price_loss (research.tests.test_quant.QuantEvaluationTests.test_split_is_applied_causally_and_unsplit_drop_remains_a_price_loss) ... ok
+test_availability_must_be_ordered_matured_and_within_the_fixed_cutoff (research.tests.test_quant.QuantValidationTests.test_availability_must_be_ordered_matured_and_within_the_fixed_cutoff) ... ok
+test_boolean_and_nonfinite_numbers_are_rejected (research.tests.test_quant.QuantValidationTests.test_boolean_and_nonfinite_numbers_are_rejected) ... ok
+test_boolean_schema_and_issue_lag_values_are_rejected (research.tests.test_quant.QuantValidationTests.test_boolean_schema_and_issue_lag_values_are_rejected) ... ok
+test_exact_close_and_exact_sixty_minute_availability_are_valid (research.tests.test_quant.QuantValidationTests.test_exact_close_and_exact_sixty_minute_availability_are_valid) ... ok
+test_first_split_ratio_must_define_initial_share_units (research.tests.test_quant.QuantValidationTests.test_first_split_ratio_must_define_initial_share_units) ... ok
+test_invalid_metadata_adjusted_basis_and_non_xnys_instrument_are_rejected (research.tests.test_quant.QuantValidationTests.test_invalid_metadata_adjusted_basis_and_non_xnys_instrument_are_rejected) ... ok
+test_missing_duplicate_and_unsorted_sessions_are_rejected (research.tests.test_quant.QuantValidationTests.test_missing_duplicate_and_unsorted_sessions_are_rejected) ... ok
+test_naive_and_malformed_available_timestamps_are_rejected (research.tests.test_quant.QuantValidationTests.test_naive_and_malformed_available_timestamps_are_rejected) ... ok
+test_numerical_overflow_in_split_neutralization_is_rejected (research.tests.test_quant.QuantValidationTests.test_numerical_overflow_in_split_neutralization_is_rejected) ... ok
+test_observation_count_is_bounded_from_120_through_1500 (research.tests.test_quant.QuantValidationTests.test_observation_count_is_bounded_from_120_through_1500) ... ok
+test_required_bounded_provenance_strings_are_validated (research.tests.test_quant.QuantValidationTests.test_required_bounded_provenance_strings_are_validated) ... ok
+
+----------------------------------------------------------------------
+Ran 85 tests in 47.079s
+
+OK
+Destroying test database for alias 'default' ('test_[REDACTED_TEST_DATABASE]')...
+
+  Applying workspace.0001_initial... OK
+System check identified no issues (0 silenced).
