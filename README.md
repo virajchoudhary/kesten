@@ -1,45 +1,73 @@
-
 # Kerquant
 
-Kerquant is a local financial analysis terminal built with Next.js, Django, and Python. Its supported portfolio demonstration covers daily chart analysis, private watchlists, reproducible synthetic baseline research, and account security. Historical forecasting qualification and production release remain blocked. Original ML, portfolio, derivatives, RL, Streamlit, and reporting code is preserved separately.
+Kerquant is a financial analytics and quantitative research terminal built with Next.js, TypeScript, Django, and Python. It combines a chart-first market workspace with private watchlists, inspectable datasets, chronological baseline evaluations, saved comparisons, and deterministic replay.
 
-The name remains configurable through `NEXT_PUBLIC_PRODUCT_NAME` and `NEXT_PUBLIC_PRODUCT_SHORT_NAME`. Existing package, environment, database, and repository identifiers remain unchanged. Public branding is not legally cleared; see [the identity record](docs/design/kerquant/IDENTITY.md).
+**The portfolio demo uses synthetic prices and synthetic research. No validated forecasting performance, investment recommendation, or live trading is offered. Production remains NO-GO.**
 
-Start with the [portfolio demonstration guide](docs/PORTFOLIO.md). The [completion record](docs/implementation/PORTFOLIO-COMPLETION.md) separates current verification from historical infrastructure evidence. Production remains **NO-GO** until security and release gates pass.
+![Kerquant daily market workspace with synthetic data](docs/implementation/evidence/portfolio-completion-20261113/markets-1440-dark.png)
+
+## Explore the application
+
+- Analyze daily candlesticks, OHLCV, volume, SMA, RSI, EMA, and Bollinger studies. Adjust chart types/scales, compare common-session indexed series, measure movements, and save local display layouts.
+- Search 20 curated US instruments, manage an account-private watchlist, and open research for an instrument with an available private dataset.
+- Inspect dataset provenance, choose a one- or five-session horizon, compare persistence and expanding historical-log-mean baselines, review chronological periods, export exact results, and replay saved identities.
+- Use responsive desktop/mobile layouts, light and dark themes, keyboard controls, password changes, and session revocation.
+
+![Kerquant synthetic research and baseline inspection](docs/implementation/evidence/portfolio-completion-20261113/research-desktop.png)
+
+The [portfolio guide](docs/PORTFOLIO.md) gives a presentation walkthrough. The [completion record](docs/implementation/PORTFOLIO-COMPLETION.md) records the tested scope and its limitations.
 
 ## Start the local workspace
 
-Use Python 3.12 and Node 22.12 or later in the Node 22 LTS family. The setup creates a separate `.venv`. It does not replace `backend/venv` or the original `backend/db.sqlite3`.
+Use Python 3.12, Node 22 LTS version 22.12 or later, npm, and Git. The first setup downloads pinned Python dependencies and installs the frontend from `web/package-lock.json`. It creates a separate `.venv`; it does not replace a retained legacy environment or database.
 
-On Windows, run these commands from the repository root.
+Clone this repository, change into its root, and run the commands for your platform. On Windows, use PowerShell:
 
 ```powershell
+git clone https://github.com/virajchoudhary/stock-predictor-system.git
+cd stock-predictor-system
 ./scripts/setup.ps1
 .venv/Scripts/python.exe scripts/demo.py
 ```
 
-On Linux or macOS, run these commands.
+On Linux or macOS:
 
 ```sh
+git clone https://github.com/virajchoudhary/stock-predictor-system.git
+cd stock-predictor-system
 sh scripts/setup.sh
 .venv/bin/python scripts/demo.py
 ```
 
-Run setup once to install the locked dependencies. On later starts, run only `scripts/demo.py`. Open [the workspace](http://127.0.0.1:3000/app/markets) and use the generated credentials in `.local/portfolio-demo/credentials.json`. This command explicitly creates a private synthetic account, a starter watchlist, and saved one/five-session baseline evaluations. Restarts preserve the password, saved results, and watchlist edits. The API health endpoint is [localhost:8000/health](http://127.0.0.1:8000/health/). Stop the launcher with Ctrl+C.
+These commands describe the intended published checkout. Until publication preflight passes, public `main` may still contain the older application. Use the exact verified local revision recorded in the completion/preflight documentation instead.
 
-Demo data lives in `.local/portfolio-demo/workspace.sqlite3`. The launcher ignores inherited production storage and disables external market providers. It refuses unrelated directories and occupied ports. For an optimized local preview, add `--build`; this builds locally and does not deploy. The original `scripts/dev.py` workflow and its `.local/cadrisyn.sqlite3` database remain available for existing development work.
+Open [Markets](http://127.0.0.1:3000/app/markets), [Research](http://127.0.0.1:3000/app/research), or [Account](http://127.0.0.1:3000/app/account). Read the generated initial credentials from `.local/portfolio-demo/credentials.json`. Never publish that file. API health is available at [127.0.0.1:8000/health](http://127.0.0.1:8000/health/).
 
-## Data and capabilities
+The launcher explicitly creates a synthetic account, a starter watchlist, and saved baseline evaluations. Demo data lives in `.local/portfolio-demo/workspace.sqlite3`. Restarts preserve the account, current password, run identities, and watchlist edits. After changing your password, use the changed password; the initial credentials file is not updated.
 
-The default chart is an explicitly synthetic demonstration dataset. It contains no observed stock prices or empirical performance results. Search covers 20 curated US stocks. Daily OHLCV, SMA20/50, Wilder RSI14, exact data tables and private watchlists use the versioned API. Display controls add alternate chart types/scales, configurable EMA/Bollinger studies, common-session indexed comparison, measurement, temporary price levels and browser-local display layouts. The integrated research dock preserves standalone research access and saved identities.
+Stop the launcher with Ctrl+C. On later starts, run only `scripts/demo.py`. If ports are occupied, select free alternatives:
 
-Set both `CADRISYN_MARKET_DATA_ENABLED=true` and `CADRISYN_YAHOO_PERSONAL_USE_ACKNOWLEDGED=true` only for permitted local personal research with Yahoo daily history through yfinance. The adapter is disabled outside development. No licensed live feed, guaranteed delay or redistribution entitlement is configured. Provider failures remain unavailable and never substitute demonstration data.
+```powershell
+.venv/Scripts/python.exe scripts/demo.py --web-port 3001 --api-port 8002
+```
 
-## Private forecast research
+For an optimized local frontend, add `--build`. Stop any existing preview before building against its `.next` directory. The API remains a loopback development server; this command does not deploy or qualify production.
 
-Open [research](http://127.0.0.1:3000/app/research) after starting the demo. The prepared fixture and both saved horizons are already available. The private workflow compares last-close and expanding historical-log-mean references, saves provenance and chronological evaluations, and supports exact replay.
+## Architecture and data integrity
 
-The fixture is synthetic. No empirical forecasting performance, advanced ML model, prediction interval, or trading strategy is approved. Historical imports retain the staff, rights, and per-record availability/action gates. See [model dispositions](docs/implementation/PHASE3.md) and [the source investigation](docs/implementation/PHASE5-RESEARCH-SOURCES.md). The existing `scripts/research.py` commands target the original development workspace, not the portfolio demo.
+| Layer | Implementation |
+| --- | --- |
+| Terminal | Next.js App Router, React, TypeScript, Tailwind, Radix components, and TradingView Lightweight Charts |
+| API and accounts | Django, Django REST Framework, same-origin session/CSRF controls, and account-private datasets/watchlists/results |
+| Persistence | PostgreSQL application support; isolated SQLite for the single-command local demo |
+| Research | Immutable dataset/run identities, causal chronological baselines, provenance receipts, and deterministic replay |
+| Operations | Preserved container, migration, backup/restore, and release-check tooling with separate qualification records |
+
+TradingView Lightweight Charts is a third-party charting library. Its required attribution remains visible. Kerquant is not affiliated with TradingView.
+
+The demo launcher disables external market providers and legacy scheduling. Provider failures never silently substitute demo data. The optional yfinance adapter requires separately permitted development-only personal use; enabling a setting does not establish storage, display, or redistribution rights.
+
+Historical dataset admission requires source rights, complete price/action semantics, calendar continuity, and point-in-time availability evidence. No historical archive has passed those gates. Fixture MAE/RMSE values demonstrate pipeline behavior, not forecasting accuracy. See [the methods and model dispositions](docs/implementation/PHASE3.md), [source qualification](docs/implementation/PHASE5-RESEARCH-SOURCES.md), and [intake operations](docs/implementation/PHASE5-RESEARCH-OPERATIONS.md).
 
 ## Run checks
 
@@ -53,16 +81,14 @@ npm run lint
 npm test
 ```
 
-For browser acceptance, use the [disposable portfolio test procedure](docs/PORTFOLIO.md#run-browser-acceptance). Do not run account-lifecycle tests against your own demo account or existing research workspace. The [frontend guide](web/README.md) covers the existing frontend commands; historical PostgreSQL/container evidence remains in the implementation records.
+Use the [disposable browser acceptance procedure](docs/PORTFOLIO.md#run-browser-acceptance) for Chromium tests. It creates separate test accounts and consumes one-use lifecycle tokens. Do not target a retained personal workspace.
 
-## Open the preserved research tools
+The dated [completion evidence](docs/implementation/PORTFOLIO-COMPLETION.md) records 17 Chromium scenarios, 134 frontend tests, 164 passing backend tests with four PostgreSQL-only skips under SQLite, and the optimized build. These results belong to their recorded revision. Hosted CI and a fresh published-checkout qualification require their own results.
 
-```powershell
-.venv/Scripts/python.exe scripts/legacy.py
-```
+## Preserved research and limitations
 
-This optional launcher uses the existing `backend/venv`, clones the original database to `.local/legacy.sqlite3` once, and starts the staff-protected research API on port 8001 and Streamlit on port 8501. Its separate generated credentials stay in `.local/research-credentials.json`. Provider-dependent paths require their existing environment configuration. The new frontend does not publish these unverified calculations.
+ARIMA/GARCH, BiLSTM/HPO, portfolio optimization, derivatives, RL, Streamlit, and reporting implementations remain preserved research code. Their existence does not qualify them as forecasting models or investment tools. The legacy launcher requires its own dependency environment and configuration; it is outside the supported fresh-clone portfolio demonstration.
 
-The experimental FastAPI agent scaffold has its original dependency list in `agents/requirements.txt`. It is outside workspace startup. The supported workspace and optional research dependency profiles are separate under `backend/`.
+Production remains **NO-GO** until image-security, hosted CI, operational acceptance, and applicable data-rights gates pass. No live trading, financial advice, certification, or production-readiness claim is made.
 
-The [product blueprint](docs/rebrand/README.md) records historical design and architecture decisions. Kerquant was selected for local use on 8 November 2026. The exact-name screen found no registered object for `kerquant.com`, `kerquant.app`, or `kerquant.in` in the queried RDAP registries, but domain availability and trademark clearance remain unverified. No domain purchase, repository rename, or public publication is authorized.
+The display name remains configurable through `NEXT_PUBLIC_PRODUCT_NAME` and `NEXT_PUBLIC_PRODUCT_SHORT_NAME`. Existing package, environment, database, and repository identifiers retain their historical names. Kerquant's trademark/domain clearance remains unverified. Publication to this existing repository was authorized on 13 November 2026 subject to the sensitive-data and fresh-checkout preflight. That authorization does not include deployment, purchases, or history rewriting.

@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-13",
+  "repository": "https://github.com/virajchoudhary/stock-predictor-system",
+  "source": "16fa306fb349e2eeeaf9f3f0f2df756f0f5c1397",
+  "public_main": "472b87b26425b15e7cf1b7c27fafd00315c762ab",
+  "publication": "BLOCKED",
+  "published_commit": null,
+  "production": "NO_GO",
+  "fresh": {
+    "setup": "PASS",
+    "backend": {
+      "run": 166,
+      "passed": 162,
+      "skipped_postgresql": 4
+    },
+    "frontend": {
+      "files": 38,
+      "passed": 134
+    },
+    "startup": {
+      "passed": 10
+    },
+    "lint": "PASS",
+    "typecheck": "PASS",
+    "optimized_build": "PASS",
+    "chromium": {
+      "result": "PASS",
+      "source": "16fa306fb349e2eeeaf9f3f0f2df756f0f5c1397",
+      "browser": "Chromium",
+      "fresh_dependencies": true,
+      "api_health": 200,
+      "authenticated": true,
+      "symbol_switch": true,
+      "synthetic_evaluation": true,
+      "replay": true,
+      "exact_export_identity": true,
+      "desktop_mobile": true,
+      "page_errors": []
+    }
+  },
+  "scan": {
+    "method": "bounded non-disclosing pattern scan plus independent outgoing review",
+    "reachable_blobs": 1948,
+    "scanned_bytes": 70520182,
+    "text_blobs": 1778,
+    "candidate_matches": 325,
+    "outgoing_candidates": 168,
+    "strong_private_key_token_matches": 0,
+    "independent": {
+      "outgoing_blobs": 1343,
+      "bytes": 28348718,
+      "strong_credential_matches": 0
+    },
+    "limitations": [
+      "No dedicated Gitleaks or TruffleHog available",
+      "Serialized/compressed models not deserialized",
+      "Candidate matches require source review",
+      "Not blanket proof that history is secret-free"
+    ]
+  },
+  "blockers": [
+    "Tracked pre-existing database and 17 protected research artifacts have not been cleared for the portfolio publication boundary",
+    "No force-push/history rewrite permitted; old public payloads remain reachable"
+  ],
+  "preservation": {
+    "runtime": 496,
+    "research": 17,
+    "original_database_unchanged": true,
+    "unrelated_unchanged": true
+  }
+}
