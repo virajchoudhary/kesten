@@ -17,3 +17,5 @@ Exact versions are in `web/package-lock.json` and the backend lock files. Packag
 `deploy/vendor/gosu-release-key.asc` is an upstream PGP public release-verification key. It contains no private key and is retained for build integrity. It is not a local TLS certificate or credential.
 
 No market-data rows, licensed historical archive, model archive, or investment-performance claim is supplied by these notices. The demo's observations and displayed research results are synthetic.
+
+This publication distributes source, not built container images. Before distributing images, inspect their final contents and include the applicable Gosu Apache-2.0 notice, optional sharp/libvips LGPL-3.0-or-later requirements, and caniuse-lite CC-BY-4.0 attribution. The CI recipes build images for isolated testing and do not push them to a registry.

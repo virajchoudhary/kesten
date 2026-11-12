@@ -18,8 +18,22 @@ Production remains **NO-GO**. Image vulnerability gates, hosted CI, trusted prod
 
 ## Verification boundary
 
-The preceding committed-source fresh clone passed pinned Windows setup, an optimized frontend build, TypeScript/lint, 134 frontend tests, 162 backend tests with four PostgreSQL-only skips under SQLite, 10 startup regressions, and a real Chromium sign-in/chart/research/replay/export workflow.
+The sanitized source at `64abb1979fbb79c7f27329f519b6289f57f7c585` passed a fresh Windows checkout and pinned dependency installation. The follow-up commit restores executable file modes without changing application bytes. A browser-test correction probes external frontend readiness through the proxied session API instead of the backend-only health route.
 
-The sanitized branch requires its own fresh-checkout and outgoing-object checks before push. Hosted GitHub CI results belong to their exact published head and must be reported separately. This preparation record does not claim hosted checks passed.
+Verified locally on 13 November 2026:
+
+- Optimized Next.js build, generated API contract consistency, TypeScript, and lint passed.
+- All 134 frontend tests passed.
+- Django configuration, migrations, API schema, and 166 backend tests passed with four PostgreSQL-only skips under SQLite.
+- Six isolated demo-launcher tests, 18 recovery-client tests, two research-client tests, and `pip check` passed.
+- All 17 Chromium scenarios passed in one final run using new disposable accounts. They cover authentication lifecycle, private watchlists, charts, research comparisons, exact replay/export, both themes, and desktop/mobile layouts.
+- The original database, 496 protected runtime files, 17 research artifacts, and 22 unrelated file hashes matched their retained preservation baseline.
+- Independent review classified the 98 literal/URL scanner candidates as test fixtures, disposable CI credentials, invalid-host configuration probes, or environment references. No token, private-key, certificate, or JWT signatures matched. Every new commit tree was checked against the exact file allowlist.
+
+Initial Windows sandbox attempts failed during temporary-directory cleanup and standalone file copying. The same checks passed with ordinary host permissions in the isolated checkout. One mobile history run timed out, then passed its focused recheck and the complete final run. No application security control or test assertion was removed.
+
+This host also inherited an unreachable NVIDIA package index. Fresh setup passed with command-local `PIP_CONFIG_FILE=NUL`, `PIP_INDEX_URL=https://pypi.org/simple`, and an empty `PIP_EXTRA_INDEX_URL`. Package pins and TLS verification were unchanged.
+
+These results qualify the local synthetic demonstration. They do not requalify PostgreSQL, production containers, image security, or off-host operation. Hosted GitHub CI results belong to their exact published head and must be reported separately. This record does not claim hosted checks passed.
 
 The selected screenshots contain synthetic observations and synthetic run identities, not private market data, credentials, or empirical performance. All data-provider acquisition and legal clearance requirements remain separate.
