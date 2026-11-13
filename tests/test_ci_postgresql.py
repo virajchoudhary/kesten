@@ -91,6 +91,41 @@ class PostgreSQLCIProcedureTests(unittest.TestCase):
             self.assertEqual(calls[-1][0], ["docker", "stop", "owned-container-id"])
             self.assertEqual(list((root / ".local").iterdir()), [])
 
+    def test_exited_container_reports_startup_failure_without_cleanup_masking(self):
+        for cleanup_error in ("No such container: owned-container-id", "daemon unavailable"):
+            with self.subTest(cleanup_error=cleanup_error), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                calls = []
+
+                def run(arguments, **options):
+                    calls.append(arguments)
+                    if arguments[:2] == ["docker", "run"]:
+                        Path(arguments[arguments.index("--cidfile") + 1]).write_text("owned-container-id")
+                        return subprocess.CompletedProcess(arguments, 0)
+                    if arguments[:2] == ["docker", "stop"]:
+                        result = subprocess.CompletedProcess(arguments, 1, "", cleanup_error)
+                    elif arguments[:2] == ["docker", "inspect"]:
+                        result = subprocess.CompletedProcess(arguments, 1, "", "No such container")
+                    else:
+                        result = subprocess.CompletedProcess(arguments, 1)
+                    if options.get("check"):
+                        result.check_returncode()
+                    return result
+
+                with (
+                    patch.object(ci_postgresql, "ROOT", root),
+                    patch.object(ci_postgresql.subprocess, "run", side_effect=run),
+                    patch.object(ci_postgresql.subprocess, "check_output", return_value="127.0.0.1:35432\n"),
+                    patch.object(ci_postgresql.time, "monotonic", side_effect=[0, 181]),
+                    patch.object(ci_postgresql.time, "sleep") as sleep,
+                ):
+                    with self.assertRaisesRegex(RuntimeError, "exited before readiness"):
+                        ci_postgresql.main()
+                sleep.assert_not_called()
+                self.assertEqual(calls[-1], ["docker", "stop", "owned-container-id"])
+                self.assertFalse(any(str(argument).endswith("manage.py") for call in calls for argument in call))
+                self.assertEqual(list((root / ".local").iterdir()), [])
+
 
 if __name__ == "__main__":
     unittest.main()

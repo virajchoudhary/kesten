@@ -49,6 +49,12 @@ def main():
                 )
                 if probe.returncode == 0:
                     break
+                state = subprocess.run(
+                    ["docker", "inspect", "--format", "{{.State.Running}}", name],
+                    capture_output=True, text=True, timeout=15,
+                )
+                if state.returncode != 0 or state.stdout.strip() != "true":
+                    raise RuntimeError("Disposable PostgreSQL exited before readiness or became unavailable.")
                 if time.monotonic() >= deadline:
                     raise RuntimeError("Disposable PostgreSQL did not become ready.")
                 time.sleep(0.5)
@@ -99,7 +105,19 @@ def main():
         finally:
             if cid_file.is_file():
                 container_id = cid_file.read_text().strip()
-                subprocess.run(["docker", "stop", container_id], check=True, stdout=subprocess.DEVNULL, timeout=30)
+                original_error = sys.exception()
+                try:
+                    stopped = subprocess.run(
+                        ["docker", "stop", container_id],
+                        capture_output=True, text=True, timeout=30,
+                    )
+                    if stopped.returncode and "No such container:" not in stopped.stderr:
+                        stopped.check_returncode()
+                except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
+                    if original_error is None:
+                        raise
+                    original_error.add_note("Disposable PostgreSQL cleanup also failed; inspect the recorded container ID.")
+                    print("Disposable PostgreSQL cleanup failed; the original error is preserved.", file=sys.stderr)
 
 
 if __name__ == "__main__":

@@ -49,7 +49,11 @@ Focused tests failed before these fixes. The stale reset link returned HTTP 200 
 
 GitGuardian's two PR #15 alerts were inspected as an explicit disposable CI password and a mocked Basic-auth header. Both literals were removed from the replacement source. CI now generates new passwords per run, uses restricted PostgreSQL roles, and stores its test database in an isolated temporary container. The Basic-auth test generates its header and verifies credential decoding at runtime. No scanner suppression, detector ignore, or trust-authentication bypass was added.
 
-Local correction checks passed 136 frontend tests and 169 backend tests with four PostgreSQL-only skips under SQLite. A real PostgreSQL 17 run passed all 169 tests with no skips, including concurrency, migration, authentication, role-readiness, and research tests. The CI procedure also has three focused randomness, isolation, and ownership-bound cleanup tests.
+Local correction checks passed 136 frontend tests and 169 backend tests with four PostgreSQL-only skips under SQLite. A real PostgreSQL 17 run passed all 169 tests with no skips, including concurrency, migration, authentication, role-readiness, and research tests.
+
+The correction browser run passed 16 scenarios and failed one stale test expectation for EMA 13 after selecting EMA 50. The corrected scenario passed its focused Chromium rerun, including same-snapshot warmup, range invariance, and layout persistence. These are combined receipts, not a claim of one complete passing correction run.
+
+Independent review also found that cleanup of an automatically removed PostgreSQL container could mask its startup error. The added regression reproduced that defect before correction. The helper now detects a stopped or unavailable container before the readiness timeout, tolerates only Docker's explicit missing-container cleanup response, and preserves an original failure when cleanup also fails. Four focused procedure tests pass. No container, volume, or database owned by another workflow is targeted.
 
 Production remains NO-GO. These local corrections do not establish a passing hosted CI or image-security gate. Historical forecasting validity remains unestablished.
 
