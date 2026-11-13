@@ -1,0 +1,2 @@
+SESSION_EPOCH_SESSION_KEY = "_cadrisyn_account_session_epoch"
+LOGIN_EPOCH_REQUEST_ATTR = "_cadrisyn_authenticated_session_epoch"

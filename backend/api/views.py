@@ -1,14 +1,70 @@
 from concurrent.futures import ThreadPoolExecutor, TimeoutError as FutureTimeoutError
+from functools import lru_cache
+import logging
+import os
 import threading
-from rest_framework.views import APIView
+import uuid
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.decorators import api_view
-from .ai_services import GroqService, TrendPredictor, PortfolioOptimizer, RLPortfolioAgent
-from .classical_models import ClassicalForecaster
+from .security import (
+    LegacyOperatorAPIView,
+    bounded_float,
+    bounded_int,
+    is_safe_legacy_session_id,
+    legacy_api_view,
+    legacy_error_response,
+    normalize_ticker,
+    normalize_tickers,
+    optional_iso_date,
+    parse_bool,
+)
 from django.http import StreamingHttpResponse
 
-_rl_agent = RLPortfolioAgent()
+logger = logging.getLogger(__name__)
+
+
+@lru_cache(maxsize=1)
+def _load_ai_services():
+    from . import ai_services
+
+    return ai_services
+
+
+@lru_cache(maxsize=1)
+def _get_rl_agent():
+    return _load_ai_services().RLPortfolioAgent()
+
+
+def _invalid_request(request, message="Review the supplied values and try again."):
+    return legacy_error_response(
+        request,
+        "invalid_input",
+        message,
+        status.HTTP_400_BAD_REQUEST,
+    )
+
+
+def _service_unavailable(request, code, message):
+    return legacy_error_response(request, code, message, status.HTTP_503_SERVICE_UNAVAILABLE)
+
+
+def _valid_chat_message(message):
+    if isinstance(message, str):
+        return 0 < len(message) <= 4000
+    if not isinstance(message, list) or not 1 <= len(message) <= 20:
+        return False
+
+    total_length = 0
+    for item in message:
+        if not isinstance(item, dict):
+            return False
+        if item.get("role") not in {"system", "user", "assistant"}:
+            return False
+        content = item.get("content")
+        if not isinstance(content, str) or len(content) > 4000:
+            return False
+        total_length += len(content)
+    return total_length <= 16000
 
 
 def _timed_call(func, timeout_seconds, fallback):
@@ -25,23 +81,29 @@ def _timed_call(func, timeout_seconds, fallback):
         executor.shutdown(wait=False, cancel_futures=True)
 
 
-class ChatView(APIView):
+class ChatView(LegacyOperatorAPIView):
     def post(self, request):
         message = request.data.get('message')
-        if not message:
-            return Response({'error': 'Message is required'}, status=status.HTTP_400_BAD_REQUEST)
-        
-        response = GroqService.chat(message)
+        if not _valid_chat_message(message):
+            return _invalid_request(request, "Enter a message of up to 4,000 characters.")
+
+        response = _load_ai_services().GroqService.chat(message)
         return Response({'response': response})
 
-class TrendPredictionView(APIView):
+class TrendPredictionView(LegacyOperatorAPIView):
     def get(self, request, symbol):
-        target_date = request.query_params.get('target_date')
+        try:
+            symbol = normalize_ticker(symbol)
+            target_date = optional_iso_date(request.query_params.get('target_date'))
+        except ValueError:
+            return _invalid_request(request, "Choose a valid ticker and date.")
+
         from .models import OptimizedHyperparams
         cached = OptimizedHyperparams.get_valid_cache(symbol)
 
+        services = _load_ai_services()
         if cached:
-            prediction = TrendPredictor.predict(
+            prediction = services.TrendPredictor.predict(
                 symbol,
                 hidden_size        = cached.hidden_size,
                 num_layers         = cached.num_layers,
@@ -54,22 +116,25 @@ class TrendPredictionView(APIView):
             )
             prediction['evolved_accuracy'] = cached.directional_accuracy
         else:
-            prediction = TrendPredictor.predict(symbol, target_date=target_date)
+            prediction = services.TrendPredictor.predict(symbol, target_date=target_date)
 
         from .models import SearchedTicker
         SearchedTicker.log(symbol)
 
         return Response(prediction)
 
-class PortfolioOptimizationView(APIView):
+class PortfolioOptimizationView(LegacyOperatorAPIView):
     def post(self, request):
-        tickers = request.data.get('tickers', [])
-        print(f"PortfolioOptimizationView called with tickers: {tickers}")
-        risk_tolerance = request.data.get('risk_tolerance', 0.5)
-        target_date = request.data.get('target_date')
-        
-        if not tickers:
-            return Response({'error': 'Tickers are required'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            tickers = normalize_tickers(request.data.get('tickers', []))
+            risk_tolerance = bounded_float(
+                request.data.get('risk_tolerance'), 0.0, 1.0, default=0.5
+            )
+            target_date = optional_iso_date(request.data.get('target_date'))
+        except ValueError:
+            return _invalid_request(request, "Choose 1 to 20 valid tickers and a risk tolerance from 0 to 1.")
+
+        services = _load_ai_services()
             
         # Auto-queue GA for any ticker without an evolved model
         try:
@@ -81,11 +146,15 @@ class PortfolioOptimizationView(APIView):
         except Exception:
             pass  # never block the optimization request
 
-        optimization_result = PortfolioOptimizer.optimize(tickers, risk_tolerance, target_date=target_date)
+        optimization_result = services.PortfolioOptimizer.optimize(
+            tickers, risk_tolerance, target_date=target_date
+        )
         allocation = optimization_result.get("allocation", {})
 
         reasoning = _timed_call(
-            lambda: GroqService.analyze_allocation(tickers, allocation, risk_tolerance),
+            lambda: services.GroqService.analyze_allocation(
+                tickers, allocation, risk_tolerance
+            ),
             timeout_seconds=2.5,
             fallback="",
         )
@@ -95,10 +164,13 @@ class PortfolioOptimizationView(APIView):
             'reasoning': reasoning
         })
 
-class HPOStatusView(APIView):
+class HPOStatusView(LegacyOperatorAPIView):
     def get(self, request):
         from .models import OptimizedHyperparams
-        symbol = request.query_params.get('symbol', 'AAPL').upper()
+        try:
+            symbol = normalize_ticker(request.query_params.get('symbol', 'AAPL'))
+        except ValueError:
+            return _invalid_request(request, "Choose a valid ticker.")
         cached = OptimizedHyperparams.get_valid_cache(symbol)
         if cached:
             return Response({
@@ -114,28 +186,27 @@ class HPOStatusView(APIView):
             })
         return Response({'optimized': False, 'symbol': symbol})
 
-class BLOptimizationView(APIView):
+class BLOptimizationView(LegacyOperatorAPIView):
     def post(self, request):
-        tickers = request.data.get('tickers', [])
-        target_date = request.data.get('target_date')
         try:
-            risk_tolerance = float(request.data.get('risk_tolerance', 0.5))
-        except (TypeError, ValueError):
-            risk_tolerance = 0.5
-        risk_tolerance = max(0.0, min(1.0, risk_tolerance))
-
-        if not tickers or len(tickers) < 2:
-            return Response(
-                {'error': 'At least 2 tickers required.'},
-                status=status.HTTP_400_BAD_REQUEST
+            tickers = normalize_tickers(request.data.get('tickers', []), minimum=2)
+            target_date = optional_iso_date(request.data.get('target_date'))
+            risk_tolerance = bounded_float(
+                request.data.get('risk_tolerance'), 0.0, 1.0, default=0.5
+            )
+        except ValueError:
+            return _invalid_request(
+                request,
+                "Provide 2 to 20 valid tickers, a risk tolerance from 0 to 1, and a valid date.",
             )
 
         try:
             from .bl_optimizer import run_black_litterman
         except ImportError:
-            return Response(
-                {'error': 'PyPortfolioOpt not installed. Run: pip install PyPortfolioOpt'},
-                status=status.HTTP_400_BAD_REQUEST
+            return _service_unavailable(
+                request,
+                "quant_dependency_unavailable",
+                "The legacy optimization dependencies are unavailable.",
             )
 
         result = run_black_litterman(tickers, risk_tolerance, target_date=target_date)
@@ -166,7 +237,7 @@ class BLOptimizationView(APIView):
         """
 
         reasoning = _timed_call(
-            lambda: GroqService.chat(prompt),
+            lambda: _load_ai_services().GroqService.chat(prompt),
             timeout_seconds=3.0,
             fallback="",
         )
@@ -177,27 +248,28 @@ class BLOptimizationView(APIView):
         })
 
 
-class BlackLittermanAnalysisView(APIView):
+class BlackLittermanAnalysisView(LegacyOperatorAPIView):
     """
     Full Black-Litterman analysis with user-specified views.
     Implements BL math from scratch with NumPy.
     """
     def post(self, request):
-        tickers = request.data.get('tickers', [])
-        market_weights = request.data.get('market_weights', {})
-        views = request.data.get('views', [])
-        tau = request.data.get('tau', 0.05)
-        risk_free_rate = request.data.get('risk_free_rate', 0.02)
-
-        if not tickers or len(tickers) < 2:
-            return Response(
-                {'error': 'At least 2 tickers required.'},
-                status=status.HTTP_400_BAD_REQUEST
+        try:
+            tickers = normalize_tickers(request.data.get('tickers', []), minimum=2)
+            market_weights = request.data.get('market_weights', {})
+            views = request.data.get('views', [])
+            tau = bounded_float(request.data.get('tau'), 0.0, 1.0, default=0.05)
+            risk_free_rate = bounded_float(
+                request.data.get('risk_free_rate'), -1.0, 1.0, default=0.02
             )
-        if not views:
-            return Response(
-                {'error': 'At least 1 view is required.'},
-                status=status.HTTP_400_BAD_REQUEST
+            if not isinstance(market_weights, dict) or len(market_weights) > 20:
+                raise ValueError("Invalid market weights.")
+            if not isinstance(views, list) or not 1 <= len(views) <= 20:
+                raise ValueError("Invalid view list.")
+        except ValueError:
+            return _invalid_request(
+                request,
+                "Provide valid weights, 2 to 20 tickers, and 1 to 20 views.",
             )
 
         from .bl_numpy import run_bl_analysis
@@ -209,12 +281,18 @@ class BlackLittermanAnalysisView(APIView):
         return Response(result)
 
 
-class SWOTAnalysisView(APIView):
+class SWOTAnalysisView(LegacyOperatorAPIView):
     def post(self, request):
         query = request.data.get('query', '')
-        target_date = request.data.get('target_date')
-        if not query:
-            return Response({'error': 'Query is required'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            target_date = optional_iso_date(request.data.get('target_date'))
+            if not isinstance(query, str) or not 1 <= len(query.strip()) <= 300:
+                raise ValueError("Invalid query.")
+        except ValueError:
+            return _invalid_request(
+                request,
+                "Enter a query of up to 300 characters and a valid date.",
+            )
 
         from .swot_service import run_swot_analysis
         result = run_swot_analysis(query, target_date=target_date)
@@ -229,96 +307,163 @@ class SWOTAnalysisView(APIView):
 # RL Ensemble — Train (async) + Progress poll + HPO cache
 # ─────────────────────────────────────────────────────────────────────────────
 
-def _coerce_bool(value, default=True):
-    if value is None: return default
-    if isinstance(value, bool): return value
-    if isinstance(value, (int, float)): return bool(value)
-    if isinstance(value, str):
-        if value.strip().lower() in {"1", "true", "yes", "on"}:  return True
-        if value.strip().lower() in {"0", "false", "no", "off"}: return False
-    return default
-
-
-@api_view(['POST'])
+@legacy_api_view(["POST"])
 def train_rl_agent(request):
     try:
-        tickers    = request.data.get('tickers', [])
-        timesteps  = int(request.data.get('timesteps', 10000))
-        session_id = request.data.get('session_id', 'default')
-        use_hpo    = _coerce_bool(request.data.get('use_hpo', True))
-        target_date = request.data.get('target_date')
-        if not tickers or len(tickers) < 2:
-            return Response({'error': 'Provide at least 2 tickers.'}, status=400)
+        tickers = normalize_tickers(request.data.get("tickers", []), minimum=2)
+        timesteps = bounded_int(
+            request.data.get("timesteps"), 1, 100_000, default=10_000
+        )
+        use_hpo = parse_bool(request.data.get("use_hpo"), default=True)
+        target_date = optional_iso_date(request.data.get("target_date"))
+    except ValueError:
+        return _invalid_request(
+            request,
+            "Provide 2 to 20 valid tickers, 1 to 100,000 timesteps, and a valid date.",
+        )
 
-        def run_training():
-            try:
-                _rl_agent.train(tickers, timesteps=timesteps, session_id=session_id, use_hpo=use_hpo, target_date=target_date)
-            except Exception as exc:
-                import json as _json, os as _os
-                pf = _os.path.join(_rl_agent.PROGRESS_DIR, f"{session_id}.json")
-                with open(pf, 'w') as fh:
-                    _json.dump({'progress': 0, 'status': 'error', 'error': str(exc)}, fh)
-
-        threading.Thread(target=run_training, daemon=True).start()
-        return Response({'status': 'started', 'session_id': session_id,
-                         'hpo_enabled': use_hpo and timesteps >= _rl_agent.HPO_MIN_TIMESTEPS})
-    except Exception as exc:
-        return Response({'error': str(exc)}, status=500)
-
-
-@api_view(['GET'])
-def rl_progress(request, session_id):
+    session_id = uuid.uuid4().hex
     try:
-        return Response(_rl_agent.get_progress(session_id))
-    except Exception as exc:
-        return Response({'error': str(exc)}, status=500)
+        agent = _get_rl_agent()
+    except Exception:
+        logger.exception("Legacy RL agent could not be initialized.")
+        return _service_unavailable(
+            request,
+            "legacy_research_unavailable",
+            "The legacy research service is unavailable.",
+        )
+
+    def run_training():
+        try:
+            agent.train(
+                tickers,
+                timesteps=timesteps,
+                session_id=session_id,
+                use_hpo=use_hpo,
+                target_date=target_date,
+            )
+        except Exception:
+            logger.exception("Legacy RL training failed for session %s.", session_id)
+            progress_file = os.path.join(agent.PROGRESS_DIR, f"{session_id}.json")
+            try:
+                agent._write_progress(
+                    progress_file,
+                    0,
+                    "error",
+                    total_timesteps=timesteps,
+                    extra={"error": "Training failed. Review the server log."},
+                )
+            except Exception:
+                logger.exception("Legacy RL failure state could not be recorded.")
+
+    try:
+        threading.Thread(target=run_training, daemon=True).start()
+    except Exception:
+        logger.exception("Legacy RL training could not be scheduled.")
+        return _service_unavailable(
+            request,
+            "legacy_research_unavailable",
+            "The legacy research service is unavailable.",
+        )
+    return Response(
+        {
+            "status": "started",
+            "session_id": session_id,
+            "hpo_enabled": use_hpo and timesteps >= agent.HPO_MIN_TIMESTEPS,
+        },
+        status=status.HTTP_202_ACCEPTED,
+    )
 
 
-@api_view(['GET'])
+@legacy_api_view(["GET"], throttle_scope="legacy_read")
+def rl_progress(request, session_id):
+    if not is_safe_legacy_session_id(session_id):
+        return legacy_error_response(
+            request, "not_found", "Training session not found.", status.HTTP_404_NOT_FOUND
+        )
+    try:
+        return Response(_get_rl_agent().get_progress(session_id))
+    except Exception:
+        logger.exception("Legacy RL progress could not be read.")
+        return _service_unavailable(
+            request,
+            "legacy_research_unavailable",
+            "Training progress is unavailable.",
+        )
+
+
+@legacy_api_view(["GET"], throttle_scope="legacy_read")
 def rl_hpo_cache_status(request):
     try:
-        tickers = [t.strip() for t in request.query_params.get('tickers', '').split(',') if t.strip()]
-        if len(tickers) < 2:
-            return Response({'error': 'Provide at least 2 tickers.'}, status=400)
-        cached = _rl_agent._load_hpo_cache(tickers)
+        ticker_query = request.query_params.get("tickers", "")
+        if len(ticker_query) > 420:
+            raise ValueError("Ticker list too long.")
+        tickers = normalize_tickers(
+            [ticker for ticker in ticker_query.split(",") if ticker.strip()],
+            minimum=2,
+        )
+        agent = _get_rl_agent()
+        cached = agent._load_hpo_cache(tickers)
         if cached:
-            return Response({'cached': True, 'ticker_hash': _rl_agent._ticker_hash_for_response(tickers),
-                             'agents_evolved': list(cached.keys()), 'evolved_hyperparams': cached})
-        return Response({'cached': False, 'tickers': tickers})
-    except Exception as exc:
-        return Response({'error': str(exc)}, status=500)
+            return Response(
+                {
+                    "cached": True,
+                    "ticker_hash": agent._ticker_hash_for_response(tickers),
+                    "agents_evolved": list(cached.keys()),
+                    "evolved_hyperparams": cached,
+                }
+            )
+        return Response({"cached": False, "tickers": tickers})
+    except ValueError:
+        return _invalid_request(request, "Provide 2 to 20 valid tickers.")
+    except Exception:
+        logger.exception("Legacy HPO cache status could not be read.")
+        return _service_unavailable(
+            request,
+            "legacy_research_unavailable",
+            "Research cache status is unavailable.",
+        )
 
 
-@api_view(['DELETE'])
+@legacy_api_view(["DELETE"])
 def rl_hpo_cache_clear(request):
     try:
-        tickers = request.data.get('tickers', [])
-        if len(tickers) < 2:
-            return Response({'error': 'Provide at least 2 tickers.'}, status=400)
+        tickers = normalize_tickers(request.data.get("tickers", []), minimum=2)
+        agent = _get_rl_agent()
         import os as _os
-        path = _rl_agent._hpo_cache_path(tickers)
+        path = agent._hpo_cache_path(tickers)
         if _os.path.exists(path):
             _os.remove(path)
-            return Response({'status': 'cleared', 'tickers': tickers})
-        return Response({'status': 'no_cache', 'tickers': tickers})
-    except Exception as exc:
-        return Response({'error': str(exc)}, status=500)
+            return Response({"status": "cleared", "tickers": tickers})
+        return Response({"status": "no_cache", "tickers": tickers})
+    except ValueError:
+        return _invalid_request(request, "Provide 2 to 20 valid tickers.")
+    except Exception:
+        logger.exception("Legacy HPO cache could not be cleared.")
+        return _service_unavailable(
+            request,
+            "legacy_research_unavailable",
+            "Research cache could not be updated.",
+        )
 
+
+@legacy_api_view(["GET"])
 def stream_evolution(request):
-    symbol = request.GET.get('symbol', 'AAPL')
     try:
-        pop_size = int(request.GET.get('pop_size', 5))
+        symbol = normalize_ticker(request.query_params.get("symbol", "AAPL"))
+        pop_size = bounded_int(request.query_params.get("pop_size"), 2, 50, default=5)
+        generations = bounded_int(
+            request.query_params.get("generations"), 1, 25, default=5
+        )
+        mutation_rate = bounded_float(
+            request.query_params.get("mutation_rate"), 0.0, 1.0, default=0.2
+        )
+        target_date = optional_iso_date(request.query_params.get("target_date"))
     except ValueError:
-        pop_size = 5
-    try:
-        generations = int(request.GET.get('generations', 5))
-    except ValueError:
-        generations = 5
-    try:
-        mutation_rate = float(request.GET.get('mutation_rate', 0.2))
-    except ValueError:
-        mutation_rate = 0.2
-    target_date = request.GET.get('target_date')
+        return _invalid_request(
+            request,
+            "Choose a valid ticker, a valid date, and bounded evolution settings.",
+        )
 
     from .evolution import evolutionary_hpo_generator
     return StreamingHttpResponse(
@@ -332,23 +477,29 @@ def stream_evolution(request):
         content_type='application/x-ndjson'
     )
 
-class BacktestPredictionView(APIView):
+class BacktestPredictionView(LegacyOperatorAPIView):
     def get(self, request, symbol):
-        past_date = request.query_params.get('past_date')
-        if not past_date:
-            return Response({'error': 'past_date query parameter is required'}, status=status.HTTP_400_BAD_REQUEST)
+        try:
+            symbol = normalize_ticker(symbol)
+            past_date = optional_iso_date(request.query_params.get("past_date"))
+            if past_date is None:
+                raise ValueError("A past date is required.")
+            force_retrain = parse_bool(
+                request.query_params.get("force_retrain", "false"), default=False
+            )
+        except ValueError:
+            return _invalid_request(request, "Choose a valid ticker, date, and force-retrain value.")
 
-        force_retrain_raw = request.query_params.get('force_retrain', 'false')
-        force_retrain = force_retrain_raw.strip().lower() in ('true', '1', 'yes')
-
-        result = TrendPredictor.run_backtest(symbol, past_date, force_retrain=force_retrain)
+        result = _load_ai_services().TrendPredictor.run_backtest(
+            symbol, past_date, force_retrain=force_retrain
+        )
         if isinstance(result, dict) and "error" in result:
-            return Response(result, status=status.HTTP_400_BAD_REQUEST)
+            return _invalid_request(request, "The requested backtest could not be completed.")
 
         return Response(result)
 
 
-class ClassicalBacktestView(APIView):
+class ClassicalBacktestView(LegacyOperatorAPIView):
     """
     GET /api/backtest-classical/<symbol>/
     Query params:
@@ -359,20 +510,26 @@ class ClassicalBacktestView(APIView):
     BacktestPredictionView plus confidence interval arrays.
     """
     def get(self, request, symbol):
-        symbol = symbol.upper()
-        past_date = request.query_params.get("past_date")
-
-        if not past_date:
-            return Response(
-                {"error": "past_date is required (YYYY-MM-DD)"},
-                status=400
-            )
+        try:
+            symbol = normalize_ticker(symbol)
+            past_date = optional_iso_date(request.query_params.get("past_date"))
+            if past_date is None:
+                raise ValueError("A past date is required.")
+        except ValueError:
+            return _invalid_request(request, "Choose a valid ticker and past date.")
 
         try:
+            from .classical_models import ClassicalForecaster
+
             forecaster = ClassicalForecaster(symbol=symbol, past_date=past_date)
             result = forecaster.run_classical_backtest()
             return Response(result)
-        except ValueError as e:
-            return Response({"error": str(e)}, status=400)
-        except Exception as e:
-            return Response({"error": f"Classical backtest failed: {str(e)}"}, status=500)
+        except ValueError:
+            return _invalid_request(request, "The requested backtest inputs are invalid.")
+        except Exception:
+            logger.exception("Legacy classical backtest failed.")
+            return _service_unavailable(
+                request,
+                "legacy_research_unavailable",
+                "The classical backtest is unavailable.",
+            )

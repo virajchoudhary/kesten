@@ -1,0 +1,10 @@
+services:
+  database:
+    ports: ["127.0.0.1:15435:5432"]
+  cache:
+    ports: ["127.0.0.1:16385:6379"]
+  gateway:
+    ports: !override ["127.0.0.1:8085:8080"]
+  api:
+    environment:
+      DJANGO_CSRF_TRUSTED_ORIGINS: http://127.0.0.1:8085,http://localhost:8085
