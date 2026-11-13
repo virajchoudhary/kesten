@@ -5,10 +5,12 @@ classical forecasting, portfolio-analysis, and historical-backtesting components
 Viraj contributed research components and later continued the project as a
 full-stack market workspace.
 
-Kesten is the working brand for the project historically named Stock Predictor
-System. Trademark and domain clearance are pending. The repository remains
-[`virajchoudhary/stock-predictor-system`](https://github.com/virajchoudhary/stock-predictor-system).
-Existing source directories and configuration names are unchanged.
+Kesten is the final project name for the historical Stock Predictor System.
+The repository is now [`virajchoudhary/kesten`](https://github.com/virajchoudhary/kesten).
+Earlier release records use Kerquant; older source identifiers also use
+QuantVision or Cadrisyn. Existing source directories, configuration names,
+branches, and Git history are unchanged. The project name does not establish
+trademark or domain clearance.
 The name does not imply a production release, live trading, or validated
 prediction performance.
 
@@ -17,12 +19,17 @@ prediction performance.
 | Implementation | Availability | Evidence boundary |
 | --- | --- | --- |
 | Django and Streamlit research application | Public main | Source is available in this repository. Trading performance and production readiness are not established. |
-| Next.js market workspace with Django APIs | Local continuation | Authored implementation and recorded regression evidence exist locally. The code is not included in public main. |
+| Next.js market workspace with Django APIs | Public draft [PR #16](https://github.com/virajchoudhary/kesten/pull/16), not public main | Independently authored continuation with recorded local checks. The release PR remains open and unmerged as of 13 November 2026. |
 
 The newer workspace includes authenticated market APIs, owner-scoped watchlists,
 and API/browser regression coverage. Its chart data includes explicitly synthetic
 demonstration data. This README does not imply that cloning public main yields
-the newer workspace.
+the newer workspace. PR #16 contains the proposed release on
+`codex/kerquant-portfolio-publication-v2`; its historical branch name is retained.
+The [publication record](https://github.com/virajchoudhary/kesten/blob/a30de92eeb3755a7e1acd499e963b9c75fa4bb2a/docs/PUBLICATION.md)
+documents 136 frontend tests, 169 PostgreSQL backend tests, and four CI-helper
+checks run locally. These are recorded checks, not a fresh run or hosted CI pass.
+Production remains NO-GO.
 
 No verified live-trading returns, directional-accuracy gains, point-in-time
 integrity, API latency, task throughput, or production deployment are claimed.
@@ -79,8 +86,8 @@ This is an academic project with later independent continuation, not an
 individually owned implementation of every model or dependency.
 Viraj's reviewed work includes Django REST, Streamlit, PyTorch LSTM,
 historical-backtesting, and ARIMA/GARCH components.
-The local Next.js continuation has separate authored source and recorded
-regression evidence.
+The Next.js continuation has separate authored source and recorded regression
+evidence on the draft release branch.
 
 Historical market-data evaluation does not by itself establish an investable
 strategy. Revised data, execution costs, leakage, model selection, and
@@ -88,6 +95,7 @@ out-of-sample validation require their own assessment.
 API examples, source modules, and demonstration data are not empirical
 performance measurements.
 
-No screenshot or public demo of the newer implementation is attached here.
-Publishing that source or a demo requires a separate review and approval.
-This documentation change does not authorize application changes or deployment.
+No screenshot or verified production demo of the newer implementation is
+attached here. The source proposed in PR #16 is public, but merging it and
+deploying the application require separate approval and successful release gates.
+This naming and documentation update does not authorize either action.
