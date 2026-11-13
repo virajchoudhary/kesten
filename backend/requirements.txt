@@ -1,57 +1,44 @@
-# Stock Price Predictor Backend Dependencies
-# Updated: replaced tensorflow, nsepython, sentence-transformers
-# with modern maintained alternatives
+# Legacy Streamlit and quantitative research environment.
+# The supported workspace API uses requirements-workspace.txt and its lock.
 
-django
-djangorestframework
-gunicorn
-
-# Market Data
-yfinance>=0.2.40
-polygon-api-client
-
-# Data & Math
-pandas
-numpy
-scipy
-scikit-learn
-cvxpy
-
-# Deep Learning (replaced tensorflow)
-torch>=1.11
-torchvision
-
-# Portfolio Optimisation (Riskfolio-Lib — HRP, CVaR, Mean-Variance)
-Riskfolio-Lib
-PyPortfolioOpt==1.5.5
-
-# AI / LLM
-groq
-
-# Embeddings (replaced sentence-transformers — 10x faster, no 400MB download)
-fastembed
-
-# Reporting
-quant-reporter
-
-# Frontend
+# Django research API and local UI
+Django>=5.2,<6
+djangorestframework>=3.18.3,<4
+django-cors-headers==4.9.0
+gunicorn==23.0.0
 streamlit
 plotly
-
-# Technical Analysis (130+ indicators)
-ta
-
-# Classical Forecasting (ARIMA + GARCH baseline)
-pmdarima
-arch
-
-# Utilities
-statsmodels
 python-dotenv
-celery==5.3.6
-redis==5.0.1
-django-celery-beat==2.6.0
 
-django-cors-headers==4.9.0
-stable-baselines3
-gymnasium
+# Market data adapters. Provider access remains optional and key-gated.
+yfinance>=0.2.40,<2
+polygon-api-client>=1.16,<2
+
+# Scientific and portfolio research
+pandas>=2.2,<4
+numpy>=1.26,<3
+scipy>=1.13,<2
+scikit-learn>=1.5,<2
+cvxpy>=1.6,<2
+torch==2.10.0
+torchvision==0.25.0
+Riskfolio-Lib>=7.2,<8
+PyPortfolioOpt==1.5.5
+ta>=0.11,<1
+statsmodels>=0.14,<1
+pmdarima>=2.1,<3
+arch>=7,<9
+stable-baselines3>=2.8,<3
+gymnasium>=1.2,<2
+
+# Optional LLM integration. It remains disabled without GROQ_API_KEY.
+groq
+
+# Install this manifest from the repository root to include local reporter code.
+-e ./quant_reporter
+
+# FastEmbed was imported eagerly but has no current caller; add it only with an
+# implemented embedding feature and a separately verified dependency set.
+celery==5.6.3
+redis==6.4.0
+django-celery-beat==2.9.0

@@ -1,0 +1,36 @@
+*.sh text eol=lf
+backend/research/quant/*.py text eol=lf
+backend/requirements-workspace.lock.txt text eol=lf
+docs/implementation/evidence/phase4/*.txt text eol=lf
+docs/implementation/evidence/phase4/*.json text eol=lf
+docs/implementation/evidence/phase51/*.txt text eol=lf
+docs/implementation/evidence/phase51/*.json text eol=lf
+docs/implementation/evidence/phase51/*.md text eol=lf
+docs/implementation/evidence/phase51/*.tsv text eol=lf
+docs/implementation/evidence/phase52/*.txt text eol=lf
+docs/implementation/evidence/phase52/*.json text eol=lf
+docs/implementation/evidence/phase52/*.md text eol=lf
+docs/implementation/evidence/phase52/*.tsv text eol=lf
+docs/implementation/evidence/phase53/*.txt text eol=lf
+docs/implementation/evidence/phase53/*.json text eol=lf
+docs/implementation/evidence/phase53/*.md text eol=lf
+docs/implementation/evidence/phase53/*.tsv text eol=lf
+
+docs/implementation/evidence/phase53-followup/*.txt text eol=lf
+
+docs/implementation/evidence/phase53-followup/*.json text eol=lf
+
+docs/implementation/evidence/phase53-followup/*.md text eol=lf
+
+docs/implementation/evidence/phase53-followup/*.tsv text eol=lf
+
+docs/implementation/evidence/image-security-rootcause/*.json text eol=lf
+docs/implementation/evidence/image-security-rootcause/*.tsv text eol=lf
+docs/implementation/evidence/image-security-rootcause/*.md text eol=lf
+docs/implementation/evidence/image-security-rootcause/*.txt text eol=lf
+docs/implementation/evidence/historical-research-20261112/*.json text eol=lf
+docs/implementation/evidence/historical-research-20261112/*.md text eol=lf
+docs/implementation/evidence/historical-research-20261112/*.txt text eol=lf
+docs/implementation/evidence/research-usability-20261112/*.json text eol=lf
+docs/implementation/evidence/research-usability-20261112/*.txt text eol=lf
+docs/implementation/evidence/research-usability-20261112/*.md text eol=lf

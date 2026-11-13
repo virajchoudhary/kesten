@@ -1,0 +1,2923 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Kerquant API",
+        "version": "1.0.0",
+        "description": "Private daily-market research workspace API."
+    },
+    "paths": {
+        "/api/v1/account/invitations/accept/": {
+            "post": {
+                "operationId": "account_invitation_accept",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InvitationAccept"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InvitationAccept"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/InvitationAccept"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    },
+                    {}
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InvitationAccepted"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "429": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/account/password-reset/confirm/": {
+            "post": {
+                "operationId": "account_password_reset_confirm",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PasswordResetConfirm"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PasswordResetConfirm"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PasswordResetConfirm"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    },
+                    {}
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PasswordChanged"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "429": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/account/password/change/": {
+            "post": {
+                "operationId": "account_password_change",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePassword"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePassword"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePassword"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PasswordChanged"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/account/sessions/revoke/": {
+            "post": {
+                "operationId": "account_sessions_revoke",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RevokeSessions"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RevokeSessions"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RevokeSessions"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SessionRevocation"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AccountError"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/instruments/": {
+            "get": {
+                "operationId": "instruments_search",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "schema": {
+                            "type": "string",
+                            "default": "",
+                            "maxLength": 80
+                        }
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InstrumentList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/instruments/{instrument_id}/bars/": {
+            "get": {
+                "operationId": "instrument_bars",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "instrument_id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "mode",
+                        "schema": {
+                            "enum": [
+                                "demo",
+                                "market"
+                            ],
+                            "type": "string",
+                            "default": "demo",
+                            "minLength": 1
+                        },
+                        "description": "* `demo` - demo\n* `market` - market"
+                    },
+                    {
+                        "in": "query",
+                        "name": "range",
+                        "schema": {
+                            "enum": [
+                                "1m",
+                                "3m",
+                                "6m",
+                                "1y",
+                                "2y"
+                            ],
+                            "type": "string",
+                            "default": "1y",
+                            "minLength": 1
+                        },
+                        "description": "* `1m` - 1m\n* `3m` - 3m\n* `6m` - 6m\n* `1y` - 1y\n* `2y` - 2y"
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MarketResponse"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/datasets/": {
+            "get": {
+                "operationId": "research_datasets",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DatasetList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/datasets/{dataset_id}/provenance/": {
+            "get": {
+                "operationId": "research_dataset_provenance",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "dataset_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DatasetProvenance"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/history/": {
+            "get": {
+                "operationId": "research_history",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "data_kind",
+                        "schema": {
+                            "enum": [
+                                "synthetic_fixture",
+                                "historical",
+                                ""
+                            ],
+                            "type": "string"
+                        },
+                        "description": "* `synthetic_fixture` - synthetic_fixture\n* `historical` - historical"
+                    },
+                    {
+                        "in": "query",
+                        "name": "horizon_sessions",
+                        "schema": {
+                            "enum": [
+                                1,
+                                5,
+                                ""
+                            ]
+                        },
+                        "description": "* `1` - 1\n* `5` - 5"
+                    },
+                    {
+                        "in": "query",
+                        "name": "instrument_id",
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 32
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 50,
+                            "minimum": 1,
+                            "default": 20
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "schema": {
+                            "type": "integer",
+                            "maximum": 2147483647,
+                            "minimum": 0,
+                            "default": 0
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "schema": {
+                            "type": "string",
+                            "maxLength": 128
+                        }
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchHistory"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/": {
+            "get": {
+                "operationId": "research_runs",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchRunList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "research_evaluate",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ResearchInput"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchRun"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchRun"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "409": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "415": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "429": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/{run_id}/": {
+            "get": {
+                "operationId": "research_run_read",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "run_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchRun"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/{run_id}/compare/{other_id}/": {
+            "get": {
+                "operationId": "research_runs_compare",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "other_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "run_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchCompare"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/{run_id}/export/": {
+            "get": {
+                "operationId": "research_run_export",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "run_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchExport"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/research/runs/{run_id}/replay/": {
+            "post": {
+                "operationId": "research_run_replay",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "run_id",
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResearchReplay"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "404": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "415": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "429": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "503": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/session/": {
+            "get": {
+                "operationId": "session_read",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    },
+                    {}
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Session"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "session_login",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    },
+                    {}
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Session"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "403": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            },
+            "delete": {
+                "operationId": "session_logout",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    },
+                    {}
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No response body"
+                    }
+                }
+            }
+        },
+        "/api/v1/watchlist/": {
+            "get": {
+                "operationId": "watchlist_read",
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InstrumentList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            },
+            "post": {
+                "operationId": "watchlist_add",
+                "tags": [
+                    "v1"
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WatchlistInput"
+                            }
+                        },
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WatchlistInput"
+                            }
+                        },
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/WatchlistInput"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InstrumentList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InstrumentList"
+                                }
+                            }
+                        },
+                        "description": ""
+                    },
+                    "400": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Error"
+                                }
+                            }
+                        },
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/v1/watchlist/{instrument_id}/": {
+            "delete": {
+                "operationId": "watchlist_remove",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "instrument_id",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true
+                    }
+                ],
+                "tags": [
+                    "v1"
+                ],
+                "security": [
+                    {
+                        "cookieAuth": []
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No response body"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AccountError": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "field_errors": {},
+                    "request_id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "field_errors",
+                    "message",
+                    "request_id"
+                ]
+            },
+            "Bar": {
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "open": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "high": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "low": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "close": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "volume": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "close",
+                    "high",
+                    "low",
+                    "open",
+                    "time",
+                    "volume"
+                ]
+            },
+            "ChangePassword": {
+                "type": "object",
+                "properties": {
+                    "new_password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 256
+                    },
+                    "confirm_password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 256
+                    },
+                    "current_password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 256
+                    }
+                },
+                "required": [
+                    "confirm_password",
+                    "current_password",
+                    "new_password"
+                ]
+            },
+            "DataKindEnum": {
+                "enum": [
+                    "synthetic_fixture",
+                    "historical"
+                ],
+                "type": "string",
+                "description": "* `synthetic_fixture` - synthetic_fixture\n* `historical` - historical"
+            },
+            "DataModeEnum": {
+                "enum": [
+                    "demo",
+                    "delayed"
+                ],
+                "type": "string",
+                "description": "* `demo` - demo\n* `delayed` - delayed"
+            },
+            "Dataset": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "instrument_id": {
+                        "type": "string"
+                    },
+                    "data_kind": {
+                        "$ref": "#/components/schemas/DataKindEnum"
+                    },
+                    "version": {
+                        "type": "string"
+                    },
+                    "source_id": {
+                        "type": "string"
+                    },
+                    "license_reference": {
+                        "type": "string"
+                    },
+                    "availability_evidence": {
+                        "type": "string"
+                    },
+                    "adjustment_basis": {
+                        "type": "string"
+                    },
+                    "calendar": {
+                        "type": "string"
+                    },
+                    "observation_count": {
+                        "type": "integer"
+                    },
+                    "first_session": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "last_session": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "required": [
+                    "adjustment_basis",
+                    "availability_evidence",
+                    "calendar",
+                    "created_at",
+                    "data_kind",
+                    "first_session",
+                    "id",
+                    "instrument_id",
+                    "last_session",
+                    "license_reference",
+                    "name",
+                    "observation_count",
+                    "source_id",
+                    "version"
+                ]
+            },
+            "DatasetList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Dataset"
+                        }
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            },
+            "DatasetProvenance": {
+                "type": "object",
+                "properties": {
+                    "dataset": {
+                        "$ref": "#/components/schemas/Dataset"
+                    },
+                    "point_in_time_qualification": {
+                        "$ref": "#/components/schemas/PointInTimeQualificationEnum"
+                    },
+                    "independently_verified_source": {
+                        "type": "boolean"
+                    },
+                    "intake": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/ResearchIntakeProvenance"
+                            }
+                        ],
+                        "readOnly": true
+                    }
+                },
+                "required": [
+                    "dataset",
+                    "independently_verified_source",
+                    "intake",
+                    "point_in_time_qualification"
+                ]
+            },
+            "DisclosureEnum": {
+                "enum": [
+                    "Synthetic pipeline check. Not empirical market evidence."
+                ],
+                "type": "string",
+                "description": "* `Synthetic pipeline check. Not empirical market evidence.` - Synthetic pipeline check. Not empirical market evidence."
+            },
+            "Error": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "field_errors": {},
+                    "request_id": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "code",
+                    "field_errors",
+                    "message",
+                    "request_id"
+                ]
+            },
+            "Evaluation": {
+                "type": "object",
+                "properties": {
+                    "model_id": {
+                        "$ref": "#/components/schemas/ResearchModelEnum"
+                    },
+                    "partition": {
+                        "$ref": "#/components/schemas/PartitionEnum"
+                    },
+                    "n": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "mae": {
+                        "type": "number",
+                        "format": "double",
+                        "minimum": 0
+                    },
+                    "rmse": {
+                        "type": "number",
+                        "format": "double",
+                        "minimum": 0
+                    },
+                    "return_mae": {
+                        "type": "number",
+                        "format": "double",
+                        "minimum": 0
+                    },
+                    "return_rmse": {
+                        "type": "number",
+                        "format": "double",
+                        "minimum": 0
+                    },
+                    "directional_accuracy": {
+                        "type": "number",
+                        "format": "double",
+                        "maximum": 1,
+                        "minimum": 0
+                    },
+                    "direction_confusion": {
+                        "type": "array",
+                        "items": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            },
+                            "maxItems": 3,
+                            "minItems": 3
+                        },
+                        "maxItems": 3,
+                        "minItems": 3
+                    },
+                    "mae_difference_vs_last_close": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "direction_confusion",
+                    "directional_accuracy",
+                    "mae",
+                    "mae_difference_vs_last_close",
+                    "model_id",
+                    "n",
+                    "partition",
+                    "return_mae",
+                    "return_rmse",
+                    "rmse"
+                ]
+            },
+            "EvaluationRow": {
+                "type": "object",
+                "properties": {
+                    "model_id": {
+                        "$ref": "#/components/schemas/ResearchModelEnum"
+                    },
+                    "partition": {
+                        "$ref": "#/components/schemas/PartitionEnum"
+                    },
+                    "origin": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "target": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "information_cutoff": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "origin_value": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "predicted": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "actual": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "input_sha256": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "actual",
+                    "information_cutoff",
+                    "input_sha256",
+                    "model_id",
+                    "origin",
+                    "origin_value",
+                    "partition",
+                    "predicted",
+                    "target"
+                ]
+            },
+            "EvidenceKindEnum": {
+                "enum": [
+                    "synthetic_pipeline_check",
+                    "historical_walk_forward"
+                ],
+                "type": "string",
+                "description": "* `synthetic_pipeline_check` - synthetic_pipeline_check\n* `historical_walk_forward` - historical_walk_forward"
+            },
+            "FailedIntake": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/ResearchIntakeFailedStatus"
+                    },
+                    "receipt_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "required": [
+                    "receipt_id",
+                    "status"
+                ]
+            },
+            "Forecast": {
+                "type": "object",
+                "properties": {
+                    "origin": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "information_cutoff": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ForecastPoint"
+                        }
+                    },
+                    "models": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/MethodForecast"
+                        }
+                    }
+                },
+                "required": [
+                    "history",
+                    "information_cutoff",
+                    "models",
+                    "origin"
+                ]
+            },
+            "ForecastPoint": {
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "value": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "time",
+                    "value"
+                ]
+            },
+            "FormatEnum": {
+                "enum": [
+                    "cadrisyn-research-v1"
+                ],
+                "type": "string",
+                "description": "* `cadrisyn-research-v1` - cadrisyn-research-v1"
+            },
+            "FreshnessStateEnum": {
+                "enum": [
+                    "current",
+                    "stale",
+                    "partial",
+                    "unavailable"
+                ],
+                "type": "string",
+                "description": "* `current` - current\n* `stale` - stale\n* `partial` - partial\n* `unavailable` - unavailable"
+            },
+            "HorizonSessionsEnum": {
+                "enum": [
+                    1,
+                    5
+                ],
+                "type": "integer",
+                "description": "* `1` - 1\n* `5` - 5"
+            },
+            "IndicatorPoint": {
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "value": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "time",
+                    "value"
+                ]
+            },
+            "Indicators": {
+                "type": "object",
+                "properties": {
+                    "sma20": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/IndicatorPoint"
+                        }
+                    },
+                    "sma50": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/IndicatorPoint"
+                        }
+                    },
+                    "rsi14": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/IndicatorPoint"
+                        }
+                    }
+                },
+                "required": [
+                    "rsi14",
+                    "sma20",
+                    "sma50"
+                ]
+            },
+            "Instrument": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "symbol": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "exchange": {
+                        "type": "string"
+                    },
+                    "currency": {
+                        "type": "string"
+                    },
+                    "timezone": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "currency",
+                    "exchange",
+                    "id",
+                    "name",
+                    "symbol",
+                    "timezone"
+                ]
+            },
+            "InstrumentIdEnum": {
+                "enum": [
+                    "xnas-aapl",
+                    "xnas-msft",
+                    "xnas-nvda",
+                    "xnas-amzn",
+                    "xnas-googl",
+                    "xnas-meta",
+                    "xnas-tsla",
+                    "xnas-avgo",
+                    "xnys-jpm",
+                    "xnys-v",
+                    "xnys-ma",
+                    "xnas-wmt",
+                    "xnys-xom",
+                    "xnys-jnj",
+                    "xnys-pg",
+                    "xnys-hd",
+                    "xnys-ko",
+                    "xnys-dis",
+                    "xnas-nflx",
+                    "xnas-cost"
+                ],
+                "type": "string",
+                "description": "* `xnas-aapl` - xnas-aapl\n* `xnas-msft` - xnas-msft\n* `xnas-nvda` - xnas-nvda\n* `xnas-amzn` - xnas-amzn\n* `xnas-googl` - xnas-googl\n* `xnas-meta` - xnas-meta\n* `xnas-tsla` - xnas-tsla\n* `xnas-avgo` - xnas-avgo\n* `xnys-jpm` - xnys-jpm\n* `xnys-v` - xnys-v\n* `xnys-ma` - xnys-ma\n* `xnas-wmt` - xnas-wmt\n* `xnys-xom` - xnys-xom\n* `xnys-jnj` - xnys-jnj\n* `xnys-pg` - xnys-pg\n* `xnys-hd` - xnys-hd\n* `xnys-ko` - xnys-ko\n* `xnys-dis` - xnys-dis\n* `xnas-nflx` - xnas-nflx\n* `xnas-cost` - xnas-cost"
+            },
+            "InstrumentList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Instrument"
+                        }
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            },
+            "IntakeHashes": {
+                "type": "object",
+                "properties": {
+                    "csv": {
+                        "type": "string"
+                    },
+                    "terms": {
+                        "type": "string"
+                    },
+                    "availability": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "availability",
+                    "csv",
+                    "terms"
+                ]
+            },
+            "IntakePermissions": {
+                "type": "object",
+                "properties": {
+                    "storage": {
+                        "type": "boolean"
+                    },
+                    "private_research": {
+                        "type": "boolean"
+                    },
+                    "backup": {
+                        "type": "boolean"
+                    },
+                    "internal_transfer": {
+                        "type": "boolean"
+                    },
+                    "redistribution": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "backup",
+                    "internal_transfer",
+                    "private_research",
+                    "redistribution",
+                    "storage"
+                ]
+            },
+            "InvitationAccept": {
+                "type": "object",
+                "properties": {
+                    "new_password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 256
+                    },
+                    "confirm_password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 256
+                    },
+                    "token": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 128
+                    }
+                },
+                "required": [
+                    "confirm_password",
+                    "new_password",
+                    "token"
+                ]
+            },
+            "InvitationAccepted": {
+                "type": "object",
+                "properties": {
+                    "created": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "created"
+                ]
+            },
+            "Login": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string",
+                        "maxLength": 150
+                    },
+                    "password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 256
+                    }
+                },
+                "required": [
+                    "password",
+                    "username"
+                ]
+            },
+            "MarketResponse": {
+                "type": "object",
+                "properties": {
+                    "instrument": {
+                        "$ref": "#/components/schemas/Instrument"
+                    },
+                    "bars": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Bar"
+                        }
+                    },
+                    "study_history": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/StudyHistoryPoint"
+                        }
+                    },
+                    "indicators": {
+                        "$ref": "#/components/schemas/Indicators"
+                    },
+                    "provenance": {
+                        "$ref": "#/components/schemas/Provenance"
+                    }
+                },
+                "required": [
+                    "bars",
+                    "indicators",
+                    "instrument",
+                    "provenance",
+                    "study_history"
+                ]
+            },
+            "MarketStateEnum": {
+                "enum": [
+                    "open",
+                    "closed",
+                    "unknown"
+                ],
+                "type": "string",
+                "description": "* `open` - open\n* `closed` - closed\n* `unknown` - unknown"
+            },
+            "Method": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/ResearchModelEnum"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "version": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "label",
+                    "version"
+                ]
+            },
+            "MethodForecast": {
+                "type": "object",
+                "properties": {
+                    "model_id": {
+                        "$ref": "#/components/schemas/ResearchModelEnum"
+                    },
+                    "points": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ForecastPoint"
+                        }
+                    }
+                },
+                "required": [
+                    "model_id",
+                    "points"
+                ]
+            },
+            "MissingIntake": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/ResearchIntakeMissingStatus"
+                    }
+                },
+                "required": [
+                    "status"
+                ]
+            },
+            "NameEnum": {
+                "enum": [
+                    "split_neutral_close"
+                ],
+                "type": "string",
+                "description": "* `split_neutral_close` - split_neutral_close"
+            },
+            "PartitionEnum": {
+                "enum": [
+                    "validation",
+                    "test"
+                ],
+                "type": "string",
+                "description": "* `validation` - validation\n* `test` - test"
+            },
+            "PasswordChanged": {
+                "type": "object",
+                "properties": {
+                    "password_changed": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "password_changed"
+                ]
+            },
+            "PasswordResetConfirm": {
+                "type": "object",
+                "properties": {
+                    "new_password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 256
+                    },
+                    "confirm_password": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 256
+                    },
+                    "token": {
+                        "type": "string",
+                        "writeOnly": true,
+                        "maxLength": 128
+                    }
+                },
+                "required": [
+                    "confirm_password",
+                    "new_password",
+                    "token"
+                ]
+            },
+            "PointInTimeQualificationEnum": {
+                "enum": [
+                    "not_independently_verified"
+                ],
+                "type": "string",
+                "description": "* `not_independently_verified` - not_independently_verified"
+            },
+            "Protocol": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "train_start": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "train_end": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "validation_start": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "validation_end": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "test_start": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "test_end": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "training_policy": {
+                        "type": "string"
+                    },
+                    "configuration_trials": {
+                        "type": "integer"
+                    },
+                    "directional_policy": {
+                        "type": "string"
+                    },
+                    "issue_lag_minutes": {
+                        "type": "integer"
+                    },
+                    "protocol_sha256": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "configuration_trials",
+                    "directional_policy",
+                    "id",
+                    "issue_lag_minutes",
+                    "protocol_sha256",
+                    "test_end",
+                    "test_start",
+                    "train_end",
+                    "train_start",
+                    "training_policy",
+                    "validation_end",
+                    "validation_start"
+                ]
+            },
+            "Provenance": {
+                "type": "object",
+                "properties": {
+                    "data_mode": {
+                        "$ref": "#/components/schemas/DataModeEnum"
+                    },
+                    "source_id": {
+                        "type": "string"
+                    },
+                    "source_label": {
+                        "type": "string"
+                    },
+                    "as_of": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "fetched_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "price_basis": {
+                        "type": "string"
+                    },
+                    "freshness_state": {
+                        "$ref": "#/components/schemas/FreshnessStateEnum"
+                    },
+                    "market_state": {
+                        "$ref": "#/components/schemas/MarketStateEnum"
+                    },
+                    "delay_seconds": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "snapshot_id": {
+                        "type": "string"
+                    },
+                    "disclaimer": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "as_of",
+                    "data_mode",
+                    "delay_seconds",
+                    "disclaimer",
+                    "fetched_at",
+                    "freshness_state",
+                    "market_state",
+                    "price_basis",
+                    "snapshot_id",
+                    "source_id",
+                    "source_label"
+                ]
+            },
+            "ResearchCompare": {
+                "type": "object",
+                "properties": {
+                    "left_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "right_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "compatible": {
+                        "type": "boolean"
+                    },
+                    "reasons": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "compatible",
+                    "left_id",
+                    "reasons",
+                    "right_id"
+                ]
+            },
+            "ResearchExport": {
+                "type": "object",
+                "properties": {
+                    "format": {
+                        "$ref": "#/components/schemas/FormatEnum"
+                    },
+                    "disclosure": {
+                        "$ref": "#/components/schemas/DisclosureEnum"
+                    },
+                    "dataset": {
+                        "$ref": "#/components/schemas/Dataset"
+                    },
+                    "run": {
+                        "$ref": "#/components/schemas/ResearchRun"
+                    },
+                    "result_sha256": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "dataset",
+                    "disclosure",
+                    "format",
+                    "result_sha256",
+                    "run"
+                ]
+            },
+            "ResearchHistory": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ResearchRunSummary"
+                        }
+                    },
+                    "total": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "offset": {
+                        "type": "integer",
+                        "minimum": 0
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "maximum": 50,
+                        "minimum": 1
+                    }
+                },
+                "required": [
+                    "items",
+                    "limit",
+                    "offset",
+                    "total"
+                ]
+            },
+            "ResearchInput": {
+                "type": "object",
+                "properties": {
+                    "dataset_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "horizon_sessions": {
+                        "$ref": "#/components/schemas/HorizonSessionsEnum"
+                    },
+                    "idempotency_key": {
+                        "type": "string",
+                        "format": "uuid"
+                    }
+                },
+                "required": [
+                    "dataset_id",
+                    "horizon_sessions",
+                    "idempotency_key"
+                ]
+            },
+            "ResearchIntakeFailedStatus": {
+                "enum": [
+                    "failed"
+                ],
+                "type": "string",
+                "description": "* `failed` - failed"
+            },
+            "ResearchIntakeMissingStatus": {
+                "enum": [
+                    "not_archived"
+                ],
+                "type": "string",
+                "description": "* `not_archived` - not_archived"
+            },
+            "ResearchIntakeProvenance": {
+                "oneOf": [
+                    {
+                        "$ref": "#/components/schemas/MissingIntake"
+                    },
+                    {
+                        "$ref": "#/components/schemas/FailedIntake"
+                    },
+                    {
+                        "$ref": "#/components/schemas/VerifiedIntake"
+                    }
+                ]
+            },
+            "ResearchIntakeVerifiedStatus": {
+                "enum": [
+                    "verified"
+                ],
+                "type": "string",
+                "description": "* `verified` - verified"
+            },
+            "ResearchModelEnum": {
+                "enum": [
+                    "last_close",
+                    "historical_log_mean"
+                ],
+                "type": "string",
+                "description": "* `last_close` - last_close\n* `historical_log_mean` - historical_log_mean"
+            },
+            "ResearchReplay": {
+                "type": "object",
+                "properties": {
+                    "run_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/ResultEnum"
+                    },
+                    "dataset_matches": {
+                        "type": "boolean"
+                    },
+                    "engine_matches": {
+                        "type": "boolean"
+                    },
+                    "dependency_lock_matches": {
+                        "type": "boolean"
+                    },
+                    "runtime_versions_match": {
+                        "type": "boolean"
+                    },
+                    "result_matches": {
+                        "type": "boolean"
+                    },
+                    "result_sha256": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "dataset_matches",
+                    "dependency_lock_matches",
+                    "engine_matches",
+                    "result",
+                    "result_matches",
+                    "result_sha256",
+                    "run_id",
+                    "runtime_versions_match"
+                ]
+            },
+            "ResearchResult": {
+                "type": "object",
+                "properties": {
+                    "schema_version": {
+                        "type": "integer"
+                    },
+                    "engine_version": {
+                        "type": "string"
+                    },
+                    "dataset_version": {
+                        "type": "string"
+                    },
+                    "data_kind": {
+                        "$ref": "#/components/schemas/DataKindEnum"
+                    },
+                    "empirical_performance_established": {
+                        "type": "boolean"
+                    },
+                    "evidence_kind": {
+                        "$ref": "#/components/schemas/EvidenceKindEnum"
+                    },
+                    "target": {
+                        "$ref": "#/components/schemas/Target"
+                    },
+                    "protocol": {
+                        "$ref": "#/components/schemas/Protocol"
+                    },
+                    "models": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Method"
+                        }
+                    },
+                    "evaluation": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Evaluation"
+                        }
+                    },
+                    "evaluation_rows": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/EvaluationRow"
+                        }
+                    },
+                    "forecast": {
+                        "$ref": "#/components/schemas/Forecast"
+                    },
+                    "limitations": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "required": [
+                    "data_kind",
+                    "dataset_version",
+                    "empirical_performance_established",
+                    "engine_version",
+                    "evaluation",
+                    "evaluation_rows",
+                    "evidence_kind",
+                    "forecast",
+                    "limitations",
+                    "models",
+                    "protocol",
+                    "schema_version",
+                    "target"
+                ]
+            },
+            "ResearchRun": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "dataset_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "dataset_version": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "data_kind": {
+                        "$ref": "#/components/schemas/DataKindEnum"
+                    },
+                    "instrument_id": {
+                        "type": "string"
+                    },
+                    "horizon_sessions": {
+                        "$ref": "#/components/schemas/HorizonSessionsEnum"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "started_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "completed_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "attempts": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/StatusEnum"
+                    },
+                    "result": {
+                        "$ref": "#/components/schemas/ResearchResult"
+                    },
+                    "runtime": {
+                        "$ref": "#/components/schemas/Runtime"
+                    },
+                    "error_code": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "required": [
+                    "attempts",
+                    "completed_at",
+                    "created_at",
+                    "data_kind",
+                    "dataset_id",
+                    "dataset_version",
+                    "error_code",
+                    "horizon_sessions",
+                    "id",
+                    "instrument_id",
+                    "name",
+                    "result",
+                    "runtime",
+                    "started_at",
+                    "status"
+                ]
+            },
+            "ResearchRunList": {
+                "type": "object",
+                "properties": {
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ResearchRun"
+                        }
+                    }
+                },
+                "required": [
+                    "items"
+                ]
+            },
+            "ResearchRunSummary": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "dataset_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "dataset_version": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "data_kind": {
+                        "$ref": "#/components/schemas/DataKindEnum"
+                    },
+                    "instrument_id": {
+                        "type": "string"
+                    },
+                    "horizon_sessions": {
+                        "$ref": "#/components/schemas/HorizonSessionsEnum"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "completed_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/StatusEnum"
+                    }
+                },
+                "required": [
+                    "completed_at",
+                    "created_at",
+                    "data_kind",
+                    "dataset_id",
+                    "dataset_version",
+                    "horizon_sessions",
+                    "id",
+                    "instrument_id",
+                    "name",
+                    "status"
+                ]
+            },
+            "ResultEnum": {
+                "enum": [
+                    "PASS",
+                    "FAIL"
+                ],
+                "type": "string",
+                "description": "* `PASS` - PASS\n* `FAIL` - FAIL"
+            },
+            "ReturnConventionEnum": {
+                "enum": [
+                    "simple price return"
+                ],
+                "type": "string",
+                "description": "* `simple price return` - simple price return"
+            },
+            "RevokeSessions": {
+                "type": "object",
+                "properties": {
+                    "scope": {
+                        "$ref": "#/components/schemas/ScopeEnum"
+                    }
+                },
+                "required": [
+                    "scope"
+                ]
+            },
+            "Runtime": {
+                "type": "object",
+                "properties": {
+                    "python": {
+                        "type": "string"
+                    },
+                    "engine_source_sha256": {
+                        "type": "string"
+                    },
+                    "dependency_lock_sha256": {
+                        "type": "string"
+                    },
+                    "dependencies": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "random_seed": {
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "deterministic": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "dependencies",
+                    "dependency_lock_sha256",
+                    "deterministic",
+                    "engine_source_sha256",
+                    "python",
+                    "random_seed"
+                ]
+            },
+            "ScopeEnum": {
+                "enum": [
+                    "others",
+                    "all"
+                ],
+                "type": "string",
+                "description": "* `others` - others\n* `all` - all"
+            },
+            "Session": {
+                "type": "object",
+                "properties": {
+                    "authenticated": {
+                        "type": "boolean"
+                    },
+                    "user": {
+                        "allOf": [
+                            {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        ],
+                        "nullable": true
+                    },
+                    "csrf_token": {
+                        "type": "string"
+                    },
+                    "market_data_enabled": {
+                        "type": "boolean"
+                    },
+                    "legacy_enabled": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "authenticated",
+                    "csrf_token",
+                    "legacy_enabled",
+                    "market_data_enabled",
+                    "user"
+                ]
+            },
+            "SessionRevocation": {
+                "type": "object",
+                "properties": {
+                    "revoked": {
+                        "type": "string"
+                    },
+                    "authenticated": {
+                        "type": "boolean"
+                    },
+                    "csrf_token": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "required": [
+                    "authenticated",
+                    "csrf_token",
+                    "revoked"
+                ]
+            },
+            "SourceAttestationEnum": {
+                "enum": [
+                    "operator_attested"
+                ],
+                "type": "string",
+                "description": "* `operator_attested` - operator_attested"
+            },
+            "StatusEnum": {
+                "enum": [
+                    "succeeded"
+                ],
+                "type": "string",
+                "description": "* `succeeded` - succeeded"
+            },
+            "StudyHistoryPoint": {
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "close": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                },
+                "required": [
+                    "close",
+                    "time"
+                ]
+            },
+            "Target": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "$ref": "#/components/schemas/NameEnum"
+                    },
+                    "horizon_sessions": {
+                        "$ref": "#/components/schemas/HorizonSessionsEnum"
+                    },
+                    "units": {
+                        "type": "string"
+                    },
+                    "return_convention": {
+                        "$ref": "#/components/schemas/ReturnConventionEnum"
+                    }
+                },
+                "required": [
+                    "horizon_sessions",
+                    "name",
+                    "return_convention",
+                    "units"
+                ]
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "is_staff": {
+                        "type": "boolean"
+                    }
+                },
+                "required": [
+                    "is_staff",
+                    "username"
+                ]
+            },
+            "VerifiedIntake": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/ResearchIntakeVerifiedStatus"
+                    },
+                    "receipt_id": {
+                        "type": "string",
+                        "format": "uuid"
+                    },
+                    "receipt_version": {
+                        "type": "string"
+                    },
+                    "source_attestation": {
+                        "$ref": "#/components/schemas/SourceAttestationEnum"
+                    },
+                    "source_id": {
+                        "type": "string"
+                    },
+                    "source_url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "terms_url": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "acquired_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "review_reference": {
+                        "type": "string"
+                    },
+                    "artifact_sha256": {
+                        "$ref": "#/components/schemas/IntakeHashes"
+                    },
+                    "declared_permissions": {
+                        "$ref": "#/components/schemas/IntakePermissions"
+                    }
+                },
+                "required": [
+                    "acquired_at",
+                    "artifact_sha256",
+                    "declared_permissions",
+                    "receipt_id",
+                    "receipt_version",
+                    "review_reference",
+                    "source_attestation",
+                    "source_id",
+                    "source_url",
+                    "status",
+                    "terms_url"
+                ]
+            },
+            "WatchlistInput": {
+                "type": "object",
+                "properties": {
+                    "instrument_id": {
+                        "$ref": "#/components/schemas/InstrumentIdEnum"
+                    }
+                },
+                "required": [
+                    "instrument_id"
+                ]
+            }
+        },
+        "securitySchemes": {
+            "cookieAuth": {
+                "type": "apiKey",
+                "in": "cookie",
+                "name": "cadrisyn_session"
+            }
+        }
+    }
+}

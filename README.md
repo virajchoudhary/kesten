@@ -1,93 +1,94 @@
-# Kesten
+# Kerquant
 
-A Django REST and Streamlit quantitative-research application with PyTorch LSTM,
-classical forecasting, portfolio-analysis, and historical-backtesting components.
-Viraj contributed research components and later continued the project as a
-full-stack market workspace.
+Kerquant is a financial analytics and quantitative research terminal built with Next.js, TypeScript, Django, and Python. It combines a chart-first market workspace with private watchlists, inspectable datasets, chronological baseline evaluations, saved comparisons, and deterministic replay.
 
-Kesten is the working brand for the project historically named Stock Predictor
-System. Trademark and domain clearance are pending. The repository remains
-[`virajchoudhary/stock-predictor-system`](https://github.com/virajchoudhary/stock-predictor-system).
-Existing source directories and configuration names are unchanged.
-The name does not imply a production release, live trading, or validated
-prediction performance.
+**The portfolio demo uses synthetic prices and synthetic research. No validated forecasting performance, investment recommendation, or live trading is offered. Production remains NO-GO.**
 
-## Which implementation are you reviewing?
+![Kerquant daily market workspace with synthetic data](docs/screenshots/markets-desktop.png)
 
-| Implementation | Availability | Evidence boundary |
-| --- | --- | --- |
-| Django and Streamlit research application | Public main | Source is available in this repository. Trading performance and production readiness are not established. |
-| Next.js market workspace with Django APIs | Local continuation | Authored implementation and recorded regression evidence exist locally. The code is not included in public main. |
+## Explore the application
 
-The newer workspace includes authenticated market APIs, owner-scoped watchlists,
-and API/browser regression coverage. Its chart data includes explicitly synthetic
-demonstration data. This README does not imply that cloning public main yields
-the newer workspace.
+- Analyze daily candlesticks, OHLCV, volume, SMA, RSI, EMA, and Bollinger studies. Adjust chart types/scales, compare common-session indexed series, measure movements, and save local display layouts.
+- Search 20 curated US instruments, manage an account-private watchlist, and open research for an instrument with an available private dataset.
+- Inspect dataset provenance, choose a one- or five-session horizon, compare persistence and expanding historical-log-mean baselines, review chronological periods, export exact results, and replay saved identities.
+- Use responsive desktop/mobile layouts, light and dark themes, keyboard controls, password changes, and session revocation.
 
-No verified live-trading returns, directional-accuracy gains, point-in-time
-integrity, API latency, task throughput, or production deployment are claimed.
+![Kerquant synthetic research and baseline inspection](docs/screenshots/research-desktop.png)
 
-## Source map
+The [portfolio guide](docs/PORTFOLIO.md) gives a presentation walkthrough. The [research methods](docs/RESEARCH.md), [architecture](docs/ARCHITECTURE.md), and [publication record](docs/PUBLICATION.md) describe the supported scope and its limitations.
 
-| Area | Source |
-| --- | --- |
-| Django API and routes | [`backend/api/`](backend/api/) |
-| Django settings and application wiring | [`backend/quantvision/`](backend/quantvision/) |
-| Classical forecasting components | [`backend/api/classical_models.py`](backend/api/classical_models.py) |
-| Optimization and options components | [`backend/api/bl_optimizer.py`](backend/api/bl_optimizer.py), [`backend/api/black_scholes.py`](backend/api/black_scholes.py) |
-| Interactive research frontend | [`frontend/app.py`](frontend/app.py) |
-| Report generation | [`quant_reporter/`](quant_reporter/) |
-| Historical research examples | [`quant_testing/`](quant_testing/) |
-| Existing checks | [`tests/`](tests/), [`backend/api/tests.py`](backend/api/tests.py) |
+## Start the local workspace
 
-The stack uses Django REST Framework, Streamlit, PyTorch, pandas, numerical
-optimization libraries, and ARIMA/GARCH components. Celery and Redis wiring is
-present in the public application. A dependency or source module is not proof
-that every integration runs successfully.
+Use Python 3.12, Node 22 LTS version 22.12 or later, npm, and Git. The first setup downloads pinned Python dependencies and installs the frontend from `web/package-lock.json`. It creates a separate `.venv`; it does not replace a retained legacy environment or database.
 
-## Review before running
-
-The existing checks include network/provider-dependent research scripts.
-Test filenames are not passing test evidence, and public main has no captured
-GitHub Actions workflow. Do not run every script as a unit-test suite.
-
-The public dependency files are not a reproducible locked environment.
-Inspect [`requirements.txt`](requirements.txt),
-[`backend/requirements.txt`](backend/requirements.txt), and settings before
-installing or starting services.
-Provider credentials belong in an untracked local configuration, never in
-source, screenshots, logs, or a public demo.
-
-The following are source-derived local entry points, not verified turnkey setup:
+Clone this repository, change into its root, and run the commands for your platform. On Windows, use PowerShell:
 
 ```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt -r backend/requirements.txt
-python backend/manage.py migrate
-python backend/manage.py runserver 127.0.0.1:8000
+git clone https://github.com/virajchoudhary/stock-predictor-system.git
+cd stock-predictor-system
+./scripts/setup.ps1
+.venv/Scripts/python.exe scripts/demo.py
 ```
 
-The Streamlit entry point is `streamlit run frontend/app.py`.
-Some pages require the backend, external market-data services, optional
-libraries, and provider configuration. Use local development only until those
-dependencies and security settings have been reviewed.
+On Linux or macOS:
 
-## Contributions and limitations
+```sh
+git clone https://github.com/virajchoudhary/stock-predictor-system.git
+cd stock-predictor-system
+sh scripts/setup.sh
+.venv/bin/python scripts/demo.py
+```
 
-This is an academic project with later independent continuation, not an
-individually owned implementation of every model or dependency.
-Viraj's reviewed work includes Django REST, Streamlit, PyTorch LSTM,
-historical-backtesting, and ARIMA/GARCH components.
-The local Next.js continuation has separate authored source and recorded
-regression evidence.
+Open [Markets](http://127.0.0.1:3000/app/markets), [Research](http://127.0.0.1:3000/app/research), or [Account](http://127.0.0.1:3000/app/account). Read the generated initial credentials from `.local/portfolio-demo/credentials.json`. Never publish that file. API health is available at [127.0.0.1:8000/health](http://127.0.0.1:8000/health/).
 
-Historical market-data evaluation does not by itself establish an investable
-strategy. Revised data, execution costs, leakage, model selection, and
-out-of-sample validation require their own assessment.
-API examples, source modules, and demonstration data are not empirical
-performance measurements.
+The launcher explicitly creates a synthetic account, a starter watchlist, and saved baseline evaluations. Demo data lives in `.local/portfolio-demo/workspace.sqlite3`. Restarts preserve the account, current password, run identities, and watchlist edits. After changing your password, use the changed password; the initial credentials file is not updated.
 
-No screenshot or public demo of the newer implementation is attached here.
-Publishing that source or a demo requires a separate review and approval.
-This documentation change does not authorize application changes or deployment.
+Stop the launcher with Ctrl+C. On later starts, run only `scripts/demo.py`. If ports are occupied, select free alternatives:
+
+```powershell
+.venv/Scripts/python.exe scripts/demo.py --web-port 3001 --api-port 8002
+```
+
+For an optimized local frontend, add `--build`. Stop any existing preview before building against its `.next` directory. The API remains a loopback development server; this command does not deploy or qualify production.
+
+## Architecture and data integrity
+
+| Layer | Implementation |
+| --- | --- |
+| Terminal | Next.js App Router, React, TypeScript, Tailwind, Radix components, and TradingView Lightweight Charts |
+| API and accounts | Django, Django REST Framework, same-origin session/CSRF controls, and account-private datasets/watchlists/results |
+| Persistence | PostgreSQL application support; isolated SQLite for the single-command local demo |
+| Research | Immutable dataset/run identities, causal chronological baselines, provenance receipts, and deterministic replay |
+| Operations | Preserved container, migration, backup/restore, and release-check tooling with separate qualification records |
+
+TradingView Lightweight Charts is a third-party charting library. Its required attribution remains visible. Kerquant is not affiliated with TradingView.
+
+The demo launcher disables external market providers and legacy scheduling. Provider failures never silently substitute demo data. The optional yfinance adapter requires separately permitted development-only personal use; enabling a setting does not establish storage, display, or redistribution rights.
+
+Historical dataset admission requires source rights, complete price/action semantics, calendar continuity, and point-in-time availability evidence. No historical archive has passed those gates. Fixture MAE/RMSE values demonstrate pipeline behavior, not forecasting accuracy. See [research methodology and source qualification](docs/RESEARCH.md).
+
+## Run checks
+
+```powershell
+.venv/Scripts/python.exe scripts/check_backend.py
+.venv/Scripts/python.exe -m unittest discover -s tests -p test_research_client.py
+cd web
+npm run build
+npm run typecheck
+npm run lint
+npm test
+```
+
+Use the [disposable browser acceptance procedure](docs/PORTFOLIO.md#run-browser-acceptance) for Chromium tests. It creates separate test accounts and consumes one-use lifecycle tokens. Do not target a retained personal workspace.
+
+The [publication record](docs/PUBLICATION.md) separates local verification from hosted CI. PostgreSQL-only tests require a PostgreSQL test environment and skip under SQLite.
+
+## Preserved research and limitations
+
+ARIMA/GARCH, BiLSTM/HPO, portfolio optimization, derivatives, RL, Streamlit, and reporting implementations remain preserved research code. Their existence does not qualify them as forecasting models or investment tools. The legacy launcher requires its own dependency environment and configuration; it is outside the supported fresh-clone portfolio demonstration.
+
+Production remains **NO-GO** until image-security, hosted CI, operational acceptance, and applicable data-rights gates pass. No live trading, financial advice, certification, or production-readiness claim is made.
+
+The display name remains configurable through `NEXT_PUBLIC_PRODUCT_NAME` and `NEXT_PUBLIC_PRODUCT_SHORT_NAME`. Existing package, environment, database, and repository identifiers retain their historical names. Kerquant's trademark/domain clearance remains unverified. No repository rename, domain purchase, or deployment is implied.
+
+**Historical data notice:** databases, runtime files, and model/progress archives have been excluded from the current portfolio tree. Their earlier versions remain accessible in existing public Git history. That history has not been sanitized or rewritten. See [the publication boundary](docs/PUBLICATION.md).

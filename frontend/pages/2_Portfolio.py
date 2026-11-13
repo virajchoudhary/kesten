@@ -1,5 +1,5 @@
 import streamlit as st
-import requests
+from api_client import client as requests
 import plotly.graph_objects as go
 import pandas as pd
 import numpy as np
@@ -20,6 +20,7 @@ if _FRONTEND_ROOT not in sys.path:
     sys.path.insert(0, _FRONTEND_ROOT)
 
 from reporting_utils import resolve_report_universe
+from branding import page_title
 
 # Import quant_reporter
 try:
@@ -98,9 +99,9 @@ except Exception:
     QUANT_REPORTER_AVAILABLE = False
 
 # Configuration
-API_URL = "http://127.0.0.1:8000/api"
+API_URL = requests.api_url
 
-st.set_page_config(page_title="Portfolio - Stock Price Predictor", layout="wide")
+st.set_page_config(page_title=page_title("Portfolio"), layout="wide")
 target_date = None
 
 st.title("Portfolio Manager")
